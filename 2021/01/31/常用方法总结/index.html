@@ -1,211 +1,141 @@
+
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Numpy创建 123456789101112131415numpy.array(object,dtype&#x3D;None,copy&#x3D;True,order&#x3D;None,subok&#x3D;False,ndmin&#x3D;0) # 列表或元组转换numpy.arange(start,stop,step,dtype&#x3D;None) # 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长stepnumpy.lins">
-<meta property="og:type" content="article">
-<meta property="og:title" content="常用方法总结">
-<meta property="og:url" content="http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
-<meta property="og:site_name" content="Qijinli&#39;s Blog">
-<meta property="og:description" content="Numpy创建 123456789101112131415numpy.array(object,dtype&#x3D;None,copy&#x3D;True,order&#x3D;None,subok&#x3D;False,ndmin&#x3D;0) # 列表或元组转换numpy.arange(start,stop,step,dtype&#x3D;None) # 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长stepnumpy.lins">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-31T03:39:15.734Z">
-<meta property="article:modified_time" content="2021-05-01T05:24:43.363Z">
-<meta property="article:author" content="Qijinli">
-<meta name="twitter:card" content="summary">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+<html lang="zh-CN">
+    <head>
+        <title>常用方法总结</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/Qi-jinli/css/style.css">
+<link rel="shortcut icon" href="/Qi-jinli/favicon.ico">
+<link rel="apple-touch-icon" href="/Qi-jinli/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Qi-jinli/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/Qi-jinli/favicon-32x32.png">
+<link rel="manifest" href="/Qi-jinli/site.webmanifest">
+
         
     
-    <!-- title -->
-    <title>常用方法总结</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel='stylesheet' href="/Qi-jinli/./css/dracula.css">
 
-    
-<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <meta name="generator" content="Hexo 5.4.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Qijinli's Blog</a>
+            </div>
+        </div>
 
-    
-<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
-
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- rss -->
-    
-    
-    <!-- jquery -->
-    
-<script src="/lib/jquery/jquery.min.js"></script>
-
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body>
-    <div class="banner">
-<div id="blogtitel" class="blogtitel">Qijinli&#39;s Blog</div>
-<ul id="wrapper" class="wrapper">
-  <div class="sun">
-    <div class="star"></div>
-  </div>
-  <div class="mercury">
-    <div class="planet">
-      <div class="shadow"></div>
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="venus">
-    <div class="planet">
-      <div class="shadow"></div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Qijinli's Blog</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Qijinli</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p>越努力，越优秀</p>
+            </div>
+
+            
+        </div>
     </div>
-  </div>
-  <div class="earth">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="mars">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="jupiter">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-</ul>
 </div>
 
-    <div class="background">
-      
-        <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
         
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        
-        <li><a class="icon" href="/2021/01/29/Seaborn/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
-        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&text=常用方法总结"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&is_video=false&description=常用方法总结"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=常用方法总结&body=Check out this article: http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&name=常用方法总结&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
     </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy"><span class="toc-number">1.</span> <span class="toc-text">Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-number">1.4.</span> <span class="toc-text">逻辑与统计计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pandas"><span class="toc-number">2.</span> <span class="toc-text">Pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-number">2.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.</span> <span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E5%87%8F"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据删减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%9F%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">运算和统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">2.5.</span> <span class="toc-text">高级操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-number">3.</span> <span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">简单绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">图形样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seaborn"><span class="toc-number">4.</span> <span class="toc-text">Seaborn</span></a></li></ol>
-    </div>
-  </span>
-</div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        常用方法总结
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun January 31, 2021 11:39 AM
+                        </div>
 
-      
-      <div class="content index width mx-auto px2 my4">
-          
-          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        常用方法总结
-    </h1>
+                        
+                            <div class="al_page_content_info">
+                                2.9k words
+                            </div>
+                        
 
+                        
+                            <div class="al_page_content_info">
+                                11 minutes read
+                            </div>
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
 
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy"><span class="toc-text">Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-text">逻辑与统计计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pandas"><span class="toc-text">Pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E5%87%8F"><span class="toc-text">数据删减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%9F%E8%AE%A1"><span class="toc-text">运算和统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-text">高级操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-text">简单绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="toc-text">图形样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seaborn"><span class="toc-text">Seaborn</span></a></li></ol>
+                    </div>
+                
 
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Qijinli's Blog</span>
-      </span>
-      
-    <div class="postdate">
-        <time datetime="2021-01-31T03:39:15.734Z" itemprop="datePublished">2021-01-31</time>
-    </div>
-
-
-      
-
-    </div>
-  </header>
-  
-
-  <div class="content" itemprop="articleBody">
-    <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(<span class="built_in">object</span>,dtype=<span class="literal">None</span>,copy=<span class="literal">True</span>,order=<span class="literal">None</span>,subok=<span class="literal">False</span>,ndmin=<span class="number">0</span>) <span class="comment"># 列表或元组转换</span></span><br><span class="line">numpy.arange(start,stop,step,dtype=<span class="literal">None</span>) <span class="comment"># 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</span></span><br><span class="line">numpy.linspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, retstep=<span class="literal">False</span>, dtype=<span class="literal">None</span>) <span class="comment"># 同arange一样</span></span><br><span class="line">numpy.logspace(start, stop, num) <span class="comment"># 以10为底，生成num个等比数列</span></span><br><span class="line">numpy.ones(shape, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;C&#x27;</span>) <span class="comment"># 生成全为1的多维数组</span></span><br><span class="line">numpy.ones_like(a, dtype) <span class="comment"># 快速创建数值全部为1的多维数组</span></span><br><span class="line">numpy.zeros(shape, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;C&#x27;</span>) <span class="comment"># 生成全为0的多维数组</span></span><br><span class="line">numpy.zeros_like(a, dtype) <span class="comment"># 快速创建数值全部为0的多维数组</span></span><br><span class="line">numpy.eye(N, M=<span class="literal">None</span>, k=<span class="number">0</span>, dtype=&lt;<span class="built_in">type</span> <span class="string">&#x27;float&#x27;</span>&gt;)  <span class="comment"># 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</span></span><br><span class="line">numpy.random.rand(d0, d1, ..., dn )<span class="comment"># 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。</span></span><br><span class="line">numpy.random.randn(d0, d1, ..., dn) <span class="comment"># 从标准正态分布中返回一个或多个样本值</span></span><br><span class="line">numpy.random.standard_normal(size) <span class="comment"># 从标准正态分布中生成随机数</span></span><br><span class="line">numpy.random.randint(low, high, size, dtype) <span class="comment"># 方法将会生成[low, high)的随机整数</span></span><br><span class="line">numpy.random.normal(loc，scale，size) <span class="comment"># 从正态分布绘制随机样本。参数，均值和偏差</span></span><br><span class="line">numpy.random.uniform(low=<span class="number">0</span>，high=<span class="number">1</span>，size) <span class="comment"># 从均匀分布中生成随机数</span></span><br></pre></td></tr></table></figure>
+                
+                <section id="post-body">
+                    <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array(<span class="hljs-built_in">object</span>,dtype=<span class="hljs-literal">None</span>,copy=<span class="hljs-literal">True</span>,order=<span class="hljs-literal">None</span>,subok=<span class="hljs-literal">False</span>,ndmin=<span class="hljs-number">0</span>) <span class="hljs-comment"># 列表或元组转换</span><br>numpy.arange(start,stop,step,dtype=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</span><br>numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 同arange一样</span><br>numpy.logspace(start, stop, num) <span class="hljs-comment"># 以10为底，生成num个等比数列</span><br>numpy.ones(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-comment"># 生成全为1的多维数组</span><br>numpy.ones_like(a, dtype) <span class="hljs-comment"># 快速创建数值全部为1的多维数组</span><br>numpy.zeros(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-comment"># 生成全为0的多维数组</span><br>numpy.zeros_like(a, dtype) <span class="hljs-comment"># 快速创建数值全部为0的多维数组</span><br>numpy.eye(N, M=<span class="hljs-literal">None</span>, k=<span class="hljs-number">0</span>, dtype=&lt;<span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span>&gt;)  <span class="hljs-comment"># 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</span><br>numpy.random.rand(d0, d1, ..., dn )<span class="hljs-comment"># 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。</span><br>numpy.random.randn(d0, d1, ..., dn) <span class="hljs-comment"># 从标准正态分布中返回一个或多个样本值</span><br>numpy.random.standard_normal(size) <span class="hljs-comment"># 从标准正态分布中生成随机数</span><br>numpy.random.randint(low, high, size, dtype) <span class="hljs-comment"># 方法将会生成[low, high)的随机整数</span><br>numpy.random.normal(loc，scale，size) <span class="hljs-comment"># 从正态分布绘制随机样本。参数，均值和偏差</span><br>numpy.random.uniform(low=<span class="hljs-number">0</span>，high=<span class="hljs-number">1</span>，size) <span class="hljs-comment"># 从均匀分布中生成随机数</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ndarray.T <span class="comment"># 用于数组的转置，与.transpose()相同。</span></span><br><span class="line">ndarray.dtype <span class="comment"># 用来输出数组包含元素的数据类型。</span></span><br><span class="line">ndarray.real <span class="comment"># 用来输出数组包含元素的实部。</span></span><br><span class="line">ndarray.imag <span class="comment"># 用来输出数组包含元素的虚部。</span></span><br><span class="line">ndarray.size <span class="comment"># 用来输出数组中的总包含元素数。</span></span><br><span class="line">ndarray.itemsize <span class="comment"># 输出一个数组元素的字节数。</span></span><br><span class="line">ndarray.nbytes <span class="comment"># 用来输出数组的元素总字节数。</span></span><br><span class="line">ndarray.ndim <span class="comment"># 用来输出数组维度。</span></span><br><span class="line">ndarray.shape <span class="comment"># 用来输出数组形状。</span></span><br><span class="line">ndarray.strides <span class="comment"># 用来遍历数组时，输出每个维度中步进的字节数组。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">ndarray.T <span class="hljs-comment"># 用于数组的转置，与.transpose()相同。</span><br>ndarray.dtype <span class="hljs-comment"># 用来输出数组包含元素的数据类型。</span><br>ndarray.real <span class="hljs-comment"># 用来输出数组包含元素的实部。</span><br>ndarray.imag <span class="hljs-comment"># 用来输出数组包含元素的虚部。</span><br>ndarray.size <span class="hljs-comment"># 用来输出数组中的总包含元素数。</span><br>ndarray.itemsize <span class="hljs-comment"># 输出一个数组元素的字节数。</span><br>ndarray.nbytes <span class="hljs-comment"># 用来输出数组的元素总字节数。</span><br>ndarray.ndim <span class="hljs-comment"># 用来输出数组维度。</span><br>ndarray.shape <span class="hljs-comment"># 用来输出数组形状。</span><br>ndarray.strides <span class="hljs-comment"># 用来遍历数组时，输出每个维度中步进的字节数组。</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ndarray.reshape(newshape) <span class="comment"># 可以在不改变数组数据的同时改变数组形状</span></span><br><span class="line">ndarray.resize(newshape) <span class="comment"># 改变数组形状，改变数组数据，新数组比原数组大，则将会copy原数组中的值对新数组进行填充</span></span><br><span class="line">ndarray.ravel(order=<span class="string">&#x27;C&#x27;</span>) <span class="comment"># 将任意形状的按行读取，变为1维数组，浅拷贝</span></span><br><span class="line">ndarray.flatten() <span class="comment"># 将任意形状的按行读取，变为1维数组，深拷贝</span></span><br><span class="line">numpy.moveaxis(a, source, destination) <span class="comment"># 将数组的轴移动到新的位置</span></span><br><span class="line">numpy.swapaxes(a, axis1, axis2) <span class="comment"># 用来交换数组的轴</span></span><br><span class="line">numpy.concatenate((a1, a2, ...), axis=<span class="number">0</span>) <span class="comment"># 可以将多个数组沿指定轴连接在一起</span></span><br><span class="line">numpy.unique(a) <span class="comment"># 去重数组元素中重复的元素</span></span><br><span class="line">numpy.atleast_xd() <span class="comment"># 支持输入数据直接视为x维</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">ndarray.reshape(newshape) <span class="hljs-comment"># 可以在不改变数组数据的同时改变数组形状</span><br>ndarray.resize(newshape) <span class="hljs-comment"># 改变数组形状，改变数组数据，新数组比原数组大，则将会copy原数组中的值对新数组进行填充</span><br>ndarray.ravel(order=<span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-comment"># 将任意形状的按行读取，变为1维数组，浅拷贝</span><br>ndarray.flatten() <span class="hljs-comment"># 将任意形状的按行读取，变为1维数组，深拷贝</span><br>numpy.moveaxis(a, source, destination) <span class="hljs-comment"># 将数组的轴移动到新的位置</span><br>numpy.swapaxes(a, axis1, axis2) <span class="hljs-comment"># 用来交换数组的轴</span><br>numpy.concatenate((a1, a2, ...), axis=<span class="hljs-number">0</span>) <span class="hljs-comment"># 可以将多个数组沿指定轴连接在一起</span><br>numpy.unique(a) <span class="hljs-comment"># 去重数组元素中重复的元素</span><br>numpy.atleast_xd() <span class="hljs-comment"># 支持输入数据直接视为x维</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="逻辑与统计计算"><a href="#逻辑与统计计算" class="headerlink" title="逻辑与统计计算"></a>逻辑与统计计算</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ndarray[条件] = <span class="number">1</span> <span class="comment"># 将满足条件的数组元素设置为1</span></span><br><span class="line">numpy.<span class="built_in">all</span>(条件) <span class="comment"># 查询是否都满足条件</span></span><br><span class="line">numpy.<span class="built_in">any</span>(条件) <span class="comment"># 查询是否有满足条件的</span></span><br><span class="line">numpy.where(条件，<span class="number">1</span>，<span class="number">0</span>) <span class="comment"># 三目运算，符合条件的设置为1，不符合的为0</span></span><br><span class="line">numpy.<span class="built_in">max</span>() <span class="comment"># 沿指定轴计算中间值</span></span><br><span class="line">numpy.<span class="built_in">min</span>() <span class="comment"># 沿指定轴计算中间值</span></span><br><span class="line">numpy.median() <span class="comment"># 沿指定轴计算中间值</span></span><br><span class="line">numpy.mean() <span class="comment"># 沿指定轴计算平均数</span></span><br><span class="line">numpy.std() <span class="comment"># 沿指定轴计算标准偏差</span></span><br><span class="line">numpy.var() <span class="comment"># 沿指定轴计算方差</span></span><br><span class="line">numpy.argmax(axis=) <span class="comment"># 最大元素对应的下标</span></span><br><span class="line">numpy.argmin(axis=) <span class="comment"># 最小元素对应的下标</span></span><br><span class="line">numpy.dot(a, b) <span class="comment"># 求解两个数组的点积</span></span><br><span class="line">numpy.matmul(a, b) <span class="comment"># 求解两个数组的矩阵乘积</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">ndarray[条件] = <span class="hljs-number">1</span> <span class="hljs-comment"># 将满足条件的数组元素设置为1</span><br>numpy.<span class="hljs-built_in">all</span>(条件) <span class="hljs-comment"># 查询是否都满足条件</span><br>numpy.<span class="hljs-built_in">any</span>(条件) <span class="hljs-comment"># 查询是否有满足条件的</span><br>numpy.where(条件，<span class="hljs-number">1</span>，<span class="hljs-number">0</span>) <span class="hljs-comment"># 三目运算，符合条件的设置为1，不符合的为0</span><br>numpy.<span class="hljs-built_in">max</span>() <span class="hljs-comment"># 沿指定轴计算中间值</span><br>numpy.<span class="hljs-built_in">min</span>() <span class="hljs-comment"># 沿指定轴计算中间值</span><br>numpy.median() <span class="hljs-comment"># 沿指定轴计算中间值</span><br>numpy.mean() <span class="hljs-comment"># 沿指定轴计算平均数</span><br>numpy.std() <span class="hljs-comment"># 沿指定轴计算标准偏差</span><br>numpy.var() <span class="hljs-comment"># 沿指定轴计算方差</span><br>numpy.argmax(axis=) <span class="hljs-comment"># 最大元素对应的下标</span><br>numpy.argmin(axis=) <span class="hljs-comment"># 最小元素对应的下标</span><br>numpy.dot(a, b) <span class="hljs-comment"># 求解两个数组的点积</span><br>numpy.matmul(a, b) <span class="hljs-comment"># 求解两个数组的矩阵乘积</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pandas.Series(data=<span class="literal">None</span>,index=<span class="literal">None</span>) <span class="comment"># 创建一位数组，data可以是字典，或者Numpy中的ndarray，index是索引</span></span><br><span class="line">pandas.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>) <span class="comment"># 创建二维数组，data为数组、列表、字典，或者ndarray</span></span><br><span class="line">pandas.MultiIndex.from_arrays(arrays, names=(<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>)) <span class="comment"># 创建三维数组</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">pandas.Series(data=<span class="hljs-literal">None</span>,index=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 创建一位数组，data可以是字典，或者Numpy中的ndarray，index是索引</span><br>pandas.DataFrame(data=<span class="hljs-literal">None</span>, index=<span class="hljs-literal">None</span>, columns=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 创建二维数组，data为数组、列表、字典，或者ndarray</span><br>pandas.MultiIndex.from_arrays(arrays, names=(<span class="hljs-string">&#x27;number&#x27;</span>, <span class="hljs-string">&#x27;color&#x27;</span>)) <span class="hljs-comment"># 创建三维数组</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Series.index <span class="comment"># 查看一维数组中的索引</span></span><br><span class="line">Series.values <span class="comment"># 查看一位数组中的值</span></span><br><span class="line">DataFrame.head() <span class="comment"># 默认显示前5条</span></span><br><span class="line">DataFrame.tail(<span class="number">7</span>) <span class="comment"># 指定显示后7条</span></span><br><span class="line">DataFrame.describe()<span class="comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span></span><br><span class="line">DataFrame.values <span class="comment"># 将DataFrame转换成Numpy数组</span></span><br><span class="line">DataFrame.index <span class="comment"># 查看索引</span></span><br><span class="line">DataFrame.columns <span class="comment"># 查看列名</span></span><br><span class="line">DataFrame.shape <span class="comment"># 查看形状</span></span><br><span class="line">MultiIndex.index <span class="comment"># 查看multiIndex对象</span></span><br><span class="line">MultiIndex.index.names <span class="comment"># 查看levels的名称</span></span><br><span class="line">MultiIndex.index.levels <span class="comment"># 查看每个level的值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">Series.index <span class="hljs-comment"># 查看一维数组中的索引</span><br>Series.values <span class="hljs-comment"># 查看一位数组中的值</span><br>DataFrame.head() <span class="hljs-comment"># 默认显示前5条</span><br>DataFrame.tail(<span class="hljs-number">7</span>) <span class="hljs-comment"># 指定显示后7条</span><br>DataFrame.describe()<span class="hljs-comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span><br>DataFrame.values <span class="hljs-comment"># 将DataFrame转换成Numpy数组</span><br>DataFrame.index <span class="hljs-comment"># 查看索引</span><br>DataFrame.columns <span class="hljs-comment"># 查看列名</span><br>DataFrame.shape <span class="hljs-comment"># 查看形状</span><br>MultiIndex.index <span class="hljs-comment"># 查看multiIndex对象</span><br>MultiIndex.index.names <span class="hljs-comment"># 查看levels的名称</span><br>MultiIndex.index.levels <span class="hljs-comment"># 查看每个level的值</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.iloc[[行],[列]] <span class="comment"># 基于数字索引对数据集进行选择，支持切片(前闭后开)，列表</span></span><br><span class="line">DataFrame.loc[[行],[列]] <span class="comment"># 基于索引名对数据集进行选择，支持切片(首尾包含)，列表</span></span><br><span class="line">DataFrame.ix[[行],[列]] <span class="comment"># 基于下标和名称组合索引</span></span><br><span class="line">DataFrame[列索引值][行索引值] <span class="comment"># 先列后行，按照索引的字符串进行索引</span></span><br><span class="line">DataFrame.index = 新索引值 <span class="comment"># 修改行列索引值</span></span><br><span class="line">DataFrame.reset_index(drop=<span class="literal">False</span>) <span class="comment"># 设置新的下标索引,默认为False，不删除原来索引</span></span><br><span class="line">DataFrame.set_index(keys, drop=<span class="literal">True</span>) <span class="comment"># 设置以keys为列索引，默认为True，删除原来索引</span></span><br><span class="line">DataFrame[列名]=<span class="number">1</span> 或 DataFrame.列名=<span class="number">1</span> <span class="comment"># 将一列赋值为1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">DataFrame.iloc[[行],[列]] <span class="hljs-comment"># 基于数字索引对数据集进行选择，支持切片(前闭后开)，列表</span><br>DataFrame.loc[[行],[列]] <span class="hljs-comment"># 基于索引名对数据集进行选择，支持切片(首尾包含)，列表</span><br>DataFrame.ix[[行],[列]] <span class="hljs-comment"># 基于下标和名称组合索引</span><br>DataFrame[列索引值][行索引值] <span class="hljs-comment"># 先列后行，按照索引的字符串进行索引</span><br>DataFrame.index = 新索引值 <span class="hljs-comment"># 修改行列索引值</span><br>DataFrame.reset_index(drop=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 设置新的下标索引,默认为False，不删除原来索引</span><br>DataFrame.set_index(keys, drop=<span class="hljs-literal">True</span>) <span class="hljs-comment"># 设置以keys为列索引，默认为True，删除原来索引</span><br>DataFrame[列名]=<span class="hljs-number">1</span> 或 DataFrame.列名=<span class="hljs-number">1</span> <span class="hljs-comment"># 将一列赋值为1</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Series.sort_values(ascending=<span class="literal">True</span>) <span class="comment"># 对数据进行排序，默认升序</span></span><br><span class="line">Series.sort_index() <span class="comment"># 对索引进行排序</span></span><br><span class="line">DataFrame.sort_values(by=, ascending=) <span class="comment"># 按照一个键或多个进行数据排序，默认升序</span></span><br><span class="line">DataFrame.sort_index(axis=) <span class="comment"># 对指定轴索引进行排序，从小到大</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">Series.sort_values(ascending=<span class="hljs-literal">True</span>) <span class="hljs-comment"># 对数据进行排序，默认升序</span><br>Series.sort_index() <span class="hljs-comment"># 对索引进行排序</span><br>DataFrame.sort_values(by=, ascending=) <span class="hljs-comment"># 按照一个键或多个进行数据排序，默认升序</span><br>DataFrame.sort_index(axis=) <span class="hljs-comment"># 对指定轴索引进行排序，从小到大</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.drop(labels=[], axis=) <span class="comment"># 按照指定轴对指定标签参数进行删除</span></span><br><span class="line">DataFrame.drop_duplicates(axis=) <span class="comment"># 指定轴数据去重</span></span><br><span class="line">DataFrame.dropna() <span class="comment"># 删除缺失值行或列</span></span><br><span class="line">DataFrame.pop(列标签) <span class="comment"># 删除列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">DataFrame.drop(labels=[], axis=) <span class="hljs-comment"># 按照指定轴对指定标签参数进行删除</span><br>DataFrame.drop_duplicates(axis=) <span class="hljs-comment"># 指定轴数据去重</span><br>DataFrame.dropna() <span class="hljs-comment"># 删除缺失值行或列</span><br>DataFrame.pop(列标签) <span class="hljs-comment"># 删除列</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="运算和统计"><a href="#运算和统计" class="headerlink" title="运算和统计"></a>运算和统计</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.add(other) <span class="comment"># 加法运算</span></span><br><span class="line">DataFrame.sub(other) <span class="comment"># 减法运算</span></span><br><span class="line"></span><br><span class="line">DataFrame[列名] &gt; value <span class="comment"># 返回逻辑结果，布尔值</span></span><br><span class="line">DataFrame[DataFrame[列名] &gt; value].head() <span class="comment"># 逻辑判断的结果可以作为筛选的依据</span></span><br><span class="line">DataFrame.query(<span class="string">&quot;列名 &lt; value1 &amp; 列名 &gt; value2&quot;</span>).head() <span class="comment"># 进行多次逻辑判断</span></span><br><span class="line">DataFrame[列名].isin([]) <span class="comment"># 可以指定值进行一个判断，从而进行筛选操作</span></span><br><span class="line"></span><br><span class="line">DataFrame.describe() <span class="comment"># 综合分析: 能够直接得出很多统计结果,count, mean, std, min, max 等</span></span><br><span class="line">DataFrame.<span class="built_in">sum</span>() <span class="comment"># 计算总和</span></span><br><span class="line">DataFrame.mean() <span class="comment"># 计算平均值</span></span><br><span class="line">DataFrame.median() <span class="comment"># 计算中位数</span></span><br><span class="line">DataFrame.<span class="built_in">min</span>() <span class="comment"># 计算最小值</span></span><br><span class="line">DataFrame.<span class="built_in">max</span>() <span class="comment"># 计算最大值</span></span><br><span class="line">DataFrame.mode() <span class="comment"># 计算众数</span></span><br><span class="line">DataFrame.<span class="built_in">abs</span>() <span class="comment"># 计算绝对值</span></span><br><span class="line">DataFrame.prod() <span class="comment"># 计算连乘</span></span><br><span class="line">DataFrame.std() <span class="comment"># 计算标准差</span></span><br><span class="line">DataFrame.var() <span class="comment"># 计算方差</span></span><br><span class="line">DataFrame.idxmax() <span class="comment"># 计算最大值索引</span></span><br><span class="line">DataFrame.idxmin() <span class="comment"># 计算最小值索引</span></span><br><span class="line">DataFrame.cumsum() <span class="comment"># 计算前1/2/3/…/n个数的和</span></span><br><span class="line">DataFrame.cumprod() <span class="comment"># 计算前1/2/3/…/n个数的积</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">DataFrame.add(other) <span class="hljs-comment"># 加法运算</span><br>DataFrame.sub(other) <span class="hljs-comment"># 减法运算</span><br><br>DataFrame[列名] &gt; value <span class="hljs-comment"># 返回逻辑结果，布尔值</span><br>DataFrame[DataFrame[列名] &gt; value].head() <span class="hljs-comment"># 逻辑判断的结果可以作为筛选的依据</span><br>DataFrame.query(<span class="hljs-string">&quot;列名 &lt; value1 &amp; 列名 &gt; value2&quot;</span>).head() <span class="hljs-comment"># 进行多次逻辑判断</span><br>DataFrame[列名].isin([]) <span class="hljs-comment"># 可以指定值进行一个判断，从而进行筛选操作</span><br><br>DataFrame.describe() <span class="hljs-comment"># 综合分析: 能够直接得出很多统计结果,count, mean, std, min, max 等</span><br>DataFrame.<span class="hljs-built_in">sum</span>() <span class="hljs-comment"># 计算总和</span><br>DataFrame.mean() <span class="hljs-comment"># 计算平均值</span><br>DataFrame.median() <span class="hljs-comment"># 计算中位数</span><br>DataFrame.<span class="hljs-built_in">min</span>() <span class="hljs-comment"># 计算最小值</span><br>DataFrame.<span class="hljs-built_in">max</span>() <span class="hljs-comment"># 计算最大值</span><br>DataFrame.mode() <span class="hljs-comment"># 计算众数</span><br>DataFrame.<span class="hljs-built_in">abs</span>() <span class="hljs-comment"># 计算绝对值</span><br>DataFrame.prod() <span class="hljs-comment"># 计算连乘</span><br>DataFrame.std() <span class="hljs-comment"># 计算标准差</span><br>DataFrame.var() <span class="hljs-comment"># 计算方差</span><br>DataFrame.idxmax() <span class="hljs-comment"># 计算最大值索引</span><br>DataFrame.idxmin() <span class="hljs-comment"># 计算最小值索引</span><br>DataFrame.cumsum() <span class="hljs-comment"># 计算前1/2/3/…/n个数的和</span><br>DataFrame.cumprod() <span class="hljs-comment"># 计算前1/2/3/…/n个数的积</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pandas画图</span></span><br><span class="line">DataFrame.plot(kind=<span class="string">&#x27;line&#x27;</span>) <span class="comment"># kind表示需要绘制的种类，默认line,还有bar,barh,hist,pie,scatter</span></span><br><span class="line"><span class="comment"># 文件读取与存储</span></span><br><span class="line">pandas.read_csv(path, usecols=[], engine=<span class="string">&#x27;python&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="comment"># 读取csv文件</span></span><br><span class="line">DataFrame.to_csv(path, columns=<span class="literal">None</span>, mode=<span class="string">&#x27;w&#x27;</span>, encoding=<span class="literal">None</span>) <span class="comment"># 转换成csv文件</span></span><br><span class="line">pandas.read_hdf(path，key=<span class="literal">None</span>，** kwargs) <span class="comment"># 根据key读取hdf文件</span></span><br><span class="line">DataFrame.to_hdf(path, key=, **kwargs*) <span class="comment"># 转换成hdf文件</span></span><br><span class="line">pandas.read_json(path, lines=<span class="literal">False</span>) <span class="comment"># 读取json文件</span></span><br><span class="line">DataFrame.to_json(path,lines=<span class="literal">False</span>) <span class="comment"># 转换成json文件</span></span><br><span class="line"><span class="comment"># 缺失值检测与填充</span></span><br><span class="line">DataFrame.isna()|isnull()|notna()|notnull() <span class="comment"># 检测缺失值</span></span><br><span class="line">DataFrame.replace(to_replace=, value=) <span class="comment"># to_replace替换前的值，value为替换后的值</span></span><br><span class="line">DataFrame.fillna(<span class="number">0</span>) <span class="comment"># 用0替换缺失值</span></span><br><span class="line">DataFrame.fillna(method=<span class="string">&#x27;pad&#x27;</span>) <span class="comment"># 使用缺失值前面的值进行填充</span></span><br><span class="line">DataFrame.fillna(method=<span class="string">&#x27;bfill&#x27;</span>) <span class="comment"># 使用缺失值前面的值进行填充</span></span><br><span class="line">DataFrame.interpolate(method=) <span class="comment"># 插值算法，平滑绘图&#x27;akima&#x27;，累计分布&#x27;pchip&#x27;，数据增长速率越来越快&#x27;quadratic&#x27;</span></span><br><span class="line"><span class="comment"># 数据离散化与数据合并</span></span><br><span class="line">pandas.qcut(data, num) <span class="comment"># 将数据分为数量差不多的num个组，一般会与value_counts搭配使用，统计每组的个数</span></span><br><span class="line">Series.value_counts() <span class="comment"># 统计分组次数</span></span><br><span class="line">pandas.cut(data, bins) <span class="comment"># 自定义分组，bin为自定义列表</span></span><br><span class="line">pandas.get_dummies(data, prefix=分组名字) <span class="comment"># 分组数据变成one-hot编码</span></span><br><span class="line">pandas.concat([data1, data2], axis=<span class="number">1</span>) <span class="comment"># 按照行或列进行合并，0为行</span></span><br><span class="line">pandas.merge(left, right, how=<span class="string">&#x27;inner&#x27;</span>, on=[]) <span class="comment"># 按照指定键指定方式进行连接</span></span><br><span class="line"><span class="comment"># 交叉表与透视表</span></span><br><span class="line">pandas.crosstab(index,columns) <span class="comment"># 按index进行分组并作为行索引，并统计columns值的各个频数，交叉表</span></span><br><span class="line">DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean) <span class="comment"># 将values按照index分组，默认使用mean()聚合函数</span></span><br><span class="line"><span class="comment"># 分组与聚合</span></span><br><span class="line">DataFrame.groupby(key, as_index=<span class="literal">False</span>) <span class="comment"># 按照keys进行分组</span></span><br><span class="line">DataFrame.agg(&#123;<span class="string">&quot;列名&quot;</span>：np.聚合函数&#125;) <span class="comment"># 聚合函数为max(),min(),mean(),std()等函数</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Pandas画图</span><br>DataFrame.plot(kind=<span class="hljs-string">&#x27;line&#x27;</span>) <span class="hljs-comment"># kind表示需要绘制的种类，默认line,还有bar,barh,hist,pie,scatter</span><br><span class="hljs-comment"># 文件读取与存储</span><br>pandas.read_csv(path, usecols=[], engine=<span class="hljs-string">&#x27;python&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf8&#x27;</span>) <span class="hljs-comment"># 读取csv文件</span><br>DataFrame.to_csv(path, columns=<span class="hljs-literal">None</span>, mode=<span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 转换成csv文件</span><br>pandas.read_hdf(path，key=<span class="hljs-literal">None</span>，** kwargs) <span class="hljs-comment"># 根据key读取hdf文件</span><br>DataFrame.to_hdf(path, key=, **kwargs*) <span class="hljs-comment"># 转换成hdf文件</span><br>pandas.read_json(path, lines=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 读取json文件</span><br>DataFrame.to_json(path,lines=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 转换成json文件</span><br><span class="hljs-comment"># 缺失值检测与填充</span><br>DataFrame.isna()|isnull()|notna()|notnull() <span class="hljs-comment"># 检测缺失值</span><br>DataFrame.replace(to_replace=, value=) <span class="hljs-comment"># to_replace替换前的值，value为替换后的值</span><br>DataFrame.fillna(<span class="hljs-number">0</span>) <span class="hljs-comment"># 用0替换缺失值</span><br>DataFrame.fillna(method=<span class="hljs-string">&#x27;pad&#x27;</span>) <span class="hljs-comment"># 使用缺失值前面的值进行填充</span><br>DataFrame.fillna(method=<span class="hljs-string">&#x27;bfill&#x27;</span>) <span class="hljs-comment"># 使用缺失值前面的值进行填充</span><br>DataFrame.interpolate(method=) <span class="hljs-comment"># 插值算法，平滑绘图&#x27;akima&#x27;，累计分布&#x27;pchip&#x27;，数据增长速率越来越快&#x27;quadratic&#x27;</span><br><span class="hljs-comment"># 数据离散化与数据合并</span><br>pandas.qcut(data, num) <span class="hljs-comment"># 将数据分为数量差不多的num个组，一般会与value_counts搭配使用，统计每组的个数</span><br>Series.value_counts() <span class="hljs-comment"># 统计分组次数</span><br>pandas.cut(data, bins) <span class="hljs-comment"># 自定义分组，bin为自定义列表</span><br>pandas.get_dummies(data, prefix=分组名字) <span class="hljs-comment"># 分组数据变成one-hot编码</span><br>pandas.concat([data1, data2], axis=<span class="hljs-number">1</span>) <span class="hljs-comment"># 按照行或列进行合并，0为行</span><br>pandas.merge(left, right, how=<span class="hljs-string">&#x27;inner&#x27;</span>, on=[]) <span class="hljs-comment"># 按照指定键指定方式进行连接</span><br><span class="hljs-comment"># 交叉表与透视表</span><br>pandas.crosstab(index,columns) <span class="hljs-comment"># 按index进行分组并作为行索引，并统计columns值的各个频数，交叉表</span><br>DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean) <span class="hljs-comment"># 将values按照index分组，默认使用mean()聚合函数</span><br><span class="hljs-comment"># 分组与聚合</span><br>DataFrame.groupby(key, as_index=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 按照keys进行分组</span><br>DataFrame.agg(&#123;<span class="hljs-string">&quot;列名&quot;</span>：np.聚合函数&#125;) <span class="hljs-comment"># 聚合函数为max(),min(),mean(),std()等函数</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h1><blockquote>
 <table>
@@ -269,7 +199,7 @@
 </tr>
 </tbody></table>
 </blockquote>
-<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基础折线图</span></span><br><span class="line">plt.figure(figsize=(),dpi=) <span class="comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">plt.plot(x, y, label=) <span class="comment"># 绘制图像和设置图例名称</span></span><br><span class="line">plt.xticks(x,显示格式) <span class="comment"># 设置x轴刻度</span></span><br><span class="line">plt.yticks(y,显示格式) <span class="comment"># 设置x轴刻度</span></span><br><span class="line">plt.xlim() <span class="comment"># 设置x坐标轴范围</span></span><br><span class="line">plt.ylim() <span class="comment"># 设置y坐标轴范围</span></span><br><span class="line">plt.xlabel() <span class="comment"># 设置x轴标题</span></span><br><span class="line">plt.ylabel() <span class="comment"># 设置y轴标题</span></span><br><span class="line">plt.title() <span class="comment"># 设置标题</span></span><br><span class="line">plt.grid(<span class="literal">True</span>, linestyle=, alpha=) <span class="comment"># 设置网格线，及线类型，透明度</span></span><br><span class="line">plt.text(x,y,s) <span class="comment"># 图形标注，x, y 用于标注位置定位，s 代表标注的字符串</span></span><br><span class="line">plt.savefig(<span class="string">&quot;&quot;</span>) <span class="comment"># 图像保存</span></span><br><span class="line">plt.legend(loc=) <span class="comment"># 以对应的位置上添加图例</span></span><br><span class="line">plt.show() <span class="comment"># 图像显示</span></span><br><span class="line"><span class="comment"># 大图套小图</span></span><br><span class="line">fig = plt.figure(figsize=(),dpi=)</span><br><span class="line">axes = fig.add_axes([])  <span class="comment"># 控制画布的左, 下, 宽度, 高度来添加画布</span></span><br><span class="line">axes.plot(x, y)</span><br><span class="line"><span class="comment"># 多行多列图</span></span><br><span class="line">fig, axes = plt.subplots(nrows=, ncols=)  <span class="comment"># 创建多行多列的图像对象及画布</span></span><br><span class="line">axes.set_xticks(x,显示格式) <span class="comment"># 设置x轴刻度</span></span><br><span class="line">axes.set_yticks(y,显示格式) <span class="comment"># 设置x轴刻度</span></span><br><span class="line">axes.set_xlabel() <span class="comment"># 设置x轴标题</span></span><br><span class="line">axes.set_ylabel() <span class="comment"># 设置y轴标题</span></span><br><span class="line">axes.set_title() <span class="comment"># 设置标题</span></span><br></pre></td></tr></table></figure>
+<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 基础折线图</span><br>plt.figure(figsize=(),dpi=) <span class="hljs-comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span><br>plt.plot(x, y, label=) <span class="hljs-comment"># 绘制图像和设置图例名称</span><br>plt.xticks(x,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>plt.yticks(y,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>plt.xlim() <span class="hljs-comment"># 设置x坐标轴范围</span><br>plt.ylim() <span class="hljs-comment"># 设置y坐标轴范围</span><br>plt.xlabel() <span class="hljs-comment"># 设置x轴标题</span><br>plt.ylabel() <span class="hljs-comment"># 设置y轴标题</span><br>plt.title() <span class="hljs-comment"># 设置标题</span><br>plt.grid(<span class="hljs-literal">True</span>, linestyle=, alpha=) <span class="hljs-comment"># 设置网格线，及线类型，透明度</span><br>plt.text(x,y,s) <span class="hljs-comment"># 图形标注，x, y 用于标注位置定位，s 代表标注的字符串</span><br>plt.savefig(<span class="hljs-string">&quot;&quot;</span>) <span class="hljs-comment"># 图像保存</span><br>plt.legend(loc=) <span class="hljs-comment"># 以对应的位置上添加图例</span><br>plt.show() <span class="hljs-comment"># 图像显示</span><br><span class="hljs-comment"># 大图套小图</span><br>fig = plt.figure(figsize=(),dpi=)<br>axes = fig.add_axes([])  <span class="hljs-comment"># 控制画布的左, 下, 宽度, 高度来添加画布</span><br>axes.plot(x, y)<br><span class="hljs-comment"># 多行多列图</span><br>fig, axes = plt.subplots(nrows=, ncols=)  <span class="hljs-comment"># 创建多行多列的图像对象及画布</span><br>axes.set_xticks(x,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>axes.set_yticks(y,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>axes.set_xlabel() <span class="hljs-comment"># 设置x轴标题</span><br>axes.set_ylabel() <span class="hljs-comment"># 设置y轴标题</span><br>axes.set_title() <span class="hljs-comment"># 设置标题</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h2><blockquote>
 <table>
@@ -306,99 +236,61 @@
 </tbody></table>
 </blockquote>
 <h1 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>) <span class="comment"># 声名样式</span></span><br><span class="line"><span class="comment"># 分布图</span></span><br><span class="line">seaborn.distplot(a, bins=<span class="literal">None</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">False</span>, fit=<span class="literal">None</span>, color=<span class="literal">None</span>) <span class="comment"># 单变量直方图核密度</span></span><br><span class="line">seaborn.jointplot(x, y, data=<span class="literal">None</span>, kind=<span class="string">&#x27;scatter&#x27;</span>) <span class="comment"># 多变量相互关系散点图</span></span><br><span class="line">sns.pairplot(data) <span class="comment"># 绘制多个成对的双变量分布</span></span><br><span class="line"><span class="comment"># 类别图</span></span><br><span class="line">seaborn.catplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, kind=<span class="string">&quot;strip&quot;</span>, data=<span class="literal">None</span>) <span class="comment"># Figure-level 接口</span></span><br><span class="line">seaborn.stripplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, jitter=<span class="literal">False</span>) <span class="comment"># 分类散点线图，数据部分重合</span></span><br><span class="line">seaborn.swarmplot(x=, y=, data=) <span class="comment"># 分类散点线图，数据不重合</span></span><br><span class="line">seaborn.boxplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>) <span class="comment"># 箱体图，示出一组数据的最大值、最小值、中位数、及上下四分位数</span></span><br><span class="line">seaborn.violinplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>) <span class="comment"># 提琴图，显示数据分布及其概率密度</span></span><br><span class="line">seaborn.barplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>) <span class="comment"># 条形图，显示95%置信区间</span></span><br><span class="line">seaborn.pointplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>) <span class="comment"># 点图，只绘制点图和置信区间</span></span><br><span class="line"><span class="comment"># 关联图</span></span><br><span class="line">seaborn.relplot(x=, y=,hue=, style=, kind=<span class="string">&quot;scatter&quot;</span>|<span class="string">&quot;line&quot;</span>, data=) <span class="comment"># Figure-level 接口</span></span><br><span class="line"><span class="comment"># 回归图</span></span><br><span class="line">seaborn.regplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, data=<span class="literal">None</span>) <span class="comment"># 自动完成线性回归拟合</span></span><br><span class="line">seaborn.lmplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>) <span class="comment"># 引入第三维度进行对比，自动完成线性回归拟合</span></span><br><span class="line"><span class="comment"># 矩阵图</span></span><br><span class="line">seaborn.heatmap(a,square,linewidths,annot) <span class="comment"># 绘制热力图</span></span><br><span class="line">seaborn.clustermap(DataFrame) <span class="comment"># 支持绘制层次聚类结构图</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.<span class="hljs-built_in">set</span>(context=<span class="hljs-string">&#x27;notebook&#x27;</span>, style=<span class="hljs-string">&#x27;darkgrid&#x27;</span>, palette=<span class="hljs-string">&#x27;deep&#x27;</span>) <span class="hljs-comment"># 声名样式</span><br><span class="hljs-comment"># 分布图</span><br>seaborn.distplot(a, bins=<span class="hljs-literal">None</span>, hist=<span class="hljs-literal">True</span>, kde=<span class="hljs-literal">True</span>, rug=<span class="hljs-literal">False</span>, fit=<span class="hljs-literal">None</span>, color=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 单变量直方图核密度</span><br>seaborn.jointplot(x, y, data=<span class="hljs-literal">None</span>, kind=<span class="hljs-string">&#x27;scatter&#x27;</span>) <span class="hljs-comment"># 多变量相互关系散点图</span><br>sns.pairplot(data) <span class="hljs-comment"># 绘制多个成对的双变量分布</span><br><span class="hljs-comment"># 类别图</span><br>seaborn.catplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, kind=<span class="hljs-string">&quot;strip&quot;</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># Figure-level 接口</span><br>seaborn.stripplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>, jitter=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 分类散点线图，数据部分重合</span><br>seaborn.swarmplot(x=, y=, data=) <span class="hljs-comment"># 分类散点线图，数据不重合</span><br>seaborn.boxplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 箱体图，示出一组数据的最大值、最小值、中位数、及上下四分位数</span><br>seaborn.violinplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 提琴图，显示数据分布及其概率密度</span><br>seaborn.barplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 条形图，显示95%置信区间</span><br>seaborn.pointplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 点图，只绘制点图和置信区间</span><br><span class="hljs-comment"># 关联图</span><br>seaborn.relplot(x=, y=,hue=, style=, kind=<span class="hljs-string">&quot;scatter&quot;</span>|<span class="hljs-string">&quot;line&quot;</span>, data=) <span class="hljs-comment"># Figure-level 接口</span><br><span class="hljs-comment"># 回归图</span><br>seaborn.regplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 自动完成线性回归拟合</span><br>seaborn.lmplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 引入第三维度进行对比，自动完成线性回归拟合</span><br><span class="hljs-comment"># 矩阵图</span><br>seaborn.heatmap(a,square,linewidths,annot) <span class="hljs-comment"># 绘制热力图</span><br>seaborn.clustermap(DataFrame) <span class="hljs-comment"># 支持绘制层次聚类结构图</span><br></code></pre></td></tr></table></figure>
 
 </blockquote>
 
-  </div>
-</article>
+                </section>
 
+                
+                
+                
 
+            </article>
 
-      </div>
-      
-       <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
-        
-      </ul>
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/2021/01/29/Seaborn/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Seaborn</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy"><span class="toc-number">1.</span> <span class="toc-text">Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-number">1.4.</span> <span class="toc-text">逻辑与统计计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pandas"><span class="toc-number">2.</span> <span class="toc-text">Pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-number">2.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.</span> <span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E5%87%8F"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据删减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%9F%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">运算和统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">2.5.</span> <span class="toc-text">高级操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-number">3.</span> <span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">简单绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">图形样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seaborn"><span class="toc-number">4.</span> <span class="toc-text">Seaborn</span></a></li></ol>
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Qijinli
     </div>
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&text=常用方法总结"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&is_video=false&description=常用方法总结"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=常用方法总结&body=Check out this article: http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&name=常用方法总结&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
+    
+    
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
     </div>
 
-    <div id="actions-footer">
-      <ul>
-        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
-        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
-        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
-        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
-      </ul>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
     </div>
-
-  </div>
 </div>
 
-      
-      <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2021 Qijinli
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+        <script type="text/javascript" async="async" src="/Qi-jinli/javascripts/acelog.js"></script>
         
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-      
-<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- Google Analytics -->
-
-<!-- Disqus Comments -->
-
-
-    </div>
-</body>
+        
+        
+        
+    </body>
 </html>
+        

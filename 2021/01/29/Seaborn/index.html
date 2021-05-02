@@ -1,187 +1,115 @@
+
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 1234# 安装 pip install seaborn&#x3D;&#x3D;0.10.1# 导入import seaborn as sns  使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Seaborn">
-<meta property="og:url" content="http://example.com/2021/01/29/Seaborn/index.html">
-<meta property="og:site_name" content="Qijinli&#39;s Blog">
-<meta property="og:description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 1234# 安装 pip install seaborn&#x3D;&#x3D;0.10.1# 导入import seaborn as sns  使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-29T08:19:49.225Z">
-<meta property="article:modified_time" content="2021-05-01T05:42:00.850Z">
-<meta property="article:author" content="Qijinli">
-<meta name="twitter:card" content="summary">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+<html lang="zh-CN">
+    <head>
+        <title>Seaborn</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/Qi-jinli/css/style.css">
+<link rel="shortcut icon" href="/Qi-jinli/favicon.ico">
+<link rel="apple-touch-icon" href="/Qi-jinli/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Qi-jinli/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/Qi-jinli/favicon-32x32.png">
+<link rel="manifest" href="/Qi-jinli/site.webmanifest">
+
         
     
-    <!-- title -->
-    <title>Seaborn</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel='stylesheet' href="/Qi-jinli/./css/dracula.css">
 
-    
-<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <meta name="generator" content="Hexo 5.4.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Qijinli's Blog</a>
+            </div>
+        </div>
 
-    
-<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
-
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- rss -->
-    
-    
-    <!-- jquery -->
-    
-<script src="/lib/jquery/jquery.min.js"></script>
-
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body>
-    <div class="banner">
-<div id="blogtitel" class="blogtitel">Qijinli&#39;s Blog</div>
-<ul id="wrapper" class="wrapper">
-  <div class="sun">
-    <div class="star"></div>
-  </div>
-  <div class="mercury">
-    <div class="planet">
-      <div class="shadow"></div>
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="venus">
-    <div class="planet">
-      <div class="shadow"></div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Qijinli's Blog</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Qijinli</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p>越努力，越优秀</p>
+            </div>
+
+            
+        </div>
     </div>
-  </div>
-  <div class="earth">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="mars">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="jupiter">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-</ul>
 </div>
 
-    <div class="background">
-      
-        <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
         
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
-        
-        
-        <li><a class="icon" href="/2020/12/17/Matplotlib/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
-        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/29/Seaborn/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/29/Seaborn/&text=Seaborn"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/29/Seaborn/&is_video=false&description=Seaborn"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Seaborn&body=Check out this article: http://example.com/2021/01/29/Seaborn/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/29/Seaborn/&name=Seaborn&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
     </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">分布图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-number">1.1.</span> <span class="toc-text">绘制单变量分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%8F%8C%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-number">1.2.</span> <span class="toc-text">绘制双变量分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%88%90%E5%AF%B9%E7%9A%84%E5%8F%8C%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-number">1.3.</span> <span class="toc-text">绘制成对的双变量分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">类别图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">散点图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">2.2.</span> <span class="toc-text">类别内的数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%AE%B1%E4%BD%93%E5%9B%BE"><span class="toc-number">2.2.1.</span> <span class="toc-text">绘制箱体图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%8F%90%E7%90%B4%E5%9B%BE"><span class="toc-number">2.2.2.</span> <span class="toc-text">绘制提琴图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%86%85%E7%9A%84%E7%BB%9F%E8%AE%A1%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">类别内的统计估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-number">2.3.1.</span> <span class="toc-text">绘制条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%82%B9%E5%9B%BE"><span class="toc-number">2.3.2.</span> <span class="toc-text">绘制点图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">关联图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">回归图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%9B%BE"><span class="toc-number">5.</span> <span class="toc-text">矩阵图</span></a></li></ol>
-    </div>
-  </span>
-</div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Seaborn
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Fri January 29, 2021 04:19 PM
+                        </div>
 
-      
-      <div class="content index width mx-auto px2 my4">
-          
-          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        Seaborn
-    </h1>
+                        
+                            <div class="al_page_content_info">
+                                2.2k words
+                            </div>
+                        
 
+                        
+                            <div class="al_page_content_info">
+                                8 minutes read
+                            </div>
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
 
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%9B%BE"><span class="toc-text">分布图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-text">绘制单变量分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%8F%8C%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-text">绘制双变量分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%88%90%E5%AF%B9%E7%9A%84%E5%8F%8C%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-text">绘制成对的双变量分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%9B%BE"><span class="toc-text">类别图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-text">散点图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-text">类别内的数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%AE%B1%E4%BD%93%E5%9B%BE"><span class="toc-text">绘制箱体图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%8F%90%E7%90%B4%E5%9B%BE"><span class="toc-text">绘制提琴图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%86%85%E7%9A%84%E7%BB%9F%E8%AE%A1%E4%BC%B0%E8%AE%A1"><span class="toc-text">类别内的统计估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-text">绘制条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%82%B9%E5%9B%BE"><span class="toc-text">绘制点图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%9B%BE"><span class="toc-text">关联图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%9B%BE"><span class="toc-text">回归图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%9B%BE"><span class="toc-text">矩阵图</span></a></li></ol>
+                    </div>
+                
 
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Qijinli's Blog</span>
-      </span>
-      
-    <div class="postdate">
-        <time datetime="2021-01-29T08:19:49.225Z" itemprop="datePublished">2021-01-29</time>
-    </div>
-
-
-      
-
-    </div>
-  </header>
-  
-
-  <div class="content" itemprop="articleBody">
-    <blockquote>
+                
+                <section id="post-body">
+                    <blockquote>
 <p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 </span></span><br><span class="line">pip install seaborn==<span class="number">0.10</span><span class="number">.1</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 安装 </span><br>pip install seaborn==<span class="hljs-number">0.10</span><span class="hljs-number">.1</span><br><span class="hljs-comment"># 导入</span><br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br></code></pre></td></tr></table></figure>
 
 <p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>, font=<span class="string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="number">1</span>, color_codes=<span class="literal">False</span>, rc=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.<span class="hljs-built_in">set</span>(context=<span class="hljs-string">&#x27;notebook&#x27;</span>, style=<span class="hljs-string">&#x27;darkgrid&#x27;</span>, palette=<span class="hljs-string">&#x27;deep&#x27;</span>, font=<span class="hljs-string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="hljs-number">1</span>, color_codes=<span class="hljs-literal">False</span>, rc=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>
@@ -192,7 +120,7 @@
 </blockquote>
 <h1 id="分布图"><a href="#分布图" class="headerlink" title="分布图"></a>分布图</h1><h2 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h2><blockquote>
 <p>可以采用最简单的直方图描述单变量的分布情况。 Seaborn中提供了<code> distplot()</code>函数，它默认绘制的是一个带有核密度估计曲线的直方图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.distplot(a, bins=<span class="literal">None</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">False</span>, fit=<span class="literal">None</span>, color=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">seaborn.distplot(a, bins=<span class="hljs-literal">None</span>, hist=<span class="hljs-literal">True</span>, kde=<span class="hljs-literal">True</span>, rug=<span class="hljs-literal">False</span>, fit=<span class="hljs-literal">None</span>, color=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
 
 <p>上述函数中常用参数的含义如下：</p>
 <ul>
@@ -203,11 +131,11 @@
 <li><code>rug</code>：接收布尔类型，表示是否在支持的轴方向上绘制rugplot。</li>
 </ul>
 <p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sns.<span class="built_in">set</span>() <span class="comment"># 调用set()函数获取默认绘图</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)  <span class="comment"># 确定随机数生成器的种子,如果不使用每次生成图形不一样</span></span><br><span class="line">arr = np.random.randn(<span class="number">100</span>)  <span class="comment"># 生成随机数组</span></span><br><span class="line">ax = sns.distplot(arr, bins=<span class="number">10</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">True</span>)  <span class="comment"># 绘制直方图</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br>sns.<span class="hljs-built_in">set</span>() <span class="hljs-comment"># 调用set()函数获取默认绘图</span><br>np.random.seed(<span class="hljs-number">0</span>)  <span class="hljs-comment"># 确定随机数生成器的种子,如果不使用每次生成图形不一样</span><br>arr = np.random.randn(<span class="hljs-number">100</span>)  <span class="hljs-comment"># 生成随机数组</span><br>ax = sns.distplot(arr, bins=<span class="hljs-number">10</span>, hist=<span class="hljs-literal">True</span>, kde=<span class="hljs-literal">True</span>, rug=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 绘制直方图</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="绘制双变量分布"><a href="#绘制双变量分布" class="headerlink" title="绘制双变量分布"></a>绘制双变量分布</h2><blockquote>
 <p>两个变量的二元分布可视化也很有用。在 Seaborn中最简单的方法是使用 <code>jointplot()</code>函数，该函数可以创建一个多面板图形，比如散点图、二维直方图、核密度估计等，以显示两个变量之间的双变量关系及每个变量在单坐标轴上的单变量分布。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">seaborn.jointplot(x, y, data=<span class="literal">None</span>, </span><br><span class="line">                  kind=<span class="string">&#x27;scatter&#x27;</span>, stat_func=<span class="literal">None</span>, color=<span class="literal">None</span>, </span><br><span class="line">                  ratio=<span class="number">5</span>, space=<span class="number">0.2</span>, dropna=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">seaborn.jointplot(x, y, data=<span class="hljs-literal">None</span>, <br>                  kind=<span class="hljs-string">&#x27;scatter&#x27;</span>, stat_func=<span class="hljs-literal">None</span>, color=<span class="hljs-literal">None</span>, <br>                  ratio=<span class="hljs-number">5</span>, space=<span class="hljs-number">0.2</span>, dropna=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
 
 <p>上述函数中常用参数的含义如下：</p>
 <ol>
@@ -221,11 +149,11 @@
 </blockquote>
 <h2 id="绘制成对的双变量分布"><a href="#绘制成对的双变量分布" class="headerlink" title="绘制成对的双变量分布"></a>绘制成对的双变量分布</h2><blockquote>
 <p>要想在数据集中绘制多个成对的双变量分布，则可以使用<code>pairplot()</code>函数实现，该函数会创建一个坐标轴矩阵，并且显示Datafram对象中每对变量的关系。另外，<code>pairplot()</code>函数也可以绘制每个变量在对角轴上的单变量分布。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制多个成对的双变量分布</span></span><br><span class="line">sns.pairplot(data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 绘制多个成对的双变量分布</span><br>sns.pairplot(data)<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="类别图"><a href="#类别图" class="headerlink" title="类别图"></a>类别图</h1><blockquote>
 <p>类别图的 Figure-level 接口是 <code>catplot</code>，其为 categorical plots 的缩写。而 <code>catplot</code> 实际上是如下 Axes-level 绘图 API 的集合。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, kind=<span class="string">&quot;strip&quot;</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.catplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, kind=<span class="hljs-string">&quot;strip&quot;</span>, data=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
 
 <p><code>参数kind：</code></p>
 <ol>
@@ -241,7 +169,7 @@
 </ul>
 </blockquote>
 <h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.stripplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, order=<span class="literal">None</span>, hue_order=<span class="literal">None</span>, jitter=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">seaborn.stripplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>, order=<span class="hljs-literal">None</span>, hue_order=<span class="hljs-literal">None</span>, jitter=<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
 
 <p>上述函数中常用参数的含义如下</p>
 <ul>
@@ -250,7 +178,7 @@
 <li> <code>jitter</code>：表示抖动的程度(仅沿类別轴)。当很多数据点重叠时，可以指定抖动的数量或者设为True使用默认值。</li>
 </ul>
 <p>还可调用<code> swarmplot()</code>函数绘制散点图，该函数的好处是所有的数据点都不会重叠，可以很清晰地观察到数据的分布情况</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.swarmplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.swarmplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="类别内的数据分布"><a href="#类别内的数据分布" class="headerlink" title="类别内的数据分布"></a>类别内的数据分布</h2><blockquote>
 <p><strong>箱形图</strong>:</p>
@@ -267,7 +195,7 @@
 </ul>
 </blockquote>
 <h3 id="绘制箱体图"><a href="#绘制箱体图" class="headerlink" title="绘制箱体图"></a>绘制箱体图</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.boxplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, orient=<span class="literal">None</span>, color=<span class="literal">None</span>,  saturation=<span class="number">0.75</span>, width=<span class="number">0.8</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">seaborn.boxplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>, orient=<span class="hljs-literal">None</span>, color=<span class="hljs-literal">None</span>,  saturation=<span class="hljs-number">0.75</span>, width=<span class="hljs-number">0.8</span>)<br></code></pre></td></tr></table></figure>
 
 <ol>
 <li><code>palette</code>：用于设置不同级别色相的颜色变量。—- palette=[“r”,”g”,”b”,”y”]</li>
@@ -275,7 +203,7 @@
 </ol>
 </blockquote>
 <h3 id="绘制提琴图"><a href="#绘制提琴图" class="headerlink" title="绘制提琴图"></a>绘制提琴图</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.violinplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">seaborn.violinplot(x=<span class="hljs-literal">None</span>, y=<span class="hljs-literal">None</span>, hue=<span class="hljs-literal">None</span>, data=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="类别内的统计估计"><a href="#类别内的统计估计" class="headerlink" title="类别内的统计估计"></a>类别内的统计估计</h2><blockquote>
 <p>要想查看每个分类的集中趋势，则可以使用条形图和点图进行展示。 Seaborn库中用于绘制这两种图表的具体函数如下</p>
@@ -286,11 +214,11 @@
 </blockquote>
 <h3 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h3><blockquote>
 <p>最常用的查看集中趋势的图形就是条形图。默认情况下， barplot函数会在整个数据集上使用均值进行估计。**若每个类别中有多个类别时(使用了hue参数)<strong>，则条形图可以使用引导来计算估计的</strong>置信区间(是指由样本统计量所构造的总体参数的估计区间)**，并使用误差条（图中黑色的竖线）来表示出现这个均值的95%置信区间。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.barplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.barplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="绘制点图"><a href="#绘制点图" class="headerlink" title="绘制点图"></a>绘制点图</h3><blockquote>
 <p>另外一种用于估计的图形是点图，可以调用 pointplot()函数进行绘制，该函数会用高度低计值对数据进行描述，而不是显示完整的条形，<strong>它只会绘制点估计和置信区间</strong>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.pointplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.pointplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="关联图"><a href="#关联图" class="headerlink" title="关联图"></a>关联图</h1><blockquote>
 <p>当我们需要对数据进行关联性分析时，可能会用到 Seaborn 提供的以下几个 API。</p>
@@ -315,7 +243,7 @@
 </tr>
 </tbody></table>
 <p><code>relplot</code>是 relational plots 的缩写，其可以用于呈现数据之后的关系，主要有散点图和条形图 2 种样式。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.relplot(x=, y=,hue=, style=, kind=<span class="string">&quot;scatter&quot;</span>, data=)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.relplot(x=, y=,hue=, style=, kind=<span class="hljs-string">&quot;scatter&quot;</span>, data=)<br></code></pre></td></tr></table></figure>
 
 <p>参数：</p>
 <ol>
@@ -329,108 +257,75 @@
 <h1 id="回归图"><a href="#回归图" class="headerlink" title="回归图"></a>回归图</h1><blockquote>
 <p>回归图的绘制函数主要有：<code>lmplot</code>和<code>regplot</code></p>
 <p><code>regplot</code> 绘制回归图时，只需要指定自变量和因变量即可，<code>regplot</code> 会自动完成线性回归拟合。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.regplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.regplot(x=<span class="hljs-string">&quot;sepal_length&quot;</span>, y=<span class="hljs-string">&quot;sepal_width&quot;</span>, data=iris)<br></code></pre></td></tr></table></figure>
 
 <p><code>lmplot</code> 同样是用于绘制回归图，但 <code>lmplot</code> 支持引入第三维度进行对比，例如我们设置 <code>hue=&quot;species&quot;</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.lmplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.lmplot(x=<span class="hljs-string">&quot;sepal_length&quot;</span>, y=<span class="hljs-string">&quot;sepal_width&quot;</span>, hue=<span class="hljs-string">&quot;species&quot;</span>, data=iris)<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="矩阵图"><a href="#矩阵图" class="headerlink" title="矩阵图"></a>矩阵图</h1><blockquote>
 <p>矩阵图中最常用的就只有 2 个，分别是：<code>heatmap</code>和<code>clustermap</code></p>
 <p><code>heatmap</code> 主要用于绘制热力图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.heatmap(a,square,linewidths,annot)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.heatmap(a,square,linewidths,annot)<br></code></pre></td></tr></table></figure>
 
 <p><code>clustermap</code> 支持绘制<code>层次聚类</code>结构图</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iris.pop(<span class="string">&quot;species&quot;</span>)</span><br><span class="line">sns.clustermap(iris)</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">iris.pop(<span class="hljs-string">&quot;species&quot;</span>)<br>sns.clustermap(iris)<br></code></pre></td></tr></table></figure></blockquote>
 
-  </div>
-</article>
+                </section>
 
+                
+                
+                
 
+            </article>
 
-      </div>
-      
-       <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
-        
-      </ul>
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">常用方法总结</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/2020/12/17/Matplotlib/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Matplotlib</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">分布图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-number">1.1.</span> <span class="toc-text">绘制单变量分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%8F%8C%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-number">1.2.</span> <span class="toc-text">绘制双变量分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%88%90%E5%AF%B9%E7%9A%84%E5%8F%8C%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="toc-number">1.3.</span> <span class="toc-text">绘制成对的双变量分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">类别图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">散点图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">2.2.</span> <span class="toc-text">类别内的数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%AE%B1%E4%BD%93%E5%9B%BE"><span class="toc-number">2.2.1.</span> <span class="toc-text">绘制箱体图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%8F%90%E7%90%B4%E5%9B%BE"><span class="toc-number">2.2.2.</span> <span class="toc-text">绘制提琴图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%AB%E5%86%85%E7%9A%84%E7%BB%9F%E8%AE%A1%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">类别内的统计估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-number">2.3.1.</span> <span class="toc-text">绘制条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%82%B9%E5%9B%BE"><span class="toc-number">2.3.2.</span> <span class="toc-text">绘制点图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">关联图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">回归图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%9B%BE"><span class="toc-number">5.</span> <span class="toc-text">矩阵图</span></a></li></ol>
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Qijinli
     </div>
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/29/Seaborn/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/29/Seaborn/&text=Seaborn"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/29/Seaborn/&is_video=false&description=Seaborn"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Seaborn&body=Check out this article: http://example.com/2021/01/29/Seaborn/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/29/Seaborn/&title=Seaborn"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/29/Seaborn/&name=Seaborn&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
+    
+    
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
     </div>
 
-    <div id="actions-footer">
-      <ul>
-        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
-        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
-        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
-        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
-      </ul>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
     </div>
-
-  </div>
 </div>
 
-      
-      <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2021 Qijinli
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+        <script type="text/javascript" async="async" src="/Qi-jinli/javascripts/acelog.js"></script>
         
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-      
-<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- Google Analytics -->
-
-<!-- Disqus Comments -->
-
-
-    </div>
-</body>
+        
+        
+        
+    </body>
 </html>
+        
