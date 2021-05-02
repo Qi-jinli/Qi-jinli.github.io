@@ -527,7 +527,8 @@ figure.highlight td.gutter pre {
 }
 code:not(.hljs) {
   font-family: "Menlo-Regular";
-  border: solid 1px #dedede;
+  background-color: #cde5fc;
+  border-radius: 0.3em;
   padding: 0.2em 0.5em;
   font-size: 0.9em;
 }
