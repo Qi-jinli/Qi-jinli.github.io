@@ -9,7 +9,7 @@
     <meta name="description" content="注意： 在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 %matplotlib inline。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 plt.show()。  简单图形绘制 需要导入 pyplot 模块，并约定简称为 plt 12from matplo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Matplotlib">
-<meta property="og:url" content="http://qijinli.work/2020/12/17/Matplotlib/index.html">
+<meta property="og:url" content="http://qi-jinli.github.io/2020/12/17/Matplotlib/index.html">
 <meta property="og:site_name" content="Qijinli&#39;s Blog">
 <meta property="og:description" content="注意： 在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 %matplotlib inline。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 plt.show()。  简单图形绘制 需要导入 pyplot 模块，并约定简称为 plt 12from matplo">
 <meta property="og:locale" content="zh_CN">
@@ -128,16 +128,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://qijinli.work/2020/12/17/Matplotlib/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://qijinli.work/2020/12/17/Matplotlib/&text=Matplotlib"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://qijinli.work/2020/12/17/Matplotlib/&is_video=false&description=Matplotlib"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Matplotlib&body=Check out this article: http://qijinli.work/2020/12/17/Matplotlib/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://qijinli.work/2020/12/17/Matplotlib/&name=Matplotlib&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://qi-jinli.github.io/2020/12/17/Matplotlib/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&text=Matplotlib"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&is_video=false&description=Matplotlib"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Matplotlib&body=Check out this article: http://qi-jinli.github.io/2020/12/17/Matplotlib/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&name=Matplotlib&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -434,16 +434,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://qijinli.work/2020/12/17/Matplotlib/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://qijinli.work/2020/12/17/Matplotlib/&text=Matplotlib"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://qijinli.work/2020/12/17/Matplotlib/&is_video=false&description=Matplotlib"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Matplotlib&body=Check out this article: http://qijinli.work/2020/12/17/Matplotlib/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://qijinli.work/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://qijinli.work/2020/12/17/Matplotlib/&name=Matplotlib&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://qi-jinli.github.io/2020/12/17/Matplotlib/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&text=Matplotlib"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&is_video=false&description=Matplotlib"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Matplotlib&body=Check out this article: http://qi-jinli.github.io/2020/12/17/Matplotlib/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&title=Matplotlib"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://qi-jinli.github.io/2020/12/17/Matplotlib/&name=Matplotlib&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
