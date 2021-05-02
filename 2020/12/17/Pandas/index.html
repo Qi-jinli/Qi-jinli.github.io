@@ -225,23 +225,15 @@
 </ol>
 </blockquote>
 <h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
-<p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">DataFrame.head() <span class="hljs-comment"># 默认显示前5条</span><br>DataFrame.tail(<span class="hljs-number">7</span>) <span class="hljs-comment"># 指定显示后7条</span><br>DataFrame.describe()<span class="hljs-comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span><br>DataFrame.values <span class="hljs-comment"># 将DataFrame转换成Numpy数组</span><br>DataFrame.index <span class="hljs-comment"># 查看索引</span><br>DataFrame.columns <span class="hljs-comment"># 查看列名</span><br>DataFrame.shape <span class="hljs-comment"># 查看形状</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><p><strong>修改行列索引值</strong></p>
-<p class="code-caption" data-lang="" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">df.index</span> = 新索引值<br></code></pre></td></tr></table></figure>
 
 <p><strong>重设索引值</strong></p>
-<p class="code-caption" data-lang="" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">reset_index(<span class="hljs-keyword">drop</span>=<span class="hljs-literal">False</span>)<br> <span class="hljs-number">1.</span>设置新的下标索引<br> <span class="hljs-number">2.</span><span class="hljs-keyword">drop</span>:默认为<span class="hljs-literal">False</span>，不删除原来索引，如果为<span class="hljs-literal">True</span>,删除原来的索引值<br></code></pre></td></tr></table></figure>
 
 <p><strong>以某列值设置为新的索引</strong></p>
-<p class="code-caption" data-lang="" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">set_index(keys, <span class="hljs-keyword">drop</span>=<span class="hljs-literal">True</span>)<br> <span class="hljs-number">1.</span><span class="hljs-keyword">keys</span> : 列索引名成或者列索引名称的列表<br> <span class="hljs-number">2.</span><span class="hljs-keyword">drop</span> : <span class="hljs-keyword">boolean</span>, default <span class="hljs-literal">True</span>.当做新的索引，删除原来的列<br></code></pre></td></tr></table></figure>
 
 <h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>

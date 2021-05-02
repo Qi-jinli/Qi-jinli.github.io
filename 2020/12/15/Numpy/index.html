@@ -300,9 +300,7 @@
 <li>order：{‘C’,’F’},以行或列为主排列顺序</li>
 </ul>
 </blockquote>
-<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array(<span class="hljs-built_in">object</span>,dtype=<span class="hljs-literal">None</span>,copy=<span class="hljs-literal">True</span>,order=<span class="hljs-literal">None</span>,subok=<span class="hljs-literal">False</span>,ndmin=<span class="hljs-number">0</span>)<br>a1 = numpy.array(a) <span class="hljs-comment"># 深拷贝</span><br>a2 = numpy.asarray(a) <span class="hljs-comment"># 浅拷贝</span><br></code></pre></td></tr></table></figure>
+<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array(<span class="hljs-built_in">object</span>,dtype=<span class="hljs-literal">None</span>,copy=<span class="hljs-literal">True</span>,order=<span class="hljs-literal">None</span>,subok=<span class="hljs-literal">False</span>,ndmin=<span class="hljs-number">0</span>)<br>a1 = numpy.array(a) <span class="hljs-comment"># 深拷贝</span><br>a2 = numpy.asarray(a) <span class="hljs-comment"># 浅拷贝</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>其中参数：</p>
@@ -315,20 +313,14 @@
 <li><code>ndmin</code>：生成的数组应具有的最小维数。</li>
 </ol>
 </blockquote>
-<p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br>numpy.array([(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">4</span>), (<span class="hljs-number">5</span>, <span class="hljs-number">6</span>)])<br></code></pre></td></tr></table></figure>
 
-<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.arange(start,stop,step,dtype=<span class="hljs-literal">None</span>)<br>例：numpy.arange(<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0.5</span>,dtype=<span class="hljs-string">&#x27;float32&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.arange(start,stop,step,dtype=<span class="hljs-literal">None</span>)<br>例：numpy.arange(<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0.5</span>,dtype=<span class="hljs-string">&#x27;float32&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>arange()的功能是在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</p>
 </blockquote>
-<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>)<br>例：numpy.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, endpoint=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>)<br>例：numpy.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, endpoint=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>同arange一样，用于在区间内返回间隔均匀的值。</p>
@@ -341,9 +333,7 @@
 <li><code>dtype</code>：数组的类型。</li>
 </ul>
 </blockquote>
-<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.ones(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.ones_like(a, dtype)<br>numpy.ones((<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.ones(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.ones_like(a, dtype)<br>numpy.ones((<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Numpy.ones用于快速创建数值全部为1的多维数组</p>
@@ -353,9 +343,7 @@
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.zeros(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.zeros_like(a, dtype)<br>例：np.zeros((<span class="hljs-number">3</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.zeros(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.zeros_like(a, dtype)<br>例：np.zeros((<span class="hljs-number">3</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>和ones方法相似，只是全部填充为0</p>
@@ -365,9 +353,7 @@
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.eye(N, M=<span class="hljs-literal">None</span>, k=<span class="hljs-number">0</span>, dtype=&lt;<span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span>&gt;)<br>np.eye(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.eye(N, M=<span class="hljs-literal">None</span>, k=<span class="hljs-number">0</span>, dtype=&lt;<span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span>&gt;)<br>np.eye(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</p>
