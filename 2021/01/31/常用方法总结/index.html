@@ -98,13 +98,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </span>
@@ -269,7 +271,9 @@
 </tr>
 </tbody></table>
 </blockquote>
-<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 基础折线图</span><br>plt.figure(figsize=(),dpi=) <span class="hljs-comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span><br>plt.plot(x, y, label=) <span class="hljs-comment"># 绘制图像和设置图例名称</span><br>plt.xticks(x,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>plt.yticks(y,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>plt.xlim() <span class="hljs-comment"># 设置x坐标轴范围</span><br>plt.ylim() <span class="hljs-comment"># 设置y坐标轴范围</span><br>plt.xlabel() <span class="hljs-comment"># 设置x轴标题</span><br>plt.ylabel() <span class="hljs-comment"># 设置y轴标题</span><br>plt.title() <span class="hljs-comment"># 设置标题</span><br>plt.grid(<span class="hljs-literal">True</span>, linestyle=, alpha=) <span class="hljs-comment"># 设置网格线，及线类型，透明度</span><br>plt.text(x,y,s) <span class="hljs-comment"># 图形标注，x, y 用于标注位置定位，s 代表标注的字符串</span><br>plt.savefig(<span class="hljs-string">&quot;&quot;</span>) <span class="hljs-comment"># 图像保存</span><br>plt.legend(loc=) <span class="hljs-comment"># 以对应的位置上添加图例</span><br>plt.show() <span class="hljs-comment"># 图像显示</span><br><span class="hljs-comment"># 大图套小图</span><br>fig = plt.figure(figsize=(),dpi=)<br>axes = fig.add_axes([])  <span class="hljs-comment"># 控制画布的左, 下, 宽度, 高度来添加画布</span><br>axes.plot(x, y)<br><span class="hljs-comment"># 多行多列图</span><br>fig, axes = plt.subplots(nrows=, ncols=)  <span class="hljs-comment"># 创建多行多列的图像对象及画布</span><br>axes.set_xticks(x,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>axes.set_yticks(y,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>axes.set_xlabel() <span class="hljs-comment"># 设置x轴标题</span><br>axes.set_ylabel() <span class="hljs-comment"># 设置y轴标题</span><br>axes.set_title() <span class="hljs-comment"># 设置标题</span><br></code></pre></td></tr></table></figure>
+<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 基础折线图</span><br>plt.figure(figsize=(),dpi=) <span class="hljs-comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span><br>plt.plot(x, y, label=) <span class="hljs-comment"># 绘制图像和设置图例名称</span><br>plt.xticks(x,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>plt.yticks(y,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>plt.xlim() <span class="hljs-comment"># 设置x坐标轴范围</span><br>plt.ylim() <span class="hljs-comment"># 设置y坐标轴范围</span><br>plt.xlabel() <span class="hljs-comment"># 设置x轴标题</span><br>plt.ylabel() <span class="hljs-comment"># 设置y轴标题</span><br>plt.title() <span class="hljs-comment"># 设置标题</span><br>plt.grid(<span class="hljs-literal">True</span>, linestyle=, alpha=) <span class="hljs-comment"># 设置网格线，及线类型，透明度</span><br>plt.text(x,y,s) <span class="hljs-comment"># 图形标注，x, y 用于标注位置定位，s 代表标注的字符串</span><br>plt.savefig(<span class="hljs-string">&quot;&quot;</span>) <span class="hljs-comment"># 图像保存</span><br>plt.legend(loc=) <span class="hljs-comment"># 以对应的位置上添加图例</span><br>plt.show() <span class="hljs-comment"># 图像显示</span><br><span class="hljs-comment"># 大图套小图</span><br>fig = plt.figure(figsize=(),dpi=)<br>axes = fig.add_axes([])  <span class="hljs-comment"># 控制画布的左, 下, 宽度, 高度来添加画布</span><br>axes.plot(x, y)<br><span class="hljs-comment"># 多行多列图</span><br>fig, axes = plt.subplots(nrows=, ncols=)  <span class="hljs-comment"># 创建多行多列的图像对象及画布</span><br>axes.set_xticks(x,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>axes.set_yticks(y,显示格式) <span class="hljs-comment"># 设置x轴刻度</span><br>axes.set_xlabel() <span class="hljs-comment"># 设置x轴标题</span><br>axes.set_ylabel() <span class="hljs-comment"># 设置y轴标题</span><br>axes.set_title() <span class="hljs-comment"># 设置标题</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h2><blockquote>
 <table>
@@ -323,13 +327,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </div>
@@ -375,13 +381,15 @@
     <nav>
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </nav>

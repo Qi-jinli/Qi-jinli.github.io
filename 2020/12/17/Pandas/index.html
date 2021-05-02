@@ -98,13 +98,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </span>
@@ -223,16 +225,24 @@
 </ol>
 </blockquote>
 <h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
+<p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">DataFrame.head() <span class="hljs-comment"># 默认显示前5条</span><br>DataFrame.tail(<span class="hljs-number">7</span>) <span class="hljs-comment"># 指定显示后7条</span><br>DataFrame.describe()<span class="hljs-comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span><br>DataFrame.values <span class="hljs-comment"># 将DataFrame转换成Numpy数组</span><br>DataFrame.index <span class="hljs-comment"># 查看索引</span><br>DataFrame.columns <span class="hljs-comment"># 查看列名</span><br>DataFrame.shape <span class="hljs-comment"># 查看形状</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><p><strong>修改行列索引值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">df.index &#x3D; 新索引值<br></code></pre></td></tr></table></figure>
+<p class="code-caption" data-lang="" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">df.index</span> = 新索引值<br></code></pre></td></tr></table></figure>
 
 <p><strong>重设索引值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">reset_index(drop&#x3D;False)<br> 1.设置新的下标索引<br> 2.drop:默认为False，不删除原来索引，如果为True,删除原来的索引值<br></code></pre></td></tr></table></figure>
+<p class="code-caption" data-lang="" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">reset_index(<span class="hljs-keyword">drop</span>=<span class="hljs-literal">False</span>)<br> <span class="hljs-number">1.</span>设置新的下标索引<br> <span class="hljs-number">2.</span><span class="hljs-keyword">drop</span>:默认为<span class="hljs-literal">False</span>，不删除原来索引，如果为<span class="hljs-literal">True</span>,删除原来的索引值<br></code></pre></td></tr></table></figure>
 
 <p><strong>以某列值设置为新的索引</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">set_index(keys, drop&#x3D;True)<br> 1.keys : 列索引名成或者列索引名称的列表<br> 2.drop : boolean, default True.当做新的索引，删除原来的列<br></code></pre></td></tr></table></figure>
+<p class="code-caption" data-lang="" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">set_index(keys, <span class="hljs-keyword">drop</span>=<span class="hljs-literal">True</span>)<br> <span class="hljs-number">1.</span><span class="hljs-keyword">keys</span> : 列索引名成或者列索引名称的列表<br> <span class="hljs-number">2.</span><span class="hljs-keyword">drop</span> : <span class="hljs-keyword">boolean</span>, default <span class="hljs-literal">True</span>.当做新的索引，删除原来的列<br></code></pre></td></tr></table></figure>
 
 <h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>
 <p>多级索引（也称层次化索引）是pandas的重要功能，可以在Series、DataFrame对象上拥有2个以及2个以上的索引。</p>
@@ -270,7 +280,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">p = pd.Panel(data=np.arange(<span class="hljs-number">24</span>).reshape(<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>),<br>                 items=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>),<br>                 major_axis=pd.date_range(<span class="hljs-string">&#x27;20130101&#x27;</span>, periods=<span class="hljs-number">3</span>),<br>                 minor_axis=[<span class="hljs-string">&#x27;first&#x27;</span>, <span class="hljs-string">&#x27;second&#x27;</span>])<br></code></pre></td></tr></table></figure>
 
 <p><strong>查看panel数据</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">p[:,:,&quot;first&quot;]<br>p[&quot;B&quot;,:,:]<br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[:,:,<span class="hljs-string">&quot;first&quot;</span>]</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;B&quot;</span>,:,:]</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>注：Pandas从版本0.20.0开始弃用：推荐的用于表示3D数据的方法是通过DataFrame上的MultiIndex方法</strong></p>
 </blockquote>
@@ -306,7 +316,7 @@
 </blockquote>
 <h3 id="直接进行索引"><a href="#直接进行索引" class="headerlink" title="直接进行索引"></a>直接进行索引</h3><blockquote>
 <p><code>先列后行</code>，按照索引的字符串进行索引</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">df[列索引值][行索引值]<br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">df<span class="hljs-selector-attr">[列索引值]</span><span class="hljs-selector-attr">[行索引值]</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>不可以先行后列</strong></p>
 <p><strong>也不可以传索引下标</strong></p>
@@ -340,7 +350,7 @@
 <h2 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h2><blockquote>
 <ol>
 <li><p><code>DataFrame.drop</code> 可以直接去掉数据集中指定的列和行。一般在使用时，我们指定 <code>labels</code> 标签参数，然后再通过 <code>axis</code> 指定按列或按行删除即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">df.drop(labels&#x3D;[&#39;Median Age&#39;, &#39;Total Males&#39;], axis&#x3D;1)<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">df.drop(labels=[<span class="hljs-string">&#x27;Median Age&#x27;</span>, <span class="hljs-string">&#x27;Total Males&#x27;</span>], <span class="hljs-attribute">axis</span>=1)<br></code></pre></td></tr></table></figure></li>
 <li><p><code>DataFrame.drop_duplicates</code>则通常用于数据去重，即剔除数据集中的重复值。使用方法非常简单，指定去除重复值规则，以及 <code>axis</code> 按列还是按行去除即可。</p>
 </li>
 <li><p><code>DataFrame.dropna</code>也十分常用，其主要的用途是删除缺少值，即数据集中空缺的数据列或行。</p>
@@ -350,7 +360,7 @@
 <h1 id="DataFrame运算"><a href="#DataFrame运算" class="headerlink" title="DataFrame运算"></a>DataFrame运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><blockquote>
 <ol>
 <li><p><code>add(other)</code>:加法运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">df[&#39;open&#39;].add(10)<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">df</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;open&#x27;</span>]</span><span class="hljs-selector-class">.add</span>(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure></li>
 <li><p><code>sub(other)</code>：减法运算</p>
 </li>
 </ol>
@@ -360,13 +370,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">data[<span class="hljs-string">&quot;open&quot;</span>] &gt; <span class="hljs-number">23</span>返回逻辑结果，布尔值<br><span class="hljs-comment"># 逻辑判断的结果可以作为筛选的依据</span><br>data[data[<span class="hljs-string">&quot;open&quot;</span>] &gt; <span class="hljs-number">23</span>].head()<br></code></pre></td></tr></table></figure>
 
 <p>完成多个逻辑判断</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">data[(data[&quot;open&quot;] &gt; 23) &amp; (data[&quot;open&quot;] &lt; 24)].head()<br></code></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">data</span>[(<span class="hljs-keyword">data</span>[<span class="hljs-string">&quot;open&quot;</span>] &gt; <span class="hljs-number">23</span>) &amp; (<span class="hljs-keyword">data</span>[<span class="hljs-string">&quot;open&quot;</span>] &lt; <span class="hljs-number">24</span>)].head()<br></code></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
 <p><strong>逻辑运算函数</strong></p>
 <p><code>query(expr)</code></p>
 <p><code>expr</code>:查询字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">data.query(&quot;open&lt;24 &amp; open&gt;23&quot;).head()<br></code></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">data</span><span class="hljs-selector-class">.query</span>(<span class="hljs-string">&quot;open&lt;24 &amp; open&gt;23&quot;</span>)<span class="hljs-selector-class">.head</span>()<br></code></pre></td></tr></table></figure>
 
 <p><code>isin(values)</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 可以指定值进行一个判断，从而进行筛选操作</span><br>data[data[<span class="hljs-string">&quot;open&quot;</span>].isin([<span class="hljs-number">23.53</span>, <span class="hljs-number">23.85</span>])]<br></code></pre></td></tr></table></figure>
@@ -694,13 +704,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </div>
@@ -746,13 +758,15 @@
     <nav>
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </nav>

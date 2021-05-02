@@ -98,13 +98,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </span>
@@ -298,7 +300,9 @@
 <li>order：{‘C’,’F’},以行或列为主排列顺序</li>
 </ul>
 </blockquote>
-<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array(<span class="hljs-built_in">object</span>,dtype=<span class="hljs-literal">None</span>,copy=<span class="hljs-literal">True</span>,order=<span class="hljs-literal">None</span>,subok=<span class="hljs-literal">False</span>,ndmin=<span class="hljs-number">0</span>)<br>a1 = numpy.array(a) <span class="hljs-comment"># 深拷贝</span><br>a2 = numpy.asarray(a) <span class="hljs-comment"># 浅拷贝</span><br></code></pre></td></tr></table></figure>
+<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array(<span class="hljs-built_in">object</span>,dtype=<span class="hljs-literal">None</span>,copy=<span class="hljs-literal">True</span>,order=<span class="hljs-literal">None</span>,subok=<span class="hljs-literal">False</span>,ndmin=<span class="hljs-number">0</span>)<br>a1 = numpy.array(a) <span class="hljs-comment"># 深拷贝</span><br>a2 = numpy.asarray(a) <span class="hljs-comment"># 浅拷贝</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>其中参数：</p>
@@ -311,14 +315,20 @@
 <li><code>ndmin</code>：生成的数组应具有的最小维数。</li>
 </ol>
 </blockquote>
+<p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br>numpy.array([(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">4</span>), (<span class="hljs-number">5</span>, <span class="hljs-number">6</span>)])<br></code></pre></td></tr></table></figure>
 
-<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.arange(start,stop,step,dtype=<span class="hljs-literal">None</span>)<br>例：numpy.arange(<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0.5</span>,dtype=<span class="hljs-string">&#x27;float32&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.arange(start,stop,step,dtype=<span class="hljs-literal">None</span>)<br>例：numpy.arange(<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0.5</span>,dtype=<span class="hljs-string">&#x27;float32&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>arange()的功能是在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</p>
 </blockquote>
-<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>)<br>例：numpy.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, endpoint=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>)<br>例：numpy.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, endpoint=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>同arange一样，用于在区间内返回间隔均匀的值。</p>
@@ -331,7 +341,9 @@
 <li><code>dtype</code>：数组的类型。</li>
 </ul>
 </blockquote>
-<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.ones(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.ones_like(a, dtype)<br>numpy.ones((<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.ones(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.ones_like(a, dtype)<br>numpy.ones((<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Numpy.ones用于快速创建数值全部为1的多维数组</p>
@@ -341,7 +353,9 @@
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.zeros(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.zeros_like(a, dtype)<br>例：np.zeros((<span class="hljs-number">3</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.zeros(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>)<br>numpy.zeros_like(a, dtype)<br>例：np.zeros((<span class="hljs-number">3</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>和ones方法相似，只是全部填充为0</p>
@@ -351,7 +365,9 @@
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.eye(N, M=<span class="hljs-literal">None</span>, k=<span class="hljs-number">0</span>, dtype=&lt;<span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span>&gt;)<br>np.eye(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><p class="code-caption" data-lang="python" data-line_number="frontend" data-trim_indent="backend" data-label_position="outer" data-labels_left="Code" data-labels_right=":" data-labels_copy=""><span class="code-caption-label"></span><a class="code-caption-copy"></a></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.eye(N, M=<span class="hljs-literal">None</span>, k=<span class="hljs-number">0</span>, dtype=&lt;<span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span>&gt;)<br>np.eye(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</p>
@@ -386,20 +402,20 @@
 </ol>
 </blockquote>
 <h1 id="数组维度和形状"><a href="#数组维度和形状" class="headerlink" title="数组维度和形状"></a>数组维度和形状</h1><h2 id="数组基本操作"><a href="#数组基本操作" class="headerlink" title="数组基本操作"></a>数组基本操作</h2><h3 id="重设形状"><a href="#重设形状" class="headerlink" title="重设形状"></a>重设形状</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.reshape(a, newshape)<br></code></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">numpy.reshape(a, <span class="hljs-keyword">new</span><span class="hljs-type">shape</span>)<br></code></pre></td></tr></table></figure>
 
 <p><code>reshape</code>可以在不改变数组数据的同时改变数组形状，其中</p>
 <p><code>numpy.reshape()</code>等效于<code>ndarray.reshape()</code></p>
 <p><code>a</code>表示原数组，<code>newshape</code>表示用于指定新的形状（整数或者数组）</p>
 </blockquote>
 <h3 id="数组展开"><a href="#数组展开" class="headerlink" title="数组展开"></a>数组展开</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.ravel(a, order&#x3D;&#39;C&#39;)<br>ndarray.flatten()<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">numpy<span class="hljs-selector-class">.ravel</span>(<span class="hljs-selector-tag">a</span>, <span class="hljs-attribute">order</span>=<span class="hljs-string">&#x27;C&#x27;</span>)<br>ndarray<span class="hljs-selector-class">.flatten</span>()<br></code></pre></td></tr></table></figure>
 
 <p><code>ravel</code>的目的是将任意形状的数组扁平化，变为1维数组</p>
 <p>a代表需要处理的数组，<code>order</code>表示变换时读取的顺序，默认按行依次读取，当<code>order=&#39;F&#39;</code>时按列读取</p>
 </blockquote>
 <h3 id="轴移动"><a href="#轴移动" class="headerlink" title="轴移动"></a>轴移动</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.moveaxis(a, source, destination)<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">numpy<span class="hljs-selector-class">.moveaxis</span>(<span class="hljs-selector-tag">a</span>, source, destination)<br></code></pre></td></tr></table></figure>
 
 <p><code>moveaxis</code>可以将数组的轴移动到新的位置</p>
 <ul>
@@ -409,7 +425,7 @@
 </ul>
 </blockquote>
 <h3 id="轴交换"><a href="#轴交换" class="headerlink" title="轴交换"></a>轴交换</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.swapaxes(a, axis1, axis2)<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">numpy</span>.swapaxes(a, axis<span class="hljs-number">1</span>, axis<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
 
 <p><code>swapaxes</code>可以用来交换数组的轴</p>
 <ul>
@@ -419,12 +435,12 @@
 </ul>
 </blockquote>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">np.unique(a)<br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">np</span>.<span class="hljs-built_in">unique</span>(a)<br></code></pre></td></tr></table></figure>
 
 <p><strong>去重数组元素中重复的元素</strong></p>
 </blockquote>
 <h3 id="数组转置"><a href="#数组转置" class="headerlink" title="数组转置"></a>数组转置</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.transpose(a, axes&#x3D;None)<br></code></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs fortran">numpy.<span class="hljs-built_in">transpose</span>(a, axes=<span class="hljs-keyword">None</span>)<br></code></pre></td></tr></table></figure>
 
 <p><code>transpose</code>类似于矩阵的转置，可以将二维数组的横轴和纵轴交换</p>
 <ul>
@@ -433,7 +449,7 @@
 </ul>
 </blockquote>
 <h3 id="维度改变"><a href="#维度改变" class="headerlink" title="维度改变"></a>维度改变</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.atleast_1d()<br>numpy.atleast_2d()<br>numpy.atleast_3d()<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">numpy</span>.atleast_<span class="hljs-number">1</span>d()<br><span class="hljs-attribute">numpy</span>.atleast_<span class="hljs-number">2</span>d()<br><span class="hljs-attribute">numpy</span>.atleast_<span class="hljs-number">3</span>d()<br></code></pre></td></tr></table></figure>
 
 <p><code>atleast_xd</code>支持输入数据直接视为<code>x</code>维，<code>x</code>可以表示：<code>1，2，3</code></p>
 </blockquote>
@@ -449,7 +465,7 @@
 </ul>
 </blockquote>
 <h3 id="数组连接"><a href="#数组连接" class="headerlink" title="数组连接"></a>数组连接</h3><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">numpy.concatenate((a1, a2, ...), axis&#x3D;0)<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">numpy</span>.concatenate((a<span class="hljs-number">1</span>, a<span class="hljs-number">2</span>, ...), axis=<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
 
 <p><code>concatenate</code>可以将多个数组沿指定轴连接在一起</p>
 <ul>
@@ -689,15 +705,15 @@
 <h1 id="数组索引和切片"><a href="#数组索引和切片" class="headerlink" title="数组索引和切片"></a>数组索引和切片</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><blockquote>
 <ol>
 <li><p>一维数组索引：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">a&#x3D;np.arange(10)<br>a[1] #获取索引值为1的数据<br>a[[1,2,3]] #分别获取索引值1，2，3的数据<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">a</span>=np.arange(<span class="hljs-number">10</span>)<br><span class="hljs-attribute">a</span>[<span class="hljs-number">1</span>] #获取索引值为<span class="hljs-number">1</span>的数据<br><span class="hljs-attribute">a</span>[[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]] #分别获取索引值<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>的数据<br></code></pre></td></tr></table></figure></li>
 <li><p>二维数组索引：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">a &#x3D; np.arange(20).reshape(4, 5)<br>a[[1,2],[3,4]] # 获取第2行，第3列的数据<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">a</span> = np.arange(<span class="hljs-number">20</span>).reshape(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>)<br><span class="hljs-attribute">a</span>[[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]] # 获取第<span class="hljs-number">2</span>行，第<span class="hljs-number">3</span>列的数据<br></code></pre></td></tr></table></figure></li>
 <li><p>三维数组索引：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.arange(<span class="hljs-number">30</span>).reshape(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>)<br>a[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]]<br></code></pre></td></tr></table></figure></li>
 </ol>
 </blockquote>
 <h2 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h2><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">Ndarray[start:stop:step]<br></code></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">Ndarray[start:stop:step]<br></code></pre></td></tr></table></figure>
 
 <p><code>[start:stop:step]</code> 分别代表 <code>[起始索引:截至索引:步长]</code>。</p>
 <p>一维数组：a[5:10]</p>
@@ -748,13 +764,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </div>
@@ -800,13 +818,15 @@
     <nav>
       <ul>
          
-          <li><a href="/home/">Home</a></li>
+          <li><a href="/home">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/categories">Categories</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/tags">tags</a></li>
          
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Qi-jinli">Projects</a></li>
         
       </ul>
     </nav>
