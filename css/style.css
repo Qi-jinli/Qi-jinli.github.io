@@ -425,7 +425,7 @@ em {
 }
 .al_page_content_outline {
   line-height: 20px;
-  font-size: 0.7em;
+  font-size: 0.9em;
   word-wrap: break-word;
   padding: 8px 16px;
   margin: 0 0 25px 0;
@@ -508,8 +508,8 @@ figure.highlight {
   overflow: hidden;
   overflow-x: auto;
   background: #282a36;
-  padding: 10px;
-  font-size: 14px;
+  padding: 5px;
+  font-size: 18px;
   color: #ccc;
 }
 figure.highlight pre {
