@@ -83,13 +83,13 @@
 
                         
                             <div class="al_page_content_info">
-                                3.5k words
+                                3.4k words
                             </div>
                         
 
                         
                             <div class="al_page_content_info">
-                                15 minutes read
+                                14 minutes read
                             </div>
                         
                         <span class="tags"></span>
@@ -116,23 +116,23 @@
 </blockquote>
 <h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><blockquote>
 <p>Series是Pandas中最基本的一维数组，可以存储整数、浮点数、字符串等数据。</p>
-<pre><code class="python">pandas.Series(data=None,index=None)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pandas<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>index<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol>
 <li><code>data</code>可以是字典，或者Numpy中的ndarray</li>
 <li><code>index</code>是数据索引</li>
 </ol>
 <p>例：</p>
-<pre><code class="python">s = pandas.Series(&#123;&#39;a&#39;: 10, &#39;b&#39;: 20, &#39;c&#39;: 30&#125;)
-s = pandas.Series(np.random.randn(5))
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s <span class="token operator">=</span> pandas<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+s <span class="token operator">=</span> pandas<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><strong>Series的属性</strong></p>
 <p><strong>index：索引</strong></p>
 <p><strong>values：数据</strong></p>
 </blockquote>
 <h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><blockquote>
-<pre><code class="python">pandas.DataFrame(data=None, index=None, columns=None)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pandas<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>区别于Series，其增加了columns索引。</p>
 <ul>
 <li>一维数组、列表、字典或者 Series 字典。</li>
@@ -142,57 +142,49 @@ s = pandas.Series(np.random.randn(5))
 <p>例：</p>
 <ol>
 <li><p>使用由Series组成的字典来构建</p>
-<pre><code class="python">pd.DataFrame(&#123;&#39;one&#39;: pd.Series([1, 2, 3]),
-              &#39;two&#39;: pd.Series([4, 5, 6])&#125;)
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'one'</span><span class="token punctuation">:</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+              <span class="token string">'two'</span><span class="token punctuation">:</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>直接通过列表创建</p>
-<pre><code class="python">df = pd.DataFrame(&#123;&#39;one&#39;: [1, 2, 3],
-                   &#39;two&#39;: [4, 5, 6]&#125;)
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'one'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">'two'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>由带字典的列表创建</p>
-<pre><code class="python">df = pd.DataFrame([&#123;&#39;one&#39;: 1, &#39;two&#39;: 4&#125;,
-                   &#123;&#39;one&#39;: 2, &#39;two&#39;: 5&#125;,
-                   &#123;&#39;one&#39;: 3, &#39;two&#39;: 6&#125;])
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token string">'one'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">&#123;</span><span class="token string">'one'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">&#123;</span><span class="token string">'one'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li><p>基于二维数值来构建</p>
-<pre><code class="python">pd.DataFrame(np.random.randint(5, size=(2, 4)))
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 </blockquote>
 <h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
-<pre><code class="python">DataFrame.head() # 默认显示前5条
-DataFrame.tail(7) # 指定显示后7条
-DataFrame.describe()# 对数据集进行概览，会输出每一列数据的计数、最大值、最小值
-DataFrame.values # 将DataFrame转换成Numpy数组
-DataFrame.index # 查看索引
-DataFrame.columns # 查看列名
-DataFrame.shape # 查看形状
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DataFrame<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 默认显示前5条</span>
+DataFrame<span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token comment"># 指定显示后7条</span>
+DataFrame<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span>
+DataFrame<span class="token punctuation">.</span>values <span class="token comment"># 将DataFrame转换成Numpy数组</span>
+DataFrame<span class="token punctuation">.</span>index <span class="token comment"># 查看索引</span>
+DataFrame<span class="token punctuation">.</span>columns <span class="token comment"># 查看列名</span>
+DataFrame<span class="token punctuation">.</span>shape <span class="token comment"># 查看形状</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><p><strong>修改行列索引值</strong></p>
-<pre><code>df.index = 新索引值
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">df.index &#x3D; 新索引值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>重设索引值</strong></p>
-<pre><code>reset_index(drop=False)
+<pre class="line-numbers language-none"><code class="language-none">reset_index(drop&#x3D;False)
  1.设置新的下标索引
- 2.drop:默认为False，不删除原来索引，如果为True,删除原来的索引值
-</code></pre>
+ 2.drop:默认为False，不删除原来索引，如果为True,删除原来的索引值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>以某列值设置为新的索引</strong></p>
-<pre><code>set_index(keys, drop=True)
+<pre class="line-numbers language-none"><code class="language-none">set_index(keys, drop&#x3D;True)
  1.keys : 列索引名成或者列索引名称的列表
- 2.drop : boolean, default True.当做新的索引，删除原来的列
-</code></pre>
+ 2.drop : boolean, default True.当做新的索引，删除原来的列<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>
 <p>多级索引（也称层次化索引）是pandas的重要功能，可以在Series、DataFrame对象上拥有2个以及2个以上的索引。</p>
 <blockquote>
 <p><strong>multiIndex的特性</strong></p>
-<pre><code class="python">MultiIndex(levels=[[2012, 2013, 2014], [1, 4, 7, 10]],
-           labels=[[0, 2, 1, 2], [0, 1, 2, 3]],
-           names=[&#39;year&#39;, &#39;month&#39;])
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">MultiIndex<span class="token punctuation">(</span>levels<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2012</span><span class="token punctuation">,</span> <span class="token number">2013</span><span class="token punctuation">,</span> <span class="token number">2014</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+           labels<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+           names<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'year'</span><span class="token punctuation">,</span> <span class="token string">'month'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>多级或分层索引对象</p>
 <ul>
 <li>index属性<ul>
@@ -201,23 +193,21 @@ DataFrame.shape # 查看形状
 </ul>
 </li>
 </ul>
-<pre><code class="python">df.index.names
-# FrozenList([&#39;year&#39;, &#39;month&#39;])
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>index<span class="token punctuation">.</span>names
+<span class="token comment"># FrozenList(['year', 'month'])</span>
 
-df.index.levels
-# FrozenList([[1, 2], [1, 4, 7, 10]])
-</code></pre>
+df<span class="token punctuation">.</span>index<span class="token punctuation">.</span>levels
+<span class="token comment"># FrozenList([[1, 2], [1, 4, 7, 10]])</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <blockquote>
 <p><strong>multiIndex的创建</strong></p>
-<pre><code class="python">arrays = [[1, 1, 2, 2], [&#39;red&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;blue&#39;]]
-pd.MultiIndex.from_arrays(arrays, names=(&#39;number&#39;, &#39;color&#39;))
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">arrays <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+pd<span class="token punctuation">.</span>MultiIndex<span class="token punctuation">.</span>from_arrays<span class="token punctuation">(</span>arrays<span class="token punctuation">,</span> names<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">,</span> <span class="token string">'color'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-# 结果
-MultiIndex(levels=[[1, 2], [&#39;blue&#39;, &#39;red&#39;]],
-           codes=[[0, 0, 1, 1], [1, 0, 1, 0]],
-           names=[&#39;number&#39;, &#39;color&#39;])
-</code></pre>
+<span class="token comment"># 结果</span>
+MultiIndex<span class="token punctuation">(</span>levels<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'blue'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+           codes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+           names<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'number'</span><span class="token punctuation">,</span> <span class="token string">'color'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h3 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h3><blockquote>
 <p><strong>panel的创建</strong></p>
@@ -232,15 +222,15 @@ MultiIndex(levels=[[1, 2], [&#39;blue&#39;, &#39;red&#39;]],
 </ul>
 </li>
 </ul>
-<pre><code class="python">p = pd.Panel(data=np.arange(24).reshape(4,3,2),
-                 items=list(&#39;ABCD&#39;),
-                 major_axis=pd.date_range(&#39;20130101&#39;, periods=3),
-                 minor_axis=[&#39;first&#39;, &#39;second&#39;])
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">p <span class="token operator">=</span> pd<span class="token punctuation">.</span>Panel<span class="token punctuation">(</span>data<span class="token operator">=</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                 items<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token string">'ABCD'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                 major_axis<span class="token operator">=</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span><span class="token string">'20130101'</span><span class="token punctuation">,</span> periods<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                 minor_axis<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'first'</span><span class="token punctuation">,</span> <span class="token string">'second'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>查看panel数据</strong></p>
-<pre><code>p[:,:,&quot;first&quot;]
-p[&quot;B&quot;,:,:]
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">p[:,:,&quot;first&quot;]
+p[&quot;B&quot;,:,:]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><strong>注：Pandas从版本0.20.0开始弃用：推荐的用于表示3D数据的方法是通过DataFrame上的MultiIndex方法</strong></p>
 </blockquote>
 <h1 id="基本数据操作"><a href="#基本数据操作" class="headerlink" title="基本数据操作"></a>基本数据操作</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><h3 id="基于索引下标进行选择"><a href="#基于索引下标进行选择" class="headerlink" title="基于索引下标进行选择"></a>基于索引下标进行选择</h3><blockquote>
@@ -252,9 +242,8 @@ p[&quot;B&quot;,:,:]
 <li>可返回索引值的函数或参数。</li>
 </ol>
 <p><code>df.iloc[]</code> 的 <code>[[行]，[列]]</code> 里面可以同时接受行和列的位置</p>
-<pre><code class="python">df.iloc[[1, 3, 5]] #选择1，3，5行
-df.iloc[:, 1:4] #选择2-4列
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">></span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment">#选择1，3，5行</span>
+df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token comment">#选择2-4列</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </blockquote>
 <h3 id="基于标签名选择"><a href="#基于标签名选择" class="headerlink" title="基于标签名选择"></a>基于标签名选择</h3><blockquote>
 <p>除了根据数字索引选择，还可以直接根据标签对应的名称选择。这里用到的方法和上面的 <code>iloc</code> 很相似，少了个 <code>i</code> 为 <code>df.loc[]</code>,可接受类型有：</p>
@@ -268,27 +257,27 @@ df.iloc[:, 1:4] #选择2-4列
 </blockquote>
 <h3 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h3><blockquote>
 <p>使用df.ix进行下标和名称组合索引</p>
-<pre><code class="python">data.ix[0:4, [&#39;open&#39;, &#39;close&#39;, &#39;high&#39;, &#39;low&#39;]]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data<span class="token punctuation">.</span>ix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'open'</span><span class="token punctuation">,</span> <span class="token string">'close'</span><span class="token punctuation">,</span> <span class="token string">'high'</span><span class="token punctuation">,</span> <span class="token string">'low'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>推荐使用loc和iloc来获取的方式</p>
-<pre><code class="python">data.loc[data.index[0:4], [&#39;open&#39;, &#39;close&#39;, &#39;high&#39;, &#39;low&#39;]]
-data.iloc[0:4, data.columns.get_indexer([&#39;open&#39;, &#39;close&#39;, &#39;high&#39;, &#39;low&#39;])]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>data<span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'open'</span><span class="token punctuation">,</span> <span class="token string">'close'</span><span class="token punctuation">,</span> <span class="token string">'high'</span><span class="token punctuation">,</span> <span class="token string">'low'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>columns<span class="token punctuation">.</span>get_indexer<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'open'</span><span class="token punctuation">,</span> <span class="token string">'close'</span><span class="token punctuation">,</span> <span class="token string">'high'</span><span class="token punctuation">,</span> <span class="token string">'low'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
 </blockquote>
 <h3 id="直接进行索引"><a href="#直接进行索引" class="headerlink" title="直接进行索引"></a>直接进行索引</h3><blockquote>
 <p><code>先列后行</code>，按照索引的字符串进行索引</p>
-<pre><code>df[列索引值][行索引值]
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">df[列索引值][行索引值]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>不可以先行后列</strong></p>
 <p><strong>也不可以传索引下标</strong></p>
 </blockquote>
 <h2 id="数据赋值"><a href="#数据赋值" class="headerlink" title="数据赋值"></a>数据赋值</h2><blockquote>
 <p>将close列赋值为1</p>
-<pre><code class="python"># 直接修改原来的值
-df[&#39;close&#39;] = 1
-# 或者
-df.close = 1
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 直接修改原来的值</span>
+df<span class="token punctuation">[</span><span class="token string">'close'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment"># 或者</span>
+df<span class="token punctuation">.</span>close <span class="token operator">=</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="DataFrame排序"><a href="#DataFrame排序" class="headerlink" title="DataFrame排序"></a>DataFrame排序</h3><blockquote>
 <p>使用<code>df.sort_values(by=, ascending=)</code></p>
@@ -315,9 +304,7 @@ df.close = 1
 <h2 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h2><blockquote>
 <ol>
 <li><p><code>DataFrame.drop</code> 可以直接去掉数据集中指定的列和行。一般在使用时，我们指定 <code>labels</code> 标签参数，然后再通过 <code>axis</code> 指定按列或按行删除即可。</p>
-<pre><code>df.drop(labels=[&#39;Median Age&#39;, &#39;Total Males&#39;], axis=1)
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">df.drop(labels&#x3D;[&#39;Median Age&#39;, &#39;Total Males&#39;], axis&#x3D;1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p><code>DataFrame.drop_duplicates</code>则通常用于数据去重，即剔除数据集中的重复值。使用方法非常简单，指定去除重复值规则，以及 <code>axis</code> 按列还是按行去除即可。</p>
 </li>
 <li><p><code>DataFrame.dropna</code>也十分常用，其主要的用途是删除缺少值，即数据集中空缺的数据列或行。</p>
@@ -327,42 +314,36 @@ df.close = 1
 <h1 id="DataFrame运算"><a href="#DataFrame运算" class="headerlink" title="DataFrame运算"></a>DataFrame运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><blockquote>
 <ol>
 <li><p><code>add(other)</code>:加法运算</p>
-<pre><code>df[&#39;open&#39;].add(10)
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">df[&#39;open&#39;].add(10)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p><code>sub(other)</code>：减法运算</p>
 </li>
 </ol>
 </blockquote>
 <h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><blockquote>
 <p><strong>逻辑运算符号</strong></p>
-<pre><code class="python">data[&quot;open&quot;] &gt; 23返回逻辑结果，布尔值
-# 逻辑判断的结果可以作为筛选的依据
-data[data[&quot;open&quot;] &gt; 23].head()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data<span class="token punctuation">[</span><span class="token string">"open"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">23</span>返回逻辑结果，布尔值
+<span class="token comment"># 逻辑判断的结果可以作为筛选的依据</span>
+data<span class="token punctuation">[</span>data<span class="token punctuation">[</span><span class="token string">"open"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>完成多个逻辑判断</p>
-<pre><code>data[(data[&quot;open&quot;] &gt; 23) &amp; (data[&quot;open&quot;] &lt; 24)].head()
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">data[(data[&quot;open&quot;] &gt; 23) &amp; (data[&quot;open&quot;] &lt; 24)].head()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
 <blockquote>
 <p><strong>逻辑运算函数</strong></p>
 <p><code>query(expr)</code></p>
 <p><code>expr</code>:查询字符串</p>
-<pre><code>data.query(&quot;open&lt;24 &amp; open&gt;23&quot;).head()
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">data.query(&quot;open&lt;24 &amp; open&gt;23&quot;).head()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>isin(values)</code></p>
-<pre><code class="python"># 可以指定值进行一个判断，从而进行筛选操作
-data[data[&quot;open&quot;].isin([23.53, 23.85])]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 可以指定值进行一个判断，从而进行筛选操作</span>
+data<span class="token punctuation">[</span>data<span class="token punctuation">[</span><span class="token string">"open"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>isin<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">23.53</span><span class="token punctuation">,</span> <span class="token number">23.85</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
 <ol>
 <li><p><code>describe</code></p>
 <p>综合分析: 能够直接得出很多统计结果,<code>count</code>, <code>mean</code>, <code>std</code>, <code>min</code>, <code>max</code> 等</p>
-<pre><code class="python"># 计算平均值、标准差、最大值、最小值
-data.describe()
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 计算平均值、标准差、最大值、最小值</span>
+data<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p><code>统计函数</code>：</p>
 <table>
 <thead>
@@ -463,9 +444,8 @@ data.describe()
 <li>func:自定义函数</li>
 <li>axis=0:默认是列，axis=1为行进行运算</li>
 </ul>
-<pre><code class="python"># 定义一个对列，最大值-最小值的函数
-data[[&#39;open&#39;, &#39;close&#39;]].apply(lambda x: x.max() - x.min(), axis=0)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 定义一个对列，最大值-最小值的函数</span>
+data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'open'</span><span class="token punctuation">,</span> <span class="token string">'close'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> x<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </blockquote>
 <h1 id="Pandas画图"><a href="#Pandas画图" class="headerlink" title="Pandas画图"></a>Pandas画图</h1><blockquote>
 <ol>
@@ -511,11 +491,10 @@ data[[&#39;open&#39;, &#39;close&#39;]].apply(lambda x: x.max() - x.min(), axis=
 </ul>
 <p><code>DataFrame.to_hdf(path_or_buf, key=, **kwargs*)</code></p>
 <p>查看HD5文件中的所有key值：</p>
-<pre><code class="python">pip install h5py
-import h5py
-f = h5py.File(&quot;path&quot;,&quot;r&quot;)
-f.keys()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install h5py
+<span class="token keyword">import</span> h5py
+f <span class="token operator">=</span> h5py<span class="token punctuation">.</span>File<span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span>
+f<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><blockquote>
 <p><code>pandas.read_json(path_or_buf=None, orient=None, typ=&#39;frame&#39;, lines=False):</code></p>
@@ -561,39 +540,37 @@ f.keys()
 </blockquote>
 <h1 id="高级处理"><a href="#高级处理" class="headerlink" title="高级处理"></a>高级处理</h1><h2 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h2><blockquote>
 <p>Pandas 为了更方便地检测缺失值，将不同类型数据的缺失均采用 <code>NaN</code> 标记。这里的 NaN 代表 Not a Number，它仅仅是作为一个标记。例外是，在时间序列里，时间戳的丢失采用 <code>NaT</code> 标记。</p>
-<pre><code class="python">np.all(pd.notnull(df)) # 没有缺失值返回True，有返回False
-np.any(pd.isnull(df)) # 没有缺失值返回False，有返回True
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">np<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>notnull<span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 没有缺失值返回True，有返回False</span>
+np<span class="token punctuation">.</span><span class="token builtin">any</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 没有缺失值返回False，有返回True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>Pandas 中用于检测缺失值主要用到两个方法，分别是：<code>isna()</code>和 <code>notna()</code>。</p>
 <ol>
 <li><p>存在缺失值NaN</p>
 <ul>
 <li>删除</li>
 </ul>
-<pre><code class="python"># 不修改原数据
-movie.dropna()
-# 可以定义新的变量接受或者用原来的变量名
-data = movie.dropna()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 不修改原数据</span>
+movie<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 可以定义新的变量接受或者用原来的变量名</span>
+data <span class="token operator">=</span> movie<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>替换缺失值</li>
 </ul>
-<pre><code class="python"># 替换存在缺失值的样本的两列
-# 替换填充平均值，中位数
-movie[&#39;Revenue (Millions)&#39;].fillna(movie[&#39;Revenue (Millions)&#39;].mean(), inplace=True)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 替换存在缺失值的样本的两列</span>
+<span class="token comment"># 替换填充平均值，中位数</span>
+movie<span class="token punctuation">[</span><span class="token string">'Revenue (Millions)'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>movie<span class="token punctuation">[</span><span class="token string">'Revenue (Millions)'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>​    b. 替换所有缺失值</p>
-<pre><code class="python">for i in movie.columns:
-    if np.all(pd.notnull(movie[i])) == False:
-        print(i)
-        movie[i].fillna(movie[i].mean(), inplace=True)
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> movie<span class="token punctuation">.</span>columns<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> np<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>notnull<span class="token punctuation">(</span>movie<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">False</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+        movie<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>movie<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>不是缺失值nan，有默认标记的</p>
-<pre><code class="python"># 全局取消证书验证
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 全局取消证书验证</span>
+<span class="token keyword">import</span> ssl
+ssl<span class="token punctuation">.</span>_create_default_https_context <span class="token operator">=</span> ssl<span class="token punctuation">.</span>_create_unverified_context<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>先替换‘?’为np.nan</p>
 <ul>
 <li><code>df.replace(to_replace=&quot;?&quot;, value=np.nan)</code><ul>
@@ -605,20 +582,19 @@ ssl._create_default_https_context = ssl._create_unverified_context
 </li>
 </ol>
 <p><code>缺失值填充</code>：</p>
-<pre><code class="python">df.fillna(0) # 用0替换缺失值
-df.fillna(method=&#39;pad&#39;) # 使用缺失值前面的值进行填充
-df.fillna(method=&#39;bfill&#39;) # 使用缺失值前面的值进行填充
-df.fillna(method=&#39;pad&#39;, limit=1)  # 最多填充一项
-df.fillna(df.mean()[&#39;C&#39;:&#39;E&#39;]) #对C列到E列用平均值填充
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 用0替换缺失值</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pad'</span><span class="token punctuation">)</span> <span class="token comment"># 使用缺失值前面的值进行填充</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'bfill'</span><span class="token punctuation">)</span> <span class="token comment"># 使用缺失值前面的值进行填充</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pad'</span><span class="token punctuation">,</span> limit<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 最多填充一项</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>df<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'C'</span><span class="token punctuation">:</span><span class="token string">'E'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">#对C列到E列用平均值填充</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="插值填充"><a href="#插值填充" class="headerlink" title="插值填充"></a>插值填充</h2><blockquote>
 <p>插值是数值分析中一种方法。简而言之，就是借助于一个函数（线性或非线性），再根据已知数据去求解未知数据的值。插值在数据领域非常常见，它的好处在于，可以尽量去还原数据本身的样子。</p>
 <p>可以通过<code>interpolate</code>方法完成线性插值。</p>
-<pre><code class="python">df = pd.DataFrame(&#123;&#39;A&#39;: [1.1, 2.2, np.nan, 4.5, 5.7, 6.9],
-                &#39;B&#39;: [.21, np.nan, np.nan, 3.1, 11.7, 13.2]&#125;)
-df_interpolate = df.interpolate()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1.1</span><span class="token punctuation">,</span> <span class="token number">2.2</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span> <span class="token number">4.5</span><span class="token punctuation">,</span> <span class="token number">5.7</span><span class="token punctuation">,</span> <span class="token number">6.9</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">.21</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span> np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span> <span class="token number">3.1</span><span class="token punctuation">,</span> <span class="token number">11.7</span><span class="token punctuation">,</span> <span class="token number">13.2</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+df_interpolate <span class="token operator">=</span> df<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>对于 <code>interpolate()</code>支持的插值算法，也就是 <code>method=</code></p>
 <ol>
 <li>如果你的数据增长速率越来越快，可以选择 <code>method=&#39;quadratic&#39;</code>二次插值。</li>

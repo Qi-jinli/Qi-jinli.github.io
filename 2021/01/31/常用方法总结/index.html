@@ -83,13 +83,13 @@
 
                         
                             <div class="al_page_content_info">
-                                2.9k words
+                                2.8k words
                             </div>
                         
 
                         
                             <div class="al_page_content_info">
-                                12 minutes read
+                                11 minutes read
                             </div>
                         
                         <span class="tags"></span>
@@ -105,168 +105,157 @@
                 
                 <section id="post-body">
                     <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
-<pre><code class="python">numpy.array(object,dtype=None,copy=True,order=None,subok=False,ndmin=0) # 列表或元组转换
-numpy.arange(start,stop,step,dtype=None) # 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step
-numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None) # 同arange一样
-numpy.logspace(start, stop, num) # 以10为底，生成num个等比数列
-numpy.ones(shape, dtype=None, order=&#39;C&#39;) # 生成全为1的多维数组
-numpy.ones_like(a, dtype) # 快速创建数值全部为1的多维数组
-numpy.zeros(shape, dtype=None, order=&#39;C&#39;) # 生成全为0的多维数组
-numpy.zeros_like(a, dtype) # 快速创建数值全部为0的多维数组
-numpy.eye(N, M=None, k=0, dtype=&lt;type &#39;float&#39;&gt;)  # 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0
-numpy.random.rand(d0, d1, ..., dn )# 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。
-numpy.random.randn(d0, d1, ..., dn) # 从标准正态分布中返回一个或多个样本值
-numpy.random.standard_normal(size) # 从标准正态分布中生成随机数
-numpy.random.randint(low, high, size, dtype) # 方法将会生成[low, high)的随机整数
-numpy.random.normal(loc，scale，size) # 从正态分布绘制随机样本。参数，均值和偏差
-numpy.random.uniform(low=0，high=1，size) # 从均匀分布中生成随机数
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>copy<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>order<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>subok<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>ndmin<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 列表或元组转换</span>
+numpy<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>start<span class="token punctuation">,</span>stop<span class="token punctuation">,</span>step<span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</span>
+numpy<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>start<span class="token punctuation">,</span> stop<span class="token punctuation">,</span> num<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> endpoint<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> retstep<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 同arange一样</span>
+numpy<span class="token punctuation">.</span>logspace<span class="token punctuation">(</span>start<span class="token punctuation">,</span> stop<span class="token punctuation">,</span> num<span class="token punctuation">)</span> <span class="token comment"># 以10为底，生成num个等比数列</span>
+numpy<span class="token punctuation">.</span>ones<span class="token punctuation">(</span>shape<span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> order<span class="token operator">=</span><span class="token string">'C'</span><span class="token punctuation">)</span> <span class="token comment"># 生成全为1的多维数组</span>
+numpy<span class="token punctuation">.</span>ones_like<span class="token punctuation">(</span>a<span class="token punctuation">,</span> dtype<span class="token punctuation">)</span> <span class="token comment"># 快速创建数值全部为1的多维数组</span>
+numpy<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>shape<span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> order<span class="token operator">=</span><span class="token string">'C'</span><span class="token punctuation">)</span> <span class="token comment"># 生成全为0的多维数组</span>
+numpy<span class="token punctuation">.</span>zeros_like<span class="token punctuation">(</span>a<span class="token punctuation">,</span> dtype<span class="token punctuation">)</span> <span class="token comment"># 快速创建数值全部为0的多维数组</span>
+numpy<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>N<span class="token punctuation">,</span> M<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token operator">&lt;</span><span class="token builtin">type</span> <span class="token string">'float'</span><span class="token operator">></span><span class="token punctuation">)</span>  <span class="token comment"># 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</span>
+numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span>d0<span class="token punctuation">,</span> d1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> dn <span class="token punctuation">)</span><span class="token comment"># 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。</span>
+numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>d0<span class="token punctuation">,</span> d1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> dn<span class="token punctuation">)</span> <span class="token comment"># 从标准正态分布中返回一个或多个样本值</span>
+numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>standard_normal<span class="token punctuation">(</span>size<span class="token punctuation">)</span> <span class="token comment"># 从标准正态分布中生成随机数</span>
+numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>low<span class="token punctuation">,</span> high<span class="token punctuation">,</span> size<span class="token punctuation">,</span> dtype<span class="token punctuation">)</span> <span class="token comment"># 方法将会生成[low, high)的随机整数</span>
+numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span>loc，scale，size<span class="token punctuation">)</span> <span class="token comment"># 从正态分布绘制随机样本。参数，均值和偏差</span>
+numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>uniform<span class="token punctuation">(</span>low<span class="token operator">=</span><span class="token number">0</span>，high<span class="token operator">=</span><span class="token number">1</span>，size<span class="token punctuation">)</span> <span class="token comment"># 从均匀分布中生成随机数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
-<pre><code class="python">ndarray.T # 用于数组的转置，与.transpose()相同。
-ndarray.dtype # 用来输出数组包含元素的数据类型。
-ndarray.real # 用来输出数组包含元素的实部。
-ndarray.imag # 用来输出数组包含元素的虚部。
-ndarray.size # 用来输出数组中的总包含元素数。
-ndarray.itemsize # 输出一个数组元素的字节数。
-ndarray.nbytes # 用来输出数组的元素总字节数。
-ndarray.ndim # 用来输出数组维度。
-ndarray.shape # 用来输出数组形状。
-ndarray.strides # 用来遍历数组时，输出每个维度中步进的字节数组。
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ndarray<span class="token punctuation">.</span>T <span class="token comment"># 用于数组的转置，与.transpose()相同。</span>
+ndarray<span class="token punctuation">.</span>dtype <span class="token comment"># 用来输出数组包含元素的数据类型。</span>
+ndarray<span class="token punctuation">.</span>real <span class="token comment"># 用来输出数组包含元素的实部。</span>
+ndarray<span class="token punctuation">.</span>imag <span class="token comment"># 用来输出数组包含元素的虚部。</span>
+ndarray<span class="token punctuation">.</span>size <span class="token comment"># 用来输出数组中的总包含元素数。</span>
+ndarray<span class="token punctuation">.</span>itemsize <span class="token comment"># 输出一个数组元素的字节数。</span>
+ndarray<span class="token punctuation">.</span>nbytes <span class="token comment"># 用来输出数组的元素总字节数。</span>
+ndarray<span class="token punctuation">.</span>ndim <span class="token comment"># 用来输出数组维度。</span>
+ndarray<span class="token punctuation">.</span>shape <span class="token comment"># 用来输出数组形状。</span>
+ndarray<span class="token punctuation">.</span>strides <span class="token comment"># 用来遍历数组时，输出每个维度中步进的字节数组。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h2><blockquote>
-<pre><code class="python">ndarray.reshape(newshape) # 可以在不改变数组数据的同时改变数组形状
-ndarray.resize(newshape) # 改变数组形状，改变数组数据，新数组比原数组大，则将会copy原数组中的值对新数组进行填充
-ndarray.ravel(order=&#39;C&#39;) # 将任意形状的按行读取，变为1维数组，浅拷贝
-ndarray.flatten() # 将任意形状的按行读取，变为1维数组，深拷贝
-numpy.moveaxis(a, source, destination) # 将数组的轴移动到新的位置
-numpy.swapaxes(a, axis1, axis2) # 用来交换数组的轴
-numpy.concatenate((a1, a2, ...), axis=0) # 可以将多个数组沿指定轴连接在一起
-numpy.unique(a) # 去重数组元素中重复的元素
-numpy.atleast_xd() # 支持输入数据直接视为x维
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ndarray<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>newshape<span class="token punctuation">)</span> <span class="token comment"># 可以在不改变数组数据的同时改变数组形状</span>
+ndarray<span class="token punctuation">.</span>resize<span class="token punctuation">(</span>newshape<span class="token punctuation">)</span> <span class="token comment"># 改变数组形状，改变数组数据，新数组比原数组大，则将会copy原数组中的值对新数组进行填充</span>
+ndarray<span class="token punctuation">.</span>ravel<span class="token punctuation">(</span>order<span class="token operator">=</span><span class="token string">'C'</span><span class="token punctuation">)</span> <span class="token comment"># 将任意形状的按行读取，变为1维数组，浅拷贝</span>
+ndarray<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 将任意形状的按行读取，变为1维数组，深拷贝</span>
+numpy<span class="token punctuation">.</span>moveaxis<span class="token punctuation">(</span>a<span class="token punctuation">,</span> source<span class="token punctuation">,</span> destination<span class="token punctuation">)</span> <span class="token comment"># 将数组的轴移动到新的位置</span>
+numpy<span class="token punctuation">.</span>swapaxes<span class="token punctuation">(</span>a<span class="token punctuation">,</span> axis1<span class="token punctuation">,</span> axis2<span class="token punctuation">)</span> <span class="token comment"># 用来交换数组的轴</span>
+numpy<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>a1<span class="token punctuation">,</span> a2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 可以将多个数组沿指定轴连接在一起</span>
+numpy<span class="token punctuation">.</span>unique<span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment"># 去重数组元素中重复的元素</span>
+numpy<span class="token punctuation">.</span>atleast_xd<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 支持输入数据直接视为x维</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="逻辑与统计计算"><a href="#逻辑与统计计算" class="headerlink" title="逻辑与统计计算"></a>逻辑与统计计算</h2><blockquote>
-<pre><code class="python">ndarray[条件] = 1 # 将满足条件的数组元素设置为1
-numpy.all(条件) # 查询是否都满足条件
-numpy.any(条件) # 查询是否有满足条件的
-numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符合的为0
-numpy.max() # 沿指定轴计算中间值
-numpy.min() # 沿指定轴计算中间值
-numpy.median() # 沿指定轴计算中间值
-numpy.mean() # 沿指定轴计算平均数
-numpy.std() # 沿指定轴计算标准偏差
-numpy.var() # 沿指定轴计算方差
-numpy.argmax(axis=) # 最大元素对应的下标
-numpy.argmin(axis=) # 最小元素对应的下标
-numpy.dot(a, b) # 求解两个数组的点积
-numpy.matmul(a, b) # 求解两个数组的矩阵乘积
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ndarray<span class="token punctuation">[</span>条件<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token comment"># 将满足条件的数组元素设置为1</span>
+numpy<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token comment"># 查询是否都满足条件</span>
+numpy<span class="token punctuation">.</span><span class="token builtin">any</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token comment"># 查询是否有满足条件的</span>
+numpy<span class="token punctuation">.</span>where<span class="token punctuation">(</span>条件，<span class="token number">1</span>，<span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 三目运算，符合条件的设置为1，不符合的为0</span>
+numpy<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 沿指定轴计算中间值</span>
+numpy<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 沿指定轴计算中间值</span>
+numpy<span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 沿指定轴计算中间值</span>
+numpy<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 沿指定轴计算平均数</span>
+numpy<span class="token punctuation">.</span>std<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 沿指定轴计算标准偏差</span>
+numpy<span class="token punctuation">.</span>var<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 沿指定轴计算方差</span>
+numpy<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 最大元素对应的下标</span>
+numpy<span class="token punctuation">.</span>argmin<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 最小元素对应的下标</span>
+numpy<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment"># 求解两个数组的点积</span>
+numpy<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment"># 求解两个数组的矩阵乘积</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><blockquote>
-<pre><code class="python">pandas.Series(data=None,index=None) # 创建一位数组，data可以是字典，或者Numpy中的ndarray，index是索引
-pandas.DataFrame(data=None, index=None, columns=None) # 创建二维数组，data为数组、列表、字典，或者ndarray
-pandas.MultiIndex.from_arrays(arrays, names=(&#39;number&#39;, &#39;color&#39;)) # 创建三维数组
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pandas<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>index<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 创建一位数组，data可以是字典，或者Numpy中的ndarray，index是索引</span>
+pandas<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 创建二维数组，data为数组、列表、字典，或者ndarray</span>
+pandas<span class="token punctuation">.</span>MultiIndex<span class="token punctuation">.</span>from_arrays<span class="token punctuation">(</span>arrays<span class="token punctuation">,</span> names<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">,</span> <span class="token string">'color'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 创建三维数组</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2><blockquote>
-<pre><code class="python">Series.index # 查看一维数组中的索引
-Series.values # 查看一位数组中的值
-DataFrame.head() # 默认显示前5条
-DataFrame.tail(7) # 指定显示后7条
-DataFrame.describe()# 对数据集进行概览，会输出每一列数据的计数、最大值、最小值
-DataFrame.values # 将DataFrame转换成Numpy数组
-DataFrame.index # 查看索引
-DataFrame.columns # 查看列名
-DataFrame.shape # 查看形状
-MultiIndex.index # 查看multiIndex对象
-MultiIndex.index.names # 查看levels的名称
-MultiIndex.index.levels # 查看每个level的值
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Series<span class="token punctuation">.</span>index <span class="token comment"># 查看一维数组中的索引</span>
+Series<span class="token punctuation">.</span>values <span class="token comment"># 查看一位数组中的值</span>
+DataFrame<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 默认显示前5条</span>
+DataFrame<span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token comment"># 指定显示后7条</span>
+DataFrame<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span>
+DataFrame<span class="token punctuation">.</span>values <span class="token comment"># 将DataFrame转换成Numpy数组</span>
+DataFrame<span class="token punctuation">.</span>index <span class="token comment"># 查看索引</span>
+DataFrame<span class="token punctuation">.</span>columns <span class="token comment"># 查看列名</span>
+DataFrame<span class="token punctuation">.</span>shape <span class="token comment"># 查看形状</span>
+MultiIndex<span class="token punctuation">.</span>index <span class="token comment"># 查看multiIndex对象</span>
+MultiIndex<span class="token punctuation">.</span>index<span class="token punctuation">.</span>names <span class="token comment"># 查看levels的名称</span>
+MultiIndex<span class="token punctuation">.</span>index<span class="token punctuation">.</span>levels <span class="token comment"># 查看每个level的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><blockquote>
-<pre><code class="python">DataFrame.iloc[[行],[列]] # 基于数字索引对数据集进行选择，支持切片(前闭后开)，列表
-DataFrame.loc[[行],[列]] # 基于索引名对数据集进行选择，支持切片(首尾包含)，列表
-DataFrame.ix[[行],[列]] # 基于下标和名称组合索引
-DataFrame[列索引值][行索引值] # 先列后行，按照索引的字符串进行索引
-DataFrame.index = 新索引值 # 修改行列索引值
-DataFrame.reset_index(drop=False) # 设置新的下标索引,默认为False，不删除原来索引
-DataFrame.set_index(keys, drop=True) # 设置以keys为列索引，默认为True，删除原来索引
-DataFrame[列名]=1 或 DataFrame.列名=1 # 将一列赋值为1
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DataFrame<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment"># 基于数字索引对数据集进行选择，支持切片(前闭后开)，列表</span>
+DataFrame<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment"># 基于索引名对数据集进行选择，支持切片(首尾包含)，列表</span>
+DataFrame<span class="token punctuation">.</span>ix<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment"># 基于下标和名称组合索引</span>
+DataFrame<span class="token punctuation">[</span>列索引值<span class="token punctuation">]</span><span class="token punctuation">[</span>行索引值<span class="token punctuation">]</span> <span class="token comment"># 先列后行，按照索引的字符串进行索引</span>
+DataFrame<span class="token punctuation">.</span>index <span class="token operator">=</span> 新索引值 <span class="token comment"># 修改行列索引值</span>
+DataFrame<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment"># 设置新的下标索引,默认为False，不删除原来索引</span>
+DataFrame<span class="token punctuation">.</span>set_index<span class="token punctuation">(</span>keys<span class="token punctuation">,</span> drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment"># 设置以keys为列索引，默认为True，删除原来索引</span>
+DataFrame<span class="token punctuation">[</span>列名<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span> 或 DataFrame<span class="token punctuation">.</span>列名<span class="token operator">=</span><span class="token number">1</span> <span class="token comment"># 将一列赋值为1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><blockquote>
-<pre><code class="python">Series.sort_values(ascending=True) # 对数据进行排序，默认升序
-Series.sort_index() # 对索引进行排序
-DataFrame.sort_values(by=, ascending=) # 按照一个键或多个进行数据排序，默认升序
-DataFrame.sort_index(axis=) # 对指定轴索引进行排序，从小到大
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Series<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>ascending<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment"># 对数据进行排序，默认升序</span>
+Series<span class="token punctuation">.</span>sort_index<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 对索引进行排序</span>
+DataFrame<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>by<span class="token operator">=</span><span class="token punctuation">,</span> ascending<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 按照一个键或多个进行数据排序，默认升序</span>
+DataFrame<span class="token punctuation">.</span>sort_index<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 对指定轴索引进行排序，从小到大</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h3 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h3><blockquote>
-<pre><code class="python">DataFrame.drop(labels=[], axis=) # 按照指定轴对指定标签参数进行删除
-DataFrame.drop_duplicates(axis=) # 指定轴数据去重
-DataFrame.dropna() # 删除缺失值行或列
-DataFrame.pop(列标签) # 删除列
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DataFrame<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>labels<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 按照指定轴对指定标签参数进行删除</span>
+DataFrame<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 指定轴数据去重</span>
+DataFrame<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 删除缺失值行或列</span>
+DataFrame<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>列标签<span class="token punctuation">)</span> <span class="token comment"># 删除列</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="运算和统计"><a href="#运算和统计" class="headerlink" title="运算和统计"></a>运算和统计</h2><blockquote>
-<pre><code class="python">DataFrame.add(other) # 加法运算
-DataFrame.sub(other) # 减法运算
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DataFrame<span class="token punctuation">.</span>add<span class="token punctuation">(</span>other<span class="token punctuation">)</span> <span class="token comment"># 加法运算</span>
+DataFrame<span class="token punctuation">.</span>sub<span class="token punctuation">(</span>other<span class="token punctuation">)</span> <span class="token comment"># 减法运算</span>
 
-DataFrame[列名] &gt; value # 返回逻辑结果，布尔值
-DataFrame[DataFrame[列名] &gt; value].head() # 逻辑判断的结果可以作为筛选的依据
-DataFrame.query(&quot;列名 &lt; value1 &amp; 列名 &gt; value2&quot;).head() # 进行多次逻辑判断
-DataFrame[列名].isin([]) # 可以指定值进行一个判断，从而进行筛选操作
+DataFrame<span class="token punctuation">[</span>列名<span class="token punctuation">]</span> <span class="token operator">></span> value <span class="token comment"># 返回逻辑结果，布尔值</span>
+DataFrame<span class="token punctuation">[</span>DataFrame<span class="token punctuation">[</span>列名<span class="token punctuation">]</span> <span class="token operator">></span> value<span class="token punctuation">]</span><span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 逻辑判断的结果可以作为筛选的依据</span>
+DataFrame<span class="token punctuation">.</span>query<span class="token punctuation">(</span><span class="token string">"列名 &lt; value1 &amp; 列名 > value2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 进行多次逻辑判断</span>
+DataFrame<span class="token punctuation">[</span>列名<span class="token punctuation">]</span><span class="token punctuation">.</span>isin<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># 可以指定值进行一个判断，从而进行筛选操作</span>
 
-DataFrame.describe() # 综合分析: 能够直接得出很多统计结果,count, mean, std, min, max 等
-DataFrame.sum() # 计算总和
-DataFrame.mean() # 计算平均值
-DataFrame.median() # 计算中位数
-DataFrame.min() # 计算最小值
-DataFrame.max() # 计算最大值
-DataFrame.mode() # 计算众数
-DataFrame.abs() # 计算绝对值
-DataFrame.prod() # 计算连乘
-DataFrame.std() # 计算标准差
-DataFrame.var() # 计算方差
-DataFrame.idxmax() # 计算最大值索引
-DataFrame.idxmin() # 计算最小值索引
-DataFrame.cumsum() # 计算前1/2/3/…/n个数的和
-DataFrame.cumprod() # 计算前1/2/3/…/n个数的积
-</code></pre>
+DataFrame<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 综合分析: 能够直接得出很多统计结果,count, mean, std, min, max 等</span>
+DataFrame<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算总和</span>
+DataFrame<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算平均值</span>
+DataFrame<span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算中位数</span>
+DataFrame<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算最小值</span>
+DataFrame<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算最大值</span>
+DataFrame<span class="token punctuation">.</span>mode<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算众数</span>
+DataFrame<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算绝对值</span>
+DataFrame<span class="token punctuation">.</span>prod<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算连乘</span>
+DataFrame<span class="token punctuation">.</span>std<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算标准差</span>
+DataFrame<span class="token punctuation">.</span>var<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算方差</span>
+DataFrame<span class="token punctuation">.</span>idxmax<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算最大值索引</span>
+DataFrame<span class="token punctuation">.</span>idxmin<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算最小值索引</span>
+DataFrame<span class="token punctuation">.</span>cumsum<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算前1/2/3/…/n个数的和</span>
+DataFrame<span class="token punctuation">.</span>cumprod<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算前1/2/3/…/n个数的积</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h2><blockquote>
-<pre><code class="python"># Pandas画图
-DataFrame.plot(kind=&#39;line&#39;) # kind表示需要绘制的种类，默认line,还有bar,barh,hist,pie,scatter
-# 文件读取与存储
-pandas.read_csv(path, usecols=[], engine=&#39;python&#39;, encoding=&#39;utf8&#39;) # 读取csv文件
-DataFrame.to_csv(path, columns=None, mode=&#39;w&#39;, encoding=None) # 转换成csv文件
-pandas.read_hdf(path，key=None，** kwargs) # 根据key读取hdf文件
-DataFrame.to_hdf(path, key=, **kwargs*) # 转换成hdf文件
-pandas.read_json(path, lines=False) # 读取json文件
-DataFrame.to_json(path,lines=False) # 转换成json文件
-# 缺失值检测与填充
-DataFrame.isna()|isnull()|notna()|notnull() # 检测缺失值
-DataFrame.replace(to_replace=, value=) # to_replace替换前的值，value为替换后的值
-DataFrame.fillna(0) # 用0替换缺失值
-DataFrame.fillna(method=&#39;pad&#39;) # 使用缺失值前面的值进行填充
-DataFrame.fillna(method=&#39;bfill&#39;) # 使用缺失值前面的值进行填充
-DataFrame.interpolate(method=) # 插值算法，平滑绘图&#39;akima&#39;，累计分布&#39;pchip&#39;，数据增长速率越来越快&#39;quadratic&#39;
-# 数据离散化与数据合并
-pandas.qcut(data, num) # 将数据分为数量差不多的num个组，一般会与value_counts搭配使用，统计每组的个数
-Series.value_counts() # 统计分组次数
-pandas.cut(data, bins) # 自定义分组，bin为自定义列表
-pandas.get_dummies(data, prefix=分组名字) # 分组数据变成one-hot编码
-pandas.concat([data1, data2], axis=1) # 按照行或列进行合并，0为行
-pandas.merge(left, right, how=&#39;inner&#39;, on=[]) # 按照指定键指定方式进行连接
-# 交叉表与透视表
-pandas.crosstab(index,columns) # 按index进行分组并作为行索引，并统计columns值的各个频数，交叉表
-DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean) # 将values按照index分组，默认使用mean()聚合函数
-# 分组与聚合
-DataFrame.groupby(key, as_index=False) # 按照keys进行分组
-DataFrame.agg(&#123;&quot;列名&quot;：np.聚合函数&#125;) # 聚合函数为max(),min(),mean(),std()等函数
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Pandas画图</span>
+DataFrame<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>kind<span class="token operator">=</span><span class="token string">'line'</span><span class="token punctuation">)</span> <span class="token comment"># kind表示需要绘制的种类，默认line,还有bar,barh,hist,pie,scatter</span>
+<span class="token comment"># 文件读取与存储</span>
+pandas<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>path<span class="token punctuation">,</span> usecols<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> engine<span class="token operator">=</span><span class="token string">'python'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf8'</span><span class="token punctuation">)</span> <span class="token comment"># 读取csv文件</span>
+DataFrame<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>path<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 转换成csv文件</span>
+pandas<span class="token punctuation">.</span>read_hdf<span class="token punctuation">(</span>path，key<span class="token operator">=</span><span class="token boolean">None</span>，<span class="token operator">**</span> kwargs<span class="token punctuation">)</span> <span class="token comment"># 根据key读取hdf文件</span>
+DataFrame<span class="token punctuation">.</span>to_hdf<span class="token punctuation">(</span>path<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token comment"># 转换成hdf文件</span>
+pandas<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span>path<span class="token punctuation">,</span> lines<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment"># 读取json文件</span>
+DataFrame<span class="token punctuation">.</span>to_json<span class="token punctuation">(</span>path<span class="token punctuation">,</span>lines<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment"># 转换成json文件</span>
+<span class="token comment"># 缺失值检测与填充</span>
+DataFrame<span class="token punctuation">.</span>isna<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">|</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">|</span>notna<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">|</span>notnull<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 检测缺失值</span>
+DataFrame<span class="token punctuation">.</span>replace<span class="token punctuation">(</span>to_replace<span class="token operator">=</span><span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># to_replace替换前的值，value为替换后的值</span>
+DataFrame<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 用0替换缺失值</span>
+DataFrame<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pad'</span><span class="token punctuation">)</span> <span class="token comment"># 使用缺失值前面的值进行填充</span>
+DataFrame<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'bfill'</span><span class="token punctuation">)</span> <span class="token comment"># 使用缺失值前面的值进行填充</span>
+DataFrame<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 插值算法，平滑绘图'akima'，累计分布'pchip'，数据增长速率越来越快'quadratic'</span>
+<span class="token comment"># 数据离散化与数据合并</span>
+pandas<span class="token punctuation">.</span>qcut<span class="token punctuation">(</span>data<span class="token punctuation">,</span> num<span class="token punctuation">)</span> <span class="token comment"># 将数据分为数量差不多的num个组，一般会与value_counts搭配使用，统计每组的个数</span>
+Series<span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 统计分组次数</span>
+pandas<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>data<span class="token punctuation">,</span> bins<span class="token punctuation">)</span> <span class="token comment"># 自定义分组，bin为自定义列表</span>
+pandas<span class="token punctuation">.</span>get_dummies<span class="token punctuation">(</span>data<span class="token punctuation">,</span> prefix<span class="token operator">=</span>分组名字<span class="token punctuation">)</span> <span class="token comment"># 分组数据变成one-hot编码</span>
+pandas<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>data1<span class="token punctuation">,</span> data2<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment"># 按照行或列进行合并，0为行</span>
+pandas<span class="token punctuation">.</span>merge<span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">'inner'</span><span class="token punctuation">,</span> on<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># 按照指定键指定方式进行连接</span>
+<span class="token comment"># 交叉表与透视表</span>
+pandas<span class="token punctuation">.</span>crosstab<span class="token punctuation">(</span>index<span class="token punctuation">,</span>columns<span class="token punctuation">)</span> <span class="token comment"># 按index进行分组并作为行索引，并统计columns值的各个频数，交叉表</span>
+DataFrame<span class="token punctuation">.</span>pivot_table<span class="token punctuation">(</span>values<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>aggfunc<span class="token operator">=</span>np<span class="token punctuation">.</span>mean<span class="token punctuation">)</span> <span class="token comment"># 将values按照index分组，默认使用mean()聚合函数</span>
+<span class="token comment"># 分组与聚合</span>
+DataFrame<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span>key<span class="token punctuation">,</span> as_index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment"># 按照keys进行分组</span>
+DataFrame<span class="token punctuation">.</span>agg<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"列名"</span>：np<span class="token punctuation">.</span>聚合函数<span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token comment"># 聚合函数为max(),min(),mean(),std()等函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h1 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h1><blockquote>
 <table>
@@ -330,33 +319,33 @@ DataFrame.agg(&#123;&quot;列名&quot;：np.聚合函数&#125;) # 聚合函数�
 </tr>
 </tbody></table>
 </blockquote>
-<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><pre><code class="python"># 基础折线图
-plt.figure(figsize=(),dpi=) # 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度
-plt.plot(x, y, label=) # 绘制图像和设置图例名称
-plt.xticks(x,显示格式) # 设置x轴刻度
-plt.yticks(y,显示格式) # 设置x轴刻度
-plt.xlim() # 设置x坐标轴范围
-plt.ylim() # 设置y坐标轴范围
-plt.xlabel() # 设置x轴标题
-plt.ylabel() # 设置y轴标题
-plt.title() # 设置标题
-plt.grid(True, linestyle=, alpha=) # 设置网格线，及线类型，透明度
-plt.text(x,y,s) # 图形标注，x, y 用于标注位置定位，s 代表标注的字符串
-plt.savefig(&quot;&quot;) # 图像保存
-plt.legend(loc=) # 以对应的位置上添加图例
-plt.show() # 图像显示
-# 大图套小图
-fig = plt.figure(figsize=(),dpi=)
-axes = fig.add_axes([])  # 控制画布的左, 下, 宽度, 高度来添加画布
-axes.plot(x, y)
-# 多行多列图
-fig, axes = plt.subplots(nrows=, ncols=)  # 创建多行多列的图像对象及画布
-axes.set_xticks(x,显示格式) # 设置x轴刻度
-axes.set_yticks(y,显示格式) # 设置x轴刻度
-axes.set_xlabel() # 设置x轴标题
-axes.set_ylabel() # 设置y轴标题
-axes.set_title() # 设置标题
-</code></pre>
+<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 基础折线图</span>
+plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>dpi<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 绘制图像和设置图例名称</span>
+plt<span class="token punctuation">.</span>xticks<span class="token punctuation">(</span>x<span class="token punctuation">,</span>显示格式<span class="token punctuation">)</span> <span class="token comment"># 设置x轴刻度</span>
+plt<span class="token punctuation">.</span>yticks<span class="token punctuation">(</span>y<span class="token punctuation">,</span>显示格式<span class="token punctuation">)</span> <span class="token comment"># 设置x轴刻度</span>
+plt<span class="token punctuation">.</span>xlim<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置x坐标轴范围</span>
+plt<span class="token punctuation">.</span>ylim<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置y坐标轴范围</span>
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置x轴标题</span>
+plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置y轴标题</span>
+plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置标题</span>
+plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> linestyle<span class="token operator">=</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 设置网格线，及线类型，透明度</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>s<span class="token punctuation">)</span> <span class="token comment"># 图形标注，x, y 用于标注位置定位，s 代表标注的字符串</span>
+plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span> <span class="token comment"># 图像保存</span>
+plt<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>loc<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 以对应的位置上添加图例</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 图像显示</span>
+<span class="token comment"># 大图套小图</span>
+fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>dpi<span class="token operator">=</span><span class="token punctuation">)</span>
+axes <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_axes<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 控制画布的左, 下, 宽度, 高度来添加画布</span>
+axes<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token comment"># 多行多列图</span>
+fig<span class="token punctuation">,</span> axes <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>nrows<span class="token operator">=</span><span class="token punctuation">,</span> ncols<span class="token operator">=</span><span class="token punctuation">)</span>  <span class="token comment"># 创建多行多列的图像对象及画布</span>
+axes<span class="token punctuation">.</span>set_xticks<span class="token punctuation">(</span>x<span class="token punctuation">,</span>显示格式<span class="token punctuation">)</span> <span class="token comment"># 设置x轴刻度</span>
+axes<span class="token punctuation">.</span>set_yticks<span class="token punctuation">(</span>y<span class="token punctuation">,</span>显示格式<span class="token punctuation">)</span> <span class="token comment"># 设置x轴刻度</span>
+axes<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置x轴标题</span>
+axes<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置y轴标题</span>
+axes<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 设置标题</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h2><blockquote>
 <table>
 <thead>
@@ -392,28 +381,28 @@ axes.set_title() # 设置标题
 </tbody></table>
 </blockquote>
 <h1 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h1><blockquote>
-<pre><code class="python">sns.set(context=&#39;notebook&#39;, style=&#39;darkgrid&#39;, palette=&#39;deep&#39;) # 声名样式
-# 分布图
-seaborn.distplot(a, bins=None, hist=True, kde=True, rug=False, fit=None, color=None) # 单变量直方图核密度
-seaborn.jointplot(x, y, data=None, kind=&#39;scatter&#39;) # 多变量相互关系散点图
-sns.pairplot(data) # 绘制多个成对的双变量分布
-# 类别图
-seaborn.catplot(x=None, y=None, kind=&quot;strip&quot;, data=None) # Figure-level 接口
-seaborn.stripplot(x=None, y=None, hue=None, data=None, jitter=False) # 分类散点线图，数据部分重合
-seaborn.swarmplot(x=, y=, data=) # 分类散点线图，数据不重合
-seaborn.boxplot(x=None, y=None, hue=None, data=None) # 箱体图，示出一组数据的最大值、最小值、中位数、及上下四分位数
-seaborn.violinplot(x=None, y=None, hue=None, data=None) # 提琴图，显示数据分布及其概率密度
-seaborn.barplot(x=None, y=None, hue=None, data=None) # 条形图，显示95%置信区间
-seaborn.pointplot(x=None, y=None, hue=None, data=None) # 点图，只绘制点图和置信区间
-# 关联图
-seaborn.relplot(x=, y=,hue=, style=, kind=&quot;scatter&quot;|&quot;line&quot;, data=) # Figure-level 接口
-# 回归图
-seaborn.regplot(x=None, y=None, data=None) # 自动完成线性回归拟合
-seaborn.lmplot(x=None, y=None, hue=None, data=None) # 引入第三维度进行对比，自动完成线性回归拟合
-# 矩阵图
-seaborn.heatmap(a,square,linewidths,annot) # 绘制热力图
-seaborn.clustermap(DataFrame) # 支持绘制层次聚类结构图
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sns<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span>context<span class="token operator">=</span><span class="token string">'notebook'</span><span class="token punctuation">,</span> style<span class="token operator">=</span><span class="token string">'darkgrid'</span><span class="token punctuation">,</span> palette<span class="token operator">=</span><span class="token string">'deep'</span><span class="token punctuation">)</span> <span class="token comment"># 声名样式</span>
+<span class="token comment"># 分布图</span>
+seaborn<span class="token punctuation">.</span>distplot<span class="token punctuation">(</span>a<span class="token punctuation">,</span> bins<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hist<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> kde<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> rug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> fit<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 单变量直方图核密度</span>
+seaborn<span class="token punctuation">.</span>jointplot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> kind<span class="token operator">=</span><span class="token string">'scatter'</span><span class="token punctuation">)</span> <span class="token comment"># 多变量相互关系散点图</span>
+sns<span class="token punctuation">.</span>pairplot<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment"># 绘制多个成对的双变量分布</span>
+<span class="token comment"># 类别图</span>
+seaborn<span class="token punctuation">.</span>catplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> kind<span class="token operator">=</span><span class="token string">"strip"</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># Figure-level 接口</span>
+seaborn<span class="token punctuation">.</span>stripplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hue<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> jitter<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment"># 分类散点线图，数据部分重合</span>
+seaborn<span class="token punctuation">.</span>swarmplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># 分类散点线图，数据不重合</span>
+seaborn<span class="token punctuation">.</span>boxplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hue<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 箱体图，示出一组数据的最大值、最小值、中位数、及上下四分位数</span>
+seaborn<span class="token punctuation">.</span>violinplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hue<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 提琴图，显示数据分布及其概率密度</span>
+seaborn<span class="token punctuation">.</span>barplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hue<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 条形图，显示95%置信区间</span>
+seaborn<span class="token punctuation">.</span>pointplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hue<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 点图，只绘制点图和置信区间</span>
+<span class="token comment"># 关联图</span>
+seaborn<span class="token punctuation">.</span>relplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token punctuation">,</span>hue<span class="token operator">=</span><span class="token punctuation">,</span> style<span class="token operator">=</span><span class="token punctuation">,</span> kind<span class="token operator">=</span><span class="token string">"scatter"</span><span class="token operator">|</span><span class="token string">"line"</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">)</span> <span class="token comment"># Figure-level 接口</span>
+<span class="token comment"># 回归图</span>
+seaborn<span class="token punctuation">.</span>regplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 自动完成线性回归拟合</span>
+seaborn<span class="token punctuation">.</span>lmplot<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> hue<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 引入第三维度进行对比，自动完成线性回归拟合</span>
+<span class="token comment"># 矩阵图</span>
+seaborn<span class="token punctuation">.</span>heatmap<span class="token punctuation">(</span>a<span class="token punctuation">,</span>square<span class="token punctuation">,</span>linewidths<span class="token punctuation">,</span>annot<span class="token punctuation">)</span> <span class="token comment"># 绘制热力图</span>
+seaborn<span class="token punctuation">.</span>clustermap<span class="token punctuation">(</span>DataFrame<span class="token punctuation">)</span> <span class="token comment"># 支持绘制层次聚类结构图</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 </blockquote>
 
                 </section>

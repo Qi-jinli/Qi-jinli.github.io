@@ -215,10 +215,9 @@
 </tr>
 </tbody></table>
 <blockquote>
-<pre><code class="python">import numpy as np
-a = np.array([1.1,2.2,3.3],dtype=np.float64)
-a.astype(int).dtype # 将a的数值类型从float64转为int64
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1.1</span><span class="token punctuation">,</span><span class="token number">2.2</span><span class="token punctuation">,</span><span class="token number">3.3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>float64<span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dtype <span class="token comment"># 将a的数值类型从float64转为int64</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h1 id="Numpy数组生成"><a href="#Numpy数组生成" class="headerlink" title="Numpy数组生成"></a>Numpy数组生成</h1><blockquote>
 <p>Numpy中，ndarray多维数组对象有六个参数：</p>
@@ -231,10 +230,10 @@ a.astype(int).dtype # 将a的数值类型从float64转为int64
 <li>order：{‘C’,’F’},以行或列为主排列顺序</li>
 </ul>
 </blockquote>
-<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><pre><code class="python">numpy.array(object,dtype=None,copy=True,order=None,subok=False,ndmin=0)
-a1 = numpy.array(a) # 深拷贝
-a2 = numpy.asarray(a) # 浅拷贝
-</code></pre>
+<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>copy<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>order<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>subok<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>ndmin<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+a1 <span class="token operator">=</span> numpy<span class="token punctuation">.</span>array<span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment"># 深拷贝</span>
+a2 <span class="token operator">=</span> numpy<span class="token punctuation">.</span>asarray<span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment"># 浅拷贝</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>其中参数：</p>
 <ol>
@@ -246,18 +245,18 @@ a2 = numpy.asarray(a) # 浅拷贝
 <li><code>ndmin</code>：生成的数组应具有的最小维数。</li>
 </ol>
 </blockquote>
-<pre><code class="python">numpy.array([[1, 2, 3], [4, 5, 6]])
-numpy.array([(1, 2), (3, 4), (5, 6)])
-</code></pre>
-<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><pre><code class="python">numpy.arange(start,stop,step,dtype=None)
-例：numpy.arange(3,7,0.5,dtype=&#39;float32&#39;)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+numpy<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>start<span class="token punctuation">,</span>stop<span class="token punctuation">,</span>step<span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+例：numpy<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token string">'float32'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>arange()的功能是在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</p>
 </blockquote>
-<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><pre><code class="python">numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
-例：numpy.linspace(0, 10, 10, endpoint=True)
-</code></pre>
+<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>start<span class="token punctuation">,</span> stop<span class="token punctuation">,</span> num<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> endpoint<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> retstep<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+例：numpy<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> endpoint<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>同arange一样，用于在区间内返回间隔均匀的值。</p>
 <ul>
@@ -269,10 +268,10 @@ numpy.array([(1, 2), (3, 4), (5, 6)])
 <li><code>dtype</code>：数组的类型。</li>
 </ul>
 </blockquote>
-<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><pre><code class="python">numpy.ones(shape, dtype=None, order=&#39;C&#39;)
-numpy.ones_like(a, dtype)
-numpy.ones((2, 3))
-</code></pre>
+<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>ones<span class="token punctuation">(</span>shape<span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> order<span class="token operator">=</span><span class="token string">'C'</span><span class="token punctuation">)</span>
+numpy<span class="token punctuation">.</span>ones_like<span class="token punctuation">(</span>a<span class="token punctuation">,</span> dtype<span class="token punctuation">)</span>
+numpy<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>Numpy.ones用于快速创建数值全部为1的多维数组</p>
 <ul>
@@ -281,10 +280,10 @@ numpy.ones((2, 3))
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><pre><code class="python">numpy.zeros(shape, dtype=None, order=&#39;C&#39;)
-numpy.zeros_like(a, dtype)
-例：np.zeros((3, 2))
-</code></pre>
+<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>shape<span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> order<span class="token operator">=</span><span class="token string">'C'</span><span class="token punctuation">)</span>
+numpy<span class="token punctuation">.</span>zeros_like<span class="token punctuation">(</span>a<span class="token punctuation">,</span> dtype<span class="token punctuation">)</span>
+例：np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>和ones方法相似，只是全部填充为0</p>
 <ul>
@@ -293,9 +292,9 @@ numpy.zeros_like(a, dtype)
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><pre><code class="python">numpy.eye(N, M=None, k=0, dtype=&lt;type &#39;float&#39;&gt;)
-np.eye(5, 4, 3)
-</code></pre>
+<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>N<span class="token punctuation">,</span> M<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token operator">&lt;</span><span class="token builtin">type</span> <span class="token string">'float'</span><span class="token operator">></span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</p>
 <ul>
@@ -329,22 +328,22 @@ np.eye(5, 4, 3)
 </ol>
 </blockquote>
 <h1 id="数组维度和形状"><a href="#数组维度和形状" class="headerlink" title="数组维度和形状"></a>数组维度和形状</h1><h2 id="数组基本操作"><a href="#数组基本操作" class="headerlink" title="数组基本操作"></a>数组基本操作</h2><h3 id="重设形状"><a href="#重设形状" class="headerlink" title="重设形状"></a>重设形状</h3><blockquote>
-<pre><code>numpy.reshape(a, newshape)
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">numpy.reshape(a, newshape)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>reshape</code>可以在不改变数组数据的同时改变数组形状，其中</p>
 <p><code>numpy.reshape()</code>等效于<code>ndarray.reshape()</code></p>
 <p><code>a</code>表示原数组，<code>newshape</code>表示用于指定新的形状（整数或者数组）</p>
 </blockquote>
 <h3 id="数组展开"><a href="#数组展开" class="headerlink" title="数组展开"></a>数组展开</h3><blockquote>
-<pre><code>numpy.ravel(a, order=&#39;C&#39;)
-ndarray.flatten()
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">numpy.ravel(a, order&#x3D;&#39;C&#39;)
+ndarray.flatten()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><code>ravel</code>的目的是将任意形状的数组扁平化，变为1维数组</p>
 <p>a代表需要处理的数组，<code>order</code>表示变换时读取的顺序，默认按行依次读取，当<code>order=&#39;F&#39;</code>时按列读取</p>
 </blockquote>
 <h3 id="轴移动"><a href="#轴移动" class="headerlink" title="轴移动"></a>轴移动</h3><blockquote>
-<pre><code>numpy.moveaxis(a, source, destination)
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">numpy.moveaxis(a, source, destination)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>moveaxis</code>可以将数组的轴移动到新的位置</p>
 <ul>
 <li><code>a</code>：数组。</li>
@@ -353,8 +352,8 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="轴交换"><a href="#轴交换" class="headerlink" title="轴交换"></a>轴交换</h3><blockquote>
-<pre><code>numpy.swapaxes(a, axis1, axis2)
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">numpy.swapaxes(a, axis1, axis2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>swapaxes</code>可以用来交换数组的轴</p>
 <ul>
 <li><code>a</code>：数组。</li>
@@ -363,13 +362,13 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><blockquote>
-<pre><code>np.unique(a)
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">np.unique(a)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>去重数组元素中重复的元素</strong></p>
 </blockquote>
 <h3 id="数组转置"><a href="#数组转置" class="headerlink" title="数组转置"></a>数组转置</h3><blockquote>
-<pre><code>numpy.transpose(a, axes=None)
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">numpy.transpose(a, axes&#x3D;None)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>transpose</code>类似于矩阵的转置，可以将二维数组的横轴和纵轴交换</p>
 <ul>
 <li><code>a</code>：数组。</li>
@@ -377,10 +376,10 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="维度改变"><a href="#维度改变" class="headerlink" title="维度改变"></a>维度改变</h3><blockquote>
-<pre><code>numpy.atleast_1d()
+<pre class="line-numbers language-none"><code class="language-none">numpy.atleast_1d()
 numpy.atleast_2d()
-numpy.atleast_3d()
-</code></pre>
+numpy.atleast_3d()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><code>atleast_xd</code>支持输入数据直接视为<code>x</code>维，<code>x</code>可以表示：<code>1，2，3</code></p>
 </blockquote>
 <h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><blockquote>
@@ -395,8 +394,8 @@ numpy.atleast_3d()
 </ul>
 </blockquote>
 <h3 id="数组连接"><a href="#数组连接" class="headerlink" title="数组连接"></a>数组连接</h3><blockquote>
-<pre><code>numpy.concatenate((a1, a2, ...), axis=0)
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">numpy.concatenate((a1, a2, ...), axis&#x3D;0)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>concatenate</code>可以将多个数组沿指定轴连接在一起</p>
 <ul>
 <li><code>(a1, a2, ...)</code>：需要连接的数组。</li>
@@ -565,11 +564,10 @@ numpy.atleast_3d()
 </ul>
 </blockquote>
 <h2 id="逻辑运算和判断函数"><a href="#逻辑运算和判断函数" class="headerlink" title="逻辑运算和判断函数"></a>逻辑运算和判断函数</h2><blockquote>
-<pre><code class="python">a[条件] = 1 # 将满足条件的数组元素设置为1
-np.all(条件) # 查询是否都满足条件
-numpy.any(条件) # 查询是否有满足条件的
-numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符合的为0
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a<span class="token punctuation">[</span>条件<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token comment"># 将满足条件的数组元素设置为1</span>
+np<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token comment"># 查询是否都满足条件</span>
+numpy<span class="token punctuation">.</span><span class="token builtin">any</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token comment"># 查询是否有满足条件的</span>
+numpy<span class="token punctuation">.</span>where<span class="token punctuation">(</span>条件，<span class="token number">1</span>，<span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 三目运算，符合条件的设置为1，不符合的为0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
 <ul>
@@ -639,33 +637,27 @@ numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符�
 <h1 id="数组索引和切片"><a href="#数组索引和切片" class="headerlink" title="数组索引和切片"></a>数组索引和切片</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><blockquote>
 <ol>
 <li><p>一维数组索引：</p>
-<pre><code>a=np.arange(10)
+<pre class="line-numbers language-none"><code class="language-none">a&#x3D;np.arange(10)
 a[1] #获取索引值为1的数据
-a[[1,2,3]] #分别获取索引值1，2，3的数据
-</code></pre>
-</li>
+a[[1,2,3]] #分别获取索引值1，2，3的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li><p>二维数组索引：</p>
-<pre><code>a = np.arange(20).reshape(4, 5)
-a[[1,2],[3,4]] # 获取第2行，第3列的数据
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">a &#x3D; np.arange(20).reshape(4, 5)
+a[[1,2],[3,4]] # 获取第2行，第3列的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>三维数组索引：</p>
-<pre><code class="python">a = np.arange(30).reshape(2, 5, 3)
-a[[0, 1], [1, 2], [1, 2]]
-</code></pre>
-</li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+a<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
 </blockquote>
 <h2 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h2><blockquote>
-<pre><code>Ndarray[start:stop:step]
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">Ndarray[start:stop:step]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>[start:stop:step]</code> 分别代表 <code>[起始索引:截至索引:步长]</code>。</p>
 <p>一维数组：a[5:10]</p>
 <p>二维数组：[0:3, 2:4]</p>
 </blockquote>
 <h2 id="排序、搜索、计数"><a href="#排序、搜索、计数" class="headerlink" title="排序、搜索、计数"></a>排序、搜索、计数</h2><h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><blockquote>
-<pre><code class="python">numpy.sort(a, axis=-1, kind=&#39;quicksort&#39;, order=None)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">numpy<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>a<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> kind<span class="token operator">=</span><span class="token string">'quicksort'</span><span class="token punctuation">,</span> order<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li><code>a</code>：数组。</li>
 <li><code>axis</code>：要排序的轴。如果为<code>None</code>，则在排序之前将数组铺平。默认值为 <code>-1</code>，沿最后一个轴排序。</li>
