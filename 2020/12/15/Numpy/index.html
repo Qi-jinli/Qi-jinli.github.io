@@ -1,110 +1,180 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <title>Numpy</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
-<link rel="stylesheet" href="/Qi-jinli/css/style.css">
-<link rel="shortcut icon" href="/Qi-jinli/favicon.ico">
-<link rel="apple-touch-icon" href="/Qi-jinli/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/Qi-jinli/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/Qi-jinli/favicon-32x32.png">
-<link rel="manifest" href="/Qi-jinli/site.webmanifest">
-
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Numpy数组类型 Numpy的优势：  内存风格 ndarray在存储数据的时候，数据与数据的地址都是连续的，这样就给使得批量操作数组元素时速度更快。  ndarray支持并行化运算（向量化运算） numpy内置了并行运算功能，当系统有多个核心时，做某种计算时，numpy会自动做并行计算  效率远高于纯Python代码 Numpy底层使用C语言编写，内部解除了GIL（全局解释器锁），其对数组的操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy">
+<meta property="og:url" content="http://github.com/Qi-jinli/2020/12/15/Numpy/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="Numpy数组类型 Numpy的优势：  内存风格 ndarray在存储数据的时候，数据与数据的地址都是连续的，这样就给使得批量操作数组元素时速度更快。  ndarray支持并行化运算（向量化运算） numpy内置了并行运算功能，当系统有多个核心时，做某种计算时，numpy会自动做并行计算  效率远高于纯Python代码 Numpy底层使用C语言编写，内部解除了GIL（全局解释器锁），其对数组的操">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-15T11:33:06.000Z">
+<meta property="article:modified_time" content="2021-05-01T05:40:57.676Z">
+<meta property="article:author" content="Qijinli">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/Qi-jinli/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/Qi-jinli/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/Qi-jinli/images/apple-touch-icon.png">
+          
         
     
-    <link rel='stylesheet' href="/Qi-jinli/./css/dracula.css">
+    <!-- title -->
+    <title>Numpy</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/Qi-jinli/lib/font-awesome/css/font-awesome.min.css">
 
-    <meta name="generator" content="Hexo 5.4.0"></head>
-    <body>
-        <header class="al_header al_pos_fixed">
-    <div class="al_header_container dis_flex_jcenter">
-        <div class="al_header_container_left">
-            <div class="al_header_site_title">
-                <a href="/">Qijinli's Blog</a>
-            </div>
-        </div>
+    
+<link rel="stylesheet" href="/Qi-jinli/lib/meslo-LG/styles.css">
 
-        <div class="dis_flex_jcenter">
-            <div class="al_header_setting">
-                <svg class="al_header_icon">
-                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
-                </svg>
-            </div>
-        </div>
+    
+<link rel="stylesheet" href="/Qi-jinli/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/Qi-jinli/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/Qi-jinli/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Qijinli&#39;s Blog</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
     </div>
-</header>
-
-        <div class="al_sidebar">
-
-    <div class="al_sidebar_overlay al_full_cover"></div>
-
-    <div class="al_pos_fixed al_sidebar_cnt">
-        <div class="dis_flex_acenter al_sidebar_header">
-            <h3>Qijinli's Blog</h3>
-            <div class="al_sidebar_close al_header_setting">
-                <svg class="al_header_icon">
-                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
-                </svg>
-            </div>
-        </div>
-
-        <div class="al_sidebar_author_cnt">
-
-            <div class="al_sidebar_author_info">
-                <h4>Qijinli</h4>
-                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
-                <p>越努力，越优秀</p>
-            </div>
-
-            
-        </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
     </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
 </div>
 
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/Qi-jinli/home/">Home</a></li>
+         
+          <li><a href="/Qi-jinli/about/">About</a></li>
+         
+          <li><a href="/Qi-jinli/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
         
-    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
-        <img class="al_lightbox_img"/>
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/Qi-jinli/2020/12/17/Pandas/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://github.com/Qi-jinli/2020/12/15/Numpy/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&text=Numpy"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&is_video=false&description=Numpy"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Numpy&body=Check out this article: http://github.com/Qi-jinli/2020/12/15/Numpy/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&name=Numpy&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-    <div class="al_page_background dis_flex_center al_full_cover"></div>
-    <div class="al_page_container">
-        <div class="al_pos_ab al_fake_background"></div>
-        <div class="al_main_container al_shadow al_main_page_container">
-            <article class="al_article">
-                <header>
-                    <h1 class="al_page_title">
-                        Numpy
-                    </h1>
-                    <div class="al_page_info dis_flex">
-                        <div class="al_page_content_info">
-                            Tue December 15, 2020 07:33 PM
-                        </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">Numpy数组类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy%E6%95%B0%E7%BB%84%E7%94%9F%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">Numpy数组生成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%88%96%E5%85%83%E7%BB%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.1.</span> <span class="toc-text">列表或元组转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.</span> <span class="toc-text">numpy原生方法创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arange%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.1.</span> <span class="toc-text">arange方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linspace%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.2.</span> <span class="toc-text">linspace方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ones%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.3.</span> <span class="toc-text">ones方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zeros%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.4.</span> <span class="toc-text">zeros方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eye%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.5.</span> <span class="toc-text">eye方法创建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E3%80%81%E5%87%BD%E6%95%B0%E4%B8%AD%E5%88%9B%E5%BB%BAndarray"><span class="toc-number">2.3.</span> <span class="toc-text">从数据文件、函数中创建ndarray</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">数组属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%BB%B4%E5%BA%A6%E5%92%8C%E5%BD%A2%E7%8A%B6"><span class="toc-number">4.</span> <span class="toc-text">数组维度和形状</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">4.1.</span> <span class="toc-text">数组基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%AE%BE%E5%BD%A2%E7%8A%B6"><span class="toc-number">4.1.1.</span> <span class="toc-text">重设形状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B1%95%E5%BC%80"><span class="toc-number">4.1.2.</span> <span class="toc-text">数组展开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.1.3.</span> <span class="toc-text">轴移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E4%BA%A4%E6%8D%A2"><span class="toc-number">4.1.4.</span> <span class="toc-text">轴交换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">4.1.5.</span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BD%AC%E7%BD%AE"><span class="toc-number">4.1.6.</span> <span class="toc-text">数组转置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E5%BA%A6%E6%94%B9%E5%8F%98"><span class="toc-number">4.1.7.</span> <span class="toc-text">维度改变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.1.8.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.9.</span> <span class="toc-text">数组连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%A0%86%E5%8F%A0"><span class="toc-number">4.1.10.</span> <span class="toc-text">数组堆叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86"><span class="toc-number">4.1.11.</span> <span class="toc-text">数组拆分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="toc-number">4.1.12.</span> <span class="toc-text">增删改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Numpy%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">Numpy随机数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83"><span class="toc-number">4.3.</span> <span class="toc-text">概率密度分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">数学函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">三角函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E6%9B%B2%E7%BA%BF%E5%87%BD%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">双曲线函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E4%BF%AE%E7%BA%A6"><span class="toc-number">5.3.</span> <span class="toc-text">数值修约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E5%92%8C%E3%80%81%E6%B1%82%E7%A7%AF%E3%80%81%E5%B7%AE%E5%88%86"><span class="toc-number">5.4.</span> <span class="toc-text">求和、求积、差分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%92%8C%E5%AF%B9%E6%95%B0"><span class="toc-number">5.5.</span> <span class="toc-text">指数和对数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">5.6.</span> <span class="toc-text">算数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E5%92%8C%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0"><span class="toc-number">5.7.</span> <span class="toc-text">逻辑运算和判断函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E8%BF%90%E7%AE%97"><span class="toc-number">5.8.</span> <span class="toc-text">统计运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F%E7%A7%AF"><span class="toc-number">5.9.</span> <span class="toc-text">矩阵和向量积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">5.10.</span> <span class="toc-text">代数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">5.11.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="toc-number">6.</span> <span class="toc-text">数组索引和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B4%A2%E5%BC%95"><span class="toc-number">6.1.</span> <span class="toc-text">数据索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87"><span class="toc-number">6.2.</span> <span class="toc-text">数组切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E3%80%81%E6%90%9C%E7%B4%A2%E3%80%81%E8%AE%A1%E6%95%B0"><span class="toc-number">6.3.</span> <span class="toc-text">排序、搜索、计数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">6.3.1.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%92%8C%E8%AE%A1%E6%95%B0"><span class="toc-number">6.3.2.</span> <span class="toc-text">搜索和计数</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
 
-                        
-                            <div class="al_page_content_info">
-                                4.9k words
-                            </div>
-                        
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Numpy
+    </h1>
 
-                        
-                            <div class="al_page_content_info">
-                                20 minutes read
-                            </div>
-                        
-                        <span class="tags"></span>
-                    </div>
-                </header>
 
-                
-                    <div class="al_page_content_outline">
-                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">Numpy数组类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy%E6%95%B0%E7%BB%84%E7%94%9F%E6%88%90"><span class="toc-text">Numpy数组生成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%88%96%E5%85%83%E7%BB%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">列表或元组转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-text">numpy原生方法创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arange%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-text">arange方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linspace%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-text">linspace方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ones%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-text">ones方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zeros%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-text">zeros方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eye%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-text">eye方法创建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E3%80%81%E5%87%BD%E6%95%B0%E4%B8%AD%E5%88%9B%E5%BB%BAndarray"><span class="toc-text">从数据文件、函数中创建ndarray</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7"><span class="toc-text">数组属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%BB%B4%E5%BA%A6%E5%92%8C%E5%BD%A2%E7%8A%B6"><span class="toc-text">数组维度和形状</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">数组基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%AE%BE%E5%BD%A2%E7%8A%B6"><span class="toc-text">重设形状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B1%95%E5%BC%80"><span class="toc-text">数组展开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E7%A7%BB%E5%8A%A8"><span class="toc-text">轴移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E4%BA%A4%E6%8D%A2"><span class="toc-text">轴交换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BD%AC%E7%BD%AE"><span class="toc-text">数组转置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E5%BA%A6%E6%94%B9%E5%8F%98"><span class="toc-text">维度改变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%9E%E6%8E%A5"><span class="toc-text">数组连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%A0%86%E5%8F%A0"><span class="toc-text">数组堆叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86"><span class="toc-text">数组拆分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="toc-text">增删改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Numpy%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-text">Numpy随机数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83"><span class="toc-text">概率密度分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="toc-text">数学函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="toc-text">三角函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E6%9B%B2%E7%BA%BF%E5%87%BD%E6%95%B0"><span class="toc-text">双曲线函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E4%BF%AE%E7%BA%A6"><span class="toc-text">数值修约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E5%92%8C%E3%80%81%E6%B1%82%E7%A7%AF%E3%80%81%E5%B7%AE%E5%88%86"><span class="toc-text">求和、求积、差分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%92%8C%E5%AF%B9%E6%95%B0"><span class="toc-text">指数和对数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-text">算数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E5%92%8C%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0"><span class="toc-text">逻辑运算和判断函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E8%BF%90%E7%AE%97"><span class="toc-text">统计运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F%E7%A7%AF"><span class="toc-text">矩阵和向量积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-text">代数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="toc-text">数组索引和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B4%A2%E5%BC%95"><span class="toc-text">数据索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87"><span class="toc-text">数组切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E3%80%81%E6%90%9C%E7%B4%A2%E3%80%81%E8%AE%A1%E6%95%B0"><span class="toc-text">排序、搜索、计数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%92%8C%E8%AE%A1%E6%95%B0"><span class="toc-text">搜索和计数</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                
 
-                
-                <section id="post-body">
-                    <h1 id="Numpy数组类型"><a href="#Numpy数组类型" class="headerlink" title="Numpy数组类型"></a>Numpy数组类型</h1><blockquote>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qijinli's Blog</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2020-12-15T11:33:06.000Z" itemprop="datePublished">2020-12-15</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Numpy数组类型"><a href="#Numpy数组类型" class="headerlink" title="Numpy数组类型"></a>Numpy数组类型</h1><blockquote>
 <p>Numpy的优势：</p>
 <ol>
 <li><p><strong>内存风格</strong></p>
@@ -665,57 +735,95 @@
 </ul>
 </blockquote>
 
-                </section>
+  </div>
+</article>
 
-                
-                
-                
 
-            </article>
 
-            
-            <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/2020/12/17/Pandas/">
-                    
-                        <svg class="al_arrow">
-                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
-                        </svg>
-                        <span class="al_text_ellipsis al_post_nav_desc">Pandas</span>
-                    
-                </a>
-                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/">
-                    
-                </a>
-            </nav>
-        </div>
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/Qi-jinli/home/">Home</a></li>
+         
+          <li><a href="/Qi-jinli/about/">About</a></li>
+         
+          <li><a href="/Qi-jinli/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
     </div>
 
-
-        <div class="al_index_footer dis_flex_center">
-    <div class="al_index_footer_item al_index_footer_title">
-        Qijinli
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">Numpy数组类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy%E6%95%B0%E7%BB%84%E7%94%9F%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">Numpy数组生成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%88%96%E5%85%83%E7%BB%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.1.</span> <span class="toc-text">列表或元组转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.</span> <span class="toc-text">numpy原生方法创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arange%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.1.</span> <span class="toc-text">arange方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linspace%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.2.</span> <span class="toc-text">linspace方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ones%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.3.</span> <span class="toc-text">ones方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zeros%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.4.</span> <span class="toc-text">zeros方法创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eye%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.5.</span> <span class="toc-text">eye方法创建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E3%80%81%E5%87%BD%E6%95%B0%E4%B8%AD%E5%88%9B%E5%BB%BAndarray"><span class="toc-number">2.3.</span> <span class="toc-text">从数据文件、函数中创建ndarray</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">数组属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%BB%B4%E5%BA%A6%E5%92%8C%E5%BD%A2%E7%8A%B6"><span class="toc-number">4.</span> <span class="toc-text">数组维度和形状</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">4.1.</span> <span class="toc-text">数组基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%AE%BE%E5%BD%A2%E7%8A%B6"><span class="toc-number">4.1.1.</span> <span class="toc-text">重设形状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B1%95%E5%BC%80"><span class="toc-number">4.1.2.</span> <span class="toc-text">数组展开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.1.3.</span> <span class="toc-text">轴移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E4%BA%A4%E6%8D%A2"><span class="toc-number">4.1.4.</span> <span class="toc-text">轴交换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">4.1.5.</span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BD%AC%E7%BD%AE"><span class="toc-number">4.1.6.</span> <span class="toc-text">数组转置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E5%BA%A6%E6%94%B9%E5%8F%98"><span class="toc-number">4.1.7.</span> <span class="toc-text">维度改变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.1.8.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.9.</span> <span class="toc-text">数组连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%A0%86%E5%8F%A0"><span class="toc-number">4.1.10.</span> <span class="toc-text">数组堆叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86"><span class="toc-number">4.1.11.</span> <span class="toc-text">数组拆分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="toc-number">4.1.12.</span> <span class="toc-text">增删改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Numpy%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">Numpy随机数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83"><span class="toc-number">4.3.</span> <span class="toc-text">概率密度分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">数学函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">三角函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E6%9B%B2%E7%BA%BF%E5%87%BD%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">双曲线函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E4%BF%AE%E7%BA%A6"><span class="toc-number">5.3.</span> <span class="toc-text">数值修约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E5%92%8C%E3%80%81%E6%B1%82%E7%A7%AF%E3%80%81%E5%B7%AE%E5%88%86"><span class="toc-number">5.4.</span> <span class="toc-text">求和、求积、差分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%92%8C%E5%AF%B9%E6%95%B0"><span class="toc-number">5.5.</span> <span class="toc-text">指数和对数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">5.6.</span> <span class="toc-text">算数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E5%92%8C%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0"><span class="toc-number">5.7.</span> <span class="toc-text">逻辑运算和判断函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E8%BF%90%E7%AE%97"><span class="toc-number">5.8.</span> <span class="toc-text">统计运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F%E7%A7%AF"><span class="toc-number">5.9.</span> <span class="toc-text">矩阵和向量积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">5.10.</span> <span class="toc-text">代数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">5.11.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="toc-number">6.</span> <span class="toc-text">数组索引和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B4%A2%E5%BC%95"><span class="toc-number">6.1.</span> <span class="toc-text">数据索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87"><span class="toc-number">6.2.</span> <span class="toc-text">数组切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E3%80%81%E6%90%9C%E7%B4%A2%E3%80%81%E8%AE%A1%E6%95%B0"><span class="toc-number">6.3.</span> <span class="toc-text">排序、搜索、计数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">6.3.1.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%92%8C%E8%AE%A1%E6%95%B0"><span class="toc-number">6.3.2.</span> <span class="toc-text">搜索和计数</span></a></li></ol></li></ol></li></ol>
     </div>
 
-    
-    
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://github.com/Qi-jinli/2020/12/15/Numpy/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&text=Numpy"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&is_video=false&description=Numpy"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Numpy&body=Check out this article: http://github.com/Qi-jinli/2020/12/15/Numpy/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&title=Numpy"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://github.com/Qi-jinli/2020/12/15/Numpy/&name=Numpy&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
-    <div class="al_index_footer_item al_index_footer_extra">
-        Created By 
-        <a href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
-         · Power By 
-        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
     </div>
 
-    <div class="al_index_footer_item al_index_footer_extra_right">
-        All Right Reserved
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
     </div>
+
+  </div>
 </div>
 
-        <script type="text/javascript" async="async" src="/Qi-jinli/javascripts/acelog.js"></script>
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qijinli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/Qi-jinli/home/">Home</a></li>
+         
+          <li><a href="/Qi-jinli/about/">About</a></li>
+         
+          <li><a href="/Qi-jinli/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
         
-        
-        
-        
-    </body>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/Qi-jinli/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/Qi-jinli/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
 </html>
-        

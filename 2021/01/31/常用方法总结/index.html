@@ -1,110 +1,180 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <title>常用方法总结</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
-<link rel="stylesheet" href="/Qi-jinli/css/style.css">
-<link rel="shortcut icon" href="/Qi-jinli/favicon.ico">
-<link rel="apple-touch-icon" href="/Qi-jinli/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/Qi-jinli/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/Qi-jinli/favicon-32x32.png">
-<link rel="manifest" href="/Qi-jinli/site.webmanifest">
-
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Numpy创建 123456789101112131415numpy.array(object,dtype&#x3D;None,copy&#x3D;True,order&#x3D;None,subok&#x3D;False,ndmin&#x3D;0) # 列表或元组转换numpy.arange(start,stop,step,dtype&#x3D;None) # 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长stepnumpy.lins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用方法总结">
+<meta property="og:url" content="http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="Numpy创建 123456789101112131415numpy.array(object,dtype&#x3D;None,copy&#x3D;True,order&#x3D;None,subok&#x3D;False,ndmin&#x3D;0) # 列表或元组转换numpy.arange(start,stop,step,dtype&#x3D;None) # 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长stepnumpy.lins">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-31T03:39:15.734Z">
+<meta property="article:modified_time" content="2021-05-01T05:24:43.363Z">
+<meta property="article:author" content="Qijinli">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/Qi-jinli/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/Qi-jinli/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/Qi-jinli/images/apple-touch-icon.png">
+          
         
     
-    <link rel='stylesheet' href="/Qi-jinli/./css/dracula.css">
+    <!-- title -->
+    <title>常用方法总结</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/Qi-jinli/lib/font-awesome/css/font-awesome.min.css">
 
-    <meta name="generator" content="Hexo 5.4.0"></head>
-    <body>
-        <header class="al_header al_pos_fixed">
-    <div class="al_header_container dis_flex_jcenter">
-        <div class="al_header_container_left">
-            <div class="al_header_site_title">
-                <a href="/">Qijinli's Blog</a>
-            </div>
-        </div>
+    
+<link rel="stylesheet" href="/Qi-jinli/lib/meslo-LG/styles.css">
 
-        <div class="dis_flex_jcenter">
-            <div class="al_header_setting">
-                <svg class="al_header_icon">
-                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
-                </svg>
-            </div>
-        </div>
+    
+<link rel="stylesheet" href="/Qi-jinli/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/Qi-jinli/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/Qi-jinli/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Qijinli&#39;s Blog</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
     </div>
-</header>
-
-        <div class="al_sidebar">
-
-    <div class="al_sidebar_overlay al_full_cover"></div>
-
-    <div class="al_pos_fixed al_sidebar_cnt">
-        <div class="dis_flex_acenter al_sidebar_header">
-            <h3>Qijinli's Blog</h3>
-            <div class="al_sidebar_close al_header_setting">
-                <svg class="al_header_icon">
-                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
-                </svg>
-            </div>
-        </div>
-
-        <div class="al_sidebar_author_cnt">
-
-            <div class="al_sidebar_author_info">
-                <h4>Qijinli</h4>
-                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
-                <p>越努力，越优秀</p>
-            </div>
-
-            
-        </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
     </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
 </div>
 
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/Qi-jinli/home/">Home</a></li>
+         
+          <li><a href="/Qi-jinli/about/">About</a></li>
+         
+          <li><a href="/Qi-jinli/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
         
-    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
-        <img class="al_lightbox_img"/>
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/Qi-jinli/2021/01/29/Seaborn/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&text=常用方法总结"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&is_video=false&description=常用方法总结"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=常用方法总结&body=Check out this article: http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&name=常用方法总结&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-    <div class="al_page_background dis_flex_center al_full_cover"></div>
-    <div class="al_page_container">
-        <div class="al_pos_ab al_fake_background"></div>
-        <div class="al_main_container al_shadow al_main_page_container">
-            <article class="al_article">
-                <header>
-                    <h1 class="al_page_title">
-                        常用方法总结
-                    </h1>
-                    <div class="al_page_info dis_flex">
-                        <div class="al_page_content_info">
-                            Sun January 31, 2021 11:39 AM
-                        </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy"><span class="toc-number">1.</span> <span class="toc-text">Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-number">1.4.</span> <span class="toc-text">逻辑与统计计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pandas"><span class="toc-number">2.</span> <span class="toc-text">Pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-number">2.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.</span> <span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E5%87%8F"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据删减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%9F%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">运算和统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">2.5.</span> <span class="toc-text">高级操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-number">3.</span> <span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">简单绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">图形样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seaborn"><span class="toc-number">4.</span> <span class="toc-text">Seaborn</span></a></li></ol>
+    </div>
+  </span>
+</div>
 
-                        
-                            <div class="al_page_content_info">
-                                2.9k words
-                            </div>
-                        
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        常用方法总结
+    </h1>
 
-                        
-                            <div class="al_page_content_info">
-                                11 minutes read
-                            </div>
-                        
-                        <span class="tags"></span>
-                    </div>
-                </header>
 
-                
-                    <div class="al_page_content_outline">
-                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy"><span class="toc-text">Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-text">逻辑与统计计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pandas"><span class="toc-text">Pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E5%87%8F"><span class="toc-text">数据删减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%9F%E8%AE%A1"><span class="toc-text">运算和统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-text">高级操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-text">简单绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="toc-text">图形样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seaborn"><span class="toc-text">Seaborn</span></a></li></ol>
-                    </div>
-                
 
-                
-                <section id="post-body">
-                    <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qijinli's Blog</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2021-01-31T03:39:15.734Z" itemprop="datePublished">2021-01-31</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">numpy.array(<span class="hljs-built_in">object</span>,dtype=<span class="hljs-literal">None</span>,copy=<span class="hljs-literal">True</span>,order=<span class="hljs-literal">None</span>,subok=<span class="hljs-literal">False</span>,ndmin=<span class="hljs-number">0</span>) <span class="hljs-comment"># 列表或元组转换</span><br>numpy.arange(start,stop,step,dtype=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</span><br>numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>) <span class="hljs-comment"># 同arange一样</span><br>numpy.logspace(start, stop, num) <span class="hljs-comment"># 以10为底，生成num个等比数列</span><br>numpy.ones(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-comment"># 生成全为1的多维数组</span><br>numpy.ones_like(a, dtype) <span class="hljs-comment"># 快速创建数值全部为1的多维数组</span><br>numpy.zeros(shape, dtype=<span class="hljs-literal">None</span>, order=<span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-comment"># 生成全为0的多维数组</span><br>numpy.zeros_like(a, dtype) <span class="hljs-comment"># 快速创建数值全部为0的多维数组</span><br>numpy.eye(N, M=<span class="hljs-literal">None</span>, k=<span class="hljs-number">0</span>, dtype=&lt;<span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span>&gt;)  <span class="hljs-comment"># 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</span><br>numpy.random.rand(d0, d1, ..., dn )<span class="hljs-comment"># 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。</span><br>numpy.random.randn(d0, d1, ..., dn) <span class="hljs-comment"># 从标准正态分布中返回一个或多个样本值</span><br>numpy.random.standard_normal(size) <span class="hljs-comment"># 从标准正态分布中生成随机数</span><br>numpy.random.randint(low, high, size, dtype) <span class="hljs-comment"># 方法将会生成[low, high)的随机整数</span><br>numpy.random.normal(loc，scale，size) <span class="hljs-comment"># 从正态分布绘制随机样本。参数，均值和偏差</span><br>numpy.random.uniform(low=<span class="hljs-number">0</span>，high=<span class="hljs-number">1</span>，size) <span class="hljs-comment"># 从均匀分布中生成随机数</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
@@ -240,57 +310,95 @@
 
 </blockquote>
 
-                </section>
+  </div>
+</article>
 
-                
-                
-                
 
-            </article>
 
-            
-            <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/">
-                    
-                </a>
-                <a class="al_post_nav_item dis_flex_acenter" href="/Qi-jinli/2021/01/29/Seaborn/">
-                    
-                        <span class="al_text_ellipsis al_post_nav_desc">Seaborn</span>
-                        <svg class="al_arrow">
-                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
-                        </svg>
-                    
-                </a>
-            </nav>
-        </div>
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/Qi-jinli/home/">Home</a></li>
+         
+          <li><a href="/Qi-jinli/about/">About</a></li>
+         
+          <li><a href="/Qi-jinli/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
     </div>
 
-
-        <div class="al_index_footer dis_flex_center">
-    <div class="al_index_footer_item al_index_footer_title">
-        Qijinli
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Numpy"><span class="toc-number">1.</span> <span class="toc-text">Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-number">1.4.</span> <span class="toc-text">逻辑与统计计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pandas"><span class="toc-number">2.</span> <span class="toc-text">Pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-number">2.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.</span> <span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%A0%E5%87%8F"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据删减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%9F%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">运算和统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">2.5.</span> <span class="toc-text">高级操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-number">3.</span> <span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">简单绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">图形样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seaborn"><span class="toc-number">4.</span> <span class="toc-text">Seaborn</span></a></li></ol>
     </div>
 
-    
-    
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&text=常用方法总结"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&is_video=false&description=常用方法总结"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=常用方法总结&body=Check out this article: http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&title=常用方法总结"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://github.com/Qi-jinli/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/&name=常用方法总结&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
-    <div class="al_index_footer_item al_index_footer_extra">
-        Created By 
-        <a href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
-         · Power By 
-        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
     </div>
 
-    <div class="al_index_footer_item al_index_footer_extra_right">
-        All Right Reserved
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
     </div>
+
+  </div>
 </div>
 
-        <script type="text/javascript" async="async" src="/Qi-jinli/javascripts/acelog.js"></script>
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qijinli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/Qi-jinli/home/">Home</a></li>
+         
+          <li><a href="/Qi-jinli/about/">About</a></li>
+         
+          <li><a href="/Qi-jinli/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
         
-        
-        
-        
-    </body>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/Qi-jinli/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/Qi-jinli/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
 </html>
-        
