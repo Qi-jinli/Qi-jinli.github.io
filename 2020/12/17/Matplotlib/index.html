@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.png"/>
-	<link rel="shortcut icon" href="/img/logo.png">
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.jpeg"/>
+	<link rel="shortcut icon" href="/img/logo.jpeg">
 	
 			    <title>
     Qijinli's Blog
@@ -52,7 +52,7 @@
         }
       });
     </script>
-    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async type="text/javascript" src=""></script>
   
 
 
@@ -357,7 +357,8 @@ axes.legend(["y = x**2", "y = x**3"], loc=0)
 </code></pre>
 <p><code>loc</code> 参数标记图例位置，<code>1，2，3，4</code> 依次代表：右上角、左上角、左下角，右下角；<code>0</code> 代表自适应。</p>
 </blockquote>
-<h3 id="添加自定义刻度"><a href="#添加自定义刻度" class="headerlink" title="添加自定义刻度"></a>添加自定义刻度</h3><pre class=" language-lang-python"><code class="language-lang-python"># 构造x轴刻度标签
+<h3 id="添加自定义刻度"><a href="#添加自定义刻度" class="headerlink" title="添加自定义刻度"></a>添加自定义刻度</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 构造x轴刻度标签
 x_ticks_label = ["11点&#123;&#125;分".format(i) for i in x]
 # 构造y轴刻度
 y_ticks = range(40)
@@ -365,7 +366,6 @@ y_ticks = range(40)
 plt.xticks(x[::5], x_ticks_label[::5])
 plt.yticks(y_ticks[::5])
 </code></pre>
-<blockquote>
 <p>显示中文字体</p>
 <pre class=" language-lang-python"><code class="language-lang-python">from pylab import mpl
 # 设置显示中文字体
@@ -472,37 +472,27 @@ for i, rect in enumerate(bars):
 <h1 id="常见图形绘制"><a href="#常见图形绘制" class="headerlink" title="常见图形绘制"></a>常见图形绘制</h1><blockquote>
 <p><strong>折线图</strong>：以折线的上升或下降来表示统计数量的增减变化的统计图</p>
 <p><strong>特点：能够显示数据的变化趋势，反映事物的变化情况。(变化)</strong></p>
-<p>api：plt.plot(x, y)</p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.plot(x, y)
+</code></pre>
 <p><strong>散点图：</strong>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量之间是否存在某种关联或总结坐标点的分布模式。</p>
 <p><strong>特点：判断变量之间是否存在数量关联趋势,展示离群点(分布规律)</strong></p>
-<p>api：plt.scatter(x, y)</p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.scatter(x, y)
+</code></pre>
 <p><strong>柱状图：</strong>排列在工作表的列或行中的数据可以绘制到柱状图中。</p>
 <p><strong>特点：绘制连离散的数据,能够一眼看出各个数据的大小,比较数据之间的差别。(统计/对比)</strong></p>
-<p>api：plt.bar(x, width, align=’center’, **kwargs)</p>
-<pre class=" language-lang-python"><code class="language-lang-python">Parameters:    
-x : 需要传递的数据
-width : 柱状图的宽度
-align : 每个柱状图的位置对齐方式
-    &#123;‘center’, ‘edge’&#125;, optional, default: ‘center’
-**kwargs :
-color:选择柱状图的颜色
+<pre class=" language-lang-python"><code class="language-lang-python">plt.bar(x, width, align='center', **kwargs)
 </code></pre>
+<p>Parameters:<br>    <code>x</code> : 需要传递的数据<br>    <code>width</code> : 柱状图的宽度<br>    <code>align</code> : 每个柱状图的位置对齐方式<br>         {‘center’, ‘edge’}, optional, default: ‘center’<br>    <code>`**kwargs</code> :<br>        color:选择柱状图的颜色</p>
 <p><strong>直方图：</strong>由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据范围，纵轴表示分布情况。</p>
 <p><strong>特点：绘制连续性的数据展示一组或者多组数据的分布状况(统计)</strong></p>
-<p>api：matplotlib.pyplot.hist(x, bins=None)</p>
-<pre class=" language-lang-python"><code class="language-lang-python">Parameters:    
-x : 需要传递的数据
-bins : 组距
+<pre class=" language-lang-python"><code class="language-lang-python">matplotlib.pyplot.hist(x, bins=None)
 </code></pre>
+<p>Parameters:<br>    <code>x</code>: 需要传递的数据<br>    <code>bins</code> : 组距</p>
 <p><strong>饼图：</strong>用于表示不同分类的占比情况，通过弧度大小来对比各种分类。</p>
 <p><strong>特点：分类数据的占比情况(占比)</strong></p>
-<p>api：plt.pie(x, labels=,autopct=,colors)</p>
-<pre class=" language-lang-python"><code class="language-lang-python">Parameters:  
-x:数量，自动算百分比
-labels:每部分名称
-autopct:占比显示指定%1.2f%%
-colors:每部分颜色
+<pre class=" language-lang-python"><code class="language-lang-python">plt.pie(x, labels=,autopct=,colors)
 </code></pre>
+<p>Parameters:<br>    <code>x</code>:数量，自动算百分比<br>    <code>labels</code>:每部分名称<br>    <code>autopct</code>:占比显示指定%1.2f%%<br>    <code>colors</code>:每部分颜色</p>
 </blockquote>
 
             </div>

@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.png"/>
-	<link rel="shortcut icon" href="/img/logo.png">
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.jpeg"/>
+	<link rel="shortcut icon" href="/img/logo.jpeg">
 	
 			    <title>
     Qijinli's Blog
@@ -52,7 +52,7 @@
         }
       });
     </script>
-    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async type="text/javascript" src=""></script>
   
 
 
@@ -279,11 +279,11 @@ a.astype(int).dtype # 将a的数值类型从float64转为int64
 <li>order：{‘C’,’F’},以行或列为主排列顺序</li>
 </ul>
 </blockquote>
-<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><pre class=" language-lang-python"><code class="language-lang-python">numpy.array(object,dtype=None,copy=True,order=None,subok=False,ndmin=0)
+<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.array(object,dtype=None,copy=True,order=None,subok=False,ndmin=0)
 a1 = numpy.array(a) # 深拷贝
 a2 = numpy.asarray(a) # 浅拷贝
 </code></pre>
-<blockquote>
 <p>其中参数：</p>
 <ol>
 <li><code>object</code>：列表、元组等。</li>
@@ -294,9 +294,6 @@ a2 = numpy.asarray(a) # 浅拷贝
 <li><code>ndmin</code>：生成的数组应具有的最小维数。</li>
 </ol>
 </blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.array([[1, 2, 3], [4, 5, 6]])
-numpy.array([(1, 2), (3, 4), (5, 6)])
-</code></pre>
 <h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><blockquote>
 <pre class=" language-lang-python"><code class="language-lang-python">numpy.arange(start,stop,step,dtype=None)
 例：numpy.arange(3,7,0.5,dtype='float32')
@@ -317,11 +314,11 @@ numpy.array([(1, 2), (3, 4), (5, 6)])
 <li><code>dtype</code>：数组的类型。</li>
 </ul>
 </blockquote>
-<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><pre class=" language-lang-python"><code class="language-lang-python">numpy.ones(shape, dtype=None, order='C')
+<h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.ones(shape, dtype=None, order='C')
 numpy.ones_like(a, dtype)
 numpy.ones((2, 3))
 </code></pre>
-<blockquote>
 <p>Numpy.ones用于快速创建数值全部为1的多维数组</p>
 <ul>
 <li><code>shape</code>：用于指定数组形状，例如（1， 2）或 3。</li>
@@ -686,23 +683,24 @@ numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符�
 </blockquote>
 <h1 id="数组索引和切片"><a href="#数组索引和切片" class="headerlink" title="数组索引和切片"></a>数组索引和切片</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><blockquote>
 <ol>
-<li><p>一维数组索引：</p>
+<li>一维数组索引：</li>
+</ol>
 <pre class=" language-lang-python"><code class="language-lang-python">a=np.arange(10)
 a[1] #获取索引值为1的数据
 a[[1,2,3]] #分别获取索引值1，2，3的数据
 </code></pre>
-</li>
-<li><p>二维数组索引：</p>
+<ol>
+<li>二维数组索引：</li>
+</ol>
 <pre class=" language-lang-python"><code class="language-lang-python">a = np.arange(20).reshape(4, 5)
 a[[1,2],[3,4]] # 获取第2行，第3列的数据
 </code></pre>
-</li>
-<li><p>三维数组索引：</p>
+<ol>
+<li>三维数组索引：</li>
+</ol>
 <pre class=" language-lang-python"><code class="language-lang-python">a = np.arange(30).reshape(2, 5, 3)
 a[[0, 1], [1, 2], [1, 2]]
 </code></pre>
-</li>
-</ol>
 </blockquote>
 <h2 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h2><blockquote>
 <pre class=" language-lang-python"><code class="language-lang-python">Ndarray[start:stop:step]
