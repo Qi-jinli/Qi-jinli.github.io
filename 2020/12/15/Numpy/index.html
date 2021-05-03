@@ -21,14 +21,14 @@
     </noscript>
     <style type="text/css">
         body:before {
-          content: ' ';
+          content: 'portrait';
           position: fixed;
           top: 0;
           background: url('/img/bg.jpg') center 0 no-repeat;
           right: 0;
           bottom: 0;
           left: 0;
-          background-size: cover; 
+          background-size: cover;
         }
     </style>
 
@@ -112,12 +112,6 @@
 		        </li>
 		        
 		        <li>
-		            <a href="/group/" title="团队">
-		                团队
-		            </a>
-		        </li>
-		        
-		        <li>
 		            <a href="/gallery/" title="图库">
 		                图库
 		            </a>
@@ -136,14 +130,14 @@
 			<ul class="icons">
                     
                     <li>
-                        <a title="github" href="https://github.com/miccall" target="_blank" rel="noopener">
+                        <a title="github" href="https://github.com/Qi-jinli" target="_blank" rel="noopener">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>
                     
                     <li>
-                        <a title="500px" href="http://500px.com" target="_blank" rel="noopener">
-                            <i class="icon fa fa-500px"></i>
+                        <a title="qq" href="/871383068" target="_blank" rel="noopener">
+                            <i class="icon fa fa-qq"></i>
                         </a>
                     </li>
                     
@@ -151,7 +145,7 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(undefined);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/images/img/numpy.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
                 <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Numpy</h2></a>
             </div>
             <!-- Post -->
@@ -169,7 +163,6 @@
 <p>Numpy底层使用C语言编写，内部解除了GIL（全局解释器锁），其对数组的操作速度不受Python解释器的限制，所以，其效率远高于纯Python代码。</p>
 </li>
 </ol>
-</blockquote>
 <div class="table-container">
 <table>
 <thead>
@@ -270,7 +263,6 @@
 </tbody>
 </table>
 </div>
-<blockquote>
 <pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
 a = np.array([1.1,2.2,3.3],dtype=np.float64)
 a.astype(int).dtype # 将a的数值类型从float64转为int64
@@ -305,16 +297,16 @@ a2 = numpy.asarray(a) # 浅拷贝
 <pre class=" language-lang-python"><code class="language-lang-python">numpy.array([[1, 2, 3], [4, 5, 6]])
 numpy.array([(1, 2), (3, 4), (5, 6)])
 </code></pre>
-<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><pre class=" language-lang-python"><code class="language-lang-python">numpy.arange(start,stop,step,dtype=None)
+<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.arange(start,stop,step,dtype=None)
 例：numpy.arange(3,7,0.5,dtype='float32')
 </code></pre>
-<blockquote>
 <p>arange()的功能是在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</p>
 </blockquote>
-<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><pre class=" language-lang-python"><code class="language-lang-python">numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
 例：numpy.linspace(0, 10, 10, endpoint=True)
 </code></pre>
-<blockquote>
 <p>同arange一样，用于在区间内返回间隔均匀的值。</p>
 <ul>
 <li><code>start</code>：序列的起始值。</li>
@@ -337,11 +329,11 @@ numpy.ones((2, 3))
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><pre class=" language-lang-python"><code class="language-lang-python">numpy.zeros(shape, dtype=None, order='C')
+<h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.zeros(shape, dtype=None, order='C')
 numpy.zeros_like(a, dtype)
 例：np.zeros((3, 2))
 </code></pre>
-<blockquote>
 <p>和ones方法相似，只是全部填充为0</p>
 <ul>
 <li><code>shape</code>：用于指定数组形状，例如<code>（1， 2）</code>或<code>3</code>。</li>
@@ -349,10 +341,10 @@ numpy.zeros_like(a, dtype)
 <li><code>order</code>：<code>&#123;&#39;C&#39;，&#39;F&#39;&#125;</code>，按行或列方式储存数组。</li>
 </ul>
 </blockquote>
-<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><pre class=" language-lang-python"><code class="language-lang-python">numpy.eye(N, M=None, k=0, dtype=<type 'float'>)
+<h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.eye(N, M=None, k=0, dtype=<type 'float'>)
 np.eye(5, 4, 3)
 </code></pre>
-<blockquote>
 <p>用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</p>
 <ul>
 <li><code>N</code>：输出数组的行数。</li>
@@ -385,20 +377,23 @@ np.eye(5, 4, 3)
 </ol>
 </blockquote>
 <h1 id="数组维度和形状"><a href="#数组维度和形状" class="headerlink" title="数组维度和形状"></a>数组维度和形状</h1><h2 id="数组基本操作"><a href="#数组基本操作" class="headerlink" title="数组基本操作"></a>数组基本操作</h2><h3 id="重设形状"><a href="#重设形状" class="headerlink" title="重设形状"></a>重设形状</h3><blockquote>
-<pre><code>numpy.reshape(a, newshape)
-</code></pre><p><code>reshape</code>可以在不改变数组数据的同时改变数组形状，其中</p>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.reshape(a, newshape)
+</code></pre>
+<p><code>reshape</code>可以在不改变数组数据的同时改变数组形状，其中</p>
 <p><code>numpy.reshape()</code>等效于<code>ndarray.reshape()</code></p>
 <p><code>a</code>表示原数组，<code>newshape</code>表示用于指定新的形状（整数或者数组）</p>
 </blockquote>
 <h3 id="数组展开"><a href="#数组展开" class="headerlink" title="数组展开"></a>数组展开</h3><blockquote>
-<pre><code>numpy.ravel(a, order=&#39;C&#39;)
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.ravel(a, order='C')
 ndarray.flatten()
-</code></pre><p><code>ravel</code>的目的是将任意形状的数组扁平化，变为1维数组</p>
+</code></pre>
+<p><code>ravel</code>的目的是将任意形状的数组扁平化，变为1维数组</p>
 <p>a代表需要处理的数组，<code>order</code>表示变换时读取的顺序，默认按行依次读取，当<code>order=&#39;F&#39;</code>时按列读取</p>
 </blockquote>
 <h3 id="轴移动"><a href="#轴移动" class="headerlink" title="轴移动"></a>轴移动</h3><blockquote>
-<pre><code>numpy.moveaxis(a, source, destination)
-</code></pre><p><code>moveaxis</code>可以将数组的轴移动到新的位置</p>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.moveaxis(a, source, destination)
+</code></pre>
+<p><code>moveaxis</code>可以将数组的轴移动到新的位置</p>
 <ul>
 <li><code>a</code>：数组。</li>
 <li><code>source</code>：要移动的轴的原始位置。（元组下标）</li>
@@ -406,8 +401,9 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="轴交换"><a href="#轴交换" class="headerlink" title="轴交换"></a>轴交换</h3><blockquote>
-<pre><code>numpy.swapaxes(a, axis1, axis2)
-</code></pre><p><code>swapaxes</code>可以用来交换数组的轴</p>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.swapaxes(a, axis1, axis2)
+</code></pre>
+<p><code>swapaxes</code>可以用来交换数组的轴</p>
 <ul>
 <li><code>a</code>：数组。</li>
 <li><code>axis1</code>：需要交换的轴 1 位置。</li>
@@ -415,22 +411,25 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><blockquote>
-<pre><code>np.unique(a)
-</code></pre><p><strong>去重数组元素中重复的元素</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">np.unique(a)
+</code></pre>
+<p><strong>去重数组元素中重复的元素</strong></p>
 </blockquote>
 <h3 id="数组转置"><a href="#数组转置" class="headerlink" title="数组转置"></a>数组转置</h3><blockquote>
-<pre><code>numpy.transpose(a, axes=None)
-</code></pre><p><code>transpose</code>类似于矩阵的转置，可以将二维数组的横轴和纵轴交换</p>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.transpose(a, axes=None)
+</code></pre>
+<p><code>transpose</code>类似于矩阵的转置，可以将二维数组的横轴和纵轴交换</p>
 <ul>
 <li><code>a</code>：数组。</li>
 <li><code>axis</code>：该值默认为 <code>none</code>，表示转置。如果有值，那么则按照值替换轴。</li>
 </ul>
 </blockquote>
 <h3 id="维度改变"><a href="#维度改变" class="headerlink" title="维度改变"></a>维度改变</h3><blockquote>
-<pre><code>numpy.atleast_1d()
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.atleast_1d()
 numpy.atleast_2d()
 numpy.atleast_3d()
-</code></pre><p><code>atleast_xd</code>支持输入数据直接视为<code>x</code>维，<code>x</code>可以表示：<code>1，2，3</code></p>
+</code></pre>
+<p><code>atleast_xd</code>支持输入数据直接视为<code>x</code>维，<code>x</code>可以表示：<code>1，2，3</code></p>
 </blockquote>
 <h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><blockquote>
 <p>在Numpy中，还有一系列以as开头的方法，可以将特定输入转化为数组，亦可将数组转换为矩阵、标量、ndarray等</p>
@@ -444,8 +443,9 @@ numpy.atleast_3d()
 </ul>
 </blockquote>
 <h3 id="数组连接"><a href="#数组连接" class="headerlink" title="数组连接"></a>数组连接</h3><blockquote>
-<pre><code>numpy.concatenate((a1, a2, ...), axis=0)
-</code></pre><p><code>concatenate</code>可以将多个数组沿指定轴连接在一起</p>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.concatenate((a1, a2, ...), axis=0)
+</code></pre>
+<p><code>concatenate</code>可以将多个数组沿指定轴连接在一起</p>
 <ul>
 <li><code>(a1, a2, ...)</code>：需要连接的数组。</li>
 <li><code>axis</code>：指定连接轴。为1表示沿着横轴连接</li>
@@ -687,14 +687,16 @@ numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符�
 <h1 id="数组索引和切片"><a href="#数组索引和切片" class="headerlink" title="数组索引和切片"></a>数组索引和切片</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><blockquote>
 <ol>
 <li><p>一维数组索引：</p>
-<pre><code>a=np.arange(10)
+<pre class=" language-lang-python"><code class="language-lang-python">a=np.arange(10)
 a[1] #获取索引值为1的数据
 a[[1,2,3]] #分别获取索引值1，2，3的数据
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>二维数组索引：</p>
-<pre><code>a = np.arange(20).reshape(4, 5)
+<pre class=" language-lang-python"><code class="language-lang-python">a = np.arange(20).reshape(4, 5)
 a[[1,2],[3,4]] # 获取第2行，第3列的数据
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>三维数组索引：</p>
 <pre class=" language-lang-python"><code class="language-lang-python">a = np.arange(30).reshape(2, 5, 3)
 a[[0, 1], [1, 2], [1, 2]]
@@ -703,8 +705,9 @@ a[[0, 1], [1, 2], [1, 2]]
 </ol>
 </blockquote>
 <h2 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h2><blockquote>
-<pre><code>Ndarray[start:stop:step]
-</code></pre><p><code>[start:stop:step]</code> 分别代表 <code>[起始索引:截至索引:步长]</code>。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">Ndarray[start:stop:step]
+</code></pre>
+<p><code>[start:stop:step]</code> 分别代表 <code>[起始索引:截至索引:步长]</code>。</p>
 <p>一维数组：a[5:10]</p>
 <p>二维数组：[0:3, 2:4]</p>
 </blockquote>
