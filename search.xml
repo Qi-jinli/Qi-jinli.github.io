@@ -1298,139 +1298,6 @@ seaborn.clustermap(DataFrame) # 支持绘制层次聚类结构图
       </tags>
   </entry>
   <entry>
-    <title>网络编程</title>
-    <url>/2021/01/07/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
-<p><strong>端口</strong></p>
-<p>数据传输的管道</p>
-<p><strong>知名端口号</strong></p>
-<p>0-1023 分配给了一些特定服务</p>
-<p><strong>动态端口号</strong></p>
-<p>1024-65535 程序可以使用的端口号</p>
-<p><strong>绑定端口</strong></p>
-<p>没有绑定端口号,程序退出自动释放端口号</p>
-<p>写程序可以绑定端口,没有绑定会自动分配端口</p>
-</blockquote>
-<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
-<p><strong>URL</strong>:统一资源定位符</p>
-<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
-<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
-<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
-<p><strong>资源路径</strong></p>
-<p><strong>查询参数</strong></p>
-</blockquote>
-<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
-<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
-<p><strong>请求头：</strong>请求信息</p>
-<p><strong>空行</strong></p>
-<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
-</blockquote>
-<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
-<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>面向连接</li>
-<li>TCP采用发送应答机制 </li>
-<li>超时重传</li>
-<li>错误校验   张三  李四</li>
-<li>流量控制和阻塞管理 </li>
-<li>基于字节流</li>
-</ol>
-</blockquote>
-<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
-<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">字符串.encode(encoding=编码方式)
-</code></pre>
-<p><strong>将字节数组转换成字符串方便操作</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">字节数组.decode(encoding=编码方式)
-</code></pre>
-<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
-</blockquote>
-<h1 id="TCP客户端请求流程"><a href="#TCP客户端请求流程" class="headerlink" title="TCP客户端请求流程"></a>TCP客户端请求流程</h1><blockquote>
-<ol>
-<li>创建TCP客户端套接字</li>
-<li>连接服务端(ip和端口 三次握手)</li>
-<li>发送数据(send发送字节数据 encode)</li>
-<li>接收数据(recv 需要通过decode反编码变成字符串)</li>
-<li>第三步和第四步可以执行多次</li>
-<li>断开连接(close 四次挥手)</li>
-</ol>
-</blockquote>
-<h1 id="TCP客户端开发代码"><a href="#TCP客户端开发代码" class="headerlink" title="TCP客户端开发代码"></a>TCP客户端开发代码</h1><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建客户端套接字对象 第一个参数：ipv4  第二个参数:tcp协议
-tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 2.和服务端套接字建立连接 conect参数 元组 第一个元素：ip地址（字符串） 第二个参数：端口号
-tcp_client_socket.connect(("服务端ip地址",8888))
-# 3.发送数据
-tcp_client_socket.send("nihaome".encode(encoding="utf-8"))
-# 4.接收数据 recv阻塞等待数据的到来
-recv_data = tcp_client_socket.recv(1024)
-print(recv_data.decode())
-# 5.关闭客户端套接字
-tcp_client_socket.close()
-</code></pre>
-</blockquote>
-<h1 id="TCP服务端通信流程"><a href="#TCP服务端通信流程" class="headerlink" title="TCP服务端通信流程"></a>TCP服务端通信流程</h1><blockquote>
-<ol>
-<li>创建socket套接字(socket对象)</li>
-<li>通过bind方法绑定固定的ip和端口</li>
-<li>通过listen方法设置服务端监听状态</li>
-<li>通过accept方法接收客户端请求(获取到客户端连接socket)</li>
-<li>send方法发送数据</li>
-<li>通过recv接收数据(阻塞)</li>
-<li>服务端通过close断开连接</li>
-</ol>
-</blockquote>
-<h1 id="TCP服务端开发代码"><a href="#TCP服务端开发代码" class="headerlink" title="TCP服务端开发代码"></a>TCP服务端开发代码</h1><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建服务端套接字对象（客户端和服务端相同）主要作用就是监听客户端的连接
-tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 2. 绑定IP地址和端口号，如果bind中的参数第一个ip地址元素设置为"",默认为本机ip地址
-tcp_server_socket.bind(("", 8888))
-# 3.设置监听 128:代表服务端等待排队连接的最大数量
-tcp_server_socket.listen(128)
-# 4.等待接受客户端的连接请求 accept阻塞等待 返回一个用以和客户端通socket,客户端的地址
-# 这个socket才是和客户端通信socket
-conn_socket, ip_port = tcp_server_socket.accept()
-# 5.接收数据(阻塞方法  如果没有接受到数据 后续等待这不会执行)
-recv_data = conn_socket.recv(1024)
-print("接收到的数据:", recv_data.decode())
-# 6.发送数据
-conn_socket.send("客户端你的数据我收到了".encode())
-# 关闭和客户端通信的socket
-conn_socket.close()
-# 想关闭服务器,可以关闭创建的链接socket
-tcp_server_socket.close()
-</code></pre>
-</blockquote>
-<h1 id="TCP请求注意点"><a href="#TCP请求注意点" class="headerlink" title="TCP请求注意点"></a>TCP请求注意点</h1><blockquote>
-<ol>
-<li><strong>客户端连接服务端,如果服务端断开连接,客户端会受到空数据,如果客户端主动断开,服务端收到空数据</strong></li>
-<li><strong>服务端可以设置端口复用</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
-</code></pre>
-</blockquote>
-<h1 id="搭建静态web服务器"><a href="#搭建静态web服务器" class="headerlink" title="搭建静态web服务器"></a>搭建静态web服务器</h1><blockquote>
-<ol>
-<li>创建tcp服务器</li>
-<li>接收浏览器访问数据(请求报文)</li>
-<li>解析浏览器发送过来的请求 报文(资源路径  资源)</li>
-<li>根据解析的资源路径,获取对应的资源</li>
-<li>按照响应报文方式组织响应数据,传递回去(响应体)</li>
-<li>关闭和客户端的连接</li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>TCP</tag>
-        <tag>网络编程</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>装饰器和生成器</title>
     <url>/2021/01/10/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/</url>
     <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
@@ -1672,6 +1539,139 @@ $    匹配字符串结尾(放在匹配规则的最后一位)
       <tags>
         <tag>装饰器</tag>
         <tag>生成器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络编程</title>
+    <url>/2021/01/07/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
+<p><strong>端口</strong></p>
+<p>数据传输的管道</p>
+<p><strong>知名端口号</strong></p>
+<p>0-1023 分配给了一些特定服务</p>
+<p><strong>动态端口号</strong></p>
+<p>1024-65535 程序可以使用的端口号</p>
+<p><strong>绑定端口</strong></p>
+<p>没有绑定端口号,程序退出自动释放端口号</p>
+<p>写程序可以绑定端口,没有绑定会自动分配端口</p>
+</blockquote>
+<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
+<p><strong>URL</strong>:统一资源定位符</p>
+<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
+<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
+<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
+<p><strong>资源路径</strong></p>
+<p><strong>查询参数</strong></p>
+</blockquote>
+<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
+<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
+<p><strong>请求头：</strong>请求信息</p>
+<p><strong>空行</strong></p>
+<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
+</blockquote>
+<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
+<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>面向连接</li>
+<li>TCP采用发送应答机制 </li>
+<li>超时重传</li>
+<li>错误校验   张三  李四</li>
+<li>流量控制和阻塞管理 </li>
+<li>基于字节流</li>
+</ol>
+</blockquote>
+<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
+<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字符串.encode(encoding=编码方式)
+</code></pre>
+<p><strong>将字节数组转换成字符串方便操作</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字节数组.decode(encoding=编码方式)
+</code></pre>
+<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
+</blockquote>
+<h1 id="TCP客户端请求流程"><a href="#TCP客户端请求流程" class="headerlink" title="TCP客户端请求流程"></a>TCP客户端请求流程</h1><blockquote>
+<ol>
+<li>创建TCP客户端套接字</li>
+<li>连接服务端(ip和端口 三次握手)</li>
+<li>发送数据(send发送字节数据 encode)</li>
+<li>接收数据(recv 需要通过decode反编码变成字符串)</li>
+<li>第三步和第四步可以执行多次</li>
+<li>断开连接(close 四次挥手)</li>
+</ol>
+</blockquote>
+<h1 id="TCP客户端开发代码"><a href="#TCP客户端开发代码" class="headerlink" title="TCP客户端开发代码"></a>TCP客户端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建客户端套接字对象 第一个参数：ipv4  第二个参数:tcp协议
+tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2.和服务端套接字建立连接 conect参数 元组 第一个元素：ip地址（字符串） 第二个参数：端口号
+tcp_client_socket.connect(("服务端ip地址",8888))
+# 3.发送数据
+tcp_client_socket.send("nihaome".encode(encoding="utf-8"))
+# 4.接收数据 recv阻塞等待数据的到来
+recv_data = tcp_client_socket.recv(1024)
+print(recv_data.decode())
+# 5.关闭客户端套接字
+tcp_client_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP服务端通信流程"><a href="#TCP服务端通信流程" class="headerlink" title="TCP服务端通信流程"></a>TCP服务端通信流程</h1><blockquote>
+<ol>
+<li>创建socket套接字(socket对象)</li>
+<li>通过bind方法绑定固定的ip和端口</li>
+<li>通过listen方法设置服务端监听状态</li>
+<li>通过accept方法接收客户端请求(获取到客户端连接socket)</li>
+<li>send方法发送数据</li>
+<li>通过recv接收数据(阻塞)</li>
+<li>服务端通过close断开连接</li>
+</ol>
+</blockquote>
+<h1 id="TCP服务端开发代码"><a href="#TCP服务端开发代码" class="headerlink" title="TCP服务端开发代码"></a>TCP服务端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建服务端套接字对象（客户端和服务端相同）主要作用就是监听客户端的连接
+tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2. 绑定IP地址和端口号，如果bind中的参数第一个ip地址元素设置为"",默认为本机ip地址
+tcp_server_socket.bind(("", 8888))
+# 3.设置监听 128:代表服务端等待排队连接的最大数量
+tcp_server_socket.listen(128)
+# 4.等待接受客户端的连接请求 accept阻塞等待 返回一个用以和客户端通socket,客户端的地址
+# 这个socket才是和客户端通信socket
+conn_socket, ip_port = tcp_server_socket.accept()
+# 5.接收数据(阻塞方法  如果没有接受到数据 后续等待这不会执行)
+recv_data = conn_socket.recv(1024)
+print("接收到的数据:", recv_data.decode())
+# 6.发送数据
+conn_socket.send("客户端你的数据我收到了".encode())
+# 关闭和客户端通信的socket
+conn_socket.close()
+# 想关闭服务器,可以关闭创建的链接socket
+tcp_server_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP请求注意点"><a href="#TCP请求注意点" class="headerlink" title="TCP请求注意点"></a>TCP请求注意点</h1><blockquote>
+<ol>
+<li><strong>客户端连接服务端,如果服务端断开连接,客户端会受到空数据,如果客户端主动断开,服务端收到空数据</strong></li>
+<li><strong>服务端可以设置端口复用</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
+</code></pre>
+</blockquote>
+<h1 id="搭建静态web服务器"><a href="#搭建静态web服务器" class="headerlink" title="搭建静态web服务器"></a>搭建静态web服务器</h1><blockquote>
+<ol>
+<li>创建tcp服务器</li>
+<li>接收浏览器访问数据(请求报文)</li>
+<li>解析浏览器发送过来的请求 报文(资源路径  资源)</li>
+<li>根据解析的资源路径,获取对应的资源</li>
+<li>按照响应报文方式组织响应数据,传递回去(响应体)</li>
+<li>关闭和客户端的连接</li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+        <tag>网络编程</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -2872,6 +2872,608 @@ series.value_counts()：#统计分组次数
       </tags>
   </entry>
   <entry>
+    <title>数据结构与算法</title>
+    <url>/2021/01/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
+<p><strong>顺序表</strong></p>
+<ol>
+<li>元素存储在一段连续的内存空间</li>
+<li>可以通过索引方式访问元素</li>
+</ol>
+<p><strong>分类</strong></p>
+<ol>
+<li>一体式:信息区和数据区在一起</li>
+<li>分离式:信息区和数据区分开</li>
+</ol>
+<p><strong>元素外置</strong></p>
+<ol>
+<li>数据区中存储的是元素的内存地址,不是保存具体的元素</li>
+<li>python的列表是分离式顺序表实现的 元素外置</li>
+<li>python大部分数据元素外置</li>
+</ol>
+<p><strong>链表</strong></p>
+<p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
+</blockquote>
+<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
+<p><strong>增加</strong></p>
+<ol>
+<li>尾部增加 O(1)</li>
+<li>特定位置非保序O(1)</li>
+<li>特定位置保序O(n)</li>
+</ol>
+<p><strong>删除</strong></p>
+<ol>
+<li>删除尾部O(1)</li>
+<li>删除特定位置非保序O(1)</li>
+<li>删除特定位置保序O(n)</li>
+</ol>
+<p><strong>查找</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+<p><strong>修改</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+</blockquote>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
+<p><strong>特点</strong>:<strong>先进后出</strong></p>
+<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
+<ol>
+<li><strong>顺序表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Stack(object):
+    """栈:先进后出"""
+    def __init__(self):
+        self.__items = []
+
+    def push(self, item):
+        """进栈"""
+        self.__items.append(item)
+
+    def pop(self):
+        """出栈"""
+        return self.__items.pop()
+
+    def travel(self):
+        """遍历"""
+        for i in self.__items:
+            print(i)
+</code></pre>
+<ol>
+<li><strong>链表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedStack:
+    def __init__(self):
+        # 最上面的元素
+        self.top = None
+
+    def push(self, value: int):
+        newtop = Node(value)
+        newtop.next = self.top
+        self.top = newtop
+
+    def pop(self):
+        if self.top:
+            value = self.top.data
+            self.top = self.top.next
+            return value
+        return None
+</code></pre>
+</blockquote>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
+<p><strong>队列特点:先进先出</strong></p>
+<p><strong>队列作用:保证任务顺序执行</strong></p>
+<ol>
+<li><strong>使用顺序表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Queue(object):
+    def __init__(self):
+        # 存储数据 线性表
+        self.__items = []
+
+    # enqueue(item)
+    # 队列尾部添加元素item
+    def enqueue(self, item):
+        self.__items.append(item)
+
+    # dequeue():
+    # 队列头部删除元素
+    def dequeue(self):
+        if not self.__items:
+            return None
+        return self.__items.pop(0)
+
+    # is_empty()
+    # 判断队列是否为空
+    def is_enpty(self):
+        return self.__items == []
+
+    # size()
+    # 返回队列的大小
+    def size(self):
+        return len(self.__items)
+</code></pre>
+<ol>
+<li><strong>使用链表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedQueue:
+    def __init__(self):
+        self.__head = None
+        self.__tail = None
+
+    def enqueue(self, value):
+        new_node = Node(value)
+        # 尾部不为空
+        if self.__tail:
+            self.__tail.next = new_node
+            # self.__tail = new_node
+        else:
+            self.__head = new_node
+            # self.__tail = new_node
+        self.__tail = new_node
+
+    def dequeue(self):
+        # 如果头部有数据
+        if self.__head:
+            value = self.__head.data
+            self.__head = self.__head.next
+            if not self.__head:# 新的头部为空
+                self.__tail = None
+            return value
+</code></pre>
+</blockquote>
+<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
+<p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Deque(object):
+    """双端队列"""
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        """判断是否为空"""
+        return self.items == []
+
+    def size(self):
+        """返回队列大小"""
+        return len(self.items)
+
+    def add_front(self, item):
+        """头部添加数据"""
+        self.items.insert(0, item)
+
+    def add_rear(self, item):
+        """尾部添加数据"""
+        self.items.append(item)
+
+    def remove_front(self):
+        """头部删除数据"""
+        return self.items.pop(0)
+
+    def remove_rear(self):
+        """尾部删除数据"""
+        return self.items.pop()
+</code></pre>
+<ol>
+<li><p><strong>python封装的queue队列</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import queue
+queue = queue.Queue(10)
+queue.put(10)
+queue.put(20)
+queue.put(30)
+print(queue.get())
+print(queue.get())
+print(queue.get())
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h1 id="算法衡量标准"><a href="#算法衡量标准" class="headerlink" title="算法衡量标准"></a>算法衡量标准</h1><blockquote>
+<p><strong>时间复杂度</strong></p>
+<p>   最优时间复杂度</p>
+<p>   最坏时间复杂度</p>
+<p><strong>算法的稳定性</strong></p>
+<p>   在元素中有相同的元素,如果排序之后,它们的相对位置没有发生变化,是稳定排序算法</p>
+<p><strong>原地排序</strong></p>
+<p>   排序算法空间复杂度为O(1) 是原地排序</p>
+</blockquote>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
+<p><strong>从头开始依次和后面第一个元素比较,如果比后面大,进行交换</strong></p>
+<p><strong>经过一轮之后可以确定最大值,放到最后面</strong></p>
+<p><strong>经过n-1排序成功</strong></p>
+<p><strong>每一轮需要比较次数=n-当前轮数</strong></p>
+<ol>
+<li><strong>代码实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def bubble_sort(alist):
+    """冒泡排序"""
+
+    # 数列的长度
+    n = len(alist)
+    # 控制轮数
+    for j in range(n-1):
+        count = 0
+        # 每一论的比较的次数
+        # i每一次和后面比较的索引
+        for i in range(n-j-1):
+            # 如果当前元素比后面元素大，交换
+            if alist[i] > alist[i+1]:
+                alist[i], alist[i + 1] = alist[i + 1], alist[i]
+                count+=1
+        # 这一轮没有交换  说明后续的列表已经有序  可以停下来
+        if count==0:
+            break
+</code></pre>
+<p><strong>算法分析</strong>：</p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">def select_sort(alist):
+    """选择排序"""
+    # 列表的长度
+    n = len(alist)
+    # 外层循环 0-3
+    for j in range(0, n - 1):
+        # 本轮目标j(索引)
+        # 本轮最小值下标
+        minIndex = j
+        # 控制比较次数
+        for i in range(j + 1, n):
+            # 从目标向后开始和minIndex比较
+            if alist[i]>alist[minIndex]:
+                minIndex = i
+        # 结束之后 如果目标的索引不是最小值索引 交换
+        if minIndex != j:
+            alist[j],alist[minIndex] = alist[minIndex],alist[j]
+</code></pre>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n2) 最坏O(n2)</li>
+<li>不稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
+</blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def insert_sort(alist):
+    """插入排序"""
+
+    # 列表的长度
+    n = len(alist)
+    # 轮数
+    for j in range(1,n):
+        # 找一个数据加入到已经排序号的数据中排序
+        # 从索引为1开始加入
+        for i in range(j,0,-1):# 从最后开始往前面比较
+            if alist[i] < alist[i-1]:
+                alist[i], alist[i-1] = alist[i-1], alist[i]
+            else:
+                break
+
+if __name__ == '__main__':
+    alist = [1,100,99,20,5,1000]
+    insert_sort(alist)
+    print(alist)
+</code></pre>
+<blockquote>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
+<p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">def quick_sort(alist, start, end):
+    """快速排序"""
+    # 递归的结束条件
+    if start >= end:
+        return
+    # 界限值
+    mid = alist[start]
+    # 左右游标
+    left = start
+    right = end
+
+    while left < right:
+        # 从右边开始找寻小于mid的值 归类到左边
+        while alist[right] >= mid and left < right:
+            right -= 1
+        alist[left] = alist[right]
+        # 从左边开始找寻大于mid的值 归类到右边
+        while alist[left] < mid and left < right:
+            left += 1
+        alist[right] = alist[left]
+
+    # 循环一旦结束了 证明找到了mid应该在的位置
+    alist[left] = mid
+
+    # 递归操作
+    quick_sort(alist, start, left-1)
+    quick_sort(alist, right+1, end)
+
+if __name__ == '__main__':
+    # alist = [1,2,100,50,1000,0,1,1]
+    # alist = [1,2,3,4,5,6,7,8]
+    alist = [9,8,7,6,5,4,3,2,1]
+    quick_sort(alist, 0, len(alist)-1)
+    print(alist)
+</code></pre>
+</blockquote>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
+<p><strong>注意：必须有序</strong></p>
+<ol>
+<li><strong>递归实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找"""
+    if not alist:
+        return 
+    # 数列的长度
+    n = len(alist)
+
+    # 中间值索引
+    mid = n//2
+
+    if item == alist[mid]:
+        return True
+    elif item < alist[mid]:
+         return binary_search(alist[0:mid], item)
+    elif item > alist[mid]:
+         return binary_search(alist[mid+1:], item)
+</code></pre>
+<ol>
+<li><strong>非递归实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    end = len(alist) - 1
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+        if item == alist[mid]:
+            return True
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+
+    # 没有找到想要找的数字
+    return False
+</code></pre>
+<ol>
+<li><strong>查找第一个索引</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找 如果找到返回索引  没有找到返回-1"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    end = len(alist) - 1
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+
+        if item == alist[mid]:
+            # 判断是否是第一个3
+            if mid==0 or alist[mid-1]!=item:
+                return mid
+            else:
+                end = mid - 1
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+    # 没有找到想要找的数字
+    return -1
+# 最好 O(1) 最坏 O(logn)
+if __name__ == '__main__':
+    alist = [1,2,3,3,3,4,5]
+    print(binary_search(alist, 3))
+</code></pre>
+<p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
+<p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
+<ol>
+<li><strong>查找最后一个索引</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找 如果找到返回索引  没有找到返回-1"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    maxIndex = len(alist) - 1
+    end = maxIndex
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+
+        if item == alist[mid]:
+            if mid == maxIndex or alist[mid+1]!=item:
+                return mid
+            else:
+                start = mid + 1
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+
+    # 没有找到想要找的数字
+    return -1
+# 最好 O(1) 最坏 O(logn)
+if __name__ == '__main__':
+    alist = [1,2,3,3,3,4,5]
+    print(binary_search(alist, 3))
+</code></pre>
+<p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
+<p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
+</blockquote>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><blockquote>
+<p><strong>树的标准</strong></p>
+<p>①每个节点有零个或多个子节点<br>②没有父节点的节点称为根节点<br>③每一个非根节点有且只有一个父节点<br>④除了根节点外，每个子节点可以分为多个不相交的子树</p>
+<p><strong>树的相关概念</strong></p>
+<ol>
+<li>节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
+<li>树的高度或深度：树中节点的最大层次</li>
+</ol>
+<p><strong>树的使用场景</strong></p>
+<p>①xml，html等，那么编写这些东西的解析器的时候，不可避免用到树</p>
+<p>②路由协议就是使用了树的算法</p>
+<p>③mysql数据库索引</p>
+<p>④文件系统的目录结构</p>
+<p>⑤所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构</p>
+</blockquote>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
+<p><strong>概念</strong></p>
+<p>每个几点最多拥有两个子节点</p>
+<p><strong>分类</strong></p>
+<ol>
+<li><p>完全二叉树</p>
+<p>对于一颗二叉树，假设其深度为d(d&gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树</p>
+</li>
+<li><p>满二叉树</p>
+<p>每一层都是满节点就是满二叉树</p>
+</li>
+<li><p>平衡二叉树</p>
+<p>当且仅当任何节点的两棵子树的高度差不大于1的二叉树</p>
+</li>
+<li><p>二叉搜索树</p>
+<p>父节点左边都比父节点小,右边都比父节点大,子树也满足这个条件</p>
+</li>
+</ol>
+<p><strong>存储</strong></p>
+<ol>
+<li>顺序表 完全二叉树可以使用顺序表存储  非完全二叉树建议使用链表方式存储</li>
+<li>链表  比较直观</li>
+</ol>
+</blockquote>
+<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
+<p><strong>性质</strong></p>
+<p>性质1: 在二叉树的第i层上至多有 2i-1 个结点（i&gt;0）</p>
+<p>性质2: 深度为k的二叉树至多有2k - 1个结点（k&gt;0）</p>
+<p>性质3: 对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1</p>
+<p>性质4: 最多有n个结点的完全二叉树的深度必为 log2(n+1)</p>
+<p>性质5: 对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子<br>编号必为2i＋1 , 其父节点的编号必为i//2（i＝1 时为根,除外）</p>
+<p><strong>遍历方式</strong></p>
+<p>广度优先:横向遍历</p>
+<p>深度优先:纵向遍历</p>
+<ol>
+<li>先序遍历 根左右</li>
+<li>中序遍历 左根右</li>
+<li>后序遍历 左右根</li>
+</ol>
+<p><strong>添加数据及遍历</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node(object):
+    """节点类"""
+    def  __init__(self, item):
+        self.item = item
+        self.lchild = None
+        self.rchild = None
+
+
+class BinaryTree(object):
+    """完全二叉树"""
+    def __init__(self, node=None):
+        self.root = node
+
+    def add(self, item):
+        """添加节点"""
+        if self.root == None:
+            self.root = Node(item)
+            return
+        # 队列
+        queue = []
+        # 从尾部添加数据
+        queue.append(self.root)
+        while True:
+            # 从头部取出数据
+            node = queue.pop(0)
+            # 判断左节点是否为空
+            if node.lchild == None:
+                node.lchild = Node(item)
+                return
+            else:
+                queue.append(node.lchild)
+
+            if node.rchild == None:
+                node.rchild = Node(item)
+                return
+            else:
+                queue.append(node.rchild)
+
+    def breadh_travel(self):
+        """广度优先遍历"""
+        if self.root == None:
+            return
+        # 队列
+        queue = []
+        # 添加数据
+        queue.append(self.root)
+        while len(queue)>0:
+            # 取出数据
+            node = queue.pop(0)
+            print(node.item, end="")
+            # 判断左右子节点是否为空
+            if node.lchild is not None:
+                queue.append(node.lchild)
+            if node.rchild is not None:
+                queue.append(node.rchild)
+
+    def preorder_travel(self, root):
+        """先序遍历 根 左 右"""
+        if root is not None:
+            print(root.item, end="")
+            self.preorder_travel(root.lchild)
+            self.preorder_travel(root.rchild)
+
+    def inorder_travel(self, root):
+        """中序遍历 左 根 右"""
+        if root is not None:
+            self.inorder_travel(root.lchild)
+            print(root.item, end="")
+            self.inorder_travel(root.rchild)
+
+    def postorder_travel(self, root):
+        """后序遍历 根 左 右"""
+        if root is not None:
+            self.postorder_travel(root.lchild)
+            self.postorder_travel(root.rchild)
+            print(root.item, end="")
+</code></pre>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据库</title>
     <url>/2021/01/27/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
     <content><![CDATA[<h1 id="Mysql基本使用"><a href="#Mysql基本使用" class="headerlink" title="Mysql基本使用"></a>Mysql基本使用</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="数据库的分类"><a href="#数据库的分类" class="headerlink" title="数据库的分类"></a>数据库的分类</h3><blockquote>
@@ -3516,608 +4118,6 @@ conn.close() # 关闭连接
       <tags>
         <tag>数据库</tag>
         <tag>Mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构与算法</title>
-    <url>/2021/01/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
-<p><strong>顺序表</strong></p>
-<ol>
-<li>元素存储在一段连续的内存空间</li>
-<li>可以通过索引方式访问元素</li>
-</ol>
-<p><strong>分类</strong></p>
-<ol>
-<li>一体式:信息区和数据区在一起</li>
-<li>分离式:信息区和数据区分开</li>
-</ol>
-<p><strong>元素外置</strong></p>
-<ol>
-<li>数据区中存储的是元素的内存地址,不是保存具体的元素</li>
-<li>python的列表是分离式顺序表实现的 元素外置</li>
-<li>python大部分数据元素外置</li>
-</ol>
-<p><strong>链表</strong></p>
-<p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
-</blockquote>
-<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
-<p><strong>增加</strong></p>
-<ol>
-<li>尾部增加 O(1)</li>
-<li>特定位置非保序O(1)</li>
-<li>特定位置保序O(n)</li>
-</ol>
-<p><strong>删除</strong></p>
-<ol>
-<li>删除尾部O(1)</li>
-<li>删除特定位置非保序O(1)</li>
-<li>删除特定位置保序O(n)</li>
-</ol>
-<p><strong>查找</strong></p>
-<ol>
-<li>按照角标查找O(1)</li>
-<li>查找元素最优O(1) 最坏O(n)</li>
-</ol>
-<p><strong>修改</strong></p>
-<ol>
-<li>按照角标查找O(1)</li>
-<li>查找元素最优O(1) 最坏O(n)</li>
-</ol>
-</blockquote>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
-<p><strong>特点</strong>:<strong>先进后出</strong></p>
-<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
-<ol>
-<li><strong>顺序表实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Stack(object):
-    """栈:先进后出"""
-    def __init__(self):
-        self.__items = []
-
-    def push(self, item):
-        """进栈"""
-        self.__items.append(item)
-
-    def pop(self):
-        """出栈"""
-        return self.__items.pop()
-
-    def travel(self):
-        """遍历"""
-        for i in self.__items:
-            print(i)
-</code></pre>
-<ol>
-<li><strong>链表实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Node:
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next
-
-class LinkedStack:
-    def __init__(self):
-        # 最上面的元素
-        self.top = None
-
-    def push(self, value: int):
-        newtop = Node(value)
-        newtop.next = self.top
-        self.top = newtop
-
-    def pop(self):
-        if self.top:
-            value = self.top.data
-            self.top = self.top.next
-            return value
-        return None
-</code></pre>
-</blockquote>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
-<p><strong>队列特点:先进先出</strong></p>
-<p><strong>队列作用:保证任务顺序执行</strong></p>
-<ol>
-<li><strong>使用顺序表实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Queue(object):
-    def __init__(self):
-        # 存储数据 线性表
-        self.__items = []
-
-    # enqueue(item)
-    # 队列尾部添加元素item
-    def enqueue(self, item):
-        self.__items.append(item)
-
-    # dequeue():
-    # 队列头部删除元素
-    def dequeue(self):
-        if not self.__items:
-            return None
-        return self.__items.pop(0)
-
-    # is_empty()
-    # 判断队列是否为空
-    def is_enpty(self):
-        return self.__items == []
-
-    # size()
-    # 返回队列的大小
-    def size(self):
-        return len(self.__items)
-</code></pre>
-<ol>
-<li><strong>使用链表实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Node:
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next
-
-class LinkedQueue:
-    def __init__(self):
-        self.__head = None
-        self.__tail = None
-
-    def enqueue(self, value):
-        new_node = Node(value)
-        # 尾部不为空
-        if self.__tail:
-            self.__tail.next = new_node
-            # self.__tail = new_node
-        else:
-            self.__head = new_node
-            # self.__tail = new_node
-        self.__tail = new_node
-
-    def dequeue(self):
-        # 如果头部有数据
-        if self.__head:
-            value = self.__head.data
-            self.__head = self.__head.next
-            if not self.__head:# 新的头部为空
-                self.__tail = None
-            return value
-</code></pre>
-</blockquote>
-<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
-<p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Deque(object):
-    """双端队列"""
-    def __init__(self):
-        self.items = []
-
-    def is_empty(self):
-        """判断是否为空"""
-        return self.items == []
-
-    def size(self):
-        """返回队列大小"""
-        return len(self.items)
-
-    def add_front(self, item):
-        """头部添加数据"""
-        self.items.insert(0, item)
-
-    def add_rear(self, item):
-        """尾部添加数据"""
-        self.items.append(item)
-
-    def remove_front(self):
-        """头部删除数据"""
-        return self.items.pop(0)
-
-    def remove_rear(self):
-        """尾部删除数据"""
-        return self.items.pop()
-</code></pre>
-<ol>
-<li><p><strong>python封装的queue队列</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">import queue
-queue = queue.Queue(10)
-queue.put(10)
-queue.put(20)
-queue.put(30)
-print(queue.get())
-print(queue.get())
-print(queue.get())
-</code></pre>
-</li>
-</ol>
-</blockquote>
-<h1 id="算法衡量标准"><a href="#算法衡量标准" class="headerlink" title="算法衡量标准"></a>算法衡量标准</h1><blockquote>
-<p><strong>时间复杂度</strong></p>
-<p>   最优时间复杂度</p>
-<p>   最坏时间复杂度</p>
-<p><strong>算法的稳定性</strong></p>
-<p>   在元素中有相同的元素,如果排序之后,它们的相对位置没有发生变化,是稳定排序算法</p>
-<p><strong>原地排序</strong></p>
-<p>   排序算法空间复杂度为O(1) 是原地排序</p>
-</blockquote>
-<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
-<p><strong>从头开始依次和后面第一个元素比较,如果比后面大,进行交换</strong></p>
-<p><strong>经过一轮之后可以确定最大值,放到最后面</strong></p>
-<p><strong>经过n-1排序成功</strong></p>
-<p><strong>每一轮需要比较次数=n-当前轮数</strong></p>
-<ol>
-<li><strong>代码实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def bubble_sort(alist):
-    """冒泡排序"""
-
-    # 数列的长度
-    n = len(alist)
-    # 控制轮数
-    for j in range(n-1):
-        count = 0
-        # 每一论的比较的次数
-        # i每一次和后面比较的索引
-        for i in range(n-j-1):
-            # 如果当前元素比后面元素大，交换
-            if alist[i] > alist[i+1]:
-                alist[i], alist[i + 1] = alist[i + 1], alist[i]
-                count+=1
-        # 这一轮没有交换  说明后续的列表已经有序  可以停下来
-        if count==0:
-            break
-</code></pre>
-<p><strong>算法分析</strong>：</p>
-<ol>
-<li>时间复杂度 最好O(n) 最坏O(n2)</li>
-<li>稳定排序算法</li>
-<li>原地排序</li>
-</ol>
-</blockquote>
-<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
-<p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">def select_sort(alist):
-    """选择排序"""
-    # 列表的长度
-    n = len(alist)
-    # 外层循环 0-3
-    for j in range(0, n - 1):
-        # 本轮目标j(索引)
-        # 本轮最小值下标
-        minIndex = j
-        # 控制比较次数
-        for i in range(j + 1, n):
-            # 从目标向后开始和minIndex比较
-            if alist[i]>alist[minIndex]:
-                minIndex = i
-        # 结束之后 如果目标的索引不是最小值索引 交换
-        if minIndex != j:
-            alist[j],alist[minIndex] = alist[minIndex],alist[j]
-</code></pre>
-<p><strong>算法分析</strong></p>
-<ol>
-<li>时间复杂度 最好O(n2) 最坏O(n2)</li>
-<li>不稳定排序算法</li>
-<li>原地排序</li>
-</ol>
-</blockquote>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
-<p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
-</blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">def insert_sort(alist):
-    """插入排序"""
-
-    # 列表的长度
-    n = len(alist)
-    # 轮数
-    for j in range(1,n):
-        # 找一个数据加入到已经排序号的数据中排序
-        # 从索引为1开始加入
-        for i in range(j,0,-1):# 从最后开始往前面比较
-            if alist[i] < alist[i-1]:
-                alist[i], alist[i-1] = alist[i-1], alist[i]
-            else:
-                break
-
-if __name__ == '__main__':
-    alist = [1,100,99,20,5,1000]
-    insert_sort(alist)
-    print(alist)
-</code></pre>
-<blockquote>
-<p><strong>算法分析</strong></p>
-<ol>
-<li>时间复杂度 最好O(n) 最坏O(n2)</li>
-<li>稳定排序算法</li>
-<li>原地排序</li>
-</ol>
-</blockquote>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
-<p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">def quick_sort(alist, start, end):
-    """快速排序"""
-    # 递归的结束条件
-    if start >= end:
-        return
-    # 界限值
-    mid = alist[start]
-    # 左右游标
-    left = start
-    right = end
-
-    while left < right:
-        # 从右边开始找寻小于mid的值 归类到左边
-        while alist[right] >= mid and left < right:
-            right -= 1
-        alist[left] = alist[right]
-        # 从左边开始找寻大于mid的值 归类到右边
-        while alist[left] < mid and left < right:
-            left += 1
-        alist[right] = alist[left]
-
-    # 循环一旦结束了 证明找到了mid应该在的位置
-    alist[left] = mid
-
-    # 递归操作
-    quick_sort(alist, start, left-1)
-    quick_sort(alist, right+1, end)
-
-if __name__ == '__main__':
-    # alist = [1,2,100,50,1000,0,1,1]
-    # alist = [1,2,3,4,5,6,7,8]
-    alist = [9,8,7,6,5,4,3,2,1]
-    quick_sort(alist, 0, len(alist)-1)
-    print(alist)
-</code></pre>
-</blockquote>
-<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
-<p><strong>注意：必须有序</strong></p>
-<ol>
-<li><strong>递归实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找"""
-    if not alist:
-        return 
-    # 数列的长度
-    n = len(alist)
-
-    # 中间值索引
-    mid = n//2
-
-    if item == alist[mid]:
-        return True
-    elif item < alist[mid]:
-         return binary_search(alist[0:mid], item)
-    elif item > alist[mid]:
-         return binary_search(alist[mid+1:], item)
-</code></pre>
-<ol>
-<li><strong>非递归实现</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找"""
-
-    # 设置起始位置 获取中间值
-    start = 0
-    end = len(alist) - 1
-    # 必须要=  需要比较最后的一个元素是否是需要的数据
-    while start <= end:
-        # 获取中间值
-        mid = (start + end)//2
-        if item == alist[mid]:
-            return True
-        elif item < alist[mid]:
-            end = mid - 1
-        elif item > alist[mid]:
-            start = mid + 1
-
-    # 没有找到想要找的数字
-    return False
-</code></pre>
-<ol>
-<li><strong>查找第一个索引</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找 如果找到返回索引  没有找到返回-1"""
-
-    # 设置起始位置 获取中间值
-    start = 0
-    end = len(alist) - 1
-    # 必须要=  需要比较最后的一个元素是否是需要的数据
-    while start <= end:
-        # 获取中间值
-        mid = (start + end)//2
-
-        if item == alist[mid]:
-            # 判断是否是第一个3
-            if mid==0 or alist[mid-1]!=item:
-                return mid
-            else:
-                end = mid - 1
-        elif item < alist[mid]:
-            end = mid - 1
-        elif item > alist[mid]:
-            start = mid + 1
-    # 没有找到想要找的数字
-    return -1
-# 最好 O(1) 最坏 O(logn)
-if __name__ == '__main__':
-    alist = [1,2,3,3,3,4,5]
-    print(binary_search(alist, 3))
-</code></pre>
-<p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
-<p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
-<ol>
-<li><strong>查找最后一个索引</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找 如果找到返回索引  没有找到返回-1"""
-
-    # 设置起始位置 获取中间值
-    start = 0
-    maxIndex = len(alist) - 1
-    end = maxIndex
-    # 必须要=  需要比较最后的一个元素是否是需要的数据
-    while start <= end:
-        # 获取中间值
-        mid = (start + end)//2
-
-        if item == alist[mid]:
-            if mid == maxIndex or alist[mid+1]!=item:
-                return mid
-            else:
-                start = mid + 1
-        elif item < alist[mid]:
-            end = mid - 1
-        elif item > alist[mid]:
-            start = mid + 1
-
-    # 没有找到想要找的数字
-    return -1
-# 最好 O(1) 最坏 O(logn)
-if __name__ == '__main__':
-    alist = [1,2,3,3,3,4,5]
-    print(binary_search(alist, 3))
-</code></pre>
-<p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
-<p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
-</blockquote>
-<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><blockquote>
-<p><strong>树的标准</strong></p>
-<p>①每个节点有零个或多个子节点<br>②没有父节点的节点称为根节点<br>③每一个非根节点有且只有一个父节点<br>④除了根节点外，每个子节点可以分为多个不相交的子树</p>
-<p><strong>树的相关概念</strong></p>
-<ol>
-<li>节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
-<li>树的高度或深度：树中节点的最大层次</li>
-</ol>
-<p><strong>树的使用场景</strong></p>
-<p>①xml，html等，那么编写这些东西的解析器的时候，不可避免用到树</p>
-<p>②路由协议就是使用了树的算法</p>
-<p>③mysql数据库索引</p>
-<p>④文件系统的目录结构</p>
-<p>⑤所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构</p>
-</blockquote>
-<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
-<p><strong>概念</strong></p>
-<p>每个几点最多拥有两个子节点</p>
-<p><strong>分类</strong></p>
-<ol>
-<li><p>完全二叉树</p>
-<p>对于一颗二叉树，假设其深度为d(d&gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树</p>
-</li>
-<li><p>满二叉树</p>
-<p>每一层都是满节点就是满二叉树</p>
-</li>
-<li><p>平衡二叉树</p>
-<p>当且仅当任何节点的两棵子树的高度差不大于1的二叉树</p>
-</li>
-<li><p>二叉搜索树</p>
-<p>父节点左边都比父节点小,右边都比父节点大,子树也满足这个条件</p>
-</li>
-</ol>
-<p><strong>存储</strong></p>
-<ol>
-<li>顺序表 完全二叉树可以使用顺序表存储  非完全二叉树建议使用链表方式存储</li>
-<li>链表  比较直观</li>
-</ol>
-</blockquote>
-<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
-<p><strong>性质</strong></p>
-<p>性质1: 在二叉树的第i层上至多有 2i-1 个结点（i&gt;0）</p>
-<p>性质2: 深度为k的二叉树至多有2k - 1个结点（k&gt;0）</p>
-<p>性质3: 对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1</p>
-<p>性质4: 最多有n个结点的完全二叉树的深度必为 log2(n+1)</p>
-<p>性质5: 对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子<br>编号必为2i＋1 , 其父节点的编号必为i//2（i＝1 时为根,除外）</p>
-<p><strong>遍历方式</strong></p>
-<p>广度优先:横向遍历</p>
-<p>深度优先:纵向遍历</p>
-<ol>
-<li>先序遍历 根左右</li>
-<li>中序遍历 左根右</li>
-<li>后序遍历 左右根</li>
-</ol>
-<p><strong>添加数据及遍历</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Node(object):
-    """节点类"""
-    def  __init__(self, item):
-        self.item = item
-        self.lchild = None
-        self.rchild = None
-
-
-class BinaryTree(object):
-    """完全二叉树"""
-    def __init__(self, node=None):
-        self.root = node
-
-    def add(self, item):
-        """添加节点"""
-        if self.root == None:
-            self.root = Node(item)
-            return
-        # 队列
-        queue = []
-        # 从尾部添加数据
-        queue.append(self.root)
-        while True:
-            # 从头部取出数据
-            node = queue.pop(0)
-            # 判断左节点是否为空
-            if node.lchild == None:
-                node.lchild = Node(item)
-                return
-            else:
-                queue.append(node.lchild)
-
-            if node.rchild == None:
-                node.rchild = Node(item)
-                return
-            else:
-                queue.append(node.rchild)
-
-    def breadh_travel(self):
-        """广度优先遍历"""
-        if self.root == None:
-            return
-        # 队列
-        queue = []
-        # 添加数据
-        queue.append(self.root)
-        while len(queue)>0:
-            # 取出数据
-            node = queue.pop(0)
-            print(node.item, end="")
-            # 判断左右子节点是否为空
-            if node.lchild is not None:
-                queue.append(node.lchild)
-            if node.rchild is not None:
-                queue.append(node.rchild)
-
-    def preorder_travel(self, root):
-        """先序遍历 根 左 右"""
-        if root is not None:
-            print(root.item, end="")
-            self.preorder_travel(root.lchild)
-            self.preorder_travel(root.rchild)
-
-    def inorder_travel(self, root):
-        """中序遍历 左 根 右"""
-        if root is not None:
-            self.inorder_travel(root.lchild)
-            print(root.item, end="")
-            self.inorder_travel(root.rchild)
-
-    def postorder_travel(self, root):
-        """后序遍历 根 左 右"""
-        if root is not None:
-            self.postorder_travel(root.lchild)
-            self.postorder_travel(root.rchild)
-            print(root.item, end="")
-</code></pre>
-</blockquote>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
       </tags>
   </entry>
 </search>
