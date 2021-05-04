@@ -1,0 +1,1050 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.jpeg"/>
+	<link rel="shortcut icon" href="/img/logo.jpeg">
+	
+			    <title>
+    Qijinli's Blog
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="qijinli" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: 'portrait';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover;
+        }
+    </style>
+
+			    
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+    <div id="music">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<link rel="stylesheet" href="/css/toc.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">QIJINLI</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="../categories/Linux/">Linux</a></li><li><a class="category-link" href="../categories/python/">python</a></li><li><a class="category-link" href="../categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li><a class="category-link" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li><a class="category-link" href="../categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a>
+	                    </ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/about/" title="简历">
+		                简历
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/gallery/" title="图库">
+		                图库
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="../https:/github.com/Qi-jinli" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/images/img/sklearn.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Sklearn</h2></a>
+            </div>
+            <div class="al_page_content_outline">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">获取数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-number">1.2.</span> <span class="toc-text">数据集的划分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">特征工程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%BD%92%E4%B8%80%E5%8C%96%E6%A0%87%E6%B3%A8%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">特征归一化标注化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">2.2.</span> <span class="toc-text">特征提取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">2.2.1.</span> <span class="toc-text">字典特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">2.2.2.</span> <span class="toc-text">文本特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">2.2.3.</span> <span class="toc-text">中文特征提取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%99%8D%E7%BB%B4"><span class="toc-number">2.3.</span> <span class="toc-text">特征降维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E6%96%B9%E5%B7%AE%E7%89%B9%E5%BE%81%E8%BF%87%E6%BB%A4"><span class="toc-number">2.3.1.</span> <span class="toc-text">低方差特征过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="toc-number">2.3.2.</span> <span class="toc-text">相关系数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%EF%BC%88PCA%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">主成分分析（PCA）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81"><span class="toc-number">2.4.</span> <span class="toc-text">特征编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A0%E9%87%87%E6%A0%B7%E5%92%8C%E8%BF%87%E9%87%87%E6%A0%B7"><span class="toc-number">2.5.</span> <span class="toc-text">欠采样和过采样</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E9%87%87%E6%A0%B7"><span class="toc-number">2.5.1.</span> <span class="toc-text">过采样</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E9%87%87%E6%A0%B7"><span class="toc-number">2.5.2.</span> <span class="toc-text">欠采样</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.</span> <span class="toc-text">机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#KNN"><span class="toc-number">3.1.</span> <span class="toc-text">KNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">3.2.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">3.2.1.</span> <span class="toc-text">基本线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99-%E5%B2%AD%E5%9B%9E%E5%BD%92"><span class="toc-number">3.2.2.</span> <span class="toc-text">正则-岭回归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-number">3.3.</span> <span class="toc-text">逻辑回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">3.4.</span> <span class="toc-text">决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E7%AE%97%E6%B3%95"><span class="toc-number">3.4.1.</span> <span class="toc-text">决策树算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">3.4.2.</span> <span class="toc-text">决策树可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.5.</span> <span class="toc-text">集成学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bagging-%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="toc-number">3.5.1.</span> <span class="toc-text">Bagging-随机森林</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adaboost"><span class="toc-number">3.5.2.</span> <span class="toc-text">Adaboost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GBDT"><span class="toc-number">3.5.3.</span> <span class="toc-text">GBDT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XGBoost"><span class="toc-number">3.5.4.</span> <span class="toc-text">XGBoost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lightGBM"><span class="toc-number">3.5.5.</span> <span class="toc-text">lightGBM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="toc-number">3.6.</span> <span class="toc-text">聚类算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">3.6.1.</span> <span class="toc-text">聚类评估方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="toc-number">3.7.</span> <span class="toc-text">朴素贝叶斯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM"><span class="toc-number">3.8.</span> <span class="toc-text">支持向量机（SVM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD"><span class="toc-number">3.9.</span> <span class="toc-text">模型的保存和加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2"><span class="toc-number">3.10.</span> <span class="toc-text">交叉验证网格搜索</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="toc-number">4.</span> <span class="toc-text">模型评估</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%8A%A5%E5%91%8A"><span class="toc-number">4.1.</span> <span class="toc-text">分类评估报告</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AUC%E8%AE%A1%E7%AE%97"><span class="toc-number">4.2.</span> <span class="toc-text">AUC计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E5%9B%9E%E5%BD%92%E6%8D%9F%E5%A4%B1"><span class="toc-number">4.3.</span> <span class="toc-text">均方误差回归损失</span></a></li></ol></li></ol>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><h2 id="获取数据集"><a href="#获取数据集" class="headerlink" title="获取数据集"></a>获取数据集</h2><blockquote>
+<p><code>sklearn.datasets：</code>加载获取流行数据集</p>
+<ol>
+<li><code>datasets.load\_*()</code><ul>
+<li><code>获取小规模数据集</code>，数据包含在datasets里</li>
+</ul>
+</li>
+<li><code>datasets.fetch\_*(data_home=None)</code><ul>
+<li><code>获取大规模数据集</code>，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录,默认是 ~/scikit_learn_data/</li>
+<li><code>load和fetch返回的数据类型datasets.base.Bunch(字典格式)</code><ul>
+<li><code>data</code>:特征数据数组，是 [n_samples * n_features] 的二维<code>numpy.ndarray</code>数组 </li>
+<li><code>target</code>:标签数组，是 n_samples 的一维<code>numpy.ndarray</code>数组 </li>
+<li><code>DESCR</code>:数据描述 </li>
+<li><code>feature_names</code>:特征名,新闻数据，手写数字、回归数据集没有</li>
+<li><code>target_names</code>:标签名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>datasets.make_classification(n_samples=100, n_features=20, n_informative=2, n_redundant=2, n_repeated=0, n_classes=2, n_clusters_per_class=2,weights = None,random_state=None):</code><ul>
+<li><code>n_samples:</code>样本数量</li>
+<li><code>n_features：</code>特征个数= n_informative（） + n_redundant + n_repeated</li>
+<li><code>n_informative:</code>多信息特征个数</li>
+<li><code>n_redundant：</code>冗余信息，informative特征的随机线性组合</li>
+<li><code>n_repeated：</code>重复信息，随机提取n_informative和n_redundant 特征</li>
+<li><code>n_classes：</code>分类类别</li>
+<li><code>n_clusters_per_class：</code>某一个类别是由几个cluster构成的</li>
+<li><code>weights：</code>分配给每个类别的样本比例</li>
+</ul>
+</li>
+<li><code>datasets.make_blobs(n_samples=100, n_features=2,centers=None, cluster_std=1.0, random_state=None):</code><ul>
+<li><code>n_samples:</code>样本数量</li>
+<li><code>n_features:</code>样本特征数</li>
+<li><code>centers:</code>样本聚类中心，列表</li>
+<li><code>cluster_std:</code>聚类标准差</li>
+<li><code>return:</code>X：生成的样本，y：样本的聚类标签</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="数据集的划分"><a href="#数据集的划分" class="headerlink" title="数据集的划分"></a>数据集的划分</h2><blockquote>
+<ol>
+<li><code>sklearn.model_selection.train_test_split(arrays, *options)</code></li>
+</ol>
+<p><strong>Parameters：</strong></p>
+<ul>
+<li><code>x 数据集的特征值</code></li>
+<li><code>y 数据集的标签值</code></li>
+<li><code>test_size</code>测试集的大小，一般为float</li>
+<li><code>random_state</code> 随机数种子,不同的种子会造成不同的随机采样结果。相同的种子采样结果相同。</li>
+</ul>
+<p><strong>return：</strong><br><code>x_train, x_test, y_train, y_test</code></p>
+<ol>
+<li><code>sklearn.model_selection.StratifiedShuffleSplit(n_splits = 10,test_size = None,train_size = None,random_state=None)</code></li>
+</ol>
+<p><strong>Parameters：</strong></p>
+<ol>
+<li><code>n_splits:</code>重新改组和拆分迭代的次数</li>
+</ol>
+<p><strong>return:</strong></p>
+<ol>
+<li><code>train_index,test_index</code></li>
+</ol>
+</blockquote>
+<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="特征归一化标注化"><a href="#特征归一化标注化" class="headerlink" title="特征归一化标注化"></a>特征归一化标注化</h2><blockquote>
+<p><code>sklearn.preprocessing</code></p>
+<ol>
+<li><code>归一化</code><ul>
+<li><code>sklearn.preprocessing.MinMaxScaler(feature_range=(0,1)... )</code><ul>
+<li><code>MinMaxScalar.fit_transform(X)</code><ul>
+<li><code>X : numpy array格式的数据[n_samples,n_features]</code></li>
+</ul>
+</li>
+<li><code>返回值:转换后的形状相同的array</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>标准化</code><ul>
+<li><code>sklearn.preprocessing.StandardScaler( )</code><ul>
+<li>处理之后每列来说所有数据都聚集在均值0附近标准差差为1</li>
+<li><code>StandardScaler.fit_transform(X)</code><ul>
+<li><code>X : numpy array格式的数据[n_samples,n_features]</code></li>
+</ul>
+</li>
+<li><code>返回值:转换后的形状相同的array</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><h3 id="字典特征提取"><a href="#字典特征提取" class="headerlink" title="字典特征提取"></a>字典特征提取</h3><blockquote>
+<p><code>sklearn.feature_extraction.DictVectorizer(sparse=True,…)</code></p>
+<ul>
+<li><p><code>DictVectorizer.fit_transform(X)</code></p>
+<ul>
+<li>X:字典或者包含字典的迭代器返回值</li>
+<li>返回sparse矩阵</li>
+</ul>
+<p><strong>注意：X中含有类别符号，需要进行one-hot编码处理，x.to_dict(orient=”records”) 需要将数组特征转换成字典数据</strong></p>
+</li>
+<li><p><code>DictVectorizer.get_feature_names()</code>返回类别名称</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h3><blockquote>
+<p><code>sklearn.feature_extraction.text.CountVectorizer(stop_words=[])</code></p>
+<ul>
+<li>返回词频矩阵</li>
+<li><code>CountVectorizer.fit_transform(X)</code><ul>
+<li>X:文本或者包含文本字符串的可迭代对象</li>
+<li>返回值:返回sparse矩阵（注意返回格式，利用toarray()进行sparse矩阵转换array数组）</li>
+</ul>
+</li>
+<li><code>CountVectorizer.get_feature_names()</code>返回值:单词列表</li>
+</ul>
+</blockquote>
+<h3 id="中文特征提取"><a href="#中文特征提取" class="headerlink" title="中文特征提取"></a>中文特征提取</h3><blockquote>
+<p><strong>jieba分词处理：</strong></p>
+<p><code>jieba.cut()</code></p>
+<ul>
+<li>返回词语组成的生成器</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">import jieba
+def cut_word(text):
+    # 用结巴对中文字符串进行分词
+    text = " ".join(list(jieba.cut(text)))
+    return text
+</code></pre>
+<p><strong>Tf-idf文本特征提取：</strong></p>
+<p><code>sklearn.feature_extraction.text.TfidfVectorizer(stop_words=[])</code></p>
+</blockquote>
+<h2 id="特征降维"><a href="#特征降维" class="headerlink" title="特征降维"></a>特征降维</h2><h3 id="低方差特征过滤"><a href="#低方差特征过滤" class="headerlink" title="低方差特征过滤"></a>低方差特征过滤</h3><blockquote>
+<p><code>sklearn.feature_selection.VarianceThreshold(threshold=0.0):</code></p>
+<ol>
+<li>默认删除方差为0的特征</li>
+<li><code>Variance.fit_transform(X):</code>将数据进行低方差过滤</li>
+<li><code>Variance.fit(X):</code>从X学习到经验方差</li>
+</ol>
+</blockquote>
+<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><blockquote>
+<p><code>scipy.stats.pearsonr(x,y):</code></p>
+<ol>
+<li>皮尔逊相关系数</li>
+<li>返回值：<code>correlation coefficient, p-value</code></li>
+</ol>
+<p><code>scipy.stats.spearmanr(x, y):</code></p>
+<ol>
+<li>斯皮尔曼相关系数</li>
+<li>返回值：<code>correlation coefficient, p-value</code></li>
+</ol>
+</blockquote>
+<h3 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h3><blockquote>
+<p><code>sklearn.decomposition.PCA(n_components=None)</code></p>
+<ul>
+<li>将数据投影到较低维数空间</li>
+<li><code>n_components</code>:<ul>
+<li><strong>小数：表示保留百分之多少的信息</strong></li>
+<li><strong>整数：减少到多少特征</strong></li>
+</ul>
+</li>
+<li><code>PCA.fit_transform(X):</code>将X转换为指定维度的数据</li>
+<li><code>PCA.inverse_transform(newData):</code>将降维后的数据转换为原始数据</li>
+<li><code>PCA.explained_variance_ratio_:</code>查看每个特征信息占比</li>
+<li>返回值：指定维度的array</li>
+</ul>
+</blockquote>
+<h2 id="特征编码"><a href="#特征编码" class="headerlink" title="特征编码"></a>特征编码</h2><blockquote>
+<p><code>sklearn.preprocessing.LabelEncoder:</code></p>
+<ol>
+<li><p>使用0到n_classes-1之间的值对<code>目标标签</code>进行编码。</p>
+<p>该转换器应用于编码目标值，<em>即</em> <code>y</code>，而不是输入<code>X</code>。</p>
+</li>
+<li><p><code>LabelEncoder.fit_transform(y):</code>将目标值转化为数字类</p>
+</li>
+</ol>
+<p><code>sklearn.preprocessing.OneHotEncoder:</code></p>
+<ol>
+<li>将<code>特征值</code>转换为One-Hot编码</li>
+<li><code>OneHotEncoder.fit_transform(x)</code>将特征值转化为one-hot编码</li>
+<li><code>OneHotEncoder.get_feature_names()</code>返回类别名称列表</li>
+</ol>
+</blockquote>
+<h2 id="欠采样和过采样"><a href="#欠采样和过采样" class="headerlink" title="欠采样和过采样"></a>欠采样和过采样</h2><h3 id="过采样"><a href="#过采样" class="headerlink" title="过采样"></a>过采样</h3><blockquote>
+<p><code>imblearn.over_sampling.RandomOverSampler(random_state=None):</code></p>
+<ol>
+<li>将数据集少数类随机复制加到数据中</li>
+<li><code>RandomOverSampler.fit_resample(X,y):</code>转换为类别相等的数据<ol>
+<li>返回值为X_resampled, y_resampled，分别为转化后的特征值和目标值</li>
+</ol>
+</li>
+</ol>
+<p><code>imblearn.over_sampling.SMOTE:</code></p>
+<ol>
+<li>SMOTE算法，在近邻连线中随机取得样本点</li>
+<li><code>SMOTE.fit_resample(X,y):</code>转换为类别相等的数据<ol>
+<li>返回值为X_resampled, y_resampled，分别为转化后的特征值和目标值</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h3 id="欠采样"><a href="#欠采样" class="headerlink" title="欠采样"></a>欠采样</h3><blockquote>
+<p><code>imblearn.under_sampling.RandomUnderSampler:</code></p>
+<ol>
+<li>随机从多数类删除一些样本</li>
+<li><code>RandomUnderSampler.fit_resample(X,y):</code>转换为类别相等的数据<ol>
+<li>返回值为X_resampled, y_resampled，分别为转化后的特征值和目标值</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h2><blockquote>
+<p><code>sklearn.neighbors.KNeighborsClassifier(n_neighbors=5,algorithm=&#39;auto&#39;):</code></p>
+<ol>
+<li><code>n_neighbors</code>:int,可选(默认= 5)，k_neighbors查询默认使用的邻居数</li>
+<li><code>algorithm</code>:{‘auto’，‘ball_tree’，‘kd_tree’，‘brute’}<ul>
+<li>快速k近邻搜索算法，<code>默认参数为auto</code>，可以理解为算法自己决定合适的搜索算法<ul>
+<li><code>brute</code>是蛮力搜索，也就是线性扫描，当训练集很大时，计算非常耗时。</li>
+<li><code>kd_tree</code>，构造kd树存储数据以便对其进行快速检索的树形数据结构，kd树也就是数据结构中的二叉树。以中值切分构造的 树，每个结点是一个超矩形，在维数小于20时效率高。</li>
+<li><code>ball tree</code>是为了克服kd树高维失效而发明的，其构造过程是以质心C和半径r分割样本空间，每个节点是一个超球体。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="基本线性回归"><a href="#基本线性回归" class="headerlink" title="基本线性回归"></a>基本线性回归</h3><blockquote>
+<p><strong>正规方程：</strong></p>
+<p><code>sklearn.linear_model.LinearRegression(fit_intercept=True)</code></p>
+<ul>
+<li>参数<ul>
+<li><code>fit_intercept</code>：是否计算偏置</li>
+</ul>
+</li>
+<li>属性<ul>
+<li><code>LinearRegression.coef_</code>：回归系数</li>
+<li><code>LinearRegression.intercept_</code>：偏置</li>
+</ul>
+</li>
+</ul>
+<p><strong>梯度下降：</strong></p>
+<p><code>sklearn.linear_model.SGDRegressor(loss=&quot;squared_loss&quot;, fit_intercept=True, learning_rate =&#39;invscaling&#39;, eta0=0.01)</code></p>
+<ul>
+<li>支持不同的<strong>loss函数和正则化惩罚项</strong>来拟合线性回归模型。</li>
+<li>参数：<ul>
+<li><code>loss</code>:损失类型<ul>
+<li>loss=”squared_loss”: 普通最小二乘法</li>
+</ul>
+</li>
+<li><code>fit_intercept</code>：是否计算偏置</li>
+<li><code>learning_rate</code> : string, optional<ul>
+<li>学习率填充</li>
+<li><code>&#39;constant&#39;</code>: eta = eta0</li>
+<li><code>&#39;optimal&#39;</code>: eta = 1.0 / (alpha * (t + t0)) [default]</li>
+<li><code>&#39;invscaling&#39;</code>: eta = eta0 / pow(t, power_t)<ul>
+<li>power_t=0.25:存在父类当中</li>
+</ul>
+</li>
+<li><strong>对于一个常数值的学习率来说，可以使用learning_rate=’constant’ ，并使用eta0来指定学习率。</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性：<ul>
+<li><code>SGDRegressor.coef_</code>：回归系数</li>
+<li><code>SGDRegressor.intercept_</code>：偏置</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="正则-岭回归"><a href="#正则-岭回归" class="headerlink" title="正则-岭回归"></a>正则-岭回归</h3><blockquote>
+<p><code>sklearn.linear_model.Ridge(alpha=1.0, fit_intercept=True,solver=&quot;auto&quot;, normalize=False)</code></p>
+<ul>
+<li>具有L2正则化的线性回归</li>
+<li><code>alpha</code>:正则化力度，也叫 λ<ul>
+<li><strong>λ取值：0~1 1~10</strong></li>
+</ul>
+</li>
+<li><code>solver</code>:会根据数据自动选择优化方法<ul>
+<li><strong>sag:如果数据集、特征都比较大，选择该随机梯度下降优化</strong></li>
+</ul>
+</li>
+<li><code>normalize</code>:数据是否进行标准化<ul>
+<li>normalize=False:可以在fit之前调用preprocessing.StandardScaler标准化数据</li>
+</ul>
+</li>
+<li><code>Ridge.coef_</code>:回归权重</li>
+<li><code>Ridge.intercept_</code>:回归偏置</li>
+</ul>
+<p><strong>Ridge方法相当于SGDRegressor(penalty=’l2’, loss=”squared_loss”),只不过SGDRegressor实现了一个普通的随机梯度下降学习，推荐使用Ridge(实现了SAG)</strong></p>
+<p><code>sklearn.linear_model.RidgeCV(_BaseRidgeCV, RegressorMixin)</code></p>
+<ul>
+<li>具有L2正则化的线性回归，可以进行交叉验证</li>
+<li><code>coef_</code>:回归系数</li>
+</ul>
+</blockquote>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><blockquote>
+<p><code>sklearn.linear_model.LogisticRegression(solver=&#39;liblinear&#39;, penalty=‘L2’, C = 1.0)</code></p>
+<ul>
+<li><code>solver</code>可选参数:{‘liblinear’, ‘sag’, ‘saga’,’newton-cg’, ‘lbfgs’}，<ul>
+<li><code>默认: &#39;liblinear&#39;</code>；用于优化问题的算法。</li>
+<li>对于小数据集来说，“liblinear”是个不错的选择，而“sag”和’saga’对于大型数据集会更快。</li>
+<li>对于多类问题，只有’newton-cg’， ‘sag’， ‘saga’和’lbfgs’可以处理多项损失;“liblinear”仅限于“one-versus-rest”分类。</li>
+</ul>
+</li>
+<li><code>penalty</code>：正则化的种类</li>
+<li><code>C</code>：正则化力度</li>
+</ul>
+<blockquote>
+<p><strong>默认将类别数量少的当做正例</strong></p>
+</blockquote>
+<p><strong>LogisticRegression方法相当于 SGDClassifier(loss=”log”, penalty=” “),SGDClassifier实现了一个普通的随机梯度下降学习。而使用LogisticRegression(实现了SAG)</strong></p>
+</blockquote>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><h3 id="决策树算法"><a href="#决策树算法" class="headerlink" title="决策树算法"></a>决策树算法</h3><blockquote>
+<p><code>sklearn.tree.DecisionTreeClassifier(criterion=’gini’, max_depth=None,random_state=None)</code></p>
+<ul>
+<li><code>criterion</code><ul>
+<li>“gini”或者”entropy”，前者代表基尼系数，后者代表信息增益。一默认”gini”，即CART算法。</li>
+</ul>
+</li>
+<li><code>min_samples_split</code><ul>
+<li>内部节点再划分所需最小样本数</li>
+</ul>
+</li>
+<li><code>min_samples_leaf</code><ul>
+<li>叶子节点最少样本数</li>
+</ul>
+</li>
+<li><code>max_depth</code><ul>
+<li>决策树最大深度</li>
+</ul>
+</li>
+<li><code>random_state</code><ul>
+<li>随机数种子</li>
+</ul>
+</li>
+</ul>
+<p><code>sklearn.tree.DecisionTreeRegressor(criterion=&#39;mse&#39;, splitter=&#39;best&#39;, max_depth=None,random_state=None)</code></p>
+<ol>
+<li><code>criterion:</code>{‘mse’, ‘friedman_mse’, ‘mae’, ‘poisson’}<ol>
+<li>mse:标准是均方误差的“ mse”，等于方差减少作为特征选择标准，并且使用每个终端节点的均值“ friedman_mse”来最小化L2损失</li>
+<li>mae：代表平均绝对误差，它使用每个终端节点的中值使L1损失最小化</li>
+<li>poisson：使用泊松偏差的减少来寻找分裂</li>
+</ol>
+</li>
+<li><code>splitter:</code>{‘best’, ‘random’}<ol>
+<li>默认best</li>
+<li>策略是“最佳”选择最佳拆分，“随机”选择最佳随机拆分</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h3 id="决策树可视化"><a href="#决策树可视化" class="headerlink" title="决策树可视化"></a>决策树可视化</h3><blockquote>
+<p><code>sklearn.tree.export_graphviz() :</code>该函数能够导出DOT格式</p>
+<ul>
+<li><code>export_graphviz(estimator,out_file=&#39;tree.dot’,feature_names=[‘’,’’])</code></li>
+</ul>
+<p><strong>网站显示结构：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://webgraphviz.com/">http://webgraphviz.com/</a></li>
+</ul>
+</blockquote>
+<h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="Bagging-随机森林"><a href="#Bagging-随机森林" class="headerlink" title="Bagging-随机森林"></a>Bagging-随机森林</h3><blockquote>
+<p><code>sklearn.ensemble.RandomForestClassifier(n_estimators=10, criterion=’gini’, max_depth=None, bootstrap=True, random_state=None, min_samples_split=2, oob_score=False)</code></p>
+<ul>
+<li><code>n_estimators</code>：default = 10，森林里的树木数量</li>
+<li><code>Criterion</code>：default =”gini”<ul>
+<li>分割特征的测量方法</li>
+</ul>
+</li>
+<li><code>max_depth</code>：integer或None<ul>
+<li>树的最大深度 5,8,15,25,30</li>
+</ul>
+</li>
+<li><code>max_features=&quot;auto”</code>,每个决策树的最大特征数量<ul>
+<li>If  “auto”, then <code>max_features=sqrt(n_features)</code>.</li>
+<li>If  “sqrt”, then <code>max_features=sqrt(n_features)</code>(same as “auto”).</li>
+<li>If  “log2”, then <code>max_features=log2(n_features)</code>.</li>
+<li>If  None, then <code>max_features=n_features</code>.</li>
+</ul>
+</li>
+<li><code>bootstrap:</code>boolean，optional(default = True)<ul>
+<li>是否在构建树时使用放回抽样</li>
+</ul>
+</li>
+<li><code>min_samples_split:</code> 内部节点再划分所需最小样本数</li>
+<li><code>min_samples_leaf:</code> 叶子节点的最小样本数</li>
+<li><code>min_impurity_split:</code> 节点划分最小不纯度，一般不推荐改动默认值1e-7。</li>
+<li><code>oob_score</code>:是否使用袋外样本来估计泛化精度</li>
+</ul>
+<p><strong>Attribute：</strong></p>
+<ol>
+<li><code>oob_score_:</code>使用袋外估计获得的训练数据集的分数</li>
+</ol>
+<p><strong>Methods:</strong></p>
+<ol>
+<li><code>estimator.predict_proba(x):</code>预测x的类概率</li>
+</ol>
+</blockquote>
+<h3 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h3><blockquote>
+<p><code>sklearn.ensemble.AdaBoostClassifier（base_estimator = None, n_estimators = 50，learning_rate = 1.0, algorithm = &#39;SAMME.R&#39;, random_state = None:</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>best_estimator:</code>基分类器，默认<code>DecisionTreeClassifier</code>，<code>max_depth=1</code></li>
+<li><code>n_estimators:</code>终止增强的最大数量估计器</li>
+<li><code>algorithm:</code> {‘SAMME’, ‘SAMME.R’}，SAMME.R算法通常比SAMME收敛更快，从而以更少的提升迭代次数实现了更低的测试误差。</li>
+</ol>
+<p><code>sklearn.ensemble.AdaBoostRegressor（base_estimator = None, n_estimators = 50，learning_rate = 1.0, loss=&#39;linear&#39;, random_state = None:</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>loss</code> :{‘linear’，’square’，’exponential’}，默认linear，每次增强迭代后更新权重时使用的损失函数</li>
+<li><code>best_estimator:</code>基分类器，默认<code>DecisionTreeRegressor</code>，<code>max_depth=3</code></li>
+</ol>
+</blockquote>
+<h3 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h3><blockquote>
+<p><code>sklearn.ensemble.GradientBoostingClassifier(loss=&#39;deviance&#39;, learning_rate=0.1, n_estimators=100, subsample=1.0, criterion=&#39;friedman_mse&#39;, min_samples_split=2, min_samples_leaf=1):</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>loss:</code>损失函数的优化算法，{‘deviance’, ‘exponential’},’deviance’:是指对具有概率输出分类的偏离（=logistic回归），’exponential’：指数梯度提升可恢复Adaboost</li>
+<li><code>learning_rate:</code>学习率缩小了每棵树的贡献</li>
+<li><code>n_estimators:</code>要执行的提升阶段数</li>
+<li><code>subsamples:</code>用于拟合各个基学习器样本的比例，小于1时则使用随机梯度下降</li>
+</ol>
+<p><strong>Attribute：</strong></p>
+<ol>
+<li><code>feature_importances_:</code>基于杂质的特征重要性</li>
+<li><code>oob_improvement_:</code>相对于之前的迭代，袋装样本的损失的改善（ <code>oob_improvement_[0]</code>是<code>init</code>估算器第一阶段损失的改善，仅<code>subsample &lt; 1.0</code>）</li>
+<li><code>train_score_:</code>第i个得分<code>train_score_[i]</code>是模型在<code>i</code>袋内样本迭代时的偏差（=损失）。如果<code>subsample == 1</code>,是对训练数据的偏离。</li>
+</ol>
+<p><code>sklearn.ensemble.GradientBoostingRegressor(loss=&#39;LS&#39;, learning_rate=0.1, n_estimators=100, subsample=1.0, criterion=&#39;friedman_mse&#39;, min_samples_split=2, min_samples_leaf=1):</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>loss:</code>损失函数的优化算法，{‘ls’, ‘lad’, ‘huber’, ‘quantile’}<ul>
+<li><code>ls:</code>最小二乘回归</li>
+<li><code>lad:</code>最小绝对偏差，是仅基于输入变量的顺序信息的高度鲁棒的损失函数</li>
+<li><code>huber:</code>两者的结合</li>
+<li><code>quantile:</code>允许分位数回归（用alpha指定分位数）</li>
+</ul>
+</li>
+<li><code>criterion:</code>衡量分割质量的标准，{‘friedman_mse’，’mse’}<ul>
+<li><code>friedman_mse:</code>具有弗里德曼改进得分的均方误差</li>
+<li><code>mse:</code>均方误差</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h3><blockquote>
+<p><code>xgboost.XGBRegressor(objective=&#39;reg:squarederror&#39;)</code></p>
+<p><code>xgboost.XGBClassifier(objective=&#39;binary:logistic&#39;,use_label_encoder=True)</code></p>
+<ol>
+<li><p><strong>General parameters</strong> :</p>
+<ul>
+<li><code>booster</code>[默认= <code>gbtree</code>]<ul>
+<li>使用哪个助推器。可以是<code>gbtree</code>，<code>gblinear</code>或<code>dart</code>；<code>gbtree</code>和<code>dart</code>使用基于树的模型，<code>gblinear</code>使用线性函数</li>
+</ul>
+</li>
+<li><code>verbosity</code> [默认值= 1]<ul>
+<li>打印消息的详细程度。有效值为0（静默），1（警告），2（信息），3（调试）</li>
+</ul>
+</li>
+<li><code>num_pbuffer</code> [由XGBoost自动设置，无需由用户设置]<ul>
+<li>预测缓冲区的大小，通常设置为训练实例数。缓冲区用于保存上一个增强步骤的预测结果。</li>
+</ul>
+</li>
+<li><code>num_feature</code> [由XGBoost自动设置，无需由用户设置]<ul>
+<li>增强中使用的特征尺寸，设置为特征的最大尺寸</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Tree Booster parameters</strong> :</p>
+<ul>
+<li><code>eta</code>[默认= 0.3，别名：<code>learning_rate</code>]<ul>
+<li>更新中使用的步长收缩，以防止过度拟合。</li>
+</ul>
+</li>
+<li><code>gamma</code>[默认= 0，别名：<code>min_split_loss</code>]<ul>
+<li>在树的叶节点上进行进一步分区所需的最小损失减少。越大<code>gamma</code>，算法将越保守。</li>
+</ul>
+</li>
+<li><code>max_depth</code> [默认= 6]<ul>
+<li>一棵树的最大深度。增大此值将使模型更复杂，并且更可能过度拟合。仅<code>lossguided</code>当tree_method设置为<code>hist</code>或<code>gpu_hist</code>且表示对深度没有限制时，才在增长策略中接受0</li>
+</ul>
+</li>
+<li><code>min_child_weight</code> [默认值= 1]<ul>
+<li>叶节点的实例权重之和。如果树划分步骤导致叶节点的实例权重之和小于<code>min_child_weight</code>，则构建过程将放弃进一步的划分。在线性回归任务中，这仅对应于每个节点中需要的最少实例数。越大<code>min_child_weight</code>，算法将越保守</li>
+</ul>
+</li>
+<li><code>max_delta_step</code> [默认= 0]<ul>
+<li>我们允许每个叶子输出的最大增量步长。如果将该值设置为0，则表示没有约束。如果将其设置为正值，则可以帮助使更新步骤更加保守。通常不需要此参数，但是当类极度不平衡时，它可能有助于逻辑回归。将其设置为1-10的值可能有助于控制更新。</li>
+</ul>
+</li>
+<li><code>subsample</code> [默认值= 1]<ul>
+<li>训练实例的子样本比率。将其设置为0.5意味着XGBoost将在树木生长之前随机采样一半的训练数据。这样可以防止过度拟合。子采样将在每个增强迭代中进行一次。</li>
+</ul>
+</li>
+<li><code>sampling_method</code>[默认= <code>uniform</code>]<ul>
+<li>用于对训练实例进行采样的方法。</li>
+<li><code>uniform</code>：每个训练实例被选择的可能性均等。通常将<code>subsample</code>&gt; = 0.5设置 为良好的效果。</li>
+</ul>
+</li>
+<li><code>colsample_bytree</code>，<code>colsample_bylevel</code>，<code>colsample_bynode</code>[默认= 1]<ul>
+<li>这是用于列二次采样的一组参数。</li>
+<li>所有<code>colsample_by*</code>参数的范围为（0，1]，默认值为1，并指定要进行二次采样的列的分数。</li>
+<li><code>colsample_bytree</code>是构造每棵树时列的子采样率。对于每一个构造的树，二次采样都会发生一次。</li>
+<li><code>colsample_bylevel</code>是每个级别的列的子采样率。对于树中达到的每个新深度级别，都会进行一次二次采样。列是从为当前树选择的一组列中进行子采样的。</li>
+<li><code>colsample_bynode</code>是每个节点（拆分）的列的子样本比率。每次评估新的分割时，都会进行一次二次采样。列是从为当前级别选择的一组列中进行子采样的。</li>
+</ul>
+</li>
+<li><code>lambda</code>[默认= 1，别名：<code>reg_lambda</code>]<ul>
+<li>L2正则化权重项。增加此值将使模型更加保守。</li>
+</ul>
+</li>
+<li><code>alpha</code>[默认= 0，别名：<code>reg_alpha</code>]<ul>
+<li>权重的L1正则化项。增加此值将使模型更加保守。</li>
+</ul>
+</li>
+<li><code>tree_method</code>[default = <code>auto</code>]<ul>
+<li>XGBoost中使用的树构建算法</li>
+<li>XGBoost支持 <code>approx</code>，<code>hist</code>并<code>gpu_hist</code>用于分布式培训。外部存储器实验支持可用于<code>approx</code>和<code>gpu_hist</code>。</li>
+<li>选择：<code>auto</code>，<code>exact</code>，<code>approx</code>，<code>hist</code>，<code>gpu_hist</code>，这是常用的更新程序的组合。对于其他更新程序，如<code>refresh</code>，<code>updater</code>直接设置参数。<ul>
+<li><code>auto</code>：使用启发式选择最快的方法。<ul>
+<li>对于小型数据集，<code>exact</code>将使用精确贪婪（）。</li>
+<li>对于较大的数据集，<code>approx</code>将选择近似算法（）。它建议尝试<code>hist</code>，并<code>gpu_hist</code>用大量的数据可能更高的性能。（<code>gpu_hist</code>）支持。<code>external memory</code></li>
+<li>因为旧的行为总是使用单机确切的贪婪，当选择近似算法通知这个选择用户将收到一条消息。</li>
+</ul>
+</li>
+<li><code>exact</code>：精确的贪婪算法。枚举所有拆分的候选者。</li>
+<li><code>approx</code>：使用分位数草图和梯度直方图的近似贪婪算法。</li>
+<li><code>hist</code>：更快的直方图优化的近似贪婪算法。</li>
+<li><code>gpu_hist</code>：<code>hist</code>算法的GPU实现。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>scale_pos_weight</code>[缺省值=1]<ul>
+<li>在各类别样本十分不平衡时，把这个参数设定为一个正值，可以使算法更快收敛。通常可以将其设置为负</li>
+<li>样本的数目与正样本数目的比值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Linear Booster Parameters:(booster=gblinear)</strong></p>
+<ul>
+<li><code>lambda</code> [缺省值=0，别称: reg_lambda]<ul>
+<li>L2正则化惩罚系数，增加该值会使得模型更加保守。</li>
+</ul>
+</li>
+<li><code>alpha</code>[缺省值=0，别称: reg_alpha]<ul>
+<li>L1正则化惩罚系数，增加该值会使得模型更加保守。</li>
+</ul>
+</li>
+<li><code>lambda_bias</code> [缺省值=0，别称: reg_lambda_bias]<ul>
+<li>偏置上的L2正则化(没有在L1上加偏置，因为并不重要)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>task parameters:</strong></p>
+<ul>
+<li><p><code>objective</code>[缺省值=<code>binary:logistic</code>]</p>
+<ol>
+<li><code>reg:linear</code>– 线性回归</li>
+<li><code>reg:logistic</code> – 逻辑回归</li>
+<li><code>binary:logistic</code> – 二分类逻辑回归，输出为概率</li>
+<li><code>multi:softmax</code> – 使用softmax的多分类器，返回预测的类别(不是概率)。在这种情况下，你还需要多设一个参数：num_class(类别数目)</li>
+<li><code>multi:softprob</code> – 和multi:softmax参数一样，但是返回的是每个数据属于各个类别的概率。</li>
+</ol>
+</li>
+<li><p><code>eval_metric</code>[缺省值=通过目标函数选择]</p>
+<p>可供选择的如下所示：</p>
+<ol>
+<li><code>rmse</code>: 均方根误差</li>
+<li><code>mae</code>: 平均绝对值误差</li>
+<li><code>logloss</code>: 负对数似然函数值</li>
+<li><code>error</code>: 二分类错误率。<ul>
+<li>其值通过错误分类数目与全部分类数目比值得到。对于预测，预测值大于0.5被认为是正类，其它归为负类。</li>
+</ul>
+</li>
+<li><code>error@t</code>: 不同的划分阈值可以通过 ‘t’进行设置</li>
+<li><code>merror</code>: 多分类错误率，计算公式为(wrong cases)/(all cases)</li>
+<li><code>mlogloss</code>: 多分类log损失</li>
+<li><code>auc</code>: 曲线下的面积</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="lightGBM"><a href="#lightGBM" class="headerlink" title="lightGBM"></a>lightGBM</h3><blockquote>
+<p><code>lightgbm.LGBMRegressor(</code></p>
+<p><code>boosting_type=&#39;gbdt&#39;,num_leaves=31,</code>                                                        </p>
+<p><code>max_depth=-1,learning_rate=0.1,</code></p>
+<p><code>n_estimators=100,subsample_for_bin=200000,</code></p>
+<p><code>objective=None,class_weight=None,</code></p>
+<p><code>min_split_gain=0.0,min_child_weight=0.001,</code></p>
+<p><code>min_child_samples=20,subsample=1.0,</code></p>
+<p><code>subsample_freq=0,colsample_bytree=1.0,</code></p>
+<p><code>reg_alpha=0.0,reg_lambda=0.0,random_state=None,</code></p>
+<p><code>n_jobs=-1,silent=True,importance_type=&#39;split&#39;):</code></p>
+<ol>
+<li><strong>Control Parameters:</strong><ul>
+<li><code>max_depth:</code>树的最大深度</li>
+<li><code>min_child_samples:</code>叶子节点最小样本数</li>
+<li><code>feature_fraction:</code>每次迭代中随机选择百分之多少数据来建树，boosting=”rf”时使用</li>
+<li><code>bagging_fraction:</code>每次迭代时用的数据比例</li>
+<li><code>early_stopping_rounds:</code>再几回合内没有提高，停止训练</li>
+<li><code>lambda:</code>指定正则化系数，<code>`lambda_l1,lambda_l2</code></li>
+<li><code>min_gain_to_split:</code>分裂最小的收益</li>
+<li><code>min_data_per_group:</code>每个分组最少数据量</li>
+</ul>
+</li>
+<li><strong>Core Parameters：</strong><ul>
+<li><code>objective:</code><ul>
+<li><code>binary:</code>二分类对数损失（逻辑回归）</li>
+<li><code>regression:</code>回归，L2损失</li>
+<li><code>multiclass:</code>多分类，softmax目标函数</li>
+</ul>
+</li>
+<li><code>boosting_type:</code><ul>
+<li><code>gbdt:</code>传统梯度提升决策树</li>
+<li><code>rf:</code>随机森林</li>
+<li><code>dart:</code>随机DropOuts</li>
+<li><code>goss:</code>基于梯度的单边采样</li>
+</ul>
+</li>
+<li><code>n_estimators:</code>最大迭代次数</li>
+<li><code>num_leaves:</code>叶子最大数量，$2^{max_depth}$</li>
+<li><code>metric:</code><ul>
+<li><code>l1:</code>绝对平均损失，<code>mean_absolute_error</code>，<code>mae</code>，<code>regression_l1</code></li>
+<li><code>l2:</code>均方损失，<code>mean_squared_error</code>，<code>mse</code>，<code>regression_l2</code>，<code>regression</code></li>
+<li><code>rmse:</code>平方根损失，<code>root_mean_squared_error</code>，<code>l2_root</code></li>
+<li><code>binary_logloss:</code>二分类损失</li>
+<li><code>multi_logloss:</code>多分类损失</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>IO Parameters:</strong><ul>
+<li><code>max_bin:</code>将每个特征分为多少组，default=255</li>
+<li><code>save_binary:</code>设置为True时，数据集呗保存为二进制文件</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h2><blockquote>
+<p><code>sklearn.cluster.KMeans(n_clusters=8, init=&#39;k-means++&#39;, max_iter=300)</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>n_clusters:</code>开始的聚类中心数量</li>
+<li><code>init:&#123;&#39;k-means++&#39;, &#39;random&#39;&#125;:</code>初始化聚类中心算法</li>
+<li><code>max_iter:</code>最大迭代次数</li>
+</ul>
+<p><strong>Attribute：</strong></p>
+<ol>
+<li><code>cluster_centers_:</code>聚类中心的坐标</li>
+<li><code>labels:</code>每个点的标签</li>
+<li><code>n_iter_:</code>迭代次数</li>
+</ol>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><code>estimator.fit_predict(x):</code><ul>
+<li>计算聚类中心并预测每个样本属于哪个类别,相当于先调用fit(x),然后再调用predict(x)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="聚类评估方法"><a href="#聚类评估方法" class="headerlink" title="聚类评估方法"></a>聚类评估方法</h3><blockquote>
+<p><code>sklearn.metrics.calinski_harabaz_score(X, y_pre_lables):</code></p>
+<ol>
+<li><strong>CH方法：</strong>定义为组间分散度与组内分散度之比，越大越好</li>
+<li>X：特征值，y_pre_labels:被预测的<code>类别标签</code></li>
+</ol>
+<p><code>sklearn.metrics.silhouette_score(X, y_pre_lables)</code></p>
+<ul>
+<li>计算所有样本的<code>平均轮廓系数</code></li>
+<li>X：特征值，y_pre_labels:被预测的<code>类别标签</code></li>
+</ul>
+</blockquote>
+<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><blockquote>
+<p><code>sklearn.naive_bayes.MultinomialNB(alpha = 1.0)</code></p>
+<p><strong>parameters:</strong></p>
+<ul>
+<li>朴素贝叶斯分类</li>
+<li><code>alpha</code>：拉普拉斯平滑系数</li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<ol>
+<li><code>class_count_:</code>每个类别的样本数</li>
+<li><code>feature_count_:</code>对于每一类，每个特征的样本数</li>
+</ol>
+</blockquote>
+<h2 id="支持向量机（SVM"><a href="#支持向量机（SVM" class="headerlink" title="支持向量机（SVM)"></a>支持向量机（SVM)</h2><blockquote>
+<p><code>sklearn.svm.SVC(C=1.0, kernel=&#39;rbf&#39;, degree=3,coef0=0.0,random_state=None)</code></p>
+<p><strong>parameters:</strong></p>
+<ol>
+<li><code>C:</code>惩罚系数<ol>
+<li>C越大，训练集测试时准确率很高，但泛化能力弱，容易导致过拟合。</li>
+<li>C值小，<strong>对误分类的惩罚减小</strong>，容错能力增强，泛化能力较强，但也可能欠拟合。</li>
+</ol>
+</li>
+<li><code>kernel:</code>算法中采用的核函数类型<ol>
+<li>RBF, Linear, Poly, Sigmoid或者自定义一个核函数。</li>
+<li>默认的是”RBF”，即径向基核，也就是高斯核函数；</li>
+<li>而Linear指的是线性核函数，</li>
+<li>Poly指的是多项式核，</li>
+<li>Sigmoid指的是双曲正切函数tanh核.</li>
+</ol>
+</li>
+<li><code>degree:</code><ul>
+<li>当指定kernel为’poly’时，表示选择的多项式的最高次数，默认为三次多项式；</li>
+<li>若指定kernel不是’poly’，则忽略，即该参数只对’poly’有用。<ul>
+<li>多项式核函数是将低维的输入空间映射到高维的特征空间。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>coef0:</code>核函数常数值(y=kx+b中的b值)，<ul>
+<li>只有‘poly’和‘sigmoid’核函数有，默认值是0。</li>
+</ul>
+</li>
+</ol>
+<p><code>sklearn.svm.NuSVC(nu=0.5)</code></p>
+<p><strong>parameters:</strong></p>
+<ul>
+<li><strong>nu：</strong> 训练误差部分的上限和支持向量部分的下限，取值在（0，1）之间，默认是0.5</li>
+</ul>
+<p><code>sklearn.svm.LinearSVC(penalty=&#39;l2&#39;, loss=&#39;squared_hinge&#39;, dual=True, C=1.0)</code></p>
+<p><strong>parameters:</strong></p>
+<ul>
+<li><code>penalty:</code>正则化参数，<ul>
+<li>L1和L2两种参数可选，仅LinearSVC有。</li>
+</ul>
+</li>
+<li><code>loss:</code>损失函数，<ul>
+<li>有hinge和squared_hinge两种可选，前者又称L1损失，后者称为L2损失</li>
+<li>其中hinge是SVM的标准损失，squared_hinge是hinge的平方</li>
+</ul>
+</li>
+<li><code>dual:</code>是否转化为对偶问题求解，默认是True。</li>
+<li><code>C:</code>惩罚系数，<ul>
+<li>用来控制损失函数的惩罚系数，类似于线性回归中的正则化系数。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="模型的保存和加载"><a href="#模型的保存和加载" class="headerlink" title="模型的保存和加载"></a>模型的保存和加载</h2><blockquote>
+<p><code>from sklearn.externals import joblib</code></p>
+<ul>
+<li>保存：<code>joblib.dump(estimator, &#39;test.pkl&#39;)</code></li>
+<li>加载：<code>estimator = joblib.load(&#39;test.pkl&#39;)</code></li>
+</ul>
+</blockquote>
+<h2 id="交叉验证网格搜索"><a href="#交叉验证网格搜索" class="headerlink" title="交叉验证网格搜索"></a>交叉验证网格搜索</h2><blockquote>
+<p><code>sklearn.model_selection.GridSearchCV(estimator, param_grid=None,cv=None)</code></p>
+<p><code>参数：</code></p>
+<ul>
+<li><code>estimator</code>：估计器对象</li>
+<li><code>param_grid</code>：估计器参数(dict){“n_neighbors”:[1,3,5]}</li>
+<li><code>cv</code>：指定几折交叉验证</li>
+</ul>
+<p><code>返回新估计器属性</code></p>
+<ul>
+<li><code>fit(x_train, y_train)</code>：输入训练数据</li>
+<li><code>score(x_test,y_test)</code>：准确率</li>
+<li><code>predict(x_test)</code></li>
+<li><code>结果分析</code>：<ul>
+<li><code>best_score_</code>:在交叉验证中验证的最好结果</li>
+<li><code>best_estimator_</code>：最好的参数模型</li>
+<li><code>cv_results_</code>:每次交叉验证后的验证集准确率结果和训练集准确率结果</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h1 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h1><h2 id="分类评估报告"><a href="#分类评估报告" class="headerlink" title="分类评估报告"></a>分类评估报告</h2><blockquote>
+<p><code>sklearn.metrics.classification_report(y_true, y_pred, labels=[], target_names=None</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>y_true</code>：真实目标值</li>
+<li><code>y_pred</code>：估计器预测目标值</li>
+<li><code>labels</code>:指定类别对应的数字</li>
+<li><code>target_names</code>：目标类别名称</li>
+<li><code>return</code>：每个类别精确率与召回率</li>
+</ol>
+</blockquote>
+<h2 id="AUC计算"><a href="#AUC计算" class="headerlink" title="AUC计算"></a>AUC计算</h2><blockquote>
+<p><code>sklearn.metrics.roc_auc_score(y_true, y_score)</code></p>
+<ul>
+<li>计算ROC曲线面积，即<code>AUC值</code></li>
+<li><code>y_true</code>：每个样本的真实类别，必须为0(反例),1(正例)标记</li>
+<li><code>y_score</code>：预测得分，可以是正类的估计概率、置信值或者分类器方法的返回值</li>
+</ul>
+</blockquote>
+<h2 id="均方误差回归损失"><a href="#均方误差回归损失" class="headerlink" title="均方误差回归损失"></a>均方误差回归损失</h2><blockquote>
+<p><code>sklearn.metrics.mean_squared_error(y_true, y_pred)</code></p>
+<ul>
+<li><code>y_true</code>:真实值</li>
+<li><code>y_pred</code>:预测值</li>
+<li><code>return</code>:浮点数结果</li>
+</ul>
+</blockquote>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://qi-jinli.github.io/2021/02/20/sklearn/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://qi-jinli.github.io/2021/02/20/sklearn/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a target="_blank" rel="noopener" href="http://www.qijinli.work " style="border-bottom: none;">Qijinli</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
