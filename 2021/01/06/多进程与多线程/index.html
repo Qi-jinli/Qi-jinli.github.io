@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.jpeg"/>
+	<link rel="shortcut icon" href="/img/logo.jpeg">
+	
+			    <title>
+    Qijinli's Blog
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="qijinli" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: 'portrait';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover;
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src=""></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+    <div id="music">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<link rel="stylesheet" href="/css/toc.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">QIJINLI</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="/categories/Linux/">Linux</a></li><li><a class="category-link" href="/categories/python/">python</a></li><li><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li><a class="category-link" href="/categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a>
+	                    </ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/about/" title="简历">
+		                简历
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/gallery/" title="图库">
+		                图库
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/Qi-jinli" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/images/img/多进程与多线程.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >多进程与多线程</h2></a>
+            </div>
+            <div class="al_page_content_outline">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">多任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">多进程实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">多任务面向对象实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">进程传递参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BC%96%E5%8F%B7"><span class="toc-number">5.</span> <span class="toc-text">进程编号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E4%B8%8D%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">进程间不共享数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">7.</span> <span class="toc-text">主进程和子进程执行顺序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">进程命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-number">9.</span> <span class="toc-text">多线程创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BC%A0%E5%8F%82"><span class="toc-number">10.</span> <span class="toc-text">多线程传参</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">11.</span> <span class="toc-text">线程执行顺序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">12.</span> <span class="toc-text">线程间执行顺序</span></a></li></ol>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h1><blockquote>
+<p><strong>多任务</strong></p>
+<p>在同一时刻或同一时间段同时执行多个任务多任务</p>
+<p><strong>并发</strong></p>
+<p>任务数大于cpu核心数,cpu交替执行任务,并发（同一个时间段交替执行多个任务）</p>
+<p><strong>并行</strong></p>
+<p>同时时刻执行多个任务,并行(任务数小于cpu核心)</p>
+<p><strong>进程</strong></p>
+<p>进程是操作系统调度和分配资源的最小单位</p>
+<p>程序开启之后默认开启一个进程</p>
+<p>进程默认会有一个线程</p>
+</blockquote>
+<h1 id="多进程实现"><a href="#多进程实现" class="headerlink" title="多进程实现"></a>多进程实现</h1><blockquote>
+<ol>
+<li>导包</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">import multiprocessing
+</code></pre>
+<ol>
+<li>定义任务(函数)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def music():
+    for i in range(3):
+        print("music...")
+        time.sleep(0.2)
+</code></pre>
+<ol>
+<li>创建进程(生产线)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_process = multiprocessing.Process(target=music) # target参数 需要跟上任务
+</code></pre>
+<ol>
+<li>开启进程</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.start()
+</code></pre>
+</blockquote>
+<h1 id="多任务面向对象实现"><a href="#多任务面向对象实现" class="headerlink" title="多任务面向对象实现"></a>多任务面向对象实现</h1><blockquote>
+<ol>
+<li>导包</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">import multiprocessing
+</code></pre>
+<ol>
+<li>继承<code>multiprocessing.Process</code></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class MyProcess(multiprocessing.Process):
+    def __init__(self):
+        # 调用父类的初始化方法
+        super(MyProcess, self).__init__()
+</code></pre>
+<ol>
+<li>重写run方法,任务代码放到run方法中(run方法会自动调用,进程资源分配好自动调用,不需要自己调用)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python"># Process方法 进程的任务都是在run方法执行
+    def run(self):
+        for i in range(3):
+            print("music...")
+            time.sleep(0.2)
+</code></pre>
+<ol>
+<li>创建自定义进程对象</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">pro = MyProcess()
+</code></pre>
+<ol>
+<li>开启自定义进程</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">pro.start()
+</code></pre>
+<p><strong>注意:</strong></p>
+<p><strong>函数并没有进程和线程之分,在哪个进程调用,就运行在哪个进程中</strong></p>
+</blockquote>
+<h1 id="进程传递参数"><a href="#进程传递参数" class="headerlink" title="进程传递参数"></a>进程传递参数</h1><blockquote>
+<ol>
+<li><strong>通过元组传递</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.Process(target=coding, args=(3, "传智"))
+</code></pre>
+<p><strong>注意:一个参数元组需要加,  顺序和参数顺序保持一致</strong></p>
+<ol>
+<li><strong>通过字典方式传递</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.Process(target=music, kwargs=&#123;"count": 2&#125;)
+</code></pre>
+<p><strong>注意:元素键需要和函数形参名称保持一致</strong></p>
+</blockquote>
+<h1 id="进程编号"><a href="#进程编号" class="headerlink" title="进程编号"></a>进程编号</h1><blockquote>
+<p><strong>获取进程编号</strong></p>
+<ol>
+<li>获取当前进程编号</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">os.getpid()
+</code></pre>
+<ol>
+<li>获取父进程进程编号</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">os.getppid()
+</code></pre>
+<ol>
+<li>获取当前进程名字</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.current_process().name
+</code></pre>
+</blockquote>
+<h1 id="进程间不共享数据"><a href="#进程间不共享数据" class="headerlink" title="进程间不共享数据"></a>进程间不共享数据</h1><blockquote>
+<p><strong>子进程创建把主进程进行拷贝,子进程使用的全局变量和主进程全局变量不相同</strong></p>
+<p>把进程由原来的并行执行变成<strong>串行执行</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python"># join前代码
+进程对象.join() 
+# joint之后代码
+</code></pre>
+<p><strong>注意：join之后的代码需要等到进程执行完之后再执行</strong></p>
+</blockquote>
+<h1 id="主进程和子进程执行顺序"><a href="#主进程和子进程执行顺序" class="headerlink" title="主进程和子进程执行顺序"></a>主进程和子进程执行顺序</h1><blockquote>
+<p>主进程会等到子进程执行结束之后再停止</p>
+<p>如果想主进程代码执行结束结束子进程,可以通过守护进程或者手动停止进程</p>
+<p><strong>守护进程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.daemon = True
+# 需要在进程start之前设置
+</code></pre>
+<p><strong>手动停止子进程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.terminate()
+# 在主进程代码执行结束时调用这个代码
+</code></pre>
+</blockquote>
+<h1 id="进程命令"><a href="#进程命令" class="headerlink" title="进程命令"></a>进程命令</h1><blockquote>
+<p><strong>ps</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">ps -aux|grep 进程名
+</code></pre>
+<p><strong>过滤正在运行感兴趣的进程</strong></p>
+<p><strong>kill</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">kill -9 进程id
+</code></pre>
+<p><strong>强制杀死进程</strong> </p>
+</blockquote>
+<h1 id="多线程创建"><a href="#多线程创建" class="headerlink" title="多线程创建"></a>多线程创建</h1><blockquote>
+<p><strong>线程:</strong>CPU调度资源的最小单位</p>
+<ol>
+<li><p>导入threading模块</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import threading
+</code></pre>
+</li>
+<li><p>创建新线程,传递任务</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread = threading.Thread(target=coding)
+</code></pre>
+</li>
+<li><p>开启线程</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread.start()
+</code></pre>
+</li>
+</ol>
+<p><strong>注意：start 发送指令,自动创建线程,run方法会运行在子线程</strong></p>
+</blockquote>
+<h1 id="多线程传参"><a href="#多线程传参" class="headerlink" title="多线程传参"></a>多线程传参</h1><blockquote>
+<p>和多进程传递参数相同:args或者kwargs方式传递</p>
+<p><strong>args</strong></p>
+<p>以元组方式传递参数</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread = threading.Thread(target=coding, args=(3,'传智'))
+</code></pre>
+<p><strong>注意：函数多个参数,数据和函数形参顺序保持一致</strong></p>
+<p><strong>kwargs</strong></p>
+<p>以字典的方式传递参数</p>
+<pre class=" language-lang-python"><code class="language-lang-python">music_thread = threading.Thread(target=music, kwargs=&#123;"count" : 1&#125;)
+</code></pre>
+<p><strong>注意：字典的每个元素key是函数形参名称</strong></p>
+</blockquote>
+<h1 id="线程执行顺序"><a href="#线程执行顺序" class="headerlink" title="线程执行顺序"></a>线程执行顺序</h1><blockquote>
+<p><strong>守护线程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">work_thread = threading.Thread(target=work, daemon=True)
+work_thread.setDaemon(True)
+</code></pre>
+<p><strong>线程一般不能直接杀死</strong></p>
+<p><strong>停线程就是停止线程循环代码</strong></p>
+<p>可以设置<strong>终止变量</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">hasFinsh = False
+# 工作函数
+def work():
+    for i in range(10):
+        if hasFinsh:
+            return
+        print("work...")
+        time.sleep(0.2)
+</code></pre>
+</blockquote>
+<h1 id="线程间执行顺序"><a href="#线程间执行顺序" class="headerlink" title="线程间执行顺序"></a>线程间执行顺序</h1><blockquote>
+<p><strong>线程间和进程间执行都是无序</strong></p>
+<p>如果想让线程变成<strong>串行执行</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">sub_thread.join()
+</code></pre>
+<p><strong>获取线程名称</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">threading.current_thread().name
+</code></pre>
+</blockquote>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://qi-jinli.github.io/2021/01/06/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://qi-jinli.github.io/2021/01/06/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a target="_blank" rel="noopener" href="http://www.qijinli.work " style="border-bottom: none;">Qijinli</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>

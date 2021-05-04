@@ -1,6 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux</title>
+    <url>/2020/11/11/Linux/</url>
+    <content><![CDATA[<h3 id="关机（系统的关机，重启以及登出）"><a href="#关机（系统的关机，重启以及登出）" class="headerlink" title="关机（系统的关机，重启以及登出）"></a>关机（系统的关机，重启以及登出）</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">shutdown -h now 关闭系统
+shutdown -h hours:minutes & 按预定时间关闭系统 
+shutdown -c 取消按预定时间关闭系统 
+shutdown -r now 重启
+reboot 重启
+logout 注销
+</code></pre>
+<h3 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">clear 清理命令行 或Ctrl+L清屏
+cd /home 进入 '/ home' 目录' 
+cd .. 返回上一级目录 
+cd ../.. 返回上两级目录 
+cd 进入个人的主目录 
+cd ~user1 进入个人的主目录 
+cd - 返回上次所在的目录 
+pwd 显示工作路径 
+ls 查看目录中的文件 
+ls -F 查看目录中的文件 
+ls -l 显示文件和目录的详细资料 
+ls -a 显示所有的文件（隐藏文件）
+ls -lh 以列表方式显示所有的文件或目录（文件大小以K，M，G)
+ls *[0-9]* 显示包含数字的文件名和目录名 
+tree 显示文件和目录由根目录开始的树形结构
+lstree 显示文件和目录由根目录开始的树形结构
+mkdir dir1 创建一个叫做 'dir1' 的目录' 
+mkdir dir1 dir2 同时创建两个目录 
+mkdir -p /tmp/dir1/dir2 创建一个目录树 
+rm -r file1 递归删除一个叫做 'file1' 的文件夹下所有文件和文件夹 
+rm -rf dir1 强制删除一个叫做 'dir1' 的目录并递归删除其内容 
+rm -rf dir1 dir2 同时删除两个目录及它们的内容
+rmdir dir1 删除一个叫做 'dir1' 的目录' 
+mv dir1 new_dir 重命名/移动 一个目录 
+cp file1 file2 复制一个文件 
+cp -i 交互式提醒，避免拷贝覆盖原来的文件
+cp dir/* . 复制一个目录下的所有文件到当前工作目录 
+cp -a /tmp/dir1 . 复制一个目录到当前工作目录 
+cp -a dir1 dir2 复制一个目录 
+cp -r dir1 dir2 复制一个目录及子目录
+ln -s file1 lnk1 创建一个指向文件或目录的软链接 
+ln file1 lnk1 创建一个指向文件或目录的硬链接
+touch 文件名 创建文件
+touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm)
+>  重定向，覆盖追加
+>> 重定向，追加
+</code></pre>
+<h3 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">grep 字符串 文件名 查找符合标准的文件（-v：取反，-n：行数， -i:忽略大小写）
+find 文件路径 -name “文件名”  查找指定路径的文件
+find /home/user1 -name \*.bin 在目录 '/ home/user1' 中搜索带有'.bin' 结尾的文件 
+find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件 
+find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 
+find / -name \*.rpm -exec chmod 755 '&#123;&#125;' \; 搜索以 '.rpm' 结尾的文件并定义其权限 
+find / -xdev -name \*.rpm 搜索以 '.rpm' 结尾的文件，忽略光驱、捷盘等可移动设备 
+locate \*.ps 寻找以 '.ps' 结尾的文件 - 先运行 'updatedb' 命令 
+whereis halt 显示一个二进制文件、源码或man的位置 
+which halt 显示一个二进制文件或可执行文件的完整路径
+</code></pre>
+<h3 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">whoami 当前命令行在哪个用户下
+who 获取所有登录进来的用户
+su 新用户名 切换用户
+groupadd group_name 创建一个新用户组 
+groupdel group_name 删除一个用户组 
+groupmod -n new_group_name old_group_name 重命名一个用户组 
+useradd -c "Name Surname " -g admin -d /home/user1 -s /bin/bash user1 创建一个属于 "admin" 用户组的用户 
+useradd -m user1 创建一个新用户 
+userdel -r user1 删除一个用户 ( '-r' 排除主目录) 
+usermod -c "User FTP" -g system -d /ftp/user1 -s /bin/nologin user1 修改用户属性 
+passwd 修改口令 
+passwd user1 修改一个用户的口令 (只允许root执行) 
+chage -E 2005-12-31 user1 设置用户口令的失效期限 
+pwck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的用户 
+grpck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的群组 
+newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组
+</code></pre>
+<h3 id="文件的权限-使用“-”设置权限，使用“-”取消"><a href="#文件的权限-使用“-”设置权限，使用“-”取消" class="headerlink" title="文件的权限-使用“+”设置权限，使用“-”取消"></a>文件的权限-使用“+”设置权限，使用“-”取消</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">ls -lh 显示权限
+chmod 777 a.txt 数字法修改权限(r:4,w:2,x:1,-:0)
+chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限 
+chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限 
+chown user1 file1 改变一个文件的所有人属性 
+chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 
+chgrp group1 file1 改变文件的群组 
+chown user1:group1 file1 改变一个文件的所有人和群组属性 
+find / -perm -u+s 罗列一个系统中所有使用了SUID控制的文件 
+chmod u+s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限 
+chmod u-s /bin/file1 禁用一个二进制文件的 SUID位 
+chmod g+s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的 
+chmod g-s /home/public 禁用一个目录的 SGID 位 
+chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件 
+chmod o-t /home/public 禁用一个目录的 STIKY 位
+</code></pre>
+<h3 id="打包和压缩文件"><a href="#打包和压缩文件" class="headerlink" title="打包和压缩文件"></a>打包和压缩文件</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件 
+bzip2 file1 压缩一个叫做 'file1' 的文件 
+gunzip file1.gz 解压一个叫做 'file1.gz'的文件 
+gzip file1 压缩一个叫做 'file1'的文件 
+gzip -9 file1 最大程度压缩 
+rar a file1.rar test_file 创建一个叫做 'file1.rar' 的包 
+rar a file1.rar file1 file2 dir1 同时压缩 'file1', 'file2' 以及目录 'dir1' 
+rar x file1.rar 解压rar包 
+unrar x file1.rar 解压rar包 
+tar -cvf archive.tar file1 创建一个非压缩的 tar包 
+tar -cvf archive.tar file1 file2 dir1 创建一个包含了 'file1', 'file2' 以及 'dir1'的档案文件 
+tar -tf archive.tar 显示一个包中的内容 
+tar -xvf archive.tar 释放一个包 
+tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下 
+tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包 
+tar -jxvf archive.tar.bz2 解压一个bzip2格式的压缩包 
+tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包 
+tar -zxvf archive.tar.gz 解压一个gzip格式的压缩包 
+zip file1.zip file1 创建一个zip格式的压缩包 
+zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 
+unzip file1.zip 解压一个zip格式压缩包
+</code></pre>
+<h3 id="DEB-包-Debian-Ubuntu-以及类似系统"><a href="#DEB-包-Debian-Ubuntu-以及类似系统" class="headerlink" title="DEB 包 (Debian, Ubuntu 以及类似系统)"></a><strong>DEB 包 (Debian, Ubuntu 以及类似系统)</strong></h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">dpkg -i package.deb 安装/更新一个 deb 包 
+dpkg -r package_name 从系统删除一个 deb 包 
+dpkg -l 显示系统中所有已经安装的 deb 包 
+dpkg -l | grep httpd 显示所有名称中包含 "httpd" 字样的deb包 
+dpkg -s package_name 获得已经安装在系统中一个特殊包的信息 
+dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表 
+dpkg --contents package.deb 显示尚未安装的一个包所提供的文件列表 
+dpkg -S /bin/ping 确认所给的文件由哪个deb包提供
+</code></pre>
+<h3 id="APT-软件工具-Debian-Ubuntu-以及类似系统"><a href="#APT-软件工具-Debian-Ubuntu-以及类似系统" class="headerlink" title="APT 软件工具 (Debian, Ubuntu 以及类似系统)"></a>APT 软件工具 (Debian, Ubuntu 以及类似系统)</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">apt-get install package_name 安装/更新一个 deb 包 
+apt-cdrom install package_name 从光盘安装/更新一个 deb 包 
+apt-get update 升级列表中的软件包 
+apt-get upgrade 升级所有已安装的软件 
+apt-get remove package_name 从系统删除一个deb包 
+apt-get check 确认依赖的软件仓库正确 
+apt-get clean 从下载的软件包中清理缓存 
+apt-cache search searched-package 返回包含所要搜索字符串的软件包名称
+</code></pre>
+<h3 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cat file1 从第一个字节开始正向查看文件的内容
+more file1 查看一个长文件的内容
+tac file1 从最后一行开始反向查看一个文件的内容  
+less file1 类似于 'more' 命令，但是它允许在文件中和正向操作一样的反向操作 
+head -2 file1 查看一个文件的前两行 
+tail -2 file1 查看一个文件的最后两行 
+tail -f /var/log/messages 实时查看被添加到一个文件中的内容
+</code></pre>
+<h3 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cat file1 file2 ... | command <> file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT 
+cat file1 | command( sed, grep, awk, grep, etc...) > result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中 
+cat file1 | command( sed, grep, awk, grep, etc...) >> result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中 
+grep Aug /var/log/messages 在文件 '/var/log/messages'中查找关键词"Aug" 
+grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇 
+grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行 
+grep Aug -R /var/log/* 在目录 '/var/log' 及随后的目录中搜索字符串"Aug" 
+sed 's/stringa1/stringa2/g' example.txt 将example.txt文件中的 "string1" 替换成 "string2" 
+sed '/^$/d' example.txt 从example.txt文件中删除所有空白行 
+sed '/ *#/d; /^$/d' example.txt 从example.txt文件中删除所有注释和空白行 
+echo 'esempio' | tr '[:lower:]' '[:upper:]' 合并上下单元格内容 
+sed -e '1d' result.txt 从文件example.txt 中排除第一行 
+sed -n '/stringa1/p' 查看只包含词汇 "string1"的行 
+sed -e 's/ *$//' example.txt 删除每一行最后的空白字符 
+sed -e 's/stringa1//g' example.txt 从文档中只删除词汇 "string1" 并保留剩余全部 
+sed -n '1,5p;5q' example.txt 查看从第一行到第5行内容 
+sed -n '5p;5q' example.txt 查看第5行 
+sed -e 's/00*/0/g' example.txt 用单个零替换多个零 
+cat -n file1 标示文件的行数 
+cat example.txt | awk 'NR%2==1' 删除example.txt文件中的所有偶数行 
+echo a b c | awk '&#123;print $1&#125;' 查看一行第一栏 
+echo a b c | awk '&#123;print $1,$3&#125;' 查看一行的第一和第三栏 
+paste file1 file2 合并两个文件或两栏的内容 
+paste -d '+' file1 file2 合并两个文件或两栏的内容，中间用"+"区分 
+sort file1 file2 排序两个文件的内容 
+sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份) 
+sort file1 file2 | uniq -u 删除交集，留下其他的行 
+sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件) 
+comm -1 file1 file2 比较两个文件的内容只删除 'file1' 所包含的内容 
+comm -2 file1 file2 比较两个文件的内容只删除 'file2' 所包含的内容 
+comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分
+</code></pre>
+<h3 id="字符设置和文件格式转换"><a href="#字符设置和文件格式转换" class="headerlink" title="字符设置和文件格式转换"></a><strong>字符设置和文件格式转换</strong></h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX 
+unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS 
+recode ..HTML < page.txt > page.html 将一个文本文件转换成html 
+recode -l | more 显示所有允许的转换格式
+</code></pre>
+<h3 id="远程登录、拷贝"><a href="#远程登录、拷贝" class="headerlink" title="远程登录、拷贝"></a>远程登录、拷贝</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt install openssh-server 安装服务端
+sudo apt install openssh-client 安装客户端
+ssh 用户名@ip地址   远程连接服务端
+scp 用户名@ip地址:远程目录  本地目录   远程拷贝文件
+</code></pre>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Matplotlib</title>
     <url>/2020/12/17/Matplotlib/</url>
     <content><![CDATA[<blockquote>
@@ -556,6 +756,212 @@ sns.clustermap(iris)
       </tags>
   </entry>
   <entry>
+    <title>多进程与多线程</title>
+    <url>/2021/01/06/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h1><blockquote>
+<p><strong>多任务</strong></p>
+<p>在同一时刻或同一时间段同时执行多个任务多任务</p>
+<p><strong>并发</strong></p>
+<p>任务数大于cpu核心数,cpu交替执行任务,并发（同一个时间段交替执行多个任务）</p>
+<p><strong>并行</strong></p>
+<p>同时时刻执行多个任务,并行(任务数小于cpu核心)</p>
+<p><strong>进程</strong></p>
+<p>进程是操作系统调度和分配资源的最小单位</p>
+<p>程序开启之后默认开启一个进程</p>
+<p>进程默认会有一个线程</p>
+</blockquote>
+<h1 id="多进程实现"><a href="#多进程实现" class="headerlink" title="多进程实现"></a>多进程实现</h1><blockquote>
+<ol>
+<li>导包</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">import multiprocessing
+</code></pre>
+<ol>
+<li>定义任务(函数)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def music():
+    for i in range(3):
+        print("music...")
+        time.sleep(0.2)
+</code></pre>
+<ol>
+<li>创建进程(生产线)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_process = multiprocessing.Process(target=music) # target参数 需要跟上任务
+</code></pre>
+<ol>
+<li>开启进程</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.start()
+</code></pre>
+</blockquote>
+<h1 id="多任务面向对象实现"><a href="#多任务面向对象实现" class="headerlink" title="多任务面向对象实现"></a>多任务面向对象实现</h1><blockquote>
+<ol>
+<li>导包</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">import multiprocessing
+</code></pre>
+<ol>
+<li>继承<code>multiprocessing.Process</code></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class MyProcess(multiprocessing.Process):
+    def __init__(self):
+        # 调用父类的初始化方法
+        super(MyProcess, self).__init__()
+</code></pre>
+<ol>
+<li>重写run方法,任务代码放到run方法中(run方法会自动调用,进程资源分配好自动调用,不需要自己调用)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python"># Process方法 进程的任务都是在run方法执行
+    def run(self):
+        for i in range(3):
+            print("music...")
+            time.sleep(0.2)
+</code></pre>
+<ol>
+<li>创建自定义进程对象</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">pro = MyProcess()
+</code></pre>
+<ol>
+<li>开启自定义进程</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">pro.start()
+</code></pre>
+<p><strong>注意:</strong></p>
+<p><strong>函数并没有进程和线程之分,在哪个进程调用,就运行在哪个进程中</strong></p>
+</blockquote>
+<h1 id="进程传递参数"><a href="#进程传递参数" class="headerlink" title="进程传递参数"></a>进程传递参数</h1><blockquote>
+<ol>
+<li><strong>通过元组传递</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.Process(target=coding, args=(3, "传智"))
+</code></pre>
+<p><strong>注意:一个参数元组需要加,  顺序和参数顺序保持一致</strong></p>
+<ol>
+<li><strong>通过字典方式传递</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.Process(target=music, kwargs=&#123;"count": 2&#125;)
+</code></pre>
+<p><strong>注意:元素键需要和函数形参名称保持一致</strong></p>
+</blockquote>
+<h1 id="进程编号"><a href="#进程编号" class="headerlink" title="进程编号"></a>进程编号</h1><blockquote>
+<p><strong>获取进程编号</strong></p>
+<ol>
+<li>获取当前进程编号</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">os.getpid()
+</code></pre>
+<ol>
+<li>获取父进程进程编号</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">os.getppid()
+</code></pre>
+<ol>
+<li>获取当前进程名字</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.current_process().name
+</code></pre>
+</blockquote>
+<h1 id="进程间不共享数据"><a href="#进程间不共享数据" class="headerlink" title="进程间不共享数据"></a>进程间不共享数据</h1><blockquote>
+<p><strong>子进程创建把主进程进行拷贝,子进程使用的全局变量和主进程全局变量不相同</strong></p>
+<p>把进程由原来的并行执行变成<strong>串行执行</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python"># join前代码
+进程对象.join() 
+# joint之后代码
+</code></pre>
+<p><strong>注意：join之后的代码需要等到进程执行完之后再执行</strong></p>
+</blockquote>
+<h1 id="主进程和子进程执行顺序"><a href="#主进程和子进程执行顺序" class="headerlink" title="主进程和子进程执行顺序"></a>主进程和子进程执行顺序</h1><blockquote>
+<p>主进程会等到子进程执行结束之后再停止</p>
+<p>如果想主进程代码执行结束结束子进程,可以通过守护进程或者手动停止进程</p>
+<p><strong>守护进程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.daemon = True
+# 需要在进程start之前设置
+</code></pre>
+<p><strong>手动停止子进程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.terminate()
+# 在主进程代码执行结束时调用这个代码
+</code></pre>
+</blockquote>
+<h1 id="进程命令"><a href="#进程命令" class="headerlink" title="进程命令"></a>进程命令</h1><blockquote>
+<p><strong>ps</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">ps -aux|grep 进程名
+</code></pre>
+<p><strong>过滤正在运行感兴趣的进程</strong></p>
+<p><strong>kill</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">kill -9 进程id
+</code></pre>
+<p><strong>强制杀死进程</strong> </p>
+</blockquote>
+<h1 id="多线程创建"><a href="#多线程创建" class="headerlink" title="多线程创建"></a>多线程创建</h1><blockquote>
+<p><strong>线程:</strong>CPU调度资源的最小单位</p>
+<ol>
+<li><p>导入threading模块</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import threading
+</code></pre>
+</li>
+<li><p>创建新线程,传递任务</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread = threading.Thread(target=coding)
+</code></pre>
+</li>
+<li><p>开启线程</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread.start()
+</code></pre>
+</li>
+</ol>
+<p><strong>注意：start 发送指令,自动创建线程,run方法会运行在子线程</strong></p>
+</blockquote>
+<h1 id="多线程传参"><a href="#多线程传参" class="headerlink" title="多线程传参"></a>多线程传参</h1><blockquote>
+<p>和多进程传递参数相同:args或者kwargs方式传递</p>
+<p><strong>args</strong></p>
+<p>以元组方式传递参数</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread = threading.Thread(target=coding, args=(3,'传智'))
+</code></pre>
+<p><strong>注意：函数多个参数,数据和函数形参顺序保持一致</strong></p>
+<p><strong>kwargs</strong></p>
+<p>以字典的方式传递参数</p>
+<pre class=" language-lang-python"><code class="language-lang-python">music_thread = threading.Thread(target=music, kwargs=&#123;"count" : 1&#125;)
+</code></pre>
+<p><strong>注意：字典的每个元素key是函数形参名称</strong></p>
+</blockquote>
+<h1 id="线程执行顺序"><a href="#线程执行顺序" class="headerlink" title="线程执行顺序"></a>线程执行顺序</h1><blockquote>
+<p><strong>守护线程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">work_thread = threading.Thread(target=work, daemon=True)
+work_thread.setDaemon(True)
+</code></pre>
+<p><strong>线程一般不能直接杀死</strong></p>
+<p><strong>停线程就是停止线程循环代码</strong></p>
+<p>可以设置<strong>终止变量</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">hasFinsh = False
+# 工作函数
+def work():
+    for i in range(10):
+        if hasFinsh:
+            return
+        print("work...")
+        time.sleep(0.2)
+</code></pre>
+</blockquote>
+<h1 id="线程间执行顺序"><a href="#线程间执行顺序" class="headerlink" title="线程间执行顺序"></a>线程间执行顺序</h1><blockquote>
+<p><strong>线程间和进程间执行都是无序</strong></p>
+<p>如果想让线程变成<strong>串行执行</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">sub_thread.join()
+</code></pre>
+<p><strong>获取线程名称</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">threading.current_thread().name
+</code></pre>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>多进程</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>科学计算库总结</title>
     <url>/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
@@ -889,6 +1295,383 @@ seaborn.clustermap(DataFrame) # 支持绘制层次聚类结构图
         <tag>Numpy</tag>
         <tag>Pandas</tag>
         <tag>Api</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络编程</title>
+    <url>/2021/01/07/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
+<p><strong>端口</strong></p>
+<p>数据传输的管道</p>
+<p><strong>知名端口号</strong></p>
+<p>0-1023 分配给了一些特定服务</p>
+<p><strong>动态端口号</strong></p>
+<p>1024-65535 程序可以使用的端口号</p>
+<p><strong>绑定端口</strong></p>
+<p>没有绑定端口号,程序退出自动释放端口号</p>
+<p>写程序可以绑定端口,没有绑定会自动分配端口</p>
+</blockquote>
+<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
+<p><strong>URL</strong>:统一资源定位符</p>
+<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
+<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
+<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
+<p><strong>资源路径</strong></p>
+<p><strong>查询参数</strong></p>
+</blockquote>
+<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
+<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
+<p><strong>请求头：</strong>请求信息</p>
+<p><strong>空行</strong></p>
+<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
+</blockquote>
+<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
+<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>面向连接</li>
+<li>TCP采用发送应答机制 </li>
+<li>超时重传</li>
+<li>错误校验   张三  李四</li>
+<li>流量控制和阻塞管理 </li>
+<li>基于字节流</li>
+</ol>
+</blockquote>
+<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
+<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字符串.encode(encoding=编码方式)
+</code></pre>
+<p><strong>将字节数组转换成字符串方便操作</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字节数组.decode(encoding=编码方式)
+</code></pre>
+<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
+</blockquote>
+<h1 id="TCP客户端请求流程"><a href="#TCP客户端请求流程" class="headerlink" title="TCP客户端请求流程"></a>TCP客户端请求流程</h1><blockquote>
+<ol>
+<li>创建TCP客户端套接字</li>
+<li>连接服务端(ip和端口 三次握手)</li>
+<li>发送数据(send发送字节数据 encode)</li>
+<li>接收数据(recv 需要通过decode反编码变成字符串)</li>
+<li>第三步和第四步可以执行多次</li>
+<li>断开连接(close 四次挥手)</li>
+</ol>
+</blockquote>
+<h1 id="TCP客户端开发代码"><a href="#TCP客户端开发代码" class="headerlink" title="TCP客户端开发代码"></a>TCP客户端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建客户端套接字对象 第一个参数：ipv4  第二个参数:tcp协议
+tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2.和服务端套接字建立连接 conect参数 元组 第一个元素：ip地址（字符串） 第二个参数：端口号
+tcp_client_socket.connect(("服务端ip地址",8888))
+# 3.发送数据
+tcp_client_socket.send("nihaome".encode(encoding="utf-8"))
+# 4.接收数据 recv阻塞等待数据的到来
+recv_data = tcp_client_socket.recv(1024)
+print(recv_data.decode())
+# 5.关闭客户端套接字
+tcp_client_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP服务端通信流程"><a href="#TCP服务端通信流程" class="headerlink" title="TCP服务端通信流程"></a>TCP服务端通信流程</h1><blockquote>
+<ol>
+<li>创建socket套接字(socket对象)</li>
+<li>通过bind方法绑定固定的ip和端口</li>
+<li>通过listen方法设置服务端监听状态</li>
+<li>通过accept方法接收客户端请求(获取到客户端连接socket)</li>
+<li>send方法发送数据</li>
+<li>通过recv接收数据(阻塞)</li>
+<li>服务端通过close断开连接</li>
+</ol>
+</blockquote>
+<h1 id="TCP服务端开发代码"><a href="#TCP服务端开发代码" class="headerlink" title="TCP服务端开发代码"></a>TCP服务端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建服务端套接字对象（客户端和服务端相同）主要作用就是监听客户端的连接
+tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2. 绑定IP地址和端口号，如果bind中的参数第一个ip地址元素设置为"",默认为本机ip地址
+tcp_server_socket.bind(("", 8888))
+# 3.设置监听 128:代表服务端等待排队连接的最大数量
+tcp_server_socket.listen(128)
+# 4.等待接受客户端的连接请求 accept阻塞等待 返回一个用以和客户端通socket,客户端的地址
+# 这个socket才是和客户端通信socket
+conn_socket, ip_port = tcp_server_socket.accept()
+# 5.接收数据(阻塞方法  如果没有接受到数据 后续等待这不会执行)
+recv_data = conn_socket.recv(1024)
+print("接收到的数据:", recv_data.decode())
+# 6.发送数据
+conn_socket.send("客户端你的数据我收到了".encode())
+# 关闭和客户端通信的socket
+conn_socket.close()
+# 想关闭服务器,可以关闭创建的链接socket
+tcp_server_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP请求注意点"><a href="#TCP请求注意点" class="headerlink" title="TCP请求注意点"></a>TCP请求注意点</h1><blockquote>
+<ol>
+<li><strong>客户端连接服务端,如果服务端断开连接,客户端会受到空数据,如果客户端主动断开,服务端收到空数据</strong></li>
+<li><strong>服务端可以设置端口复用</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
+</code></pre>
+</blockquote>
+<h1 id="搭建静态web服务器"><a href="#搭建静态web服务器" class="headerlink" title="搭建静态web服务器"></a>搭建静态web服务器</h1><blockquote>
+<ol>
+<li>创建tcp服务器</li>
+<li>接收浏览器访问数据(请求报文)</li>
+<li>解析浏览器发送过来的请求 报文(资源路径  资源)</li>
+<li>根据解析的资源路径,获取对应的资源</li>
+<li>按照响应报文方式组织响应数据,传递回去(响应体)</li>
+<li>关闭和客户端的连接</li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+        <tag>网络编程</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>装饰器和生成器</title>
+    <url>/2021/01/10/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p><strong>闭包定义</strong></p>
+<ol>
+<li>函数嵌套</li>
+<li>内部函数使用外部函数的参数</li>
+<li>外部函数返回了内部函数</li>
+</ol>
+<p><strong>闭包作用</strong></p>
+<p>保存外部函数的参数(局部变量,函数形参)</p>
+</blockquote>
+<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
+<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
+<pre class=" language-lang-python"><code class="language-lang-python">def func_out():
+    # 外部函数的局部变量
+    num1 = 20
+    # 内部函数
+    def func_inner(num2):
+        nonlocal num1
+        # 函数局部变量
+        num1 = num1+num2
+
+    print(num1)# 修改之前的函数形参值
+    func_inner(10)
+    print(num1)# 函数形参值
+
+func_out()
+</code></pre>
+</blockquote>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1定义一个装饰器(装饰器的本质是闭包)
+def check(fn):
+    def inner():
+        print("请先登陆")
+        fn()
+
+    return inner
+
+
+# 2使用装饰器装饰函数（增加一个登陆功能）
+# 解释器遇到@check 会立即执行 comment = check(comment)
+@check # 调用check 传递comment 返回新的函数
+def comment():
+    print("发表评论")
+comment()
+</code></pre>
+</blockquote>
+<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def check(fn): # regist
+    def inner(name,pwd):
+        print('开始验证')
+        fn(name,pwd) # regist
+        print('登陆成功')
+
+    return inner
+
+
+@check
+def regist(name,pwd):
+    print('开始注册')
+</code></pre>
+<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
+</blockquote>
+<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(a, b):
+        print('开始计算')
+        result = fn(a, b)
+        print('结束计算')
+        return result
+    return inner  # sum_num = inner
+
+# 使用装饰器装饰函数
+@logging
+def sum_num(a, b):
+    result = a + b
+    print(result)
+    return result
+
+result = sum_num(1, 2)
+print(result)
+</code></pre>
+<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
+</blockquote>
+<h1 id="装饰不定长参数函数"><a href="#装饰不定长参数函数" class="headerlink" title="装饰不定长参数函数"></a>装饰不定长参数函数</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        fn(*args, **kwargs)
+
+    return inner  # sum_num = inner
+</code></pre>
+<p>*args和<em>\</em>*kwargs可以接收任意类型的参数,通过*arg或者**kwargs把接收的数据解包传递个原来的函数进行调用</p>
+</blockquote>
+<h1 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 可以装饰带有任意参数和返回值的函数
+# 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        # 装饰之前代码
+        result = fn(*args, **kwargs)
+        # 装饰之后的代码
+        return result
+    return inner  # sum_num = inner
+</code></pre>
+</blockquote>
+<h1 id="多个装饰器"><a href="#多个装饰器" class="headerlink" title="多个装饰器"></a>多个装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">@check1
+@check2
+def comment():
+    print("发表评论")
+</code></pre>
+<p>离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰，由内到外的装饰过程</p>
+</blockquote>
+<h1 id="property修饰器"><a href="#property修饰器" class="headerlink" title="property修饰器"></a>property修饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>把方法的调用变成属性的调用</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+    def __init__(self):
+        self.__age = 0
+
+    # 获取属性
+    @property # 把age变成get属性
+    def age(self):
+        return self.__age
+
+    # 修改属性
+    @age.setter# 把age函数变成age属性的set方法
+    def age(self, new_age):
+        if new_age>0 and new_age<150:
+            self.__age = new_age
+</code></pre>
+</blockquote>
+<h1 id="类属性property"><a href="#类属性property" class="headerlink" title="类属性property"></a>类属性property</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+
+    def __init__(self):
+        self.__age = 0
+
+    def get_age(self):
+        """当获取age属性时会使用该方法"""
+        return self.__age
+
+    def set_age(self, new_age):
+        """当设置属性时会使用该方法"""
+        if new_age >= 150:
+            print("年龄错误")
+        else:
+            self.__age = new_age
+    # 类属性
+    age = property(get_age, set_age)
+</code></pre>
+<p>property第一个是get方法 第二个是set方法</p>
+</blockquote>
+<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><blockquote>
+<p><strong>with管理上下文对象</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">with 上下文管理器对象 as 变量:
+</code></pre>
+<p>as之后的变量是上下文管理器对象的__enter__方法返回的对象</p>
+<p>with执行时会调用上下文管理器的__enter__获取对象赋值给后面的变量</p>
+<p>在with语句中就可以使用这个对象</p>
+<p>with中的语句执行结束之后,会执行__exit__方法</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class File(object):
+    def __init__(self, file_name, file_model):
+        self.file_name = file_name
+        self.file_model = file_model
+
+    def __enter__(self):
+        print("这是上文")
+        self.file = open(self.file_name, self.file_model)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("这是下文")
+        self.file.close()
+</code></pre>
+<p><strong>注意：不管有没有出现异常,下文都会在with语句执行结束或者出现异常之后自动执行</strong></p>
+</blockquote>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def generater(num):
+    for i in range(num):
+        print("开始")
+        yield i
+        print("生成完成")
+
+g = generater(5)
+next(g)
+</code></pre>
+<p><strong>如果最后一条数据,next就会出现异常</strong></p>
+</blockquote>
+<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><blockquote>
+<p><strong>浅拷贝</strong>：copy.copy</p>
+<p>两个变量指向同一个空间</p>
+<p><strong>深拷贝：</strong>copy.deepcopy</p>
+<p>两个变量指向不同空间</p>
+<ol>
+<li>不可变,不用考虑深拷贝和浅拷贝</li>
+<li>如果可变类型,可变类型每一个元素都是不可变类型,可以直接浅拷贝</li>
+<li>如果可变类型中有可变类型元素,可以使用深拷贝</li>
+<li>不可变类型(不可变类型中全是不可变类型),直接赋值  可变类型或不可变类型中嵌套了可变类型直接深拷贝</li>
+</ol>
+</blockquote>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">.    匹配任意1个字符（除了\n）
+[ ]    匹配[ ]中列举的字符
+[^指定字符] 除了列举的所有字符
+\d    匹配数字，即0-9
+\D    匹配非数字，即不是数字
+\s    匹配空白，即 空格，tab键
+\S    匹配非空白
+\w    匹配非特殊字符，即a-z、A-Z、0-9、_、汉字
+\W    匹配特殊字符，即非字母、非数字、非汉字
+</code></pre>
+</blockquote>
+<h2 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">*    匹配前一个字符出现0次或者无限次，即可有可无
++    匹配前一个字符出现1次或者无限次，即至少有1次
+?    匹配前一个字符出现1次或者0次，即要么有1次，要么没有
+&#123;m&#125;    匹配前一个字符出现m次
+&#123;m,n&#125;    匹配前一个字符出现从m到n次
+例：
+# 字母开头@ 有3-10位的数字字母和_
+result = re.match("[a-zA-Z][a-zA-Z0-9_]&#123;2,9&#125;@qq\.com", "aafd12ddd@qq.com")
+</code></pre>
+</blockquote>
+<h2 id="匹配开头和结尾"><a href="#匹配开头和结尾" class="headerlink" title="匹配开头和结尾"></a>匹配开头和结尾</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">^    匹配字符串开头(放在匹配规则的最开始)
+$    匹配字符串结尾(放在匹配规则的最后一位)
+</code></pre>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>装饰器</tag>
+        <tag>生成器</tag>
       </tags>
   </entry>
   <entry>
@@ -2086,6 +2869,1255 @@ series.value_counts()：#统计分组次数
       </categories>
       <tags>
         <tag>Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库</title>
+    <url>/2021/01/27/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h1 id="Mysql基本使用"><a href="#Mysql基本使用" class="headerlink" title="Mysql基本使用"></a>Mysql基本使用</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="数据库的分类"><a href="#数据库的分类" class="headerlink" title="数据库的分类"></a>数据库的分类</h3><blockquote>
+<p><strong>关系型数据库：</strong></p>
+<p><strong>是指采用了关系模型来组织数据的数据库，简单来说，关系模型指的就是二维表格模型</strong></p>
+<ul>
+<li>Oracle</li>
+<li>Microsoft SQL Server</li>
+<li>MySQL</li>
+<li>SQLite</li>
+</ul>
+<p><strong>非关系型数据库：</strong></p>
+<p><strong>又被称为NoSQL（Not Only SQL )，意为不仅仅是SQL，对NoSQL 最普遍的定义是“非关联型的”，强调 Key-Value 的方式存储数据。</strong></p>
+<ul>
+<li>MongoDB</li>
+<li>Redis</li>
+</ul>
+</blockquote>
+<h3 id="数据库的特点"><a href="#数据库的特点" class="headerlink" title="数据库的特点"></a>数据库的特点</h3><blockquote>
+<ol>
+<li>持久化存储</li>
+<li>读写速度极高</li>
+<li>保证数据的有效性</li>
+</ol>
+</blockquote>
+<h3 id="SQL介绍"><a href="#SQL介绍" class="headerlink" title="SQL介绍"></a>SQL介绍</h3><blockquote>
+<p><strong>SQL(Structured Query Language)是结构化查询语言，是一种用来操作RDBMS的数据库的语言</strong>。也就是说通过 SQL 可以操作 oracle,sql server,mysql,sqlite 等关系型的数据库。</p>
+<p><strong>SQL语言主要分为：</strong></p>
+<ul>
+<li><strong>DQL：数据查询语言，用于对数据进行查询，如select</strong></li>
+<li><strong>DML：数据操作语言，对数据进行增加、修改、删除，如insert、update、delete</strong></li>
+<li>TPL：事务处理语言，对事务进行处理，包括begin transaction、commit、rollback</li>
+<li>DCL：数据控制语言，进行授权与权限回收，如grant、revoke</li>
+<li>DDL：数据定义语言，进行数据库、表的管理等，如create、drop</li>
+</ul>
+</blockquote>
+<h2 id="Mysql数据库"><a href="#Mysql数据库" class="headerlink" title="Mysql数据库"></a>Mysql数据库</h2><h3 id="MySQL数据库服务端软件的安装"><a href="#MySQL数据库服务端软件的安装" class="headerlink" title="MySQL数据库服务端软件的安装:"></a><strong>MySQL数据库服务端软件的安装:</strong></h3><blockquote>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install mysql-server
+</code></pre>
+<p><strong>ps说明：</strong></p>
+<ol>
+<li>ps 查看当前系统中的进程</li>
+<li>-a 表示所有用户</li>
+<li>-u 表示显示用户名</li>
+<li>-x 表示显示所有的执行程序</li>
+</ol>
+<p><strong>查看Mysql服务状态：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql status
+</code></pre>
+<p><strong>停止MySQL服务:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql stop
+</code></pre>
+<p><strong>启动MySQL服务:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql start
+</code></pre>
+<p><strong>重启MySQL服务:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql restart
+</code></pre>
+<p><strong>MySQL配置文件的介绍:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">配置文件路径为: /etc/mysql/mysql.conf.d/mysqld.cnf
+</code></pre>
+<p><strong>主要配置信息说明：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">port表示端口号，默认为3306
+bind-address表示服务器绑定的ip，默认为127.0.0.1
+datadir表示数据库保存路径，默认为/var/lib/mysql
+log_error表示错误日志，默认为/var/log/mysql/error.log
+</code></pre>
+</blockquote>
+<h3 id="MySQL数据库客户端软件的安装"><a href="#MySQL数据库客户端软件的安装" class="headerlink" title="MySQL数据库客户端软件的安装:"></a><strong>MySQL数据库客户端软件的安装:</strong></h3><blockquote>
+<ol>
+<li><p><strong>图形化界面客户端Navicat</strong></p>
+<p><strong>安装：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">tar zxvf navicat112_mysql_cs_x64.tar.gz
+./start_navicat
+</code></pre>
+<p><strong>试用过期后：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cd ~
+rm -r .navicat64
+</code></pre>
+</li>
+<li><p><strong>命令行客户端mysql</strong></p>
+<p><strong>安装：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install mysql-client
+</code></pre>
+<p><strong>MySQL客户端连接MySQL服务端命令：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">mysql -uroot -p
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h2 id="数据类型与约束"><a href="#数据类型与约束" class="headerlink" title="数据类型与约束"></a>数据类型与约束</h2><blockquote>
+<ol>
+<li><strong>常见的数据类型：</strong><ul>
+<li>整数：int，bit</li>
+<li>小数：decimal</li>
+<li>字符串：varchar,char</li>
+<li>日期时间: date, time, datetime</li>
+<li>枚举类型(enum)</li>
+</ul>
+</li>
+<li><strong>数据类型说明:</strong><ul>
+<li>decimal表示浮点数，如 decimal(5, 2) 表示共存5位数，小数占 2 位.</li>
+<li>char表示固定长度的字符串，如char(3)，如果填充’ab’时会补一个空格为’ab ‘，3表示字符数</li>
+<li>varchar表示可变长度的字符串，如varchar(3)，填充’ab’时就会存储’ab’，3表示字符数</li>
+<li>对于图片、音频、视频等文件，不存储在数据库中，而是上传到某个服务器上，然后在表中存储这个文件的保存路径.</li>
+<li>字符串 text 表示存储大文本，当字符大于 4000 时推荐使用, 比如技术博客.</li>
+</ul>
+</li>
+<li><strong>常见数据约束：</strong><ul>
+<li>主键 primary key: 物理上存储的顺序. MySQL 建议所有表的主键字段都叫 id, 类型为 int unsigned.</li>
+<li>非空 not null: 此字段不允许填写空值.</li>
+<li>惟一 unique: 此字段的值不允许重复.</li>
+<li>默认 default: 当不填写字段对应的值会使用默认值，如果填写时以填写为准.</li>
+<li>外键 foreign key: 对关系字段进行约束, 当为关系字段填写值时, 会到关联的表中查询此值是否存在, 如果存在则填写成功, 如果不存在则填写失败并抛出异常.</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="命令行客户端MySQL的使用"><a href="#命令行客户端MySQL的使用" class="headerlink" title="命令行客户端MySQL的使用"></a>命令行客户端MySQL的使用</h2><h3 id="登入登出数据库"><a href="#登入登出数据库" class="headerlink" title="登入登出数据库"></a>登入登出数据库</h3><blockquote>
+<ol>
+<li><strong>登录数据库：</strong></li>
+</ol>
+<pre class=" language-lang-bash"><code class="language-lang-bash">mysql -uroot -p
+</code></pre>
+<ol>
+<li><strong>登出(退出)数据库:</strong></li>
+</ol>
+<pre class=" language-lang-bash"><code class="language-lang-bash">quit 或 exit 或 ctrl + d
+</code></pre>
+</blockquote>
+<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><blockquote>
+<ol>
+<li><p><strong>查看所有数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show databases;
+</code></pre>
+</li>
+<li><p><strong>创建数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">create database 数据库名 charset=utf8;
+</code></pre>
+</li>
+<li><p><strong>使用数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">use 数据库名;
+</code></pre>
+</li>
+<li><p><strong>查看当前使用的数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select database();
+</code></pre>
+</li>
+<li><p><strong>删除数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">drop database 数据库名;
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="表结构的SQL语句"><a href="#表结构的SQL语句" class="headerlink" title="表结构的SQL语句"></a>表结构的SQL语句</h3><blockquote>
+<ol>
+<li><p><strong>查看当前数据库所有表：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show tables;
+</code></pre>
+</li>
+<li><p><strong>创建表：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">create table students(
+ id int unsigned primary key auto_increment not null,
+ name varchar(20) not null,
+ age tinyint unsigned default 0,
+ height decimal(5,2),
+ gender enum('男','女','人妖','保密')
+);
+</code></pre>
+</li>
+<li><p><strong>修改表-添加字段：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 add 列名 类型 约束;
+</code></pre>
+</li>
+<li><p><strong>修改表-修改字段类型：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 modify 列名 类型 约束;
+</code></pre>
+</li>
+<li><p><strong>修改表-修改字段名和字段类型：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 change 原名 新名 类型及约束;
+</code></pre>
+</li>
+<li><p><strong>修改表-删除字段：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 drop 列名;
+</code></pre>
+</li>
+<li><p><strong>查看创表SQL语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show create table 表名;
+</code></pre>
+</li>
+<li><p><strong>查看创库SQL语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show create database 数据库名;
+</code></pre>
+</li>
+<li><p><strong>删除表：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">drop table 表名;
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="表数据的SQL语句"><a href="#表数据的SQL语句" class="headerlink" title="表数据的SQL语句"></a>表数据的SQL语句</h3><blockquote>
+<ol>
+<li><p><strong>查询数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql"># 1. 查询所有列
+select * from 表名;
+# 2. 查询指定列
+select 列1,列2,... from 表名;
+</code></pre>
+</li>
+<li><p><strong>添加数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql"># 1. 全列插入：值的顺序与表结构字段的顺序完全一一对应
+insert into 表名 values (...)
+# 2. 部分列插入：值的顺序与给出的列顺序对应
+insert into 表名 (列1,...) values(值1,...)
+# 3. 全列多行插入
+insert into 表名 values(...),(...)...;
+# 4. 部分列多行插入
+insert into 表名(列1,...) values(值1,...),(值1,...)...;
+注意：
+1.主键列是自动增长，但是在全列插入时需要占位，通常使用空值(0或者null或者default)
+2.在全列插入时，如果字段列有默认值可以使用 default 来占位，插入后的数据就是之前设置的默认值
+</code></pre>
+</li>
+<li><p><strong>修改数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">update 表名 set 列1=值1,列2=值2... where 条件
+</code></pre>
+</li>
+<li><p><strong>删除数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">delete from 表名 where 条件  --物理删除，删除就不能恢复
+alter table students add isdelete bit default 0; --添加删除表示字段，0表示未删除 1表示删除
+update students set isdelete = 1 where id = 8;--逻辑删除数据
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="条件查询SQL语句"><a href="#条件查询SQL语句" class="headerlink" title="条件查询SQL语句"></a>条件查询SQL语句</h3><blockquote>
+<ol>
+<li><p><strong>where基本语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 where 条件;
+</code></pre>
+</li>
+<li><p><strong>比较运算符查询：</strong></p>
+<ul>
+<li>等于: =</li>
+<li>大于: &gt;</li>
+<li>大于等于: &gt;=</li>
+<li>小于: &lt;</li>
+<li>小于等于: &lt;=</li>
+<li>不等于: != 或 &lt;&gt;</li>
+</ul>
+</li>
+<li><p><strong>逻辑运算符查询：</strong></p>
+<ul>
+<li>and</li>
+<li>or</li>
+<li>not</li>
+</ul>
+</li>
+<li><p><strong>模糊查询：</strong></p>
+<ul>
+<li>like是模糊查询关键字</li>
+<li>%表示任意多个任意字符</li>
+<li>_表示一个任意字符</li>
+</ul>
+</li>
+<li><p><strong>范围查询：</strong></p>
+<ul>
+<li>between .. and .. 表示在一个连续的范围内查询</li>
+<li>in 表示在一个非连续的范围内查询</li>
+</ul>
+</li>
+<li><p><strong>空判断查询：</strong></p>
+<ul>
+<li>判断为空使用: is null</li>
+<li>判断非空使用: is not null</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="排序和分页查询"><a href="#排序和分页查询" class="headerlink" title="排序和分页查询"></a>排序和分页查询</h3><blockquote>
+<ol>
+<li><strong>排序查询语法：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 order by 列1 asc|desc [,列2 asc|desc,...]
+</code></pre>
+<p><strong>语法说明:</strong></p>
+<ol>
+<li>先按照列1进行排序，如果列1的值相同时，则按照 列2 排序，以此类推</li>
+<li>asc从小到大排列，即升序</li>
+<li>desc从大到小排序，即降序</li>
+<li><p>默认按照列值从小到大排序（即asc关键字）</p>
+</li>
+<li><p><strong>分页查询语法：</strong></p>
+</li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 limit start,count
+</code></pre>
+<p><strong>说明:</strong></p>
+<ol>
+<li>limit是分页查询关键字</li>
+<li>start表示开始行索引，默认是0</li>
+<li>count表示查询条数</li>
+</ol>
+</blockquote>
+<h1 id="MySQL数据库的条件查询"><a href="#MySQL数据库的条件查询" class="headerlink" title="MySQL数据库的条件查询"></a>MySQL数据库的条件查询</h1><h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><blockquote>
+<p><strong>常用的聚合函数:</strong></p>
+<ol>
+<li>count(col): 表示求指定列的总行数</li>
+<li>max(col): 表示求指定列的最大值</li>
+<li>min(col): 表示求指定列的最小值</li>
+<li>sum(col): 表示求指定列的和</li>
+<li>avg(col): 表示求指定列的平均值</li>
+</ol>
+</blockquote>
+<h2 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h2><blockquote>
+<p><strong>分组查询基本语法：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">GROUP BY 列名 [HAVING 条件表达式] [WITH ROLLUP]
+</code></pre>
+<p><strong>说明:</strong></p>
+<ul>
+<li>列名: 是指按照指定字段的值进行分组。</li>
+<li>HAVING 条件表达式: 用来过滤分组后的数据。</li>
+<li>WITH ROLLUP：在所有记录的最后加上一条记录，显示select查询时聚合函数的统计和计算结果</li>
+</ul>
+<ol>
+<li><p><strong>group by + group_concat()的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组， 查询gender字段和分组的name字段信息
+select gender,group_concat(name) from students group by gender;
+</code></pre>
+<p><strong>group_concat(字段名): 统计每个分组指定字段的信息集合，每个信息之间使用逗号进行分割</strong></p>
+</li>
+<li><p><strong>group by + 聚合函数的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 统计不同性别的人的平均年龄
+select gender,avg(age) from students group by gender;
+-- 统计不同性别的人的个数
+select gender,count(*) from students group by gender;
+</code></pre>
+</li>
+<li><p><strong>group by + having的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组，统计分组条数大于2的
+select gender,count(*) from students group by gender having count(*)>2;
+</code></pre>
+<p><strong>having作用和where类似都是过滤数据的，但having是过滤分组数据的，只能用于group by</strong></p>
+</li>
+<li><p><strong>group by + with rollup的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组，汇总总人数
+select gender,count(*) from students group by gender with rollup;
+-- 根据gender字段进行分组，汇总所有人的年龄
+select gender,group_concat(age) from students group by gender with rollup;
+</code></pre>
+<p><strong>with rollup的作用是：在最后记录后面新增一行，显示select查询时聚合函数的统计和计算结果</strong></p>
+</li>
+</ol>
+</blockquote>
+<h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><blockquote>
+<p><strong>连接查询可以分为:</strong></p>
+<ol>
+<li>内连接查询</li>
+<li>左连接查询</li>
+<li>右连接查询</li>
+<li><p>自连接查询</p>
+</li>
+<li><p><strong>内连接查询：</strong></p>
+<p>查询两个表中符合条件的共有记录**</p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 inner join 表2 on 表1.字段1 = 表2.字段2
+</code></pre>
+<ol>
+<li><p>inner join 就是内连接查询关键字</p>
+</li>
+<li><p>on 就是连接查询条件</p>
+</li>
+</ol>
+</li>
+<li><p><strong>左连接查询：</strong></p>
+<p><strong>以左表为主根据条件查询右表数据，如果根据条件查询右表数据不存在使用null值填充</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 left join 表2 on 表1.字段1 = 表2.字段2
+</code></pre>
+<ol>
+<li>left join 就是左连接查询关键字</li>
+<li>on 就是连接查询条件</li>
+<li>表1 是左表</li>
+<li>表2 是右表</li>
+</ol>
+</li>
+<li><p><strong>有连接查询：</strong></p>
+<p><strong>以右表为主根据条件查询左表数据，如果根据条件查询左表数据不存在使用null值填充</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 right join 表2 on 表1.字段1 = 表2.字段2
+</code></pre>
+<ol>
+<li>right join 就是右连接查询关键字</li>
+<li>on 就是连接查询条件</li>
+<li>表1 是左表</li>
+<li>表2 是右表</li>
+</ol>
+</li>
+<li><p><strong>自连接查询：</strong></p>
+<p><strong>左表和右表是同一个表，根据连接查询条件查询两个表中的数据。</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select c.id, c.title, c.pid, p.title from areas as c inner join areas as p on c.pid = p.id where p.title = '山西省';
+</code></pre>
+<p><strong>自连接查询必须对表起别名</strong></p>
+</li>
+<li><p><strong>子查询：</strong></p>
+<p>在一个 select 语句中,嵌入了另外一个 select 语句, 那么被嵌入的 select 语句称之为子查询语句，外部那个select语句则称为主查询。</p>
+<p><strong>主查询和子查询的关系:</strong></p>
+<ol>
+<li>子查询是嵌入到主查询中</li>
+<li>子查询是辅助主查询的,要么充当条件,要么充当数据源</li>
+<li>子查询是可以独立存在的语句,是一条完整的 select 语句</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h2 id="数据库设计三范式"><a href="#数据库设计三范式" class="headerlink" title="数据库设计三范式"></a>数据库设计三范式</h2><blockquote>
+<p>范式: 对设计数据库提出的一些规范，目前有迹可寻的共有8种范式，一般遵守3范式即可。</p>
+<ul>
+<li>第一范式（1NF）: 强调的是列的原子性，即列不能够再分成其他几列。</li>
+<li>第二范式（2NF）: 满足 1NF，另外包含两部分内容，一是表必须有一个主键；二是非主键字段 必须完全依赖于主键，而不能只依赖于主键的一部分。</li>
+<li>第三范式（3NF）: 满足 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</li>
+</ul>
+</blockquote>
+<h2 id="外键SQL语句的编写"><a href="#外键SQL语句的编写" class="headerlink" title="外键SQL语句的编写"></a>外键SQL语句的编写</h2><blockquote>
+<ol>
+<li><strong>外键约束的作用：</strong></li>
+</ol>
+<p>外键约束:对外键字段的值进行更新和插入时会和引用表中字段的数据进行验证，数据如果不合法则更新和插入会失败，保证数据的有效性</p>
+<ol>
+<li><strong>已经存在的字段添加外键：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 为cls_id字段添加外键约束
+alter table students add foreign key(cls_id) references classes(id);
+</code></pre>
+<ol>
+<li><strong>在创建数据表时设置外键约束:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 创建学校表
+create table school(
+    id int not null primary key auto_increment, 
+    name varchar(10)
+);
+-- 创建老师表
+create table teacher(
+    id int not null primary key auto_increment, 
+    name varchar(10), 
+    s_id int not null, 
+    foreign key(s_id) references school(id)
+);
+</code></pre>
+<ol>
+<li><strong>删除外键约束：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 需要先获取外键约束名称,该名称系统会自动生成,可以通过查看表创建语句来获取名称
+show create table teacher;
+-- 获取名称之后就可以根据名称来删除外键约束
+alter table teacher drop foreign key 外键名;
+</code></pre>
+</blockquote>
+<h2 id="SQL查询语句总结"><a href="#SQL查询语句总结" class="headerlink" title="SQL查询语句总结"></a>SQL查询语句总结</h2><blockquote>
+<p> <strong>完整语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select [select选项] 字段列表[字段别名]/* from 数据源 [where 字句] [group by子句 ][having 子句][order by 子句][limit 子句];
+</code></pre>
+<ol>
+<li><p><strong>select选项：</strong></p>
+<p>Select 选项包含：ALL（所有，默认）、distinct（去重）。其中distinct针对的是查询结果的整条记录而言的。</p>
+</li>
+<li><p><strong>where 字句:</strong></p>
+<p>where是唯一一个从磁盘开始拿数据的时候就开始进行判断的条件，从磁盘取出一条记录，开始进行where判断，判断结果如果成立，那么取出结果保存到内存，否则放弃。</p>
+</li>
+<li><p><strong>group by 子句:</strong></p>
+<p>分组子句，group by子句主要的作用是分组，从而进行统计操作，而不是为了展示（展示的时候，只会展示分组记录的第一条记录），分组时，一般会结合使用count（）、max（）、min（）、avg（）、sum（）函数。</p>
+</li>
+<li><p><strong>having 子句:</strong></p>
+<p>having的作用类同where，而且having能做几乎所有where能做的事情，而where却不能做having能做的很多事情，主要是因为where只能在磁盘提取数据的时候对数据进行操作；而在内存中对数据进行group by分组之后的结果进行处理，只能通过having。</p>
+</li>
+<li><p><strong>order by 子句:</strong></p>
+<p>对数据进行排序操作，根据某个字段进行升序或者降序排序。（进行多字段排序的时候，先根据某一字段进行排序，然后在排序好的内部再按照某字段进行排序）</p>
+</li>
+<li><p><strong>limit 子句：</strong></p>
+<p>限制结果的数量。Limit 偏移量 记录条数。</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="MySQL数据库的高级使用"><a href="#MySQL数据库的高级使用" class="headerlink" title="MySQL数据库的高级使用"></a>MySQL数据库的高级使用</h1><h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><blockquote>
+<ol>
+<li><p><strong>将查询结果插入到其他表中：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">insert into 目标表名（字段） select 源字段 from 源表名 group by 源字段
+</code></pre>
+</li>
+<li><p><strong>连接更新表中某个字段数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">--将goods表中的分类名称更改成商品分类表中对应的分类id
+-- 查看goods表中的商品分类名称对应的商品分类id
+select * from goods inner join good_cates on goods.cate_name = good_cates.name;
+-- 把该语句中from 后的语句理解为一张虚表  
+update goods g inner join good_cates gc on g.cate_name=gc.name set g.cate_name=gc.id;创建表并给某个字段添加数据
+</code></pre>
+</li>
+<li><p><strong>创建表并给某个字段添加数据:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">create table 表名(     
+id int unsigned primary key auto_increment,     
+name varchar(40) not null) select 字段名 as name from 表名 group by 字段名;
+</code></pre>
+</li>
+<li><p><strong>修改表结构：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 查看表结构
+desc 表名;
+-- 通过alter table语句修改表结构
+alter table 表名 change 字段名 新字段名 数据类型 约束, change 字段名2 新字段名2 数据类型 约束;
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><blockquote>
+<p><strong>事务的四大特性</strong></p>
+<ul>
+<li>原子性(Atomicity)</li>
+<li>一致性(Consistency)</li>
+<li>隔离性(Isolation)</li>
+<li>持久性(Durability)</li>
+</ul>
+<p><strong>原子性:</strong></p>
+<p>一个事务必须被视为一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中的一部分操作，这就是事务的原子性</p>
+<p><strong>一致性:</strong></p>
+<p>数据库总是从一个一致性的状态转换到另一个一致性的状态。</p>
+<p><strong>隔离性:</strong></p>
+<p>通常来说，一个事务所做的修改操作在提交事务之前，对于其他事务来说是不可见的。</p>
+<p><strong>持久性:</strong></p>
+<p>一旦事务提交，则其所做的修改会永久保存到数据库。</p>
+<p><strong>说明:</strong></p>
+<p>事务能够保证数据的完整性和一致性，让用户的操作更加安全。</p>
+<ol>
+<li><strong>查看MySQL数据库支持的表的存储引擎:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 查看MySQL数据库支持的表的存储引擎
+show engines;
+</code></pre>
+<ol>
+<li>常用的表的存储引擎是 InnoDB 和 MyISAM</li>
+<li>InnoDB 是支持事务的</li>
+<li>MyISAM 不支持事务，优势是访问速度快，对事务没有要求或者以select、insert为主的都可以使用该存储引擎来创建表</li>
+</ol>
+<p>修改表的存储引擎使用: </p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 engine = 引擎类型;
+</code></pre>
+<ol>
+<li><strong>开启事务：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">begin;
+或者
+start transaction;
+</code></pre>
+<p><strong>说明:</strong></p>
+<ol>
+<li><strong>开启事务后执行修改命令，变更数据会保存到MySQL服务端的缓存文件中，而不维护到物理表中</strong></li>
+<li><strong>MySQL数据库默认采用自动提交(autocommit)模式，如果没有显示的开启一个事务,那么每条sql语句都会被当作一个事务执行提交的操作</strong></li>
+<li>当set autocommit=0就是取消了自动提交事务模式，直到显示的执行commit和rollback表示该事务结束。</li>
+</ol>
+</blockquote>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><blockquote>
+<ol>
+<li><strong>查看表中已有索引:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show index from 表名;
+</code></pre>
+<p><strong>说明:主键列会自动创建索引</strong></p>
+<ol>
+<li><strong>索引的创建:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 创建索引的语法格式
+alter table 表名 add index 索引名[可选](列名, ..)
+</code></pre>
+<p><strong>说明:索引名不指定，默认使用字段名</strong></p>
+<ol>
+<li><strong>索引的删除:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 删除索引的语法格式
+alter table 表名 drop index 索引名
+-- 如果不知道索引名，可以查看创表sql语句
+show create table 表名;
+</code></pre>
+<ol>
+<li><strong>联合索引：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 add index (字段1，字段2);
+</code></pre>
+<p><strong>联合索引的好处:减少磁盘空间开销，因为每创建一个索引，其实就是创建了一个索引文件，那么会增加磁盘空间的开销。</strong></p>
+<ol>
+<li><strong>联合索引的最左原则：</strong></li>
+</ol>
+<blockquote>
+<p>在使用联合索引的时候，我们要遵守一个最左原则,即index(字段1，字段2)支持 字段1 、字段1 和 字段2 组合查询,而不支持单独 字段2 查询，因为没有用到创建的联合索引。</p>
+</blockquote>
+<ol>
+<li><strong>MySQL中的索引优点和原则：</strong></li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>加快数据的查询速度</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>创建索引会耗费时间和占用磁盘空间，并且随着数据量的增加所耗费的时间也会增加</li>
+</ol>
+<p>使用原则：</p>
+<ol>
+<li>通过优缺点对比，不是索引越多越好，而是需要自己合理的使用。</li>
+<li>对经常更新的表就避免对其进行过多索引的创建，对经常用于查询的字段应该创建索引，</li>
+<li>数据量小的表最好不要使用索引，因为由于数据较少，可能查询全部数据花费的时间比遍历索引的时间还要短，索引就可能不会产生优化效果。</li>
+<li>在一字段上相同值比较多不要建立索引，比如在学生表的”性别”字段上只有男，女两个不同值。相反的，在一个字段上不同值较多可是建立索引。</li>
+</ol>
+</blockquote>
+<h2 id="PyMySQL的使用"><a href="#PyMySQL的使用" class="headerlink" title="PyMySQL的使用"></a>PyMySQL的使用</h2><blockquote>
+<p><strong>安装pymysql第三方包:</strong></p>
+<pre class=" language-lang-lin"><code class="language-lang-lin">sudo pip3 install pymysql
+</code></pre>
+<p><strong>使用基本流程：</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import pymysql # 导包
+conn = pymysql.connect(host,port,user,password,database,charset) # 创建连接对象
+cursor =conn.cursor() # 获取游标对象
+row_count = cursor.execute(sql) # 执行SQL语句
+result = cursor.fetchall() # 获取查询结果集
+conn.commit() # 提交到数据库
+conn.rollback() # 回滚数据
+cursor.close() # 关闭游标
+conn.close() # 关闭连接
+</code></pre>
+<p><strong>防止SQL注入:</strong></p>
+<p>什么是SQL注入?</p>
+<p>​    用户提交带有恶意的数据与SQL语句进行字符串方式的拼接，从而影响了SQL语句的语义，最终产生数据泄露的现象。</p>
+<p>SQL语句参数化:</p>
+<ul>
+<li>SQL语言中的参数使用%s来占位，此处不是python中的字符串格式化操作</li>
+<li>将SQL语句中%s占位所需要的参数存在一个列表中，把参数列表传递给execute方法中第二个参数</li>
+</ul>
+<p><strong>说明:</strong></p>
+<ul>
+<li>execute方法中的 %s 占位不需要带引号</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构与算法</title>
+    <url>/2021/01/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
+<p><strong>顺序表</strong></p>
+<ol>
+<li>元素存储在一段连续的内存空间</li>
+<li>可以通过索引方式访问元素</li>
+</ol>
+<p><strong>分类</strong></p>
+<ol>
+<li>一体式:信息区和数据区在一起</li>
+<li>分离式:信息区和数据区分开</li>
+</ol>
+<p><strong>元素外置</strong></p>
+<ol>
+<li>数据区中存储的是元素的内存地址,不是保存具体的元素</li>
+<li>python的列表是分离式顺序表实现的 元素外置</li>
+<li>python大部分数据元素外置</li>
+</ol>
+<p><strong>链表</strong></p>
+<p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
+</blockquote>
+<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
+<p><strong>增加</strong></p>
+<ol>
+<li>尾部增加 O(1)</li>
+<li>特定位置非保序O(1)</li>
+<li>特定位置保序O(n)</li>
+</ol>
+<p><strong>删除</strong></p>
+<ol>
+<li>删除尾部O(1)</li>
+<li>删除特定位置非保序O(1)</li>
+<li>删除特定位置保序O(n)</li>
+</ol>
+<p><strong>查找</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+<p><strong>修改</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+</blockquote>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
+<p><strong>特点</strong>:<strong>先进后出</strong></p>
+<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
+<ol>
+<li><strong>顺序表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Stack(object):
+    """栈:先进后出"""
+    def __init__(self):
+        self.__items = []
+
+    def push(self, item):
+        """进栈"""
+        self.__items.append(item)
+
+    def pop(self):
+        """出栈"""
+        return self.__items.pop()
+
+    def travel(self):
+        """遍历"""
+        for i in self.__items:
+            print(i)
+</code></pre>
+<ol>
+<li><strong>链表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedStack:
+    def __init__(self):
+        # 最上面的元素
+        self.top = None
+
+    def push(self, value: int):
+        newtop = Node(value)
+        newtop.next = self.top
+        self.top = newtop
+
+    def pop(self):
+        if self.top:
+            value = self.top.data
+            self.top = self.top.next
+            return value
+        return None
+</code></pre>
+</blockquote>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
+<p><strong>队列特点:先进先出</strong></p>
+<p><strong>队列作用:保证任务顺序执行</strong></p>
+<ol>
+<li><strong>使用顺序表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Queue(object):
+    def __init__(self):
+        # 存储数据 线性表
+        self.__items = []
+
+    # enqueue(item)
+    # 队列尾部添加元素item
+    def enqueue(self, item):
+        self.__items.append(item)
+
+    # dequeue():
+    # 队列头部删除元素
+    def dequeue(self):
+        if not self.__items:
+            return None
+        return self.__items.pop(0)
+
+    # is_empty()
+    # 判断队列是否为空
+    def is_enpty(self):
+        return self.__items == []
+
+    # size()
+    # 返回队列的大小
+    def size(self):
+        return len(self.__items)
+</code></pre>
+<ol>
+<li><strong>使用链表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedQueue:
+    def __init__(self):
+        self.__head = None
+        self.__tail = None
+
+    def enqueue(self, value):
+        new_node = Node(value)
+        # 尾部不为空
+        if self.__tail:
+            self.__tail.next = new_node
+            # self.__tail = new_node
+        else:
+            self.__head = new_node
+            # self.__tail = new_node
+        self.__tail = new_node
+
+    def dequeue(self):
+        # 如果头部有数据
+        if self.__head:
+            value = self.__head.data
+            self.__head = self.__head.next
+            if not self.__head:# 新的头部为空
+                self.__tail = None
+            return value
+</code></pre>
+</blockquote>
+<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
+<p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Deque(object):
+    """双端队列"""
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        """判断是否为空"""
+        return self.items == []
+
+    def size(self):
+        """返回队列大小"""
+        return len(self.items)
+
+    def add_front(self, item):
+        """头部添加数据"""
+        self.items.insert(0, item)
+
+    def add_rear(self, item):
+        """尾部添加数据"""
+        self.items.append(item)
+
+    def remove_front(self):
+        """头部删除数据"""
+        return self.items.pop(0)
+
+    def remove_rear(self):
+        """尾部删除数据"""
+        return self.items.pop()
+</code></pre>
+<ol>
+<li><p><strong>python封装的queue队列</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import queue
+queue = queue.Queue(10)
+queue.put(10)
+queue.put(20)
+queue.put(30)
+print(queue.get())
+print(queue.get())
+print(queue.get())
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h1 id="算法衡量标准"><a href="#算法衡量标准" class="headerlink" title="算法衡量标准"></a>算法衡量标准</h1><blockquote>
+<p><strong>时间复杂度</strong></p>
+<p>   最优时间复杂度</p>
+<p>   最坏时间复杂度</p>
+<p><strong>算法的稳定性</strong></p>
+<p>   在元素中有相同的元素,如果排序之后,它们的相对位置没有发生变化,是稳定排序算法</p>
+<p><strong>原地排序</strong></p>
+<p>   排序算法空间复杂度为O(1) 是原地排序</p>
+</blockquote>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
+<p><strong>从头开始依次和后面第一个元素比较,如果比后面大,进行交换</strong></p>
+<p><strong>经过一轮之后可以确定最大值,放到最后面</strong></p>
+<p><strong>经过n-1排序成功</strong></p>
+<p><strong>每一轮需要比较次数=n-当前轮数</strong></p>
+<ol>
+<li><strong>代码实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def bubble_sort(alist):
+    """冒泡排序"""
+
+    # 数列的长度
+    n = len(alist)
+    # 控制轮数
+    for j in range(n-1):
+        count = 0
+        # 每一论的比较的次数
+        # i每一次和后面比较的索引
+        for i in range(n-j-1):
+            # 如果当前元素比后面元素大，交换
+            if alist[i] > alist[i+1]:
+                alist[i], alist[i + 1] = alist[i + 1], alist[i]
+                count+=1
+        # 这一轮没有交换  说明后续的列表已经有序  可以停下来
+        if count==0:
+            break
+</code></pre>
+<p><strong>算法分析</strong>：</p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">def select_sort(alist):
+    """选择排序"""
+    # 列表的长度
+    n = len(alist)
+    # 外层循环 0-3
+    for j in range(0, n - 1):
+        # 本轮目标j(索引)
+        # 本轮最小值下标
+        minIndex = j
+        # 控制比较次数
+        for i in range(j + 1, n):
+            # 从目标向后开始和minIndex比较
+            if alist[i]>alist[minIndex]:
+                minIndex = i
+        # 结束之后 如果目标的索引不是最小值索引 交换
+        if minIndex != j:
+            alist[j],alist[minIndex] = alist[minIndex],alist[j]
+</code></pre>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n2) 最坏O(n2)</li>
+<li>不稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
+</blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def insert_sort(alist):
+    """插入排序"""
+
+    # 列表的长度
+    n = len(alist)
+    # 轮数
+    for j in range(1,n):
+        # 找一个数据加入到已经排序号的数据中排序
+        # 从索引为1开始加入
+        for i in range(j,0,-1):# 从最后开始往前面比较
+            if alist[i] < alist[i-1]:
+                alist[i], alist[i-1] = alist[i-1], alist[i]
+            else:
+                break
+
+if __name__ == '__main__':
+    alist = [1,100,99,20,5,1000]
+    insert_sort(alist)
+    print(alist)
+</code></pre>
+<blockquote>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
+<p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">def quick_sort(alist, start, end):
+    """快速排序"""
+    # 递归的结束条件
+    if start >= end:
+        return
+    # 界限值
+    mid = alist[start]
+    # 左右游标
+    left = start
+    right = end
+
+    while left < right:
+        # 从右边开始找寻小于mid的值 归类到左边
+        while alist[right] >= mid and left < right:
+            right -= 1
+        alist[left] = alist[right]
+        # 从左边开始找寻大于mid的值 归类到右边
+        while alist[left] < mid and left < right:
+            left += 1
+        alist[right] = alist[left]
+
+    # 循环一旦结束了 证明找到了mid应该在的位置
+    alist[left] = mid
+
+    # 递归操作
+    quick_sort(alist, start, left-1)
+    quick_sort(alist, right+1, end)
+
+if __name__ == '__main__':
+    # alist = [1,2,100,50,1000,0,1,1]
+    # alist = [1,2,3,4,5,6,7,8]
+    alist = [9,8,7,6,5,4,3,2,1]
+    quick_sort(alist, 0, len(alist)-1)
+    print(alist)
+</code></pre>
+</blockquote>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
+<p><strong>注意：必须有序</strong></p>
+<ol>
+<li><strong>递归实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找"""
+    if not alist:
+        return 
+    # 数列的长度
+    n = len(alist)
+
+    # 中间值索引
+    mid = n//2
+
+    if item == alist[mid]:
+        return True
+    elif item < alist[mid]:
+         return binary_search(alist[0:mid], item)
+    elif item > alist[mid]:
+         return binary_search(alist[mid+1:], item)
+</code></pre>
+<ol>
+<li><strong>非递归实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    end = len(alist) - 1
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+        if item == alist[mid]:
+            return True
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+
+    # 没有找到想要找的数字
+    return False
+</code></pre>
+<ol>
+<li><strong>查找第一个索引</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找 如果找到返回索引  没有找到返回-1"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    end = len(alist) - 1
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+
+        if item == alist[mid]:
+            # 判断是否是第一个3
+            if mid==0 or alist[mid-1]!=item:
+                return mid
+            else:
+                end = mid - 1
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+    # 没有找到想要找的数字
+    return -1
+# 最好 O(1) 最坏 O(logn)
+if __name__ == '__main__':
+    alist = [1,2,3,3,3,4,5]
+    print(binary_search(alist, 3))
+</code></pre>
+<p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
+<p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
+<ol>
+<li><strong>查找最后一个索引</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找 如果找到返回索引  没有找到返回-1"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    maxIndex = len(alist) - 1
+    end = maxIndex
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+
+        if item == alist[mid]:
+            if mid == maxIndex or alist[mid+1]!=item:
+                return mid
+            else:
+                start = mid + 1
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+
+    # 没有找到想要找的数字
+    return -1
+# 最好 O(1) 最坏 O(logn)
+if __name__ == '__main__':
+    alist = [1,2,3,3,3,4,5]
+    print(binary_search(alist, 3))
+</code></pre>
+<p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
+<p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
+</blockquote>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><blockquote>
+<p><strong>树的标准</strong></p>
+<p>①每个节点有零个或多个子节点<br>②没有父节点的节点称为根节点<br>③每一个非根节点有且只有一个父节点<br>④除了根节点外，每个子节点可以分为多个不相交的子树</p>
+<p><strong>树的相关概念</strong></p>
+<ol>
+<li>节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
+<li>树的高度或深度：树中节点的最大层次</li>
+</ol>
+<p><strong>树的使用场景</strong></p>
+<p>①xml，html等，那么编写这些东西的解析器的时候，不可避免用到树</p>
+<p>②路由协议就是使用了树的算法</p>
+<p>③mysql数据库索引</p>
+<p>④文件系统的目录结构</p>
+<p>⑤所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构</p>
+</blockquote>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
+<p><strong>概念</strong></p>
+<p>每个几点最多拥有两个子节点</p>
+<p><strong>分类</strong></p>
+<ol>
+<li><p>完全二叉树</p>
+<p>对于一颗二叉树，假设其深度为d(d&gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树</p>
+</li>
+<li><p>满二叉树</p>
+<p>每一层都是满节点就是满二叉树</p>
+</li>
+<li><p>平衡二叉树</p>
+<p>当且仅当任何节点的两棵子树的高度差不大于1的二叉树</p>
+</li>
+<li><p>二叉搜索树</p>
+<p>父节点左边都比父节点小,右边都比父节点大,子树也满足这个条件</p>
+</li>
+</ol>
+<p><strong>存储</strong></p>
+<ol>
+<li>顺序表 完全二叉树可以使用顺序表存储  非完全二叉树建议使用链表方式存储</li>
+<li>链表  比较直观</li>
+</ol>
+</blockquote>
+<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
+<p><strong>性质</strong></p>
+<p>性质1: 在二叉树的第i层上至多有 2i-1 个结点（i&gt;0）</p>
+<p>性质2: 深度为k的二叉树至多有2k - 1个结点（k&gt;0）</p>
+<p>性质3: 对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1</p>
+<p>性质4: 最多有n个结点的完全二叉树的深度必为 log2(n+1)</p>
+<p>性质5: 对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子<br>编号必为2i＋1 , 其父节点的编号必为i//2（i＝1 时为根,除外）</p>
+<p><strong>遍历方式</strong></p>
+<p>广度优先:横向遍历</p>
+<p>深度优先:纵向遍历</p>
+<ol>
+<li>先序遍历 根左右</li>
+<li>中序遍历 左根右</li>
+<li>后序遍历 左右根</li>
+</ol>
+<p><strong>添加数据及遍历</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node(object):
+    """节点类"""
+    def  __init__(self, item):
+        self.item = item
+        self.lchild = None
+        self.rchild = None
+
+
+class BinaryTree(object):
+    """完全二叉树"""
+    def __init__(self, node=None):
+        self.root = node
+
+    def add(self, item):
+        """添加节点"""
+        if self.root == None:
+            self.root = Node(item)
+            return
+        # 队列
+        queue = []
+        # 从尾部添加数据
+        queue.append(self.root)
+        while True:
+            # 从头部取出数据
+            node = queue.pop(0)
+            # 判断左节点是否为空
+            if node.lchild == None:
+                node.lchild = Node(item)
+                return
+            else:
+                queue.append(node.lchild)
+
+            if node.rchild == None:
+                node.rchild = Node(item)
+                return
+            else:
+                queue.append(node.rchild)
+
+    def breadh_travel(self):
+        """广度优先遍历"""
+        if self.root == None:
+            return
+        # 队列
+        queue = []
+        # 添加数据
+        queue.append(self.root)
+        while len(queue)>0:
+            # 取出数据
+            node = queue.pop(0)
+            print(node.item, end="")
+            # 判断左右子节点是否为空
+            if node.lchild is not None:
+                queue.append(node.lchild)
+            if node.rchild is not None:
+                queue.append(node.rchild)
+
+    def preorder_travel(self, root):
+        """先序遍历 根 左 右"""
+        if root is not None:
+            print(root.item, end="")
+            self.preorder_travel(root.lchild)
+            self.preorder_travel(root.rchild)
+
+    def inorder_travel(self, root):
+        """中序遍历 左 根 右"""
+        if root is not None:
+            self.inorder_travel(root.lchild)
+            print(root.item, end="")
+            self.inorder_travel(root.rchild)
+
+    def postorder_travel(self, root):
+        """后序遍历 根 左 右"""
+        if root is not None:
+            self.postorder_travel(root.lchild)
+            self.postorder_travel(root.rchild)
+            print(root.item, end="")
+</code></pre>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
 </search>

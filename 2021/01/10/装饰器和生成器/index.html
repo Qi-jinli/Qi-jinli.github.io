@@ -1,0 +1,500 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.jpeg"/>
+	<link rel="shortcut icon" href="/img/logo.jpeg">
+	
+			    <title>
+    Qijinli's Blog
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="qijinli" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: 'portrait';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover;
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src=""></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+    <div id="music">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<link rel="stylesheet" href="/css/toc.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">QIJINLI</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="/categories/Linux/">Linux</a></li><li><a class="category-link" href="/categories/python/">python</a></li><li><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li><a class="category-link" href="/categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a>
+	                    </ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/about/" title="简历">
+		                简历
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/gallery/" title="图库">
+		                图库
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/Qi-jinli" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/images/img/装饰器和生成器.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >装饰器和生成器</h2></a>
+            </div>
+            <div class="al_page_content_outline">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E5%87%BD%E6%95%B0%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">内部函数修改外部函数的变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E5%8F%82%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">有参装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%B8%A6%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">装饰带有返回值函数的装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E4%B8%8D%E5%AE%9A%E9%95%BF%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">装饰不定长参数函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">通用装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">8.</span> <span class="toc-text">多个装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#property%E4%BF%AE%E9%A5%B0%E5%99%A8"><span class="toc-number">9.</span> <span class="toc-text">property修饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%B1%9E%E6%80%A7property"><span class="toc-number">10.</span> <span class="toc-text">类属性property</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">11.</span> <span class="toc-text">上下文管理器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-number">12.</span> <span class="toc-text">生成器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">13.</span> <span class="toc-text">深拷贝和浅拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-number">14.1.</span> <span class="toc-text">匹配单个字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-number">14.2.</span> <span class="toc-text">匹配多个字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%BC%80%E5%A4%B4%E5%92%8C%E7%BB%93%E5%B0%BE"><span class="toc-number">14.3.</span> <span class="toc-text">匹配开头和结尾</span></a></li></ol></li></ol>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p><strong>闭包定义</strong></p>
+<ol>
+<li>函数嵌套</li>
+<li>内部函数使用外部函数的参数</li>
+<li>外部函数返回了内部函数</li>
+</ol>
+<p><strong>闭包作用</strong></p>
+<p>保存外部函数的参数(局部变量,函数形参)</p>
+</blockquote>
+<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
+<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
+<pre class=" language-lang-python"><code class="language-lang-python">def func_out():
+    # 外部函数的局部变量
+    num1 = 20
+    # 内部函数
+    def func_inner(num2):
+        nonlocal num1
+        # 函数局部变量
+        num1 = num1+num2
+
+    print(num1)# 修改之前的函数形参值
+    func_inner(10)
+    print(num1)# 函数形参值
+
+func_out()
+</code></pre>
+</blockquote>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1定义一个装饰器(装饰器的本质是闭包)
+def check(fn):
+    def inner():
+        print("请先登陆")
+        fn()
+
+    return inner
+
+
+# 2使用装饰器装饰函数（增加一个登陆功能）
+# 解释器遇到@check 会立即执行 comment = check(comment)
+@check # 调用check 传递comment 返回新的函数
+def comment():
+    print("发表评论")
+comment()
+</code></pre>
+</blockquote>
+<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def check(fn): # regist
+    def inner(name,pwd):
+        print('开始验证')
+        fn(name,pwd) # regist
+        print('登陆成功')
+
+    return inner
+
+
+@check
+def regist(name,pwd):
+    print('开始注册')
+</code></pre>
+<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
+</blockquote>
+<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(a, b):
+        print('开始计算')
+        result = fn(a, b)
+        print('结束计算')
+        return result
+    return inner  # sum_num = inner
+
+# 使用装饰器装饰函数
+@logging
+def sum_num(a, b):
+    result = a + b
+    print(result)
+    return result
+
+result = sum_num(1, 2)
+print(result)
+</code></pre>
+<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
+</blockquote>
+<h1 id="装饰不定长参数函数"><a href="#装饰不定长参数函数" class="headerlink" title="装饰不定长参数函数"></a>装饰不定长参数函数</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        fn(*args, **kwargs)
+
+    return inner  # sum_num = inner
+</code></pre>
+<p>*args和<em>\</em>*kwargs可以接收任意类型的参数,通过*arg或者**kwargs把接收的数据解包传递个原来的函数进行调用</p>
+</blockquote>
+<h1 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 可以装饰带有任意参数和返回值的函数
+# 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        # 装饰之前代码
+        result = fn(*args, **kwargs)
+        # 装饰之后的代码
+        return result
+    return inner  # sum_num = inner
+</code></pre>
+</blockquote>
+<h1 id="多个装饰器"><a href="#多个装饰器" class="headerlink" title="多个装饰器"></a>多个装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">@check1
+@check2
+def comment():
+    print("发表评论")
+</code></pre>
+<p>离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰，由内到外的装饰过程</p>
+</blockquote>
+<h1 id="property修饰器"><a href="#property修饰器" class="headerlink" title="property修饰器"></a>property修饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>把方法的调用变成属性的调用</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+    def __init__(self):
+        self.__age = 0
+
+    # 获取属性
+    @property # 把age变成get属性
+    def age(self):
+        return self.__age
+
+    # 修改属性
+    @age.setter# 把age函数变成age属性的set方法
+    def age(self, new_age):
+        if new_age>0 and new_age<150:
+            self.__age = new_age
+</code></pre>
+</blockquote>
+<h1 id="类属性property"><a href="#类属性property" class="headerlink" title="类属性property"></a>类属性property</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+
+    def __init__(self):
+        self.__age = 0
+
+    def get_age(self):
+        """当获取age属性时会使用该方法"""
+        return self.__age
+
+    def set_age(self, new_age):
+        """当设置属性时会使用该方法"""
+        if new_age >= 150:
+            print("年龄错误")
+        else:
+            self.__age = new_age
+    # 类属性
+    age = property(get_age, set_age)
+</code></pre>
+<p>property第一个是get方法 第二个是set方法</p>
+</blockquote>
+<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><blockquote>
+<p><strong>with管理上下文对象</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">with 上下文管理器对象 as 变量:
+</code></pre>
+<p>as之后的变量是上下文管理器对象的__enter__方法返回的对象</p>
+<p>with执行时会调用上下文管理器的__enter__获取对象赋值给后面的变量</p>
+<p>在with语句中就可以使用这个对象</p>
+<p>with中的语句执行结束之后,会执行__exit__方法</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class File(object):
+    def __init__(self, file_name, file_model):
+        self.file_name = file_name
+        self.file_model = file_model
+
+    def __enter__(self):
+        print("这是上文")
+        self.file = open(self.file_name, self.file_model)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("这是下文")
+        self.file.close()
+</code></pre>
+<p><strong>注意：不管有没有出现异常,下文都会在with语句执行结束或者出现异常之后自动执行</strong></p>
+</blockquote>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def generater(num):
+    for i in range(num):
+        print("开始")
+        yield i
+        print("生成完成")
+
+g = generater(5)
+next(g)
+</code></pre>
+<p><strong>如果最后一条数据,next就会出现异常</strong></p>
+</blockquote>
+<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><blockquote>
+<p><strong>浅拷贝</strong>：copy.copy</p>
+<p>两个变量指向同一个空间</p>
+<p><strong>深拷贝：</strong>copy.deepcopy</p>
+<p>两个变量指向不同空间</p>
+<ol>
+<li>不可变,不用考虑深拷贝和浅拷贝</li>
+<li>如果可变类型,可变类型每一个元素都是不可变类型,可以直接浅拷贝</li>
+<li>如果可变类型中有可变类型元素,可以使用深拷贝</li>
+<li>不可变类型(不可变类型中全是不可变类型),直接赋值  可变类型或不可变类型中嵌套了可变类型直接深拷贝</li>
+</ol>
+</blockquote>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">.    匹配任意1个字符（除了\n）
+[ ]    匹配[ ]中列举的字符
+[^指定字符] 除了列举的所有字符
+\d    匹配数字，即0-9
+\D    匹配非数字，即不是数字
+\s    匹配空白，即 空格，tab键
+\S    匹配非空白
+\w    匹配非特殊字符，即a-z、A-Z、0-9、_、汉字
+\W    匹配特殊字符，即非字母、非数字、非汉字
+</code></pre>
+</blockquote>
+<h2 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">*    匹配前一个字符出现0次或者无限次，即可有可无
++    匹配前一个字符出现1次或者无限次，即至少有1次
+?    匹配前一个字符出现1次或者0次，即要么有1次，要么没有
+&#123;m&#125;    匹配前一个字符出现m次
+&#123;m,n&#125;    匹配前一个字符出现从m到n次
+例：
+# 字母开头@ 有3-10位的数字字母和_
+result = re.match("[a-zA-Z][a-zA-Z0-9_]&#123;2,9&#125;@qq\.com", "aafd12ddd@qq.com")
+</code></pre>
+</blockquote>
+<h2 id="匹配开头和结尾"><a href="#匹配开头和结尾" class="headerlink" title="匹配开头和结尾"></a>匹配开头和结尾</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">^    匹配字符串开头(放在匹配规则的最开始)
+$    匹配字符串结尾(放在匹配规则的最后一位)
+</code></pre>
+</blockquote>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://qi-jinli.github.io/2021/01/10/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://qi-jinli.github.io/2021/01/10/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a target="_blank" rel="noopener" href="http://www.qijinli.work " style="border-bottom: none;">Qijinli</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
