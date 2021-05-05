@@ -1,6 +1,6 @@
 .al_page_content_outline {
-    line-height: 20px;
-    font-size: .9em;
+    /*line-height: 20px;
+    font-size: .9em;*/
     word-wrap: break-word;
     padding: 8px 444px;
     margin: 0 0 25px 0;
@@ -20,5 +20,5 @@
     padding: 0;
 }
 .toc-link {
-    color: #888;
+    color: #000;
 }

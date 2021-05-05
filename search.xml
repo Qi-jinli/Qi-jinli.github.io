@@ -204,6 +204,97 @@
       </tags>
   </entry>
   <entry>
+    <title>KNN</title>
+    <url>/2021/02/20/KNN/</url>
+    <content><![CDATA[<h1 id="KNN概念"><a href="#KNN概念" class="headerlink" title="KNN概念"></a>KNN概念</h1><blockquote>
+<p><strong>定义：</strong></p>
+<p>如果一个样本在特征空间中的<strong>k</strong>个最相似<strong>(</strong>即特征空间中最邻近<strong>)</strong>的样本中的大多数属于某一个类别，则该样本也属于这个类别。</p>
+</blockquote>
+<h1 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h1><h2 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a>欧氏距离</h2><blockquote>
+<p><img src="/2021/02/20/KNN/image-20210220214011621.png" alt="image-20210220214011621"></p>
+</blockquote>
+<h2 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h2><blockquote>
+<p><img src="/2021/02/20/KNN/image-20210220214048481.png" alt="image-20210220214048481"></p>
+</blockquote>
+<h2 id="切比雪夫距离"><a href="#切比雪夫距离" class="headerlink" title="切比雪夫距离"></a>切比雪夫距离</h2><blockquote>
+<p><img src="/2021/02/20/KNN/image-20210220214136794.png" alt="image-20210220214136794"></p>
+</blockquote>
+<h2 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h2><blockquote>
+<p><img src="/2021/02/20/KNN/image-20210220214228039.png" alt="image-20210220214228039"></p>
+</blockquote>
+<h1 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h1><blockquote>
+<ol>
+<li><strong>选择较小的K值，训练误差会减小，泛化误差会增大</strong><br> <strong>K值的减小就意味着整体模型变得复杂，容易发生过拟合。</strong></li>
+<li><strong>选择较大的K值，优点是可以减少学习的泛化误差，但缺点是学习的训练误差会增大。</strong><br> <strong>K值的增大就意味着整体的模型变得简，容易欠拟合。</strong></li>
+</ol>
+</blockquote>
+<h1 id="kd树"><a href="#kd树" class="headerlink" title="kd树"></a>kd树</h1><blockquote>
+<ol>
+<li><p><code>kd树</code>就是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构.</p>
+<p>kd树更适用于<code>训练实例数远大于空间维数</code>时的k近邻搜索。</p>
+</li>
+<li><p><code>构造</code>:可以通过如下<code>递归</code>实现:在超矩形区域上选择一个<code>坐标轴</code>和此坐标轴上的一个<code>切分点</code>,确定一个超平面,该超平面将当前超矩形区域切分为两个子区域.在子区域上重复切分直到子区域内没有实例时终止.通常依次选择坐标轴和选定坐标轴上的<code>中位数</code>点为切分点,这样可以得到平衡kd树。</p>
+</li>
+</ol>
+<p><img src="/2021/02/20/KNN/image-20210220215218888.png" alt="image-20210220215218888" style="zoom:67%;"></p>
+<ol>
+<li><code>搜索</code>:从根节点出发,若目标点x当前维的坐标小于切分点的坐标则移动到左子结点,否则移动到右子结点,直到子结点为叶结点为止.以此叶结点为”当前最近点”,<code>递归</code>地向上回退,在每个结点:<ul>
+<li>如果该结点比当前最近点距离目标点更近,则以该结点为<code>当前最近点</code></li>
+<li>检查该结点的另一子结点对应的区域是否与以目标点为球心,以目标点与当前最近点间的距离为半径的超球体相交.如果相交,移动到另一个子结点,如果不相交,向上回退.持续这个过程直到回退到根结点,最后的当前最近点即为最近邻点.</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2021/02/20/KNN/image-20210220215919256.png" alt="image-20210220215919256" style="zoom:67%;"></p>
+</blockquote>
+<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h2><blockquote>
+<p><strong>通过对原始数据进行变换把数据映射到(默认为[0,1])之间</strong></p>
+<p><strong>最大值与最小值非常容易受异常点影响，所以这种方法鲁棒性较差，只适合传统精确小数据场景</strong></p>
+<p><img src="/2021/02/20/KNN/image-20210220221419293.png" alt="image-20210220221419293"></p>
+</blockquote>
+<h2 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h2><blockquote>
+<p><strong>对于标准化来说:如果出现异常点，由于具有一定数据量，少量的异常点对于平均值的影响并不大,从而方差改变较小。</strong></p>
+<p><strong>在已有样本足够多的情况下比较稳定，适合现代嘈杂大数据场景。</strong></p>
+<p><img src="/2021/02/20/KNN/image-20210220221504424.png" alt="image-20210220221504424" style="zoom:50%;"></p>
+</blockquote>
+<h1 id="KNN算法总结"><a href="#KNN算法总结" class="headerlink" title="KNN算法总结"></a>KNN算法总结</h1><blockquote>
+<p><strong><code>优点:</code></strong></p>
+<ul>
+<li><strong>简单有效</strong></li>
+<li><strong>重新训练的代价低</strong></li>
+<li>适合类域交叉样本<ul>
+<li><strong>KNN方法主要靠周围有限的邻近的样本</strong>,而不是靠判别类域的方法来确定所属类别的，因此对于类域的交叉或重叠较多的待分样本集来说，KNN方法较其他方法更为适合。</li>
+</ul>
+</li>
+<li>适合大样本自动分类<ul>
+<li>该算法比较<strong>适用于样本容量比较大的类域的自动分类</strong>，而那些<strong>样本容量较小的类域采用这种算法比较容易产生误分</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>缺点:</code></strong></p>
+<ul>
+<li><strong>惰性学习</strong></li>
+<li><strong>类别评分不是规格化</strong></li>
+<li>输出可解释性不强</li>
+<li>对不均衡的样本不擅长</li>
+<li>计算量较大</li>
+</ul>
+</blockquote>
+<h1 id="交叉验证，网格搜索"><a href="#交叉验证，网格搜索" class="headerlink" title="交叉验证，网格搜索"></a>交叉验证，网格搜索</h1><h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><blockquote>
+<p><img src="/2021/02/20/KNN/image-20210220223605973.png" alt="image-20210220223605973"></p>
+</blockquote>
+<h2 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h2><blockquote>
+<p>通常情况下，<strong>有很多参数是需要手动指定的（如k-近邻算法中的K值），这种叫超参数</strong>。但是手动过程繁杂，所以需要对模型预设几种超参数组合。<strong>每组超参数都采用交叉验证来进行评估。最后选出最优参数组合建立模型。</strong></p>
+<p><img src="/2021/02/20/KNN/image-20210220223702069.png" alt="image-20210220223702069"></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>KNN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux</title>
     <url>/2020/11/11/Linux/</url>
     <content><![CDATA[<h3 id="关机（系统的关机，重启以及登出）"><a href="#关机（系统的关机，重启以及登出）" class="headerlink" title="关机（系统的关机，重启以及登出）"></a>关机（系统的关机，重启以及登出）</h3><hr>
@@ -401,97 +492,6 @@ scp 用户名@ip地址:远程目录  本地目录   远程拷贝文件
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>KNN</title>
-    <url>/2021/02/20/KNN/</url>
-    <content><![CDATA[<h1 id="KNN概念"><a href="#KNN概念" class="headerlink" title="KNN概念"></a>KNN概念</h1><blockquote>
-<p><strong>定义：</strong></p>
-<p>如果一个样本在特征空间中的<strong>k</strong>个最相似<strong>(</strong>即特征空间中最邻近<strong>)</strong>的样本中的大多数属于某一个类别，则该样本也属于这个类别。</p>
-</blockquote>
-<h1 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h1><h2 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a>欧氏距离</h2><blockquote>
-<p><img src="/2021/02/20/KNN/image-20210220214011621.png" alt="image-20210220214011621"></p>
-</blockquote>
-<h2 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h2><blockquote>
-<p><img src="/2021/02/20/KNN/image-20210220214048481.png" alt="image-20210220214048481"></p>
-</blockquote>
-<h2 id="切比雪夫距离"><a href="#切比雪夫距离" class="headerlink" title="切比雪夫距离"></a>切比雪夫距离</h2><blockquote>
-<p><img src="/2021/02/20/KNN/image-20210220214136794.png" alt="image-20210220214136794"></p>
-</blockquote>
-<h2 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h2><blockquote>
-<p><img src="/2021/02/20/KNN/image-20210220214228039.png" alt="image-20210220214228039"></p>
-</blockquote>
-<h1 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h1><blockquote>
-<ol>
-<li><strong>选择较小的K值，训练误差会减小，泛化误差会增大</strong><br> <strong>K值的减小就意味着整体模型变得复杂，容易发生过拟合。</strong></li>
-<li><strong>选择较大的K值，优点是可以减少学习的泛化误差，但缺点是学习的训练误差会增大。</strong><br> <strong>K值的增大就意味着整体的模型变得简，容易欠拟合。</strong></li>
-</ol>
-</blockquote>
-<h1 id="kd树"><a href="#kd树" class="headerlink" title="kd树"></a>kd树</h1><blockquote>
-<ol>
-<li><p><code>kd树</code>就是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构.</p>
-<p>kd树更适用于<code>训练实例数远大于空间维数</code>时的k近邻搜索。</p>
-</li>
-<li><p><code>构造</code>:可以通过如下<code>递归</code>实现:在超矩形区域上选择一个<code>坐标轴</code>和此坐标轴上的一个<code>切分点</code>,确定一个超平面,该超平面将当前超矩形区域切分为两个子区域.在子区域上重复切分直到子区域内没有实例时终止.通常依次选择坐标轴和选定坐标轴上的<code>中位数</code>点为切分点,这样可以得到平衡kd树。</p>
-</li>
-</ol>
-<p><img src="/2021/02/20/KNN/image-20210220215218888.png" alt="image-20210220215218888" style="zoom:67%;"></p>
-<ol>
-<li><code>搜索</code>:从根节点出发,若目标点x当前维的坐标小于切分点的坐标则移动到左子结点,否则移动到右子结点,直到子结点为叶结点为止.以此叶结点为”当前最近点”,<code>递归</code>地向上回退,在每个结点:<ul>
-<li>如果该结点比当前最近点距离目标点更近,则以该结点为<code>当前最近点</code></li>
-<li>检查该结点的另一子结点对应的区域是否与以目标点为球心,以目标点与当前最近点间的距离为半径的超球体相交.如果相交,移动到另一个子结点,如果不相交,向上回退.持续这个过程直到回退到根结点,最后的当前最近点即为最近邻点.</li>
-</ul>
-</li>
-</ol>
-<p><img src="/2021/02/20/KNN/image-20210220215919256.png" alt="image-20210220215919256" style="zoom:67%;"></p>
-</blockquote>
-<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h2><blockquote>
-<p><strong>通过对原始数据进行变换把数据映射到(默认为[0,1])之间</strong></p>
-<p><strong>最大值与最小值非常容易受异常点影响，所以这种方法鲁棒性较差，只适合传统精确小数据场景</strong></p>
-<p><img src="/2021/02/20/KNN/image-20210220221419293.png" alt="image-20210220221419293"></p>
-</blockquote>
-<h2 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h2><blockquote>
-<p><strong>对于标准化来说:如果出现异常点，由于具有一定数据量，少量的异常点对于平均值的影响并不大,从而方差改变较小。</strong></p>
-<p><strong>在已有样本足够多的情况下比较稳定，适合现代嘈杂大数据场景。</strong></p>
-<p><img src="/2021/02/20/KNN/image-20210220221504424.png" alt="image-20210220221504424" style="zoom:50%;"></p>
-</blockquote>
-<h1 id="KNN算法总结"><a href="#KNN算法总结" class="headerlink" title="KNN算法总结"></a>KNN算法总结</h1><blockquote>
-<p><strong><code>优点:</code></strong></p>
-<ul>
-<li><strong>简单有效</strong></li>
-<li><strong>重新训练的代价低</strong></li>
-<li>适合类域交叉样本<ul>
-<li><strong>KNN方法主要靠周围有限的邻近的样本</strong>,而不是靠判别类域的方法来确定所属类别的，因此对于类域的交叉或重叠较多的待分样本集来说，KNN方法较其他方法更为适合。</li>
-</ul>
-</li>
-<li>适合大样本自动分类<ul>
-<li>该算法比较<strong>适用于样本容量比较大的类域的自动分类</strong>，而那些<strong>样本容量较小的类域采用这种算法比较容易产生误分</strong>。</li>
-</ul>
-</li>
-</ul>
-<p><strong><code>缺点:</code></strong></p>
-<ul>
-<li><strong>惰性学习</strong></li>
-<li><strong>类别评分不是规格化</strong></li>
-<li>输出可解释性不强</li>
-<li>对不均衡的样本不擅长</li>
-<li>计算量较大</li>
-</ul>
-</blockquote>
-<h1 id="交叉验证，网格搜索"><a href="#交叉验证，网格搜索" class="headerlink" title="交叉验证，网格搜索"></a>交叉验证，网格搜索</h1><h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><blockquote>
-<p><img src="/2021/02/20/KNN/image-20210220223605973.png" alt="image-20210220223605973"></p>
-</blockquote>
-<h2 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h2><blockquote>
-<p>通常情况下，<strong>有很多参数是需要手动指定的（如k-近邻算法中的K值），这种叫超参数</strong>。但是手动过程繁杂，所以需要对模型预设几种超参数组合。<strong>每组超参数都采用交叉验证来进行评估。最后选出最优参数组合建立模型。</strong></p>
-<p><img src="/2021/02/20/KNN/image-20210220223702069.png" alt="image-20210220223702069"></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>KNN</tag>
       </tags>
   </entry>
   <entry>
@@ -2119,139 +2119,6 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
       </tags>
   </entry>
   <entry>
-    <title>网络编程</title>
-    <url>/2021/01/07/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
-<p><strong>端口</strong></p>
-<p>数据传输的管道</p>
-<p><strong>知名端口号</strong></p>
-<p>0-1023 分配给了一些特定服务</p>
-<p><strong>动态端口号</strong></p>
-<p>1024-65535 程序可以使用的端口号</p>
-<p><strong>绑定端口</strong></p>
-<p>没有绑定端口号,程序退出自动释放端口号</p>
-<p>写程序可以绑定端口,没有绑定会自动分配端口</p>
-</blockquote>
-<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
-<p><strong>URL</strong>:统一资源定位符</p>
-<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
-<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
-<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
-<p><strong>资源路径</strong></p>
-<p><strong>查询参数</strong></p>
-</blockquote>
-<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
-<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
-<p><strong>请求头：</strong>请求信息</p>
-<p><strong>空行</strong></p>
-<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
-</blockquote>
-<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
-<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>面向连接</li>
-<li>TCP采用发送应答机制 </li>
-<li>超时重传</li>
-<li>错误校验   张三  李四</li>
-<li>流量控制和阻塞管理 </li>
-<li>基于字节流</li>
-</ol>
-</blockquote>
-<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
-<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">字符串.encode(encoding=编码方式)
-</code></pre>
-<p><strong>将字节数组转换成字符串方便操作</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">字节数组.decode(encoding=编码方式)
-</code></pre>
-<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
-</blockquote>
-<h1 id="TCP客户端请求流程"><a href="#TCP客户端请求流程" class="headerlink" title="TCP客户端请求流程"></a>TCP客户端请求流程</h1><blockquote>
-<ol>
-<li>创建TCP客户端套接字</li>
-<li>连接服务端(ip和端口 三次握手)</li>
-<li>发送数据(send发送字节数据 encode)</li>
-<li>接收数据(recv 需要通过decode反编码变成字符串)</li>
-<li>第三步和第四步可以执行多次</li>
-<li>断开连接(close 四次挥手)</li>
-</ol>
-</blockquote>
-<h1 id="TCP客户端开发代码"><a href="#TCP客户端开发代码" class="headerlink" title="TCP客户端开发代码"></a>TCP客户端开发代码</h1><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建客户端套接字对象 第一个参数：ipv4  第二个参数:tcp协议
-tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 2.和服务端套接字建立连接 conect参数 元组 第一个元素：ip地址（字符串） 第二个参数：端口号
-tcp_client_socket.connect(("服务端ip地址",8888))
-# 3.发送数据
-tcp_client_socket.send("nihaome".encode(encoding="utf-8"))
-# 4.接收数据 recv阻塞等待数据的到来
-recv_data = tcp_client_socket.recv(1024)
-print(recv_data.decode())
-# 5.关闭客户端套接字
-tcp_client_socket.close()
-</code></pre>
-</blockquote>
-<h1 id="TCP服务端通信流程"><a href="#TCP服务端通信流程" class="headerlink" title="TCP服务端通信流程"></a>TCP服务端通信流程</h1><blockquote>
-<ol>
-<li>创建socket套接字(socket对象)</li>
-<li>通过bind方法绑定固定的ip和端口</li>
-<li>通过listen方法设置服务端监听状态</li>
-<li>通过accept方法接收客户端请求(获取到客户端连接socket)</li>
-<li>send方法发送数据</li>
-<li>通过recv接收数据(阻塞)</li>
-<li>服务端通过close断开连接</li>
-</ol>
-</blockquote>
-<h1 id="TCP服务端开发代码"><a href="#TCP服务端开发代码" class="headerlink" title="TCP服务端开发代码"></a>TCP服务端开发代码</h1><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建服务端套接字对象（客户端和服务端相同）主要作用就是监听客户端的连接
-tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 2. 绑定IP地址和端口号，如果bind中的参数第一个ip地址元素设置为"",默认为本机ip地址
-tcp_server_socket.bind(("", 8888))
-# 3.设置监听 128:代表服务端等待排队连接的最大数量
-tcp_server_socket.listen(128)
-# 4.等待接受客户端的连接请求 accept阻塞等待 返回一个用以和客户端通socket,客户端的地址
-# 这个socket才是和客户端通信socket
-conn_socket, ip_port = tcp_server_socket.accept()
-# 5.接收数据(阻塞方法  如果没有接受到数据 后续等待这不会执行)
-recv_data = conn_socket.recv(1024)
-print("接收到的数据:", recv_data.decode())
-# 6.发送数据
-conn_socket.send("客户端你的数据我收到了".encode())
-# 关闭和客户端通信的socket
-conn_socket.close()
-# 想关闭服务器,可以关闭创建的链接socket
-tcp_server_socket.close()
-</code></pre>
-</blockquote>
-<h1 id="TCP请求注意点"><a href="#TCP请求注意点" class="headerlink" title="TCP请求注意点"></a>TCP请求注意点</h1><blockquote>
-<ol>
-<li><strong>客户端连接服务端,如果服务端断开连接,客户端会受到空数据,如果客户端主动断开,服务端收到空数据</strong></li>
-<li><strong>服务端可以设置端口复用</strong></li>
-</ol>
-<pre class=" language-lang-python"><code class="language-lang-python">tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
-</code></pre>
-</blockquote>
-<h1 id="搭建静态web服务器"><a href="#搭建静态web服务器" class="headerlink" title="搭建静态web服务器"></a>搭建静态web服务器</h1><blockquote>
-<ol>
-<li>创建tcp服务器</li>
-<li>接收浏览器访问数据(请求报文)</li>
-<li>解析浏览器发送过来的请求 报文(资源路径  资源)</li>
-<li>根据解析的资源路径,获取对应的资源</li>
-<li>按照响应报文方式组织响应数据,传递回去(响应体)</li>
-<li>关闭和客户端的连接</li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>TCP</tag>
-        <tag>网络编程</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>聚类算法</title>
     <url>/2021/02/25/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
@@ -2756,6 +2623,139 @@ FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
       <tags>
         <tag>LR</tag>
         <tag>ROC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络编程</title>
+    <url>/2021/01/07/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
+<p><strong>端口</strong></p>
+<p>数据传输的管道</p>
+<p><strong>知名端口号</strong></p>
+<p>0-1023 分配给了一些特定服务</p>
+<p><strong>动态端口号</strong></p>
+<p>1024-65535 程序可以使用的端口号</p>
+<p><strong>绑定端口</strong></p>
+<p>没有绑定端口号,程序退出自动释放端口号</p>
+<p>写程序可以绑定端口,没有绑定会自动分配端口</p>
+</blockquote>
+<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
+<p><strong>URL</strong>:统一资源定位符</p>
+<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
+<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
+<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
+<p><strong>资源路径</strong></p>
+<p><strong>查询参数</strong></p>
+</blockquote>
+<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
+<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
+<p><strong>请求头：</strong>请求信息</p>
+<p><strong>空行</strong></p>
+<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
+</blockquote>
+<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
+<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>面向连接</li>
+<li>TCP采用发送应答机制 </li>
+<li>超时重传</li>
+<li>错误校验   张三  李四</li>
+<li>流量控制和阻塞管理 </li>
+<li>基于字节流</li>
+</ol>
+</blockquote>
+<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
+<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字符串.encode(encoding=编码方式)
+</code></pre>
+<p><strong>将字节数组转换成字符串方便操作</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字节数组.decode(encoding=编码方式)
+</code></pre>
+<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
+</blockquote>
+<h1 id="TCP客户端请求流程"><a href="#TCP客户端请求流程" class="headerlink" title="TCP客户端请求流程"></a>TCP客户端请求流程</h1><blockquote>
+<ol>
+<li>创建TCP客户端套接字</li>
+<li>连接服务端(ip和端口 三次握手)</li>
+<li>发送数据(send发送字节数据 encode)</li>
+<li>接收数据(recv 需要通过decode反编码变成字符串)</li>
+<li>第三步和第四步可以执行多次</li>
+<li>断开连接(close 四次挥手)</li>
+</ol>
+</blockquote>
+<h1 id="TCP客户端开发代码"><a href="#TCP客户端开发代码" class="headerlink" title="TCP客户端开发代码"></a>TCP客户端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建客户端套接字对象 第一个参数：ipv4  第二个参数:tcp协议
+tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2.和服务端套接字建立连接 conect参数 元组 第一个元素：ip地址（字符串） 第二个参数：端口号
+tcp_client_socket.connect(("服务端ip地址",8888))
+# 3.发送数据
+tcp_client_socket.send("nihaome".encode(encoding="utf-8"))
+# 4.接收数据 recv阻塞等待数据的到来
+recv_data = tcp_client_socket.recv(1024)
+print(recv_data.decode())
+# 5.关闭客户端套接字
+tcp_client_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP服务端通信流程"><a href="#TCP服务端通信流程" class="headerlink" title="TCP服务端通信流程"></a>TCP服务端通信流程</h1><blockquote>
+<ol>
+<li>创建socket套接字(socket对象)</li>
+<li>通过bind方法绑定固定的ip和端口</li>
+<li>通过listen方法设置服务端监听状态</li>
+<li>通过accept方法接收客户端请求(获取到客户端连接socket)</li>
+<li>send方法发送数据</li>
+<li>通过recv接收数据(阻塞)</li>
+<li>服务端通过close断开连接</li>
+</ol>
+</blockquote>
+<h1 id="TCP服务端开发代码"><a href="#TCP服务端开发代码" class="headerlink" title="TCP服务端开发代码"></a>TCP服务端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建服务端套接字对象（客户端和服务端相同）主要作用就是监听客户端的连接
+tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2. 绑定IP地址和端口号，如果bind中的参数第一个ip地址元素设置为"",默认为本机ip地址
+tcp_server_socket.bind(("", 8888))
+# 3.设置监听 128:代表服务端等待排队连接的最大数量
+tcp_server_socket.listen(128)
+# 4.等待接受客户端的连接请求 accept阻塞等待 返回一个用以和客户端通socket,客户端的地址
+# 这个socket才是和客户端通信socket
+conn_socket, ip_port = tcp_server_socket.accept()
+# 5.接收数据(阻塞方法  如果没有接受到数据 后续等待这不会执行)
+recv_data = conn_socket.recv(1024)
+print("接收到的数据:", recv_data.decode())
+# 6.发送数据
+conn_socket.send("客户端你的数据我收到了".encode())
+# 关闭和客户端通信的socket
+conn_socket.close()
+# 想关闭服务器,可以关闭创建的链接socket
+tcp_server_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP请求注意点"><a href="#TCP请求注意点" class="headerlink" title="TCP请求注意点"></a>TCP请求注意点</h1><blockquote>
+<ol>
+<li><strong>客户端连接服务端,如果服务端断开连接,客户端会受到空数据,如果客户端主动断开,服务端收到空数据</strong></li>
+<li><strong>服务端可以设置端口复用</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
+</code></pre>
+</blockquote>
+<h1 id="搭建静态web服务器"><a href="#搭建静态web服务器" class="headerlink" title="搭建静态web服务器"></a>搭建静态web服务器</h1><blockquote>
+<ol>
+<li>创建tcp服务器</li>
+<li>接收浏览器访问数据(请求报文)</li>
+<li>解析浏览器发送过来的请求 报文(资源路径  资源)</li>
+<li>根据解析的资源路径,获取对应的资源</li>
+<li>按照响应报文方式组织响应数据,传递回去(响应体)</li>
+<li>关闭和客户端的连接</li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+        <tag>网络编程</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
