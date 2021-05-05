@@ -1393,6 +1393,168 @@ def work():
       </tags>
   </entry>
   <entry>
+    <title>支持向量机</title>
+    <url>/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
+    <content><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><blockquote>
+<p>SVM：<strong>SVM全称是supported vector machine（支持向量机），即寻找到一个超平面使样本分成两类，并且间隔最大。</strong></p>
+<p>SVM能够执行线性或非线性分类、回归，甚至是异常值检测任务。它是机器学习领域最受欢迎的模型之一。SVM特别适用于中小型复杂数据集的分类。</p>
+</blockquote>
+<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><blockquote>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185005211.png" alt="image-20210303185005211" style="zoom: 33%;"></p>
+<p>根据已有训练集，通过间隔最大化得到分离超平面：<em>y</em>(<em>x</em>)=$w^T$Φ(<em>x</em>)+<em>b</em></p>
+<p>相应的决策函数为：<em>f</em>(<em>x</em>)=sign($w^T$Φ(<em>x</em>)+<em>b</em>),线性可分支持向量机。</p>
+<p>Φ(<em>x</em>)为核函数。</p>
+<p><strong>求解过程：</strong></p>
+<ol>
+<li><p>样本空间中任意点x到超平面（w,b）的距离可写成：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185429679.png" alt="image-20210303185429679" style="zoom: 33%;"></p>
+<p>假设超平面可以正确分类，令：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185528918.png" alt="image-20210303185528918" style="zoom: 33%;"></p>
+<p>两个异类支持向量到超平面的距离之和为:$\gamma=2/||w||$</p>
+</li>
+<li><p>间隔最大化，即为：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185729519.png" alt="image-20210303185729519" style="zoom:33%;"></p>
+</li>
+<li><p>拉格朗日乘子法，约束变为无约束：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185857179.png" alt="image-20210303185857179" style="zoom:33%;"></p>
+</li>
+<li><p>对偶问题，极小极大变为极大极小值问题：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185956543.png" alt="image-20210303185956543" style="zoom:33%;"></p>
+</li>
+<li><p>对原目标函数求导：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190050345.png" alt="image-20210303190050345" style="zoom:50%;"></p>
+<p>然后带入原函数，获得原函数极小值：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190137239.png" alt="image-20210303190137239" style="zoom: 33%;"></p>
+</li>
+<li><p>然后求$max_\alpha L(w,b,\alpha)$，即</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190522111.png" alt="image-20210303190522111" style="zoom:50%;"></p>
+<p>转换成极小值：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190548805.png" alt="image-20210303190548805" style="zoom:50%;"></p>
+</li>
+<li><p>求出极值$\alpha^*$,带入计算w,b:</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190650559.png" alt="image-20210303190650559" style="zoom:50%;"></p>
+</li>
+</ol>
+</blockquote>
+<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><blockquote>
+<p><strong>SVM Hinge损失函数:</strong></p>
+<script type="math/tex; mode=display">
+loss = \begin{cases}
+    0, \quad if: \; y_i (w^T x_i + b) \ge 1 \\
+    1 - y_i (w^T x_i + b), \quad if: \; y_i (w^T x_i + b) \lt 1
+    \end{cases}</script><p>可改写为：</p>
+<script type="math/tex; mode=display">
+loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w^Txi+b)，则1−ξ=yi(w^Txi+b)$</p>
+<p><strong>0/1损失：</strong></p>
+<ol>
+<li>划分正确，损失为0</li>
+<li>划分错误，损失为1</li>
+</ol>
+<p><strong>Logistic损失函数：</strong></p>
+<ul>
+<li>损失函数的公式为：$ln(1+e^{-y_i})$，为了好看除以ln2</li>
+</ul>
+<p>函数图像：</p>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303191802382.png" alt="image-20210303191802382" style="zoom: 33%;"></p>
+</blockquote>
+<h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><h2 id="核函数概念"><a href="#核函数概念" class="headerlink" title="核函数概念"></a>核函数概念</h2><blockquote>
+<p><code>核函数</code>是将原始输入空间映射到新的特征空间，从而，使得原本线性不可分的样本可能在核空间可分。</p>
+<ul>
+<li>假设X是输入空间，</li>
+<li>H是特征空间，</li>
+<li>存在一个映射ϕ使得X中的点x能够计算得到H空间中的点h，</li>
+<li>对于所有的X中的点都成立：$h=\phi(x)$</li>
+<li>若x，z是X空间中的点，函数k(x,z)满足下述条件，那么都成立，则称k为核函数，而ϕ为映射函数：$k(x,z)=\phi(x)\phi(z)$</li>
+</ul>
+<p><strong>理解：</strong></p>
+<p><strong>核函数为映射后高维样本的点积，而这个点积可以用原样本的坐标来表示。</strong></p>
+</blockquote>
+<h2 id="常见核函数"><a href="#常见核函数" class="headerlink" title="常见核函数"></a>常见核函数</h2><blockquote>
+<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303192622721.png" alt="image-20210303192622721" style="zoom: 33%;"></p>
+<ul>
+<li><strong>线性核和多项式核：</strong><ul>
+<li>这两种核的作用也是首先在属性空间中找到一些点，把这些点当做base，核函数的作用就是找与该点距离和角度满足某种关系的样本点。</li>
+<li>当样本点与该点的夹角近乎垂直时，两个样本的欧式长度必须非常长才能保证满足线性核函数大于0；而当样本点与base点的方向相同时，长度就不必很长；而当方向相反时，核函数值就是负的，被判为反类。即，它在空间上划分出一个梭形，按照梭形来进行正反类划分。</li>
+</ul>
+</li>
+<li><strong>RBF核：</strong><ul>
+<li>高斯核函数就是在属性空间中找到一些点，这些点可以是也可以不是样本点，把这些点当做base，以这些base为圆心向外扩展，扩展半径即为带宽，即可划分数据。</li>
+<li>换句话说，在属性空间中找到一些超圆，用这些超圆来判定正反类。</li>
+</ul>
+</li>
+<li><strong>Sigmoid核：</strong><ul>
+<li>同样地是定义一些base，</li>
+<li>核函数就是将线性核函数经过一个tanh函数进行处理，把值域限制在了-1到1上。</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用指导：</strong></p>
+<ul>
+<li>如果Feature的数量很大，甚至和样本数量差不多时，往往线性可分，这时选用Sigmoid或者Linear线性核；</li>
+<li>如果Feature的数量很小，样本数量正常，不算多也不算少，这时选用RBF核；</li>
+<li>如果Feature的数量很小，而样本的数量很大，这时手动添加一些Feature，使得线性可分，然后选用Sigmoid或者Linear线性核；</li>
+<li>多项式核一般很少使用，效率不高，结果也不优于RBF；</li>
+<li>Linear核参数少，速度快；RBF核参数多，分类结果非常依赖于参数，需要交叉验证或网格搜索最佳参数，比较耗时；</li>
+<li>应用最广的应该就是RBF核，无论是小样本还是大样本，高维还是低维等情况，RBF核函数均适用。</li>
+</ul>
+</blockquote>
+<h2 id="SVM回归"><a href="#SVM回归" class="headerlink" title="SVM回归"></a>SVM回归</h2><blockquote>
+<p><strong>SVM回归</strong>是让尽可能多的实例位于预测线上，同时限制间隔违例（也就是不在预测线距上的实例）。</p>
+<p>线距的宽度由超参数ε控制。</p>
+</blockquote>
+<h2 id="api介绍"><a href="#api介绍" class="headerlink" title="api介绍"></a>api介绍</h2><blockquote>
+<p>使用SVM作为模型时，通常采用如下流程：</p>
+<ol>
+<li>对样本数据进行归一化</li>
+<li>应用核函数对样本进行映射<strong>（最常采用和核函数是RBF和Linear，在样本线性可分时，Linear效果要比RBF好）</strong></li>
+<li>用cross-validation和grid-search对超参数进行优选</li>
+<li>用最优参数训练得到模型</li>
+<li>测试</li>
+</ol>
+<p>sklearn中支持向量分类主要有三种方法：SVC、NuSVC、LinearSVC，扩展为三个支持向量回归方法：SVR、NuSVR、LinearSVR。</p>
+<ul>
+<li>SVC和NuSVC方法基本一致，唯一区别就是损失函数的度量方式不同<ul>
+<li>NuSVC中的nu参数和SVC中的C参数；</li>
+</ul>
+</li>
+<li>LinearSVC是实现线性核函数的支持向量分类，没有kernel参数。</li>
+</ul>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<ul>
+<li>SVM是一种二类分类模型。</li>
+<li><p>它的基本模型是在特征空间中寻找间隔最大化的分离超平面的线性分类器。</p>
+<ul>
+<li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
+<li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
+<li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
+</ul>
+</li>
+<li><p><strong>SVM的优点：</strong></p>
+<ul>
+<li>在高维空间中非常高效</li>
+<li>即使在数据维度比样本数量大的情况下仍然有效</li>
+<li>在决策函数（称为支持向量）中使用训练集的子集,因此它也是高效利用内存的</li>
+<li>通用性：不同的核函数与特定的决策函数一一对应</li>
+</ul>
+</li>
+<li><strong>SVM的缺点：</strong><ul>
+<li>如果特征数量比样本数量大得多，在选择核函数时要避免过拟合</li>
+<li>对缺失数据敏感;</li>
+<li>对于核函数的高维映射解释力不强</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>SVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>科学计算库总结</title>
     <url>/2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
@@ -1726,168 +1888,6 @@ seaborn.clustermap(DataFrame) # 支持绘制层次聚类结构图
         <tag>Numpy</tag>
         <tag>Pandas</tag>
         <tag>Api</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>支持向量机</title>
-    <url>/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
-    <content><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><blockquote>
-<p>SVM：<strong>SVM全称是supported vector machine（支持向量机），即寻找到一个超平面使样本分成两类，并且间隔最大。</strong></p>
-<p>SVM能够执行线性或非线性分类、回归，甚至是异常值检测任务。它是机器学习领域最受欢迎的模型之一。SVM特别适用于中小型复杂数据集的分类。</p>
-</blockquote>
-<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><blockquote>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185005211.png" alt="image-20210303185005211" style="zoom: 33%;"></p>
-<p>根据已有训练集，通过间隔最大化得到分离超平面：<em>y</em>(<em>x</em>)=$w^T$Φ(<em>x</em>)+<em>b</em></p>
-<p>相应的决策函数为：<em>f</em>(<em>x</em>)=sign($w^T$Φ(<em>x</em>)+<em>b</em>),线性可分支持向量机。</p>
-<p>Φ(<em>x</em>)为核函数。</p>
-<p><strong>求解过程：</strong></p>
-<ol>
-<li><p>样本空间中任意点x到超平面（w,b）的距离可写成：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185429679.png" alt="image-20210303185429679" style="zoom: 33%;"></p>
-<p>假设超平面可以正确分类，令：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185528918.png" alt="image-20210303185528918" style="zoom: 33%;"></p>
-<p>两个异类支持向量到超平面的距离之和为:$\gamma=2/||w||$</p>
-</li>
-<li><p>间隔最大化，即为：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185729519.png" alt="image-20210303185729519" style="zoom:33%;"></p>
-</li>
-<li><p>拉格朗日乘子法，约束变为无约束：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185857179.png" alt="image-20210303185857179" style="zoom:33%;"></p>
-</li>
-<li><p>对偶问题，极小极大变为极大极小值问题：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185956543.png" alt="image-20210303185956543" style="zoom:33%;"></p>
-</li>
-<li><p>对原目标函数求导：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190050345.png" alt="image-20210303190050345" style="zoom:50%;"></p>
-<p>然后带入原函数，获得原函数极小值：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190137239.png" alt="image-20210303190137239" style="zoom: 33%;"></p>
-</li>
-<li><p>然后求$max_\alpha L(w,b,\alpha)$，即</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190522111.png" alt="image-20210303190522111" style="zoom:50%;"></p>
-<p>转换成极小值：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190548805.png" alt="image-20210303190548805" style="zoom:50%;"></p>
-</li>
-<li><p>求出极值$\alpha^*$,带入计算w,b:</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190650559.png" alt="image-20210303190650559" style="zoom:50%;"></p>
-</li>
-</ol>
-</blockquote>
-<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><blockquote>
-<p><strong>SVM Hinge损失函数:</strong></p>
-<script type="math/tex; mode=display">
-loss = \begin{cases}
-    0, \quad if: \; y_i (w^T x_i + b) \ge 1 \\
-    1 - y_i (w^T x_i + b), \quad if: \; y_i (w^T x_i + b) \lt 1
-    \end{cases}</script><p>可改写为：</p>
-<script type="math/tex; mode=display">
-loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w^Txi+b)，则1−ξ=yi(w^Txi+b)$</p>
-<p><strong>0/1损失：</strong></p>
-<ol>
-<li>划分正确，损失为0</li>
-<li>划分错误，损失为1</li>
-</ol>
-<p><strong>Logistic损失函数：</strong></p>
-<ul>
-<li>损失函数的公式为：$ln(1+e^{-y_i})$，为了好看除以ln2</li>
-</ul>
-<p>函数图像：</p>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303191802382.png" alt="image-20210303191802382" style="zoom: 33%;"></p>
-</blockquote>
-<h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><h2 id="核函数概念"><a href="#核函数概念" class="headerlink" title="核函数概念"></a>核函数概念</h2><blockquote>
-<p><code>核函数</code>是将原始输入空间映射到新的特征空间，从而，使得原本线性不可分的样本可能在核空间可分。</p>
-<ul>
-<li>假设X是输入空间，</li>
-<li>H是特征空间，</li>
-<li>存在一个映射ϕ使得X中的点x能够计算得到H空间中的点h，</li>
-<li>对于所有的X中的点都成立：$h=\phi(x)$</li>
-<li>若x，z是X空间中的点，函数k(x,z)满足下述条件，那么都成立，则称k为核函数，而ϕ为映射函数：$k(x,z)=\phi(x)\phi(z)$</li>
-</ul>
-<p><strong>理解：</strong></p>
-<p><strong>核函数为映射后高维样本的点积，而这个点积可以用原样本的坐标来表示。</strong></p>
-</blockquote>
-<h2 id="常见核函数"><a href="#常见核函数" class="headerlink" title="常见核函数"></a>常见核函数</h2><blockquote>
-<p><img src="/2021/03/03/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303192622721.png" alt="image-20210303192622721" style="zoom: 33%;"></p>
-<ul>
-<li><strong>线性核和多项式核：</strong><ul>
-<li>这两种核的作用也是首先在属性空间中找到一些点，把这些点当做base，核函数的作用就是找与该点距离和角度满足某种关系的样本点。</li>
-<li>当样本点与该点的夹角近乎垂直时，两个样本的欧式长度必须非常长才能保证满足线性核函数大于0；而当样本点与base点的方向相同时，长度就不必很长；而当方向相反时，核函数值就是负的，被判为反类。即，它在空间上划分出一个梭形，按照梭形来进行正反类划分。</li>
-</ul>
-</li>
-<li><strong>RBF核：</strong><ul>
-<li>高斯核函数就是在属性空间中找到一些点，这些点可以是也可以不是样本点，把这些点当做base，以这些base为圆心向外扩展，扩展半径即为带宽，即可划分数据。</li>
-<li>换句话说，在属性空间中找到一些超圆，用这些超圆来判定正反类。</li>
-</ul>
-</li>
-<li><strong>Sigmoid核：</strong><ul>
-<li>同样地是定义一些base，</li>
-<li>核函数就是将线性核函数经过一个tanh函数进行处理，把值域限制在了-1到1上。</li>
-</ul>
-</li>
-</ul>
-<p><strong>使用指导：</strong></p>
-<ul>
-<li>如果Feature的数量很大，甚至和样本数量差不多时，往往线性可分，这时选用Sigmoid或者Linear线性核；</li>
-<li>如果Feature的数量很小，样本数量正常，不算多也不算少，这时选用RBF核；</li>
-<li>如果Feature的数量很小，而样本的数量很大，这时手动添加一些Feature，使得线性可分，然后选用Sigmoid或者Linear线性核；</li>
-<li>多项式核一般很少使用，效率不高，结果也不优于RBF；</li>
-<li>Linear核参数少，速度快；RBF核参数多，分类结果非常依赖于参数，需要交叉验证或网格搜索最佳参数，比较耗时；</li>
-<li>应用最广的应该就是RBF核，无论是小样本还是大样本，高维还是低维等情况，RBF核函数均适用。</li>
-</ul>
-</blockquote>
-<h2 id="SVM回归"><a href="#SVM回归" class="headerlink" title="SVM回归"></a>SVM回归</h2><blockquote>
-<p><strong>SVM回归</strong>是让尽可能多的实例位于预测线上，同时限制间隔违例（也就是不在预测线距上的实例）。</p>
-<p>线距的宽度由超参数ε控制。</p>
-</blockquote>
-<h2 id="api介绍"><a href="#api介绍" class="headerlink" title="api介绍"></a>api介绍</h2><blockquote>
-<p>使用SVM作为模型时，通常采用如下流程：</p>
-<ol>
-<li>对样本数据进行归一化</li>
-<li>应用核函数对样本进行映射<strong>（最常采用和核函数是RBF和Linear，在样本线性可分时，Linear效果要比RBF好）</strong></li>
-<li>用cross-validation和grid-search对超参数进行优选</li>
-<li>用最优参数训练得到模型</li>
-<li>测试</li>
-</ol>
-<p>sklearn中支持向量分类主要有三种方法：SVC、NuSVC、LinearSVC，扩展为三个支持向量回归方法：SVR、NuSVR、LinearSVR。</p>
-<ul>
-<li>SVC和NuSVC方法基本一致，唯一区别就是损失函数的度量方式不同<ul>
-<li>NuSVC中的nu参数和SVC中的C参数；</li>
-</ul>
-</li>
-<li>LinearSVC是实现线性核函数的支持向量分类，没有kernel参数。</li>
-</ul>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<ul>
-<li>SVM是一种二类分类模型。</li>
-<li><p>它的基本模型是在特征空间中寻找间隔最大化的分离超平面的线性分类器。</p>
-<ul>
-<li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
-<li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
-<li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
-</ul>
-</li>
-<li><p><strong>SVM的优点：</strong></p>
-<ul>
-<li>在高维空间中非常高效</li>
-<li>即使在数据维度比样本数量大的情况下仍然有效</li>
-<li>在决策函数（称为支持向量）中使用训练集的子集,因此它也是高效利用内存的</li>
-<li>通用性：不同的核函数与特定的决策函数一一对应</li>
-</ul>
-</li>
-<li><strong>SVM的缺点：</strong><ul>
-<li>如果特征数量比样本数量大得多，在选择核函数时要避免过拟合</li>
-<li>对缺失数据敏感;</li>
-<li>对于核函数的高维映射解释力不强</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>SVM</tag>
       </tags>
   </entry>
   <entry>
@@ -2455,6 +2455,66 @@ tcp_server_socket.close()
       </tags>
   </entry>
   <entry>
+    <title>逻辑回归</title>
+    <url>/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</url>
+    <content><![CDATA[<h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><blockquote>
+<p><strong>sigmoid函数：</strong></p>
+<script type="math/tex; mode=display">
+g(z)=\frac{1}{1+e^{-z}}\\
+z=\omega^{T}x</script><ul>
+<li>回归的结果输入到sigmoid函数当中</li>
+<li>输出结果：[0, 1]区间中的一个概率值，默认为0.5为阈值</li>
+</ul>
+</blockquote>
+<h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><blockquote>
+<p>逻辑回归是在线性函数的基础上，经过激活函数后产生的<code>0~1</code>之间的概率值。<br>设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：</p>
+<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
+<p>合并可得：</p>
+<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
+<p>最大化似然函数也就是最小化损失函数</p>
+<p><code>损失函数</code>为</p>
+<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
+<p><code>优化:</code></p>
+<p>同样使用梯度下降优化算法，去减少损失函数的值。这样去更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
+<script type="math/tex; mode=display">
+\theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
+<h1 id="分类评估方法"><a href="#分类评估方法" class="headerlink" title="分类评估方法"></a>分类评估方法</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><blockquote>
+<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
+</blockquote>
+<h2 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h2><blockquote>
+<p><code>精确率</code>：预测结果为正例样本中真实为正例的比例</p>
+<script type="math/tex; mode=display">
+P=\frac{TP}{TP+FP}</script><p><code>召回率</code>：真实为正例的样本中预测结果为正例的比例（查得全，对正样本的区分能力）</p>
+<script type="math/tex; mode=display">
+R=\frac{TP}{TP+FN}</script><p><code>F1-score</code>:反映了模型的稳健型</p>
+<script type="math/tex; mode=display">
+F1=\frac{2\times P\times R} {P+R}=\frac{2\times P\times R}{样例总数+TP-TN}\\
+F_{\beta}=\frac{\left (1+\beta^{2}\right)\times P\times R} {\left (\beta ^{2}\times P\right)+R}</script><p>当$\beta$&gt;1时，查全率有更大影响；</p>
+<p>当$\beta$&lt;1时，查准率有更大影响；</p>
+<p>当$\beta$=1时，退化为标准的F1</p>
+</blockquote>
+<h2 id="ROC曲线和AUC指标"><a href="#ROC曲线和AUC指标" class="headerlink" title="ROC曲线和AUC指标"></a>ROC曲线和AUC指标</h2><blockquote>
+<p>ROC曲线纵轴真正例率和横轴假正例率定义为：</p>
+<script type="math/tex; mode=display">
+TPR=\frac{TP}{TP+FN}\\
+FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
+<p>给定m^+^个正例和m^-^个反例，根据学习器预测结果进行排序，然后把分类阈值设为最大，即把所有样例预测为反例，此时坐标(0,0),然后依次将每个样例划分为正例，设前一个标记点坐标(x,y),当前若为真正例，则对应标记点的坐标为(x,y+$\frac{1}{m^{+}}$)；当前弱势假正例，则对应标记点点的坐标是(x+$\frac{1}{m^{-}}$),然后用线段连接可得。</p>
+<p><code>AUC</code>：ROC曲线和坐标轴的面积</p>
+<ul>
+<li>AUC只能用来评价二分类</li>
+<li>AUC非常适合评价样本不平衡中的分类器性能</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>LR</tag>
+        <tag>ROC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>装饰器和生成器</title>
     <url>/2021/01/10/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/</url>
     <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
@@ -2696,66 +2756,6 @@ $    匹配字符串结尾(放在匹配规则的最后一位)
       <tags>
         <tag>装饰器</tag>
         <tag>生成器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>逻辑回归</title>
-    <url>/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</url>
-    <content><![CDATA[<h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><blockquote>
-<p><strong>sigmoid函数：</strong></p>
-<script type="math/tex; mode=display">
-g(z)=\frac{1}{1+e^{-z}}\\
-z=\omega^{T}x</script><ul>
-<li>回归的结果输入到sigmoid函数当中</li>
-<li>输出结果：[0, 1]区间中的一个概率值，默认为0.5为阈值</li>
-</ul>
-</blockquote>
-<h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><blockquote>
-<p>逻辑回归是在线性函数的基础上，经过激活函数后产生的<code>0~1</code>之间的概率值。<br>设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：</p>
-<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
-<p>合并可得：</p>
-<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
-<p>最大化似然函数也就是最小化损失函数</p>
-<p><code>损失函数</code>为</p>
-<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
-<p><code>优化:</code></p>
-<p>同样使用梯度下降优化算法，去减少损失函数的值。这样去更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
-<script type="math/tex; mode=display">
-\theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
-<h1 id="分类评估方法"><a href="#分类评估方法" class="headerlink" title="分类评估方法"></a>分类评估方法</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><blockquote>
-<p><img src="/2021/02/21/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
-</blockquote>
-<h2 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h2><blockquote>
-<p><code>精确率</code>：预测结果为正例样本中真实为正例的比例</p>
-<script type="math/tex; mode=display">
-P=\frac{TP}{TP+FP}</script><p><code>召回率</code>：真实为正例的样本中预测结果为正例的比例（查得全，对正样本的区分能力）</p>
-<script type="math/tex; mode=display">
-R=\frac{TP}{TP+FN}</script><p><code>F1-score</code>:反映了模型的稳健型</p>
-<script type="math/tex; mode=display">
-F1=\frac{2\times P\times R} {P+R}=\frac{2\times P\times R}{样例总数+TP-TN}\\
-F_{\beta}=\frac{\left (1+\beta^{2}\right)\times P\times R} {\left (\beta ^{2}\times P\right)+R}</script><p>当$\beta$&gt;1时，查全率有更大影响；</p>
-<p>当$\beta$&lt;1时，查准率有更大影响；</p>
-<p>当$\beta$=1时，退化为标准的F1</p>
-</blockquote>
-<h2 id="ROC曲线和AUC指标"><a href="#ROC曲线和AUC指标" class="headerlink" title="ROC曲线和AUC指标"></a>ROC曲线和AUC指标</h2><blockquote>
-<p>ROC曲线纵轴真正例率和横轴假正例率定义为：</p>
-<script type="math/tex; mode=display">
-TPR=\frac{TP}{TP+FN}\\
-FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
-<p>给定m^+^个正例和m^-^个反例，根据学习器预测结果进行排序，然后把分类阈值设为最大，即把所有样例预测为反例，此时坐标(0,0),然后依次将每个样例划分为正例，设前一个标记点坐标(x,y),当前若为真正例，则对应标记点的坐标为(x,y+$\frac{1}{m^{+}}$)；当前弱势假正例，则对应标记点点的坐标是(x+$\frac{1}{m^{-}}$),然后用线段连接可得。</p>
-<p><code>AUC</code>：ROC曲线和坐标轴的面积</p>
-<ul>
-<li>AUC只能用来评价二分类</li>
-<li>AUC非常适合评价样本不平衡中的分类器性能</li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>LR</tag>
-        <tag>ROC</tag>
       </tags>
   </entry>
   <entry>
