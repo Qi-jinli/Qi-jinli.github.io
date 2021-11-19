@@ -563,483 +563,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pandas</title>
-    <url>/2021/05/04/Pandas/</url>
-    <content><![CDATA[<h1 id="Pandas优势"><a href="#Pandas优势" class="headerlink" title="Pandas优势"></a>Pandas优势</h1><blockquote>
-<p><strong>增强图表可读性</strong></p>
-<p><strong>便捷的数据处理能力</strong></p>
-<p><strong>读取文件方便</strong></p>
-<p><strong>封装了Matplotlib、Numpy的画图和计算</strong></p>
-</blockquote>
-<span id="more"></span>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><blockquote>
-<p>Pandas的数据类型主要有：Series（一维数组），DataFrame（二维数组），Panel（三维数组），PanelND（N维数组）</p>
-</blockquote>
-<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><blockquote>
-<p>Series是Pandas中最基本的一维数组，可以存储整数、浮点数、字符串等数据。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.Series(data=<span class="literal">None</span>,index=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>data</code>可以是字典，或者Numpy中的ndarray</li>
-<li><code>index</code>是数据索引</li>
-</ol>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = pandas.Series(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">30</span>&#125;)</span><br><span class="line">s = pandas.Series(np.random.randn(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>Series的属性</strong></p>
-<p><strong>index：索引</strong></p>
-<p><strong>values：数据</strong></p>
-</blockquote>
-<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p>区别于Series，其增加了columns索引。</p>
-<ul>
-<li>一维数组、列表、字典或者 Series 字典。</li>
-<li>二维或者结构化的 <code>numpy.ndarray</code>。</li>
-<li>一个 Series 或者另一个 DataFrame。</li>
-</ul>
-<p>例：</p>
-<ol>
-<li>使用由Series组成的字典来构建:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]),</span><br><span class="line">              <span class="string">&#x27;two&#x27;</span>: pd.Series([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])&#125;)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>直接通过列表创建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                   <span class="string">&#x27;two&#x27;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]&#125;)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>由带字典的列表创建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame([&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">4</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">5</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">6</span>&#125;])</span><br></pre></td></tr></table></figure>
-<ol>
-<li>基于二维数值来构建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(np.random.randint(<span class="number">5</span>, size=(<span class="number">2</span>, <span class="number">4</span>)))</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
-<blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.head() <span class="comment"># 默认显示前5条</span></span><br><span class="line">DataFrame.tail(<span class="number">7</span>) <span class="comment"># 指定显示后7条</span></span><br><span class="line">DataFrame.describe()<span class="comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span></span><br><span class="line">DataFrame.values <span class="comment"># 将DataFrame转换成Numpy数组</span></span><br><span class="line">DataFrame.index <span class="comment"># 查看索引</span></span><br><span class="line">DataFrame.columns <span class="comment"># 查看列名</span></span><br><span class="line">DataFrame.shape <span class="comment"># 查看形状</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><blockquote>
-<p><strong>修改行列索引值</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index = 新索引值</span><br></pre></td></tr></table></figure>
-<p><strong>重设索引值</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reset_index(drop=<span class="literal">False</span>)</span><br><span class="line"> <span class="number">1.</span>设置新的下标索引</span><br><span class="line"> <span class="number">2.</span>drop:默认为<span class="literal">False</span>，不删除原来索引，如果为<span class="literal">True</span>,删除原来的索引值</span><br></pre></td></tr></table></figure>
-<p><strong>以某列值设置为新的索引</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set_index(keys, drop=<span class="literal">True</span>)</span><br><span class="line"> <span class="number">1.</span>keys : 列索引名成或者列索引名称的列表</span><br><span class="line"> <span class="number">2.</span>drop : boolean, default <span class="literal">True</span>.当做新的索引，删除原来的列</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>
-<p>多级索引（也称层次化索引）是pandas的重要功能，可以在Series、DataFrame对象上拥有2个以及2个以上的索引。</p>
-<blockquote>
-<p><strong>multiIndex的特性</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">MultiIndex(levels=[[<span class="number">2012</span>, <span class="number">2013</span>, <span class="number">2014</span>], [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]],</span><br><span class="line">           labels=[[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;year&#x27;</span>, <span class="string">&#x27;month&#x27;</span>])</span><br></pre></td></tr></table></figure>
-<p>多级或分层索引对象</p>
-<ul>
-<li>index属性<ul>
-<li>names:levels的名称</li>
-<li>levels：每个level的元组值</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.names</span><br><span class="line"><span class="comment"># FrozenList([&#x27;year&#x27;, &#x27;month&#x27;])</span></span><br><span class="line"></span><br><span class="line">df.index.levels</span><br><span class="line"><span class="comment"># FrozenList([[1, 2], [1, 4, 7, 10]])</span></span><br></pre></td></tr></table></figure>
-<p><strong>multiIndex的创建</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arrays = [[<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>], [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>]]</span><br><span class="line">pd.MultiIndex.from_arrays(arrays, names=(<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">MultiIndex(levels=[[<span class="number">1</span>, <span class="number">2</span>], [<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>]],</span><br><span class="line">           codes=[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>])</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h3><blockquote>
-<p><strong>panel的创建</strong></p>
-<p><code>pandas.Panel</code>(<em>data=None</em>, <em>items=None</em>, <em>major_axis=None</em>, <em>minor_axis=None</em>)</p>
-<ul>
-<li>作用：存储3维数组的Panel结构</li>
-<li>参数：<ul>
-<li><strong>data</strong> : ndarray或者dataframe</li>
-<li><strong>items</strong> : 索引或类似数组的对象，axis=0</li>
-<li><strong>major_axis</strong> : 索引或类似数组的对象，axis=1</li>
-<li><strong>minor_axis</strong> : 索引或类似数组的对象，axis=2</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p = pd.Panel(data=np.arange(<span class="number">24</span>).reshape(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>),</span><br><span class="line">                 items=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>),</span><br><span class="line">                 major_axis=pd.date_range(<span class="string">&#x27;20130101&#x27;</span>, periods=<span class="number">3</span>),</span><br><span class="line">                 minor_axis=[<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>])</span><br></pre></td></tr></table></figure>
-<p><strong>查看panel数据</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p[:,:,<span class="string">&quot;first&quot;</span>]</span><br><span class="line">p[<span class="string">&quot;B&quot;</span>,:,:]</span><br></pre></td></tr></table></figure>
-<p><strong>注：Pandas从版本0.20.0开始弃用：推荐的用于表示3D数据的方法是通过DataFrame上的MultiIndex方法</strong></p>
-</blockquote>
-<h1 id="基本数据操作"><a href="#基本数据操作" class="headerlink" title="基本数据操作"></a>基本数据操作</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><h3 id="基于索引下标进行选择"><a href="#基于索引下标进行选择" class="headerlink" title="基于索引下标进行选择"></a>基于索引下标进行选择</h3><blockquote>
-<p>Pandas中的<code>.iloc</code>方法可以基于数字索引对数据集进行选择，可接受的类型：</p>
-<ol>
-<li>整数。例如：<code>5</code></li>
-<li>整数构成的列表或数组。例如：<code>[1, 2, 3]</code></li>
-<li>布尔数组。</li>
-<li>可返回索引值的函数或参数。</li>
-</ol>
-<p><code>df.iloc[]</code> 的 <code>[[行]，[列]]</code> 里面可以同时接受行和列的位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;df.iloc[[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]] <span class="comment">#选择1，3，5行</span></span><br><span class="line">df.iloc[:, <span class="number">1</span>:<span class="number">4</span>] <span class="comment">#选择2-4列</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="基于标签名选择"><a href="#基于标签名选择" class="headerlink" title="基于标签名选择"></a>基于标签名选择</h3><blockquote>
-<p>除了根据数字索引选择，还可以直接根据标签对应的名称选择。这里用到的方法和上面的 <code>iloc</code> 很相似，少了个 <code>i</code> 为 <code>df.loc[]</code>,可接受类型有：</p>
-<ol>
-<li>单个标签。例如：<code>2</code> 或 <code>&#39;a&#39;</code>，这里的 <code>2</code> 指的是标签而不是索引位置。</li>
-<li>列表或数组包含的标签。例如：<code>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]</code>。</li>
-<li>切片对象。例如：<code>&#39;A&#39;:&#39;E&#39;</code>，注意这里和上面切片的不同之处，首尾都包含在内。</li>
-<li>布尔数组。</li>
-<li>可返回标签的函数或参数。</li>
-</ol>
-</blockquote>
-<h3 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h3><blockquote>
-<p>使用df.ix进行下标和名称组合索引</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.ix[<span class="number">0</span>:<span class="number">4</span>, [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-<p>推荐使用loc和iloc来获取的方式</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data.index[<span class="number">0</span>:<span class="number">4</span>], [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br><span class="line">data.iloc[<span class="number">0</span>:<span class="number">4</span>, data.columns.get_indexer([<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>])]</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="直接进行索引"><a href="#直接进行索引" class="headerlink" title="直接进行索引"></a>直接进行索引</h3><blockquote>
-<p><code>先列后行</code>，按照索引的字符串进行索引</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[列索引值][行索引值]</span><br></pre></td></tr></table></figure>
-<p><strong>不可以先行后列</strong></p>
-<p><strong>也不可以传索引下标</strong></p>
-</blockquote>
-<h2 id="数据赋值"><a href="#数据赋值" class="headerlink" title="数据赋值"></a>数据赋值</h2><blockquote>
-<p>将close列赋值为1</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接修改原来的值</span></span><br><span class="line">df[<span class="string">&#x27;close&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">df.close = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="DataFrame排序"><a href="#DataFrame排序" class="headerlink" title="DataFrame排序"></a>DataFrame排序</h3><blockquote>
-<p>使用<code>df.sort_values(by=, ascending=)</code></p>
-<ul>
-<li>单个键或者多个键进行排序,</li>
-<li>参数：<ul>
-<li>by：指定排序参考的键，标签名或者列表</li>
-<li>ascending:默认升序<ul>
-<li>ascending=False:降序</li>
-<li>ascending=True:升序</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>使用<code>df.sort_index(axis=)</code>对指定轴索引进行排序，从小到大</p>
-</blockquote>
-<h3 id="Series排序"><a href="#Series排序" class="headerlink" title="Series排序"></a>Series排序</h3><blockquote>
-<ul>
-<li>使用<code>series.sort_values(ascending=True)</code>进行升序排序</li>
-<li>使用<code>series.sort_index()</code>进行排序</li>
-</ul>
-</blockquote>
-<h2 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h2><blockquote>
-<p><code>DataFrame.drop</code> 可以直接去掉数据集中指定的列和行。一般在使用时，我们指定 <code>labels</code> 标签参数，然后再通过 <code>axis</code> 指定按列或按行删除即可。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.drop(labels=[<span class="string">&#x27;Median Age&#x27;</span>, <span class="string">&#x27;Total Males&#x27;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><code>DataFrame.drop_duplicates</code>则通常用于数据去重，即剔除数据集中的重复值。使用方法非常简单，指定去除重复值规则，以及 <code>axis</code> 按列还是按行去除即可。</p>
-<p><code>DataFrame.dropna</code>也十分常用，其主要的用途是删除缺少值，即数据集中空缺的数据列或行。</p>
-</blockquote>
-<h1 id="DataFrame运算"><a href="#DataFrame运算" class="headerlink" title="DataFrame运算"></a>DataFrame运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><blockquote>
-<p><code>add(other)</code>:加法运算</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&#x27;open&#x27;</span>].add(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p><code>sub(other)</code>：减法运算</p>
-</blockquote>
-<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><blockquote>
-<p><strong>逻辑运算符号</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>返回逻辑结果，布尔值</span><br><span class="line"><span class="comment"># 逻辑判断的结果可以作为筛选的依据</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>].head()</span><br></pre></td></tr></table></figure>
-<p>完成多个逻辑判断</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[(data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>) &amp; (data[<span class="string">&quot;open&quot;</span>] &lt; <span class="number">24</span>)].head()</span><br></pre></td></tr></table></figure>
-<p><strong>逻辑运算函数</strong></p>
-<p><code>query(expr)</code></p>
-<p><code>expr</code>:查询字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.query(<span class="string">&quot;open&lt;24 &amp; open&gt;23&quot;</span>).head()</span><br></pre></td></tr></table></figure>
-<p><code>isin(values)</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以指定值进行一个判断，从而进行筛选操作</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>].isin([<span class="number">23.53</span>, <span class="number">23.85</span>])]</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
-<ol>
-<li><code>describe</code></li>
-</ol>
-<p>综合分析: 能够直接得出很多统计结果,<code>count</code>, <code>mean</code>, <code>std</code>, <code>min</code>, <code>max</code> 等</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算平均值、标准差、最大值、最小值</span></span><br><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>统计函数</code>：</li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sum</code></td>
-<td>总和</td>
-</tr>
-<tr>
-<td><code>mean</code></td>
-<td>平均值</td>
-</tr>
-<tr>
-<td><code>median</code></td>
-<td>中位数</td>
-</tr>
-<tr>
-<td><code>min</code></td>
-<td>最小值</td>
-</tr>
-<tr>
-<td><code>max</code></td>
-<td>最大值</td>
-</tr>
-<tr>
-<td><code>mode</code></td>
-<td>众数</td>
-</tr>
-<tr>
-<td><code>abs</code></td>
-<td>绝对值</td>
-</tr>
-<tr>
-<td><code>prod</code></td>
-<td>连乘</td>
-</tr>
-<tr>
-<td><code>std</code></td>
-<td>标准差</td>
-</tr>
-<tr>
-<td><code>var</code></td>
-<td>方差</td>
-</tr>
-<tr>
-<td><code>idxmax</code></td>
-<td>最大值索引</td>
-</tr>
-<tr>
-<td><code>idxmin</code></td>
-<td>最小值索引</td>
-</tr>
-<tr>
-<td><code>count</code></td>
-<td>总样本数</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>注意：对于单个函数去进行统计的时候，坐标轴还是按照默认列“columns” (axis=0, default)，如果要对行“index” 需要指定(axis=1)</strong></p>
-<ol>
-<li><code>累计统计函数:</code></li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cumsum</code></td>
-<td><strong>计算前1/2/3/…/n个数的和</strong></td>
-</tr>
-<tr>
-<td><code>cummax</code></td>
-<td>计算前1/2/3/…/n个数的最大值</td>
-</tr>
-<tr>
-<td><code>cummin</code></td>
-<td>计算前1/2/3/…/n个数的最小值</td>
-</tr>
-<tr>
-<td><code>cumprod</code></td>
-<td>计算前1/2/3/…/n个数的积</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><code>Dataframe.corr():</code>计算每两列之间的相关性</p>
-</blockquote>
-<h2 id="自定义运算"><a href="#自定义运算" class="headerlink" title="自定义运算"></a>自定义运算</h2><blockquote>
-<p><code>apply(func, axis=0)</code></p>
-<ul>
-<li>func:自定义函数</li>
-<li>axis=0:默认是列，axis=1为行进行运算</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个对列，最大值-最小值的函数</span></span><br><span class="line">data[[<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>]].apply(<span class="keyword">lambda</span> x: x.<span class="built_in">max</span>() - x.<span class="built_in">min</span>(), axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="Pandas画图"><a href="#Pandas画图" class="headerlink" title="Pandas画图"></a>Pandas画图</h1><blockquote>
-<ol>
-<li><p><code>pandas.DataFrame.plot:</code></p>
-<p><code>DataFrame.plot</code>(<em>kind=’line’</em>)</p>
-<p><code>kind : str</code>:需要绘制图形的种类</p>
-<ul>
-<li>‘line’ : line plot (default)</li>
-<li>‘bar’ : vertical bar plot</li>
-<li>‘barh’ : horizontal bar plot</li>
-<li>‘hist’ : histogram</li>
-<li>‘pie’ : pie plot</li>
-<li>‘scatter’ : scatter plot</li>
-</ul>
-</li>
-<li><p><code>pandas.Series.plot</code></p>
-</li>
-</ol>
-</blockquote>
-<h1 id="文件读取与存储"><a href="#文件读取与存储" class="headerlink" title="文件读取与存储"></a>文件读取与存储</h1><h2 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_csv(filepath_or_buffer, sep =<span class="string">&#x27;,&#x27;</span>, usecols=[],engine=<span class="string">&#x27;python&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>filepath_or_buffer:文件路径</li>
-<li>sep :分隔符，默认用”,”隔开</li>
-<li>usecols:指定读取的列名，列表形式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_csv(path_or_buf=<span class="literal">None</span>, sep=<span class="string">&#x27;, ’, columns=None, header=True, index=True, mode=&#x27;</span>w<span class="string">&#x27;, encoding=None):</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>path_or_buf :文件路径</li>
-<li>sep :分隔符，默认用”,”隔开</li>
-<li>columns :选择需要的列索引,列表形式</li>
-<li>header :是否写进列索引值</li>
-<li>index:是否写进行行索引</li>
-<li>mode:’w’：重写, ‘a’ 追加</li>
-</ul>
-</blockquote>
-<h2 id="HDF5"><a href="#HDF5" class="headerlink" title="HDF5"></a>HDF5</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_hdf(path_or_buf，key=<span class="literal">None</span>，** kwargs):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>path_or_buffer:文件路径</li>
-<li>key:读取的键</li>
-<li>return:Theselected object</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_hdf(path_or_buf, key=, **kwargs*)</span><br></pre></td></tr></table></figure>
-<p>查看HD5文件中的所有key值：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install h5py</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line">f = h5py.File(<span class="string">&quot;path&quot;</span>,<span class="string">&quot;r&quot;</span>)</span><br><span class="line">f.keys()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, typ=<span class="string">&#x27;frame&#x27;</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将JSON格式准换成默认的Pandas DataFrame格式</li>
-<li>orient : JSON string format<ul>
-<li>‘split’ : dict like {index -&gt; [index], columns -&gt; [columns], data -&gt; [values]}<ul>
-<li>split 将索引总结到索引，列名到列名，数据到数据。将三部分都分开了</li>
-</ul>
-</li>
-<li>‘records’ : list like [{column -&gt; value}, … , {column -&gt; value}]<ul>
-<li>records 以<code>columns：values</code>的形式输出</li>
-</ul>
-</li>
-<li>‘index’ : dict like {index -&gt; {column -&gt; value}}<ul>
-<li>index 以<code>index：&#123;columns：values&#125;...</code>的形式输出</li>
-</ul>
-</li>
-<li>‘columns’ : dict like {column -&gt; {index -&gt; value}},默认该格式<ul>
-<li>colums 以<code>columns:&#123;index:values&#125;</code>的形式输出</li>
-</ul>
-</li>
-<li>‘values’ : just the values array<ul>
-<li>values 直接输出值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>lines : 默认False<ul>
-<li>按照每行读取json对象</li>
-</ul>
-</li>
-<li>typ : 默认‘frame’， 指定转换成的对象类型series或者dataframe</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将Pandas 对象存储为json格式</li>
-<li><em>path_or_buf=None</em>：文件地址</li>
-<li>orient:存储的json形式，{‘split’,’records’,’index’,’columns’,’values’}</li>
-<li>lines:一个对象存储为一行</li>
-</ul>
-</blockquote>
-<h1 id="高级处理"><a href="#高级处理" class="headerlink" title="高级处理"></a>高级处理</h1><h2 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h2><blockquote>
-<p>Pandas 为了更方便地检测缺失值，将不同类型数据的缺失均采用 <code>NaN</code> 标记。这里的 NaN 代表 Not a Number，它仅仅是作为一个标记。例外是，在时间序列里，时间戳的丢失采用 <code>NaT</code> 标记。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.<span class="built_in">all</span>(pd.notnull(df)) <span class="comment"># 没有缺失值返回True，有返回False</span></span><br><span class="line">np.<span class="built_in">any</span>(pd.isnull(df)) <span class="comment"># 没有缺失值返回False，有返回True</span></span><br></pre></td></tr></table></figure>
-<p>Pandas 中用于检测缺失值主要用到两个方法，分别是：<code>isna()</code>和 <code>notna()</code>。</p>
-<ol>
-<li><p>存在缺失值NaN</p>
-<ul>
-<li>删除</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不修改原数据</span></span><br><span class="line">movie.dropna()</span><br><span class="line"><span class="comment"># 可以定义新的变量接受或者用原来的变量名</span></span><br><span class="line">data = movie.dropna()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>替换缺失值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 替换存在缺失值的样本的两列</span></span><br><span class="line"><span class="comment"># 替换填充平均值，中位数</span></span><br><span class="line">movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].fillna(movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>​    b. 替换所有缺失值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> movie.columns:</span><br><span class="line">    <span class="keyword">if</span> np.<span class="built_in">all</span>(pd.notnull(movie[i])) == <span class="literal">False</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        movie[i].fillna(movie[i].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不是缺失值nan，有默认标记的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 全局取消证书验证</span></span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br></pre></td></tr></table></figure>
-<p>先替换‘?’为np.nan</p>
-<ul>
-<li>```python<br>df.replace(to_replace=”?”, value=np.nan)<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">     </span><br><span class="line">     + to_replace:替换前的值</span><br><span class="line">     + value:替换后的值</span><br><span class="line"></span><br><span class="line">`缺失值填充`：</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">df.fillna(<span class="number">0</span>) # 用<span class="number">0</span>替换缺失值</span><br><span class="line">df.fillna(<span class="function"><span class="keyword">method</span>=&#x27;<span class="title">pad</span>&#x27;) # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;bfill&#x27;</span>)</span> # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;pad&#x27;</span>, limit=1)</span>  # 最多填充一项</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(df.mean()</span>[&#x27;<span class="title">C</span>&#x27;:</span><span class="string">&#x27;E&#x27;</span>]) #对C列到E列用平均值填充</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<h2 id="插值填充"><a href="#插值填充" class="headerlink" title="插值填充"></a>插值填充</h2><blockquote>
-<p>插值是数值分析中一种方法。简而言之，就是借助于一个函数（线性或非线性），再根据已知数据去求解未知数据的值。插值在数据领域非常常见，它的好处在于，可以尽量去还原数据本身的样子。</p>
-<p>可以通过<code>interpolate</code>方法完成线性插值。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>: [<span class="number">1.1</span>, <span class="number">2.2</span>, np.nan, <span class="number">4.5</span>, <span class="number">5.7</span>, <span class="number">6.9</span>],</span><br><span class="line">                <span class="string">&#x27;B&#x27;</span>: [<span class="number">.21</span>, np.nan, np.nan, <span class="number">3.1</span>, <span class="number">11.7</span>, <span class="number">13.2</span>]&#125;)</span><br><span class="line">df_interpolate = df.interpolate()</span><br></pre></td></tr></table></figure>
-<p>对于 <code>interpolate()</code>支持的插值算法，也就是 <code>method=</code></p>
-<ol>
-<li>如果你的数据增长速率越来越快，可以选择 <code>method=&#39;quadratic&#39;</code>二次插值。</li>
-<li>如果数据集呈现出累计分布的样子，推荐选择 <code>method=&#39;pchip&#39;</code>。</li>
-<li>如果需要填补缺省值，以平滑绘图为目标，推荐选择 <code>method=&#39;akima&#39;</code>。</li>
-</ol>
-<p>需要安装了Scipy库。</p>
-</blockquote>
-<h2 id="数据离散化"><a href="#数据离散化" class="headerlink" title="数据离散化"></a>数据离散化</h2><blockquote>
-<p>连续属性离散化的目的是为了简化数据结构，<strong>数据离散化技术可以用来减少给定连续属性值的个数</strong>。离散化方法经常作为数据挖掘的工具。</p>
-<p><strong>连续属性的离散化就是在连续属性的值域上，将值域划分为若干个离散的区间，最后用不同的符号或整数</strong> <strong>值代表落在每个子区间中的属性值。</strong></p>
-<p><strong>自动分组：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.qcut(data, num) <span class="comment">#将数据分为差不多数量的几组,一般会与value_counts搭配使用，统计每组的个数，num为组数</span></span><br><span class="line">series.value_counts()：<span class="comment">#统计分组次数</span></span><br></pre></td></tr></table></figure>
-<p><strong>自定义分组：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.cut(data, bins):</span><br></pre></td></tr></table></figure>
-<p>bins参数为自己定义的分组区间，用列表</p>
-<p><strong>分组数据变成one-hot编码：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.get_dummies(data, prefix=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>data:array-like, Series, or DataFrame</li>
-<li>prefix:分组名字</li>
-</ul>
-</blockquote>
-<h2 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.concat([data1, data2], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>按照行或列进行合并,axis=0为列索引，axis=1为行索引</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, how=<span class="string">&#x27;inner&#x27;</span>, on=[]):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可以指定按照两组数据的共同键值对合并或者左右各自</li>
-<li><code>left</code>: DataFrame</li>
-<li><code>right</code>: 另一个DataFrame</li>
-<li><code>on</code>: 指定的共同键，列表</li>
-<li><code>how</code>:按照什么方式连接，left，right，outer，inner,默认inner</li>
-</ul>
-</blockquote>
-<h2 id="交叉表和透视表"><a href="#交叉表和透视表" class="headerlink" title="交叉表和透视表"></a>交叉表和透视表</h2><blockquote>
-<ul>
-<li><p>交叉表：交叉表用于计算一列数据对于另外一列数据的分组个数(用于统计分组频率的特殊透视表)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.crosstab(index,columns)</span><br></pre></td></tr></table></figure>
-<p>按index进行分组并作为行索引，并统计columns值的各个频数</p>
-</li>
-<li><p>透视表：透视表是将原有的DataFrame的列分别作为行索引和列索引，然后对指定的列应用聚集函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean)</span><br></pre></td></tr></table></figure>
-<p>将values按照index分组，默认使用mean()聚合函数</p>
-</li>
-</ul>
-</blockquote>
-<h2 id="分组与聚合"><a href="#分组与聚合" class="headerlink" title="分组与聚合"></a>分组与聚合</h2><blockquote>
-<p><strong>分组：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.groupby(key, as_index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<p><code>key</code>:分组的列数据，可以多个</p>
-<p><strong>聚合：</strong></p>
-<p><code>agg(&#123;&quot;列名&quot;：np.聚合函数&#125;)</code></p>
-<p><code>max(),min(),mean(),std()</code>等函数</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>科学计算库</category>
-      </categories>
-      <tags>
-        <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Numpy</title>
     <url>/2021/05/04/Numpy/</url>
     <content><![CDATA[<h1 id="Numpy数组类型"><a href="#Numpy数组类型" class="headerlink" title="Numpy数组类型"></a>Numpy数组类型</h1><blockquote>
@@ -1597,6 +1120,483 @@
       </categories>
       <tags>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pandas</title>
+    <url>/2021/05/04/Pandas/</url>
+    <content><![CDATA[<h1 id="Pandas优势"><a href="#Pandas优势" class="headerlink" title="Pandas优势"></a>Pandas优势</h1><blockquote>
+<p><strong>增强图表可读性</strong></p>
+<p><strong>便捷的数据处理能力</strong></p>
+<p><strong>读取文件方便</strong></p>
+<p><strong>封装了Matplotlib、Numpy的画图和计算</strong></p>
+</blockquote>
+<span id="more"></span>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><blockquote>
+<p>Pandas的数据类型主要有：Series（一维数组），DataFrame（二维数组），Panel（三维数组），PanelND（N维数组）</p>
+</blockquote>
+<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><blockquote>
+<p>Series是Pandas中最基本的一维数组，可以存储整数、浮点数、字符串等数据。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.Series(data=<span class="literal">None</span>,index=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>data</code>可以是字典，或者Numpy中的ndarray</li>
+<li><code>index</code>是数据索引</li>
+</ol>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = pandas.Series(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">30</span>&#125;)</span><br><span class="line">s = pandas.Series(np.random.randn(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>Series的属性</strong></p>
+<p><strong>index：索引</strong></p>
+<p><strong>values：数据</strong></p>
+</blockquote>
+<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p>区别于Series，其增加了columns索引。</p>
+<ul>
+<li>一维数组、列表、字典或者 Series 字典。</li>
+<li>二维或者结构化的 <code>numpy.ndarray</code>。</li>
+<li>一个 Series 或者另一个 DataFrame。</li>
+</ul>
+<p>例：</p>
+<ol>
+<li>使用由Series组成的字典来构建:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]),</span><br><span class="line">              <span class="string">&#x27;two&#x27;</span>: pd.Series([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])&#125;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>直接通过列表创建</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                   <span class="string">&#x27;two&#x27;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>由带字典的列表创建</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame([&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">4</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">5</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">6</span>&#125;])</span><br></pre></td></tr></table></figure>
+<ol>
+<li>基于二维数值来构建</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(np.random.randint(<span class="number">5</span>, size=(<span class="number">2</span>, <span class="number">4</span>)))</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.head() <span class="comment"># 默认显示前5条</span></span><br><span class="line">DataFrame.tail(<span class="number">7</span>) <span class="comment"># 指定显示后7条</span></span><br><span class="line">DataFrame.describe()<span class="comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span></span><br><span class="line">DataFrame.values <span class="comment"># 将DataFrame转换成Numpy数组</span></span><br><span class="line">DataFrame.index <span class="comment"># 查看索引</span></span><br><span class="line">DataFrame.columns <span class="comment"># 查看列名</span></span><br><span class="line">DataFrame.shape <span class="comment"># 查看形状</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><blockquote>
+<p><strong>修改行列索引值</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index = 新索引值</span><br></pre></td></tr></table></figure>
+<p><strong>重设索引值</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reset_index(drop=<span class="literal">False</span>)</span><br><span class="line"> <span class="number">1.</span>设置新的下标索引</span><br><span class="line"> <span class="number">2.</span>drop:默认为<span class="literal">False</span>，不删除原来索引，如果为<span class="literal">True</span>,删除原来的索引值</span><br></pre></td></tr></table></figure>
+<p><strong>以某列值设置为新的索引</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set_index(keys, drop=<span class="literal">True</span>)</span><br><span class="line"> <span class="number">1.</span>keys : 列索引名成或者列索引名称的列表</span><br><span class="line"> <span class="number">2.</span>drop : boolean, default <span class="literal">True</span>.当做新的索引，删除原来的列</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>
+<p>多级索引（也称层次化索引）是pandas的重要功能，可以在Series、DataFrame对象上拥有2个以及2个以上的索引。</p>
+<blockquote>
+<p><strong>multiIndex的特性</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">MultiIndex(levels=[[<span class="number">2012</span>, <span class="number">2013</span>, <span class="number">2014</span>], [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]],</span><br><span class="line">           labels=[[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;year&#x27;</span>, <span class="string">&#x27;month&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>多级或分层索引对象</p>
+<ul>
+<li>index属性<ul>
+<li>names:levels的名称</li>
+<li>levels：每个level的元组值</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.names</span><br><span class="line"><span class="comment"># FrozenList([&#x27;year&#x27;, &#x27;month&#x27;])</span></span><br><span class="line"></span><br><span class="line">df.index.levels</span><br><span class="line"><span class="comment"># FrozenList([[1, 2], [1, 4, 7, 10]])</span></span><br></pre></td></tr></table></figure>
+<p><strong>multiIndex的创建</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arrays = [[<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>], [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>]]</span><br><span class="line">pd.MultiIndex.from_arrays(arrays, names=(<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">MultiIndex(levels=[[<span class="number">1</span>, <span class="number">2</span>], [<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>]],</span><br><span class="line">           codes=[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>])</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h3><blockquote>
+<p><strong>panel的创建</strong></p>
+<p><code>pandas.Panel</code>(<em>data=None</em>, <em>items=None</em>, <em>major_axis=None</em>, <em>minor_axis=None</em>)</p>
+<ul>
+<li>作用：存储3维数组的Panel结构</li>
+<li>参数：<ul>
+<li><strong>data</strong> : ndarray或者dataframe</li>
+<li><strong>items</strong> : 索引或类似数组的对象，axis=0</li>
+<li><strong>major_axis</strong> : 索引或类似数组的对象，axis=1</li>
+<li><strong>minor_axis</strong> : 索引或类似数组的对象，axis=2</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p = pd.Panel(data=np.arange(<span class="number">24</span>).reshape(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>),</span><br><span class="line">                 items=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>),</span><br><span class="line">                 major_axis=pd.date_range(<span class="string">&#x27;20130101&#x27;</span>, periods=<span class="number">3</span>),</span><br><span class="line">                 minor_axis=[<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p><strong>查看panel数据</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p[:,:,<span class="string">&quot;first&quot;</span>]</span><br><span class="line">p[<span class="string">&quot;B&quot;</span>,:,:]</span><br></pre></td></tr></table></figure>
+<p><strong>注：Pandas从版本0.20.0开始弃用：推荐的用于表示3D数据的方法是通过DataFrame上的MultiIndex方法</strong></p>
+</blockquote>
+<h1 id="基本数据操作"><a href="#基本数据操作" class="headerlink" title="基本数据操作"></a>基本数据操作</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><h3 id="基于索引下标进行选择"><a href="#基于索引下标进行选择" class="headerlink" title="基于索引下标进行选择"></a>基于索引下标进行选择</h3><blockquote>
+<p>Pandas中的<code>.iloc</code>方法可以基于数字索引对数据集进行选择，可接受的类型：</p>
+<ol>
+<li>整数。例如：<code>5</code></li>
+<li>整数构成的列表或数组。例如：<code>[1, 2, 3]</code></li>
+<li>布尔数组。</li>
+<li>可返回索引值的函数或参数。</li>
+</ol>
+<p><code>df.iloc[]</code> 的 <code>[[行]，[列]]</code> 里面可以同时接受行和列的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;df.iloc[[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]] <span class="comment">#选择1，3，5行</span></span><br><span class="line">df.iloc[:, <span class="number">1</span>:<span class="number">4</span>] <span class="comment">#选择2-4列</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="基于标签名选择"><a href="#基于标签名选择" class="headerlink" title="基于标签名选择"></a>基于标签名选择</h3><blockquote>
+<p>除了根据数字索引选择，还可以直接根据标签对应的名称选择。这里用到的方法和上面的 <code>iloc</code> 很相似，少了个 <code>i</code> 为 <code>df.loc[]</code>,可接受类型有：</p>
+<ol>
+<li>单个标签。例如：<code>2</code> 或 <code>&#39;a&#39;</code>，这里的 <code>2</code> 指的是标签而不是索引位置。</li>
+<li>列表或数组包含的标签。例如：<code>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]</code>。</li>
+<li>切片对象。例如：<code>&#39;A&#39;:&#39;E&#39;</code>，注意这里和上面切片的不同之处，首尾都包含在内。</li>
+<li>布尔数组。</li>
+<li>可返回标签的函数或参数。</li>
+</ol>
+</blockquote>
+<h3 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h3><blockquote>
+<p>使用df.ix进行下标和名称组合索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.ix[<span class="number">0</span>:<span class="number">4</span>, [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+<p>推荐使用loc和iloc来获取的方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data.index[<span class="number">0</span>:<span class="number">4</span>], [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br><span class="line">data.iloc[<span class="number">0</span>:<span class="number">4</span>, data.columns.get_indexer([<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>])]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="直接进行索引"><a href="#直接进行索引" class="headerlink" title="直接进行索引"></a>直接进行索引</h3><blockquote>
+<p><code>先列后行</code>，按照索引的字符串进行索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[列索引值][行索引值]</span><br></pre></td></tr></table></figure>
+<p><strong>不可以先行后列</strong></p>
+<p><strong>也不可以传索引下标</strong></p>
+</blockquote>
+<h2 id="数据赋值"><a href="#数据赋值" class="headerlink" title="数据赋值"></a>数据赋值</h2><blockquote>
+<p>将close列赋值为1</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接修改原来的值</span></span><br><span class="line">df[<span class="string">&#x27;close&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">df.close = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="DataFrame排序"><a href="#DataFrame排序" class="headerlink" title="DataFrame排序"></a>DataFrame排序</h3><blockquote>
+<p>使用<code>df.sort_values(by=, ascending=)</code></p>
+<ul>
+<li>单个键或者多个键进行排序,</li>
+<li>参数：<ul>
+<li>by：指定排序参考的键，标签名或者列表</li>
+<li>ascending:默认升序<ul>
+<li>ascending=False:降序</li>
+<li>ascending=True:升序</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>使用<code>df.sort_index(axis=)</code>对指定轴索引进行排序，从小到大</p>
+</blockquote>
+<h3 id="Series排序"><a href="#Series排序" class="headerlink" title="Series排序"></a>Series排序</h3><blockquote>
+<ul>
+<li>使用<code>series.sort_values(ascending=True)</code>进行升序排序</li>
+<li>使用<code>series.sort_index()</code>进行排序</li>
+</ul>
+</blockquote>
+<h2 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h2><blockquote>
+<p><code>DataFrame.drop</code> 可以直接去掉数据集中指定的列和行。一般在使用时，我们指定 <code>labels</code> 标签参数，然后再通过 <code>axis</code> 指定按列或按行删除即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.drop(labels=[<span class="string">&#x27;Median Age&#x27;</span>, <span class="string">&#x27;Total Males&#x27;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><code>DataFrame.drop_duplicates</code>则通常用于数据去重，即剔除数据集中的重复值。使用方法非常简单，指定去除重复值规则，以及 <code>axis</code> 按列还是按行去除即可。</p>
+<p><code>DataFrame.dropna</code>也十分常用，其主要的用途是删除缺少值，即数据集中空缺的数据列或行。</p>
+</blockquote>
+<h1 id="DataFrame运算"><a href="#DataFrame运算" class="headerlink" title="DataFrame运算"></a>DataFrame运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><blockquote>
+<p><code>add(other)</code>:加法运算</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&#x27;open&#x27;</span>].add(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p><code>sub(other)</code>：减法运算</p>
+</blockquote>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><blockquote>
+<p><strong>逻辑运算符号</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>返回逻辑结果，布尔值</span><br><span class="line"><span class="comment"># 逻辑判断的结果可以作为筛选的依据</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>].head()</span><br></pre></td></tr></table></figure>
+<p>完成多个逻辑判断</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[(data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>) &amp; (data[<span class="string">&quot;open&quot;</span>] &lt; <span class="number">24</span>)].head()</span><br></pre></td></tr></table></figure>
+<p><strong>逻辑运算函数</strong></p>
+<p><code>query(expr)</code></p>
+<p><code>expr</code>:查询字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.query(<span class="string">&quot;open&lt;24 &amp; open&gt;23&quot;</span>).head()</span><br></pre></td></tr></table></figure>
+<p><code>isin(values)</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以指定值进行一个判断，从而进行筛选操作</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>].isin([<span class="number">23.53</span>, <span class="number">23.85</span>])]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
+<ol>
+<li><code>describe</code></li>
+</ol>
+<p>综合分析: 能够直接得出很多统计结果,<code>count</code>, <code>mean</code>, <code>std</code>, <code>min</code>, <code>max</code> 等</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算平均值、标准差、最大值、最小值</span></span><br><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>统计函数</code>：</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sum</code></td>
+<td>总和</td>
+</tr>
+<tr>
+<td><code>mean</code></td>
+<td>平均值</td>
+</tr>
+<tr>
+<td><code>median</code></td>
+<td>中位数</td>
+</tr>
+<tr>
+<td><code>min</code></td>
+<td>最小值</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>最大值</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td>众数</td>
+</tr>
+<tr>
+<td><code>abs</code></td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td><code>prod</code></td>
+<td>连乘</td>
+</tr>
+<tr>
+<td><code>std</code></td>
+<td>标准差</td>
+</tr>
+<tr>
+<td><code>var</code></td>
+<td>方差</td>
+</tr>
+<tr>
+<td><code>idxmax</code></td>
+<td>最大值索引</td>
+</tr>
+<tr>
+<td><code>idxmin</code></td>
+<td>最小值索引</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>总样本数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意：对于单个函数去进行统计的时候，坐标轴还是按照默认列“columns” (axis=0, default)，如果要对行“index” 需要指定(axis=1)</strong></p>
+<ol>
+<li><code>累计统计函数:</code></li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cumsum</code></td>
+<td><strong>计算前1/2/3/…/n个数的和</strong></td>
+</tr>
+<tr>
+<td><code>cummax</code></td>
+<td>计算前1/2/3/…/n个数的最大值</td>
+</tr>
+<tr>
+<td><code>cummin</code></td>
+<td>计算前1/2/3/…/n个数的最小值</td>
+</tr>
+<tr>
+<td><code>cumprod</code></td>
+<td>计算前1/2/3/…/n个数的积</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>Dataframe.corr():</code>计算每两列之间的相关性</p>
+</blockquote>
+<h2 id="自定义运算"><a href="#自定义运算" class="headerlink" title="自定义运算"></a>自定义运算</h2><blockquote>
+<p><code>apply(func, axis=0)</code></p>
+<ul>
+<li>func:自定义函数</li>
+<li>axis=0:默认是列，axis=1为行进行运算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个对列，最大值-最小值的函数</span></span><br><span class="line">data[[<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>]].apply(<span class="keyword">lambda</span> x: x.<span class="built_in">max</span>() - x.<span class="built_in">min</span>(), axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="Pandas画图"><a href="#Pandas画图" class="headerlink" title="Pandas画图"></a>Pandas画图</h1><blockquote>
+<ol>
+<li><p><code>pandas.DataFrame.plot:</code></p>
+<p><code>DataFrame.plot</code>(<em>kind=’line’</em>)</p>
+<p><code>kind : str</code>:需要绘制图形的种类</p>
+<ul>
+<li>‘line’ : line plot (default)</li>
+<li>‘bar’ : vertical bar plot</li>
+<li>‘barh’ : horizontal bar plot</li>
+<li>‘hist’ : histogram</li>
+<li>‘pie’ : pie plot</li>
+<li>‘scatter’ : scatter plot</li>
+</ul>
+</li>
+<li><p><code>pandas.Series.plot</code></p>
+</li>
+</ol>
+</blockquote>
+<h1 id="文件读取与存储"><a href="#文件读取与存储" class="headerlink" title="文件读取与存储"></a>文件读取与存储</h1><h2 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_csv(filepath_or_buffer, sep =<span class="string">&#x27;,&#x27;</span>, usecols=[],engine=<span class="string">&#x27;python&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>filepath_or_buffer:文件路径</li>
+<li>sep :分隔符，默认用”,”隔开</li>
+<li>usecols:指定读取的列名，列表形式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_csv(path_or_buf=<span class="literal">None</span>, sep=<span class="string">&#x27;, ’, columns=None, header=True, index=True, mode=&#x27;</span>w<span class="string">&#x27;, encoding=None):</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>path_or_buf :文件路径</li>
+<li>sep :分隔符，默认用”,”隔开</li>
+<li>columns :选择需要的列索引,列表形式</li>
+<li>header :是否写进列索引值</li>
+<li>index:是否写进行行索引</li>
+<li>mode:’w’：重写, ‘a’ 追加</li>
+</ul>
+</blockquote>
+<h2 id="HDF5"><a href="#HDF5" class="headerlink" title="HDF5"></a>HDF5</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_hdf(path_or_buf，key=<span class="literal">None</span>，** kwargs):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>path_or_buffer:文件路径</li>
+<li>key:读取的键</li>
+<li>return:Theselected object</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_hdf(path_or_buf, key=, **kwargs*)</span><br></pre></td></tr></table></figure>
+<p>查看HD5文件中的所有key值：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install h5py</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line">f = h5py.File(<span class="string">&quot;path&quot;</span>,<span class="string">&quot;r&quot;</span>)</span><br><span class="line">f.keys()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, typ=<span class="string">&#x27;frame&#x27;</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将JSON格式准换成默认的Pandas DataFrame格式</li>
+<li>orient : JSON string format<ul>
+<li>‘split’ : dict like {index -&gt; [index], columns -&gt; [columns], data -&gt; [values]}<ul>
+<li>split 将索引总结到索引，列名到列名，数据到数据。将三部分都分开了</li>
+</ul>
+</li>
+<li>‘records’ : list like [{column -&gt; value}, … , {column -&gt; value}]<ul>
+<li>records 以<code>columns：values</code>的形式输出</li>
+</ul>
+</li>
+<li>‘index’ : dict like {index -&gt; {column -&gt; value}}<ul>
+<li>index 以<code>index：&#123;columns：values&#125;...</code>的形式输出</li>
+</ul>
+</li>
+<li>‘columns’ : dict like {column -&gt; {index -&gt; value}},默认该格式<ul>
+<li>colums 以<code>columns:&#123;index:values&#125;</code>的形式输出</li>
+</ul>
+</li>
+<li>‘values’ : just the values array<ul>
+<li>values 直接输出值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>lines : 默认False<ul>
+<li>按照每行读取json对象</li>
+</ul>
+</li>
+<li>typ : 默认‘frame’， 指定转换成的对象类型series或者dataframe</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将Pandas 对象存储为json格式</li>
+<li><em>path_or_buf=None</em>：文件地址</li>
+<li>orient:存储的json形式，{‘split’,’records’,’index’,’columns’,’values’}</li>
+<li>lines:一个对象存储为一行</li>
+</ul>
+</blockquote>
+<h1 id="高级处理"><a href="#高级处理" class="headerlink" title="高级处理"></a>高级处理</h1><h2 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h2><blockquote>
+<p>Pandas 为了更方便地检测缺失值，将不同类型数据的缺失均采用 <code>NaN</code> 标记。这里的 NaN 代表 Not a Number，它仅仅是作为一个标记。例外是，在时间序列里，时间戳的丢失采用 <code>NaT</code> 标记。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.<span class="built_in">all</span>(pd.notnull(df)) <span class="comment"># 没有缺失值返回True，有返回False</span></span><br><span class="line">np.<span class="built_in">any</span>(pd.isnull(df)) <span class="comment"># 没有缺失值返回False，有返回True</span></span><br></pre></td></tr></table></figure>
+<p>Pandas 中用于检测缺失值主要用到两个方法，分别是：<code>isna()</code>和 <code>notna()</code>。</p>
+<ol>
+<li><p>存在缺失值NaN</p>
+<ul>
+<li>删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不修改原数据</span></span><br><span class="line">movie.dropna()</span><br><span class="line"><span class="comment"># 可以定义新的变量接受或者用原来的变量名</span></span><br><span class="line">data = movie.dropna()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>替换缺失值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 替换存在缺失值的样本的两列</span></span><br><span class="line"><span class="comment"># 替换填充平均值，中位数</span></span><br><span class="line">movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].fillna(movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>​    b. 替换所有缺失值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> movie.columns:</span><br><span class="line">    <span class="keyword">if</span> np.<span class="built_in">all</span>(pd.notnull(movie[i])) == <span class="literal">False</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        movie[i].fillna(movie[i].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不是缺失值nan，有默认标记的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 全局取消证书验证</span></span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br></pre></td></tr></table></figure>
+<p>先替换‘?’为np.nan</p>
+<ul>
+<li>```python<br>df.replace(to_replace=”?”, value=np.nan)<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">     </span><br><span class="line">     + to_replace:替换前的值</span><br><span class="line">     + value:替换后的值</span><br><span class="line"></span><br><span class="line">`缺失值填充`：</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">df.fillna(<span class="number">0</span>) # 用<span class="number">0</span>替换缺失值</span><br><span class="line">df.fillna(<span class="function"><span class="keyword">method</span>=&#x27;<span class="title">pad</span>&#x27;) # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;bfill&#x27;</span>)</span> # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;pad&#x27;</span>, limit=1)</span>  # 最多填充一项</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(df.mean()</span>[&#x27;<span class="title">C</span>&#x27;:</span><span class="string">&#x27;E&#x27;</span>]) #对C列到E列用平均值填充</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="插值填充"><a href="#插值填充" class="headerlink" title="插值填充"></a>插值填充</h2><blockquote>
+<p>插值是数值分析中一种方法。简而言之，就是借助于一个函数（线性或非线性），再根据已知数据去求解未知数据的值。插值在数据领域非常常见，它的好处在于，可以尽量去还原数据本身的样子。</p>
+<p>可以通过<code>interpolate</code>方法完成线性插值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>: [<span class="number">1.1</span>, <span class="number">2.2</span>, np.nan, <span class="number">4.5</span>, <span class="number">5.7</span>, <span class="number">6.9</span>],</span><br><span class="line">                <span class="string">&#x27;B&#x27;</span>: [<span class="number">.21</span>, np.nan, np.nan, <span class="number">3.1</span>, <span class="number">11.7</span>, <span class="number">13.2</span>]&#125;)</span><br><span class="line">df_interpolate = df.interpolate()</span><br></pre></td></tr></table></figure>
+<p>对于 <code>interpolate()</code>支持的插值算法，也就是 <code>method=</code></p>
+<ol>
+<li>如果你的数据增长速率越来越快，可以选择 <code>method=&#39;quadratic&#39;</code>二次插值。</li>
+<li>如果数据集呈现出累计分布的样子，推荐选择 <code>method=&#39;pchip&#39;</code>。</li>
+<li>如果需要填补缺省值，以平滑绘图为目标，推荐选择 <code>method=&#39;akima&#39;</code>。</li>
+</ol>
+<p>需要安装了Scipy库。</p>
+</blockquote>
+<h2 id="数据离散化"><a href="#数据离散化" class="headerlink" title="数据离散化"></a>数据离散化</h2><blockquote>
+<p>连续属性离散化的目的是为了简化数据结构，<strong>数据离散化技术可以用来减少给定连续属性值的个数</strong>。离散化方法经常作为数据挖掘的工具。</p>
+<p><strong>连续属性的离散化就是在连续属性的值域上，将值域划分为若干个离散的区间，最后用不同的符号或整数</strong> <strong>值代表落在每个子区间中的属性值。</strong></p>
+<p><strong>自动分组：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.qcut(data, num) <span class="comment">#将数据分为差不多数量的几组,一般会与value_counts搭配使用，统计每组的个数，num为组数</span></span><br><span class="line">series.value_counts()：<span class="comment">#统计分组次数</span></span><br></pre></td></tr></table></figure>
+<p><strong>自定义分组：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.cut(data, bins):</span><br></pre></td></tr></table></figure>
+<p>bins参数为自己定义的分组区间，用列表</p>
+<p><strong>分组数据变成one-hot编码：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.get_dummies(data, prefix=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>data:array-like, Series, or DataFrame</li>
+<li>prefix:分组名字</li>
+</ul>
+</blockquote>
+<h2 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.concat([data1, data2], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>按照行或列进行合并,axis=0为列索引，axis=1为行索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, how=<span class="string">&#x27;inner&#x27;</span>, on=[]):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以指定按照两组数据的共同键值对合并或者左右各自</li>
+<li><code>left</code>: DataFrame</li>
+<li><code>right</code>: 另一个DataFrame</li>
+<li><code>on</code>: 指定的共同键，列表</li>
+<li><code>how</code>:按照什么方式连接，left，right，outer，inner,默认inner</li>
+</ul>
+</blockquote>
+<h2 id="交叉表和透视表"><a href="#交叉表和透视表" class="headerlink" title="交叉表和透视表"></a>交叉表和透视表</h2><blockquote>
+<ul>
+<li><p>交叉表：交叉表用于计算一列数据对于另外一列数据的分组个数(用于统计分组频率的特殊透视表)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.crosstab(index,columns)</span><br></pre></td></tr></table></figure>
+<p>按index进行分组并作为行索引，并统计columns值的各个频数</p>
+</li>
+<li><p>透视表：透视表是将原有的DataFrame的列分别作为行索引和列索引，然后对指定的列应用聚集函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean)</span><br></pre></td></tr></table></figure>
+<p>将values按照index分组，默认使用mean()聚合函数</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="分组与聚合"><a href="#分组与聚合" class="headerlink" title="分组与聚合"></a>分组与聚合</h2><blockquote>
+<p><strong>分组：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.groupby(key, as_index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p><code>key</code>:分组的列数据，可以多个</p>
+<p><strong>聚合：</strong></p>
+<p><code>agg(&#123;&quot;列名&quot;：np.聚合函数&#125;)</code></p>
+<p><code>max(),min(),mean(),std()</code>等函数</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>科学计算库</category>
+      </categories>
+      <tags>
+        <tag>Pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -3027,8 +3027,8 @@
       </categories>
       <tags>
         <tag>Matplotlib</tag>
-        <tag>Pandas</tag>
         <tag>Numpy</tag>
+        <tag>Pandas</tag>
         <tag>Seaborn</tag>
         <tag>Api</tag>
       </tags>
