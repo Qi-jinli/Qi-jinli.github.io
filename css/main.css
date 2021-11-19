@@ -1059,13 +1059,13 @@ pre .javascript .function {
 }
 .site-title {
   font-family: 'Noto Serif SC', 'Noto Serif SC', "Noto Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1.375em;
+  font-size: 2em;
   font-weight: normal;
-  margin: 0;
+  margin: 1;
 }
 .site-subtitle {
   color: #999;
-  font-size: 0.8125em;
+  font-size: 1em;
   margin: 10px 0;
 }
 .use-motion .brand {
@@ -1136,7 +1136,7 @@ pre .javascript .function {
 .menu-item span.exturl {
   border-bottom: 0;
   display: block;
-  font-size: 0.8125em;
+  font-size: 1.2em;
   transition-property: border-color;
   transition-delay: 0s;
   transition-duration: 0.2s;
@@ -1242,7 +1242,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1aff6e;
+  background: #5250fb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
