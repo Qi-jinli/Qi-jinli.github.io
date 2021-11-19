@@ -743,7 +743,7 @@
 </ul>
 </blockquote>
 <h1 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h1><h2 id="误差平方和（SSE"><a href="#误差平方和（SSE" class="headerlink" title="误差平方和（SSE)"></a>误差平方和（SSE)</h2><blockquote>
-<p><img src="/image-20210225181350279.png" alt="image-20210225181350279" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225181350279.png" alt="image-20210225181350279" style="zoom: 33%;"></p>
 <p><code>定义：所有样本点到各自聚类中心的差方和</code></p>
 </blockquote>
 <h2 id="肘方法（Elbow-method）-K值确定"><a href="#肘方法（Elbow-method）-K值确定" class="headerlink" title="肘方法（Elbow method）-K值确定"></a>肘方法（Elbow method）-K值确定</h2><blockquote>
@@ -754,7 +754,7 @@
 </blockquote>
 <h2 id="轮廓系数法"><a href="#轮廓系数法" class="headerlink" title="轮廓系数法"></a>轮廓系数法</h2><blockquote>
 <p><strong>轮廓系数法</strong>结合了聚类的凝聚度和分离度，使内部距离最小化，外部距离最大化评估：</p>
-<p><img src="/image-20210225182241779.png" alt="image-20210225182241779" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225182241779.png" alt="image-20210225182241779" style="zoom:50%;"></p>
 <p><strong>a：</strong>任一样本到同类中其他样本的平均距离，也即与同类样本的不相似度</p>
 <p><strong>b：</strong>任一样本到最近其他类样本的平均距离，也即类间不相似度</p>
 <p><strong>平均轮廓系数的取值范围为[-1,1]，系数越大，聚类效果越好。</strong></p>
@@ -762,7 +762,7 @@
 <h2 id="CH系数"><a href="#CH系数" class="headerlink" title="CH系数"></a>CH系数</h2><blockquote>
 <p>类别内部数据的协方差越小越好，类别之间的协方差越大越好</p>
 <p>这样的Calinski-Harabasz分数s会高，<code>分数s高则聚类效果越好。</code></p>
-<p><img src="/image-20210225183418555.png" alt="image-20210225183418555" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183418555.png" alt="image-20210225183418555" style="zoom:33%;"></p>
 <p>tr为<strong>矩阵的迹</strong>, Bk为类别之间的协方差矩阵，Wk为类别内部数据的协方差矩阵，</p>
 <p>m为训练集样本数，k为类别数。</p>
 <p><strong>用尽量少的类别聚类尽量多的样本，同时获得较好的聚类效果。</strong></p>
@@ -778,7 +778,7 @@
 <p> 3.结果不一定是全局最优，只能保证局部最优（与K的个数及初值选取有关）</p>
 </blockquote>
 <h2 id="K-means-算法"><a href="#K-means-算法" class="headerlink" title="K-means++算法"></a>K-means++算法</h2><blockquote>
-<p><img src="/image-20210225183835014.png" alt="image-20210225183835014" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183835014.png" alt="image-20210225183835014" style="zoom: 33%;"></p>
 <p><strong>原理：先选择一个质心，然后计算质心到各个样本的距离D(x)，找出距离最远即P最大的点作为下一个质心</strong></p>
 <p><strong>目的：使选择的质心尽可能分散</strong></p>
 </blockquote>
@@ -875,7 +875,7 @@
 <h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><h4 id="皮尔逊相关系数"><a href="#皮尔逊相关系数" class="headerlink" title="皮尔逊相关系数"></a>皮尔逊相关系数</h4><blockquote>
 <p><strong>作用</strong>：</p>
 <p>反映变量之间相关关系密切程度的统计指标</p>
-<p><img src="/image-20210225190102769.png" alt="image-20210225190102769" style="zoom: 25%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225190102769.png" alt="image-20210225190102769" style="zoom: 25%;"></p>
 <p><strong>特点：</strong></p>
 <p><strong>相关系数的值介于–1与+1之间，即–1≤ r ≤+1</strong></p>
 <ul>
@@ -887,7 +887,7 @@
 <h4 id="斯皮尔曼相关系数"><a href="#斯皮尔曼相关系数" class="headerlink" title="斯皮尔曼相关系数"></a>斯皮尔曼相关系数</h4><blockquote>
 <p><strong>作用：</strong></p>
 <p>反映变量之间相关关系密切程度的统计指标</p>
-<p><img src="/image-20210225191336292.png" alt="image-20210225191336292" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225191336292.png" alt="image-20210225191336292" style="zoom:50%;"></p>
 <p><strong>特点：</strong></p>
 <ul>
 <li>斯皮尔曼相关系数表明 X (自变量) 和 Y (因变量)的相关方向。 如果当X增加时， Y 趋向于增加, 斯皮尔曼相关系数则为正</li>
@@ -909,7 +909,7 @@
 <li><strong>偏差（bias）：</strong>偏差衡量了模型的预测值与实际值之间的偏离关系。通常在深度学习中，我们每一次训练迭代出来的新模型，都会拿训练数据进行预测，偏差就反应在预测值与实际值匹配度上，比如通常在keras运行中看到的准确度为96%，则说明是低偏差；反之，如果准确度只有70%，则说明是高偏差。</li>
 <li><strong>方差（variance）：</strong>方差描述的是训练数据在不同迭代阶段的训练模型中，预测值的变化波动情况（或称之为离散情况）。从数学角度看，可以理解为每个预测值与预测均值差的平方和的再求平均数。通常在深度学习训练中，初始阶段模型复杂度不高，为低方差；随着训练量加大，模型逐步拟合训练数据，复杂度开始变高，此时方差会逐渐变高。</li>
 </ul>
-<p><img src="/image-20210225192342948.png" alt="image-20210225192342948" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225192342948.png" alt="image-20210225192342948" style="zoom:50%;"></p>
 <ul>
 <li><strong>低偏差，低方差</strong>：这是训练的理想模型，此时蓝色点集基本落在靶心范围内，且数据离散程度小，基本在靶心范围内；</li>
 <li><strong>低偏差，高方差</strong>：这是深度学习面临的最大问题，过拟合了。也就是模型太贴合训练数据了，导致其泛化（或通用）能力差，若遇到测试集，则准确度下降的厉害；</li>
@@ -991,14 +991,14 @@
 <li><strong>每个分支代表一个判断结果的输出，</strong></li>
 <li><strong>最后每个叶节点代表一种分类结果</strong>。</li>
 </ul>
-<p><img src="/image-20210221161453845.png" alt="image-20210221161453845" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210221161453845.png" alt="image-20210221161453845" style="zoom:50%;"></p>
 </blockquote>
 <h1 id="决策树分类原理"><a href="#决策树分类原理" class="headerlink" title="决策树分类原理"></a>决策树分类原理</h1><h2 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h2><blockquote>
 <p>1、<strong>从信息的完整性上进行的描述:</strong></p>
 <p>当<strong>系统的有序状态一致时</strong>，数据越集中的地方熵值越小，数据越分散的地方熵值越大。</p>
 <p>2、<strong>从信息的有序性上进行的描述:</strong></p>
 <p>当<strong>数据量一致时</strong>，<strong>系统越有序，熵值越低；系统越混乱或者分散，熵值越高</strong>。</p>
-<p><img src="/image-20210221161756174.png" alt="image-20210221161756174"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210221161756174.png" alt="image-20210221161756174"></p>
 <p>$p_{k}=\frac{C^{k}}{D}$, D为样本的所有数量，$C^{k}$为第k类样本的数量。</p>
 </blockquote>
 <h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><blockquote>
@@ -1008,7 +1008,7 @@
 <p>注：信息增益表示得知特征X的信息而使得类Y的信息熵减少的程度</p>
 </blockquote>
 <p>特征a对训练数据集D的信息增益Gain(D,a),定义为<strong>集合D的信息熵Ent(D)</strong>与给定特征a条件下D的信息条件熵Ent(D|a)之差，即公式为：</p>
-<p><img src="/image-20210221163011933.png" alt="image-20210221163011933" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210221163011933.png" alt="image-20210221163011933" style="zoom:50%;"></p>
 <p>其中：</p>
 <p>$D^v$表示a属性中第v个分支节点包含的样本数</p>
 <p>$C^{kv}$表示a属性中第v个分支节点包含的样本数中，第k个类别下包含的样本数</p>
@@ -1018,7 +1018,7 @@
 <p>信息增益准则对可取值数目较多的属性有所偏好，<code>C4.5 决策树算法</code>不直接使用信息增益，而是使用<code>增益率</code> (gain ratio) 来选择最优划分属性.</p>
 <p><strong>增益率：</strong></p>
 <p>增益率是用前面的信息增益Gain(D, a)和属性a对应的”固有值”(intrinsic value) 的比值来共同定义的。</p>
-<p><img src="/image-20210221163429928.png" alt="image-20210221163429928" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210221163429928.png" alt="image-20210221163429928" style="zoom:50%;"></p>
 <p><strong>优势：</strong></p>
 <p><strong>1.用信息增益率来选择属性</strong></p>
 <p>克服了用信息增益来选择属性时偏向选择值多的属性的不足。</p>
@@ -1032,9 +1032,9 @@
 <p><code>CART 决策树</code>使用”基尼指数” (Gini index)来选择划分属性</p>
 <p><strong>基尼值Gini（D）：</strong>从数据集D中随机抽取两个样本，其类别标记不一致的概率。故，Gini（D）值越小，数据集D的纯度越高，取Gini指数<code>最小的属性</code>作为决策树的根节点属性</p>
 <p><strong>基尼值：</strong></p>
-<p><img src="/image-20210222093637726.png" alt="image-20210222093637726" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210222093637726.png" alt="image-20210222093637726" style="zoom:50%;"></p>
 <p><strong>基尼指数：</strong></p>
-<p><img src="/image-20210222093705394.png" alt="image-20210222093705394" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210222093705394.png" alt="image-20210222093705394" style="zoom:50%;"></p>
 </blockquote>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><blockquote>
 <div class="table-container">
@@ -1105,7 +1105,7 @@
 </blockquote>
 <h1 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h1><blockquote>
 <p>对于连续值的处理，CART 分类树采用基尼系数的大小来度量特征的各个划分点。在回归模型中，我们使用常见的和方差度量方式，对于任意划分特征 A，对应的任意划分点 s 两边划分成的数据集$D_1和D_2$，求出使$D_1和D_2$各自集合的均方差最小，同时$D_1和D_2$的均方差之和最小所对应的特征和特征值划分点。表达式为：</p>
-<p><img src="/image-20210223120026535.png" alt="image-20210223120026535" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210223120026535.png" alt="image-20210223120026535" style="zoom:50%;"></p>
 <p>其中，$c_1为D_1$数据集的样本输出值，$c_2为D_2$数据集的样本输出值</p>
 <p>回归树输出不是类别，它采用的是用最终叶子的<code>均值或者中位数</code>来预测输出结果。</p>
 </blockquote>
@@ -1186,18 +1186,18 @@ z=\omega^{T}x</script><ul>
 </blockquote>
 <h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><blockquote>
 <p>逻辑回归是在线性函数的基础上，经过激活函数后产生的<code>0~1</code>之间的概率值。<br>设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：</p>
-<p><img src="/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
 <p>合并可得：</p>
-<p><img src="/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
 <p>最大化似然函数也就是最小化损失函数</p>
 <p><code>损失函数</code>为</p>
-<p><img src="/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
 <p><code>优化:</code></p>
 <p>同样使用梯度下降优化算法，去减少损失函数的值。这样去更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
 <script type="math/tex; mode=display">
 \theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
 <h1 id="分类评估方法"><a href="#分类评估方法" class="headerlink" title="分类评估方法"></a>分类评估方法</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><blockquote>
-<p><img src="/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
 </blockquote>
 <h2 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h2><blockquote>
 <p><code>精确率</code>：预测结果为正例样本中真实为正例的比例</p>
@@ -1306,9 +1306,9 @@ FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
 <li>相互独立：如果P(A, B) = P(A)P(B)，则称事件A与事件B相互独立。</li>
 </ul>
 <p><strong>贝叶斯公式：</strong></p>
-<p><img src="/image-20210225170258975.png" alt="image-20210225170258975" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20210225170258975.png" alt="image-20210225170258975" style="zoom:50%;"></p>
 <p><strong>拉普拉斯平滑系数：</strong></p>
-<p><img src="/image-20210225170419809.png" alt="image-20210225170419809" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20210225170419809.png" alt="image-20210225170419809" style="zoom:50%;"></p>
 <p>其中，$\alpha$一般为1，m为特征的个数</p>
 </blockquote>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><blockquote>
@@ -1429,39 +1429,39 @@ FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
 <p>SVM能够执行线性或非线性分类、回归，甚至是异常值检测任务。它是机器学习领域最受欢迎的模型之一。SVM特别适用于中小型复杂数据集的分类。</p>
 </blockquote>
 <h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><blockquote>
-<p><img src="/image-20210303185005211.png" alt="image-20210303185005211" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185005211.png" alt="image-20210303185005211" style="zoom: 33%;"></p>
 <p>根据已有训练集，通过间隔最大化得到分离超平面：<em>y</em>(<em>x</em>)=$w^T$Φ(<em>x</em>)+<em>b</em></p>
 <p>相应的决策函数为：<em>f</em>(<em>x</em>)=sign($w^T$Φ(<em>x</em>)+<em>b</em>),线性可分支持向量机。</p>
 <p>Φ(<em>x</em>)为核函数。</p>
 <p><strong>求解过程：</strong></p>
 <ol>
 <li><p>样本空间中任意点x到超平面（w,b）的距离可写成：</p>
-<p><img src="/image-20210303185429679.png" alt="image-20210303185429679" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185429679.png" alt="image-20210303185429679" style="zoom: 33%;"></p>
 <p>假设超平面可以正确分类，令：</p>
-<p><img src="/image-20210303185528918.png" alt="image-20210303185528918" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185528918.png" alt="image-20210303185528918" style="zoom: 33%;"></p>
 <p>两个异类支持向量到超平面的距离之和为:$\gamma=2/||w||$</p>
 </li>
 <li><p>间隔最大化，即为：</p>
-<p><img src="/image-20210303185729519.png" alt="image-20210303185729519" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185729519.png" alt="image-20210303185729519" style="zoom:33%;"></p>
 </li>
 <li><p>拉格朗日乘子法，约束变为无约束：</p>
-<p><img src="/image-20210303185857179.png" alt="image-20210303185857179" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185857179.png" alt="image-20210303185857179" style="zoom:33%;"></p>
 </li>
 <li><p>对偶问题，极小极大变为极大极小值问题：</p>
-<p><img src="/image-20210303185956543.png" alt="image-20210303185956543" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303185956543.png" alt="image-20210303185956543" style="zoom:33%;"></p>
 </li>
 <li><p>对原目标函数求导：</p>
-<p><img src="/image-20210303190050345.png" alt="image-20210303190050345" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190050345.png" alt="image-20210303190050345" style="zoom:50%;"></p>
 <p>然后带入原函数，获得原函数极小值：</p>
-<p><img src="/image-20210303190137239.png" alt="image-20210303190137239" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190137239.png" alt="image-20210303190137239" style="zoom: 33%;"></p>
 </li>
 <li><p>然后求$max_\alpha L(w,b,\alpha)$，即</p>
-<p><img src="/image-20210303190522111.png" alt="image-20210303190522111" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190522111.png" alt="image-20210303190522111" style="zoom:50%;"></p>
 <p>转换成极小值：</p>
-<p><img src="/image-20210303190548805.png" alt="image-20210303190548805" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190548805.png" alt="image-20210303190548805" style="zoom:50%;"></p>
 </li>
 <li><p>求出极值$\alpha^*$,带入计算w,b:</p>
-<p><img src="/image-20210303190650559.png" alt="image-20210303190650559" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303190650559.png" alt="image-20210303190650559" style="zoom:50%;"></p>
 </li>
 </ol>
 </blockquote>
@@ -1484,7 +1484,7 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <li>损失函数的公式为：$ln(1+e^{-y_i})$，为了好看除以ln2</li>
 </ul>
 <p>函数图像：</p>
-<p><img src="/image-20210303191802382.png" alt="image-20210303191802382" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303191802382.png" alt="image-20210303191802382" style="zoom: 33%;"></p>
 </blockquote>
 <h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><h2 id="核函数概念"><a href="#核函数概念" class="headerlink" title="核函数概念"></a>核函数概念</h2><blockquote>
 <p><code>核函数</code>是将原始输入空间映射到新的特征空间，从而，使得原本线性不可分的样本可能在核空间可分。</p>
@@ -1499,7 +1499,7 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <p><strong>核函数为映射后高维样本的点积，而这个点积可以用原样本的坐标来表示。</strong></p>
 </blockquote>
 <h2 id="常见核函数"><a href="#常见核函数" class="headerlink" title="常见核函数"></a>常见核函数</h2><blockquote>
-<p><img src="/image-20210303192622721.png" alt="image-20210303192622721" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303192622721.png" alt="image-20210303192622721" style="zoom: 33%;"></p>
 <ul>
 <li><strong>线性核和多项式核：</strong><ul>
 <li>这两种核的作用也是首先在属性空间中找到一些点，把这些点当做base，核函数的作用就是找与该点距离和角度满足某种关系的样本点。</li>
@@ -1646,16 +1646,16 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <p>如果一个样本在特征空间中的<strong>k</strong>个最相似<strong>(</strong>即特征空间中最邻近<strong>)</strong>的样本中的大多数属于某一个类别，则该样本也属于这个类别。</p>
 </blockquote>
 <h1 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h1><h2 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a>欧氏距离</h2><blockquote>
-<p><img src="/image-20210220214011621.png" alt="image-20210220214011621"></p>
+<p><img src="/2021/05/05/KNN/image-20210220214011621.png" alt="image-20210220214011621"></p>
 </blockquote>
 <h2 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h2><blockquote>
-<p><img src="/image-20210220214048481.png" alt="image-20210220214048481"></p>
+<p><img src="/2021/05/05/KNN/image-20210220214048481.png" alt="image-20210220214048481"></p>
 </blockquote>
 <h2 id="切比雪夫距离"><a href="#切比雪夫距离" class="headerlink" title="切比雪夫距离"></a>切比雪夫距离</h2><blockquote>
-<p><img src="/image-20210220214136794.png" alt="image-20210220214136794"></p>
+<p><img src="/2021/05/05/KNN/image-20210220214136794.png" alt="image-20210220214136794"></p>
 </blockquote>
 <h2 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h2><blockquote>
-<p><img src="/image-20210220214228039.png" alt="image-20210220214228039"></p>
+<p><img src="/2021/05/05/KNN/image-20210220214228039.png" alt="image-20210220214228039"></p>
 </blockquote>
 <h1 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h1><blockquote>
 <ol>
@@ -1671,7 +1671,7 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <li><p><code>构造</code>:可以通过如下<code>递归</code>实现:在超矩形区域上选择一个<code>坐标轴</code>和此坐标轴上的一个<code>切分点</code>,确定一个超平面,该超平面将当前超矩形区域切分为两个子区域.在子区域上重复切分直到子区域内没有实例时终止.通常依次选择坐标轴和选定坐标轴上的<code>中位数</code>点为切分点,这样可以得到平衡kd树。</p>
 </li>
 </ol>
-<p><img src="/image-20210220215218888.png" alt="image-20210220215218888" style="zoom:67%;"></p>
+<p><img src="/2021/05/05/KNN/image-20210220215218888.png" alt="image-20210220215218888" style="zoom:67%;"></p>
 <ol>
 <li><code>搜索</code>:从根节点出发,若目标点x当前维的坐标小于切分点的坐标则移动到左子结点,否则移动到右子结点,直到子结点为叶结点为止.以此叶结点为”当前最近点”,<code>递归</code>地向上回退,在每个结点:<ul>
 <li>如果该结点比当前最近点距离目标点更近,则以该结点为<code>当前最近点</code></li>
@@ -1679,17 +1679,17 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 </ul>
 </li>
 </ol>
-<p><img src="/image-20210220215919256.png" alt="image-20210220215919256" style="zoom:67%;"></p>
+<p><img src="/2021/05/05/KNN/image-20210220215919256.png" alt="image-20210220215919256" style="zoom:67%;"></p>
 </blockquote>
 <h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h2><blockquote>
 <p><strong>通过对原始数据进行变换把数据映射到(默认为[0,1])之间</strong></p>
 <p><strong>最大值与最小值非常容易受异常点影响，所以这种方法鲁棒性较差，只适合传统精确小数据场景</strong></p>
-<p><img src="/image-20210220221419293.png" alt="image-20210220221419293"></p>
+<p><img src="/2021/05/05/KNN/image-20210220221419293.png" alt="image-20210220221419293"></p>
 </blockquote>
 <h2 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h2><blockquote>
 <p><strong>对于标准化来说:如果出现异常点，由于具有一定数据量，少量的异常点对于平均值的影响并不大,从而方差改变较小。</strong></p>
 <p><strong>在已有样本足够多的情况下比较稳定，适合现代嘈杂大数据场景。</strong></p>
-<p><img src="/image-20210220221504424.png" alt="image-20210220221504424" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/KNN/image-20210220221504424.png" alt="image-20210220221504424" style="zoom:50%;"></p>
 </blockquote>
 <h1 id="KNN算法总结"><a href="#KNN算法总结" class="headerlink" title="KNN算法总结"></a>KNN算法总结</h1><blockquote>
 <p><strong><code>优点:</code></strong></p>
@@ -1715,11 +1715,11 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 </ul>
 </blockquote>
 <h1 id="交叉验证，网格搜索"><a href="#交叉验证，网格搜索" class="headerlink" title="交叉验证，网格搜索"></a>交叉验证，网格搜索</h1><h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><blockquote>
-<p><img src="/image-20210220223605973.png" alt="image-20210220223605973"></p>
+<p><img src="/2021/05/05/KNN/image-20210220223605973.png" alt="image-20210220223605973"></p>
 </blockquote>
 <h2 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h2><blockquote>
 <p>通常情况下，<strong>有很多参数是需要手动指定的（如k-近邻算法中的K值），这种叫超参数</strong>。但是手动过程繁杂，所以需要对模型预设几种超参数组合。<strong>每组超参数都采用交叉验证来进行评估。最后选出最优参数组合建立模型。</strong></p>
-<p><img src="/image-20210220223702069.png" alt="image-20210220223702069"></p>
+<p><img src="/2021/05/05/KNN/image-20210220223702069.png" alt="image-20210220223702069"></p>
 </blockquote>
 
       
@@ -1932,18 +1932,18 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
           <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
 <p><code>线性回归(Linear regression)</code>是利用<strong>回归方程(函数)</strong>对<strong>一个或多个自变量(特征值)和因变量(目标值)之间</strong>关系进行建模的一种分析方式。</p>
 <p><code>特点</code>：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归</p>
-<p><img src="/image-20210221102904866.png" alt="image-20210221102904866"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221102904866.png" alt="image-20210221102904866"></p>
 <p>非线性关系回归方程可以理解为：<script type="math/tex">\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3</script></p>
 </blockquote>
 <h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><blockquote>
-<p><img src="/image-20210221103604185.png" alt="image-20210221103604185" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103604185.png" alt="image-20210221103604185" style="zoom:50%;"></p>
 </blockquote>
 <h2 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h2><h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3><blockquote>
-<p><img src="/image-20210221103502714.png" alt="image-20210221103502714" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103502714.png" alt="image-20210221103502714" style="zoom: 33%;"></p>
 <p>推导过程：</p>
-<p><img src="/image-20210221103627823.png" alt="image-20210221103627823" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103627823.png" alt="image-20210221103627823" style="zoom:50%;"></p>
 <p><strong>求导公式：</strong></p>
-<p><img src="/image-20210221103732267.png" alt="image-20210221103732267" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103732267.png" alt="image-20210221103732267" style="zoom: 33%;"></p>
 </blockquote>
 <h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><blockquote>
 <p><strong>梯度：</strong></p>
@@ -1954,7 +1954,7 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <p><strong>损失函数</strong></p>
 <script type="math/tex; mode=display">
 J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><strong>梯度下降推导：</strong></p>
-<p><img src="/image-20210221110819120.png" alt="image-20210221110819120" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221110819120.png" alt="image-20210221110819120" style="zoom:50%;"></p>
 <p><strong>梯度下降公式：</strong></p>
 <script type="math/tex; mode=display">
 \theta_{j}:=\theta_{j}-\frac{\alpha}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_j^{(i)}</script></blockquote>
@@ -1982,7 +1982,7 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 <li>过拟合：一个假设<strong>在训练数据上能够获得比其他假设更好的拟合， 但是在测试数据集上却不能很好地拟合数据</strong>，此时认为这个假设出现了过拟合的现象。(模型过于复杂)</li>
 <li>欠拟合：一个假设<strong>在训练数据上不能获得更好的拟合，并且在测试数据集上也不能很好地拟合数据</strong>，此时认为这个假设出现了欠拟合的现象。(模型过于简单)</li>
 </ul>
-<p><img src="/image-20210221114925438.png" alt="image-20210221114925438" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221114925438.png" alt="image-20210221114925438" style="zoom: 33%;"></p>
 </blockquote>
 <h2 id="原因及解决办法"><a href="#原因及解决办法" class="headerlink" title="原因及解决办法"></a>原因及解决办法</h2><blockquote>
 <ul>
@@ -2026,11 +2026,11 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 </ul>
 </blockquote>
 <h3 id="Ridge-Regression（岭回归）"><a href="#Ridge-Regression（岭回归）" class="headerlink" title="Ridge Regression（岭回归）"></a>Ridge Regression（岭回归）</h3><blockquote>
-<p><img src="/image-20210221115445087.png" alt="image-20210221115445087" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115445087.png" alt="image-20210221115445087" style="zoom:50%;"></p>
 <p><strong>注意：α=0，岭回归退化为线性回归</strong></p>
 </blockquote>
 <h3 id="Lasso-Regression（Lasso回归）"><a href="#Lasso-Regression（Lasso回归）" class="headerlink" title="Lasso Regression（Lasso回归）"></a>Lasso Regression（Lasso回归）</h3><blockquote>
-<p><img src="/image-20210221115645244.png" alt="image-20210221115645244" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115645244.png" alt="image-20210221115645244" style="zoom:50%;"></p>
 <p><strong>Lasso Regression 有一个很重要的性质是：倾向于完全消除不重要的权重。</strong></p>
 </blockquote>
 <h3 id="Elastic-Net（弹性网络）"><a href="#Elastic-Net（弹性网络）" class="headerlink" title="Elastic Net（弹性网络）"></a>Elastic Net（弹性网络）</h3><blockquote>
@@ -2040,7 +2040,7 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 <li><code>r=1</code>：弹性网络便为Lasso回归</li>
 </ul>
 <p>弹性网络的<code>代价函数</code> ：</p>
-<p><img src="/image-20210221115855169.png" alt="image-20210221115855169" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115855169.png" alt="image-20210221115855169" style="zoom:50%;"></p>
 </blockquote>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
 <ul>
@@ -2247,6 +2247,63 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

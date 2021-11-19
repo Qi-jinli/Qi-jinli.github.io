@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="Qijinli&#39;s Blog">
 <meta property="og:description" content="激活函数 sigmoid函数：  g(z)&#x3D;\frac{1}{1+e^{-z}}\\ z&#x3D;\omega^{T}x 回归的结果输入到sigmoid函数当中 输出结果：[0, 1]区间中的一个概率值，默认为0.5为阈值   损失及优化 逻辑回归是在线性函数的基础上，经过激活函数后产生的0~1之间的概率值。设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：  合并可得：  最大化似然函数">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221152143456.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221152207350.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221152321431.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221155107031.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png">
 <meta property="article:published_time" content="2021-05-05T11:02:24.000Z">
 <meta property="article:modified_time" content="2021-05-05T11:02:24.000Z">
 <meta property="article:author" content="Qijinli">
 <meta property="article:tag" content="LR">
 <meta property="article:tag" content="ROC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qi-jinli.github.io/image-20210221152143456.png">
+<meta name="twitter:image" content="http://qi-jinli.github.io/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png">
 
 <link rel="canonical" href="http://qi-jinli.github.io/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
 
@@ -234,18 +234,18 @@ z=\omega^{T}x</script><ul>
 </blockquote>
 <h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><blockquote>
 <p>逻辑回归是在线性函数的基础上，经过激活函数后产生的<code>0~1</code>之间的概率值。<br>设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：</p>
-<p><img src="/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
 <p>合并可得：</p>
-<p><img src="/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
 <p>最大化似然函数也就是最小化损失函数</p>
 <p><code>损失函数</code>为</p>
-<p><img src="/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
 <p><code>优化:</code></p>
 <p>同样使用梯度下降优化算法，去减少损失函数的值。这样去更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
 <script type="math/tex; mode=display">
 \theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
 <h1 id="分类评估方法"><a href="#分类评估方法" class="headerlink" title="分类评估方法"></a>分类评估方法</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><blockquote>
-<p><img src="/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
 </blockquote>
 <h2 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h2><blockquote>
 <p><code>精确率</code>：预测结果为正例样本中真实为正例的比例</p>
@@ -466,6 +466,63 @@ FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

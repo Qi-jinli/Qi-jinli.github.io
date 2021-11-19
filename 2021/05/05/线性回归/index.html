@@ -27,22 +27,22 @@
 <meta property="og:site_name" content="Qijinli&#39;s Blog">
 <meta property="og:description" content="概念 线性回归(Linear regression)是利用回归方程(函数)对一个或多个自变量(特征值)和因变量(目标值)之间关系进行建模的一种分析方式。 特点：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归  非线性关系回归方程可以理解为：\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3  损失及优化损失函数   优化算法正规方程  推导过程：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221102904866.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221103604185.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221103502714.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221103627823.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221103732267.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221110819120.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221114925438.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221115445087.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221115645244.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210221115855169.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221102904866.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103604185.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103502714.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103627823.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103732267.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221110819120.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221114925438.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115445087.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115645244.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115855169.png">
 <meta property="article:published_time" content="2021-05-04T17:08:43.000Z">
 <meta property="article:modified_time" content="2021-05-04T17:08:43.000Z">
 <meta property="article:author" content="Qijinli">
 <meta property="article:tag" content="LR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qi-jinli.github.io/image-20210221102904866.png">
+<meta name="twitter:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221102904866.png">
 
 <link rel="canonical" href="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
 
@@ -231,18 +231,18 @@
         <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
 <p><code>线性回归(Linear regression)</code>是利用<strong>回归方程(函数)</strong>对<strong>一个或多个自变量(特征值)和因变量(目标值)之间</strong>关系进行建模的一种分析方式。</p>
 <p><code>特点</code>：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归</p>
-<p><img src="/image-20210221102904866.png" alt="image-20210221102904866"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221102904866.png" alt="image-20210221102904866"></p>
 <p>非线性关系回归方程可以理解为：<script type="math/tex">\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3</script></p>
 </blockquote>
 <h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><blockquote>
-<p><img src="/image-20210221103604185.png" alt="image-20210221103604185" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103604185.png" alt="image-20210221103604185" style="zoom:50%;"></p>
 </blockquote>
 <h2 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h2><h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3><blockquote>
-<p><img src="/image-20210221103502714.png" alt="image-20210221103502714" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103502714.png" alt="image-20210221103502714" style="zoom: 33%;"></p>
 <p>推导过程：</p>
-<p><img src="/image-20210221103627823.png" alt="image-20210221103627823" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103627823.png" alt="image-20210221103627823" style="zoom:50%;"></p>
 <p><strong>求导公式：</strong></p>
-<p><img src="/image-20210221103732267.png" alt="image-20210221103732267" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103732267.png" alt="image-20210221103732267" style="zoom: 33%;"></p>
 </blockquote>
 <h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><blockquote>
 <p><strong>梯度：</strong></p>
@@ -253,7 +253,7 @@
 <p><strong>损失函数</strong></p>
 <script type="math/tex; mode=display">
 J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><strong>梯度下降推导：</strong></p>
-<p><img src="/image-20210221110819120.png" alt="image-20210221110819120" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221110819120.png" alt="image-20210221110819120" style="zoom:50%;"></p>
 <p><strong>梯度下降公式：</strong></p>
 <script type="math/tex; mode=display">
 \theta_{j}:=\theta_{j}-\frac{\alpha}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_j^{(i)}</script></blockquote>
@@ -281,7 +281,7 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 <li>过拟合：一个假设<strong>在训练数据上能够获得比其他假设更好的拟合， 但是在测试数据集上却不能很好地拟合数据</strong>，此时认为这个假设出现了过拟合的现象。(模型过于复杂)</li>
 <li>欠拟合：一个假设<strong>在训练数据上不能获得更好的拟合，并且在测试数据集上也不能很好地拟合数据</strong>，此时认为这个假设出现了欠拟合的现象。(模型过于简单)</li>
 </ul>
-<p><img src="/image-20210221114925438.png" alt="image-20210221114925438" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221114925438.png" alt="image-20210221114925438" style="zoom: 33%;"></p>
 </blockquote>
 <h2 id="原因及解决办法"><a href="#原因及解决办法" class="headerlink" title="原因及解决办法"></a>原因及解决办法</h2><blockquote>
 <ul>
@@ -325,11 +325,11 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 </ul>
 </blockquote>
 <h3 id="Ridge-Regression（岭回归）"><a href="#Ridge-Regression（岭回归）" class="headerlink" title="Ridge Regression（岭回归）"></a>Ridge Regression（岭回归）</h3><blockquote>
-<p><img src="/image-20210221115445087.png" alt="image-20210221115445087" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115445087.png" alt="image-20210221115445087" style="zoom:50%;"></p>
 <p><strong>注意：α=0，岭回归退化为线性回归</strong></p>
 </blockquote>
 <h3 id="Lasso-Regression（Lasso回归）"><a href="#Lasso-Regression（Lasso回归）" class="headerlink" title="Lasso Regression（Lasso回归）"></a>Lasso Regression（Lasso回归）</h3><blockquote>
-<p><img src="/image-20210221115645244.png" alt="image-20210221115645244" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115645244.png" alt="image-20210221115645244" style="zoom:50%;"></p>
 <p><strong>Lasso Regression 有一个很重要的性质是：倾向于完全消除不重要的权重。</strong></p>
 </blockquote>
 <h3 id="Elastic-Net（弹性网络）"><a href="#Elastic-Net（弹性网络）" class="headerlink" title="Elastic Net（弹性网络）"></a>Elastic Net（弹性网络）</h3><blockquote>
@@ -339,7 +339,7 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 <li><code>r=1</code>：弹性网络便为Lasso回归</li>
 </ul>
 <p>弹性网络的<code>代价函数</code> ：</p>
-<p><img src="/image-20210221115855169.png" alt="image-20210221115855169" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115855169.png" alt="image-20210221115855169" style="zoom:50%;"></p>
 </blockquote>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
 <ul>
@@ -559,6 +559,63 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

@@ -27,19 +27,19 @@
 <meta property="og:site_name" content="Qijinli&#39;s Blog">
 <meta property="og:description" content="概念 聚类算法： 一种典型的无监督学习算法，主要用于将相似的样本自动归到一个类别中。 在聚类算法中根据样本之间的相似性，将样本划分到不同的类别中，对于不同的相似度计算方法，会得到不同的聚类结果，常用的相似度计算方法有欧式距离法。  原理  随机设置K个特征空间内的点作为初始的聚类中心 对于其他每个点计算到K个中心的距离，未知的点选择最近的一个聚类中心点作为标记类别 接着对着标记的聚类中心之后，重新">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225181350279.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225182241779.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225183418555.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225183835014.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225190102769.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225191336292.png">
-<meta property="og:image" content="http://qi-jinli.github.io/image-20210225192342948.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225181350279.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225182241779.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183418555.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183835014.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225190102769.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225191336292.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225192342948.png">
 <meta property="article:published_time" content="2021-05-05T11:02:46.000Z">
 <meta property="article:modified_time" content="2021-05-05T11:02:46.000Z">
 <meta property="article:author" content="Qijinli">
 <meta property="article:tag" content="无监督学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qi-jinli.github.io/image-20210225181350279.png">
+<meta name="twitter:image" content="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225181350279.png">
 
 <link rel="canonical" href="http://qi-jinli.github.io/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/">
 
@@ -243,7 +243,7 @@
 </ul>
 </blockquote>
 <h1 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h1><h2 id="误差平方和（SSE"><a href="#误差平方和（SSE" class="headerlink" title="误差平方和（SSE)"></a>误差平方和（SSE)</h2><blockquote>
-<p><img src="/image-20210225181350279.png" alt="image-20210225181350279" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225181350279.png" alt="image-20210225181350279" style="zoom: 33%;"></p>
 <p><code>定义：所有样本点到各自聚类中心的差方和</code></p>
 </blockquote>
 <h2 id="肘方法（Elbow-method）-K值确定"><a href="#肘方法（Elbow-method）-K值确定" class="headerlink" title="肘方法（Elbow method）-K值确定"></a>肘方法（Elbow method）-K值确定</h2><blockquote>
@@ -254,7 +254,7 @@
 </blockquote>
 <h2 id="轮廓系数法"><a href="#轮廓系数法" class="headerlink" title="轮廓系数法"></a>轮廓系数法</h2><blockquote>
 <p><strong>轮廓系数法</strong>结合了聚类的凝聚度和分离度，使内部距离最小化，外部距离最大化评估：</p>
-<p><img src="/image-20210225182241779.png" alt="image-20210225182241779" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225182241779.png" alt="image-20210225182241779" style="zoom:50%;"></p>
 <p><strong>a：</strong>任一样本到同类中其他样本的平均距离，也即与同类样本的不相似度</p>
 <p><strong>b：</strong>任一样本到最近其他类样本的平均距离，也即类间不相似度</p>
 <p><strong>平均轮廓系数的取值范围为[-1,1]，系数越大，聚类效果越好。</strong></p>
@@ -262,7 +262,7 @@
 <h2 id="CH系数"><a href="#CH系数" class="headerlink" title="CH系数"></a>CH系数</h2><blockquote>
 <p>类别内部数据的协方差越小越好，类别之间的协方差越大越好</p>
 <p>这样的Calinski-Harabasz分数s会高，<code>分数s高则聚类效果越好。</code></p>
-<p><img src="/image-20210225183418555.png" alt="image-20210225183418555" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183418555.png" alt="image-20210225183418555" style="zoom:33%;"></p>
 <p>tr为<strong>矩阵的迹</strong>, Bk为类别之间的协方差矩阵，Wk为类别内部数据的协方差矩阵，</p>
 <p>m为训练集样本数，k为类别数。</p>
 <p><strong>用尽量少的类别聚类尽量多的样本，同时获得较好的聚类效果。</strong></p>
@@ -278,7 +278,7 @@
 <p> 3.结果不一定是全局最优，只能保证局部最优（与K的个数及初值选取有关）</p>
 </blockquote>
 <h2 id="K-means-算法"><a href="#K-means-算法" class="headerlink" title="K-means++算法"></a>K-means++算法</h2><blockquote>
-<p><img src="/image-20210225183835014.png" alt="image-20210225183835014" style="zoom: 33%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183835014.png" alt="image-20210225183835014" style="zoom: 33%;"></p>
 <p><strong>原理：先选择一个质心，然后计算质心到各个样本的距离D(x)，找出距离最远即P最大的点作为下一个质心</strong></p>
 <p><strong>目的：使选择的质心尽可能分散</strong></p>
 </blockquote>
@@ -375,7 +375,7 @@
 <h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><h4 id="皮尔逊相关系数"><a href="#皮尔逊相关系数" class="headerlink" title="皮尔逊相关系数"></a>皮尔逊相关系数</h4><blockquote>
 <p><strong>作用</strong>：</p>
 <p>反映变量之间相关关系密切程度的统计指标</p>
-<p><img src="/image-20210225190102769.png" alt="image-20210225190102769" style="zoom: 25%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225190102769.png" alt="image-20210225190102769" style="zoom: 25%;"></p>
 <p><strong>特点：</strong></p>
 <p><strong>相关系数的值介于–1与+1之间，即–1≤ r ≤+1</strong></p>
 <ul>
@@ -387,7 +387,7 @@
 <h4 id="斯皮尔曼相关系数"><a href="#斯皮尔曼相关系数" class="headerlink" title="斯皮尔曼相关系数"></a>斯皮尔曼相关系数</h4><blockquote>
 <p><strong>作用：</strong></p>
 <p>反映变量之间相关关系密切程度的统计指标</p>
-<p><img src="/image-20210225191336292.png" alt="image-20210225191336292" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225191336292.png" alt="image-20210225191336292" style="zoom:50%;"></p>
 <p><strong>特点：</strong></p>
 <ul>
 <li>斯皮尔曼相关系数表明 X (自变量) 和 Y (因变量)的相关方向。 如果当X增加时， Y 趋向于增加, 斯皮尔曼相关系数则为正</li>
@@ -409,7 +409,7 @@
 <li><strong>偏差（bias）：</strong>偏差衡量了模型的预测值与实际值之间的偏离关系。通常在深度学习中，我们每一次训练迭代出来的新模型，都会拿训练数据进行预测，偏差就反应在预测值与实际值匹配度上，比如通常在keras运行中看到的准确度为96%，则说明是低偏差；反之，如果准确度只有70%，则说明是高偏差。</li>
 <li><strong>方差（variance）：</strong>方差描述的是训练数据在不同迭代阶段的训练模型中，预测值的变化波动情况（或称之为离散情况）。从数学角度看，可以理解为每个预测值与预测均值差的平方和的再求平均数。通常在深度学习训练中，初始阶段模型复杂度不高，为低方差；随着训练量加大，模型逐步拟合训练数据，复杂度开始变高，此时方差会逐渐变高。</li>
 </ul>
-<p><img src="/image-20210225192342948.png" alt="image-20210225192342948" style="zoom:50%;"></p>
+<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225192342948.png" alt="image-20210225192342948" style="zoom:50%;"></p>
 <ul>
 <li><strong>低偏差，低方差</strong>：这是训练的理想模型，此时蓝色点集基本落在靶心范围内，且数据离散程度小，基本在靶心范围内；</li>
 <li><strong>低偏差，高方差</strong>：这是深度学习面临的最大问题，过拟合了。也就是模型太贴合训练数据了，导致其泛化（或通用）能力差，若遇到测试集，则准确度下降的厉害；</li>
@@ -611,6 +611,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
