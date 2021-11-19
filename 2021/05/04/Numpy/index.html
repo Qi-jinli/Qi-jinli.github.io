@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpeg">
+  <link rel="mask-icon" href="/images/logo.jpeg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -17,14 +17,14 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Numpy数组类型 Numpy的优势：  内存风格 ndarray在存储数据的时候，数据与数据的地址都是连续的，这样就给使得批量操作数组元素时速度更快。  ndarray支持并行化运算（向量化运算） numpy内置了并行运算功能，当系统有多个核心时，做某种计算时，numpy会自动做并行计算  效率远高于纯Python代码 Numpy底层使用C语言编写，内部解除了GIL（全局解释器锁），其对数组的操">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Numpy">
 <meta property="og:url" content="http://qi-jinli.github.io/2021/05/04/Numpy/index.html">
-<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:site_name" content="畅快的伊瓦西">
 <meta property="og:description" content="Numpy数组类型 Numpy的优势：  内存风格 ndarray在存储数据的时候，数据与数据的地址都是连续的，这样就给使得批量操作数组元素时速度更快。  ndarray支持并行化运算（向量化运算） numpy内置了并行运算功能，当系统有多个核心时，做某种计算时，numpy会自动做并行计算  效率远高于纯Python代码 Numpy底层使用C语言编写，内部解除了GIL（全局解释器锁），其对数组的操">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-03T17:12:37.000Z">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Numpy | Qijinli's Blog</title>
+  <title>Numpy | 畅快的伊瓦西</title>
   
 
 
@@ -97,13 +97,15 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Qijinli's Blog</h1>
+      <h1 class="site-title">畅快的伊瓦西</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">大直若屈，大巧若拙，大辩若讷，大赢若纳。</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -115,39 +117,61 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section">首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section">关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section">标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section">分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section">归档<span class="badge">22</span></a>
 
   </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -174,13 +198,13 @@
     <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/Numpy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/logo.jpeg">
       <meta itemprop="name" content="Qijinli">
       <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Qijinli's Blog">
+      <meta itemprop="name" content="畅快的伊瓦西">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -207,6 +231,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -330,10 +361,7 @@
 </tbody>
 </table>
 </div>
-<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
-a = np.array([1.1,2.2,3.3],dtype=np.float64)
-a.astype(int).dtype # 将a的数值类型从float64转为int64
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1.1</span>,<span class="number">2.2</span>,<span class="number">3.3</span>],dtype=np.float64)</span><br><span class="line">a.astype(<span class="built_in">int</span>).dtype <span class="comment"># 将a的数值类型从float64转为int64</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="Numpy数组生成"><a href="#Numpy数组生成" class="headerlink" title="Numpy数组生成"></a>Numpy数组生成</h1><blockquote>
 <p>Numpy中，ndarray多维数组对象有六个参数：</p>
@@ -347,10 +375,7 @@ a.astype(int).dtype # 将a的数值类型从float64转为int64
 </ul>
 </blockquote>
 <h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.array(object,dtype=None,copy=True,order=None,subok=False,ndmin=0)
-a1 = numpy.array(a) # 深拷贝
-a2 = numpy.asarray(a) # 浅拷贝
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(<span class="built_in">object</span>,dtype=<span class="literal">None</span>,copy=<span class="literal">True</span>,order=<span class="literal">None</span>,subok=<span class="literal">False</span>,ndmin=<span class="number">0</span>)</span><br><span class="line">a1 = numpy.array(a) <span class="comment"># 深拷贝</span></span><br><span class="line">a2 = numpy.asarray(a) <span class="comment"># 浅拷贝</span></span><br></pre></td></tr></table></figure>
 <p>其中参数：</p>
 <ol>
 <li><code>object</code>：列表、元组等。</li>
@@ -362,15 +387,11 @@ a2 = numpy.asarray(a) # 浅拷贝
 </ol>
 </blockquote>
 <h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.arange(start,stop,step,dtype=None)
-例：numpy.arange(3,7,0.5,dtype='float32')
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numpy.arange(start,stop,step,dtype=<span class="literal">None</span>)</span><br><span class="line">例：numpy.arange(<span class="number">3</span>,<span class="number">7</span>,<span class="number">0.5</span>,dtype=<span class="string">&#x27;float32&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>arange()的功能是在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</p>
 </blockquote>
 <h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
-例：numpy.linspace(0, 10, 10, endpoint=True)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numpy.linspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, retstep=<span class="literal">False</span>, dtype=<span class="literal">None</span>)</span><br><span class="line">例：numpy.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">10</span>, endpoint=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <p>同arange一样，用于在区间内返回间隔均匀的值。</p>
 <ul>
 <li><code>start</code>：序列的起始值。</li>
@@ -382,10 +403,7 @@ a2 = numpy.asarray(a) # 浅拷贝
 </ul>
 </blockquote>
 <h3 id="ones方法创建"><a href="#ones方法创建" class="headerlink" title="ones方法创建"></a>ones方法创建</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.ones(shape, dtype=None, order='C')
-numpy.ones_like(a, dtype)
-numpy.ones((2, 3))
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numpy.ones(shape, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">numpy.ones_like(a, dtype)</span><br><span class="line">numpy.ones((<span class="number">2</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 <p>Numpy.ones用于快速创建数值全部为1的多维数组</p>
 <ul>
 <li><code>shape</code>：用于指定数组形状，例如（1， 2）或 3。</li>
@@ -394,10 +412,7 @@ numpy.ones((2, 3))
 </ul>
 </blockquote>
 <h3 id="zeros方法创建"><a href="#zeros方法创建" class="headerlink" title="zeros方法创建"></a>zeros方法创建</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.zeros(shape, dtype=None, order='C')
-numpy.zeros_like(a, dtype)
-例：np.zeros((3, 2))
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numpy.zeros(shape, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">numpy.zeros_like(a, dtype)</span><br><span class="line">例：np.zeros((<span class="number">3</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <p>和ones方法相似，只是全部填充为0</p>
 <ul>
 <li><code>shape</code>：用于指定数组形状，例如<code>（1， 2）</code>或<code>3</code>。</li>
@@ -406,9 +421,7 @@ numpy.zeros_like(a, dtype)
 </ul>
 </blockquote>
 <h3 id="eye方法创建"><a href="#eye方法创建" class="headerlink" title="eye方法创建"></a>eye方法创建</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.eye(N, M=None, k=0, dtype=<type 'float'>)
-np.eye(5, 4, 3)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numpy.eye(N, M=<span class="literal">None</span>, k=<span class="number">0</span>, dtype=&lt;<span class="built_in">type</span> <span class="string">&#x27;float&#x27;</span>&gt;)</span><br><span class="line">np.eye(<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 <p>用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</p>
 <ul>
 <li><code>N</code>：输出数组的行数。</li>
@@ -441,22 +454,18 @@ np.eye(5, 4, 3)
 </ol>
 </blockquote>
 <h1 id="数组维度和形状"><a href="#数组维度和形状" class="headerlink" title="数组维度和形状"></a>数组维度和形状</h1><h2 id="数组基本操作"><a href="#数组基本操作" class="headerlink" title="数组基本操作"></a>数组基本操作</h2><h3 id="重设形状"><a href="#重设形状" class="headerlink" title="重设形状"></a>重设形状</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.reshape(a, newshape)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.reshape(a, newshape)</span><br></pre></td></tr></table></figure>
 <p><code>reshape</code>可以在不改变数组数据的同时改变数组形状，其中</p>
 <p><code>numpy.reshape()</code>等效于<code>ndarray.reshape()</code></p>
 <p><code>a</code>表示原数组，<code>newshape</code>表示用于指定新的形状（整数或者数组）</p>
 </blockquote>
 <h3 id="数组展开"><a href="#数组展开" class="headerlink" title="数组展开"></a>数组展开</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.ravel(a, order='C')
-ndarray.flatten()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numpy.ravel(a, order=<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">ndarray.flatten()</span><br></pre></td></tr></table></figure>
 <p><code>ravel</code>的目的是将任意形状的数组扁平化，变为1维数组</p>
 <p>a代表需要处理的数组，<code>order</code>表示变换时读取的顺序，默认按行依次读取，当<code>order=&#39;F&#39;</code>时按列读取</p>
 </blockquote>
 <h3 id="轴移动"><a href="#轴移动" class="headerlink" title="轴移动"></a>轴移动</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.moveaxis(a, source, destination)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.moveaxis(a, source, destination)</span><br></pre></td></tr></table></figure>
 <p><code>moveaxis</code>可以将数组的轴移动到新的位置</p>
 <ul>
 <li><code>a</code>：数组。</li>
@@ -465,8 +474,7 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="轴交换"><a href="#轴交换" class="headerlink" title="轴交换"></a>轴交换</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.swapaxes(a, axis1, axis2)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.swapaxes(a, axis1, axis2)</span><br></pre></td></tr></table></figure>
 <p><code>swapaxes</code>可以用来交换数组的轴</p>
 <ul>
 <li><code>a</code>：数组。</li>
@@ -475,13 +483,11 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">np.unique(a)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.unique(a)</span><br></pre></td></tr></table></figure>
 <p><strong>去重数组元素中重复的元素</strong></p>
 </blockquote>
 <h3 id="数组转置"><a href="#数组转置" class="headerlink" title="数组转置"></a>数组转置</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.transpose(a, axes=None)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.transpose(a, axes=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <p><code>transpose</code>类似于矩阵的转置，可以将二维数组的横轴和纵轴交换</p>
 <ul>
 <li><code>a</code>：数组。</li>
@@ -489,10 +495,7 @@ ndarray.flatten()
 </ul>
 </blockquote>
 <h3 id="维度改变"><a href="#维度改变" class="headerlink" title="维度改变"></a>维度改变</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.atleast_1d()
-numpy.atleast_2d()
-numpy.atleast_3d()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numpy.atleast_1d()</span><br><span class="line">numpy.atleast_2d()</span><br><span class="line">numpy.atleast_3d()</span><br></pre></td></tr></table></figure>
 <p><code>atleast_xd</code>支持输入数据直接视为<code>x</code>维，<code>x</code>可以表示：<code>1，2，3</code></p>
 </blockquote>
 <h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><blockquote>
@@ -507,8 +510,7 @@ numpy.atleast_3d()
 </ul>
 </blockquote>
 <h3 id="数组连接"><a href="#数组连接" class="headerlink" title="数组连接"></a>数组连接</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.concatenate((a1, a2, ...), axis=0)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.concatenate((a1, a2, ...), axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p><code>concatenate</code>可以将多个数组沿指定轴连接在一起</p>
 <ul>
 <li><code>(a1, a2, ...)</code>：需要连接的数组。</li>
@@ -677,11 +679,7 @@ numpy.atleast_3d()
 </ul>
 </blockquote>
 <h2 id="逻辑运算和判断函数"><a href="#逻辑运算和判断函数" class="headerlink" title="逻辑运算和判断函数"></a>逻辑运算和判断函数</h2><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">a[条件] = 1 # 将满足条件的数组元素设置为1
-np.all(条件) # 查询是否都满足条件
-numpy.any(条件) # 查询是否有满足条件的
-numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符合的为0
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a[条件] = <span class="number">1</span> <span class="comment"># 将满足条件的数组元素设置为1</span></span><br><span class="line">np.<span class="built_in">all</span>(条件) <span class="comment"># 查询是否都满足条件</span></span><br><span class="line">numpy.<span class="built_in">any</span>(条件) <span class="comment"># 查询是否有满足条件的</span></span><br><span class="line">numpy.where(条件，<span class="number">1</span>，<span class="number">0</span>) <span class="comment"># 三目运算，符合条件的设置为1，不符合的为0</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
 <ul>
@@ -752,33 +750,24 @@ numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符�
 <ol>
 <li>一维数组索引：</li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">a=np.arange(10)
-a[1] #获取索引值为1的数据
-a[[1,2,3]] #分别获取索引值1，2，3的数据
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=np.arange(<span class="number">10</span>)</span><br><span class="line">a[<span class="number">1</span>] <span class="comment">#获取索引值为1的数据</span></span><br><span class="line">a[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]] <span class="comment">#分别获取索引值1，2，3的数据</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>二维数组索引：</li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">a = np.arange(20).reshape(4, 5)
-a[[1,2],[3,4]] # 获取第2行，第3列的数据
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">20</span>).reshape(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">a[[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]] <span class="comment"># 获取第2行，第3列的数据</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>三维数组索引：</li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">a = np.arange(30).reshape(2, 5, 3)
-a[[0, 1], [1, 2], [1, 2]]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">30</span>).reshape(<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">a[[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h2><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">Ndarray[start:stop:step]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ndarray[start:stop:step]</span><br></pre></td></tr></table></figure>
 <p><code>[start:stop:step]</code> 分别代表 <code>[起始索引:截至索引:步长]</code>。</p>
 <p>一维数组：a[5:10]</p>
 <p>二维数组：[0:3, 2:4]</p>
 </blockquote>
 <h2 id="排序、搜索、计数"><a href="#排序、搜索、计数" class="headerlink" title="排序、搜索、计数"></a>排序、搜索、计数</h2><h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">numpy.sort(a, axis=-1, kind='quicksort', order=None)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.sort(a, axis=-<span class="number">1</span>, kind=<span class="string">&#x27;quicksort&#x27;</span>, order=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>a</code>：数组。</li>
 <li><code>axis</code>：要排序的轴。如果为<code>None</code>，则在排序之前将数组铺平。默认值为 <code>-1</code>，沿最后一个轴排序。</li>
@@ -893,6 +882,8 @@ a[[0, 1], [1, 2], [1, 2]]
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Qijinli"
+      src="/images/logo.jpeg">
   <p class="site-author-name" itemprop="name">Qijinli</p>
   <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
 </div>
@@ -940,17 +931,35 @@ a[[0, 1], [1, 2], [1, 2]]
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2017 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+  <span class="author" itemprop="copyrightHolder">Qi Jinli</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -984,6 +993,10 @@ a[[0, 1], [1, 2], [1, 2]]
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

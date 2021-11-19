@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpeg">
+  <link rel="mask-icon" href="/images/logo.jpeg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -17,14 +17,14 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Mysql基本使用数据库数据库的分类 关系型数据库： 是指采用了关系模型来组织数据的数据库，简单来说，关系模型指的就是二维表格模型  Oracle Microsoft SQL Server MySQL SQLite  非关系型数据库： 又被称为NoSQL（Not Only SQL )，意为不仅仅是SQL，对NoSQL 最普遍的定义是“非关联型的”，强调 Key-Value 的方式存储数据。  Mo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库">
 <meta property="og:url" content="http://qi-jinli.github.io/2021/05/04/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
-<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:site_name" content="畅快的伊瓦西">
 <meta property="og:description" content="Mysql基本使用数据库数据库的分类 关系型数据库： 是指采用了关系模型来组织数据的数据库，简单来说，关系模型指的就是二维表格模型  Oracle Microsoft SQL Server MySQL SQLite  非关系型数据库： 又被称为NoSQL（Not Only SQL )，意为不仅仅是SQL，对NoSQL 最普遍的定义是“非关联型的”，强调 Key-Value 的方式存储数据。  Mo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-04T06:32:03.000Z">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>数据库 | Qijinli's Blog</title>
+  <title>数据库 | 畅快的伊瓦西</title>
   
 
 
@@ -98,13 +98,15 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Qijinli's Blog</h1>
+      <h1 class="site-title">畅快的伊瓦西</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">大直若屈，大巧若拙，大辩若讷，大赢若纳。</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -116,39 +118,61 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section">首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section">关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section">标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section">分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section">归档<span class="badge">22</span></a>
 
   </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -175,13 +199,13 @@
     <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E6%95%B0%E6%8D%AE%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/logo.jpeg">
       <meta itemprop="name" content="Qijinli">
       <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Qijinli's Blog">
+      <meta itemprop="name" content="畅快的伊瓦西">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -208,6 +232,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -253,8 +284,7 @@
 </ul>
 </blockquote>
 <h2 id="Mysql数据库"><a href="#Mysql数据库" class="headerlink" title="Mysql数据库"></a>Mysql数据库</h2><h3 id="MySQL数据库服务端软件的安装"><a href="#MySQL数据库服务端软件的安装" class="headerlink" title="MySQL数据库服务端软件的安装:"></a><strong>MySQL数据库服务端软件的安装:</strong></h3><blockquote>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install mysql-server
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
 <p><strong>ps说明：</strong></p>
 <ol>
 <li>ps 查看当前系统中的进程</li>
@@ -263,46 +293,31 @@
 <li>-x 表示显示所有的执行程序</li>
 </ol>
 <p><strong>查看Mysql服务状态：</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql status
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql status</span><br></pre></td></tr></table></figure>
 <p><strong>停止MySQL服务:</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql stop
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql stop</span><br></pre></td></tr></table></figure>
 <p><strong>启动MySQL服务:</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql start
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start</span><br></pre></td></tr></table></figure>
 <p><strong>重启MySQL服务:</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql restart
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
 <p><strong>MySQL配置文件的介绍:</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">配置文件路径为: /etc/mysql/mysql.conf.d/mysqld.cnf
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置文件路径为: /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
 <p><strong>主要配置信息说明：</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">port表示端口号，默认为3306
-bind-address表示服务器绑定的ip，默认为127.0.0.1
-datadir表示数据库保存路径，默认为/var/lib/mysql
-log_error表示错误日志，默认为/var/log/mysql/error.log
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port表示端口号，默认为3306</span><br><span class="line">bind-address表示服务器绑定的ip，默认为127.0.0.1</span><br><span class="line">datadir表示数据库保存路径，默认为/var/lib/mysql</span><br><span class="line">log_error表示错误日志，默认为/var/<span class="built_in">log</span>/mysql/error.log</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="MySQL数据库客户端软件的安装"><a href="#MySQL数据库客户端软件的安装" class="headerlink" title="MySQL数据库客户端软件的安装:"></a><strong>MySQL数据库客户端软件的安装:</strong></h3><blockquote>
 <ol>
 <li><p><strong>图形化界面客户端Navicat</strong></p>
 <p><strong>安装：</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">tar zxvf navicat112_mysql_cs_x64.tar.gz
-./start_navicat
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf navicat112_mysql_cs_x64.tar.gz</span><br><span class="line">./start_navicat</span><br></pre></td></tr></table></figure>
 <p><strong>试用过期后：</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">cd ~
-rm -r .navicat64
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">rm -r .navicat64</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>命令行客户端mysql</strong></p>
 <p><strong>安装：</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install mysql-client
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-client</span><br></pre></td></tr></table></figure>
 <p><strong>MySQL客户端连接MySQL服务端命令：</strong></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">mysql -uroot -p
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
@@ -338,124 +353,82 @@ rm -r .navicat64
 <ol>
 <li><strong>登录数据库：</strong></li>
 </ol>
-<pre class=" language-lang-bash"><code class="language-lang-bash">mysql -uroot -p
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>登出(退出)数据库:</strong></li>
 </ol>
-<pre class=" language-lang-bash"><code class="language-lang-bash">quit 或 exit 或 ctrl + d
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quit 或 <span class="built_in">exit</span> 或 ctrl + d</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><blockquote>
 <ol>
 <li><p><strong>查看所有数据库：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">show databases;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>创建数据库：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">create database 数据库名 charset=utf8;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database 数据库名 charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>使用数据库：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">use 数据库名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>查看当前使用的数据库：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select database();
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> database();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>删除数据库：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">drop database 数据库名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database 数据库名;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
 <h3 id="表结构的SQL语句"><a href="#表结构的SQL语句" class="headerlink" title="表结构的SQL语句"></a>表结构的SQL语句</h3><blockquote>
 <ol>
 <li><p><strong>查看当前数据库所有表：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">show tables;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> tables;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>创建表：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">create table students(
- id int unsigned primary key auto_increment not null,
- name varchar(20) not null,
- age tinyint unsigned default 0,
- height decimal(5,2),
- gender enum('男','女','人妖','保密')
-);
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> students(</span><br><span class="line"> id <span class="type">int</span> unsigned <span class="keyword">primary</span> key auto_increment <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line"> name <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line"> age tinyint unsigned <span class="keyword">default</span> <span class="number">0</span>,</span><br><span class="line"> height <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>),</span><br><span class="line"> gender enum(<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;人妖&#x27;</span>,<span class="string">&#x27;保密&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改表-添加字段：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 add 列名 类型 约束;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> 列名 类型 约束;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改表-修改字段类型：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 modify 列名 类型 约束;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 modify 列名 类型 约束;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改表-修改字段名和字段类型：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 change 原名 新名 类型及约束;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 change 原名 新名 类型及约束;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改表-删除字段：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 drop 列名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> 列名;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>查看创表SQL语句：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">show create table 表名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>查看创库SQL语句：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">show create database 数据库名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> database 数据库名;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>删除表：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">drop table 表名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
 <h3 id="表数据的SQL语句"><a href="#表数据的SQL语句" class="headerlink" title="表数据的SQL语句"></a>表数据的SQL语句</h3><blockquote>
 <ol>
 <li><p><strong>查询数据：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql"># 1. 查询所有列
-select * from 表名;
-# 2. 查询指定列
-select 列1,列2,... from 表名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span> 查询所有列</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名;</span><br><span class="line"># <span class="number">2.</span> 查询指定列</span><br><span class="line"><span class="keyword">select</span> 列<span class="number">1</span>,列<span class="number">2</span>,... <span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>添加数据：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql"># 1. 全列插入：值的顺序与表结构字段的顺序完全一一对应
-insert into 表名 values (...)
-# 2. 部分列插入：值的顺序与给出的列顺序对应
-insert into 表名 (列1,...) values(值1,...)
-# 3. 全列多行插入
-insert into 表名 values(...),(...)...;
-# 4. 部分列多行插入
-insert into 表名(列1,...) values(值1,...),(值1,...)...;
-注意：
-1.主键列是自动增长，但是在全列插入时需要占位，通常使用空值(0或者null或者default)
-2.在全列插入时，如果字段列有默认值可以使用 default 来占位，插入后的数据就是之前设置的默认值
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span> 全列插入：值的顺序与表结构字段的顺序完全一一对应</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">values</span> (...)</span><br><span class="line"># <span class="number">2.</span> 部分列插入：值的顺序与给出的列顺序对应</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 (列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...)</span><br><span class="line"># <span class="number">3.</span> 全列多行插入</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">values</span>(...),(...)...;</span><br><span class="line"># <span class="number">4.</span> 部分列多行插入</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...),(值<span class="number">1</span>,...)...;</span><br><span class="line">注意：</span><br><span class="line"><span class="number">1.</span>主键列是自动增长，但是在全列插入时需要占位，通常使用空值(<span class="number">0</span>或者<span class="keyword">null</span>或者<span class="keyword">default</span>)</span><br><span class="line"><span class="number">2.</span>在全列插入时，如果字段列有默认值可以使用 <span class="keyword">default</span> 来占位，插入后的数据就是之前设置的默认值</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改数据：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">update 表名 set 列1=值1,列2=值2... where 条件
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 <span class="keyword">set</span> 列<span class="number">1</span><span class="operator">=</span>值<span class="number">1</span>,列<span class="number">2</span><span class="operator">=</span>值<span class="number">2.</span>.. <span class="keyword">where</span> 条件</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>删除数据：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">delete from 表名 where 条件  --物理删除，删除就不能恢复
-alter table students add isdelete bit default 0; --添加删除表示字段，0表示未删除 1表示删除
-update students set isdelete = 1 where id = 8;--逻辑删除数据
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件  <span class="comment">--物理删除，删除就不能恢复</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">add</span> isdelete bit <span class="keyword">default</span> <span class="number">0</span>; <span class="comment">--添加删除表示字段，0表示未删除 1表示删除</span></span><br><span class="line">update students <span class="keyword">set</span> isdelete <span class="operator">=</span> <span class="number">1</span> <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">8</span>;<span class="comment">--逻辑删除数据</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
 <h3 id="条件查询SQL语句"><a href="#条件查询SQL语句" class="headerlink" title="条件查询SQL语句"></a>条件查询SQL语句</h3><blockquote>
 <ol>
 <li><p><strong>where基本语句：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 where 条件;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>比较运算符查询：</strong></p>
 <ul>
@@ -499,8 +472,7 @@ update students set isdelete = 1 where id = 8;--逻辑删除数据
 <ol>
 <li><strong>排序查询语法：</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 order by 列1 asc|desc [,列2 asc|desc,...]
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 列<span class="number">1</span> <span class="keyword">asc</span><span class="operator">|</span><span class="keyword">desc</span> [,列<span class="number">2</span> <span class="keyword">asc</span><span class="operator">|</span><span class="keyword">desc</span>,...]</span><br></pre></td></tr></table></figure>
 <p><strong>语法说明:</strong></p>
 <ol>
 <li>先按照列1进行排序，如果列1的值相同时，则按照 列2 排序，以此类推</li>
@@ -511,8 +483,7 @@ update students set isdelete = 1 where id = 8;--逻辑删除数据
 <li><p><strong>分页查询语法：</strong></p>
 </li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 limit start,count
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名 limit <span class="keyword">start</span>,count</span><br></pre></td></tr></table></figure>
 <p><strong>说明:</strong></p>
 <ol>
 <li>limit是分页查询关键字</li>
@@ -532,8 +503,7 @@ update students set isdelete = 1 where id = 8;--逻辑删除数据
 </blockquote>
 <h2 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h2><blockquote>
 <p><strong>分组查询基本语法：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">GROUP BY 列名 [HAVING 条件表达式] [WITH ROLLUP]
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 列名 [<span class="keyword">HAVING</span> 条件表达式] [<span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>]</span><br></pre></td></tr></table></figure>
 <p><strong>说明:</strong></p>
 <ul>
 <li>列名: 是指按照指定字段的值进行分组。</li>
@@ -542,30 +512,18 @@ update students set isdelete = 1 where id = 8;--逻辑删除数据
 </ul>
 <ol>
 <li><p><strong>group by + group_concat()的使用:</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组， 查询gender字段和分组的name字段信息
-select gender,group_concat(name) from students group by gender;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 根据gender字段进行分组， 查询gender字段和分组的name字段信息</span></span><br><span class="line"><span class="keyword">select</span> gender,group_concat(name) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;</span><br></pre></td></tr></table></figure>
 <p><strong>group_concat(字段名): 统计每个分组指定字段的信息集合，每个信息之间使用逗号进行分割</strong></p>
 </li>
 <li><p><strong>group by + 聚合函数的使用:</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 统计不同性别的人的平均年龄
-select gender,avg(age) from students group by gender;
--- 统计不同性别的人的个数
-select gender,count(*) from students group by gender;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 统计不同性别的人的平均年龄</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="built_in">avg</span>(age) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;</span><br><span class="line"><span class="comment">-- 统计不同性别的人的个数</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>group by + having的使用:</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组，统计分组条数大于2的
-select gender,count(*) from students group by gender having count(*)>2;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 根据gender字段进行分组，统计分组条数大于2的</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>)<span class="operator">&gt;</span><span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>having作用和where类似都是过滤数据的，但having是过滤分组数据的，只能用于group by</strong></p>
 </li>
 <li><p><strong>group by + with rollup的使用:</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组，汇总总人数
-select gender,count(*) from students group by gender with rollup;
--- 根据gender字段进行分组，汇总所有人的年龄
-select gender,group_concat(age) from students group by gender with rollup;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 根据gender字段进行分组，汇总总人数</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender <span class="keyword">with</span> <span class="keyword">rollup</span>;</span><br><span class="line"><span class="comment">-- 根据gender字段进行分组，汇总所有人的年龄</span></span><br><span class="line"><span class="keyword">select</span> gender,group_concat(age) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender <span class="keyword">with</span> <span class="keyword">rollup</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>with rollup的作用是：在最后记录后面新增一行，显示select查询时聚合函数的统计和计算结果</strong></p>
 </li>
 </ol>
@@ -580,8 +538,7 @@ select gender,group_concat(age) from students group by gender with rollup;
 </li>
 <li><p><strong>内连接查询：</strong></p>
 <p>查询两个表中符合条件的共有记录**</p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 inner join 表2 on 表1.字段1 = 表2.字段2
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段 <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> <span class="keyword">on</span> 表<span class="number">1.</span>字段<span class="number">1</span> <span class="operator">=</span> 表<span class="number">2.</span>字段<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li><p>inner join 就是内连接查询关键字</p>
 </li>
@@ -591,8 +548,7 @@ select gender,group_concat(age) from students group by gender with rollup;
 </li>
 <li><p><strong>左连接查询：</strong></p>
 <p><strong>以左表为主根据条件查询右表数据，如果根据条件查询右表数据不存在使用null值填充</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 left join 表2 on 表1.字段1 = 表2.字段2
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段 <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">left</span> <span class="keyword">join</span> 表<span class="number">2</span> <span class="keyword">on</span> 表<span class="number">1.</span>字段<span class="number">1</span> <span class="operator">=</span> 表<span class="number">2.</span>字段<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>left join 就是左连接查询关键字</li>
 <li>on 就是连接查询条件</li>
@@ -602,8 +558,7 @@ select gender,group_concat(age) from students group by gender with rollup;
 </li>
 <li><p><strong>有连接查询：</strong></p>
 <p><strong>以右表为主根据条件查询左表数据，如果根据条件查询左表数据不存在使用null值填充</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 right join 表2 on 表1.字段1 = 表2.字段2
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段 <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">right</span> <span class="keyword">join</span> 表<span class="number">2</span> <span class="keyword">on</span> 表<span class="number">1.</span>字段<span class="number">1</span> <span class="operator">=</span> 表<span class="number">2.</span>字段<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>right join 就是右连接查询关键字</li>
 <li>on 就是连接查询条件</li>
@@ -613,8 +568,7 @@ select gender,group_concat(age) from students group by gender with rollup;
 </li>
 <li><p><strong>自连接查询：</strong></p>
 <p><strong>左表和右表是同一个表，根据连接查询条件查询两个表中的数据。</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select c.id, c.title, c.pid, p.title from areas as c inner join areas as p on c.pid = p.id where p.title = '山西省';
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> c.id, c.title, c.pid, p.title <span class="keyword">from</span> areas <span class="keyword">as</span> c <span class="keyword">inner</span> <span class="keyword">join</span> areas <span class="keyword">as</span> p <span class="keyword">on</span> c.pid <span class="operator">=</span> p.id <span class="keyword">where</span> p.title <span class="operator">=</span> <span class="string">&#x27;山西省&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>自连接查询必须对表起别名</strong></p>
 </li>
 <li><p><strong>子查询：</strong></p>
@@ -644,38 +598,19 @@ select gender,group_concat(age) from students group by gender with rollup;
 <ol>
 <li><strong>已经存在的字段添加外键：</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 为cls_id字段添加外键约束
-alter table students add foreign key(cls_id) references classes(id);
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 为cls_id字段添加外键约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">add</span> <span class="keyword">foreign</span> key(cls_id) <span class="keyword">references</span> classes(id);</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>在创建数据表时设置外键约束:</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 创建学校表
-create table school(
-    id int not null primary key auto_increment, 
-    name varchar(10)
-);
--- 创建老师表
-create table teacher(
-    id int not null primary key auto_increment, 
-    name varchar(10), 
-    s_id int not null, 
-    foreign key(s_id) references school(id)
-);
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建学校表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> school(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment, </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 创建老师表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment, </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">10</span>), </span><br><span class="line">    s_id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span>, </span><br><span class="line">    <span class="keyword">foreign</span> key(s_id) <span class="keyword">references</span> school(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>删除外键约束：</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 需要先获取外键约束名称,该名称系统会自动生成,可以通过查看表创建语句来获取名称
-show create table teacher;
--- 获取名称之后就可以根据名称来删除外键约束
-alter table teacher drop foreign key 外键名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 需要先获取外键约束名称,该名称系统会自动生成,可以通过查看表创建语句来获取名称</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> teacher;</span><br><span class="line"><span class="comment">-- 获取名称之后就可以根据名称来删除外键约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> teacher <span class="keyword">drop</span> <span class="keyword">foreign</span> key 外键名;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="SQL查询语句总结"><a href="#SQL查询语句总结" class="headerlink" title="SQL查询语句总结"></a>SQL查询语句总结</h2><blockquote>
 <p> <strong>完整语句：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">select [select选项] 字段列表[字段别名]/* from 数据源 [where 字句] [group by子句 ][having 子句][order by 子句][limit 子句];
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">select</span>选项] 字段列表[字段别名]<span class="comment">/* from 数据源 [where 字句] [group by子句 ][having 子句][order by 子句][limit 子句];</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li><p><strong>select选项：</strong></p>
 <p>Select 选项包含：ALL（所有，默认）、distinct（去重）。其中distinct针对的是查询结果的整条记录而言的。</p>
@@ -700,29 +635,16 @@ alter table teacher drop foreign key 外键名;
 <h1 id="MySQL数据库的高级使用"><a href="#MySQL数据库的高级使用" class="headerlink" title="MySQL数据库的高级使用"></a>MySQL数据库的高级使用</h1><h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><blockquote>
 <ol>
 <li><p><strong>将查询结果插入到其他表中：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">insert into 目标表名（字段） select 源字段 from 源表名 group by 源字段
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 目标表名（字段） <span class="keyword">select</span> 源字段 <span class="keyword">from</span> 源表名 <span class="keyword">group</span> <span class="keyword">by</span> 源字段</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>连接更新表中某个字段数据：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">--将goods表中的分类名称更改成商品分类表中对应的分类id
--- 查看goods表中的商品分类名称对应的商品分类id
-select * from goods inner join good_cates on goods.cate_name = good_cates.name;
--- 把该语句中from 后的语句理解为一张虚表  
-update goods g inner join good_cates gc on g.cate_name=gc.name set g.cate_name=gc.id;创建表并给某个字段添加数据
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--将goods表中的分类名称更改成商品分类表中对应的分类id</span></span><br><span class="line"><span class="comment">-- 查看goods表中的商品分类名称对应的商品分类id</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> goods <span class="keyword">inner</span> <span class="keyword">join</span> good_cates <span class="keyword">on</span> goods.cate_name <span class="operator">=</span> good_cates.name;</span><br><span class="line"><span class="comment">-- 把该语句中from 后的语句理解为一张虚表  </span></span><br><span class="line">update goods g <span class="keyword">inner</span> <span class="keyword">join</span> good_cates gc <span class="keyword">on</span> g.cate_name<span class="operator">=</span>gc.name <span class="keyword">set</span> g.cate_name<span class="operator">=</span>gc.id;创建表并给某个字段添加数据</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>创建表并给某个字段添加数据:</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">create table 表名(     
-id int unsigned primary key auto_increment,     
-name varchar(40) not null) select 字段名 as name from 表名 group by 字段名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名(     </span><br><span class="line">id <span class="type">int</span> unsigned <span class="keyword">primary</span> key auto_increment,     </span><br><span class="line">name <span class="type">varchar</span>(<span class="number">40</span>) <span class="keyword">not</span> <span class="keyword">null</span>) <span class="keyword">select</span> 字段名 <span class="keyword">as</span> name <span class="keyword">from</span> 表名 <span class="keyword">group</span> <span class="keyword">by</span> 字段名;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改表结构：</strong></p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 查看表结构
-desc 表名;
--- 通过alter table语句修改表结构
-alter table 表名 change 字段名 新字段名 数据类型 约束, change 字段名2 新字段名2 数据类型 约束;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看表结构</span></span><br><span class="line"><span class="keyword">desc</span> 表名;</span><br><span class="line"><span class="comment">-- 通过alter table语句修改表结构</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 change 字段名 新字段名 数据类型 约束, change 字段名<span class="number">2</span> 新字段名<span class="number">2</span> 数据类型 约束;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
@@ -747,24 +669,18 @@ alter table 表名 change 字段名 新字段名 数据类型 约束, change 字
 <ol>
 <li><strong>查看MySQL数据库支持的表的存储引擎:</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 查看MySQL数据库支持的表的存储引擎
-show engines;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看MySQL数据库支持的表的存储引擎</span></span><br><span class="line"><span class="keyword">show</span> engines;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>常用的表的存储引擎是 InnoDB 和 MyISAM</li>
 <li>InnoDB 是支持事务的</li>
 <li>MyISAM 不支持事务，优势是访问速度快，对事务没有要求或者以select、insert为主的都可以使用该存储引擎来创建表</li>
 </ol>
 <p>修改表的存储引擎使用: </p>
-<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 engine = 引擎类型;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 engine <span class="operator">=</span> 引擎类型;</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>开启事务：</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">begin;
-或者
-start transaction;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line">或者</span><br><span class="line"><span class="keyword">start</span> transaction;</span><br></pre></td></tr></table></figure>
 <p><strong>说明:</strong></p>
 <ol>
 <li><strong>开启事务后执行修改命令，变更数据会保存到MySQL服务端的缓存文件中，而不维护到物理表中</strong></li>
@@ -776,29 +692,21 @@ start transaction;
 <ol>
 <li><strong>查看表中已有索引:</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">show index from 表名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> index <span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure>
 <p><strong>说明:主键列会自动创建索引</strong></p>
 <ol>
 <li><strong>索引的创建:</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 创建索引的语法格式
-alter table 表名 add index 索引名[可选](列名, ..)
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建索引的语法格式</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> index 索引名[可选](列名, ..)</span><br></pre></td></tr></table></figure>
 <p><strong>说明:索引名不指定，默认使用字段名</strong></p>
 <ol>
 <li><strong>索引的删除:</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">-- 删除索引的语法格式
-alter table 表名 drop index 索引名
--- 如果不知道索引名，可以查看创表sql语句
-show create table 表名;
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除索引的语法格式</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> index 索引名</span><br><span class="line"><span class="comment">-- 如果不知道索引名，可以查看创表sql语句</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>联合索引：</strong></li>
 </ol>
-<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 add index (字段1，字段2);
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> index (字段<span class="number">1</span>，字段<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>联合索引的好处:减少磁盘空间开销，因为每创建一个索引，其实就是创建了一个索引文件，那么会增加磁盘空间的开销。</strong></p>
 <ol>
 <li><strong>联合索引的最左原则：</strong></li>
@@ -827,19 +735,9 @@ show create table 表名;
 </blockquote>
 <h2 id="PyMySQL的使用"><a href="#PyMySQL的使用" class="headerlink" title="PyMySQL的使用"></a>PyMySQL的使用</h2><blockquote>
 <p><strong>安装pymysql第三方包:</strong></p>
-<pre class=" language-lang-lin"><code class="language-lang-lin">sudo pip3 install pymysql
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install pymysql</span><br></pre></td></tr></table></figure>
 <p><strong>使用基本流程：</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">import pymysql # 导包
-conn = pymysql.connect(host,port,user,password,database,charset) # 创建连接对象
-cursor =conn.cursor() # 获取游标对象
-row_count = cursor.execute(sql) # 执行SQL语句
-result = cursor.fetchall() # 获取查询结果集
-conn.commit() # 提交到数据库
-conn.rollback() # 回滚数据
-cursor.close() # 关闭游标
-conn.close() # 关闭连接
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql <span class="comment"># 导包</span></span><br><span class="line">conn = pymysql.connect(host,port,user,password,database,charset) <span class="comment"># 创建连接对象</span></span><br><span class="line">cursor =conn.cursor() <span class="comment"># 获取游标对象</span></span><br><span class="line">row_count = cursor.execute(sql) <span class="comment"># 执行SQL语句</span></span><br><span class="line">result = cursor.fetchall() <span class="comment"># 获取查询结果集</span></span><br><span class="line">conn.commit() <span class="comment"># 提交到数据库</span></span><br><span class="line">conn.rollback() <span class="comment"># 回滚数据</span></span><br><span class="line">cursor.close() <span class="comment"># 关闭游标</span></span><br><span class="line">conn.close() <span class="comment"># 关闭连接</span></span><br></pre></td></tr></table></figure>
 <p><strong>防止SQL注入:</strong></p>
 <p>什么是SQL注入?</p>
 <p>​    用户提交带有恶意的数据与SQL语句进行字符串方式的拼接，从而影响了SQL语句的语义，最终产生数据泄露的现象。</p>
@@ -943,6 +841,8 @@ conn.close() # 关闭连接
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Qijinli"
+      src="/images/logo.jpeg">
   <p class="site-author-name" itemprop="name">Qijinli</p>
   <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
 </div>
@@ -990,17 +890,35 @@ conn.close() # 关闭连接
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2017 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+  <span class="author" itemprop="copyrightHolder">Qi Jinli</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -1034,6 +952,10 @@ conn.close() # 关闭连接
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

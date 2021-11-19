@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpeg">
+  <link rel="mask-icon" href="/images/logo.jpeg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -17,15 +17,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 # 安装  pip install seaborn&#x3D;&#x3D;0.10.1 # 导入 import seaborn as sns  使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码">
+  <meta name="description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 1234# 安装 pip install seaborn&#x3D;&#x3D;0.10.1# 导入import seaborn as sns 使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Seaborn">
 <meta property="og:url" content="http://qi-jinli.github.io/2021/05/04/Seaborn/index.html">
-<meta property="og:site_name" content="Qijinli&#39;s Blog">
-<meta property="og:description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 # 安装  pip install seaborn&#x3D;&#x3D;0.10.1 # 导入 import seaborn as sns  使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码">
+<meta property="og:site_name" content="畅快的伊瓦西">
+<meta property="og:description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 1234# 安装 pip install seaborn&#x3D;&#x3D;0.10.1# 导入import seaborn as sns 使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-03T17:40:01.000Z">
 <meta property="article:modified_time" content="2021-05-03T17:40:01.000Z">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Seaborn | Qijinli's Blog</title>
+  <title>Seaborn | 畅快的伊瓦西</title>
   
 
 
@@ -97,13 +97,15 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Qijinli's Blog</h1>
+      <h1 class="site-title">畅快的伊瓦西</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">大直若屈，大巧若拙，大辩若讷，大赢若纳。</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -115,39 +117,61 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section">首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section">关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section">标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section">分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section">归档<span class="badge">22</span></a>
 
   </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -174,13 +198,13 @@
     <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/Seaborn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/logo.jpeg">
       <meta itemprop="name" content="Qijinli">
       <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Qijinli's Blog">
+      <meta itemprop="name" content="畅快的伊瓦西">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -207,6 +231,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -219,14 +250,9 @@
       
         <blockquote>
 <p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
-<pre class=" language-lang-python"><code class="language-lang-python"># 安装 
-pip install seaborn==0.10.1
-# 导入
-import seaborn as sns
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 </span></span><br><span class="line">pip install seaborn==<span class="number">0.10</span><span class="number">.1</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
 <p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.set(context='notebook', style='darkgrid', palette='deep', font='sans-serif', font_scale=1, color_codes=False, rc=None)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>, font=<span class="string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="number">1</span>, color_codes=<span class="literal">False</span>, rc=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>
 <li><code>style=&#39;&#39;</code> 参数控制默认样式，分别有 <code>&#123;darkgrid, whitegrid, dark, white, ticks&#125;</code>，你可以自行更改查看它们之间的不同。</li>
@@ -236,8 +262,7 @@ import seaborn as sns
 </blockquote>
 <h1 id="分布图"><a href="#分布图" class="headerlink" title="分布图"></a>分布图</h1><h2 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h2><blockquote>
 <p>可以采用最简单的直方图描述单变量的分布情况。 Seaborn中提供了<code>distplot()</code>函数，它默认绘制的是一个带有核密度估计曲线的直方图。</p>
-<pre class=" language-lang-Python"><code class="language-lang-Python">seaborn.distplot(a, bins=None, hist=True, kde=True, rug=False, fit=None, color=None)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.distplot(a, bins=<span class="literal">None</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">False</span>, fit=<span class="literal">None</span>, color=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <p>上述函数中常用参数的含义如下：</p>
 <ul>
 <li><code>a</code>：表示要观察的数据，可以是 Series、一维数组或列表。</li>
@@ -247,19 +272,11 @@ import seaborn as sns
 <li><code>rug</code>：接收布尔类型，表示是否在支持的轴方向上绘制rugplot。</li>
 </ul>
 <p>例：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
-sns.set() # 调用set()函数获取默认绘图
-np.random.seed(0)  # 确定随机数生成器的种子,如果不使用每次生成图形不一样
-arr = np.random.randn(100)  # 生成随机数组
-ax = sns.distplot(arr, bins=10, hist=True, kde=True, rug=True)  # 绘制直方图
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sns.<span class="built_in">set</span>() <span class="comment"># 调用set()函数获取默认绘图</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)  <span class="comment"># 确定随机数生成器的种子,如果不使用每次生成图形不一样</span></span><br><span class="line">arr = np.random.randn(<span class="number">100</span>)  <span class="comment"># 生成随机数组</span></span><br><span class="line">ax = sns.distplot(arr, bins=<span class="number">10</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">True</span>)  <span class="comment"># 绘制直方图</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="绘制双变量分布"><a href="#绘制双变量分布" class="headerlink" title="绘制双变量分布"></a>绘制双变量分布</h2><blockquote>
 <p>两个变量的二元分布可视化也很有用。在 Seaborn中最简单的方法是使用 <code>jointplot()</code>函数，该函数可以创建一个多面板图形，比如散点图、二维直方图、核密度估计等，以显示两个变量之间的双变量关系及每个变量在单坐标轴上的单变量分布。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">seaborn.jointplot(x, y, data=None, 
-                  kind='scatter', stat_func=None, color=None, 
-                  ratio=5, space=0.2, dropna=True)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">seaborn.jointplot(x, y, data=<span class="literal">None</span>, </span><br><span class="line">                  kind=<span class="string">&#x27;scatter&#x27;</span>, stat_func=<span class="literal">None</span>, color=<span class="literal">None</span>, </span><br><span class="line">                  ratio=<span class="number">5</span>, space=<span class="number">0.2</span>, dropna=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <p>上述函数中常用参数的含义如下：</p>
 <ol>
 <li><code>kind</code>：表示绘制图形的类型。hex:直方图，kde：核函数概率，reg：拟合线</li>
@@ -272,14 +289,11 @@ ax = sns.distplot(arr, bins=10, hist=True, kde=True, rug=True)  # 绘制直方�
 </blockquote>
 <h2 id="绘制成对的双变量分布"><a href="#绘制成对的双变量分布" class="headerlink" title="绘制成对的双变量分布"></a>绘制成对的双变量分布</h2><blockquote>
 <p>要想在数据集中绘制多个成对的双变量分布，则可以使用<code>pairplot()</code>函数实现，该函数会创建一个坐标轴矩阵，并且显示Datafram对象中每对变量的关系。另外，<code>pairplot()</code>函数也可以绘制每个变量在对角轴上的单变量分布。</p>
-<pre class=" language-lang-python"><code class="language-lang-python"># 绘制多个成对的双变量分布
-sns.pairplot(data)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制多个成对的双变量分布</span></span><br><span class="line">sns.pairplot(data)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="类别图"><a href="#类别图" class="headerlink" title="类别图"></a>类别图</h1><blockquote>
 <p>类别图的 Figure-level 接口是 <code>catplot</code>，其为 categorical plots 的缩写。而 <code>catplot</code> 实际上是如下 Axes-level 绘图 API 的集合。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.catplot(x=None, y=None, kind="strip", data=None)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, kind=<span class="string">&quot;strip&quot;</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <p><code>参数kind：</code></p>
 <ol>
 <li>分类散点图：<code>strip，swarm</code></li>
@@ -294,8 +308,7 @@ sns.pairplot(data)
 </ul>
 </blockquote>
 <h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">seaborn.stripplot(x=None, y=None, hue=None, data=None, order=None, hue_order=None, jitter=False)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.stripplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, order=<span class="literal">None</span>, hue_order=<span class="literal">None</span>, jitter=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 <p>上述函数中常用参数的含义如下</p>
 <ul>
 <li><code>x，y，hue</code>：用于绘制长格式数据的输入。</li>
@@ -303,8 +316,7 @@ sns.pairplot(data)
 <li><code>jitter</code>：表示抖动的程度(仅沿类別轴)。当很多数据点重叠时，可以指定抖动的数量或者设为True使用默认值。</li>
 </ul>
 <p>还可调用<code>swarmplot()</code>函数绘制散点图，该函数的好处是所有的数据点都不会重叠，可以很清晰地观察到数据的分布情况</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.swarmplot(x="day", y="total_bill", data=tips)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.swarmplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="类别内的数据分布"><a href="#类别内的数据分布" class="headerlink" title="类别内的数据分布"></a>类别内的数据分布</h2><blockquote>
 <p><strong>箱形图</strong>:</p>
@@ -321,16 +333,14 @@ sns.pairplot(data)
 </ul>
 </blockquote>
 <h3 id="绘制箱体图"><a href="#绘制箱体图" class="headerlink" title="绘制箱体图"></a>绘制箱体图</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">seaborn.boxplot(x=None, y=None, hue=None, data=None, orient=None, color=None,  saturation=0.75, width=0.8)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.boxplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, orient=<span class="literal">None</span>, color=<span class="literal">None</span>,  saturation=<span class="number">0.75</span>, width=<span class="number">0.8</span>)</span><br></pre></td></tr></table></figure>
 <ol>
 <li><code>palette</code>：用于设置不同级别色相的颜色变量。—— palette=[“r”,”g”,”b”,”y”]</li>
 <li><code>saturation</code>：用于设置数据显示的颜色饱和度。—— 使用小数表示</li>
 </ol>
 </blockquote>
 <h3 id="绘制提琴图"><a href="#绘制提琴图" class="headerlink" title="绘制提琴图"></a>绘制提琴图</h3><blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">seaborn.violinplot(x=None, y=None, hue=None, data=None)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.violinplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="类别内的统计估计"><a href="#类别内的统计估计" class="headerlink" title="类别内的统计估计"></a>类别内的统计估计</h2><blockquote>
 <p>要想查看每个分类的集中趋势，则可以使用条形图和点图进行展示。 Seaborn库中用于绘制这两种图表的具体函数如下</p>
@@ -341,13 +351,11 @@ sns.pairplot(data)
 </blockquote>
 <h3 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h3><blockquote>
 <p>最常用的查看集中趋势的图形就是条形图。默认情况下， barplot函数会在整个数据集上使用均值进行估计。<strong>若每个类别中有多个类别时(使用了hue参数)</strong>，则条形图可以使用引导来计算估计的<strong>置信区间(是指由样本统计量所构造的总体参数的估计区间)</strong>，并使用误差条（图中黑色的竖线）来表示出现这个均值的95%置信区间。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.barplot(x="day", y="total_bill", data=tips)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.barplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="绘制点图"><a href="#绘制点图" class="headerlink" title="绘制点图"></a>绘制点图</h3><blockquote>
 <p>另外一种用于估计的图形是点图，可以调用 pointplot()函数进行绘制，该函数会用高度低计值对数据进行描述，而不是显示完整的条形，<strong>它只会绘制点估计和置信区间</strong>。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.pointplot(x="day", y="total_bill", data=tips)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.pointplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="关联图"><a href="#关联图" class="headerlink" title="关联图"></a>关联图</h1><blockquote>
 <p>当我们需要对数据进行关联性分析时，可能会用到 Seaborn 提供的以下几个 API。</p>
@@ -376,8 +384,7 @@ sns.pairplot(data)
 </table>
 </div>
 <p><code>relplot</code>是 relational plots 的缩写，其可以用于呈现数据之后的关系，主要有散点图和条形图 2 种样式。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.relplot(x=, y=,hue=, style=, kind="scatter", data=)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.relplot(x=, y=,hue=, style=, kind=<span class="string">&quot;scatter&quot;</span>, data=)</span><br></pre></td></tr></table></figure>
 <p>参数：</p>
 <ol>
 <li><code>hue：</code>加入类别特征对数据进行着色</li>
@@ -390,22 +397,16 @@ sns.pairplot(data)
 <h1 id="回归图"><a href="#回归图" class="headerlink" title="回归图"></a>回归图</h1><blockquote>
 <p>回归图的绘制函数主要有：<code>lmplot</code>和<code>regplot</code></p>
 <p><code>regplot</code> 绘制回归图时，只需要指定自变量和因变量即可，<code>regplot</code> 会自动完成线性回归拟合。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.regplot(x="sepal_length", y="sepal_width", data=iris)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.regplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
 <p><code>lmplot</code> 同样是用于绘制回归图，但 <code>lmplot</code> 支持引入第三维度进行对比，例如我们设置 <code>hue=&quot;species&quot;</code>。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.lmplot(x="sepal_length", y="sepal_width", hue="species", data=iris)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.lmplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="矩阵图"><a href="#矩阵图" class="headerlink" title="矩阵图"></a>矩阵图</h1><blockquote>
 <p>矩阵图中最常用的就只有 2 个，分别是：<code>heatmap</code>和<code>clustermap</code></p>
 <p><code>heatmap</code> 主要用于绘制热力图。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sns.heatmap(a,square,linewidths,annot)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.heatmap(a,square,linewidths,annot)</span><br></pre></td></tr></table></figure>
 <p><code>clustermap</code> 支持绘制<code>层次聚类</code>结构图</p>
-<pre class=" language-lang-python"><code class="language-lang-python">iris.pop("species")
-sns.clustermap(iris)
-</code></pre>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iris.pop(<span class="string">&quot;species&quot;</span>)</span><br><span class="line">sns.clustermap(iris)</span><br></pre></td></tr></table></figure></blockquote>
 
     </div>
 
@@ -495,6 +496,8 @@ sns.clustermap(iris)
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Qijinli"
+      src="/images/logo.jpeg">
   <p class="site-author-name" itemprop="name">Qijinli</p>
   <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
 </div>
@@ -542,17 +545,35 @@ sns.clustermap(iris)
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2017 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+  <span class="author" itemprop="copyrightHolder">Qi Jinli</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -586,6 +607,10 @@ sns.clustermap(iris)
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

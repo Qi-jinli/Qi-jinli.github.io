@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpeg">
+  <link rel="mask-icon" href="/images/logo.jpeg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -17,14 +17,14 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="数据存储线性结构存储方式 顺序表  元素存储在一段连续的内存空间 可以通过索引方式访问元素  分类  一体式:信息区和数据区在一起 分离式:信息区和数据区分开  元素外置  数据区中存储的是元素的内存地址,不是保存具体的元素 python的列表是分离式顺序表实现的 元素外置 python大部分数据元素外置  链表 存储在一段非连续空间,当前元素保存下一个元素的指向  顺序表操作时间复杂度 增加">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法">
 <meta property="og:url" content="http://qi-jinli.github.io/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
-<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:site_name" content="畅快的伊瓦西">
 <meta property="og:description" content="数据存储线性结构存储方式 顺序表  元素存储在一段连续的内存空间 可以通过索引方式访问元素  分类  一体式:信息区和数据区在一起 分离式:信息区和数据区分开  元素外置  数据区中存储的是元素的内存地址,不是保存具体的元素 python的列表是分离式顺序表实现的 元素外置 python大部分数据元素外置  链表 存储在一段非连续空间,当前元素保存下一个元素的指向  顺序表操作时间复杂度 增加">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-04T06:32:12.000Z">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>数据结构与算法 | Qijinli's Blog</title>
+  <title>数据结构与算法 | 畅快的伊瓦西</title>
   
 
 
@@ -97,13 +97,15 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Qijinli's Blog</h1>
+      <h1 class="site-title">畅快的伊瓦西</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">大直若屈，大巧若拙，大辩若讷，大赢若纳。</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -115,39 +117,61 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section">首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section">关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section">标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section">分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section">归档<span class="badge">22</span></a>
 
   </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -174,13 +198,13 @@
     <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/logo.jpeg">
       <meta itemprop="name" content="Qijinli">
       <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Qijinli's Blog">
+      <meta itemprop="name" content="畅快的伊瓦西">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -207,6 +231,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -267,49 +298,11 @@
 <ol>
 <li><strong>顺序表实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Stack(object):
-    """栈:先进后出"""
-    def __init__(self):
-        self.__items = []
-
-    def push(self, item):
-        """进栈"""
-        self.__items.append(item)
-
-    def pop(self):
-        """出栈"""
-        return self.__items.pop()
-
-    def travel(self):
-        """遍历"""
-        for i in self.__items:
-            print(i)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;栈:先进后出&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;进栈&quot;&quot;&quot;</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;出栈&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.__items:</span><br><span class="line">            <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>链表实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Node:
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next
-
-class LinkedStack:
-    def __init__(self):
-        # 最上面的元素
-        self.top = None
-
-    def push(self, value: int):
-        newtop = Node(value)
-        newtop.next = self.top
-        self.top = newtop
-
-    def pop(self):
-        if self.top:
-            value = self.top.data
-            self.top = self.top.next
-            return value
-        return None
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedStack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 最上面的元素</span></span><br><span class="line">        self.top = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, value: <span class="built_in">int</span></span>):</span></span><br><span class="line">        newtop = Node(value)</span><br><span class="line">        newtop.<span class="built_in">next</span> = self.top</span><br><span class="line">        self.top = newtop</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.top:</span><br><span class="line">            value = self.top.data</span><br><span class="line">            self.top = self.top.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
 <p><strong>队列特点:先进先出</strong></p>
@@ -317,109 +310,18 @@ class LinkedStack:
 <ol>
 <li><strong>使用顺序表实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Queue(object):
-    def __init__(self):
-        # 存储数据 线性表
-        self.__items = []
-
-    # enqueue(item)
-    # 队列尾部添加元素item
-    def enqueue(self, item):
-        self.__items.append(item)
-
-    # dequeue():
-    # 队列头部删除元素
-    def dequeue(self):
-        if not self.__items:
-            return None
-        return self.__items.pop(0)
-
-    # is_empty()
-    # 判断队列是否为空
-    def is_enpty(self):
-        return self.__items == []
-
-    # size()
-    # 返回队列的大小
-    def size(self):
-        return len(self.__items)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 存储数据 线性表</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># enqueue(item)</span></span><br><span class="line">    <span class="comment"># 队列尾部添加元素item</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># dequeue():</span></span><br><span class="line">    <span class="comment"># 队列头部删除元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__items:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># is_empty()</span></span><br><span class="line">    <span class="comment"># 判断队列是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_enpty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__items == []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># size()</span></span><br><span class="line">    <span class="comment"># 返回队列的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.__items)</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>使用链表实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">class Node:
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next
-
-class LinkedQueue:
-    def __init__(self):
-        self.__head = None
-        self.__tail = None
-
-    def enqueue(self, value):
-        new_node = Node(value)
-        # 尾部不为空
-        if self.__tail:
-            self.__tail.next = new_node
-            # self.__tail = new_node
-        else:
-            self.__head = new_node
-            # self.__tail = new_node
-        self.__tail = new_node
-
-    def dequeue(self):
-        # 如果头部有数据
-        if self.__head:
-            value = self.__head.data
-            self.__head = self.__head.next
-            if not self.__head:# 新的头部为空
-                self.__tail = None
-            return value
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedQueue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__head = <span class="literal">None</span></span><br><span class="line">        self.__tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        new_node = Node(value)</span><br><span class="line">        <span class="comment"># 尾部不为空</span></span><br><span class="line">        <span class="keyword">if</span> self.__tail:</span><br><span class="line">            self.__tail.<span class="built_in">next</span> = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__head = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        self.__tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 如果头部有数据</span></span><br><span class="line">        <span class="keyword">if</span> self.__head:</span><br><span class="line">            value = self.__head.data</span><br><span class="line">            self.__head = self.__head.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.__head:<span class="comment"># 新的头部为空</span></span><br><span class="line">                self.__tail = <span class="literal">None</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
 <p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Deque(object):
-    """双端队列"""
-    def __init__(self):
-        self.items = []
-
-    def is_empty(self):
-        """判断是否为空"""
-        return self.items == []
-
-    def size(self):
-        """返回队列大小"""
-        return len(self.items)
-
-    def add_front(self, item):
-        """头部添加数据"""
-        self.items.insert(0, item)
-
-    def add_rear(self, item):
-        """尾部添加数据"""
-        self.items.append(item)
-
-    def remove_front(self):
-        """头部删除数据"""
-        return self.items.pop(0)
-
-    def remove_rear(self):
-        """尾部删除数据"""
-        return self.items.pop()
-</code></pre>
+   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deque</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;双端队列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items == []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;返回队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.items)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_front</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;头部添加数据&quot;&quot;&quot;</span></span><br><span class="line">        self.items.insert(<span class="number">0</span>, item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_rear</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;尾部添加数据&quot;&quot;&quot;</span></span><br><span class="line">        self.items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_front</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;头部删除数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_rear</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;尾部删除数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop()</span><br></pre></td></tr></table></figure>
 <ol>
 <li><p><strong>python封装的queue队列</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">import queue
-queue = queue.Queue(10)
-queue.put(10)
-queue.put(20)
-queue.put(30)
-print(queue.get())
-print(queue.get())
-print(queue.get())
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queue</span><br><span class="line">queue = queue.Queue(<span class="number">10</span>)</span><br><span class="line">queue.put(<span class="number">10</span>)</span><br><span class="line">queue.put(<span class="number">20</span>)</span><br><span class="line">queue.put(<span class="number">30</span>)</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
@@ -440,25 +342,7 @@ print(queue.get())
 <ol>
 <li><strong>代码实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def bubble_sort(alist):
-    """冒泡排序"""
-
-    # 数列的长度
-    n = len(alist)
-    # 控制轮数
-    for j in range(n-1):
-        count = 0
-        # 每一论的比较的次数
-        # i每一次和后面比较的索引
-        for i in range(n-j-1):
-            # 如果当前元素比后面元素大，交换
-            if alist[i] > alist[i+1]:
-                alist[i], alist[i + 1] = alist[i + 1], alist[i]
-                count+=1
-        # 这一轮没有交换  说明后续的列表已经有序  可以停下来
-        if count==0:
-            break
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;冒泡排序&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数列的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 控制轮数</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 每一论的比较的次数</span></span><br><span class="line">        <span class="comment"># i每一次和后面比较的索引</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-j-<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 如果当前元素比后面元素大，交换</span></span><br><span class="line">            <span class="keyword">if</span> alist[i] &gt; alist[i+<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i + <span class="number">1</span>] = alist[i + <span class="number">1</span>], alist[i]</span><br><span class="line">                count+=<span class="number">1</span></span><br><span class="line">        <span class="comment"># 这一轮没有交换  说明后续的列表已经有序  可以停下来</span></span><br><span class="line">        <span class="keyword">if</span> count==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <p><strong>算法分析</strong>：</p>
 <ol>
 <li>时间复杂度 最好O(n) 最坏O(n2)</li>
@@ -468,24 +352,7 @@ print(queue.get())
 </blockquote>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
 <p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">def select_sort(alist):
-    """选择排序"""
-    # 列表的长度
-    n = len(alist)
-    # 外层循环 0-3
-    for j in range(0, n - 1):
-        # 本轮目标j(索引)
-        # 本轮最小值下标
-        minIndex = j
-        # 控制比较次数
-        for i in range(j + 1, n):
-            # 从目标向后开始和minIndex比较
-            if alist[i]>alist[minIndex]:
-                minIndex = i
-        # 结束之后 如果目标的索引不是最小值索引 交换
-        if minIndex != j:
-            alist[j],alist[minIndex] = alist[minIndex],alist[j]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;选择排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 列表的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 外层循环 0-3</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n - <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 本轮目标j(索引)</span></span><br><span class="line">        <span class="comment"># 本轮最小值下标</span></span><br><span class="line">        minIndex = j</span><br><span class="line">        <span class="comment"># 控制比较次数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, n):</span><br><span class="line">            <span class="comment"># 从目标向后开始和minIndex比较</span></span><br><span class="line">            <span class="keyword">if</span> alist[i]&gt;alist[minIndex]:</span><br><span class="line">                minIndex = i</span><br><span class="line">        <span class="comment"># 结束之后 如果目标的索引不是最小值索引 交换</span></span><br><span class="line">        <span class="keyword">if</span> minIndex != j:</span><br><span class="line">            alist[j],alist[minIndex] = alist[minIndex],alist[j]</span><br></pre></td></tr></table></figure>
 <p><strong>算法分析</strong></p>
 <ol>
 <li>时间复杂度 最好O(n2) 最坏O(n2)</li>
@@ -496,26 +363,7 @@ print(queue.get())
 <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
 <p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
 </blockquote>
-<pre class=" language-lang-python"><code class="language-lang-python">def insert_sort(alist):
-    """插入排序"""
-
-    # 列表的长度
-    n = len(alist)
-    # 轮数
-    for j in range(1,n):
-        # 找一个数据加入到已经排序号的数据中排序
-        # 从索引为1开始加入
-        for i in range(j,0,-1):# 从最后开始往前面比较
-            if alist[i] < alist[i-1]:
-                alist[i], alist[i-1] = alist[i-1], alist[i]
-            else:
-                break
-
-if __name__ == '__main__':
-    alist = [1,100,99,20,5,1000]
-    insert_sort(alist)
-    print(alist)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;插入排序&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 列表的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 轮数</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">        <span class="comment"># 找一个数据加入到已经排序号的数据中排序</span></span><br><span class="line">        <span class="comment"># 从索引为1开始加入</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(j,<span class="number">0</span>,-<span class="number">1</span>):<span class="comment"># 从最后开始往前面比较</span></span><br><span class="line">            <span class="keyword">if</span> alist[i] &lt; alist[i-<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i-<span class="number">1</span>] = alist[i-<span class="number">1</span>], alist[i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">100</span>,<span class="number">99</span>,<span class="number">20</span>,<span class="number">5</span>,<span class="number">1000</span>]</span><br><span class="line">    insert_sort(alist)</span><br><span class="line">    <span class="built_in">print</span>(alist)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>算法分析</strong></p>
 <ol>
@@ -526,152 +374,28 @@ if __name__ == '__main__':
 </blockquote>
 <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
 <p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">def quick_sort(alist, start, end):
-    """快速排序"""
-    # 递归的结束条件
-    if start >= end:
-        return
-    # 界限值
-    mid = alist[start]
-    # 左右游标
-    left = start
-    right = end
-
-    while left < right:
-        # 从右边开始找寻小于mid的值 归类到左边
-        while alist[right] >= mid and left < right:
-            right -= 1
-        alist[left] = alist[right]
-        # 从左边开始找寻大于mid的值 归类到右边
-        while alist[left] < mid and left < right:
-            left += 1
-        alist[right] = alist[left]
-
-    # 循环一旦结束了 证明找到了mid应该在的位置
-    alist[left] = mid
-
-    # 递归操作
-    quick_sort(alist, start, left-1)
-    quick_sort(alist, right+1, end)
-
-if __name__ == '__main__':
-    # alist = [1,2,100,50,1000,0,1,1]
-    # alist = [1,2,3,4,5,6,7,8]
-    alist = [9,8,7,6,5,4,3,2,1]
-    quick_sort(alist, 0, len(alist)-1)
-    print(alist)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span>(<span class="params">alist, start, end</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;快速排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 递归的结束条件</span></span><br><span class="line">    <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="comment"># 界限值</span></span><br><span class="line">    mid = alist[start]</span><br><span class="line">    <span class="comment"># 左右游标</span></span><br><span class="line">    left = start</span><br><span class="line">    right = end</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        <span class="comment"># 从右边开始找寻小于mid的值 归类到左边</span></span><br><span class="line">        <span class="keyword">while</span> alist[right] &gt;= mid <span class="keyword">and</span> left &lt; right:</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        alist[left] = alist[right]</span><br><span class="line">        <span class="comment"># 从左边开始找寻大于mid的值 归类到右边</span></span><br><span class="line">        <span class="keyword">while</span> alist[left] &lt; mid <span class="keyword">and</span> left &lt; right:</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        alist[right] = alist[left]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 循环一旦结束了 证明找到了mid应该在的位置</span></span><br><span class="line">    alist[left] = mid</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 递归操作</span></span><br><span class="line">    quick_sort(alist, start, left-<span class="number">1</span>)</span><br><span class="line">    quick_sort(alist, right+<span class="number">1</span>, end)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># alist = [1,2,100,50,1000,0,1,1]</span></span><br><span class="line">    <span class="comment"># alist = [1,2,3,4,5,6,7,8]</span></span><br><span class="line">    alist = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    quick_sort(alist, <span class="number">0</span>, <span class="built_in">len</span>(alist)-<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(alist)</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
 <p><strong>注意：必须有序</strong></p>
 <ol>
 <li><strong>递归实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找"""
-    if not alist:
-        return 
-    # 数列的长度
-    n = len(alist)
-
-    # 中间值索引
-    mid = n//2
-
-    if item == alist[mid]:
-        return True
-    elif item < alist[mid]:
-         return binary_search(alist[0:mid], item)
-    elif item > alist[mid]:
-         return binary_search(alist[mid+1:], item)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> alist:</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    <span class="comment"># 数列的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 中间值索引</span></span><br><span class="line">    mid = n//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">         <span class="keyword">return</span> binary_search(alist[<span class="number">0</span>:mid], item)</span><br><span class="line">    <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">         <span class="keyword">return</span> binary_search(alist[mid+<span class="number">1</span>:], item)</span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>非递归实现</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找"""
-
-    # 设置起始位置 获取中间值
-    start = 0
-    end = len(alist) - 1
-    # 必须要=  需要比较最后的一个元素是否是需要的数据
-    while start <= end:
-        # 获取中间值
-        mid = (start + end)//2
-        if item == alist[mid]:
-            return True
-        elif item < alist[mid]:
-            end = mid - 1
-        elif item > alist[mid]:
-            start = mid + 1
-
-    # 没有找到想要找的数字
-    return False
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li><strong>查找第一个索引</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找 如果找到返回索引  没有找到返回-1"""
-
-    # 设置起始位置 获取中间值
-    start = 0
-    end = len(alist) - 1
-    # 必须要=  需要比较最后的一个元素是否是需要的数据
-    while start <= end:
-        # 获取中间值
-        mid = (start + end)//2
-
-        if item == alist[mid]:
-            # 判断是否是第一个3
-            if mid==0 or alist[mid-1]!=item:
-                return mid
-            else:
-                end = mid - 1
-        elif item < alist[mid]:
-            end = mid - 1
-        elif item > alist[mid]:
-            start = mid + 1
-    # 没有找到想要找的数字
-    return -1
-# 最好 O(1) 最坏 O(logn)
-if __name__ == '__main__':
-    alist = [1,2,3,3,3,4,5]
-    print(binary_search(alist, 3))
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找 如果找到返回索引  没有找到返回-1&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="comment"># 判断是否是第一个3</span></span><br><span class="line">            <span class="keyword">if</span> mid==<span class="number">0</span> <span class="keyword">or</span> alist[mid-<span class="number">1</span>]!=item:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"><span class="comment"># 最好 O(1) 最坏 O(logn)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="built_in">print</span>(binary_search(alist, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 <p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
 <p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
 <ol>
 <li><strong>查找最后一个索引</strong></li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
-    """二分查找 如果找到返回索引  没有找到返回-1"""
-
-    # 设置起始位置 获取中间值
-    start = 0
-    maxIndex = len(alist) - 1
-    end = maxIndex
-    # 必须要=  需要比较最后的一个元素是否是需要的数据
-    while start <= end:
-        # 获取中间值
-        mid = (start + end)//2
-
-        if item == alist[mid]:
-            if mid == maxIndex or alist[mid+1]!=item:
-                return mid
-            else:
-                start = mid + 1
-        elif item < alist[mid]:
-            end = mid - 1
-        elif item > alist[mid]:
-            start = mid + 1
-
-    # 没有找到想要找的数字
-    return -1
-# 最好 O(1) 最坏 O(logn)
-if __name__ == '__main__':
-    alist = [1,2,3,3,3,4,5]
-    print(binary_search(alist, 3))
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找 如果找到返回索引  没有找到返回-1&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    maxIndex = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    end = maxIndex</span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="keyword">if</span> mid == maxIndex <span class="keyword">or</span> alist[mid+<span class="number">1</span>]!=item:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"><span class="comment"># 最好 O(1) 最坏 O(logn)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="built_in">print</span>(binary_search(alist, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 <p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
 <p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
 </blockquote>
@@ -730,83 +454,7 @@ if __name__ == '__main__':
 <li>后序遍历 左右根</li>
 </ol>
 <p><strong>添加数据及遍历</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Node(object):
-    """节点类"""
-    def  __init__(self, item):
-        self.item = item
-        self.lchild = None
-        self.rchild = None
-
-
-class BinaryTree(object):
-    """完全二叉树"""
-    def __init__(self, node=None):
-        self.root = node
-
-    def add(self, item):
-        """添加节点"""
-        if self.root == None:
-            self.root = Node(item)
-            return
-        # 队列
-        queue = []
-        # 从尾部添加数据
-        queue.append(self.root)
-        while True:
-            # 从头部取出数据
-            node = queue.pop(0)
-            # 判断左节点是否为空
-            if node.lchild == None:
-                node.lchild = Node(item)
-                return
-            else:
-                queue.append(node.lchild)
-
-            if node.rchild == None:
-                node.rchild = Node(item)
-                return
-            else:
-                queue.append(node.rchild)
-
-    def breadh_travel(self):
-        """广度优先遍历"""
-        if self.root == None:
-            return
-        # 队列
-        queue = []
-        # 添加数据
-        queue.append(self.root)
-        while len(queue)>0:
-            # 取出数据
-            node = queue.pop(0)
-            print(node.item, end="")
-            # 判断左右子节点是否为空
-            if node.lchild is not None:
-                queue.append(node.lchild)
-            if node.rchild is not None:
-                queue.append(node.rchild)
-
-    def preorder_travel(self, root):
-        """先序遍历 根 左 右"""
-        if root is not None:
-            print(root.item, end="")
-            self.preorder_travel(root.lchild)
-            self.preorder_travel(root.rchild)
-
-    def inorder_travel(self, root):
-        """中序遍历 左 根 右"""
-        if root is not None:
-            self.inorder_travel(root.lchild)
-            print(root.item, end="")
-            self.inorder_travel(root.rchild)
-
-    def postorder_travel(self, root):
-        """后序遍历 根 左 右"""
-        if root is not None:
-            self.postorder_travel(root.lchild)
-            self.postorder_travel(root.rchild)
-            print(root.item, end="")
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;节点类&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.item = item</span><br><span class="line">        self.lchild = <span class="literal">None</span></span><br><span class="line">        self.rchild = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;完全二叉树&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, node=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.root = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;添加节点&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.root == <span class="literal">None</span>:</span><br><span class="line">            self.root = Node(item)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 队列</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 从尾部添加数据</span></span><br><span class="line">        queue.append(self.root)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># 从头部取出数据</span></span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="comment"># 判断左节点是否为空</span></span><br><span class="line">            <span class="keyword">if</span> node.lchild == <span class="literal">None</span>:</span><br><span class="line">                node.lchild = Node(item)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> node.rchild == <span class="literal">None</span>:</span><br><span class="line">                node.rchild = Node(item)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">breadh_travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;广度优先遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.root == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 队列</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 添加数据</span></span><br><span class="line">        queue.append(self.root)</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(queue)&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 取出数据</span></span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">print</span>(node.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="comment"># 判断左右子节点是否为空</span></span><br><span class="line">            <span class="keyword">if</span> node.lchild <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line">            <span class="keyword">if</span> node.rchild <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;先序遍历 根 左 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.preorder_travel(root.lchild)</span><br><span class="line">            self.preorder_travel(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历 左 根 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.inorder_travel(root.lchild)</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.inorder_travel(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;后序遍历 根 左 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.postorder_travel(root.lchild)</span><br><span class="line">            self.postorder_travel(root.rchild)</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
 </blockquote>
 
     </div>
@@ -897,6 +545,8 @@ class BinaryTree(object):
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Qijinli"
+      src="/images/logo.jpeg">
   <p class="site-author-name" itemprop="name">Qijinli</p>
   <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
 </div>
@@ -944,17 +594,35 @@ class BinaryTree(object):
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2017 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+  <span class="author" itemprop="copyrightHolder">Qi Jinli</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -988,6 +656,10 @@ class BinaryTree(object):
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
