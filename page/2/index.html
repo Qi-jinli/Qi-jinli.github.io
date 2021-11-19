@@ -217,6 +217,13 @@
 
               <time title="创建时间：2021-05-04 23:01:41" itemprop="dateCreated datePublished" datetime="2021-05-04T23:01:41+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:10:32" itemprop="dateModified" datetime="2021-11-19T19:10:32+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -278,59 +285,6 @@
 </li>
 </ol>
 </blockquote>
-<h2 id="数据集的划分"><a href="#数据集的划分" class="headerlink" title="数据集的划分"></a>数据集的划分</h2><blockquote>
-<ol>
-<li><code>sklearn.model_selection.train_test_split(arrays, *options)</code></li>
-</ol>
-<p><strong>Parameters：</strong></p>
-<ul>
-<li><code>x 数据集的特征值</code></li>
-<li><code>y 数据集的标签值</code></li>
-<li><code>test_size</code>测试集的大小，一般为float</li>
-<li><code>random_state</code> 随机数种子,不同的种子会造成不同的随机采样结果。相同的种子采样结果相同。</li>
-</ul>
-<p><strong>return：</strong><br><code>x_train, x_test, y_train, y_test</code></p>
-<ol>
-<li><code>sklearn.model_selection.StratifiedShuffleSplit(n_splits = 10,test_size = None,train_size = None,random_state=None)</code></li>
-</ol>
-<p><strong>Parameters：</strong></p>
-<ol>
-<li><code>n_splits:</code>重新改组和拆分迭代的次数</li>
-</ol>
-<p><strong>return:</strong></p>
-<ol>
-<li><code>train_index,test_index</code></li>
-</ol>
-</blockquote>
-<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="特征归一化标注化"><a href="#特征归一化标注化" class="headerlink" title="特征归一化标注化"></a>特征归一化标注化</h2><blockquote>
-<p><code>sklearn.preprocessing</code></p>
-<ol>
-<li><code>归一化</code><ul>
-<li><code>sklearn.preprocessing.MinMaxScaler(feature_range=(0,1)... )</code><ul>
-<li><code>MinMaxScalar.fit_transform(X)</code><ul>
-<li><code>X : numpy array格式的数据[n_samples,n_features]</code></li>
-</ul>
-</li>
-<li><code>返回值:转换后的形状相同的array</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>标准化</code><ul>
-<li><code>sklearn.preprocessing.StandardScaler( )</code><ul>
-<li>处理之后每列来说所有数据都聚集在均值0附近标准差差为1</li>
-<li><code>StandardScaler.fit_transform(X)</code><ul>
-<li><code>X : numpy array格式的数据[n_samples,n_features]</code></li>
-</ul>
-</li>
-<li><code>返回值:转换后的形状相同的array</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><h3 id="字典特征提取"><a href="#字典特征提取" class="headerlink" title="字典特征提取"></a>字典特征提取</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/sklearn/#more" rel="contents">
@@ -383,6 +337,13 @@
 
               <time title="创建时间：2021-05-04 14:39:38" itemprop="dateCreated datePublished" datetime="2021-05-04T14:39:38+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:07:43" itemprop="dateModified" datetime="2021-11-19T19:07:43+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -414,39 +375,6 @@
 <p><strong>绑定端口</strong></p>
 <p>没有绑定端口号,程序退出自动释放端口号</p>
 <p>写程序可以绑定端口,没有绑定会自动分配端口</p>
-</blockquote>
-<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
-<p><strong>URL</strong>:统一资源定位符</p>
-<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
-<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
-<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
-<p><strong>资源路径</strong></p>
-<p><strong>查询参数</strong></p>
-</blockquote>
-<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
-<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
-<p><strong>请求头：</strong>请求信息</p>
-<p><strong>空行</strong></p>
-<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
-</blockquote>
-<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
-<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>面向连接</li>
-<li>TCP采用发送应答机制 </li>
-<li>超时重传</li>
-<li>错误校验   张三  李四</li>
-<li>流量控制和阻塞管理 </li>
-<li>基于字节流</li>
-</ol>
-</blockquote>
-<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
-<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串.encode(encoding=编码方式)</span><br></pre></td></tr></table></figure>
-<p><strong>将字节数组转换成字符串方便操作</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字节数组.decode(encoding=编码方式)</span><br></pre></td></tr></table></figure>
-<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -500,6 +428,13 @@
 
               <time title="创建时间：2021-05-04 14:32:12" itemprop="dateCreated datePublished" datetime="2021-05-04T14:32:12+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:07:16" itemprop="dateModified" datetime="2021-11-19T19:07:16+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -541,55 +476,6 @@
 <p><strong>链表</strong></p>
 <p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
 </blockquote>
-<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
-<p><strong>增加</strong></p>
-<ol>
-<li>尾部增加 O(1)</li>
-<li>特定位置非保序O(1)</li>
-<li>特定位置保序O(n)</li>
-</ol>
-<p><strong>删除</strong></p>
-<ol>
-<li>删除尾部O(1)</li>
-<li>删除特定位置非保序O(1)</li>
-<li>删除特定位置保序O(n)</li>
-</ol>
-<p><strong>查找</strong></p>
-<ol>
-<li>按照角标查找O(1)</li>
-<li>查找元素最优O(1) 最坏O(n)</li>
-</ol>
-<p><strong>修改</strong></p>
-<ol>
-<li>按照角标查找O(1)</li>
-<li>查找元素最优O(1) 最坏O(n)</li>
-</ol>
-</blockquote>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
-<p><strong>特点</strong>:<strong>先进后出</strong></p>
-<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
-<ol>
-<li><strong>顺序表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;栈:先进后出&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;进栈&quot;&quot;&quot;</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;出栈&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.__items:</span><br><span class="line">            <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>链表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedStack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 最上面的元素</span></span><br><span class="line">        self.top = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, value: <span class="built_in">int</span></span>):</span></span><br><span class="line">        newtop = Node(value)</span><br><span class="line">        newtop.<span class="built_in">next</span> = self.top</span><br><span class="line">        self.top = newtop</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.top:</span><br><span class="line">            value = self.top.data</span><br><span class="line">            self.top = self.top.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
-<p><strong>队列特点:先进先出</strong></p>
-<p><strong>队列作用:保证任务顺序执行</strong></p>
-<ol>
-<li><strong>使用顺序表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 存储数据 线性表</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># enqueue(item)</span></span><br><span class="line">    <span class="comment"># 队列尾部添加元素item</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># dequeue():</span></span><br><span class="line">    <span class="comment"># 队列头部删除元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__items:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># is_empty()</span></span><br><span class="line">    <span class="comment"># 判断队列是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_enpty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__items == []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># size()</span></span><br><span class="line">    <span class="comment"># 返回队列的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.__items)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>使用链表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedQueue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__head = <span class="literal">None</span></span><br><span class="line">        self.__tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        new_node = Node(value)</span><br><span class="line">        <span class="comment"># 尾部不为空</span></span><br><span class="line">        <span class="keyword">if</span> self.__tail:</span><br><span class="line">            self.__tail.<span class="built_in">next</span> = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__head = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        self.__tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 如果头部有数据</span></span><br><span class="line">        <span class="keyword">if</span> self.__head:</span><br><span class="line">            value = self.__head.data</span><br><span class="line">            self.__head = self.__head.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.__head:<span class="comment"># 新的头部为空</span></span><br><span class="line">                self.__tail = <span class="literal">None</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/#more" rel="contents">
@@ -642,6 +528,13 @@
 
               <time title="创建时间：2021-05-04 14:32:03" itemprop="dateCreated datePublished" datetime="2021-05-04T14:32:03+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:07:32" itemprop="dateModified" datetime="2021-11-19T19:07:32+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -679,25 +572,6 @@
 <li>Redis</li>
 </ul>
 </blockquote>
-<h3 id="数据库的特点"><a href="#数据库的特点" class="headerlink" title="数据库的特点"></a>数据库的特点</h3><blockquote>
-<ol>
-<li>持久化存储</li>
-<li>读写速度极高</li>
-<li>保证数据的有效性</li>
-</ol>
-</blockquote>
-<h3 id="SQL介绍"><a href="#SQL介绍" class="headerlink" title="SQL介绍"></a>SQL介绍</h3><blockquote>
-<p><strong>SQL(Structured Query Language)是结构化查询语言，是一种用来操作RDBMS的数据库的语言</strong>。也就是说通过 SQL 可以操作 oracle,sql server,mysql,sqlite 等关系型的数据库。</p>
-<p><strong>SQL语言主要分为：</strong></p>
-<ul>
-<li><strong>DQL：数据查询语言，用于对数据进行查询，如select</strong></li>
-<li><strong>DML：数据操作语言，对数据进行增加、修改、删除，如insert、update、delete</strong></li>
-<li>TPL：事务处理语言，对事务进行处理，包括begin transaction、commit、rollback</li>
-<li>DCL：数据控制语言，进行授权与权限回收，如grant、revoke</li>
-<li>DDL：数据定义语言，进行数据库、表的管理等，如create、drop</li>
-</ul>
-</blockquote>
-<h2 id="Mysql数据库"><a href="#Mysql数据库" class="headerlink" title="Mysql数据库"></a>Mysql数据库</h2><h3 id="MySQL数据库服务端软件的安装"><a href="#MySQL数据库服务端软件的安装" class="headerlink" title="MySQL数据库服务端软件的安装:"></a><strong>MySQL数据库服务端软件的安装:</strong></h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/%E6%95%B0%E6%8D%AE%E5%BA%93/#more" rel="contents">
@@ -750,6 +624,13 @@
 
               <time title="创建时间：2021-05-04 14:31:36" itemprop="dateCreated datePublished" datetime="2021-05-04T14:31:36+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:05:35" itemprop="dateModified" datetime="2021-11-19T19:05:35+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -782,75 +663,6 @@
 <p>进程是操作系统调度和分配资源的最小单位</p>
 <p>程序开启之后默认开启一个进程</p>
 <p>进程默认会有一个线程</p>
-</blockquote>
-<h1 id="多进程实现"><a href="#多进程实现" class="headerlink" title="多进程实现"></a>多进程实现</h1><blockquote>
-<ol>
-<li>导包</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br></pre></td></tr></table></figure>
-<ol>
-<li>定义任务(函数)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">music</span>():</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;music...&quot;</span>)</span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建进程(生产线)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coding_process = multiprocessing.Process(target=music) <span class="comment"># target参数 需要跟上任务</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>开启进程</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">进程对象.start()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="多任务面向对象实现"><a href="#多任务面向对象实现" class="headerlink" title="多任务面向对象实现"></a>多任务面向对象实现</h1><blockquote>
-<ol>
-<li>导包</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br></pre></td></tr></table></figure>
-<ol>
-<li>继承<code>multiprocessing.Process</code></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span>(<span class="params">multiprocessing.Process</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 调用父类的初始化方法</span></span><br><span class="line">        <span class="built_in">super</span>(MyProcess, self).__init__()</span><br></pre></td></tr></table></figure>
-<ol>
-<li>重写run方法,任务代码放到run方法中(run方法会自动调用,进程资源分配好自动调用,不需要自己调用)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Process方法 进程的任务都是在run方法执行</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;music...&quot;</span>)</span><br><span class="line">            time.sleep(<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建自定义进程对象</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pro = MyProcess()</span><br></pre></td></tr></table></figure>
-<ol>
-<li>开启自定义进程</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pro.start()</span><br></pre></td></tr></table></figure>
-<p><strong>注意:</strong></p>
-<p><strong>函数并没有进程和线程之分,在哪个进程调用,就运行在哪个进程中</strong></p>
-</blockquote>
-<h1 id="进程传递参数"><a href="#进程传递参数" class="headerlink" title="进程传递参数"></a>进程传递参数</h1><blockquote>
-<ol>
-<li><strong>通过元组传递</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiprocessing.Process(target=coding, args=(<span class="number">3</span>, <span class="string">&quot;传智&quot;</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>注意:一个参数元组需要加,  顺序和参数顺序保持一致</strong></p>
-<ol>
-<li><strong>通过字典方式传递</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiprocessing.Process(target=music, kwargs=&#123;<span class="string">&quot;count&quot;</span>: <span class="number">2</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>注意:元素键需要和函数形参名称保持一致</strong></p>
-</blockquote>
-<h1 id="进程编号"><a href="#进程编号" class="headerlink" title="进程编号"></a>进程编号</h1><blockquote>
-<p><strong>获取进程编号</strong></p>
-<ol>
-<li>获取当前进程编号</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.getpid()</span><br></pre></td></tr></table></figure>
-<ol>
-<li>获取父进程进程编号</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.getppid()</span><br></pre></td></tr></table></figure>
-<ol>
-<li>获取当前进程名字</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiprocessing.current_process().name</span><br></pre></td></tr></table></figure>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -904,6 +716,13 @@
 
               <time title="创建时间：2021-05-04 14:15:03" itemprop="dateCreated datePublished" datetime="2021-05-04T14:15:03+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:09:09" itemprop="dateModified" datetime="2021-11-19T19:09:09+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -927,11 +746,6 @@
       
           <h3 id="关机（系统的关机，重启以及登出）"><a href="#关机（系统的关机，重启以及登出）" class="headerlink" title="关机（系统的关机，重启以及登出）"></a>关机（系统的关机，重启以及登出）</h3><hr>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now 关闭系统</span><br><span class="line">shutdown -h hours:minutes &amp; 按预定时间关闭系统 </span><br><span class="line">shutdown -c 取消按预定时间关闭系统 </span><br><span class="line">shutdown -r now 重启</span><br><span class="line">reboot 重启</span><br><span class="line"><span class="built_in">logout</span> 注销</span><br></pre></td></tr></table></figure>
-<h3 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h3><hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">clear 清理命令行 或Ctrl+L清屏</span><br><span class="line"><span class="built_in">cd</span> /home 进入 <span class="string">&#x27;/ home&#x27;</span> 目录<span class="string">&#x27; </span></span><br><span class="line"><span class="string">cd .. 返回上一级目录 </span></span><br><span class="line"><span class="string">cd ../.. 返回上两级目录 </span></span><br><span class="line"><span class="string">cd 进入个人的主目录 </span></span><br><span class="line"><span class="string">cd ~user1 进入个人的主目录 </span></span><br><span class="line"><span class="string">cd - 返回上次所在的目录 </span></span><br><span class="line"><span class="string">pwd 显示工作路径 </span></span><br><span class="line"><span class="string">ls 查看目录中的文件 </span></span><br><span class="line"><span class="string">ls -F 查看目录中的文件 </span></span><br><span class="line"><span class="string">ls -l 显示文件和目录的详细资料 </span></span><br><span class="line"><span class="string">ls -a 显示所有的文件（隐藏文件）</span></span><br><span class="line"><span class="string">ls -lh 以列表方式显示所有的文件或目录（文件大小以K，M，G)</span></span><br><span class="line"><span class="string">ls *[0-9]* 显示包含数字的文件名和目录名 </span></span><br><span class="line"><span class="string">tree 显示文件和目录由根目录开始的树形结构</span></span><br><span class="line"><span class="string">lstree 显示文件和目录由根目录开始的树形结构</span></span><br><span class="line"><span class="string">mkdir dir1 创建一个叫做 &#x27;</span>dir1<span class="string">&#x27; 的目录&#x27;</span> </span><br><span class="line">mkdir dir1 dir2 同时创建两个目录 </span><br><span class="line">mkdir -p /tmp/dir1/dir2 创建一个目录树 </span><br><span class="line">rm -r file1 递归删除一个叫做 <span class="string">&#x27;file1&#x27;</span> 的文件夹下所有文件和文件夹 </span><br><span class="line">rm -rf dir1 强制删除一个叫做 <span class="string">&#x27;dir1&#x27;</span> 的目录并递归删除其内容 </span><br><span class="line">rm -rf dir1 dir2 同时删除两个目录及它们的内容</span><br><span class="line">rmdir dir1 删除一个叫做 <span class="string">&#x27;dir1&#x27;</span> 的目录<span class="string">&#x27; </span></span><br><span class="line"><span class="string">mv dir1 new_dir 重命名/移动 一个目录 </span></span><br><span class="line"><span class="string">cp file1 file2 复制一个文件 </span></span><br><span class="line"><span class="string">cp -i 交互式提醒，避免拷贝覆盖原来的文件</span></span><br><span class="line"><span class="string">cp dir/* . 复制一个目录下的所有文件到当前工作目录 </span></span><br><span class="line"><span class="string">cp -a /tmp/dir1 . 复制一个目录到当前工作目录 </span></span><br><span class="line"><span class="string">cp -a dir1 dir2 复制一个目录 </span></span><br><span class="line"><span class="string">cp -r dir1 dir2 复制一个目录及子目录</span></span><br><span class="line"><span class="string">ln -s file1 lnk1 创建一个指向文件或目录的软链接 </span></span><br><span class="line"><span class="string">ln file1 lnk1 创建一个指向文件或目录的硬链接</span></span><br><span class="line"><span class="string">touch 文件名 创建文件</span></span><br><span class="line"><span class="string">touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm)</span></span><br><span class="line"><span class="string">&gt;  重定向，覆盖追加</span></span><br><span class="line"><span class="string">&gt;&gt; 重定向，追加</span></span><br></pre></td></tr></table></figure>
-<h3 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h3><hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grep 字符串 文件名 查找符合标准的文件（-v：取反，-n：行数， -i:忽略大小写）</span><br><span class="line">find 文件路径 -name “文件名”  查找指定路径的文件</span><br><span class="line">find /home/user1 -name \*.bin 在目录 <span class="string">&#x27;/ home/user1&#x27;</span> 中搜索带有<span class="string">&#x27;.bin&#x27;</span> 结尾的文件 </span><br><span class="line">find /usr/bin -<span class="built_in">type</span> f -atime +100 搜索在过去100天内未被使用过的执行文件 </span><br><span class="line">find /usr/bin -<span class="built_in">type</span> f -mtime -10 搜索在10天内被创建或者修改过的文件 </span><br><span class="line">find / -name \*.rpm -<span class="built_in">exec</span> chmod 755 <span class="string">&#x27;&#123;&#125;&#x27;</span> \; 搜索以 <span class="string">&#x27;.rpm&#x27;</span> 结尾的文件并定义其权限 </span><br><span class="line">find / -xdev -name \*.rpm 搜索以 <span class="string">&#x27;.rpm&#x27;</span> 结尾的文件，忽略光驱、捷盘等可移动设备 </span><br><span class="line">locate \*.ps 寻找以 <span class="string">&#x27;.ps&#x27;</span> 结尾的文件 - 先运行 <span class="string">&#x27;updatedb&#x27;</span> 命令 </span><br><span class="line">whereis halt 显示一个二进制文件、源码或man的位置 </span><br><span class="line"><span class="built_in">which</span> halt 显示一个二进制文件或可执行文件的完整路径 </span><br></pre></td></tr></table></figure>
-<h3 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/Linux/#more" rel="contents">
@@ -984,6 +798,13 @@
 
               <time title="创建时间：2021-05-04 14:09:14" itemprop="dateCreated datePublished" datetime="2021-05-04T14:09:14+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:08:18" itemprop="dateModified" datetime="2021-11-19T19:08:18+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1014,23 +835,6 @@
 </ol>
 <p><strong>闭包作用</strong></p>
 <p>保存外部函数的参数(局部变量,函数形参)</p>
-</blockquote>
-<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
-<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_out</span>():</span></span><br><span class="line">    <span class="comment"># 外部函数的局部变量</span></span><br><span class="line">    num1 = <span class="number">20</span></span><br><span class="line">    <span class="comment"># 内部函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_inner</span>(<span class="params">num2</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num1</span><br><span class="line">        <span class="comment"># 函数局部变量</span></span><br><span class="line">        num1 = num1+num2</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(num1)<span class="comment"># 修改之前的函数形参值</span></span><br><span class="line">    func_inner(<span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(num1)<span class="comment"># 函数形参值</span></span><br><span class="line"></span><br><span class="line">func_out()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
-<p><strong>作用</strong></p>
-<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1定义一个装饰器(装饰器的本质是闭包)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">fn</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请先登陆&quot;</span>)</span><br><span class="line">        fn()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2使用装饰器装饰函数（增加一个登陆功能）</span></span><br><span class="line"><span class="comment"># 解释器遇到@check 会立即执行 comment = check(comment)</span></span><br><span class="line"><span class="meta">@check </span><span class="comment"># 调用check 传递comment 返回新的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发表评论&quot;</span>)</span><br><span class="line">comment()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">fn</span>):</span> <span class="comment"># regist</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">name,pwd</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;开始验证&#x27;</span>)</span><br><span class="line">        fn(name,pwd) <span class="comment"># regist</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;登陆成功&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@check</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">regist</span>(<span class="params">name,pwd</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;开始注册&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
-</blockquote>
-<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">a, b</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;开始计算&#x27;</span>)</span><br><span class="line">        result = fn(a, b)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结束计算&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用装饰器装饰函数</span></span><br><span class="line"><span class="meta">@logging</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_num</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    result = a + b</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">result = sum_num(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
-<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -1084,6 +888,13 @@
 
               <time title="创建时间：2021-05-04 01:40:54" itemprop="dateCreated datePublished" datetime="2021-05-04T01:40:54+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:05:44" itemprop="dateModified" datetime="2021-11-19T19:05:44+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1108,16 +919,6 @@
           <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(<span class="built_in">object</span>,dtype=<span class="literal">None</span>,copy=<span class="literal">True</span>,order=<span class="literal">None</span>,subok=<span class="literal">False</span>,ndmin=<span class="number">0</span>) <span class="comment"># 列表或元组转换</span></span><br><span class="line">numpy.arange(start,stop,step,dtype=<span class="literal">None</span>) <span class="comment"># 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</span></span><br><span class="line">numpy.linspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, retstep=<span class="literal">False</span>, dtype=<span class="literal">None</span>) <span class="comment"># 同arange一样</span></span><br><span class="line">numpy.logspace(start, stop, num) <span class="comment"># 以10为底，生成num个等比数列</span></span><br><span class="line">numpy.ones(shape, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;C&#x27;</span>) <span class="comment"># 生成全为1的多维数组</span></span><br><span class="line">numpy.ones_like(a, dtype) <span class="comment"># 快速创建数值全部为1的多维数组</span></span><br><span class="line">numpy.zeros(shape, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;C&#x27;</span>) <span class="comment"># 生成全为0的多维数组</span></span><br><span class="line">numpy.zeros_like(a, dtype) <span class="comment"># 快速创建数值全部为0的多维数组</span></span><br><span class="line">numpy.eye(N, M=<span class="literal">None</span>, k=<span class="number">0</span>, dtype=&lt;<span class="built_in">type</span> <span class="string">&#x27;float&#x27;</span>&gt;)  <span class="comment"># 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0</span></span><br><span class="line">numpy.random.rand(d0, d1, ..., dn )<span class="comment"># 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。</span></span><br><span class="line">numpy.random.randn(d0, d1, ..., dn) <span class="comment"># 从标准正态分布中返回一个或多个样本值</span></span><br><span class="line">numpy.random.standard_normal(size) <span class="comment"># 从标准正态分布中生成随机数</span></span><br><span class="line">numpy.random.randint(low, high, size, dtype) <span class="comment"># 方法将会生成[low, high)的随机整数</span></span><br><span class="line">numpy.random.normal(loc，scale，size) <span class="comment"># 从正态分布绘制随机样本。参数，均值和偏差</span></span><br><span class="line">numpy.random.uniform(low=<span class="number">0</span>，high=<span class="number">1</span>，size) <span class="comment"># 从均匀分布中生成随机数</span></span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ndarray.T <span class="comment"># 用于数组的转置，与.transpose()相同。</span></span><br><span class="line">ndarray.dtype <span class="comment"># 用来输出数组包含元素的数据类型。</span></span><br><span class="line">ndarray.real <span class="comment"># 用来输出数组包含元素的实部。</span></span><br><span class="line">ndarray.imag <span class="comment"># 用来输出数组包含元素的虚部。</span></span><br><span class="line">ndarray.size <span class="comment"># 用来输出数组中的总包含元素数。</span></span><br><span class="line">ndarray.itemsize <span class="comment"># 输出一个数组元素的字节数。</span></span><br><span class="line">ndarray.nbytes <span class="comment"># 用来输出数组的元素总字节数。</span></span><br><span class="line">ndarray.ndim <span class="comment"># 用来输出数组维度。</span></span><br><span class="line">ndarray.shape <span class="comment"># 用来输出数组形状。</span></span><br><span class="line">ndarray.strides <span class="comment"># 用来遍历数组时，输出每个维度中步进的字节数组。</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ndarray.reshape(newshape) <span class="comment"># 可以在不改变数组数据的同时改变数组形状</span></span><br><span class="line">ndarray.resize(newshape) <span class="comment"># 改变数组形状，改变数组数据，新数组比原数组大，则将会copy原数组中的值对新数组进行填充</span></span><br><span class="line">ndarray.ravel(order=<span class="string">&#x27;C&#x27;</span>) <span class="comment"># 将任意形状的按行读取，变为1维数组，浅拷贝</span></span><br><span class="line">ndarray.flatten() <span class="comment"># 将任意形状的按行读取，变为1维数组，深拷贝</span></span><br><span class="line">numpy.moveaxis(a, source, destination) <span class="comment"># 将数组的轴移动到新的位置</span></span><br><span class="line">numpy.swapaxes(a, axis1, axis2) <span class="comment"># 用来交换数组的轴</span></span><br><span class="line">numpy.concatenate((a1, a2, ...), axis=<span class="number">0</span>) <span class="comment"># 可以将多个数组沿指定轴连接在一起</span></span><br><span class="line">numpy.unique(a) <span class="comment"># 去重数组元素中重复的元素</span></span><br><span class="line">numpy.atleast_xd() <span class="comment"># 支持输入数据直接视为x维</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="逻辑与统计计算"><a href="#逻辑与统计计算" class="headerlink" title="逻辑与统计计算"></a>逻辑与统计计算</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ndarray[条件] = <span class="number">1</span> <span class="comment"># 将满足条件的数组元素设置为1</span></span><br><span class="line">numpy.<span class="built_in">all</span>(条件) <span class="comment"># 查询是否都满足条件</span></span><br><span class="line">numpy.<span class="built_in">any</span>(条件) <span class="comment"># 查询是否有满足条件的</span></span><br><span class="line">numpy.where(条件，<span class="number">1</span>，<span class="number">0</span>) <span class="comment"># 三目运算，符合条件的设置为1，不符合的为0</span></span><br><span class="line">numpy.<span class="built_in">max</span>() <span class="comment"># 沿指定轴计算中间值</span></span><br><span class="line">numpy.<span class="built_in">min</span>() <span class="comment"># 沿指定轴计算中间值</span></span><br><span class="line">numpy.median() <span class="comment"># 沿指定轴计算中间值</span></span><br><span class="line">numpy.mean() <span class="comment"># 沿指定轴计算平均数</span></span><br><span class="line">numpy.std() <span class="comment"># 沿指定轴计算标准偏差</span></span><br><span class="line">numpy.var() <span class="comment"># 沿指定轴计算方差</span></span><br><span class="line">numpy.argmax(axis=) <span class="comment"># 最大元素对应的下标</span></span><br><span class="line">numpy.argmin(axis=) <span class="comment"># 最小元素对应的下标</span></span><br><span class="line">numpy.dot(a, b) <span class="comment"># 求解两个数组的点积</span></span><br><span class="line">numpy.matmul(a, b) <span class="comment"># 求解两个数组的矩阵乘积</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/#more" rel="contents">
@@ -1170,6 +971,13 @@
 
               <time title="创建时间：2021-05-04 01:40:01" itemprop="dateCreated datePublished" datetime="2021-05-04T01:40:01+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:10:15" itemprop="dateModified" datetime="2021-11-19T19:10:15+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1194,62 +1002,7 @@
           <blockquote>
 <p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 </span></span><br><span class="line">pip install seaborn==<span class="number">0.10</span><span class="number">.1</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
-<p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>, font=<span class="string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="number">1</span>, color_codes=<span class="literal">False</span>, rc=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>
-<li><code>style=&#39;&#39;</code> 参数控制默认样式，分别有 <code>&#123;darkgrid, whitegrid, dark, white, ticks&#125;</code>，你可以自行更改查看它们之间的不同。</li>
-<li><code>palette=&#39;&#39;</code> 参数为预设的调色板。分别有 <code>&#123;deep, muted, bright, pastel, dark, colorblind&#125;</code> 等，你可以自行更改查看它们之间的不同。</li>
-<li>剩下的 <code>font=&#39;&#39;</code> 用于设置字体，<code>font_scale=</code> 设置字体大小，<code>color_codes=</code> 不使用调色板而采用先前的 <code>&#39;r&#39;</code> 等色彩缩写。</li>
-</ul>
-</blockquote>
-<h1 id="分布图"><a href="#分布图" class="headerlink" title="分布图"></a>分布图</h1><h2 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h2><blockquote>
-<p>可以采用最简单的直方图描述单变量的分布情况。 Seaborn中提供了<code>distplot()</code>函数，它默认绘制的是一个带有核密度估计曲线的直方图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.distplot(a, bins=<span class="literal">None</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">False</span>, fit=<span class="literal">None</span>, color=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p>上述函数中常用参数的含义如下：</p>
-<ul>
-<li><code>a</code>：表示要观察的数据，可以是 Series、一维数组或列表。</li>
-<li><code>bins</code>：用于控制条形的数量。</li>
-<li><code>hist</code>：接收布尔类型，表示<code>是否绘制(标注)直方图</code>。</li>
-<li><code>kde</code>：接收布尔类型，表示<code>是否绘制高斯核密度</code>估计曲线。</li>
-<li><code>rug</code>：接收布尔类型，表示是否在支持的轴方向上绘制rugplot。</li>
-</ul>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sns.<span class="built_in">set</span>() <span class="comment"># 调用set()函数获取默认绘图</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)  <span class="comment"># 确定随机数生成器的种子,如果不使用每次生成图形不一样</span></span><br><span class="line">arr = np.random.randn(<span class="number">100</span>)  <span class="comment"># 生成随机数组</span></span><br><span class="line">ax = sns.distplot(arr, bins=<span class="number">10</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">True</span>)  <span class="comment"># 绘制直方图</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="绘制双变量分布"><a href="#绘制双变量分布" class="headerlink" title="绘制双变量分布"></a>绘制双变量分布</h2><blockquote>
-<p>两个变量的二元分布可视化也很有用。在 Seaborn中最简单的方法是使用 <code>jointplot()</code>函数，该函数可以创建一个多面板图形，比如散点图、二维直方图、核密度估计等，以显示两个变量之间的双变量关系及每个变量在单坐标轴上的单变量分布。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">seaborn.jointplot(x, y, data=<span class="literal">None</span>, </span><br><span class="line">                  kind=<span class="string">&#x27;scatter&#x27;</span>, stat_func=<span class="literal">None</span>, color=<span class="literal">None</span>, </span><br><span class="line">                  ratio=<span class="number">5</span>, space=<span class="number">0.2</span>, dropna=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>上述函数中常用参数的含义如下：</p>
-<ol>
-<li><code>kind</code>：表示绘制图形的类型。hex:直方图，kde：核函数概率，reg：拟合线</li>
-<li><code>stat_func</code>：用于计算有关关系的统计量并标注图。</li>
-<li><code>color</code>：表示绘图元素的颜色。</li>
-<li><code>size</code>：用于设置图的大小(正方形)。</li>
-<li><code>ratio</code>：表示中心图与侧边图的比例。该参数的值越大，则中心图的占比会越大。</li>
-<li><code>space</code>：用于设置中心图与侧边图的间隔大小。</li>
-</ol>
-</blockquote>
-<h2 id="绘制成对的双变量分布"><a href="#绘制成对的双变量分布" class="headerlink" title="绘制成对的双变量分布"></a>绘制成对的双变量分布</h2><blockquote>
-<p>要想在数据集中绘制多个成对的双变量分布，则可以使用<code>pairplot()</code>函数实现，该函数会创建一个坐标轴矩阵，并且显示Datafram对象中每对变量的关系。另外，<code>pairplot()</code>函数也可以绘制每个变量在对角轴上的单变量分布。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制多个成对的双变量分布</span></span><br><span class="line">sns.pairplot(data)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="类别图"><a href="#类别图" class="headerlink" title="类别图"></a>类别图</h1><blockquote>
-<p>类别图的 Figure-level 接口是 <code>catplot</code>，其为 categorical plots 的缩写。而 <code>catplot</code> 实际上是如下 Axes-level 绘图 API 的集合。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, kind=<span class="string">&quot;strip&quot;</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p><code>参数kind：</code></p>
-<ol>
-<li>分类散点图：<code>strip，swarm</code></li>
-<li>分类分布图：<code>box，violin，boxen</code></li>
-<li>分类估计图：<code>point，bar，count</code></li>
-</ol>
-<p>Seaborn针对分类数据提供了专门的可视化函数，这些函数大致可以分为如下三种:</p>
-<ul>
-<li>分类数据散点图: <code>swarmplot()</code>与 <code>stripplot()</code>。</li>
-<li>类数据的分布图: <code>boxplot()</code> 与 <code>violinplot()</code>。</li>
-<li>分类数据的统计估算图:<code>barplot()</code> 与<code>pointplot()</code>。</li>
-</ul>
-</blockquote>
+<p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p></blockquote>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/Seaborn/#more" rel="contents">
@@ -1302,6 +1055,13 @@
 
               <time title="创建时间：2021-05-04 01:38:54" itemprop="dateCreated datePublished" datetime="2021-05-04T01:38:54+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:09:28" itemprop="dateModified" datetime="2021-11-19T19:09:28+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1327,175 +1087,6 @@
 <p><strong>注意：</strong></p>
 <p>在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 <code>%matplotlib inline</code>。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 <code>plt.show()</code>。</p>
 </blockquote>
-<h1 id="简单图形绘制"><a href="#简单图形绘制" class="headerlink" title="简单图形绘制"></a>简单图形绘制</h1><blockquote>
-<p>需要导入 <code>pyplot</code> 模块，并约定简称为 <code>plt</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot([<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p><code>plt.plot()</code> 是 <code>pyplot</code> 模块下面的直线绘制（折线图）方法类。示例中包含了一个 <code>[2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]</code> 列表，Matplotlib 会默认将该列表作为 𝑦y 值，而 𝑥x 值会从 00 开始依次递增。</p>
-<p>当然，如果你需要自定义横坐标值，只需要传入两个列表即可。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>matplotlib.pyplot.angle_spectrum</code></td>
-<td>绘制电子波谱图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.bar</code></td>
-<td>绘制柱状图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.barh</code></td>
-<td>绘制直方图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.broken_barh</code></td>
-<td>绘制水平直方图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.contour</code></td>
-<td>绘制等高线图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.errorbar</code></td>
-<td>绘制误差线</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.hexbin</code></td>
-<td>绘制六边形图案</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.hist</code></td>
-<td>绘制柱形图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.hist2d</code></td>
-<td>绘制水平柱状图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.pie</code></td>
-<td>绘制饼状图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.quiver</code></td>
-<td>绘制量场图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.scatter</code></td>
-<td>散点图</td>
-</tr>
-<tr>
-<td><code>matplotlib.pyplot.specgram</code></td>
-<td>绘制光谱图</td>
-</tr>
-</tbody>
-</table>
-</div>
-</blockquote>
-<h1 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h1><h2 id="定义图形样式"><a href="#定义图形样式" class="headerlink" title="定义图形样式"></a>定义图形样式</h2><blockquote>
-<p>线形图通过 <code>matplotlib.pyplot.plot(*args, **kwargs)</code> 方法绘出。其中，<code>args</code> 代表数据输入，而 <code>kwargs</code> 的部分就是用于设置样式参数了。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>alpha=</code></td>
-<td>设置线型的透明度，从 0.0 到 1.0</td>
-</tr>
-<tr>
-<td><code>color=</code></td>
-<td>设置线型的颜色</td>
-</tr>
-<tr>
-<td><code>fillstyle=</code></td>
-<td>设置线型的填充样式</td>
-</tr>
-<tr>
-<td><code>linestyle=</code></td>
-<td>设置线型的样式</td>
-</tr>
-<tr>
-<td><code>linewidth=</code></td>
-<td>设置线型的宽度</td>
-</tr>
-<tr>
-<td><code>marker=</code></td>
-<td>设置标记点的样式</td>
-</tr>
-<tr>
-<td>……</td>
-<td>……</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>散点图也是相似的，它们的很多样式参数都是大同小异</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>s=</code></td>
-<td>散点大小</td>
-</tr>
-<tr>
-<td><code>c=</code></td>
-<td>散点颜色</td>
-</tr>
-<tr>
-<td><code>marker=</code></td>
-<td>散点样式</td>
-</tr>
-<tr>
-<td><code>cmap=</code></td>
-<td>定义多类别散点的颜色</td>
-</tr>
-<tr>
-<td><code>alpha=</code></td>
-<td>点的透明度</td>
-</tr>
-<tr>
-<td><code>edgecolors=</code></td>
-<td>散点边缘颜色</td>
-</tr>
-</tbody>
-</table>
-</div>
-</blockquote>
-<h2 id="定义图形位置"><a href="#定义图形位置" class="headerlink" title="定义图形位置"></a>定义图形位置</h2><blockquote>
-<p>在图形的绘制过程中，你可能需要调整图形的位置，或者把几张单独的图形拼接在一起。此时，我们就需要引入 <code>plt.figure</code> 图形对象了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">20</span>)  <span class="comment"># 生成数据</span></span><br><span class="line">y = x * x + <span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(元组),dpi=)  <span class="comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">axes = fig.add_axes([<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 控制画布的左, 下, 宽度, 高度</span></span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>大图套小图</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()  <span class="comment"># 新建画板</span></span><br><span class="line">axes1 = fig.add_axes([<span class="number">0.1</span>, <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 大画布</span></span><br><span class="line">axes2 = fig.add_axes([<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.3</span>])  <span class="comment"># 小画布</span></span><br><span class="line"></span><br><span class="line">axes1.plot(x, y, <span class="string">&#x27;r&#x27;</span>)  <span class="comment"># 大画布</span></span><br><span class="line">axes2.plot(y, x, <span class="string">&#x27;g&#x27;</span>)  <span class="comment"># 小画布</span></span><br></pre></td></tr></table></figure>
-<p>Matplotlib 中，还有一种添加画布的方式，那就是 <code>plt.subplots()</code>，它和 <code>axes</code> 都等同于画布。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>借助于 <code>plt.subplots()</code>，我们就可以实现子图的绘制，也就是将多张图按一定顺序拼接在一起。</p>
-<p>其中axes设置标题方法不同：</p>
-<p>​    set_xticks</p>
-<p>​    set_yticks</p>
-<p>​    set_xlabel</p>
-<p>​    set_ylabel</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fig, axes = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">2</span>)  <span class="comment"># 子图为 1 行，2 列</span></span><br><span class="line"><span class="keyword">for</span> ax <span class="keyword">in</span> axes:</span><br><span class="line"> ax.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>通过设置 <code>plt.subplots</code> 的参数，可以实现调节画布尺寸和显示精度</p>
-<p>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig, axes = plt.subplots(figsize=(<span class="number">16</span>, <span class="number">9</span>), dpi=<span class="number">50</span>)  <span class="comment"># 通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="规范绘图方法"><a href="#规范绘图方法" class="headerlink" title="规范绘图方法"></a>规范绘图方法</h2><h3 id="添加图标题、图例"><a href="#添加图标题、图例" class="headerlink" title="添加图标题、图例"></a>添加图标题、图例</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/Matplotlib/#more" rel="contents">

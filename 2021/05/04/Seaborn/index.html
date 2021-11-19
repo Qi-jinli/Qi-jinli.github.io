@@ -28,7 +28,7 @@
 <meta property="og:description" content="Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。 1234# 安装 pip install seaborn&#x3D;&#x3D;0.10.1# 导入import seaborn as sns 使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-03T17:40:01.000Z">
-<meta property="article:modified_time" content="2021-05-03T17:40:01.000Z">
+<meta property="article:modified_time" content="2021-11-19T11:10:15.200Z">
 <meta property="article:author" content="Qijinli">
 <meta property="article:tag" content="Seaborn">
 <meta name="twitter:card" content="summary">
@@ -220,6 +220,13 @@
 
               <time title="创建时间：2021-05-04 01:40:01" itemprop="dateCreated datePublished" datetime="2021-05-04T01:40:01+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:10:15" itemprop="dateModified" datetime="2021-11-19T19:10:15+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -252,6 +259,7 @@
 <p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 </span></span><br><span class="line">pip install seaborn==<span class="number">0.10</span><span class="number">.1</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
 <p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
+<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>, font=<span class="string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="number">1</span>, color_codes=<span class="literal">False</span>, rc=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>

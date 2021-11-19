@@ -217,6 +217,13 @@
 
               <time title="创建时间：2021-05-04 01:29:47" itemprop="dateCreated datePublished" datetime="2021-05-04T01:29:47+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:09:54" itemprop="dateModified" datetime="2021-11-19T19:09:54+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -244,49 +251,6 @@
 <p><strong>读取文件方便</strong></p>
 <p><strong>封装了Matplotlib、Numpy的画图和计算</strong></p>
 </blockquote>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><blockquote>
-<p>Pandas的数据类型主要有：Series（一维数组），DataFrame（二维数组），Panel（三维数组），PanelND（N维数组）</p>
-</blockquote>
-<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><blockquote>
-<p>Series是Pandas中最基本的一维数组，可以存储整数、浮点数、字符串等数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandas.Series(data=<span class="literal">None</span>,index=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>data</code>可以是字典，或者Numpy中的ndarray</li>
-<li><code>index</code>是数据索引</li>
-</ol>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pandas.Series(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">30</span>&#125;)</span><br><span class="line">s = pandas.Series(np.random.randn(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>Series的属性</strong></p>
-<p><strong>index：索引</strong></p>
-<p><strong>values：数据</strong></p>
-</blockquote>
-<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandas.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p>区别于Series，其增加了columns索引。</p>
-<ul>
-<li>一维数组、列表、字典或者 Series 字典。</li>
-<li>二维或者结构化的 <code>numpy.ndarray</code>。</li>
-<li>一个 Series 或者另一个 DataFrame。</li>
-</ul>
-<p>例：</p>
-<ol>
-<li>使用由Series组成的字典来构建:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]),</span><br><span class="line">              <span class="string">&#x27;two&#x27;</span>: pd.Series([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])&#125;)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>直接通过列表创建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                   <span class="string">&#x27;two&#x27;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]&#125;)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>由带字典的列表创建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">4</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">5</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">6</span>&#125;])</span><br></pre></td></tr></table></figure>
-<ol>
-<li>基于二维数值来构建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(np.random.randint(<span class="number">5</span>, size=(<span class="number">2</span>, <span class="number">4</span>)))</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/Pandas/#more" rel="contents">
@@ -339,6 +303,13 @@
 
               <time title="创建时间：2021-05-04 01:12:37" itemprop="dateCreated datePublished" datetime="2021-05-04T01:12:37+08:00">2021-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:09:42" itemprop="dateModified" datetime="2021-11-19T19:09:42+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -372,137 +343,7 @@
 <li><p><strong>效率远高于纯Python代码</strong></p>
 <p>Numpy底层使用C语言编写，内部解除了GIL（全局解释器锁），其对数组的操作速度不受Python解释器的限制，所以，其效率远高于纯Python代码。</p>
 </li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">布尔类型，1 个字节，值为 True 或 False。</td>
-</tr>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">整数类型，通常为 int64 或 int32 。</td>
-</tr>
-<tr>
-<td style="text-align:center">intc</td>
-<td style="text-align:center">与 C 里的 int 相同，通常为 int32 或 int64。</td>
-</tr>
-<tr>
-<td style="text-align:center">intp</td>
-<td style="text-align:center">用于索引，通常为 int32 或 int64。</td>
-</tr>
-<tr>
-<td style="text-align:center">int8</td>
-<td style="text-align:center">字节（从 -128 到 127）</td>
-</tr>
-<tr>
-<td style="text-align:center">int16</td>
-<td style="text-align:center">整数（从 -32768 到 32767）</td>
-</tr>
-<tr>
-<td style="text-align:center">int32</td>
-<td style="text-align:center">整数（从 -2147483648 到 2147483647）</td>
-</tr>
-<tr>
-<td style="text-align:center">int64</td>
-<td style="text-align:center">整数（从 -9223372036854775808 到 9223372036854775807）</td>
-</tr>
-<tr>
-<td style="text-align:center">uint8</td>
-<td style="text-align:center">无符号整数（从 0 到 255）</td>
-</tr>
-<tr>
-<td style="text-align:center">uint16</td>
-<td style="text-align:center">无符号整数（从 0 到 65535）</td>
-</tr>
-<tr>
-<td style="text-align:center">uint32</td>
-<td style="text-align:center">无符号整数（从 0 到 4294967295）</td>
-</tr>
-<tr>
-<td style="text-align:center">uint64</td>
-<td style="text-align:center">无符号整数（从 0 到 18446744073709551615）</td>
-</tr>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">float64 的简写。</td>
-</tr>
-<tr>
-<td style="text-align:center">float16</td>
-<td style="text-align:center">半精度浮点，5 位指数，10 位尾数</td>
-</tr>
-<tr>
-<td style="text-align:center">float32</td>
-<td style="text-align:center">单精度浮点，8 位指数，23 位尾数</td>
-</tr>
-<tr>
-<td style="text-align:center">float64</td>
-<td style="text-align:center">双精度浮点，11 位指数，52 位尾数</td>
-</tr>
-<tr>
-<td style="text-align:center">complex</td>
-<td style="text-align:center">complex128 的简写。</td>
-</tr>
-<tr>
-<td style="text-align:center">complex64</td>
-<td style="text-align:center">复数，由两个 32 位浮点表示。</td>
-</tr>
-<tr>
-<td style="text-align:center">complex128</td>
-<td style="text-align:center">复数，由两个 64 位浮点表示。</td>
-</tr>
-<tr>
-<td style="text-align:center">object_</td>
-<td style="text-align:center">python对象</td>
-</tr>
-<tr>
-<td style="text-align:center">string_</td>
-<td style="text-align:center">字符串</td>
-</tr>
-<tr>
-<td style="text-align:center">unicode_</td>
-<td style="text-align:center">unicode类型</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1.1</span>,<span class="number">2.2</span>,<span class="number">3.3</span>],dtype=np.float64)</span><br><span class="line">a.astype(<span class="built_in">int</span>).dtype <span class="comment"># 将a的数值类型从float64转为int64</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="Numpy数组生成"><a href="#Numpy数组生成" class="headerlink" title="Numpy数组生成"></a>Numpy数组生成</h1><blockquote>
-<p>Numpy中，ndarray多维数组对象有六个参数：</p>
-<ul>
-<li>shape：数组的形状</li>
-<li>dtype：数组类型</li>
-<li>buffer：对象暴露缓冲区接口</li>
-<li>offset：数组数据的偏移量</li>
-<li>strides：数据步长</li>
-<li>order：{‘C’,’F’},以行或列为主排列顺序</li>
-</ul>
-</blockquote>
-<h2 id="列表或元组转换"><a href="#列表或元组转换" class="headerlink" title="列表或元组转换"></a>列表或元组转换</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(<span class="built_in">object</span>,dtype=<span class="literal">None</span>,copy=<span class="literal">True</span>,order=<span class="literal">None</span>,subok=<span class="literal">False</span>,ndmin=<span class="number">0</span>)</span><br><span class="line">a1 = numpy.array(a) <span class="comment"># 深拷贝</span></span><br><span class="line">a2 = numpy.asarray(a) <span class="comment"># 浅拷贝</span></span><br></pre></td></tr></table></figure>
-<p>其中参数：</p>
-<ol>
-<li><code>object</code>：列表、元组等。</li>
-<li><code>dtype</code>：数据类型。如果未给出，则类型为被保存对象所需的最小类型。</li>
-<li><code>copy</code>：布尔类型，默认 True，表示复制对象。</li>
-<li><code>order</code>：顺序。</li>
-<li><code>subok</code>：布尔类型，表示子类是否被传递。</li>
-<li><code>ndmin</code>：生成的数组应具有的最小维数。</li>
-</ol>
-</blockquote>
-<h2 id="numpy原生方法创建"><a href="#numpy原生方法创建" class="headerlink" title="numpy原生方法创建"></a>numpy原生方法创建</h2><h3 id="arange方法创建"><a href="#arange方法创建" class="headerlink" title="arange方法创建"></a>arange方法创建</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numpy.arange(start,stop,step,dtype=<span class="literal">None</span>)</span><br><span class="line">例：numpy.arange(<span class="number">3</span>,<span class="number">7</span>,<span class="number">0.5</span>,dtype=<span class="string">&#x27;float32&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>arange()的功能是在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step</p>
-</blockquote>
-<h3 id="linspace方法创建"><a href="#linspace方法创建" class="headerlink" title="linspace方法创建"></a>linspace方法创建</h3>
+</ol></blockquote>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/04/Numpy/#more" rel="contents">

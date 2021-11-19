@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="概念 线性回归(Linear regression)是利用回归方程(函数)对一个或多个自变量(特征值)和因变量(目标值)之间关系进行建模的一种分析方式。 特点：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归  非线性关系回归方程可以理解为：\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3  损失及优化损失函数   优化算法正规方程  推导过程：">
+  <meta name="description" content="概念 线性回归(Linear regression)是利用回归方程(函数)对一个或多个自变量(特征值)和因变量(目标值)之间关系进行建模的一种分析方式。 特点：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归  非线性关系回归方程可以理解为：\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归">
 <meta property="og:url" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/index.html">
 <meta property="og:site_name" content="畅快的伊瓦西">
-<meta property="og:description" content="概念 线性回归(Linear regression)是利用回归方程(函数)对一个或多个自变量(特征值)和因变量(目标值)之间关系进行建模的一种分析方式。 特点：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归  非线性关系回归方程可以理解为：\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3  损失及优化损失函数   优化算法正规方程  推导过程：">
+<meta property="og:description" content="概念 线性回归(Linear regression)是利用回归方程(函数)对一个或多个自变量(特征值)和因变量(目标值)之间关系进行建模的一种分析方式。 特点：只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归  非线性关系回归方程可以理解为：\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221102904866.png">
 <meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103604185.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115645244.png">
 <meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115855169.png">
 <meta property="article:published_time" content="2021-05-04T17:08:43.000Z">
-<meta property="article:modified_time" content="2021-05-04T17:08:43.000Z">
+<meta property="article:modified_time" content="2021-11-19T11:07:56.615Z">
 <meta property="article:author" content="Qijinli">
 <meta property="article:tag" content="LR">
 <meta name="twitter:card" content="summary">
@@ -231,6 +231,13 @@
 
               <time title="创建时间：2021-05-05 01:08:43" itemprop="dateCreated datePublished" datetime="2021-05-05T01:08:43+08:00">2021-05-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-19 19:07:56" itemprop="dateModified" datetime="2021-11-19T19:07:56+08:00">2021-11-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -265,6 +272,7 @@
 <p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221102904866.png" alt="image-20210221102904866"></p>
 <p>非线性关系回归方程可以理解为：<script type="math/tex">\omega_1x_1+\omega_2x_2^2+\omega_3x_3^3</script></p>
 </blockquote>
+<span id="more"></span>
 <h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><blockquote>
 <p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221103604185.png" alt="image-20210221103604185" style="zoom:50%;"></p>
 </blockquote>
