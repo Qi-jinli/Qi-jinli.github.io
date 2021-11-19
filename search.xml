@@ -1,6 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>EM算法</title>
+    <url>/2021/05/05/EM%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
+<p><code>EM算法</code>也称期望最大化(Expectation-Maximum,简称EM)算法。 它是一个基础算法，是很多机器学习领域算法的基础，比如隐式马尔科夫算法(HMM)等等。 EM算法是一种迭代优化策略，由于它的计算方法中每一次迭代都分两步，</p>
+<p>其中一个为期望步(<strong>E</strong>步)， 另一个为极大步(<strong>M</strong>步)，</p>
+<p>所以算法被称为EM算法(Expectation-Maximization Algorithm)。</p>
+</blockquote>
+<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><blockquote>
+<ol>
+<li><p>写出似然函数：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131655835.png" alt="image-20210304131655835" style="zoom:50%;"></p>
+</li>
+<li><p>对似然函数取对数：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131708768.png" alt="image-20210304131708768" style="zoom:50%;"></p>
+</li>
+<li><p><em>n</em>个样本观察数据$x=(x_1,x_2,…x_n)$，未观察到的隐含数据$z=(z_1,z_2,…z_n)$， 联合分布 <em>p</em>(<em>x</em>, <em>z</em>; <em>θ</em>) ，条件分布 <em>p</em>(<em>z</em>∣<em>x</em>, <em>θ</em>) ，最大迭代次数<em>J</em>。</p>
+</li>
+<li><p>随机初始化模型参数 <em>θ</em> 的初值$\theta_0$ ,<em>j</em> = 1, 2, …, <em>J</em>开始EM算法迭代:</p>
+<ol>
+<li><p><strong>E</strong>步:计算联合分布的条件概率期望:</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131724146.png" alt="image-20210304131724146" style="zoom:50%;"></p>
+</li>
+<li><p><strong>M</strong>步:极大化 $l(\theta,\theta_j)$ <strong>,</strong>得到$\theta_{j+1}$ :</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131735708.png" alt="image-20210304131735708" style="zoom:50%;"></p>
+</li>
+<li><p>如果$\theta_{j+1}$已经收敛，则算法结束。否则继续进行<strong>E</strong>步和<strong>M</strong>步进行迭代。</p>
+</li>
+</ol>
+</li>
+<li><p>输出:模型参数 <em>θ</em></p>
+</li>
+</ol>
+</blockquote>
+<h1 id="算法推导"><a href="#算法推导" class="headerlink" title="算法推导"></a>算法推导</h1><h2 id="Jensen不等式"><a href="#Jensen不等式" class="headerlink" title="Jensen不等式"></a>Jensen不等式</h2><blockquote>
+<p>设 f 是定义域为实数的函数，如果对所有实数X，f的二阶导数恒大于等于0，那么f为凸函数。Jensen不等式表达如下：</p>
+<p>如果 f 为凸函数，X为随机变量，那么：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131800686.png" alt="image-20210304131800686" style="zoom:50%;"></p>
+<p>其中E[ ] 为期望，也称为均值。</p>
+<p>Jensen不等式的等号成立的条件是当X为常量，即：函数f 的值为一条直线。</p>
+</blockquote>
+<h2 id="概率相关"><a href="#概率相关" class="headerlink" title="概率相关"></a>概率相关</h2><blockquote>
+<p>若随机变量X的分布用分布列 p(xi)或用密度函数 p(x)表示，则X的某一函数的<strong>数学期望</strong>为：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131859562.png" alt="image-20210304131859562" style="zoom: 33%;"></p>
+<p><strong>边缘分布列：</strong>在二维离散随机变量(X, Y)的联合分布列{P(X=xi, Y=yj)}中，对j求和所得的分布列</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131925477.png" alt="image-20210304131925477" style="zoom:50%;"></p>
+</blockquote>
+<h2 id="EM算法推导"><a href="#EM算法推导" class="headerlink" title="EM算法推导"></a>EM算法推导</h2><blockquote>
+<ol>
+<li><p>根据边缘分布列的定义首先改写$L(\theta)$:</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132228769.png" alt="image-20210304132228769" style="zoom:50%;"></p>
+</li>
+<li><p>定义隐变量Z的分布Qi：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132314245.png" alt="image-20210304132314245" style="zoom:50%;"></p>
+</li>
+<li><p>我们在(1)式的 ln 里，分子分母同乘一个值，得到(2)式：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132433141.png" alt="image-20210304132433141" style="zoom:50%;"></p>
+</li>
+<li><p>套用到Jensen不等式中，即为：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132510520.png" alt="image-20210304132510520" style="zoom:50%;"></p>
+</li>
+<li><p>其中lnx为凹，公式如下：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132550128.png" alt="image-20210304132550128" style="zoom:50%;"></p>
+</li>
+<li><p>将(4)式展开，得到如下：</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132614150.png" alt="image-20210304132614150" style="zoom:50%;"></p>
+</li>
+</ol>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<ol>
+<li><p>E步骤：固定 θ ，求隐含变量zi的概率分布，Qi(zi)。</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132711903.png" alt="image-20210304132711903" style="zoom:50%;"></p>
+</li>
+<li><p>M步骤：给定Qi(zi)，用极大似然估计来计算 θ，并更新。</p>
+<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132731622.png" alt="image-20210304132731622" style="zoom:50%;"></p>
+</li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>EM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HMM模型</title>
     <url>/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<h1 id="马尔科夫链"><a href="#马尔科夫链" class="headerlink" title="马尔科夫链"></a>马尔科夫链</h1><blockquote>
@@ -242,90 +329,232 @@
       </tags>
   </entry>
   <entry>
-    <title>EM算法</title>
-    <url>/2021/05/05/EM%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
-<p><code>EM算法</code>也称期望最大化(Expectation-Maximum,简称EM)算法。 它是一个基础算法，是很多机器学习领域算法的基础，比如隐式马尔科夫算法(HMM)等等。 EM算法是一种迭代优化策略，由于它的计算方法中每一次迭代都分两步，</p>
-<p>其中一个为期望步(<strong>E</strong>步)， 另一个为极大步(<strong>M</strong>步)，</p>
-<p>所以算法被称为EM算法(Expectation-Maximization Algorithm)。</p>
+    <title>Matplotlib</title>
+    <url>/2021/05/04/Matplotlib/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>注意：</strong></p>
+<p>在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 <code>%matplotlib inline</code>。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 <code>plt.show()</code>。</p>
 </blockquote>
-<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><blockquote>
-<ol>
-<li><p>写出似然函数：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131655835.png" alt="image-20210304131655835" style="zoom:50%;"></p>
-</li>
-<li><p>对似然函数取对数：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131708768.png" alt="image-20210304131708768" style="zoom:50%;"></p>
-</li>
-<li><p><em>n</em>个样本观察数据$x=(x_1,x_2,…x_n)$，未观察到的隐含数据$z=(z_1,z_2,…z_n)$， 联合分布 <em>p</em>(<em>x</em>, <em>z</em>; <em>θ</em>) ，条件分布 <em>p</em>(<em>z</em>∣<em>x</em>, <em>θ</em>) ，最大迭代次数<em>J</em>。</p>
-</li>
-<li><p>随机初始化模型参数 <em>θ</em> 的初值$\theta_0$ ,<em>j</em> = 1, 2, …, <em>J</em>开始EM算法迭代:</p>
-<ol>
-<li><p><strong>E</strong>步:计算联合分布的条件概率期望:</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131724146.png" alt="image-20210304131724146" style="zoom:50%;"></p>
-</li>
-<li><p><strong>M</strong>步:极大化 $l(\theta,\theta_j)$ <strong>,</strong>得到$\theta_{j+1}$ :</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131735708.png" alt="image-20210304131735708" style="zoom:50%;"></p>
-</li>
-<li><p>如果$\theta_{j+1}$已经收敛，则算法结束。否则继续进行<strong>E</strong>步和<strong>M</strong>步进行迭代。</p>
-</li>
-</ol>
-</li>
-<li><p>输出:模型参数 <em>θ</em></p>
-</li>
-</ol>
+<h1 id="简单图形绘制"><a href="#简单图形绘制" class="headerlink" title="简单图形绘制"></a>简单图形绘制</h1><blockquote>
+<p>需要导入 <code>pyplot</code> 模块，并约定简称为 <code>plt</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot([<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p><code>plt.plot()</code> 是 <code>pyplot</code> 模块下面的直线绘制（折线图）方法类。示例中包含了一个 <code>[2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]</code> 列表，Matplotlib 会默认将该列表作为 𝑦y 值，而 𝑥x 值会从 00 开始依次递增。</p>
+<p>当然，如果你需要自定义横坐标值，只需要传入两个列表即可。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matplotlib.pyplot.angle_spectrum</code></td>
+<td>绘制电子波谱图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.bar</code></td>
+<td>绘制柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.barh</code></td>
+<td>绘制直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.broken_barh</code></td>
+<td>绘制水平直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.contour</code></td>
+<td>绘制等高线图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.errorbar</code></td>
+<td>绘制误差线</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hexbin</code></td>
+<td>绘制六边形图案</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist</code></td>
+<td>绘制柱形图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist2d</code></td>
+<td>绘制水平柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.pie</code></td>
+<td>绘制饼状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.quiver</code></td>
+<td>绘制量场图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.scatter</code></td>
+<td>散点图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.specgram</code></td>
+<td>绘制光谱图</td>
+</tr>
+</tbody>
+</table>
+</div>
 </blockquote>
-<h1 id="算法推导"><a href="#算法推导" class="headerlink" title="算法推导"></a>算法推导</h1><h2 id="Jensen不等式"><a href="#Jensen不等式" class="headerlink" title="Jensen不等式"></a>Jensen不等式</h2><blockquote>
-<p>设 f 是定义域为实数的函数，如果对所有实数X，f的二阶导数恒大于等于0，那么f为凸函数。Jensen不等式表达如下：</p>
-<p>如果 f 为凸函数，X为随机变量，那么：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131800686.png" alt="image-20210304131800686" style="zoom:50%;"></p>
-<p>其中E[ ] 为期望，也称为均值。</p>
-<p>Jensen不等式的等号成立的条件是当X为常量，即：函数f 的值为一条直线。</p>
+<h1 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h1><h2 id="定义图形样式"><a href="#定义图形样式" class="headerlink" title="定义图形样式"></a>定义图形样式</h2><blockquote>
+<p>线形图通过 <code>matplotlib.pyplot.plot(*args, **kwargs)</code> 方法绘出。其中，<code>args</code> 代表数据输入，而 <code>kwargs</code> 的部分就是用于设置样式参数了。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha=</code></td>
+<td>设置线型的透明度，从 0.0 到 1.0</td>
+</tr>
+<tr>
+<td><code>color=</code></td>
+<td>设置线型的颜色</td>
+</tr>
+<tr>
+<td><code>fillstyle=</code></td>
+<td>设置线型的填充样式</td>
+</tr>
+<tr>
+<td><code>linestyle=</code></td>
+<td>设置线型的样式</td>
+</tr>
+<tr>
+<td><code>linewidth=</code></td>
+<td>设置线型的宽度</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>设置标记点的样式</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>散点图也是相似的，它们的很多样式参数都是大同小异</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s=</code></td>
+<td>散点大小</td>
+</tr>
+<tr>
+<td><code>c=</code></td>
+<td>散点颜色</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>散点样式</td>
+</tr>
+<tr>
+<td><code>cmap=</code></td>
+<td>定义多类别散点的颜色</td>
+</tr>
+<tr>
+<td><code>alpha=</code></td>
+<td>点的透明度</td>
+</tr>
+<tr>
+<td><code>edgecolors=</code></td>
+<td>散点边缘颜色</td>
+</tr>
+</tbody>
+</table>
+</div>
 </blockquote>
-<h2 id="概率相关"><a href="#概率相关" class="headerlink" title="概率相关"></a>概率相关</h2><blockquote>
-<p>若随机变量X的分布用分布列 p(xi)或用密度函数 p(x)表示，则X的某一函数的<strong>数学期望</strong>为：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131859562.png" alt="image-20210304131859562" style="zoom: 33%;"></p>
-<p><strong>边缘分布列：</strong>在二维离散随机变量(X, Y)的联合分布列{P(X=xi, Y=yj)}中，对j求和所得的分布列</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131925477.png" alt="image-20210304131925477" style="zoom:50%;"></p>
+<h2 id="定义图形位置"><a href="#定义图形位置" class="headerlink" title="定义图形位置"></a>定义图形位置</h2><blockquote>
+<p>在图形的绘制过程中，你可能需要调整图形的位置，或者把几张单独的图形拼接在一起。此时，我们就需要引入 <code>plt.figure</code> 图形对象了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">20</span>)  <span class="comment"># 生成数据</span></span><br><span class="line">y = x * x + <span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(元组),dpi=)  <span class="comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">axes = fig.add_axes([<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 控制画布的左, 下, 宽度, 高度</span></span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>大图套小图</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig = plt.figure()  <span class="comment"># 新建画板</span></span><br><span class="line">axes1 = fig.add_axes([<span class="number">0.1</span>, <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 大画布</span></span><br><span class="line">axes2 = fig.add_axes([<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.3</span>])  <span class="comment"># 小画布</span></span><br><span class="line"></span><br><span class="line">axes1.plot(x, y, <span class="string">&#x27;r&#x27;</span>)  <span class="comment"># 大画布</span></span><br><span class="line">axes2.plot(y, x, <span class="string">&#x27;g&#x27;</span>)  <span class="comment"># 小画布</span></span><br></pre></td></tr></table></figure>
+<p>Matplotlib 中，还有一种添加画布的方式，那就是 <code>plt.subplots()</code>，它和 <code>axes</code> 都等同于画布。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>借助于 <code>plt.subplots()</code>，我们就可以实现子图的绘制，也就是将多张图按一定顺序拼接在一起。</p>
+<p>其中axes设置标题方法不同：</p>
+<p>​    set_xticks</p>
+<p>​    set_yticks</p>
+<p>​    set_xlabel</p>
+<p>​    set_ylabel</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">2</span>)  <span class="comment"># 子图为 1 行，2 列</span></span><br><span class="line"><span class="keyword">for</span> ax <span class="keyword">in</span> axes:</span><br><span class="line"> ax.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>通过设置 <code>plt.subplots</code> 的参数，可以实现调节画布尺寸和显示精度</p>
+<p>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots(figsize=(<span class="number">16</span>, <span class="number">9</span>), dpi=<span class="number">50</span>)  <span class="comment"># 通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="EM算法推导"><a href="#EM算法推导" class="headerlink" title="EM算法推导"></a>EM算法推导</h2><blockquote>
-<ol>
-<li><p>根据边缘分布列的定义首先改写$L(\theta)$:</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132228769.png" alt="image-20210304132228769" style="zoom:50%;"></p>
-</li>
-<li><p>定义隐变量Z的分布Qi：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132314245.png" alt="image-20210304132314245" style="zoom:50%;"></p>
-</li>
-<li><p>我们在(1)式的 ln 里，分子分母同乘一个值，得到(2)式：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132433141.png" alt="image-20210304132433141" style="zoom:50%;"></p>
-</li>
-<li><p>套用到Jensen不等式中，即为：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132510520.png" alt="image-20210304132510520" style="zoom:50%;"></p>
-</li>
-<li><p>其中lnx为凹，公式如下：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132550128.png" alt="image-20210304132550128" style="zoom:50%;"></p>
-</li>
-<li><p>将(4)式展开，得到如下：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132614150.png" alt="image-20210304132614150" style="zoom:50%;"></p>
-</li>
-</ol>
+<h2 id="规范绘图方法"><a href="#规范绘图方法" class="headerlink" title="规范绘图方法"></a>规范绘图方法</h2><h3 id="添加图标题、图例"><a href="#添加图标题、图例" class="headerlink" title="添加图标题、图例"></a>添加图标题、图例</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line"></span><br><span class="line">axes.set_xlabel(<span class="string">&#x27;x label&#x27;</span>)  <span class="comment"># 横轴名称</span></span><br><span class="line">axes.set_ylabel(<span class="string">&#x27;y label&#x27;</span>)</span><br><span class="line">axes.set_title(<span class="string">&#x27;title&#x27;</span>)  <span class="comment"># 图形名称</span></span><br><span class="line"></span><br><span class="line">axes.plot(x, x**<span class="number">2</span>) <span class="comment"># 添加图例也可以传入label参数</span></span><br><span class="line">axes.plot(x, x**<span class="number">3</span>)</span><br><span class="line">axes.legend([<span class="string">&quot;y = x**2&quot;</span>, <span class="string">&quot;y = x**3&quot;</span>], loc=<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
+<p><code>loc</code> 参数标记图例位置，<code>1，2，3，4</code> 依次代表：右上角、左上角、左下角，右下角；<code>0</code> 代表自适应。</p>
 </blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<ol>
-<li><p>E步骤：固定 θ ，求隐含变量zi的概率分布，Qi(zi)。</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132711903.png" alt="image-20210304132711903" style="zoom:50%;"></p>
-</li>
-<li><p>M步骤：给定Qi(zi)，用极大似然估计来计算 θ，并更新。</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132731622.png" alt="image-20210304132731622" style="zoom:50%;"></p>
-</li>
-</ol>
+<h3 id="添加自定义刻度"><a href="#添加自定义刻度" class="headerlink" title="添加自定义刻度"></a>添加自定义刻度</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造x轴刻度标签</span></span><br><span class="line">x_ticks_label = [<span class="string">&quot;11点&#123;&#125;分&quot;</span>.<span class="built_in">format</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line"><span class="comment"># 构造y轴刻度</span></span><br><span class="line">y_ticks = <span class="built_in">range</span>(<span class="number">40</span>)</span><br><span class="line"><span class="comment"># 修改x,y轴坐标的刻度显示</span></span><br><span class="line">plt.xticks(x[::<span class="number">5</span>], x_ticks_label[::<span class="number">5</span>])</span><br><span class="line">plt.yticks(y_ticks[::<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<p>显示中文字体</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> mpl</span><br><span class="line"><span class="comment"># 设置显示中文字体</span></span><br><span class="line">mpl.rcParams[<span class="string">&quot;font.sans-serif&quot;</span>] = [<span class="string">&quot;SimHei&quot;</span>]</span><br><span class="line"><span class="comment"># 坐标轴无法正常显示中文时</span></span><br><span class="line">mpl.rcParams[<span class="string">&quot;axes.unicode_minus&quot;</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="线型、颜色、透明度"><a href="#线型、颜色、透明度" class="headerlink" title="线型、颜色、透明度"></a>线型、颜色、透明度</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line">axes.plot(x, x+<span class="number">1</span>, color=<span class="string">&quot;red&quot;</span>, alpha=<span class="number">0.5</span>)<span class="comment"># 颜色和透明度</span></span><br><span class="line">axes.plot(x, x+<span class="number">2</span>, color=<span class="string">&quot;#1155dd&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>更多线型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">12</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 线宽</span></span><br><span class="line">ax.plot(x, x+<span class="number">1</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">0.25</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">2</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">0.50</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">3</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">1.00</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">4</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">2.00</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 虚线类型</span></span><br><span class="line">ax.plot(x, x+<span class="number">5</span>, color=<span class="string">&quot;red&quot;</span>, lw=<span class="number">2</span>, linestyle=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">6</span>, color=<span class="string">&quot;red&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">7</span>, color=<span class="string">&quot;red&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 虚线交错宽度</span></span><br><span class="line">line, = ax.plot(x, x+<span class="number">8</span>, color=<span class="string">&quot;black&quot;</span>, lw=<span class="number">1.50</span>)</span><br><span class="line">line.set_dashes([<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 符号</span></span><br><span class="line">ax.plot(x, x + <span class="number">9</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">10</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">11</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;s&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">12</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 符号大小和颜色</span></span><br><span class="line">ax.plot(x, x+<span class="number">13</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">2</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">14</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">4</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">15</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>,</span><br><span class="line">     marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">8</span>, markerfacecolor=<span class="string">&quot;red&quot;</span>)</span><br><span class="line">   ax.plot(x, x+<span class="number">16</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>, marker=<span class="string">&#x27;s&#x27;</span>, markersize=<span class="number">8</span>,</span><br><span class="line">     markerfacecolor=<span class="string">&quot;yellow&quot;</span>, markeredgewidth=<span class="number">2</span>, markeredgecolor=<span class="string">&quot;blue&quot;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="画布网格、坐标轴范围"><a href="#画布网格、坐标轴范围" class="headerlink" title="画布网格、坐标轴范围"></a>画布网格、坐标轴范围</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">10</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示网格</span></span><br><span class="line">axes[<span class="number">0</span>].plot(x, x**<span class="number">2</span>, x, x**<span class="number">3</span>, lw=<span class="number">2</span>)</span><br><span class="line">axes[<span class="number">0</span>].grid(<span class="literal">True</span>,linestyle=<span class="string">&quot;--&quot;</span>,alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置坐标轴范围</span></span><br><span class="line">axes[<span class="number">1</span>].plot(x, x**<span class="number">2</span>, x, x**<span class="number">3</span>)</span><br><span class="line">axes[<span class="number">1</span>].set_ylim([<span class="number">0</span>, <span class="number">60</span>])</span><br><span class="line">axes[<span class="number">1</span>].set_xlim([<span class="number">2</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<p><code>除了折线图，Matplotlib 还支持绘制散点图、柱状图等其他常见图形。下面，我们绘制由散点图、梯步图、条形图、面积图构成的子图。</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line">fig, axes = plt.subplots(<span class="number">1</span>, <span class="number">4</span>, figsize=(<span class="number">16</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">axes[<span class="number">0</span>].scatter(x, x + <span class="number">0.25</span>*np.random.randn(<span class="built_in">len</span>(x)))</span><br><span class="line">axes[<span class="number">0</span>].set_title(<span class="string">&quot;scatter&quot;</span>)</span><br><span class="line"></span><br><span class="line">axes[<span class="number">1</span>].step(n, n**<span class="number">2</span>, lw=<span class="number">2</span>)</span><br><span class="line">axes[<span class="number">1</span>].set_title(<span class="string">&quot;step&quot;</span>)</span><br><span class="line"></span><br><span class="line">axes[<span class="number">2</span>].bar(n, n**<span class="number">2</span>, align=<span class="string">&quot;center&quot;</span>, width=<span class="number">0.5</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">axes[<span class="number">2</span>].set_title(<span class="string">&quot;bar&quot;</span>)</span><br><span class="line"></span><br><span class="line">axes[<span class="number">3</span>].fill_between(x, x**<span class="number">2</span>, x**<span class="number">3</span>, color=<span class="string">&quot;green&quot;</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">axes[<span class="number">3</span>].set_title(<span class="string">&quot;fill_between&quot;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h3><blockquote>
+<p>Matplotlib 中，文字标注的方法由 <code>matplotlib.pyplot.text()</code> 实现。最基本的样式为 <code>matplotlib.pyplot.text(x, y, s)</code>，其中 x, y 用于标注位置定位，s 代表标注的字符串。除此之外，你还可以通过 <code>fontsize=</code> , <code>horizontalalignment=</code> 等参数调整标注字体的大小，对齐样式等。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fig, axes &#x3D; plt.subplots()</span><br><span class="line"></span><br><span class="line">x_bar &#x3D; [10, 20, 30, 40, 50]  # 柱形图横坐标</span><br><span class="line">y_bar &#x3D; [0.5, 0.6, 0.3, 0.4, 0.8]  # 柱形图纵坐标</span><br><span class="line">bars &#x3D; axes.bar(x_bar, y_bar, color&#x3D;&#39;blue&#39;, label&#x3D;x_bar, width&#x3D;2)  # 绘制柱形图</span><br><span class="line">for i, rect in enumerate(bars):</span><br><span class="line">   x_text &#x3D; rect.get_x()  # 获取柱形图横坐标</span><br><span class="line">   y_text &#x3D; rect.get_height() + 0.01  # 获取柱子的高度并增加 0.01</span><br><span class="line">   plt.text(x_text, y_text, &#39;%.1f&#39; % y_bar[i])  # 标注文字</span><br></pre></td></tr></table></figure>
+<p>除了文字标注之外，还可以通过 <code>matplotlib.pyplot.annotate()</code> 方法向图像中添加箭头等样式标注。接下来，我们向上面的例子中增添一行增加箭头标记的代码。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line"></span><br><span class="line">bars = axes.bar(x_bar, y_bar, color=<span class="string">&#x27;blue&#x27;</span>, label=x_bar, width=<span class="number">2</span>)  <span class="comment"># 绘制柱形图</span></span><br><span class="line"><span class="keyword">for</span> i, rect <span class="keyword">in</span> <span class="built_in">enumerate</span>(bars):</span><br><span class="line">    x_text = rect.get_x()  <span class="comment"># 获取柱形图横坐标</span></span><br><span class="line">    y_text = rect.get_height() + <span class="number">0.01</span>  <span class="comment"># 获取柱子的高度并增加 0.01</span></span><br><span class="line">    plt.text(x_text, y_text, <span class="string">&#x27;%.1f&#x27;</span> % y_bar[i])  <span class="comment"># 标注文字</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 增加箭头标注</span></span><br><span class="line">    plt.annotate(<span class="string">&#x27;Min&#x27;</span>, xy=(<span class="number">32</span>, <span class="number">0.3</span>), xytext=(<span class="number">36</span>, <span class="number">0.3</span>),</span><br><span class="line">                 arrowprops=<span class="built_in">dict</span>(facecolor=<span class="string">&#x27;black&#x27;</span>, width=<span class="number">1</span>, headwidth=<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+<p><code>xy=()</code> 表示标注终点坐标，<code>xytext=()</code> 表示标注起点坐标。在箭头绘制的过程中，<code>arrowprops=()</code> 用于设置箭头样式，<code>facecolor=</code> 设置颜色，<code>width=</code> 设置箭尾宽度，<code>headwidth=</code> 设置箭头宽度，可以通过 <code>arrowstyle=</code> 改变箭头的样式。</p>
+</blockquote>
+<h1 id="常见图形绘制"><a href="#常见图形绘制" class="headerlink" title="常见图形绘制"></a>常见图形绘制</h1><blockquote>
+<p><strong>折线图</strong>：以折线的上升或下降来表示统计数量的增减变化的统计图</p>
+<p><strong>特点：能够显示数据的变化趋势，反映事物的变化情况。(变化)</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><strong>散点图：</strong>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量之间是否存在某种关联或总结坐标点的分布模式。</p>
+<p><strong>特点：判断变量之间是否存在数量关联趋势,展示离群点(分布规律)</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure>
+<p><strong>柱状图：</strong>排列在工作表的列或行中的数据可以绘制到柱状图中。</p>
+<p><strong>特点：绘制连离散的数据,能够一眼看出各个数据的大小,比较数据之间的差别。(统计/对比)</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.bar(x, width, align=<span class="string">&#x27;center&#x27;</span>, **kwargs)</span><br></pre></td></tr></table></figure>
+<p>Parameters:<br>    <code>x</code> : 需要传递的数据<br>    <code>width</code> : 柱状图的宽度<br>    <code>align</code> : 每个柱状图的位置对齐方式<br>         {‘center’, ‘edge’}, optional, default: ‘center’<br>    <code>`**kwargs</code> :<br>        color:选择柱状图的颜色</p>
+<p><strong>直方图：</strong>由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据范围，纵轴表示分布情况。</p>
+<p><strong>特点：绘制连续性的数据展示一组或者多组数据的分布状况(统计)</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">matplotlib.pyplot.hist(x, bins=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p>Parameters:<br>    <code>x</code>: 需要传递的数据<br>    <code>bins</code> : 组距</p>
+<p><strong>饼图：</strong>用于表示不同分类的占比情况，通过弧度大小来对比各种分类。</p>
+<p><strong>特点：分类数据的占比情况(占比)</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.pie(x, labels=,autopct=,colors)</span><br></pre></td></tr></table></figure>
+<p>Parameters:<br>    <code>x</code>:数量，自动算百分比<br>    <code>labels</code>:每部分名称<br>    <code>autopct</code>:占比显示指定%1.2f%%<br>    <code>colors</code>:每部分颜色</p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>机器学习</category>
+        <category>科学计算库</category>
       </categories>
       <tags>
-        <tag>EM</tag>
+        <tag>Matplotlib</tag>
       </tags>
   </entry>
   <entry>
@@ -888,232 +1117,479 @@
       </tags>
   </entry>
   <entry>
-    <title>Matplotlib</title>
-    <url>/2021/05/04/Matplotlib/</url>
-    <content><![CDATA[<blockquote>
-<p><strong>注意：</strong></p>
-<p>在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 <code>%matplotlib inline</code>。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 <code>plt.show()</code>。</p>
+    <title>Pandas</title>
+    <url>/2021/05/04/Pandas/</url>
+    <content><![CDATA[<h1 id="Pandas优势"><a href="#Pandas优势" class="headerlink" title="Pandas优势"></a>Pandas优势</h1><blockquote>
+<p><strong>增强图表可读性</strong></p>
+<p><strong>便捷的数据处理能力</strong></p>
+<p><strong>读取文件方便</strong></p>
+<p><strong>封装了Matplotlib、Numpy的画图和计算</strong></p>
 </blockquote>
-<h1 id="简单图形绘制"><a href="#简单图形绘制" class="headerlink" title="简单图形绘制"></a>简单图形绘制</h1><blockquote>
-<p>需要导入 <code>pyplot</code> 模块，并约定简称为 <code>plt</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot([<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p><code>plt.plot()</code> 是 <code>pyplot</code> 模块下面的直线绘制（折线图）方法类。示例中包含了一个 <code>[2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]</code> 列表，Matplotlib 会默认将该列表作为 𝑦y 值，而 𝑥x 值会从 00 开始依次递增。</p>
-<p>当然，如果你需要自定义横坐标值，只需要传入两个列表即可。</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><blockquote>
+<p>Pandas的数据类型主要有：Series（一维数组），DataFrame（二维数组），Panel（三维数组），PanelND（N维数组）</p>
+</blockquote>
+<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><blockquote>
+<p>Series是Pandas中最基本的一维数组，可以存储整数、浮点数、字符串等数据。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.Series(data=<span class="literal">None</span>,index=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>data</code>可以是字典，或者Numpy中的ndarray</li>
+<li><code>index</code>是数据索引</li>
+</ol>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = pandas.Series(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">30</span>&#125;)</span><br><span class="line">s = pandas.Series(np.random.randn(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>Series的属性</strong></p>
+<p><strong>index：索引</strong></p>
+<p><strong>values：数据</strong></p>
+</blockquote>
+<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p>区别于Series，其增加了columns索引。</p>
+<ul>
+<li>一维数组、列表、字典或者 Series 字典。</li>
+<li>二维或者结构化的 <code>numpy.ndarray</code>。</li>
+<li>一个 Series 或者另一个 DataFrame。</li>
+</ul>
+<p>例：</p>
+<ol>
+<li>使用由Series组成的字典来构建:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]),</span><br><span class="line">              <span class="string">&#x27;two&#x27;</span>: pd.Series([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])&#125;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>直接通过列表创建</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                   <span class="string">&#x27;two&#x27;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>由带字典的列表创建</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame([&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">4</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">5</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">6</span>&#125;])</span><br></pre></td></tr></table></figure>
+<ol>
+<li>基于二维数值来构建</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(np.random.randint(<span class="number">5</span>, size=(<span class="number">2</span>, <span class="number">4</span>)))</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.head() <span class="comment"># 默认显示前5条</span></span><br><span class="line">DataFrame.tail(<span class="number">7</span>) <span class="comment"># 指定显示后7条</span></span><br><span class="line">DataFrame.describe()<span class="comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span></span><br><span class="line">DataFrame.values <span class="comment"># 将DataFrame转换成Numpy数组</span></span><br><span class="line">DataFrame.index <span class="comment"># 查看索引</span></span><br><span class="line">DataFrame.columns <span class="comment"># 查看列名</span></span><br><span class="line">DataFrame.shape <span class="comment"># 查看形状</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><blockquote>
+<p><strong>修改行列索引值</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index = 新索引值</span><br></pre></td></tr></table></figure>
+<p><strong>重设索引值</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reset_index(drop=<span class="literal">False</span>)</span><br><span class="line"> <span class="number">1.</span>设置新的下标索引</span><br><span class="line"> <span class="number">2.</span>drop:默认为<span class="literal">False</span>，不删除原来索引，如果为<span class="literal">True</span>,删除原来的索引值</span><br></pre></td></tr></table></figure>
+<p><strong>以某列值设置为新的索引</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set_index(keys, drop=<span class="literal">True</span>)</span><br><span class="line"> <span class="number">1.</span>keys : 列索引名成或者列索引名称的列表</span><br><span class="line"> <span class="number">2.</span>drop : boolean, default <span class="literal">True</span>.当做新的索引，删除原来的列</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>
+<p>多级索引（也称层次化索引）是pandas的重要功能，可以在Series、DataFrame对象上拥有2个以及2个以上的索引。</p>
+<blockquote>
+<p><strong>multiIndex的特性</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">MultiIndex(levels=[[<span class="number">2012</span>, <span class="number">2013</span>, <span class="number">2014</span>], [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]],</span><br><span class="line">           labels=[[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;year&#x27;</span>, <span class="string">&#x27;month&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>多级或分层索引对象</p>
+<ul>
+<li>index属性<ul>
+<li>names:levels的名称</li>
+<li>levels：每个level的元组值</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.names</span><br><span class="line"><span class="comment"># FrozenList([&#x27;year&#x27;, &#x27;month&#x27;])</span></span><br><span class="line"></span><br><span class="line">df.index.levels</span><br><span class="line"><span class="comment"># FrozenList([[1, 2], [1, 4, 7, 10]])</span></span><br></pre></td></tr></table></figure>
+<p><strong>multiIndex的创建</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arrays = [[<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>], [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>]]</span><br><span class="line">pd.MultiIndex.from_arrays(arrays, names=(<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">MultiIndex(levels=[[<span class="number">1</span>, <span class="number">2</span>], [<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>]],</span><br><span class="line">           codes=[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>])</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h3><blockquote>
+<p><strong>panel的创建</strong></p>
+<p><code>pandas.Panel</code>(<em>data=None</em>, <em>items=None</em>, <em>major_axis=None</em>, <em>minor_axis=None</em>)</p>
+<ul>
+<li>作用：存储3维数组的Panel结构</li>
+<li>参数：<ul>
+<li><strong>data</strong> : ndarray或者dataframe</li>
+<li><strong>items</strong> : 索引或类似数组的对象，axis=0</li>
+<li><strong>major_axis</strong> : 索引或类似数组的对象，axis=1</li>
+<li><strong>minor_axis</strong> : 索引或类似数组的对象，axis=2</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p = pd.Panel(data=np.arange(<span class="number">24</span>).reshape(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>),</span><br><span class="line">                 items=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>),</span><br><span class="line">                 major_axis=pd.date_range(<span class="string">&#x27;20130101&#x27;</span>, periods=<span class="number">3</span>),</span><br><span class="line">                 minor_axis=[<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p><strong>查看panel数据</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p[:,:,<span class="string">&quot;first&quot;</span>]</span><br><span class="line">p[<span class="string">&quot;B&quot;</span>,:,:]</span><br></pre></td></tr></table></figure>
+<p><strong>注：Pandas从版本0.20.0开始弃用：推荐的用于表示3D数据的方法是通过DataFrame上的MultiIndex方法</strong></p>
+</blockquote>
+<h1 id="基本数据操作"><a href="#基本数据操作" class="headerlink" title="基本数据操作"></a>基本数据操作</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><h3 id="基于索引下标进行选择"><a href="#基于索引下标进行选择" class="headerlink" title="基于索引下标进行选择"></a>基于索引下标进行选择</h3><blockquote>
+<p>Pandas中的<code>.iloc</code>方法可以基于数字索引对数据集进行选择，可接受的类型：</p>
+<ol>
+<li>整数。例如：<code>5</code></li>
+<li>整数构成的列表或数组。例如：<code>[1, 2, 3]</code></li>
+<li>布尔数组。</li>
+<li>可返回索引值的函数或参数。</li>
+</ol>
+<p><code>df.iloc[]</code> 的 <code>[[行]，[列]]</code> 里面可以同时接受行和列的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;df.iloc[[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]] <span class="comment">#选择1，3，5行</span></span><br><span class="line">df.iloc[:, <span class="number">1</span>:<span class="number">4</span>] <span class="comment">#选择2-4列</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="基于标签名选择"><a href="#基于标签名选择" class="headerlink" title="基于标签名选择"></a>基于标签名选择</h3><blockquote>
+<p>除了根据数字索引选择，还可以直接根据标签对应的名称选择。这里用到的方法和上面的 <code>iloc</code> 很相似，少了个 <code>i</code> 为 <code>df.loc[]</code>,可接受类型有：</p>
+<ol>
+<li>单个标签。例如：<code>2</code> 或 <code>&#39;a&#39;</code>，这里的 <code>2</code> 指的是标签而不是索引位置。</li>
+<li>列表或数组包含的标签。例如：<code>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]</code>。</li>
+<li>切片对象。例如：<code>&#39;A&#39;:&#39;E&#39;</code>，注意这里和上面切片的不同之处，首尾都包含在内。</li>
+<li>布尔数组。</li>
+<li>可返回标签的函数或参数。</li>
+</ol>
+</blockquote>
+<h3 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h3><blockquote>
+<p>使用df.ix进行下标和名称组合索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.ix[<span class="number">0</span>:<span class="number">4</span>, [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+<p>推荐使用loc和iloc来获取的方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data.index[<span class="number">0</span>:<span class="number">4</span>], [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br><span class="line">data.iloc[<span class="number">0</span>:<span class="number">4</span>, data.columns.get_indexer([<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>])]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="直接进行索引"><a href="#直接进行索引" class="headerlink" title="直接进行索引"></a>直接进行索引</h3><blockquote>
+<p><code>先列后行</code>，按照索引的字符串进行索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[列索引值][行索引值]</span><br></pre></td></tr></table></figure>
+<p><strong>不可以先行后列</strong></p>
+<p><strong>也不可以传索引下标</strong></p>
+</blockquote>
+<h2 id="数据赋值"><a href="#数据赋值" class="headerlink" title="数据赋值"></a>数据赋值</h2><blockquote>
+<p>将close列赋值为1</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接修改原来的值</span></span><br><span class="line">df[<span class="string">&#x27;close&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">df.close = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="DataFrame排序"><a href="#DataFrame排序" class="headerlink" title="DataFrame排序"></a>DataFrame排序</h3><blockquote>
+<p>使用<code>df.sort_values(by=, ascending=)</code></p>
+<ul>
+<li>单个键或者多个键进行排序,</li>
+<li>参数：<ul>
+<li>by：指定排序参考的键，标签名或者列表</li>
+<li>ascending:默认升序<ul>
+<li>ascending=False:降序</li>
+<li>ascending=True:升序</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>使用<code>df.sort_index(axis=)</code>对指定轴索引进行排序，从小到大</p>
+</blockquote>
+<h3 id="Series排序"><a href="#Series排序" class="headerlink" title="Series排序"></a>Series排序</h3><blockquote>
+<ul>
+<li>使用<code>series.sort_values(ascending=True)</code>进行升序排序</li>
+<li>使用<code>series.sort_index()</code>进行排序</li>
+</ul>
+</blockquote>
+<h2 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h2><blockquote>
+<p><code>DataFrame.drop</code> 可以直接去掉数据集中指定的列和行。一般在使用时，我们指定 <code>labels</code> 标签参数，然后再通过 <code>axis</code> 指定按列或按行删除即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.drop(labels=[<span class="string">&#x27;Median Age&#x27;</span>, <span class="string">&#x27;Total Males&#x27;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><code>DataFrame.drop_duplicates</code>则通常用于数据去重，即剔除数据集中的重复值。使用方法非常简单，指定去除重复值规则，以及 <code>axis</code> 按列还是按行去除即可。</p>
+<p><code>DataFrame.dropna</code>也十分常用，其主要的用途是删除缺少值，即数据集中空缺的数据列或行。</p>
+</blockquote>
+<h1 id="DataFrame运算"><a href="#DataFrame运算" class="headerlink" title="DataFrame运算"></a>DataFrame运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><blockquote>
+<p><code>add(other)</code>:加法运算</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&#x27;open&#x27;</span>].add(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p><code>sub(other)</code>：减法运算</p>
+</blockquote>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><blockquote>
+<p><strong>逻辑运算符号</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>返回逻辑结果，布尔值</span><br><span class="line"><span class="comment"># 逻辑判断的结果可以作为筛选的依据</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>].head()</span><br></pre></td></tr></table></figure>
+<p>完成多个逻辑判断</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[(data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>) &amp; (data[<span class="string">&quot;open&quot;</span>] &lt; <span class="number">24</span>)].head()</span><br></pre></td></tr></table></figure>
+<p><strong>逻辑运算函数</strong></p>
+<p><code>query(expr)</code></p>
+<p><code>expr</code>:查询字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.query(<span class="string">&quot;open&lt;24 &amp; open&gt;23&quot;</span>).head()</span><br></pre></td></tr></table></figure>
+<p><code>isin(values)</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以指定值进行一个判断，从而进行筛选操作</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>].isin([<span class="number">23.53</span>, <span class="number">23.85</span>])]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
+<ol>
+<li><code>describe</code></li>
+</ol>
+<p>综合分析: 能够直接得出很多统计结果,<code>count</code>, <code>mean</code>, <code>std</code>, <code>min</code>, <code>max</code> 等</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算平均值、标准差、最大值、最小值</span></span><br><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>统计函数</code>：</li>
+</ol>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>方法</th>
-<th>含义</th>
+<th>函数</th>
+<th>意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>matplotlib.pyplot.angle_spectrum</code></td>
-<td>绘制电子波谱图</td>
+<td><code>sum</code></td>
+<td>总和</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.bar</code></td>
-<td>绘制柱状图</td>
+<td><code>mean</code></td>
+<td>平均值</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.barh</code></td>
-<td>绘制直方图</td>
+<td><code>median</code></td>
+<td>中位数</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.broken_barh</code></td>
-<td>绘制水平直方图</td>
+<td><code>min</code></td>
+<td>最小值</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.contour</code></td>
-<td>绘制等高线图</td>
+<td><code>max</code></td>
+<td>最大值</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.errorbar</code></td>
-<td>绘制误差线</td>
+<td><code>mode</code></td>
+<td>众数</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.hexbin</code></td>
-<td>绘制六边形图案</td>
+<td><code>abs</code></td>
+<td>绝对值</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.hist</code></td>
-<td>绘制柱形图</td>
+<td><code>prod</code></td>
+<td>连乘</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.hist2d</code></td>
-<td>绘制水平柱状图</td>
+<td><code>std</code></td>
+<td>标准差</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.pie</code></td>
-<td>绘制饼状图</td>
+<td><code>var</code></td>
+<td>方差</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.quiver</code></td>
-<td>绘制量场图</td>
+<td><code>idxmax</code></td>
+<td>最大值索引</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.scatter</code></td>
-<td>散点图</td>
+<td><code>idxmin</code></td>
+<td>最小值索引</td>
 </tr>
 <tr>
-<td><code>matplotlib.pyplot.specgram</code></td>
-<td>绘制光谱图</td>
+<td><code>count</code></td>
+<td>总样本数</td>
 </tr>
 </tbody>
 </table>
 </div>
-</blockquote>
-<h1 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h1><h2 id="定义图形样式"><a href="#定义图形样式" class="headerlink" title="定义图形样式"></a>定义图形样式</h2><blockquote>
-<p>线形图通过 <code>matplotlib.pyplot.plot(*args, **kwargs)</code> 方法绘出。其中，<code>args</code> 代表数据输入，而 <code>kwargs</code> 的部分就是用于设置样式参数了。</p>
+<p><strong>注意：对于单个函数去进行统计的时候，坐标轴还是按照默认列“columns” (axis=0, default)，如果要对行“index” 需要指定(axis=1)</strong></p>
+<ol>
+<li><code>累计统计函数:</code></li>
+</ol>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>参数</th>
-<th>含义</th>
+<th>函数</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>alpha=</code></td>
-<td>设置线型的透明度，从 0.0 到 1.0</td>
+<td><code>cumsum</code></td>
+<td><strong>计算前1/2/3/…/n个数的和</strong></td>
 </tr>
 <tr>
-<td><code>color=</code></td>
-<td>设置线型的颜色</td>
+<td><code>cummax</code></td>
+<td>计算前1/2/3/…/n个数的最大值</td>
 </tr>
 <tr>
-<td><code>fillstyle=</code></td>
-<td>设置线型的填充样式</td>
+<td><code>cummin</code></td>
+<td>计算前1/2/3/…/n个数的最小值</td>
 </tr>
 <tr>
-<td><code>linestyle=</code></td>
-<td>设置线型的样式</td>
-</tr>
-<tr>
-<td><code>linewidth=</code></td>
-<td>设置线型的宽度</td>
-</tr>
-<tr>
-<td><code>marker=</code></td>
-<td>设置标记点的样式</td>
-</tr>
-<tr>
-<td>……</td>
-<td>……</td>
+<td><code>cumprod</code></td>
+<td>计算前1/2/3/…/n个数的积</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>散点图也是相似的，它们的很多样式参数都是大同小异</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>s=</code></td>
-<td>散点大小</td>
-</tr>
-<tr>
-<td><code>c=</code></td>
-<td>散点颜色</td>
-</tr>
-<tr>
-<td><code>marker=</code></td>
-<td>散点样式</td>
-</tr>
-<tr>
-<td><code>cmap=</code></td>
-<td>定义多类别散点的颜色</td>
-</tr>
-<tr>
-<td><code>alpha=</code></td>
-<td>点的透明度</td>
-</tr>
-<tr>
-<td><code>edgecolors=</code></td>
-<td>散点边缘颜色</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><code>Dataframe.corr():</code>计算每两列之间的相关性</p>
 </blockquote>
-<h2 id="定义图形位置"><a href="#定义图形位置" class="headerlink" title="定义图形位置"></a>定义图形位置</h2><blockquote>
-<p>在图形的绘制过程中，你可能需要调整图形的位置，或者把几张单独的图形拼接在一起。此时，我们就需要引入 <code>plt.figure</code> 图形对象了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">20</span>)  <span class="comment"># 生成数据</span></span><br><span class="line">y = x * x + <span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(元组),dpi=)  <span class="comment"># 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">axes = fig.add_axes([<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 控制画布的左, 下, 宽度, 高度</span></span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>大图套小图</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig = plt.figure()  <span class="comment"># 新建画板</span></span><br><span class="line">axes1 = fig.add_axes([<span class="number">0.1</span>, <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 大画布</span></span><br><span class="line">axes2 = fig.add_axes([<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.3</span>])  <span class="comment"># 小画布</span></span><br><span class="line"></span><br><span class="line">axes1.plot(x, y, <span class="string">&#x27;r&#x27;</span>)  <span class="comment"># 大画布</span></span><br><span class="line">axes2.plot(y, x, <span class="string">&#x27;g&#x27;</span>)  <span class="comment"># 小画布</span></span><br></pre></td></tr></table></figure>
-<p>Matplotlib 中，还有一种添加画布的方式，那就是 <code>plt.subplots()</code>，它和 <code>axes</code> 都等同于画布。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>借助于 <code>plt.subplots()</code>，我们就可以实现子图的绘制，也就是将多张图按一定顺序拼接在一起。</p>
-<p>其中axes设置标题方法不同：</p>
-<p>​    set_xticks</p>
-<p>​    set_yticks</p>
-<p>​    set_xlabel</p>
-<p>​    set_ylabel</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">2</span>)  <span class="comment"># 子图为 1 行，2 列</span></span><br><span class="line"><span class="keyword">for</span> ax <span class="keyword">in</span> axes:</span><br><span class="line"> ax.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>通过设置 <code>plt.subplots</code> 的参数，可以实现调节画布尺寸和显示精度</p>
-<p>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots(figsize=(<span class="number">16</span>, <span class="number">9</span>), dpi=<span class="number">50</span>)  <span class="comment"># 通过 figsize 调节尺寸, dpi 调节显示精度</span></span><br><span class="line">axes.plot(x, y, <span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="自定义运算"><a href="#自定义运算" class="headerlink" title="自定义运算"></a>自定义运算</h2><blockquote>
+<p><code>apply(func, axis=0)</code></p>
+<ul>
+<li>func:自定义函数</li>
+<li>axis=0:默认是列，axis=1为行进行运算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个对列，最大值-最小值的函数</span></span><br><span class="line">data[[<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>]].apply(<span class="keyword">lambda</span> x: x.<span class="built_in">max</span>() - x.<span class="built_in">min</span>(), axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="规范绘图方法"><a href="#规范绘图方法" class="headerlink" title="规范绘图方法"></a>规范绘图方法</h2><h3 id="添加图标题、图例"><a href="#添加图标题、图例" class="headerlink" title="添加图标题、图例"></a>添加图标题、图例</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line"></span><br><span class="line">axes.set_xlabel(<span class="string">&#x27;x label&#x27;</span>)  <span class="comment"># 横轴名称</span></span><br><span class="line">axes.set_ylabel(<span class="string">&#x27;y label&#x27;</span>)</span><br><span class="line">axes.set_title(<span class="string">&#x27;title&#x27;</span>)  <span class="comment"># 图形名称</span></span><br><span class="line"></span><br><span class="line">axes.plot(x, x**<span class="number">2</span>) <span class="comment"># 添加图例也可以传入label参数</span></span><br><span class="line">axes.plot(x, x**<span class="number">3</span>)</span><br><span class="line">axes.legend([<span class="string">&quot;y = x**2&quot;</span>, <span class="string">&quot;y = x**3&quot;</span>], loc=<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
-<p><code>loc</code> 参数标记图例位置，<code>1，2，3，4</code> 依次代表：右上角、左上角、左下角，右下角；<code>0</code> 代表自适应。</p>
+<h1 id="Pandas画图"><a href="#Pandas画图" class="headerlink" title="Pandas画图"></a>Pandas画图</h1><blockquote>
+<ol>
+<li><p><code>pandas.DataFrame.plot:</code></p>
+<p><code>DataFrame.plot</code>(<em>kind=’line’</em>)</p>
+<p><code>kind : str</code>:需要绘制图形的种类</p>
+<ul>
+<li>‘line’ : line plot (default)</li>
+<li>‘bar’ : vertical bar plot</li>
+<li>‘barh’ : horizontal bar plot</li>
+<li>‘hist’ : histogram</li>
+<li>‘pie’ : pie plot</li>
+<li>‘scatter’ : scatter plot</li>
+</ul>
+</li>
+<li><p><code>pandas.Series.plot</code></p>
+</li>
+</ol>
 </blockquote>
-<h3 id="添加自定义刻度"><a href="#添加自定义刻度" class="headerlink" title="添加自定义刻度"></a>添加自定义刻度</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造x轴刻度标签</span></span><br><span class="line">x_ticks_label = [<span class="string">&quot;11点&#123;&#125;分&quot;</span>.<span class="built_in">format</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line"><span class="comment"># 构造y轴刻度</span></span><br><span class="line">y_ticks = <span class="built_in">range</span>(<span class="number">40</span>)</span><br><span class="line"><span class="comment"># 修改x,y轴坐标的刻度显示</span></span><br><span class="line">plt.xticks(x[::<span class="number">5</span>], x_ticks_label[::<span class="number">5</span>])</span><br><span class="line">plt.yticks(y_ticks[::<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<p>显示中文字体</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> mpl</span><br><span class="line"><span class="comment"># 设置显示中文字体</span></span><br><span class="line">mpl.rcParams[<span class="string">&quot;font.sans-serif&quot;</span>] = [<span class="string">&quot;SimHei&quot;</span>]</span><br><span class="line"><span class="comment"># 坐标轴无法正常显示中文时</span></span><br><span class="line">mpl.rcParams[<span class="string">&quot;axes.unicode_minus&quot;</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h1 id="文件读取与存储"><a href="#文件读取与存储" class="headerlink" title="文件读取与存储"></a>文件读取与存储</h1><h2 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_csv(filepath_or_buffer, sep =<span class="string">&#x27;,&#x27;</span>, usecols=[],engine=<span class="string">&#x27;python&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>filepath_or_buffer:文件路径</li>
+<li>sep :分隔符，默认用”,”隔开</li>
+<li>usecols:指定读取的列名，列表形式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_csv(path_or_buf=<span class="literal">None</span>, sep=<span class="string">&#x27;, ’, columns=None, header=True, index=True, mode=&#x27;</span>w<span class="string">&#x27;, encoding=None):</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>path_or_buf :文件路径</li>
+<li>sep :分隔符，默认用”,”隔开</li>
+<li>columns :选择需要的列索引,列表形式</li>
+<li>header :是否写进列索引值</li>
+<li>index:是否写进行行索引</li>
+<li>mode:’w’：重写, ‘a’ 追加</li>
+</ul>
 </blockquote>
-<h3 id="线型、颜色、透明度"><a href="#线型、颜色、透明度" class="headerlink" title="线型、颜色、透明度"></a>线型、颜色、透明度</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line">axes.plot(x, x+<span class="number">1</span>, color=<span class="string">&quot;red&quot;</span>, alpha=<span class="number">0.5</span>)<span class="comment"># 颜色和透明度</span></span><br><span class="line">axes.plot(x, x+<span class="number">2</span>, color=<span class="string">&quot;#1155dd&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>更多线型</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">12</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 线宽</span></span><br><span class="line">ax.plot(x, x+<span class="number">1</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">0.25</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">2</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">0.50</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">3</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">1.00</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">4</span>, color=<span class="string">&quot;blue&quot;</span>, linewidth=<span class="number">2.00</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 虚线类型</span></span><br><span class="line">ax.plot(x, x+<span class="number">5</span>, color=<span class="string">&quot;red&quot;</span>, lw=<span class="number">2</span>, linestyle=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">6</span>, color=<span class="string">&quot;red&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">7</span>, color=<span class="string">&quot;red&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 虚线交错宽度</span></span><br><span class="line">line, = ax.plot(x, x+<span class="number">8</span>, color=<span class="string">&quot;black&quot;</span>, lw=<span class="number">1.50</span>)</span><br><span class="line">line.set_dashes([<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 符号</span></span><br><span class="line">ax.plot(x, x + <span class="number">9</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">10</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">11</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;s&#x27;</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">12</span>, color=<span class="string">&quot;green&quot;</span>, lw=<span class="number">2</span>, ls=<span class="string">&#x27;--&#x27;</span>, marker=<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 符号大小和颜色</span></span><br><span class="line">ax.plot(x, x+<span class="number">13</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">2</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">14</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">4</span>)</span><br><span class="line">ax.plot(x, x+<span class="number">15</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>,</span><br><span class="line">     marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">8</span>, markerfacecolor=<span class="string">&quot;red&quot;</span>)</span><br><span class="line">   ax.plot(x, x+<span class="number">16</span>, color=<span class="string">&quot;purple&quot;</span>, lw=<span class="number">1</span>, ls=<span class="string">&#x27;-&#x27;</span>, marker=<span class="string">&#x27;s&#x27;</span>, markersize=<span class="number">8</span>,</span><br><span class="line">     markerfacecolor=<span class="string">&quot;yellow&quot;</span>, markeredgewidth=<span class="number">2</span>, markeredgecolor=<span class="string">&quot;blue&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="HDF5"><a href="#HDF5" class="headerlink" title="HDF5"></a>HDF5</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_hdf(path_or_buf，key=<span class="literal">None</span>，** kwargs):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>path_or_buffer:文件路径</li>
+<li>key:读取的键</li>
+<li>return:Theselected object</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_hdf(path_or_buf, key=, **kwargs*)</span><br></pre></td></tr></table></figure>
+<p>查看HD5文件中的所有key值：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install h5py</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line">f = h5py.File(<span class="string">&quot;path&quot;</span>,<span class="string">&quot;r&quot;</span>)</span><br><span class="line">f.keys()</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h3 id="画布网格、坐标轴范围"><a href="#画布网格、坐标轴范围" class="headerlink" title="画布网格、坐标轴范围"></a>画布网格、坐标轴范围</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">10</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示网格</span></span><br><span class="line">axes[<span class="number">0</span>].plot(x, x**<span class="number">2</span>, x, x**<span class="number">3</span>, lw=<span class="number">2</span>)</span><br><span class="line">axes[<span class="number">0</span>].grid(<span class="literal">True</span>,linestyle=<span class="string">&quot;--&quot;</span>,alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置坐标轴范围</span></span><br><span class="line">axes[<span class="number">1</span>].plot(x, x**<span class="number">2</span>, x, x**<span class="number">3</span>)</span><br><span class="line">axes[<span class="number">1</span>].set_ylim([<span class="number">0</span>, <span class="number">60</span>])</span><br><span class="line">axes[<span class="number">1</span>].set_xlim([<span class="number">2</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<p><code>除了折线图，Matplotlib 还支持绘制散点图、柱状图等其他常见图形。下面，我们绘制由散点图、梯步图、条形图、面积图构成的子图。</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line">fig, axes = plt.subplots(<span class="number">1</span>, <span class="number">4</span>, figsize=(<span class="number">16</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">axes[<span class="number">0</span>].scatter(x, x + <span class="number">0.25</span>*np.random.randn(<span class="built_in">len</span>(x)))</span><br><span class="line">axes[<span class="number">0</span>].set_title(<span class="string">&quot;scatter&quot;</span>)</span><br><span class="line"></span><br><span class="line">axes[<span class="number">1</span>].step(n, n**<span class="number">2</span>, lw=<span class="number">2</span>)</span><br><span class="line">axes[<span class="number">1</span>].set_title(<span class="string">&quot;step&quot;</span>)</span><br><span class="line"></span><br><span class="line">axes[<span class="number">2</span>].bar(n, n**<span class="number">2</span>, align=<span class="string">&quot;center&quot;</span>, width=<span class="number">0.5</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">axes[<span class="number">2</span>].set_title(<span class="string">&quot;bar&quot;</span>)</span><br><span class="line"></span><br><span class="line">axes[<span class="number">3</span>].fill_between(x, x**<span class="number">2</span>, x**<span class="number">3</span>, color=<span class="string">&quot;green&quot;</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">axes[<span class="number">3</span>].set_title(<span class="string">&quot;fill_between&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, typ=<span class="string">&#x27;frame&#x27;</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将JSON格式准换成默认的Pandas DataFrame格式</li>
+<li>orient : JSON string format<ul>
+<li>‘split’ : dict like {index -&gt; [index], columns -&gt; [columns], data -&gt; [values]}<ul>
+<li>split 将索引总结到索引，列名到列名，数据到数据。将三部分都分开了</li>
+</ul>
+</li>
+<li>‘records’ : list like [{column -&gt; value}, … , {column -&gt; value}]<ul>
+<li>records 以<code>columns：values</code>的形式输出</li>
+</ul>
+</li>
+<li>‘index’ : dict like {index -&gt; {column -&gt; value}}<ul>
+<li>index 以<code>index：&#123;columns：values&#125;...</code>的形式输出</li>
+</ul>
+</li>
+<li>‘columns’ : dict like {column -&gt; {index -&gt; value}},默认该格式<ul>
+<li>colums 以<code>columns:&#123;index:values&#125;</code>的形式输出</li>
+</ul>
+</li>
+<li>‘values’ : just the values array<ul>
+<li>values 直接输出值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>lines : 默认False<ul>
+<li>按照每行读取json对象</li>
+</ul>
+</li>
+<li>typ : 默认‘frame’， 指定转换成的对象类型series或者dataframe</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将Pandas 对象存储为json格式</li>
+<li><em>path_or_buf=None</em>：文件地址</li>
+<li>orient:存储的json形式，{‘split’,’records’,’index’,’columns’,’values’}</li>
+<li>lines:一个对象存储为一行</li>
+</ul>
 </blockquote>
-<h3 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h3><blockquote>
-<p>Matplotlib 中，文字标注的方法由 <code>matplotlib.pyplot.text()</code> 实现。最基本的样式为 <code>matplotlib.pyplot.text(x, y, s)</code>，其中 x, y 用于标注位置定位，s 代表标注的字符串。除此之外，你还可以通过 <code>fontsize=</code> , <code>horizontalalignment=</code> 等参数调整标注字体的大小，对齐样式等。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fig, axes &#x3D; plt.subplots()</span><br><span class="line"></span><br><span class="line">x_bar &#x3D; [10, 20, 30, 40, 50]  # 柱形图横坐标</span><br><span class="line">y_bar &#x3D; [0.5, 0.6, 0.3, 0.4, 0.8]  # 柱形图纵坐标</span><br><span class="line">bars &#x3D; axes.bar(x_bar, y_bar, color&#x3D;&#39;blue&#39;, label&#x3D;x_bar, width&#x3D;2)  # 绘制柱形图</span><br><span class="line">for i, rect in enumerate(bars):</span><br><span class="line">   x_text &#x3D; rect.get_x()  # 获取柱形图横坐标</span><br><span class="line">   y_text &#x3D; rect.get_height() + 0.01  # 获取柱子的高度并增加 0.01</span><br><span class="line">   plt.text(x_text, y_text, &#39;%.1f&#39; % y_bar[i])  # 标注文字</span><br></pre></td></tr></table></figure>
-<p>除了文字标注之外，还可以通过 <code>matplotlib.pyplot.annotate()</code> 方法向图像中添加箭头等样式标注。接下来，我们向上面的例子中增添一行增加箭头标记的代码。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, axes = plt.subplots()</span><br><span class="line"></span><br><span class="line">bars = axes.bar(x_bar, y_bar, color=<span class="string">&#x27;blue&#x27;</span>, label=x_bar, width=<span class="number">2</span>)  <span class="comment"># 绘制柱形图</span></span><br><span class="line"><span class="keyword">for</span> i, rect <span class="keyword">in</span> <span class="built_in">enumerate</span>(bars):</span><br><span class="line">    x_text = rect.get_x()  <span class="comment"># 获取柱形图横坐标</span></span><br><span class="line">    y_text = rect.get_height() + <span class="number">0.01</span>  <span class="comment"># 获取柱子的高度并增加 0.01</span></span><br><span class="line">    plt.text(x_text, y_text, <span class="string">&#x27;%.1f&#x27;</span> % y_bar[i])  <span class="comment"># 标注文字</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 增加箭头标注</span></span><br><span class="line">    plt.annotate(<span class="string">&#x27;Min&#x27;</span>, xy=(<span class="number">32</span>, <span class="number">0.3</span>), xytext=(<span class="number">36</span>, <span class="number">0.3</span>),</span><br><span class="line">                 arrowprops=<span class="built_in">dict</span>(facecolor=<span class="string">&#x27;black&#x27;</span>, width=<span class="number">1</span>, headwidth=<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
-<p><code>xy=()</code> 表示标注终点坐标，<code>xytext=()</code> 表示标注起点坐标。在箭头绘制的过程中，<code>arrowprops=()</code> 用于设置箭头样式，<code>facecolor=</code> 设置颜色，<code>width=</code> 设置箭尾宽度，<code>headwidth=</code> 设置箭头宽度，可以通过 <code>arrowstyle=</code> 改变箭头的样式。</p>
+<h1 id="高级处理"><a href="#高级处理" class="headerlink" title="高级处理"></a>高级处理</h1><h2 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h2><blockquote>
+<p>Pandas 为了更方便地检测缺失值，将不同类型数据的缺失均采用 <code>NaN</code> 标记。这里的 NaN 代表 Not a Number，它仅仅是作为一个标记。例外是，在时间序列里，时间戳的丢失采用 <code>NaT</code> 标记。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.<span class="built_in">all</span>(pd.notnull(df)) <span class="comment"># 没有缺失值返回True，有返回False</span></span><br><span class="line">np.<span class="built_in">any</span>(pd.isnull(df)) <span class="comment"># 没有缺失值返回False，有返回True</span></span><br></pre></td></tr></table></figure>
+<p>Pandas 中用于检测缺失值主要用到两个方法，分别是：<code>isna()</code>和 <code>notna()</code>。</p>
+<ol>
+<li><p>存在缺失值NaN</p>
+<ul>
+<li>删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不修改原数据</span></span><br><span class="line">movie.dropna()</span><br><span class="line"><span class="comment"># 可以定义新的变量接受或者用原来的变量名</span></span><br><span class="line">data = movie.dropna()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>替换缺失值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 替换存在缺失值的样本的两列</span></span><br><span class="line"><span class="comment"># 替换填充平均值，中位数</span></span><br><span class="line">movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].fillna(movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>​    b. 替换所有缺失值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> movie.columns:</span><br><span class="line">    <span class="keyword">if</span> np.<span class="built_in">all</span>(pd.notnull(movie[i])) == <span class="literal">False</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        movie[i].fillna(movie[i].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不是缺失值nan，有默认标记的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 全局取消证书验证</span></span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br></pre></td></tr></table></figure>
+<p>先替换‘?’为np.nan</p>
+<ul>
+<li>```python<br>df.replace(to_replace=”?”, value=np.nan)<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">     </span><br><span class="line">     + to_replace:替换前的值</span><br><span class="line">     + value:替换后的值</span><br><span class="line"></span><br><span class="line">`缺失值填充`：</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">df.fillna(<span class="number">0</span>) # 用<span class="number">0</span>替换缺失值</span><br><span class="line">df.fillna(<span class="function"><span class="keyword">method</span>=&#x27;<span class="title">pad</span>&#x27;) # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;bfill&#x27;</span>)</span> # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;pad&#x27;</span>, limit=1)</span>  # 最多填充一项</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(df.mean()</span>[&#x27;<span class="title">C</span>&#x27;:</span><span class="string">&#x27;E&#x27;</span>]) #对C列到E列用平均值填充</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
 </blockquote>
-<h1 id="常见图形绘制"><a href="#常见图形绘制" class="headerlink" title="常见图形绘制"></a>常见图形绘制</h1><blockquote>
-<p><strong>折线图</strong>：以折线的上升或下降来表示统计数量的增减变化的统计图</p>
-<p><strong>特点：能够显示数据的变化趋势，反映事物的变化情况。(变化)</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot(x, y)</span><br></pre></td></tr></table></figure>
-<p><strong>散点图：</strong>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量之间是否存在某种关联或总结坐标点的分布模式。</p>
-<p><strong>特点：判断变量之间是否存在数量关联趋势,展示离群点(分布规律)</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure>
-<p><strong>柱状图：</strong>排列在工作表的列或行中的数据可以绘制到柱状图中。</p>
-<p><strong>特点：绘制连离散的数据,能够一眼看出各个数据的大小,比较数据之间的差别。(统计/对比)</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.bar(x, width, align=<span class="string">&#x27;center&#x27;</span>, **kwargs)</span><br></pre></td></tr></table></figure>
-<p>Parameters:<br>    <code>x</code> : 需要传递的数据<br>    <code>width</code> : 柱状图的宽度<br>    <code>align</code> : 每个柱状图的位置对齐方式<br>         {‘center’, ‘edge’}, optional, default: ‘center’<br>    <code>`**kwargs</code> :<br>        color:选择柱状图的颜色</p>
-<p><strong>直方图：</strong>由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据范围，纵轴表示分布情况。</p>
-<p><strong>特点：绘制连续性的数据展示一组或者多组数据的分布状况(统计)</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">matplotlib.pyplot.hist(x, bins=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p>Parameters:<br>    <code>x</code>: 需要传递的数据<br>    <code>bins</code> : 组距</p>
-<p><strong>饼图：</strong>用于表示不同分类的占比情况，通过弧度大小来对比各种分类。</p>
-<p><strong>特点：分类数据的占比情况(占比)</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.pie(x, labels=,autopct=,colors)</span><br></pre></td></tr></table></figure>
-<p>Parameters:<br>    <code>x</code>:数量，自动算百分比<br>    <code>labels</code>:每部分名称<br>    <code>autopct</code>:占比显示指定%1.2f%%<br>    <code>colors</code>:每部分颜色</p>
+<h2 id="插值填充"><a href="#插值填充" class="headerlink" title="插值填充"></a>插值填充</h2><blockquote>
+<p>插值是数值分析中一种方法。简而言之，就是借助于一个函数（线性或非线性），再根据已知数据去求解未知数据的值。插值在数据领域非常常见，它的好处在于，可以尽量去还原数据本身的样子。</p>
+<p>可以通过<code>interpolate</code>方法完成线性插值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>: [<span class="number">1.1</span>, <span class="number">2.2</span>, np.nan, <span class="number">4.5</span>, <span class="number">5.7</span>, <span class="number">6.9</span>],</span><br><span class="line">                <span class="string">&#x27;B&#x27;</span>: [<span class="number">.21</span>, np.nan, np.nan, <span class="number">3.1</span>, <span class="number">11.7</span>, <span class="number">13.2</span>]&#125;)</span><br><span class="line">df_interpolate = df.interpolate()</span><br></pre></td></tr></table></figure>
+<p>对于 <code>interpolate()</code>支持的插值算法，也就是 <code>method=</code></p>
+<ol>
+<li>如果你的数据增长速率越来越快，可以选择 <code>method=&#39;quadratic&#39;</code>二次插值。</li>
+<li>如果数据集呈现出累计分布的样子，推荐选择 <code>method=&#39;pchip&#39;</code>。</li>
+<li>如果需要填补缺省值，以平滑绘图为目标，推荐选择 <code>method=&#39;akima&#39;</code>。</li>
+</ol>
+<p>需要安装了Scipy库。</p>
+</blockquote>
+<h2 id="数据离散化"><a href="#数据离散化" class="headerlink" title="数据离散化"></a>数据离散化</h2><blockquote>
+<p>连续属性离散化的目的是为了简化数据结构，<strong>数据离散化技术可以用来减少给定连续属性值的个数</strong>。离散化方法经常作为数据挖掘的工具。</p>
+<p><strong>连续属性的离散化就是在连续属性的值域上，将值域划分为若干个离散的区间，最后用不同的符号或整数</strong> <strong>值代表落在每个子区间中的属性值。</strong></p>
+<p><strong>自动分组：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.qcut(data, num) <span class="comment">#将数据分为差不多数量的几组,一般会与value_counts搭配使用，统计每组的个数，num为组数</span></span><br><span class="line">series.value_counts()：<span class="comment">#统计分组次数</span></span><br></pre></td></tr></table></figure>
+<p><strong>自定义分组：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.cut(data, bins):</span><br></pre></td></tr></table></figure>
+<p>bins参数为自己定义的分组区间，用列表</p>
+<p><strong>分组数据变成one-hot编码：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.get_dummies(data, prefix=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>data:array-like, Series, or DataFrame</li>
+<li>prefix:分组名字</li>
+</ul>
+</blockquote>
+<h2 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.concat([data1, data2], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>按照行或列进行合并,axis=0为列索引，axis=1为行索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, how=<span class="string">&#x27;inner&#x27;</span>, on=[]):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以指定按照两组数据的共同键值对合并或者左右各自</li>
+<li><code>left</code>: DataFrame</li>
+<li><code>right</code>: 另一个DataFrame</li>
+<li><code>on</code>: 指定的共同键，列表</li>
+<li><code>how</code>:按照什么方式连接，left，right，outer，inner,默认inner</li>
+</ul>
+</blockquote>
+<h2 id="交叉表和透视表"><a href="#交叉表和透视表" class="headerlink" title="交叉表和透视表"></a>交叉表和透视表</h2><blockquote>
+<ul>
+<li><p>交叉表：交叉表用于计算一列数据对于另外一列数据的分组个数(用于统计分组频率的特殊透视表)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.crosstab(index,columns)</span><br></pre></td></tr></table></figure>
+<p>按index进行分组并作为行索引，并统计columns值的各个频数</p>
+</li>
+<li><p>透视表：透视表是将原有的DataFrame的列分别作为行索引和列索引，然后对指定的列应用聚集函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean)</span><br></pre></td></tr></table></figure>
+<p>将values按照index分组，默认使用mean()聚合函数</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="分组与聚合"><a href="#分组与聚合" class="headerlink" title="分组与聚合"></a>分组与聚合</h2><blockquote>
+<p><strong>分组：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.groupby(key, as_index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p><code>key</code>:分组的列数据，可以多个</p>
+<p><strong>聚合：</strong></p>
+<p><code>agg(&#123;&quot;列名&quot;：np.聚合函数&#125;)</code></p>
+<p><code>max(),min(),mean(),std()</code>等函数</p>
 </blockquote>
 ]]></content>
       <categories>
         <category>科学计算库</category>
       </categories>
       <tags>
-        <tag>Matplotlib</tag>
+        <tag>Pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -2095,482 +2571,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pandas</title>
-    <url>/2021/05/04/Pandas/</url>
-    <content><![CDATA[<h1 id="Pandas优势"><a href="#Pandas优势" class="headerlink" title="Pandas优势"></a>Pandas优势</h1><blockquote>
-<p><strong>增强图表可读性</strong></p>
-<p><strong>便捷的数据处理能力</strong></p>
-<p><strong>读取文件方便</strong></p>
-<p><strong>封装了Matplotlib、Numpy的画图和计算</strong></p>
-</blockquote>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><blockquote>
-<p>Pandas的数据类型主要有：Series（一维数组），DataFrame（二维数组），Panel（三维数组），PanelND（N维数组）</p>
-</blockquote>
-<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><blockquote>
-<p>Series是Pandas中最基本的一维数组，可以存储整数、浮点数、字符串等数据。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.Series(data=<span class="literal">None</span>,index=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>data</code>可以是字典，或者Numpy中的ndarray</li>
-<li><code>index</code>是数据索引</li>
-</ol>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = pandas.Series(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">30</span>&#125;)</span><br><span class="line">s = pandas.Series(np.random.randn(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>Series的属性</strong></p>
-<p><strong>index：索引</strong></p>
-<p><strong>values：数据</strong></p>
-</blockquote>
-<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p>区别于Series，其增加了columns索引。</p>
-<ul>
-<li>一维数组、列表、字典或者 Series 字典。</li>
-<li>二维或者结构化的 <code>numpy.ndarray</code>。</li>
-<li>一个 Series 或者另一个 DataFrame。</li>
-</ul>
-<p>例：</p>
-<ol>
-<li>使用由Series组成的字典来构建:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]),</span><br><span class="line">              <span class="string">&#x27;two&#x27;</span>: pd.Series([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])&#125;)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>直接通过列表创建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;one&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                   <span class="string">&#x27;two&#x27;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]&#125;)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>由带字典的列表创建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame([&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">4</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">5</span>&#125;,</span><br><span class="line">                   &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">6</span>&#125;])</span><br></pre></td></tr></table></figure>
-<ol>
-<li>基于二维数值来构建</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.DataFrame(np.random.randint(<span class="number">5</span>, size=(<span class="number">2</span>, <span class="number">4</span>)))</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="DataFrame的属性"><a href="#DataFrame的属性" class="headerlink" title="DataFrame的属性"></a>DataFrame的属性</h3><p><strong>查看DataFrame属性</strong></p>
-<blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.head() <span class="comment"># 默认显示前5条</span></span><br><span class="line">DataFrame.tail(<span class="number">7</span>) <span class="comment"># 指定显示后7条</span></span><br><span class="line">DataFrame.describe()<span class="comment"># 对数据集进行概览，会输出每一列数据的计数、最大值、最小值</span></span><br><span class="line">DataFrame.values <span class="comment"># 将DataFrame转换成Numpy数组</span></span><br><span class="line">DataFrame.index <span class="comment"># 查看索引</span></span><br><span class="line">DataFrame.columns <span class="comment"># 查看列名</span></span><br><span class="line">DataFrame.shape <span class="comment"># 查看形状</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="DatatFrame索引的设置"><a href="#DatatFrame索引的设置" class="headerlink" title="DatatFrame索引的设置"></a>DatatFrame索引的设置</h3><blockquote>
-<p><strong>修改行列索引值</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index = 新索引值</span><br></pre></td></tr></table></figure>
-<p><strong>重设索引值</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reset_index(drop=<span class="literal">False</span>)</span><br><span class="line"> <span class="number">1.</span>设置新的下标索引</span><br><span class="line"> <span class="number">2.</span>drop:默认为<span class="literal">False</span>，不删除原来索引，如果为<span class="literal">True</span>,删除原来的索引值</span><br></pre></td></tr></table></figure>
-<p><strong>以某列值设置为新的索引</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set_index(keys, drop=<span class="literal">True</span>)</span><br><span class="line"> <span class="number">1.</span>keys : 列索引名成或者列索引名称的列表</span><br><span class="line"> <span class="number">2.</span>drop : boolean, default <span class="literal">True</span>.当做新的索引，删除原来的列</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="MultiIndex与Panel"><a href="#MultiIndex与Panel" class="headerlink" title="MultiIndex与Panel"></a>MultiIndex与Panel</h2><h3 id="MultiIndex"><a href="#MultiIndex" class="headerlink" title="MultiIndex"></a>MultiIndex</h3><p>MultiIndex是三维的数据结构;</p>
-<p>多级索引（也称层次化索引）是pandas的重要功能，可以在Series、DataFrame对象上拥有2个以及2个以上的索引。</p>
-<blockquote>
-<p><strong>multiIndex的特性</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">MultiIndex(levels=[[<span class="number">2012</span>, <span class="number">2013</span>, <span class="number">2014</span>], [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]],</span><br><span class="line">           labels=[[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;year&#x27;</span>, <span class="string">&#x27;month&#x27;</span>])</span><br></pre></td></tr></table></figure>
-<p>多级或分层索引对象</p>
-<ul>
-<li>index属性<ul>
-<li>names:levels的名称</li>
-<li>levels：每个level的元组值</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.names</span><br><span class="line"><span class="comment"># FrozenList([&#x27;year&#x27;, &#x27;month&#x27;])</span></span><br><span class="line"></span><br><span class="line">df.index.levels</span><br><span class="line"><span class="comment"># FrozenList([[1, 2], [1, 4, 7, 10]])</span></span><br></pre></td></tr></table></figure>
-<p><strong>multiIndex的创建</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arrays = [[<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>], [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>]]</span><br><span class="line">pd.MultiIndex.from_arrays(arrays, names=(<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">MultiIndex(levels=[[<span class="number">1</span>, <span class="number">2</span>], [<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>]],</span><br><span class="line">           codes=[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]],</span><br><span class="line">           names=[<span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;color&#x27;</span>])</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h3><blockquote>
-<p><strong>panel的创建</strong></p>
-<p><code>pandas.Panel</code>(<em>data=None</em>, <em>items=None</em>, <em>major_axis=None</em>, <em>minor_axis=None</em>)</p>
-<ul>
-<li>作用：存储3维数组的Panel结构</li>
-<li>参数：<ul>
-<li><strong>data</strong> : ndarray或者dataframe</li>
-<li><strong>items</strong> : 索引或类似数组的对象，axis=0</li>
-<li><strong>major_axis</strong> : 索引或类似数组的对象，axis=1</li>
-<li><strong>minor_axis</strong> : 索引或类似数组的对象，axis=2</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p = pd.Panel(data=np.arange(<span class="number">24</span>).reshape(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>),</span><br><span class="line">                 items=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>),</span><br><span class="line">                 major_axis=pd.date_range(<span class="string">&#x27;20130101&#x27;</span>, periods=<span class="number">3</span>),</span><br><span class="line">                 minor_axis=[<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>])</span><br></pre></td></tr></table></figure>
-<p><strong>查看panel数据</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p[:,:,<span class="string">&quot;first&quot;</span>]</span><br><span class="line">p[<span class="string">&quot;B&quot;</span>,:,:]</span><br></pre></td></tr></table></figure>
-<p><strong>注：Pandas从版本0.20.0开始弃用：推荐的用于表示3D数据的方法是通过DataFrame上的MultiIndex方法</strong></p>
-</blockquote>
-<h1 id="基本数据操作"><a href="#基本数据操作" class="headerlink" title="基本数据操作"></a>基本数据操作</h1><h2 id="数据索引"><a href="#数据索引" class="headerlink" title="数据索引"></a>数据索引</h2><h3 id="基于索引下标进行选择"><a href="#基于索引下标进行选择" class="headerlink" title="基于索引下标进行选择"></a>基于索引下标进行选择</h3><blockquote>
-<p>Pandas中的<code>.iloc</code>方法可以基于数字索引对数据集进行选择，可接受的类型：</p>
-<ol>
-<li>整数。例如：<code>5</code></li>
-<li>整数构成的列表或数组。例如：<code>[1, 2, 3]</code></li>
-<li>布尔数组。</li>
-<li>可返回索引值的函数或参数。</li>
-</ol>
-<p><code>df.iloc[]</code> 的 <code>[[行]，[列]]</code> 里面可以同时接受行和列的位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;df.iloc[[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]] <span class="comment">#选择1，3，5行</span></span><br><span class="line">df.iloc[:, <span class="number">1</span>:<span class="number">4</span>] <span class="comment">#选择2-4列</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="基于标签名选择"><a href="#基于标签名选择" class="headerlink" title="基于标签名选择"></a>基于标签名选择</h3><blockquote>
-<p>除了根据数字索引选择，还可以直接根据标签对应的名称选择。这里用到的方法和上面的 <code>iloc</code> 很相似，少了个 <code>i</code> 为 <code>df.loc[]</code>,可接受类型有：</p>
-<ol>
-<li>单个标签。例如：<code>2</code> 或 <code>&#39;a&#39;</code>，这里的 <code>2</code> 指的是标签而不是索引位置。</li>
-<li>列表或数组包含的标签。例如：<code>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]</code>。</li>
-<li>切片对象。例如：<code>&#39;A&#39;:&#39;E&#39;</code>，注意这里和上面切片的不同之处，首尾都包含在内。</li>
-<li>布尔数组。</li>
-<li>可返回标签的函数或参数。</li>
-</ol>
-</blockquote>
-<h3 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h3><blockquote>
-<p>使用df.ix进行下标和名称组合索引</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.ix[<span class="number">0</span>:<span class="number">4</span>, [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-<p>推荐使用loc和iloc来获取的方式</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data.index[<span class="number">0</span>:<span class="number">4</span>], [<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]]</span><br><span class="line">data.iloc[<span class="number">0</span>:<span class="number">4</span>, data.columns.get_indexer([<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>])]</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="直接进行索引"><a href="#直接进行索引" class="headerlink" title="直接进行索引"></a>直接进行索引</h3><blockquote>
-<p><code>先列后行</code>，按照索引的字符串进行索引</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[列索引值][行索引值]</span><br></pre></td></tr></table></figure>
-<p><strong>不可以先行后列</strong></p>
-<p><strong>也不可以传索引下标</strong></p>
-</blockquote>
-<h2 id="数据赋值"><a href="#数据赋值" class="headerlink" title="数据赋值"></a>数据赋值</h2><blockquote>
-<p>将close列赋值为1</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接修改原来的值</span></span><br><span class="line">df[<span class="string">&#x27;close&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">df.close = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="DataFrame排序"><a href="#DataFrame排序" class="headerlink" title="DataFrame排序"></a>DataFrame排序</h3><blockquote>
-<p>使用<code>df.sort_values(by=, ascending=)</code></p>
-<ul>
-<li>单个键或者多个键进行排序,</li>
-<li>参数：<ul>
-<li>by：指定排序参考的键，标签名或者列表</li>
-<li>ascending:默认升序<ul>
-<li>ascending=False:降序</li>
-<li>ascending=True:升序</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>使用<code>df.sort_index(axis=)</code>对指定轴索引进行排序，从小到大</p>
-</blockquote>
-<h3 id="Series排序"><a href="#Series排序" class="headerlink" title="Series排序"></a>Series排序</h3><blockquote>
-<ul>
-<li>使用<code>series.sort_values(ascending=True)</code>进行升序排序</li>
-<li>使用<code>series.sort_index()</code>进行排序</li>
-</ul>
-</blockquote>
-<h2 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h2><blockquote>
-<p><code>DataFrame.drop</code> 可以直接去掉数据集中指定的列和行。一般在使用时，我们指定 <code>labels</code> 标签参数，然后再通过 <code>axis</code> 指定按列或按行删除即可。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.drop(labels=[<span class="string">&#x27;Median Age&#x27;</span>, <span class="string">&#x27;Total Males&#x27;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><code>DataFrame.drop_duplicates</code>则通常用于数据去重，即剔除数据集中的重复值。使用方法非常简单，指定去除重复值规则，以及 <code>axis</code> 按列还是按行去除即可。</p>
-<p><code>DataFrame.dropna</code>也十分常用，其主要的用途是删除缺少值，即数据集中空缺的数据列或行。</p>
-</blockquote>
-<h1 id="DataFrame运算"><a href="#DataFrame运算" class="headerlink" title="DataFrame运算"></a>DataFrame运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><blockquote>
-<p><code>add(other)</code>:加法运算</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&#x27;open&#x27;</span>].add(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p><code>sub(other)</code>：减法运算</p>
-</blockquote>
-<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><blockquote>
-<p><strong>逻辑运算符号</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>返回逻辑结果，布尔值</span><br><span class="line"><span class="comment"># 逻辑判断的结果可以作为筛选的依据</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>].head()</span><br></pre></td></tr></table></figure>
-<p>完成多个逻辑判断</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[(data[<span class="string">&quot;open&quot;</span>] &gt; <span class="number">23</span>) &amp; (data[<span class="string">&quot;open&quot;</span>] &lt; <span class="number">24</span>)].head()</span><br></pre></td></tr></table></figure>
-<p><strong>逻辑运算函数</strong></p>
-<p><code>query(expr)</code></p>
-<p><code>expr</code>:查询字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.query(<span class="string">&quot;open&lt;24 &amp; open&gt;23&quot;</span>).head()</span><br></pre></td></tr></table></figure>
-<p><code>isin(values)</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以指定值进行一个判断，从而进行筛选操作</span></span><br><span class="line">data[data[<span class="string">&quot;open&quot;</span>].isin([<span class="number">23.53</span>, <span class="number">23.85</span>])]</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="统计运算"><a href="#统计运算" class="headerlink" title="统计运算"></a>统计运算</h2><blockquote>
-<ol>
-<li><code>describe</code></li>
-</ol>
-<p>综合分析: 能够直接得出很多统计结果,<code>count</code>, <code>mean</code>, <code>std</code>, <code>min</code>, <code>max</code> 等</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算平均值、标准差、最大值、最小值</span></span><br><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>统计函数</code>：</li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sum</code></td>
-<td>总和</td>
-</tr>
-<tr>
-<td><code>mean</code></td>
-<td>平均值</td>
-</tr>
-<tr>
-<td><code>median</code></td>
-<td>中位数</td>
-</tr>
-<tr>
-<td><code>min</code></td>
-<td>最小值</td>
-</tr>
-<tr>
-<td><code>max</code></td>
-<td>最大值</td>
-</tr>
-<tr>
-<td><code>mode</code></td>
-<td>众数</td>
-</tr>
-<tr>
-<td><code>abs</code></td>
-<td>绝对值</td>
-</tr>
-<tr>
-<td><code>prod</code></td>
-<td>连乘</td>
-</tr>
-<tr>
-<td><code>std</code></td>
-<td>标准差</td>
-</tr>
-<tr>
-<td><code>var</code></td>
-<td>方差</td>
-</tr>
-<tr>
-<td><code>idxmax</code></td>
-<td>最大值索引</td>
-</tr>
-<tr>
-<td><code>idxmin</code></td>
-<td>最小值索引</td>
-</tr>
-<tr>
-<td><code>count</code></td>
-<td>总样本数</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>注意：对于单个函数去进行统计的时候，坐标轴还是按照默认列“columns” (axis=0, default)，如果要对行“index” 需要指定(axis=1)</strong></p>
-<ol>
-<li><code>累计统计函数:</code></li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cumsum</code></td>
-<td><strong>计算前1/2/3/…/n个数的和</strong></td>
-</tr>
-<tr>
-<td><code>cummax</code></td>
-<td>计算前1/2/3/…/n个数的最大值</td>
-</tr>
-<tr>
-<td><code>cummin</code></td>
-<td>计算前1/2/3/…/n个数的最小值</td>
-</tr>
-<tr>
-<td><code>cumprod</code></td>
-<td>计算前1/2/3/…/n个数的积</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><code>Dataframe.corr():</code>计算每两列之间的相关性</p>
-</blockquote>
-<h2 id="自定义运算"><a href="#自定义运算" class="headerlink" title="自定义运算"></a>自定义运算</h2><blockquote>
-<p><code>apply(func, axis=0)</code></p>
-<ul>
-<li>func:自定义函数</li>
-<li>axis=0:默认是列，axis=1为行进行运算</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个对列，最大值-最小值的函数</span></span><br><span class="line">data[[<span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;close&#x27;</span>]].apply(<span class="keyword">lambda</span> x: x.<span class="built_in">max</span>() - x.<span class="built_in">min</span>(), axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="Pandas画图"><a href="#Pandas画图" class="headerlink" title="Pandas画图"></a>Pandas画图</h1><blockquote>
-<ol>
-<li><p><code>pandas.DataFrame.plot:</code></p>
-<p><code>DataFrame.plot</code>(<em>kind=’line’</em>)</p>
-<p><code>kind : str</code>:需要绘制图形的种类</p>
-<ul>
-<li>‘line’ : line plot (default)</li>
-<li>‘bar’ : vertical bar plot</li>
-<li>‘barh’ : horizontal bar plot</li>
-<li>‘hist’ : histogram</li>
-<li>‘pie’ : pie plot</li>
-<li>‘scatter’ : scatter plot</li>
-</ul>
-</li>
-<li><p><code>pandas.Series.plot</code></p>
-</li>
-</ol>
-</blockquote>
-<h1 id="文件读取与存储"><a href="#文件读取与存储" class="headerlink" title="文件读取与存储"></a>文件读取与存储</h1><h2 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_csv(filepath_or_buffer, sep =<span class="string">&#x27;,&#x27;</span>, usecols=[],engine=<span class="string">&#x27;python&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>filepath_or_buffer:文件路径</li>
-<li>sep :分隔符，默认用”,”隔开</li>
-<li>usecols:指定读取的列名，列表形式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_csv(path_or_buf=<span class="literal">None</span>, sep=<span class="string">&#x27;, ’, columns=None, header=True, index=True, mode=&#x27;</span>w<span class="string">&#x27;, encoding=None):</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>path_or_buf :文件路径</li>
-<li>sep :分隔符，默认用”,”隔开</li>
-<li>columns :选择需要的列索引,列表形式</li>
-<li>header :是否写进列索引值</li>
-<li>index:是否写进行行索引</li>
-<li>mode:’w’：重写, ‘a’ 追加</li>
-</ul>
-</blockquote>
-<h2 id="HDF5"><a href="#HDF5" class="headerlink" title="HDF5"></a>HDF5</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_hdf(path_or_buf，key=<span class="literal">None</span>，** kwargs):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>path_or_buffer:文件路径</li>
-<li>key:读取的键</li>
-<li>return:Theselected object</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_hdf(path_or_buf, key=, **kwargs*)</span><br></pre></td></tr></table></figure>
-<p>查看HD5文件中的所有key值：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install h5py</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line">f = h5py.File(<span class="string">&quot;path&quot;</span>,<span class="string">&quot;r&quot;</span>)</span><br><span class="line">f.keys()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.read_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, typ=<span class="string">&#x27;frame&#x27;</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将JSON格式准换成默认的Pandas DataFrame格式</li>
-<li>orient : JSON string format<ul>
-<li>‘split’ : dict like {index -&gt; [index], columns -&gt; [columns], data -&gt; [values]}<ul>
-<li>split 将索引总结到索引，列名到列名，数据到数据。将三部分都分开了</li>
-</ul>
-</li>
-<li>‘records’ : list like [{column -&gt; value}, … , {column -&gt; value}]<ul>
-<li>records 以<code>columns：values</code>的形式输出</li>
-</ul>
-</li>
-<li>‘index’ : dict like {index -&gt; {column -&gt; value}}<ul>
-<li>index 以<code>index：&#123;columns：values&#125;...</code>的形式输出</li>
-</ul>
-</li>
-<li>‘columns’ : dict like {column -&gt; {index -&gt; value}},默认该格式<ul>
-<li>colums 以<code>columns:&#123;index:values&#125;</code>的形式输出</li>
-</ul>
-</li>
-<li>‘values’ : just the values array<ul>
-<li>values 直接输出值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>lines : 默认False<ul>
-<li>按照每行读取json对象</li>
-</ul>
-</li>
-<li>typ : 默认‘frame’， 指定转换成的对象类型series或者dataframe</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.to_json(path_or_buf=<span class="literal">None</span>, orient=<span class="literal">None</span>, lines=<span class="literal">False</span>):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将Pandas 对象存储为json格式</li>
-<li><em>path_or_buf=None</em>：文件地址</li>
-<li>orient:存储的json形式，{‘split’,’records’,’index’,’columns’,’values’}</li>
-<li>lines:一个对象存储为一行</li>
-</ul>
-</blockquote>
-<h1 id="高级处理"><a href="#高级处理" class="headerlink" title="高级处理"></a>高级处理</h1><h2 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h2><blockquote>
-<p>Pandas 为了更方便地检测缺失值，将不同类型数据的缺失均采用 <code>NaN</code> 标记。这里的 NaN 代表 Not a Number，它仅仅是作为一个标记。例外是，在时间序列里，时间戳的丢失采用 <code>NaT</code> 标记。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.<span class="built_in">all</span>(pd.notnull(df)) <span class="comment"># 没有缺失值返回True，有返回False</span></span><br><span class="line">np.<span class="built_in">any</span>(pd.isnull(df)) <span class="comment"># 没有缺失值返回False，有返回True</span></span><br></pre></td></tr></table></figure>
-<p>Pandas 中用于检测缺失值主要用到两个方法，分别是：<code>isna()</code>和 <code>notna()</code>。</p>
-<ol>
-<li><p>存在缺失值NaN</p>
-<ul>
-<li>删除</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不修改原数据</span></span><br><span class="line">movie.dropna()</span><br><span class="line"><span class="comment"># 可以定义新的变量接受或者用原来的变量名</span></span><br><span class="line">data = movie.dropna()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>替换缺失值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 替换存在缺失值的样本的两列</span></span><br><span class="line"><span class="comment"># 替换填充平均值，中位数</span></span><br><span class="line">movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].fillna(movie[<span class="string">&#x27;Revenue (Millions)&#x27;</span>].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>​    b. 替换所有缺失值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> movie.columns:</span><br><span class="line">    <span class="keyword">if</span> np.<span class="built_in">all</span>(pd.notnull(movie[i])) == <span class="literal">False</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        movie[i].fillna(movie[i].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不是缺失值nan，有默认标记的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 全局取消证书验证</span></span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br></pre></td></tr></table></figure>
-<p>先替换‘?’为np.nan</p>
-<ul>
-<li>```python<br>df.replace(to_replace=”?”, value=np.nan)<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">     </span><br><span class="line">     + to_replace:替换前的值</span><br><span class="line">     + value:替换后的值</span><br><span class="line"></span><br><span class="line">`缺失值填充`：</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">df.fillna(<span class="number">0</span>) # 用<span class="number">0</span>替换缺失值</span><br><span class="line">df.fillna(<span class="function"><span class="keyword">method</span>=&#x27;<span class="title">pad</span>&#x27;) # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;bfill&#x27;</span>)</span> # 使用缺失值前面的值进行填充</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">&#x27;pad&#x27;</span>, limit=1)</span>  # 最多填充一项</span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(df.mean()</span>[&#x27;<span class="title">C</span>&#x27;:</span><span class="string">&#x27;E&#x27;</span>]) #对C列到E列用平均值填充</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<h2 id="插值填充"><a href="#插值填充" class="headerlink" title="插值填充"></a>插值填充</h2><blockquote>
-<p>插值是数值分析中一种方法。简而言之，就是借助于一个函数（线性或非线性），再根据已知数据去求解未知数据的值。插值在数据领域非常常见，它的好处在于，可以尽量去还原数据本身的样子。</p>
-<p>可以通过<code>interpolate</code>方法完成线性插值。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>: [<span class="number">1.1</span>, <span class="number">2.2</span>, np.nan, <span class="number">4.5</span>, <span class="number">5.7</span>, <span class="number">6.9</span>],</span><br><span class="line">                <span class="string">&#x27;B&#x27;</span>: [<span class="number">.21</span>, np.nan, np.nan, <span class="number">3.1</span>, <span class="number">11.7</span>, <span class="number">13.2</span>]&#125;)</span><br><span class="line">df_interpolate = df.interpolate()</span><br></pre></td></tr></table></figure>
-<p>对于 <code>interpolate()</code>支持的插值算法，也就是 <code>method=</code></p>
-<ol>
-<li>如果你的数据增长速率越来越快，可以选择 <code>method=&#39;quadratic&#39;</code>二次插值。</li>
-<li>如果数据集呈现出累计分布的样子，推荐选择 <code>method=&#39;pchip&#39;</code>。</li>
-<li>如果需要填补缺省值，以平滑绘图为目标，推荐选择 <code>method=&#39;akima&#39;</code>。</li>
-</ol>
-<p>需要安装了Scipy库。</p>
-</blockquote>
-<h2 id="数据离散化"><a href="#数据离散化" class="headerlink" title="数据离散化"></a>数据离散化</h2><blockquote>
-<p>连续属性离散化的目的是为了简化数据结构，<strong>数据离散化技术可以用来减少给定连续属性值的个数</strong>。离散化方法经常作为数据挖掘的工具。</p>
-<p><strong>连续属性的离散化就是在连续属性的值域上，将值域划分为若干个离散的区间，最后用不同的符号或整数</strong> <strong>值代表落在每个子区间中的属性值。</strong></p>
-<p><strong>自动分组：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.qcut(data, num) <span class="comment">#将数据分为差不多数量的几组,一般会与value_counts搭配使用，统计每组的个数，num为组数</span></span><br><span class="line">series.value_counts()：<span class="comment">#统计分组次数</span></span><br></pre></td></tr></table></figure>
-<p><strong>自定义分组：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.cut(data, bins):</span><br></pre></td></tr></table></figure>
-<p>bins参数为自己定义的分组区间，用列表</p>
-<p><strong>分组数据变成one-hot编码：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pandas.get_dummies(data, prefix=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>data:array-like, Series, or DataFrame</li>
-<li>prefix:分组名字</li>
-</ul>
-</blockquote>
-<h2 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.concat([data1, data2], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>按照行或列进行合并,axis=0为列索引，axis=1为行索引</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, how=<span class="string">&#x27;inner&#x27;</span>, on=[]):</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可以指定按照两组数据的共同键值对合并或者左右各自</li>
-<li><code>left</code>: DataFrame</li>
-<li><code>right</code>: 另一个DataFrame</li>
-<li><code>on</code>: 指定的共同键，列表</li>
-<li><code>how</code>:按照什么方式连接，left，right，outer，inner,默认inner</li>
-</ul>
-</blockquote>
-<h2 id="交叉表和透视表"><a href="#交叉表和透视表" class="headerlink" title="交叉表和透视表"></a>交叉表和透视表</h2><blockquote>
-<ul>
-<li><p>交叉表：交叉表用于计算一列数据对于另外一列数据的分组个数(用于统计分组频率的特殊透视表)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.crosstab(index,columns)</span><br></pre></td></tr></table></figure>
-<p>按index进行分组并作为行索引，并统计columns值的各个频数</p>
-</li>
-<li><p>透视表：透视表是将原有的DataFrame的列分别作为行索引和列索引，然后对指定的列应用聚集函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean)</span><br></pre></td></tr></table></figure>
-<p>将values按照index分组，默认使用mean()聚合函数</p>
-</li>
-</ul>
-</blockquote>
-<h2 id="分组与聚合"><a href="#分组与聚合" class="headerlink" title="分组与聚合"></a>分组与聚合</h2><blockquote>
-<p><strong>分组：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DataFrame.groupby(key, as_index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<p><code>key</code>:分组的列数据，可以多个</p>
-<p><strong>聚合：</strong></p>
-<p><code>agg(&#123;&quot;列名&quot;：np.聚合函数&#125;)</code></p>
-<p><code>max(),min(),mean(),std()</code>等函数</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>科学计算库</category>
-      </categories>
-      <tags>
-        <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>决策树</title>
     <url>/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/</url>
     <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
@@ -3014,10 +3014,10 @@
         <category>科学计算库</category>
       </categories>
       <tags>
-        <tag>Numpy</tag>
         <tag>Matplotlib</tag>
-        <tag>Seaborn</tag>
+        <tag>Numpy</tag>
         <tag>Pandas</tag>
+        <tag>Seaborn</tag>
         <tag>Api</tag>
       </tags>
   </entry>
@@ -3698,86 +3698,6 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
       </tags>
   </entry>
   <entry>
-    <title>朴素贝叶斯</title>
-    <url>/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/</url>
-    <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
-<p>叶斯分类算法是统计学的一种分类方法，它是一类利用概率统计知识进行分类的算法。在许多场合，朴素贝叶斯(Naïve Bayes，NB)分类算法可以与决策树和神经网络分类算法相媲美，该算法能运用到大型数据库中，而且方法简单、分类准确率高、速度快。</p>
-<p>由于贝叶斯定理假设一个属性值对给定类的影响独立于其它属性的值，而此假设在实际情况中经常是不成立的，因此其分类准确率可能会下降。为此，就衍生出许多降低独立性假设的贝叶斯分类算法，如TAN(tree augmented Bayes network)算法。</p>
-</blockquote>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><blockquote>
-<ul>
-<li>联合概率：包含多个条件，且所有条件同时成立的概率<ul>
-<li>记作：P(A,B)</li>
-</ul>
-</li>
-<li>条件概率：就是事件A在另外一个事件B已经发生条件下的发生概率<ul>
-<li>记作：P(A|B)</li>
-</ul>
-</li>
-<li>相互独立：如果P(A, B) = P(A)P(B)，则称事件A与事件B相互独立。</li>
-</ul>
-<p><strong>贝叶斯公式：</strong></p>
-<p><img src="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20210225170258975.png" alt="image-20210225170258975" style="zoom:50%;"></p>
-<p><strong>拉普拉斯平滑系数：</strong></p>
-<p><img src="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20210225170419809.png" alt="image-20210225170419809" style="zoom:50%;"></p>
-<p>其中，$\alpha$一般为1，m为特征的个数</p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><blockquote>
-<ul>
-<li>优点：<ul>
-<li>朴素贝叶斯模型发源于古典数学理论，<strong>有稳定的分类效率</strong></li>
-<li>对<strong>缺失数据不太敏感</strong>，算法也比较简单，<strong>常用于文本分类</strong></li>
-<li>分类准确度高，速度快</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>由于使用了样本属性独立性的假设，所以<strong>如果特征属性有关联时其效果不好</strong></li>
-<li>需要计算先验概率，而先验概率很多时候取决于假设，假设的模型可以有很多种，因此<strong>在某些时候会由于假设的先验模型的原因导致预测效果不佳</strong>；</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="效果好的原因"><a href="#效果好的原因" class="headerlink" title="效果好的原因"></a>效果好的原因</h2><blockquote>
-<ul>
-<li>人们在使用分类器之前，首先做的第一步（也是最重要的一步）往往是<strong>特征选择</strong>，这个过程的目的就是为了<strong>排除特征之间的共线性、选择相对较为独立的特征</strong>；</li>
-<li>对于分类任务来说，<strong>只要各类别的条件概率排序正确，无需精准概率值就可以得出正确分类</strong>；</li>
-<li>如果<strong>属性间依赖对所有类别影响相同，或依赖关系的影响能相互抵消，</strong>则属性条件独立性假设在降低计算复杂度的同时不会对性能产生负面影响。</li>
-</ul>
-</blockquote>
-<h2 id="和逻辑回归的区别"><a href="#和逻辑回归的区别" class="headerlink" title="和逻辑回归的区别"></a>和逻辑回归的区别</h2><blockquote>
-<p><strong>区别一：</strong></p>
-<ul>
-<li>朴素贝叶斯是生成模型，<ul>
-<li>根据已有样本进行贝叶斯估计学习出先验概率 P(Y)和条件概率 P(X|Y)，</li>
-<li>进而求出联合分布概率 P(XY) ,</li>
-<li>最后利用贝叶斯定理求解 P(Y|X)，</li>
-</ul>
-</li>
-<li>而LR是判别模型，<ul>
-<li>根据极大化对数似然函数直接求出条件概率 P(Y|X)；</li>
-</ul>
-</li>
-</ul>
-<p><strong>区别二：</strong></p>
-<ul>
-<li>朴素贝叶斯是基于很强的条件独立假设（在已知分类 Y的条件下，各个特征变量取值是相互独立的），</li>
-<li>而LR则对此没有要求；</li>
-</ul>
-<p><strong>区别三：</strong></p>
-<ul>
-<li>朴素贝叶斯适用于数据集少的情景，</li>
-<li>而LR适用于大规模数据集。</li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>Bayes</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构与算法</title>
     <url>/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
@@ -3994,6 +3914,86 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>朴素贝叶斯</title>
+    <url>/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/</url>
+    <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
+<p>叶斯分类算法是统计学的一种分类方法，它是一类利用概率统计知识进行分类的算法。在许多场合，朴素贝叶斯(Naïve Bayes，NB)分类算法可以与决策树和神经网络分类算法相媲美，该算法能运用到大型数据库中，而且方法简单、分类准确率高、速度快。</p>
+<p>由于贝叶斯定理假设一个属性值对给定类的影响独立于其它属性的值，而此假设在实际情况中经常是不成立的，因此其分类准确率可能会下降。为此，就衍生出许多降低独立性假设的贝叶斯分类算法，如TAN(tree augmented Bayes network)算法。</p>
+</blockquote>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><blockquote>
+<ul>
+<li>联合概率：包含多个条件，且所有条件同时成立的概率<ul>
+<li>记作：P(A,B)</li>
+</ul>
+</li>
+<li>条件概率：就是事件A在另外一个事件B已经发生条件下的发生概率<ul>
+<li>记作：P(A|B)</li>
+</ul>
+</li>
+<li>相互独立：如果P(A, B) = P(A)P(B)，则称事件A与事件B相互独立。</li>
+</ul>
+<p><strong>贝叶斯公式：</strong></p>
+<p><img src="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20210225170258975.png" alt="image-20210225170258975" style="zoom:50%;"></p>
+<p><strong>拉普拉斯平滑系数：</strong></p>
+<p><img src="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20210225170419809.png" alt="image-20210225170419809" style="zoom:50%;"></p>
+<p>其中，$\alpha$一般为1，m为特征的个数</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><blockquote>
+<ul>
+<li>优点：<ul>
+<li>朴素贝叶斯模型发源于古典数学理论，<strong>有稳定的分类效率</strong></li>
+<li>对<strong>缺失数据不太敏感</strong>，算法也比较简单，<strong>常用于文本分类</strong></li>
+<li>分类准确度高，速度快</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>由于使用了样本属性独立性的假设，所以<strong>如果特征属性有关联时其效果不好</strong></li>
+<li>需要计算先验概率，而先验概率很多时候取决于假设，假设的模型可以有很多种，因此<strong>在某些时候会由于假设的先验模型的原因导致预测效果不佳</strong>；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="效果好的原因"><a href="#效果好的原因" class="headerlink" title="效果好的原因"></a>效果好的原因</h2><blockquote>
+<ul>
+<li>人们在使用分类器之前，首先做的第一步（也是最重要的一步）往往是<strong>特征选择</strong>，这个过程的目的就是为了<strong>排除特征之间的共线性、选择相对较为独立的特征</strong>；</li>
+<li>对于分类任务来说，<strong>只要各类别的条件概率排序正确，无需精准概率值就可以得出正确分类</strong>；</li>
+<li>如果<strong>属性间依赖对所有类别影响相同，或依赖关系的影响能相互抵消，</strong>则属性条件独立性假设在降低计算复杂度的同时不会对性能产生负面影响。</li>
+</ul>
+</blockquote>
+<h2 id="和逻辑回归的区别"><a href="#和逻辑回归的区别" class="headerlink" title="和逻辑回归的区别"></a>和逻辑回归的区别</h2><blockquote>
+<p><strong>区别一：</strong></p>
+<ul>
+<li>朴素贝叶斯是生成模型，<ul>
+<li>根据已有样本进行贝叶斯估计学习出先验概率 P(Y)和条件概率 P(X|Y)，</li>
+<li>进而求出联合分布概率 P(XY) ,</li>
+<li>最后利用贝叶斯定理求解 P(Y|X)，</li>
+</ul>
+</li>
+<li>而LR是判别模型，<ul>
+<li>根据极大化对数似然函数直接求出条件概率 P(Y|X)；</li>
+</ul>
+</li>
+</ul>
+<p><strong>区别二：</strong></p>
+<ul>
+<li>朴素贝叶斯是基于很强的条件独立假设（在已知分类 Y的条件下，各个特征变量取值是相互独立的），</li>
+<li>而LR则对此没有要求；</li>
+</ul>
+<p><strong>区别三：</strong></p>
+<ul>
+<li>朴素贝叶斯适用于数据集少的情景，</li>
+<li>而LR适用于大规模数据集。</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>Bayes</tag>
       </tags>
   </entry>
   <entry>
@@ -4246,100 +4246,6 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
       </tags>
   </entry>
   <entry>
-    <title>装饰器和生成器</title>
-    <url>/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
-<p><strong>闭包定义</strong></p>
-<ol>
-<li>函数嵌套</li>
-<li>内部函数使用外部函数的参数</li>
-<li>外部函数返回了内部函数</li>
-</ol>
-<p><strong>闭包作用</strong></p>
-<p>保存外部函数的参数(局部变量,函数形参)</p>
-</blockquote>
-<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
-<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_out</span>():</span></span><br><span class="line">    <span class="comment"># 外部函数的局部变量</span></span><br><span class="line">    num1 = <span class="number">20</span></span><br><span class="line">    <span class="comment"># 内部函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_inner</span>(<span class="params">num2</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num1</span><br><span class="line">        <span class="comment"># 函数局部变量</span></span><br><span class="line">        num1 = num1+num2</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(num1)<span class="comment"># 修改之前的函数形参值</span></span><br><span class="line">    func_inner(<span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(num1)<span class="comment"># 函数形参值</span></span><br><span class="line"></span><br><span class="line">func_out()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
-<p><strong>作用</strong></p>
-<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1定义一个装饰器(装饰器的本质是闭包)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">fn</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请先登陆&quot;</span>)</span><br><span class="line">        fn()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2使用装饰器装饰函数（增加一个登陆功能）</span></span><br><span class="line"><span class="comment"># 解释器遇到@check 会立即执行 comment = check(comment)</span></span><br><span class="line"><span class="meta">@check </span><span class="comment"># 调用check 传递comment 返回新的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发表评论&quot;</span>)</span><br><span class="line">comment()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">fn</span>):</span> <span class="comment"># regist</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">name,pwd</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;开始验证&#x27;</span>)</span><br><span class="line">        fn(name,pwd) <span class="comment"># regist</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;登陆成功&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@check</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">regist</span>(<span class="params">name,pwd</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;开始注册&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
-</blockquote>
-<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">a, b</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;开始计算&#x27;</span>)</span><br><span class="line">        result = fn(a, b)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结束计算&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用装饰器装饰函数</span></span><br><span class="line"><span class="meta">@logging</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_num</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    result = a + b</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">result = sum_num(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
-<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
-</blockquote>
-<h1 id="装饰不定长参数函数"><a href="#装饰不定长参数函数" class="headerlink" title="装饰不定长参数函数"></a>装饰不定长参数函数</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        fn(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br></pre></td></tr></table></figure>
-<p>*args和<em>\</em>*kwargs可以接收任意类型的参数,通过*arg或者**kwargs把接收的数据解包传递个原来的函数进行调用</p>
-</blockquote>
-<h1 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以装饰带有任意参数和返回值的函数</span></span><br><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># 装饰之前代码</span></span><br><span class="line">        result = fn(*args, **kwargs)</span><br><span class="line">        <span class="comment"># 装饰之后的代码</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="多个装饰器"><a href="#多个装饰器" class="headerlink" title="多个装饰器"></a>多个装饰器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@check1</span></span><br><span class="line"><span class="meta">@check2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发表评论&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰，由内到外的装饰过程</p>
-</blockquote>
-<h1 id="property修饰器"><a href="#property修饰器" class="headerlink" title="property修饰器"></a>property修饰器</h1><blockquote>
-<p><strong>作用</strong></p>
-<p>把方法的调用变成属性的调用</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取属性</span></span><br><span class="line"><span class="meta">    @property </span><span class="comment"># 把age变成get属性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 修改属性</span></span><br><span class="line"><span class="meta">    @age.setter</span><span class="comment"># 把age函数变成age属性的set方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span>(<span class="params">self, new_age</span>):</span></span><br><span class="line">        <span class="keyword">if</span> new_age&gt;<span class="number">0</span> <span class="keyword">and</span> new_age&lt;<span class="number">150</span>:</span><br><span class="line">            self.__age = new_age</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="类属性property"><a href="#类属性property" class="headerlink" title="类属性property"></a>类属性property</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;当获取age属性时会使用该方法&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_age</span>(<span class="params">self, new_age</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;当设置属性时会使用该方法&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> new_age &gt;= <span class="number">150</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;年龄错误&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__age = new_age</span><br><span class="line">    <span class="comment"># 类属性</span></span><br><span class="line">    age = <span class="built_in">property</span>(get_age, set_age)</span><br></pre></td></tr></table></figure>
-<p>property第一个是get方法 第二个是set方法</p>
-</blockquote>
-<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><blockquote>
-<p><strong>with管理上下文对象</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> 上下文管理器对象 <span class="keyword">as</span> 变量:</span><br></pre></td></tr></table></figure>
-<p>as之后的变量是上下文管理器对象的__enter__方法返回的对象</p>
-<p>with执行时会调用上下文管理器的__enter__获取对象赋值给后面的变量</p>
-<p>在with语句中就可以使用这个对象</p>
-<p>with中的语句执行结束之后,会执行__exit__方法</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">File</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, file_name, file_model</span>):</span></span><br><span class="line">        self.file_name = file_name</span><br><span class="line">        self.file_model = file_model</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是上文&quot;</span>)</span><br><span class="line">        self.file = <span class="built_in">open</span>(self.file_name, self.file_model)</span><br><span class="line">        <span class="keyword">return</span> self.file</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是下文&quot;</span>)</span><br><span class="line">        self.file.close()</span><br></pre></td></tr></table></figure>
-<p><strong>注意：不管有没有出现异常,下文都会在with语句执行结束或者出现异常之后自动执行</strong></p>
-</blockquote>
-<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generater</span>(<span class="params">num</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;开始&quot;</span>)</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;生成完成&quot;</span>)</span><br><span class="line">        </span><br><span class="line">g = generater(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">next</span>(g)</span><br></pre></td></tr></table></figure>
-<p><strong>如果最后一条数据,next就会出现异常</strong></p>
-</blockquote>
-<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><blockquote>
-<p><strong>浅拷贝</strong>：copy.copy</p>
-<p>两个变量指向同一个空间</p>
-<p><strong>深拷贝：</strong>copy.deepcopy</p>
-<p>两个变量指向不同空间</p>
-<ol>
-<li>不可变,不用考虑深拷贝和浅拷贝</li>
-<li>如果可变类型,可变类型每一个元素都是不可变类型,可以直接浅拷贝</li>
-<li>如果可变类型中有可变类型元素,可以使用深拷贝</li>
-<li>不可变类型(不可变类型中全是不可变类型),直接赋值  可变类型或不可变类型中嵌套了可变类型直接深拷贝</li>
-</ol>
-</blockquote>
-<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.	匹配任意<span class="number">1</span>个字符（除了\n）</span><br><span class="line">[ ]	匹配[ ]中列举的字符</span><br><span class="line">[^指定字符] 除了列举的所有字符</span><br><span class="line">\d	匹配数字，即<span class="number">0</span>-<span class="number">9</span></span><br><span class="line">\D	匹配非数字，即不是数字</span><br><span class="line">\s	匹配空白，即 空格，tab键</span><br><span class="line">\S	匹配非空白</span><br><span class="line">\w	匹配非特殊字符，即a-z、A-Z、<span class="number">0</span>-<span class="number">9</span>、_、汉字</span><br><span class="line">\W	匹配特殊字符，即非字母、非数字、非汉字</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">*	匹配前一个字符出现<span class="number">0</span>次或者无限次，即可有可无</span><br><span class="line">+	匹配前一个字符出现<span class="number">1</span>次或者无限次，即至少有<span class="number">1</span>次</span><br><span class="line">?	匹配前一个字符出现1次或者0次，即要么有1次，要么没有</span><br><span class="line">&#123;m&#125;	匹配前一个字符出现m次</span><br><span class="line">&#123;m,n&#125;	匹配前一个字符出现从m到n次</span><br><span class="line">例：</span><br><span class="line"><span class="comment"># 字母开头@ 有3-10位的数字字母和_</span></span><br><span class="line">result = re.match(<span class="string">&quot;[a-zA-Z][a-zA-Z0-9_]&#123;2,9&#125;@qq\.com&quot;</span>, <span class="string">&quot;aafd12ddd@qq.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="匹配开头和结尾"><a href="#匹配开头和结尾" class="headerlink" title="匹配开头和结尾"></a>匹配开头和结尾</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">^	匹配字符串开头(放在匹配规则的最开始)</span><br><span class="line">$	匹配字符串结尾(放在匹配规则的最后一位)</span><br></pre></td></tr></table></figure>
-</blockquote>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>装饰器</tag>
-        <tag>生成器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>聚类算法</title>
     <url>/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
@@ -4540,6 +4446,160 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
       </categories>
       <tags>
         <tag>无监督学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>装饰器和生成器</title>
+    <url>/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p><strong>闭包定义</strong></p>
+<ol>
+<li>函数嵌套</li>
+<li>内部函数使用外部函数的参数</li>
+<li>外部函数返回了内部函数</li>
+</ol>
+<p><strong>闭包作用</strong></p>
+<p>保存外部函数的参数(局部变量,函数形参)</p>
+</blockquote>
+<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
+<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_out</span>():</span></span><br><span class="line">    <span class="comment"># 外部函数的局部变量</span></span><br><span class="line">    num1 = <span class="number">20</span></span><br><span class="line">    <span class="comment"># 内部函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_inner</span>(<span class="params">num2</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num1</span><br><span class="line">        <span class="comment"># 函数局部变量</span></span><br><span class="line">        num1 = num1+num2</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(num1)<span class="comment"># 修改之前的函数形参值</span></span><br><span class="line">    func_inner(<span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(num1)<span class="comment"># 函数形参值</span></span><br><span class="line"></span><br><span class="line">func_out()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1定义一个装饰器(装饰器的本质是闭包)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">fn</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请先登陆&quot;</span>)</span><br><span class="line">        fn()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2使用装饰器装饰函数（增加一个登陆功能）</span></span><br><span class="line"><span class="comment"># 解释器遇到@check 会立即执行 comment = check(comment)</span></span><br><span class="line"><span class="meta">@check </span><span class="comment"># 调用check 传递comment 返回新的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发表评论&quot;</span>)</span><br><span class="line">comment()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">fn</span>):</span> <span class="comment"># regist</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">name,pwd</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;开始验证&#x27;</span>)</span><br><span class="line">        fn(name,pwd) <span class="comment"># regist</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;登陆成功&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@check</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">regist</span>(<span class="params">name,pwd</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;开始注册&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
+</blockquote>
+<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">a, b</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;开始计算&#x27;</span>)</span><br><span class="line">        result = fn(a, b)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结束计算&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用装饰器装饰函数</span></span><br><span class="line"><span class="meta">@logging</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_num</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    result = a + b</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">result = sum_num(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
+</blockquote>
+<h1 id="装饰不定长参数函数"><a href="#装饰不定长参数函数" class="headerlink" title="装饰不定长参数函数"></a>装饰不定长参数函数</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        fn(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br></pre></td></tr></table></figure>
+<p>*args和<em>\</em>*kwargs可以接收任意类型的参数,通过*arg或者**kwargs把接收的数据解包传递个原来的函数进行调用</p>
+</blockquote>
+<h1 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以装饰带有任意参数和返回值的函数</span></span><br><span class="line"><span class="comment"># 定义装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logging</span>(<span class="params">fn</span>):</span>  <span class="comment"># fn = sum_num</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># 装饰之前代码</span></span><br><span class="line">        result = fn(*args, **kwargs)</span><br><span class="line">        <span class="comment"># 装饰之后的代码</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># sum_num = inner</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="多个装饰器"><a href="#多个装饰器" class="headerlink" title="多个装饰器"></a>多个装饰器</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@check1</span></span><br><span class="line"><span class="meta">@check2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发表评论&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰，由内到外的装饰过程</p>
+</blockquote>
+<h1 id="property修饰器"><a href="#property修饰器" class="headerlink" title="property修饰器"></a>property修饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>把方法的调用变成属性的调用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取属性</span></span><br><span class="line"><span class="meta">    @property </span><span class="comment"># 把age变成get属性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 修改属性</span></span><br><span class="line"><span class="meta">    @age.setter</span><span class="comment"># 把age函数变成age属性的set方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span>(<span class="params">self, new_age</span>):</span></span><br><span class="line">        <span class="keyword">if</span> new_age&gt;<span class="number">0</span> <span class="keyword">and</span> new_age&lt;<span class="number">150</span>:</span><br><span class="line">            self.__age = new_age</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="类属性property"><a href="#类属性property" class="headerlink" title="类属性property"></a>类属性property</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;当获取age属性时会使用该方法&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_age</span>(<span class="params">self, new_age</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;当设置属性时会使用该方法&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> new_age &gt;= <span class="number">150</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;年龄错误&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__age = new_age</span><br><span class="line">    <span class="comment"># 类属性</span></span><br><span class="line">    age = <span class="built_in">property</span>(get_age, set_age)</span><br></pre></td></tr></table></figure>
+<p>property第一个是get方法 第二个是set方法</p>
+</blockquote>
+<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><blockquote>
+<p><strong>with管理上下文对象</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> 上下文管理器对象 <span class="keyword">as</span> 变量:</span><br></pre></td></tr></table></figure>
+<p>as之后的变量是上下文管理器对象的__enter__方法返回的对象</p>
+<p>with执行时会调用上下文管理器的__enter__获取对象赋值给后面的变量</p>
+<p>在with语句中就可以使用这个对象</p>
+<p>with中的语句执行结束之后,会执行__exit__方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">File</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, file_name, file_model</span>):</span></span><br><span class="line">        self.file_name = file_name</span><br><span class="line">        self.file_model = file_model</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是上文&quot;</span>)</span><br><span class="line">        self.file = <span class="built_in">open</span>(self.file_name, self.file_model)</span><br><span class="line">        <span class="keyword">return</span> self.file</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是下文&quot;</span>)</span><br><span class="line">        self.file.close()</span><br></pre></td></tr></table></figure>
+<p><strong>注意：不管有没有出现异常,下文都会在with语句执行结束或者出现异常之后自动执行</strong></p>
+</blockquote>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generater</span>(<span class="params">num</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;开始&quot;</span>)</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;生成完成&quot;</span>)</span><br><span class="line">        </span><br><span class="line">g = generater(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">next</span>(g)</span><br></pre></td></tr></table></figure>
+<p><strong>如果最后一条数据,next就会出现异常</strong></p>
+</blockquote>
+<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><blockquote>
+<p><strong>浅拷贝</strong>：copy.copy</p>
+<p>两个变量指向同一个空间</p>
+<p><strong>深拷贝：</strong>copy.deepcopy</p>
+<p>两个变量指向不同空间</p>
+<ol>
+<li>不可变,不用考虑深拷贝和浅拷贝</li>
+<li>如果可变类型,可变类型每一个元素都是不可变类型,可以直接浅拷贝</li>
+<li>如果可变类型中有可变类型元素,可以使用深拷贝</li>
+<li>不可变类型(不可变类型中全是不可变类型),直接赋值  可变类型或不可变类型中嵌套了可变类型直接深拷贝</li>
+</ol>
+</blockquote>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.	匹配任意<span class="number">1</span>个字符（除了\n）</span><br><span class="line">[ ]	匹配[ ]中列举的字符</span><br><span class="line">[^指定字符] 除了列举的所有字符</span><br><span class="line">\d	匹配数字，即<span class="number">0</span>-<span class="number">9</span></span><br><span class="line">\D	匹配非数字，即不是数字</span><br><span class="line">\s	匹配空白，即 空格，tab键</span><br><span class="line">\S	匹配非空白</span><br><span class="line">\w	匹配非特殊字符，即a-z、A-Z、<span class="number">0</span>-<span class="number">9</span>、_、汉字</span><br><span class="line">\W	匹配特殊字符，即非字母、非数字、非汉字</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">*	匹配前一个字符出现<span class="number">0</span>次或者无限次，即可有可无</span><br><span class="line">+	匹配前一个字符出现<span class="number">1</span>次或者无限次，即至少有<span class="number">1</span>次</span><br><span class="line">?	匹配前一个字符出现1次或者0次，即要么有1次，要么没有</span><br><span class="line">&#123;m&#125;	匹配前一个字符出现m次</span><br><span class="line">&#123;m,n&#125;	匹配前一个字符出现从m到n次</span><br><span class="line">例：</span><br><span class="line"><span class="comment"># 字母开头@ 有3-10位的数字字母和_</span></span><br><span class="line">result = re.match(<span class="string">&quot;[a-zA-Z][a-zA-Z0-9_]&#123;2,9&#125;@qq\.com&quot;</span>, <span class="string">&quot;aafd12ddd@qq.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="匹配开头和结尾"><a href="#匹配开头和结尾" class="headerlink" title="匹配开头和结尾"></a>匹配开头和结尾</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">^	匹配字符串开头(放在匹配规则的最开始)</span><br><span class="line">$	匹配字符串结尾(放在匹配规则的最后一位)</span><br></pre></td></tr></table></figure>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>装饰器</tag>
+        <tag>生成器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>逻辑回归</title>
+    <url>/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</url>
+    <content><![CDATA[<h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><blockquote>
+<p><strong>sigmoid函数：</strong></p>
+<script type="math/tex; mode=display">
+g(z)=\frac{1}{1+e^{-z}}\\
+z=\omega^{T}x</script><ul>
+<li>回归的结果输入到sigmoid函数当中</li>
+<li>输出结果：[0, 1]区间中的一个概率值，默认为0.5为阈值</li>
+</ul>
+</blockquote>
+<h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><blockquote>
+<p>逻辑回归是在线性函数的基础上，经过激活函数后产生的<code>0~1</code>之间的概率值。<br>设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：</p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
+<p>合并可得：</p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
+<p>最大化似然函数也就是最小化损失函数</p>
+<p><code>损失函数</code>为</p>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
+<p><code>优化:</code></p>
+<p>同样使用梯度下降优化算法，去减少损失函数的值。这样去更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
+<script type="math/tex; mode=display">
+\theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
+<h1 id="分类评估方法"><a href="#分类评估方法" class="headerlink" title="分类评估方法"></a>分类评估方法</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><blockquote>
+<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
+</blockquote>
+<h2 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h2><blockquote>
+<p><code>精确率</code>：预测结果为正例样本中真实为正例的比例</p>
+<script type="math/tex; mode=display">
+P=\frac{TP}{TP+FP}</script><p><code>召回率</code>：真实为正例的样本中预测结果为正例的比例（查得全，对正样本的区分能力）</p>
+<script type="math/tex; mode=display">
+R=\frac{TP}{TP+FN}</script><p><code>F1-score</code>:反映了模型的稳健型</p>
+<script type="math/tex; mode=display">
+F1=\frac{2\times P\times R} {P+R}=\frac{2\times P\times R}{样例总数+TP-TN}\\
+F_{\beta}=\frac{\left (1+\beta^{2}\right)\times P\times R} {\left (\beta ^{2}\times P\right)+R}</script><p>当$\beta$&gt;1时，查全率有更大影响；</p>
+<p>当$\beta$&lt;1时，查准率有更大影响；</p>
+<p>当$\beta$=1时，退化为标准的F1</p>
+</blockquote>
+<h2 id="ROC曲线和AUC指标"><a href="#ROC曲线和AUC指标" class="headerlink" title="ROC曲线和AUC指标"></a>ROC曲线和AUC指标</h2><blockquote>
+<p>ROC曲线纵轴真正例率和横轴假正例率定义为：</p>
+<script type="math/tex; mode=display">
+TPR=\frac{TP}{TP+FN}\\
+FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
+<p>给定m^+^个正例和m^-^个反例，根据学习器预测结果进行排序，然后把分类阈值设为最大，即把所有样例预测为反例，此时坐标(0,0),然后依次将每个样例划分为正例，设前一个标记点坐标(x,y),当前若为真正例，则对应标记点的坐标为(x,y+$\frac{1}{m^{+}}$)；当前弱势假正例，则对应标记点点的坐标是(x+$\frac{1}{m^{-}}$),然后用线段连接可得。</p>
+<p><code>AUC</code>：ROC曲线和坐标轴的面积</p>
+<ul>
+<li>AUC只能用来评价二分类</li>
+<li>AUC非常适合评价样本不平衡中的分类器性能</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>LR</tag>
+        <tag>ROC</tag>
       </tags>
   </entry>
   <entry>
@@ -4825,66 +4885,6 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
       </categories>
       <tags>
         <tag>集成学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>逻辑回归</title>
-    <url>/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</url>
-    <content><![CDATA[<h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><blockquote>
-<p><strong>sigmoid函数：</strong></p>
-<script type="math/tex; mode=display">
-g(z)=\frac{1}{1+e^{-z}}\\
-z=\omega^{T}x</script><ul>
-<li>回归的结果输入到sigmoid函数当中</li>
-<li>输出结果：[0, 1]区间中的一个概率值，默认为0.5为阈值</li>
-</ul>
-</blockquote>
-<h1 id="损失及优化"><a href="#损失及优化" class="headerlink" title="损失及优化"></a>损失及优化</h1><blockquote>
-<p>逻辑回归是在线性函数的基础上，经过激活函数后产生的<code>0~1</code>之间的概率值。<br>设x为特征向量，y为真实的标签，$\hat{y}$是预测值。得出：</p>
-<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152143456.png" alt="image-20210221152143456" style="zoom:50%;"></p>
-<p>合并可得：</p>
-<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152207350.png" alt="image-20210221152207350" style="zoom:50%;"></p>
-<p>最大化似然函数也就是最小化损失函数</p>
-<p><code>损失函数</code>为</p>
-<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221152321431.png" alt="image-20210221152321431" style="zoom:50%;"></p>
-<p><code>优化:</code></p>
-<p>同样使用梯度下降优化算法，去减少损失函数的值。这样去更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
-<script type="math/tex; mode=display">
-\theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
-<h1 id="分类评估方法"><a href="#分类评估方法" class="headerlink" title="分类评估方法"></a>分类评估方法</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><blockquote>
-<p><img src="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20210221155107031.png" alt="image-20210221155107031" style="zoom: 25%;"></p>
-</blockquote>
-<h2 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h2><blockquote>
-<p><code>精确率</code>：预测结果为正例样本中真实为正例的比例</p>
-<script type="math/tex; mode=display">
-P=\frac{TP}{TP+FP}</script><p><code>召回率</code>：真实为正例的样本中预测结果为正例的比例（查得全，对正样本的区分能力）</p>
-<script type="math/tex; mode=display">
-R=\frac{TP}{TP+FN}</script><p><code>F1-score</code>:反映了模型的稳健型</p>
-<script type="math/tex; mode=display">
-F1=\frac{2\times P\times R} {P+R}=\frac{2\times P\times R}{样例总数+TP-TN}\\
-F_{\beta}=\frac{\left (1+\beta^{2}\right)\times P\times R} {\left (\beta ^{2}\times P\right)+R}</script><p>当$\beta$&gt;1时，查全率有更大影响；</p>
-<p>当$\beta$&lt;1时，查准率有更大影响；</p>
-<p>当$\beta$=1时，退化为标准的F1</p>
-</blockquote>
-<h2 id="ROC曲线和AUC指标"><a href="#ROC曲线和AUC指标" class="headerlink" title="ROC曲线和AUC指标"></a>ROC曲线和AUC指标</h2><blockquote>
-<p>ROC曲线纵轴真正例率和横轴假正例率定义为：</p>
-<script type="math/tex; mode=display">
-TPR=\frac{TP}{TP+FN}\\
-FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
-<p>给定m^+^个正例和m^-^个反例，根据学习器预测结果进行排序，然后把分类阈值设为最大，即把所有样例预测为反例，此时坐标(0,0),然后依次将每个样例划分为正例，设前一个标记点坐标(x,y),当前若为真正例，则对应标记点的坐标为(x,y+$\frac{1}{m^{+}}$)；当前弱势假正例，则对应标记点点的坐标是(x+$\frac{1}{m^{-}}$),然后用线段连接可得。</p>
-<p><code>AUC</code>：ROC曲线和坐标轴的面积</p>
-<ul>
-<li>AUC只能用来评价二分类</li>
-<li>AUC非常适合评价样本不平衡中的分类器性能</li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>LR</tag>
-        <tag>ROC</tag>
       </tags>
   </entry>
 </search>
