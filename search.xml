@@ -1123,6 +1123,177 @@
       </tags>
   </entry>
   <entry>
+    <title>Seaborn</title>
+    <url>/2021/05/04/Seaborn/</url>
+    <content><![CDATA[<blockquote>
+<p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装 </span></span><br><span class="line">pip install seaborn==<span class="number">0.10</span><span class="number">.1</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
+<p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>, font=<span class="string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="number">1</span>, color_codes=<span class="literal">False</span>, rc=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>
+<li><code>style=&#39;&#39;</code> 参数控制默认样式，分别有 <code>&#123;darkgrid, whitegrid, dark, white, ticks&#125;</code>，你可以自行更改查看它们之间的不同。</li>
+<li><code>palette=&#39;&#39;</code> 参数为预设的调色板。分别有 <code>&#123;deep, muted, bright, pastel, dark, colorblind&#125;</code> 等，你可以自行更改查看它们之间的不同。</li>
+<li>剩下的 <code>font=&#39;&#39;</code> 用于设置字体，<code>font_scale=</code> 设置字体大小，<code>color_codes=</code> 不使用调色板而采用先前的 <code>&#39;r&#39;</code> 等色彩缩写。</li>
+</ul>
+</blockquote>
+<h1 id="分布图"><a href="#分布图" class="headerlink" title="分布图"></a>分布图</h1><h2 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h2><blockquote>
+<p>可以采用最简单的直方图描述单变量的分布情况。 Seaborn中提供了<code>distplot()</code>函数，它默认绘制的是一个带有核密度估计曲线的直方图。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.distplot(a, bins=<span class="literal">None</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">False</span>, fit=<span class="literal">None</span>, color=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p>上述函数中常用参数的含义如下：</p>
+<ul>
+<li><code>a</code>：表示要观察的数据，可以是 Series、一维数组或列表。</li>
+<li><code>bins</code>：用于控制条形的数量。</li>
+<li><code>hist</code>：接收布尔类型，表示<code>是否绘制(标注)直方图</code>。</li>
+<li><code>kde</code>：接收布尔类型，表示<code>是否绘制高斯核密度</code>估计曲线。</li>
+<li><code>rug</code>：接收布尔类型，表示是否在支持的轴方向上绘制rugplot。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sns.<span class="built_in">set</span>() <span class="comment"># 调用set()函数获取默认绘图</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)  <span class="comment"># 确定随机数生成器的种子,如果不使用每次生成图形不一样</span></span><br><span class="line">arr = np.random.randn(<span class="number">100</span>)  <span class="comment"># 生成随机数组</span></span><br><span class="line">ax = sns.distplot(arr, bins=<span class="number">10</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">True</span>)  <span class="comment"># 绘制直方图</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="绘制双变量分布"><a href="#绘制双变量分布" class="headerlink" title="绘制双变量分布"></a>绘制双变量分布</h2><blockquote>
+<p>两个变量的二元分布可视化也很有用。在 Seaborn中最简单的方法是使用 <code>jointplot()</code>函数，该函数可以创建一个多面板图形，比如散点图、二维直方图、核密度估计等，以显示两个变量之间的双变量关系及每个变量在单坐标轴上的单变量分布。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.jointplot(x, y, data=<span class="literal">None</span>, </span><br><span class="line">                  kind=<span class="string">&#x27;scatter&#x27;</span>, stat_func=<span class="literal">None</span>, color=<span class="literal">None</span>, </span><br><span class="line">                  ratio=<span class="number">5</span>, space=<span class="number">0.2</span>, dropna=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>上述函数中常用参数的含义如下：</p>
+<ol>
+<li><code>kind</code>：表示绘制图形的类型。hex:直方图，kde：核函数概率，reg：拟合线</li>
+<li><code>stat_func</code>：用于计算有关关系的统计量并标注图。</li>
+<li><code>color</code>：表示绘图元素的颜色。</li>
+<li><code>size</code>：用于设置图的大小(正方形)。</li>
+<li><code>ratio</code>：表示中心图与侧边图的比例。该参数的值越大，则中心图的占比会越大。</li>
+<li><code>space</code>：用于设置中心图与侧边图的间隔大小。</li>
+</ol>
+</blockquote>
+<h2 id="绘制成对的双变量分布"><a href="#绘制成对的双变量分布" class="headerlink" title="绘制成对的双变量分布"></a>绘制成对的双变量分布</h2><blockquote>
+<p>要想在数据集中绘制多个成对的双变量分布，则可以使用<code>pairplot()</code>函数实现，该函数会创建一个坐标轴矩阵，并且显示Datafram对象中每对变量的关系。另外，<code>pairplot()</code>函数也可以绘制每个变量在对角轴上的单变量分布。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 绘制多个成对的双变量分布</span></span><br><span class="line">sns.pairplot(data)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="类别图"><a href="#类别图" class="headerlink" title="类别图"></a>类别图</h1><blockquote>
+<p>类别图的 Figure-level 接口是 <code>catplot</code>，其为 categorical plots 的缩写。而 <code>catplot</code> 实际上是如下 Axes-level 绘图 API 的集合。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.catplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, kind=<span class="string">&quot;strip&quot;</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p><code>参数kind：</code></p>
+<ol>
+<li>分类散点图：<code>strip，swarm</code></li>
+<li>分类分布图：<code>box，violin，boxen</code></li>
+<li>分类估计图：<code>point，bar，count</code></li>
+</ol>
+<p>Seaborn针对分类数据提供了专门的可视化函数，这些函数大致可以分为如下三种:</p>
+<ul>
+<li>分类数据散点图: <code>swarmplot()</code>与 <code>stripplot()</code>。</li>
+<li>类数据的分布图: <code>boxplot()</code> 与 <code>violinplot()</code>。</li>
+<li>分类数据的统计估算图:<code>barplot()</code> 与<code>pointplot()</code>。</li>
+</ul>
+</blockquote>
+<h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.stripplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, order=<span class="literal">None</span>, hue_order=<span class="literal">None</span>, jitter=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>上述函数中常用参数的含义如下</p>
+<ul>
+<li><code>x，y，hue</code>：用于绘制长格式数据的输入。</li>
+<li><code>data</code>：用于绘制的数据集。如果x和y不存在，则它将作为宽格式，否则将作为长格式。</li>
+<li><code>jitter</code>：表示抖动的程度(仅沿类別轴)。当很多数据点重叠时，可以指定抖动的数量或者设为True使用默认值。</li>
+</ul>
+<p>还可调用<code>swarmplot()</code>函数绘制散点图，该函数的好处是所有的数据点都不会重叠，可以很清晰地观察到数据的分布情况</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.swarmplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="类别内的数据分布"><a href="#类别内的数据分布" class="headerlink" title="类别内的数据分布"></a>类别内的数据分布</h2><blockquote>
+<p><strong>箱形图</strong>:</p>
+<ul>
+<li>箱形图（Box-plot）又称为盒须图、盒式图或箱线图，是一种用作显示一组数据分散情况资料的统计图。</li>
+<li><strong>它能显示出一组数据的最大值、最小值、中位数、及上下四分位数。</strong></li>
+</ul>
+<p><strong>小提琴图:</strong></p>
+<ul>
+<li>小提琴图 (Violin Plot) 用于显示数据分布及其概率密度。</li>
+<li><strong>这种图表结合了箱形图和密度图的特征，主要用来显示数据的分布形状。</strong></li>
+<li><strong>中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间（样本可能来自此区间的概率为95%），而白点则为中位数。</strong></li>
+<li><strong>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。</strong>例如使用箱形图时，我们不能了解数据分布。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</li>
+</ul>
+</blockquote>
+<h3 id="绘制箱体图"><a href="#绘制箱体图" class="headerlink" title="绘制箱体图"></a>绘制箱体图</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.boxplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, orient=<span class="literal">None</span>, color=<span class="literal">None</span>,  saturation=<span class="number">0.75</span>, width=<span class="number">0.8</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>palette</code>：用于设置不同级别色相的颜色变量。—— palette=[“r”,”g”,”b”,”y”]</li>
+<li><code>saturation</code>：用于设置数据显示的颜色饱和度。—— 使用小数表示</li>
+</ol>
+</blockquote>
+<h3 id="绘制提琴图"><a href="#绘制提琴图" class="headerlink" title="绘制提琴图"></a>绘制提琴图</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.violinplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="类别内的统计估计"><a href="#类别内的统计估计" class="headerlink" title="类别内的统计估计"></a>类别内的统计估计</h2><blockquote>
+<p>要想查看每个分类的集中趋势，则可以使用条形图和点图进行展示。 Seaborn库中用于绘制这两种图表的具体函数如下</p>
+<ul>
+<li><code>barplot()</code>函数：绘制条形图。</li>
+<li><code>pointplot()</code>函数：绘制点图。</li>
+</ul>
+</blockquote>
+<h3 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h3><blockquote>
+<p>最常用的查看集中趋势的图形就是条形图。默认情况下， barplot函数会在整个数据集上使用均值进行估计。<strong>若每个类别中有多个类别时(使用了hue参数)</strong>，则条形图可以使用引导来计算估计的<strong>置信区间(是指由样本统计量所构造的总体参数的估计区间)</strong>，并使用误差条（图中黑色的竖线）来表示出现这个均值的95%置信区间。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.barplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="绘制点图"><a href="#绘制点图" class="headerlink" title="绘制点图"></a>绘制点图</h3><blockquote>
+<p>另外一种用于估计的图形是点图，可以调用 pointplot()函数进行绘制，该函数会用高度低计值对数据进行描述，而不是显示完整的条形，<strong>它只会绘制点估计和置信区间</strong>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.pointplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="关联图"><a href="#关联图" class="headerlink" title="关联图"></a>关联图</h1><blockquote>
+<p>当我们需要对数据进行关联性分析时，可能会用到 Seaborn 提供的以下几个 API。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关联性分析</th>
+<th style="text-align:center">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">relplot</td>
+<td style="text-align:center">绘制关系图</td>
+</tr>
+<tr>
+<td style="text-align:center">scatterplot</td>
+<td style="text-align:center">多维度分析散点图</td>
+</tr>
+<tr>
+<td style="text-align:center">lineplot</td>
+<td style="text-align:center">多维度分析线形图</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>relplot</code>是 relational plots 的缩写，其可以用于呈现数据之后的关系，主要有散点图和条形图 2 种样式。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.relplot(x=, y=,hue=, style=, kind=<span class="string">&quot;scatter&quot;</span>, data=)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ol>
+<li><code>hue：</code>加入类别特征对数据进行着色</li>
+<li><code>style：</code> 可以赋予不同类别的散点不同的形状</li>
+<li><code>kind:</code>还支持绘制线图，只需要<code>kind=&quot;line&quot;</code>线形态绘制时还会自动给出 95% 的置信区间。</li>
+</ol>
+<p><strong>API层级概念：</strong></p>
+<p>Seaborn 中的 API 分为 Figure-level 和 Axes-level 两种。<code>relplot</code> 就是一个 Figure-level 接口，而 <code>scatterplot</code> 和 <code>lineplot</code> 则是 Axes-level 接口。</p>
+</blockquote>
+<h1 id="回归图"><a href="#回归图" class="headerlink" title="回归图"></a>回归图</h1><blockquote>
+<p>回归图的绘制函数主要有：<code>lmplot</code>和<code>regplot</code></p>
+<p><code>regplot</code> 绘制回归图时，只需要指定自变量和因变量即可，<code>regplot</code> 会自动完成线性回归拟合。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.regplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
+<p><code>lmplot</code> 同样是用于绘制回归图，但 <code>lmplot</code> 支持引入第三维度进行对比，例如我们设置 <code>hue=&quot;species&quot;</code>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.lmplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="矩阵图"><a href="#矩阵图" class="headerlink" title="矩阵图"></a>矩阵图</h1><blockquote>
+<p>矩阵图中最常用的就只有 2 个，分别是：<code>heatmap</code>和<code>clustermap</code></p>
+<p><code>heatmap</code> 主要用于绘制热力图。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.heatmap(a,square,linewidths,annot)</span><br></pre></td></tr></table></figure>
+<p><code>clustermap</code> 支持绘制<code>层次聚类</code>结构图</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">iris.pop(<span class="string">&quot;species&quot;</span>)</span><br><span class="line">sns.clustermap(iris)</span><br></pre></td></tr></table></figure></blockquote>
+]]></content>
+      <categories>
+        <category>科学计算库</category>
+      </categories>
+      <tags>
+        <tag>Seaborn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pandas</title>
     <url>/2021/05/04/Pandas/</url>
     <content><![CDATA[<h1 id="Pandas优势"><a href="#Pandas优势" class="headerlink" title="Pandas优势"></a>Pandas优势</h1><blockquote>
@@ -1597,177 +1768,6 @@
       </categories>
       <tags>
         <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Seaborn</title>
-    <url>/2021/05/04/Seaborn/</url>
-    <content><![CDATA[<blockquote>
-<p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装 </span></span><br><span class="line">pip install seaborn==<span class="number">0.10</span><span class="number">.1</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
-<p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>(context=<span class="string">&#x27;notebook&#x27;</span>, style=<span class="string">&#x27;darkgrid&#x27;</span>, palette=<span class="string">&#x27;deep&#x27;</span>, font=<span class="string">&#x27;sans-serif&#x27;</span>, font_scale=<span class="number">1</span>, color_codes=<span class="literal">False</span>, rc=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>
-<li><code>style=&#39;&#39;</code> 参数控制默认样式，分别有 <code>&#123;darkgrid, whitegrid, dark, white, ticks&#125;</code>，你可以自行更改查看它们之间的不同。</li>
-<li><code>palette=&#39;&#39;</code> 参数为预设的调色板。分别有 <code>&#123;deep, muted, bright, pastel, dark, colorblind&#125;</code> 等，你可以自行更改查看它们之间的不同。</li>
-<li>剩下的 <code>font=&#39;&#39;</code> 用于设置字体，<code>font_scale=</code> 设置字体大小，<code>color_codes=</code> 不使用调色板而采用先前的 <code>&#39;r&#39;</code> 等色彩缩写。</li>
-</ul>
-</blockquote>
-<h1 id="分布图"><a href="#分布图" class="headerlink" title="分布图"></a>分布图</h1><h2 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h2><blockquote>
-<p>可以采用最简单的直方图描述单变量的分布情况。 Seaborn中提供了<code>distplot()</code>函数，它默认绘制的是一个带有核密度估计曲线的直方图。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.distplot(a, bins=<span class="literal">None</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">False</span>, fit=<span class="literal">None</span>, color=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p>上述函数中常用参数的含义如下：</p>
-<ul>
-<li><code>a</code>：表示要观察的数据，可以是 Series、一维数组或列表。</li>
-<li><code>bins</code>：用于控制条形的数量。</li>
-<li><code>hist</code>：接收布尔类型，表示<code>是否绘制(标注)直方图</code>。</li>
-<li><code>kde</code>：接收布尔类型，表示<code>是否绘制高斯核密度</code>估计曲线。</li>
-<li><code>rug</code>：接收布尔类型，表示是否在支持的轴方向上绘制rugplot。</li>
-</ul>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sns.<span class="built_in">set</span>() <span class="comment"># 调用set()函数获取默认绘图</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)  <span class="comment"># 确定随机数生成器的种子,如果不使用每次生成图形不一样</span></span><br><span class="line">arr = np.random.randn(<span class="number">100</span>)  <span class="comment"># 生成随机数组</span></span><br><span class="line">ax = sns.distplot(arr, bins=<span class="number">10</span>, hist=<span class="literal">True</span>, kde=<span class="literal">True</span>, rug=<span class="literal">True</span>)  <span class="comment"># 绘制直方图</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="绘制双变量分布"><a href="#绘制双变量分布" class="headerlink" title="绘制双变量分布"></a>绘制双变量分布</h2><blockquote>
-<p>两个变量的二元分布可视化也很有用。在 Seaborn中最简单的方法是使用 <code>jointplot()</code>函数，该函数可以创建一个多面板图形，比如散点图、二维直方图、核密度估计等，以显示两个变量之间的双变量关系及每个变量在单坐标轴上的单变量分布。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.jointplot(x, y, data=<span class="literal">None</span>, </span><br><span class="line">                  kind=<span class="string">&#x27;scatter&#x27;</span>, stat_func=<span class="literal">None</span>, color=<span class="literal">None</span>, </span><br><span class="line">                  ratio=<span class="number">5</span>, space=<span class="number">0.2</span>, dropna=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>上述函数中常用参数的含义如下：</p>
-<ol>
-<li><code>kind</code>：表示绘制图形的类型。hex:直方图，kde：核函数概率，reg：拟合线</li>
-<li><code>stat_func</code>：用于计算有关关系的统计量并标注图。</li>
-<li><code>color</code>：表示绘图元素的颜色。</li>
-<li><code>size</code>：用于设置图的大小(正方形)。</li>
-<li><code>ratio</code>：表示中心图与侧边图的比例。该参数的值越大，则中心图的占比会越大。</li>
-<li><code>space</code>：用于设置中心图与侧边图的间隔大小。</li>
-</ol>
-</blockquote>
-<h2 id="绘制成对的双变量分布"><a href="#绘制成对的双变量分布" class="headerlink" title="绘制成对的双变量分布"></a>绘制成对的双变量分布</h2><blockquote>
-<p>要想在数据集中绘制多个成对的双变量分布，则可以使用<code>pairplot()</code>函数实现，该函数会创建一个坐标轴矩阵，并且显示Datafram对象中每对变量的关系。另外，<code>pairplot()</code>函数也可以绘制每个变量在对角轴上的单变量分布。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 绘制多个成对的双变量分布</span></span><br><span class="line">sns.pairplot(data)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="类别图"><a href="#类别图" class="headerlink" title="类别图"></a>类别图</h1><blockquote>
-<p>类别图的 Figure-level 接口是 <code>catplot</code>，其为 categorical plots 的缩写。而 <code>catplot</code> 实际上是如下 Axes-level 绘图 API 的集合。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.catplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, kind=<span class="string">&quot;strip&quot;</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<p><code>参数kind：</code></p>
-<ol>
-<li>分类散点图：<code>strip，swarm</code></li>
-<li>分类分布图：<code>box，violin，boxen</code></li>
-<li>分类估计图：<code>point，bar，count</code></li>
-</ol>
-<p>Seaborn针对分类数据提供了专门的可视化函数，这些函数大致可以分为如下三种:</p>
-<ul>
-<li>分类数据散点图: <code>swarmplot()</code>与 <code>stripplot()</code>。</li>
-<li>类数据的分布图: <code>boxplot()</code> 与 <code>violinplot()</code>。</li>
-<li>分类数据的统计估算图:<code>barplot()</code> 与<code>pointplot()</code>。</li>
-</ul>
-</blockquote>
-<h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.stripplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, order=<span class="literal">None</span>, hue_order=<span class="literal">None</span>, jitter=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<p>上述函数中常用参数的含义如下</p>
-<ul>
-<li><code>x，y，hue</code>：用于绘制长格式数据的输入。</li>
-<li><code>data</code>：用于绘制的数据集。如果x和y不存在，则它将作为宽格式，否则将作为长格式。</li>
-<li><code>jitter</code>：表示抖动的程度(仅沿类別轴)。当很多数据点重叠时，可以指定抖动的数量或者设为True使用默认值。</li>
-</ul>
-<p>还可调用<code>swarmplot()</code>函数绘制散点图，该函数的好处是所有的数据点都不会重叠，可以很清晰地观察到数据的分布情况</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.swarmplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="类别内的数据分布"><a href="#类别内的数据分布" class="headerlink" title="类别内的数据分布"></a>类别内的数据分布</h2><blockquote>
-<p><strong>箱形图</strong>:</p>
-<ul>
-<li>箱形图（Box-plot）又称为盒须图、盒式图或箱线图，是一种用作显示一组数据分散情况资料的统计图。</li>
-<li><strong>它能显示出一组数据的最大值、最小值、中位数、及上下四分位数。</strong></li>
-</ul>
-<p><strong>小提琴图:</strong></p>
-<ul>
-<li>小提琴图 (Violin Plot) 用于显示数据分布及其概率密度。</li>
-<li><strong>这种图表结合了箱形图和密度图的特征，主要用来显示数据的分布形状。</strong></li>
-<li><strong>中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间（样本可能来自此区间的概率为95%），而白点则为中位数。</strong></li>
-<li><strong>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。</strong>例如使用箱形图时，我们不能了解数据分布。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</li>
-</ul>
-</blockquote>
-<h3 id="绘制箱体图"><a href="#绘制箱体图" class="headerlink" title="绘制箱体图"></a>绘制箱体图</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.boxplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>, orient=<span class="literal">None</span>, color=<span class="literal">None</span>,  saturation=<span class="number">0.75</span>, width=<span class="number">0.8</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>palette</code>：用于设置不同级别色相的颜色变量。—— palette=[“r”,”g”,”b”,”y”]</li>
-<li><code>saturation</code>：用于设置数据显示的颜色饱和度。—— 使用小数表示</li>
-</ol>
-</blockquote>
-<h3 id="绘制提琴图"><a href="#绘制提琴图" class="headerlink" title="绘制提琴图"></a>绘制提琴图</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seaborn.violinplot(x=<span class="literal">None</span>, y=<span class="literal">None</span>, hue=<span class="literal">None</span>, data=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="类别内的统计估计"><a href="#类别内的统计估计" class="headerlink" title="类别内的统计估计"></a>类别内的统计估计</h2><blockquote>
-<p>要想查看每个分类的集中趋势，则可以使用条形图和点图进行展示。 Seaborn库中用于绘制这两种图表的具体函数如下</p>
-<ul>
-<li><code>barplot()</code>函数：绘制条形图。</li>
-<li><code>pointplot()</code>函数：绘制点图。</li>
-</ul>
-</blockquote>
-<h3 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h3><blockquote>
-<p>最常用的查看集中趋势的图形就是条形图。默认情况下， barplot函数会在整个数据集上使用均值进行估计。<strong>若每个类别中有多个类别时(使用了hue参数)</strong>，则条形图可以使用引导来计算估计的<strong>置信区间(是指由样本统计量所构造的总体参数的估计区间)</strong>，并使用误差条（图中黑色的竖线）来表示出现这个均值的95%置信区间。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.barplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="绘制点图"><a href="#绘制点图" class="headerlink" title="绘制点图"></a>绘制点图</h3><blockquote>
-<p>另外一种用于估计的图形是点图，可以调用 pointplot()函数进行绘制，该函数会用高度低计值对数据进行描述，而不是显示完整的条形，<strong>它只会绘制点估计和置信区间</strong>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.pointplot(x=<span class="string">&quot;day&quot;</span>, y=<span class="string">&quot;total_bill&quot;</span>, data=tips)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="关联图"><a href="#关联图" class="headerlink" title="关联图"></a>关联图</h1><blockquote>
-<p>当我们需要对数据进行关联性分析时，可能会用到 Seaborn 提供的以下几个 API。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">关联性分析</th>
-<th style="text-align:center">介绍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">relplot</td>
-<td style="text-align:center">绘制关系图</td>
-</tr>
-<tr>
-<td style="text-align:center">scatterplot</td>
-<td style="text-align:center">多维度分析散点图</td>
-</tr>
-<tr>
-<td style="text-align:center">lineplot</td>
-<td style="text-align:center">多维度分析线形图</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><code>relplot</code>是 relational plots 的缩写，其可以用于呈现数据之后的关系，主要有散点图和条形图 2 种样式。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.relplot(x=, y=,hue=, style=, kind=<span class="string">&quot;scatter&quot;</span>, data=)</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<ol>
-<li><code>hue：</code>加入类别特征对数据进行着色</li>
-<li><code>style：</code> 可以赋予不同类别的散点不同的形状</li>
-<li><code>kind:</code>还支持绘制线图，只需要<code>kind=&quot;line&quot;</code>线形态绘制时还会自动给出 95% 的置信区间。</li>
-</ol>
-<p><strong>API层级概念：</strong></p>
-<p>Seaborn 中的 API 分为 Figure-level 和 Axes-level 两种。<code>relplot</code> 就是一个 Figure-level 接口，而 <code>scatterplot</code> 和 <code>lineplot</code> 则是 Axes-level 接口。</p>
-</blockquote>
-<h1 id="回归图"><a href="#回归图" class="headerlink" title="回归图"></a>回归图</h1><blockquote>
-<p>回归图的绘制函数主要有：<code>lmplot</code>和<code>regplot</code></p>
-<p><code>regplot</code> 绘制回归图时，只需要指定自变量和因变量即可，<code>regplot</code> 会自动完成线性回归拟合。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.regplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
-<p><code>lmplot</code> 同样是用于绘制回归图，但 <code>lmplot</code> 支持引入第三维度进行对比，例如我们设置 <code>hue=&quot;species&quot;</code>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.lmplot(x=<span class="string">&quot;sepal_length&quot;</span>, y=<span class="string">&quot;sepal_width&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, data=iris)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="矩阵图"><a href="#矩阵图" class="headerlink" title="矩阵图"></a>矩阵图</h1><blockquote>
-<p>矩阵图中最常用的就只有 2 个，分别是：<code>heatmap</code>和<code>clustermap</code></p>
-<p><code>heatmap</code> 主要用于绘制热力图。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.heatmap(a,square,linewidths,annot)</span><br></pre></td></tr></table></figure>
-<p><code>clustermap</code> 支持绘制<code>层次聚类</code>结构图</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">iris.pop(<span class="string">&quot;species&quot;</span>)</span><br><span class="line">sns.clustermap(iris)</span><br></pre></td></tr></table></figure></blockquote>
-]]></content>
-      <categories>
-        <category>科学计算库</category>
-      </categories>
-      <tags>
-        <tag>Seaborn</tag>
       </tags>
   </entry>
   <entry>
@@ -3028,8 +3028,8 @@
       <tags>
         <tag>Matplotlib</tag>
         <tag>Numpy</tag>
-        <tag>Pandas</tag>
         <tag>Seaborn</tag>
+        <tag>Pandas</tag>
         <tag>Api</tag>
       </tags>
   </entry>
@@ -3194,6 +3194,226 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
       </categories>
       <tags>
         <tag>SVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构与算法</title>
+    <url>/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
+<p><strong>顺序表</strong></p>
+<ol>
+<li>元素存储在一段连续的内存空间</li>
+<li>可以通过索引方式访问元素</li>
+</ol>
+<p><strong>分类</strong></p>
+<ol>
+<li>一体式:信息区和数据区在一起</li>
+<li>分离式:信息区和数据区分开</li>
+</ol>
+<p><strong>元素外置</strong></p>
+<ol>
+<li>数据区中存储的是元素的内存地址,不是保存具体的元素</li>
+<li>python的列表是分离式顺序表实现的 元素外置</li>
+<li>python大部分数据元素外置</li>
+</ol>
+<p><strong>链表</strong></p>
+<p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
+<p><strong>增加</strong></p>
+<ol>
+<li>尾部增加 O(1)</li>
+<li>特定位置非保序O(1)</li>
+<li>特定位置保序O(n)</li>
+</ol>
+<p><strong>删除</strong></p>
+<ol>
+<li>删除尾部O(1)</li>
+<li>删除特定位置非保序O(1)</li>
+<li>删除特定位置保序O(n)</li>
+</ol>
+<p><strong>查找</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+<p><strong>修改</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+</blockquote>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
+<p><strong>特点</strong>:<strong>先进后出</strong></p>
+<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
+<ol>
+<li><strong>顺序表实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;栈:先进后出&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;进栈&quot;&quot;&quot;</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;出栈&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.__items:</span><br><span class="line">            <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>链表实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedStack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 最上面的元素</span></span><br><span class="line">        self.top = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, value: <span class="built_in">int</span></span>):</span></span><br><span class="line">        newtop = Node(value)</span><br><span class="line">        newtop.<span class="built_in">next</span> = self.top</span><br><span class="line">        self.top = newtop</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.top:</span><br><span class="line">            value = self.top.data</span><br><span class="line">            self.top = self.top.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
+<p><strong>队列特点:先进先出</strong></p>
+<p><strong>队列作用:保证任务顺序执行</strong></p>
+<ol>
+<li><strong>使用顺序表实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 存储数据 线性表</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># enqueue(item)</span></span><br><span class="line">    <span class="comment"># 队列尾部添加元素item</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># dequeue():</span></span><br><span class="line">    <span class="comment"># 队列头部删除元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__items:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># is_empty()</span></span><br><span class="line">    <span class="comment"># 判断队列是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_enpty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__items == []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># size()</span></span><br><span class="line">    <span class="comment"># 返回队列的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.__items)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>使用链表实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedQueue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__head = <span class="literal">None</span></span><br><span class="line">        self.__tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        new_node = Node(value)</span><br><span class="line">        <span class="comment"># 尾部不为空</span></span><br><span class="line">        <span class="keyword">if</span> self.__tail:</span><br><span class="line">            self.__tail.<span class="built_in">next</span> = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__head = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        self.__tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 如果头部有数据</span></span><br><span class="line">        <span class="keyword">if</span> self.__head:</span><br><span class="line">            value = self.__head.data</span><br><span class="line">            self.__head = self.__head.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.__head:<span class="comment"># 新的头部为空</span></span><br><span class="line">                self.__tail = <span class="literal">None</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
+<p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deque</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;双端队列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items == []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;返回队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.items)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_front</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;头部添加数据&quot;&quot;&quot;</span></span><br><span class="line">        self.items.insert(<span class="number">0</span>, item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_rear</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;尾部添加数据&quot;&quot;&quot;</span></span><br><span class="line">        self.items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_front</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;头部删除数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_rear</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;尾部删除数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop()</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><strong>python封装的queue队列</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> queue</span><br><span class="line">queue = queue.Queue(<span class="number">10</span>)</span><br><span class="line">queue.put(<span class="number">10</span>)</span><br><span class="line">queue.put(<span class="number">20</span>)</span><br><span class="line">queue.put(<span class="number">30</span>)</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h1 id="算法衡量标准"><a href="#算法衡量标准" class="headerlink" title="算法衡量标准"></a>算法衡量标准</h1><blockquote>
+<p><strong>时间复杂度</strong></p>
+<p>   最优时间复杂度</p>
+<p>   最坏时间复杂度</p>
+<p><strong>算法的稳定性</strong></p>
+<p>   在元素中有相同的元素,如果排序之后,它们的相对位置没有发生变化,是稳定排序算法</p>
+<p><strong>原地排序</strong></p>
+<p>   排序算法空间复杂度为O(1) 是原地排序</p>
+</blockquote>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
+<p><strong>从头开始依次和后面第一个元素比较,如果比后面大,进行交换</strong></p>
+<p><strong>经过一轮之后可以确定最大值,放到最后面</strong></p>
+<p><strong>经过n-1排序成功</strong></p>
+<p><strong>每一轮需要比较次数=n-当前轮数</strong></p>
+<ol>
+<li><strong>代码实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;冒泡排序&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数列的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 控制轮数</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 每一论的比较的次数</span></span><br><span class="line">        <span class="comment"># i每一次和后面比较的索引</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-j-<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 如果当前元素比后面元素大，交换</span></span><br><span class="line">            <span class="keyword">if</span> alist[i] &gt; alist[i+<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i + <span class="number">1</span>] = alist[i + <span class="number">1</span>], alist[i]</span><br><span class="line">                count+=<span class="number">1</span></span><br><span class="line">        <span class="comment"># 这一轮没有交换  说明后续的列表已经有序  可以停下来</span></span><br><span class="line">        <span class="keyword">if</span> count==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p><strong>算法分析</strong>：</p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;选择排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 列表的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 外层循环 0-3</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n - <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 本轮目标j(索引)</span></span><br><span class="line">        <span class="comment"># 本轮最小值下标</span></span><br><span class="line">        minIndex = j</span><br><span class="line">        <span class="comment"># 控制比较次数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, n):</span><br><span class="line">            <span class="comment"># 从目标向后开始和minIndex比较</span></span><br><span class="line">            <span class="keyword">if</span> alist[i]&gt;alist[minIndex]:</span><br><span class="line">                minIndex = i</span><br><span class="line">        <span class="comment"># 结束之后 如果目标的索引不是最小值索引 交换</span></span><br><span class="line">        <span class="keyword">if</span> minIndex != j:</span><br><span class="line">            alist[j],alist[minIndex] = alist[minIndex],alist[j]</span><br></pre></td></tr></table></figure>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n2) 最坏O(n2)</li>
+<li>不稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;插入排序&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 列表的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 轮数</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">        <span class="comment"># 找一个数据加入到已经排序号的数据中排序</span></span><br><span class="line">        <span class="comment"># 从索引为1开始加入</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(j,<span class="number">0</span>,-<span class="number">1</span>):<span class="comment"># 从最后开始往前面比较</span></span><br><span class="line">            <span class="keyword">if</span> alist[i] &lt; alist[i-<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i-<span class="number">1</span>] = alist[i-<span class="number">1</span>], alist[i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">100</span>,<span class="number">99</span>,<span class="number">20</span>,<span class="number">5</span>,<span class="number">1000</span>]</span><br><span class="line">    insert_sort(alist)</span><br><span class="line">    <span class="built_in">print</span>(alist)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
+<p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span>(<span class="params">alist, start, end</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;快速排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 递归的结束条件</span></span><br><span class="line">    <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="comment"># 界限值</span></span><br><span class="line">    mid = alist[start]</span><br><span class="line">    <span class="comment"># 左右游标</span></span><br><span class="line">    left = start</span><br><span class="line">    right = end</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        <span class="comment"># 从右边开始找寻小于mid的值 归类到左边</span></span><br><span class="line">        <span class="keyword">while</span> alist[right] &gt;= mid <span class="keyword">and</span> left &lt; right:</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        alist[left] = alist[right]</span><br><span class="line">        <span class="comment"># 从左边开始找寻大于mid的值 归类到右边</span></span><br><span class="line">        <span class="keyword">while</span> alist[left] &lt; mid <span class="keyword">and</span> left &lt; right:</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        alist[right] = alist[left]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 循环一旦结束了 证明找到了mid应该在的位置</span></span><br><span class="line">    alist[left] = mid</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 递归操作</span></span><br><span class="line">    quick_sort(alist, start, left-<span class="number">1</span>)</span><br><span class="line">    quick_sort(alist, right+<span class="number">1</span>, end)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># alist = [1,2,100,50,1000,0,1,1]</span></span><br><span class="line">    <span class="comment"># alist = [1,2,3,4,5,6,7,8]</span></span><br><span class="line">    alist = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    quick_sort(alist, <span class="number">0</span>, <span class="built_in">len</span>(alist)-<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(alist)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
+<p><strong>注意：必须有序</strong></p>
+<ol>
+<li><strong>递归实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> alist:</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    <span class="comment"># 数列的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 中间值索引</span></span><br><span class="line">    mid = n//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">         <span class="keyword">return</span> binary_search(alist[<span class="number">0</span>:mid], item)</span><br><span class="line">    <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">         <span class="keyword">return</span> binary_search(alist[mid+<span class="number">1</span>:], item)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>非递归实现</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>查找第一个索引</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找 如果找到返回索引  没有找到返回-1&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="comment"># 判断是否是第一个3</span></span><br><span class="line">            <span class="keyword">if</span> mid==<span class="number">0</span> <span class="keyword">or</span> alist[mid-<span class="number">1</span>]!=item:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"><span class="comment"># 最好 O(1) 最坏 O(logn)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="built_in">print</span>(binary_search(alist, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
+<p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
+<ol>
+<li><strong>查找最后一个索引</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找 如果找到返回索引  没有找到返回-1&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    maxIndex = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    end = maxIndex</span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="keyword">if</span> mid == maxIndex <span class="keyword">or</span> alist[mid+<span class="number">1</span>]!=item:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"><span class="comment"># 最好 O(1) 最坏 O(logn)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="built_in">print</span>(binary_search(alist, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
+<p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
+</blockquote>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><blockquote>
+<p><strong>树的标准</strong></p>
+<p>①每个节点有零个或多个子节点<br>②没有父节点的节点称为根节点<br>③每一个非根节点有且只有一个父节点<br>④除了根节点外，每个子节点可以分为多个不相交的子树</p>
+<p><strong>树的相关概念</strong></p>
+<ol>
+<li>节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
+<li>树的高度或深度：树中节点的最大层次</li>
+</ol>
+<p><strong>树的使用场景</strong></p>
+<p>①xml，html等，那么编写这些东西的解析器的时候，不可避免用到树</p>
+<p>②路由协议就是使用了树的算法</p>
+<p>③mysql数据库索引</p>
+<p>④文件系统的目录结构</p>
+<p>⑤所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构</p>
+</blockquote>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
+<p><strong>概念</strong></p>
+<p>每个几点最多拥有两个子节点</p>
+<p><strong>分类</strong></p>
+<ol>
+<li><p>完全二叉树</p>
+<p>对于一颗二叉树，假设其深度为d(d&gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树</p>
+</li>
+<li><p>满二叉树</p>
+<p>每一层都是满节点就是满二叉树</p>
+</li>
+<li><p>平衡二叉树</p>
+<p>当且仅当任何节点的两棵子树的高度差不大于1的二叉树</p>
+</li>
+<li><p>二叉搜索树</p>
+<p>父节点左边都比父节点小,右边都比父节点大,子树也满足这个条件</p>
+</li>
+</ol>
+<p><strong>存储</strong></p>
+<ol>
+<li>顺序表 完全二叉树可以使用顺序表存储  非完全二叉树建议使用链表方式存储</li>
+<li>链表  比较直观</li>
+</ol>
+</blockquote>
+<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
+<p><strong>性质</strong></p>
+<p>性质1: 在二叉树的第i层上至多有 2i-1 个结点（i&gt;0）</p>
+<p>性质2: 深度为k的二叉树至多有2k - 1个结点（k&gt;0）</p>
+<p>性质3: 对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1</p>
+<p>性质4: 最多有n个结点的完全二叉树的深度必为 log2(n+1)</p>
+<p>性质5: 对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子<br>编号必为2i＋1 , 其父节点的编号必为i//2（i＝1 时为根,除外）</p>
+<p><strong>遍历方式</strong></p>
+<p>广度优先:横向遍历</p>
+<p>深度优先:纵向遍历</p>
+<ol>
+<li>先序遍历 根左右</li>
+<li>中序遍历 左根右</li>
+<li>后序遍历 左右根</li>
+</ol>
+<p><strong>添加数据及遍历</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;节点类&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.item = item</span><br><span class="line">        self.lchild = <span class="literal">None</span></span><br><span class="line">        self.rchild = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;完全二叉树&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, node=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.root = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;添加节点&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.root == <span class="literal">None</span>:</span><br><span class="line">            self.root = Node(item)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 队列</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 从尾部添加数据</span></span><br><span class="line">        queue.append(self.root)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># 从头部取出数据</span></span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="comment"># 判断左节点是否为空</span></span><br><span class="line">            <span class="keyword">if</span> node.lchild == <span class="literal">None</span>:</span><br><span class="line">                node.lchild = Node(item)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> node.rchild == <span class="literal">None</span>:</span><br><span class="line">                node.rchild = Node(item)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">breadh_travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;广度优先遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.root == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 队列</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 添加数据</span></span><br><span class="line">        queue.append(self.root)</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(queue)&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 取出数据</span></span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">print</span>(node.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="comment"># 判断左右子节点是否为空</span></span><br><span class="line">            <span class="keyword">if</span> node.lchild <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line">            <span class="keyword">if</span> node.rchild <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;先序遍历 根 左 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.preorder_travel(root.lchild)</span><br><span class="line">            self.preorder_travel(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历 左 根 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.inorder_travel(root.lchild)</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.inorder_travel(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;后序遍历 根 左 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.postorder_travel(root.lchild)</span><br><span class="line">            self.postorder_travel(root.rchild)</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -3709,226 +3929,6 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
       <tags>
         <tag>数据库</tag>
         <tag>Mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构与算法</title>
-    <url>/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
-<p><strong>顺序表</strong></p>
-<ol>
-<li>元素存储在一段连续的内存空间</li>
-<li>可以通过索引方式访问元素</li>
-</ol>
-<p><strong>分类</strong></p>
-<ol>
-<li>一体式:信息区和数据区在一起</li>
-<li>分离式:信息区和数据区分开</li>
-</ol>
-<p><strong>元素外置</strong></p>
-<ol>
-<li>数据区中存储的是元素的内存地址,不是保存具体的元素</li>
-<li>python的列表是分离式顺序表实现的 元素外置</li>
-<li>python大部分数据元素外置</li>
-</ol>
-<p><strong>链表</strong></p>
-<p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
-<p><strong>增加</strong></p>
-<ol>
-<li>尾部增加 O(1)</li>
-<li>特定位置非保序O(1)</li>
-<li>特定位置保序O(n)</li>
-</ol>
-<p><strong>删除</strong></p>
-<ol>
-<li>删除尾部O(1)</li>
-<li>删除特定位置非保序O(1)</li>
-<li>删除特定位置保序O(n)</li>
-</ol>
-<p><strong>查找</strong></p>
-<ol>
-<li>按照角标查找O(1)</li>
-<li>查找元素最优O(1) 最坏O(n)</li>
-</ol>
-<p><strong>修改</strong></p>
-<ol>
-<li>按照角标查找O(1)</li>
-<li>查找元素最优O(1) 最坏O(n)</li>
-</ol>
-</blockquote>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
-<p><strong>特点</strong>:<strong>先进后出</strong></p>
-<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
-<ol>
-<li><strong>顺序表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;栈:先进后出&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;进栈&quot;&quot;&quot;</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;出栈&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.__items:</span><br><span class="line">            <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>链表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedStack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 最上面的元素</span></span><br><span class="line">        self.top = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, value: <span class="built_in">int</span></span>):</span></span><br><span class="line">        newtop = Node(value)</span><br><span class="line">        newtop.<span class="built_in">next</span> = self.top</span><br><span class="line">        self.top = newtop</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.top:</span><br><span class="line">            value = self.top.data</span><br><span class="line">            self.top = self.top.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
-<p><strong>队列特点:先进先出</strong></p>
-<p><strong>队列作用:保证任务顺序执行</strong></p>
-<ol>
-<li><strong>使用顺序表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 存储数据 线性表</span></span><br><span class="line">        self.__items = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># enqueue(item)</span></span><br><span class="line">    <span class="comment"># 队列尾部添加元素item</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># dequeue():</span></span><br><span class="line">    <span class="comment"># 队列头部删除元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__items:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># is_empty()</span></span><br><span class="line">    <span class="comment"># 判断队列是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_enpty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__items == []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># size()</span></span><br><span class="line">    <span class="comment"># 返回队列的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.__items)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>使用链表实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, data, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedQueue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__head = <span class="literal">None</span></span><br><span class="line">        self.__tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        new_node = Node(value)</span><br><span class="line">        <span class="comment"># 尾部不为空</span></span><br><span class="line">        <span class="keyword">if</span> self.__tail:</span><br><span class="line">            self.__tail.<span class="built_in">next</span> = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__head = new_node</span><br><span class="line">            <span class="comment"># self.__tail = new_node</span></span><br><span class="line">        self.__tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 如果头部有数据</span></span><br><span class="line">        <span class="keyword">if</span> self.__head:</span><br><span class="line">            value = self.__head.data</span><br><span class="line">            self.__head = self.__head.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.__head:<span class="comment"># 新的头部为空</span></span><br><span class="line">                self.__tail = <span class="literal">None</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
-<p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
-   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deque</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;双端队列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items == []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;返回队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.items)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_front</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;头部添加数据&quot;&quot;&quot;</span></span><br><span class="line">        self.items.insert(<span class="number">0</span>, item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_rear</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;尾部添加数据&quot;&quot;&quot;</span></span><br><span class="line">        self.items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_front</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;头部删除数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_rear</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;尾部删除数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop()</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p><strong>python封装的queue队列</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> queue</span><br><span class="line">queue = queue.Queue(<span class="number">10</span>)</span><br><span class="line">queue.put(<span class="number">10</span>)</span><br><span class="line">queue.put(<span class="number">20</span>)</span><br><span class="line">queue.put(<span class="number">30</span>)</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br><span class="line"><span class="built_in">print</span>(queue.get())</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</blockquote>
-<h1 id="算法衡量标准"><a href="#算法衡量标准" class="headerlink" title="算法衡量标准"></a>算法衡量标准</h1><blockquote>
-<p><strong>时间复杂度</strong></p>
-<p>   最优时间复杂度</p>
-<p>   最坏时间复杂度</p>
-<p><strong>算法的稳定性</strong></p>
-<p>   在元素中有相同的元素,如果排序之后,它们的相对位置没有发生变化,是稳定排序算法</p>
-<p><strong>原地排序</strong></p>
-<p>   排序算法空间复杂度为O(1) 是原地排序</p>
-</blockquote>
-<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
-<p><strong>从头开始依次和后面第一个元素比较,如果比后面大,进行交换</strong></p>
-<p><strong>经过一轮之后可以确定最大值,放到最后面</strong></p>
-<p><strong>经过n-1排序成功</strong></p>
-<p><strong>每一轮需要比较次数=n-当前轮数</strong></p>
-<ol>
-<li><strong>代码实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;冒泡排序&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数列的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 控制轮数</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 每一论的比较的次数</span></span><br><span class="line">        <span class="comment"># i每一次和后面比较的索引</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-j-<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 如果当前元素比后面元素大，交换</span></span><br><span class="line">            <span class="keyword">if</span> alist[i] &gt; alist[i+<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i + <span class="number">1</span>] = alist[i + <span class="number">1</span>], alist[i]</span><br><span class="line">                count+=<span class="number">1</span></span><br><span class="line">        <span class="comment"># 这一轮没有交换  说明后续的列表已经有序  可以停下来</span></span><br><span class="line">        <span class="keyword">if</span> count==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-<p><strong>算法分析</strong>：</p>
-<ol>
-<li>时间复杂度 最好O(n) 最坏O(n2)</li>
-<li>稳定排序算法</li>
-<li>原地排序</li>
-</ol>
-</blockquote>
-<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
-<p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;选择排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 列表的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 外层循环 0-3</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n - <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 本轮目标j(索引)</span></span><br><span class="line">        <span class="comment"># 本轮最小值下标</span></span><br><span class="line">        minIndex = j</span><br><span class="line">        <span class="comment"># 控制比较次数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, n):</span><br><span class="line">            <span class="comment"># 从目标向后开始和minIndex比较</span></span><br><span class="line">            <span class="keyword">if</span> alist[i]&gt;alist[minIndex]:</span><br><span class="line">                minIndex = i</span><br><span class="line">        <span class="comment"># 结束之后 如果目标的索引不是最小值索引 交换</span></span><br><span class="line">        <span class="keyword">if</span> minIndex != j:</span><br><span class="line">            alist[j],alist[minIndex] = alist[minIndex],alist[j]</span><br></pre></td></tr></table></figure>
-<p><strong>算法分析</strong></p>
-<ol>
-<li>时间复杂度 最好O(n2) 最坏O(n2)</li>
-<li>不稳定排序算法</li>
-<li>原地排序</li>
-</ol>
-</blockquote>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
-<p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;插入排序&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 列表的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line">    <span class="comment"># 轮数</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">        <span class="comment"># 找一个数据加入到已经排序号的数据中排序</span></span><br><span class="line">        <span class="comment"># 从索引为1开始加入</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(j,<span class="number">0</span>,-<span class="number">1</span>):<span class="comment"># 从最后开始往前面比较</span></span><br><span class="line">            <span class="keyword">if</span> alist[i] &lt; alist[i-<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i-<span class="number">1</span>] = alist[i-<span class="number">1</span>], alist[i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">100</span>,<span class="number">99</span>,<span class="number">20</span>,<span class="number">5</span>,<span class="number">1000</span>]</span><br><span class="line">    insert_sort(alist)</span><br><span class="line">    <span class="built_in">print</span>(alist)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>算法分析</strong></p>
-<ol>
-<li>时间复杂度 最好O(n) 最坏O(n2)</li>
-<li>稳定排序算法</li>
-<li>原地排序</li>
-</ol>
-</blockquote>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
-<p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span>(<span class="params">alist, start, end</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;快速排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 递归的结束条件</span></span><br><span class="line">    <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="comment"># 界限值</span></span><br><span class="line">    mid = alist[start]</span><br><span class="line">    <span class="comment"># 左右游标</span></span><br><span class="line">    left = start</span><br><span class="line">    right = end</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        <span class="comment"># 从右边开始找寻小于mid的值 归类到左边</span></span><br><span class="line">        <span class="keyword">while</span> alist[right] &gt;= mid <span class="keyword">and</span> left &lt; right:</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        alist[left] = alist[right]</span><br><span class="line">        <span class="comment"># 从左边开始找寻大于mid的值 归类到右边</span></span><br><span class="line">        <span class="keyword">while</span> alist[left] &lt; mid <span class="keyword">and</span> left &lt; right:</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        alist[right] = alist[left]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 循环一旦结束了 证明找到了mid应该在的位置</span></span><br><span class="line">    alist[left] = mid</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 递归操作</span></span><br><span class="line">    quick_sort(alist, start, left-<span class="number">1</span>)</span><br><span class="line">    quick_sort(alist, right+<span class="number">1</span>, end)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># alist = [1,2,100,50,1000,0,1,1]</span></span><br><span class="line">    <span class="comment"># alist = [1,2,3,4,5,6,7,8]</span></span><br><span class="line">    alist = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    quick_sort(alist, <span class="number">0</span>, <span class="built_in">len</span>(alist)-<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(alist)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
-<p><strong>注意：必须有序</strong></p>
-<ol>
-<li><strong>递归实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> alist:</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    <span class="comment"># 数列的长度</span></span><br><span class="line">    n = <span class="built_in">len</span>(alist)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 中间值索引</span></span><br><span class="line">    mid = n//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">         <span class="keyword">return</span> binary_search(alist[<span class="number">0</span>:mid], item)</span><br><span class="line">    <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">         <span class="keyword">return</span> binary_search(alist[mid+<span class="number">1</span>:], item)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>非递归实现</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>查找第一个索引</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找 如果找到返回索引  没有找到返回-1&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="comment"># 判断是否是第一个3</span></span><br><span class="line">            <span class="keyword">if</span> mid==<span class="number">0</span> <span class="keyword">or</span> alist[mid-<span class="number">1</span>]!=item:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"><span class="comment"># 最好 O(1) 最坏 O(logn)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="built_in">print</span>(binary_search(alist, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
-<p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
-<ol>
-<li><strong>查找最后一个索引</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">alist, item</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找 如果找到返回索引  没有找到返回-1&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置起始位置 获取中间值</span></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    maxIndex = <span class="built_in">len</span>(alist) - <span class="number">1</span></span><br><span class="line">    end = maxIndex</span><br><span class="line">    <span class="comment"># 必须要=  需要比较最后的一个元素是否是需要的数据</span></span><br><span class="line">    <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">        <span class="comment"># 获取中间值</span></span><br><span class="line">        mid = (start + end)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> item == alist[mid]:</span><br><span class="line">            <span class="keyword">if</span> mid == maxIndex <span class="keyword">or</span> alist[mid+<span class="number">1</span>]!=item:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &lt; alist[mid]:</span><br><span class="line">            end = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> item &gt; alist[mid]:</span><br><span class="line">            start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有找到想要找的数字</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"><span class="comment"># 最好 O(1) 最坏 O(logn)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    alist = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="built_in">print</span>(binary_search(alist, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
-<p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
-</blockquote>
-<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><blockquote>
-<p><strong>树的标准</strong></p>
-<p>①每个节点有零个或多个子节点<br>②没有父节点的节点称为根节点<br>③每一个非根节点有且只有一个父节点<br>④除了根节点外，每个子节点可以分为多个不相交的子树</p>
-<p><strong>树的相关概念</strong></p>
-<ol>
-<li>节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
-<li>树的高度或深度：树中节点的最大层次</li>
-</ol>
-<p><strong>树的使用场景</strong></p>
-<p>①xml，html等，那么编写这些东西的解析器的时候，不可避免用到树</p>
-<p>②路由协议就是使用了树的算法</p>
-<p>③mysql数据库索引</p>
-<p>④文件系统的目录结构</p>
-<p>⑤所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构</p>
-</blockquote>
-<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
-<p><strong>概念</strong></p>
-<p>每个几点最多拥有两个子节点</p>
-<p><strong>分类</strong></p>
-<ol>
-<li><p>完全二叉树</p>
-<p>对于一颗二叉树，假设其深度为d(d&gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树</p>
-</li>
-<li><p>满二叉树</p>
-<p>每一层都是满节点就是满二叉树</p>
-</li>
-<li><p>平衡二叉树</p>
-<p>当且仅当任何节点的两棵子树的高度差不大于1的二叉树</p>
-</li>
-<li><p>二叉搜索树</p>
-<p>父节点左边都比父节点小,右边都比父节点大,子树也满足这个条件</p>
-</li>
-</ol>
-<p><strong>存储</strong></p>
-<ol>
-<li>顺序表 完全二叉树可以使用顺序表存储  非完全二叉树建议使用链表方式存储</li>
-<li>链表  比较直观</li>
-</ol>
-</blockquote>
-<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
-<p><strong>性质</strong></p>
-<p>性质1: 在二叉树的第i层上至多有 2i-1 个结点（i&gt;0）</p>
-<p>性质2: 深度为k的二叉树至多有2k - 1个结点（k&gt;0）</p>
-<p>性质3: 对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1</p>
-<p>性质4: 最多有n个结点的完全二叉树的深度必为 log2(n+1)</p>
-<p>性质5: 对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子<br>编号必为2i＋1 , 其父节点的编号必为i//2（i＝1 时为根,除外）</p>
-<p><strong>遍历方式</strong></p>
-<p>广度优先:横向遍历</p>
-<p>深度优先:纵向遍历</p>
-<ol>
-<li>先序遍历 根左右</li>
-<li>中序遍历 左根右</li>
-<li>后序遍历 左右根</li>
-</ol>
-<p><strong>添加数据及遍历</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;节点类&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.item = item</span><br><span class="line">        self.lchild = <span class="literal">None</span></span><br><span class="line">        self.rchild = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;完全二叉树&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, node=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.root = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;添加节点&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.root == <span class="literal">None</span>:</span><br><span class="line">            self.root = Node(item)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 队列</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 从尾部添加数据</span></span><br><span class="line">        queue.append(self.root)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># 从头部取出数据</span></span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="comment"># 判断左节点是否为空</span></span><br><span class="line">            <span class="keyword">if</span> node.lchild == <span class="literal">None</span>:</span><br><span class="line">                node.lchild = Node(item)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> node.rchild == <span class="literal">None</span>:</span><br><span class="line">                node.rchild = Node(item)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">breadh_travel</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;广度优先遍历&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.root == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># 队列</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 添加数据</span></span><br><span class="line">        queue.append(self.root)</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(queue)&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 取出数据</span></span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">print</span>(node.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="comment"># 判断左右子节点是否为空</span></span><br><span class="line">            <span class="keyword">if</span> node.lchild <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line">            <span class="keyword">if</span> node.rchild <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;先序遍历 根 左 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.preorder_travel(root.lchild)</span><br><span class="line">            self.preorder_travel(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历 左 根 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.inorder_travel(root.lchild)</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.inorder_travel(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorder_travel</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;后序遍历 根 左 右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.postorder_travel(root.lchild)</span><br><span class="line">            self.postorder_travel(root.rchild)</span><br><span class="line">            <span class="built_in">print</span>(root.item, end=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>

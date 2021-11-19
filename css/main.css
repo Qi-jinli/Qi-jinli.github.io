@@ -1061,7 +1061,7 @@ pre .javascript .function {
   font-family: 'Noto Serif SC', 'Noto Serif SC', "Noto Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 2em;
   font-weight: normal;
-  margin: 1;
+  margin: 0;
 }
 .site-subtitle {
   color: #999;
@@ -1242,7 +1242,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #af6fcc;
+  background: #39ff79;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
