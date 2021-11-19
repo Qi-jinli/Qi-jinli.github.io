@@ -336,21 +336,14 @@
 <li><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190552024.png" alt="image-20210304190552024" style="zoom:75%;"></li>
 </ol>
 </blockquote>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><blockquote>
-<p><code>hmmlearn.hmm.MutinomialHMM</code></p>
-<p><strong>Parameters:</strong></p>
-<ol>
-<li><code>startprob_:</code>参数对应我们的隐藏状态初始分布 Π</li>
-<li><code>transmat_</code>对应我们的状态转移矩阵A</li>
-<li><code>emissionprob_</code>对应我们的观测状态概率矩阵B</li>
-</ol>
-<p><strong>Attributes:</strong></p>
-<ol>
-<li><code>predict(x):</code>X为可观测序列，返回最可能的隐藏状态序列。</li>
-<li><code>score(x):</code>X为可观测序列，返回观测序列以自然对数为底的概率值。</li>
-</ol>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -449,248 +442,15 @@
 <p><strong>简而言之：每新加入一个弱学习器，整体能力就会得到提升</strong></p>
 <p>代表算法：Adaboost，GBDT，XGBoost，LightGBM</p>
 </blockquote>
-<h2 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h2><blockquote>
-<p>实现原理：</p>
-<ol>
-<li><p>初始化训练数据的权重值分布，$D_1=\{w_1,w_2,….w_n\},w_i=1/N$,N为样本数量</p>
-</li>
-<li><p>以分类树或回归树为基本分类器$h_1(x)$,计算在此分类器上的错误率$e_1$</p>
-</li>
-<li><p>求出此分类器的投票权重$\alpha_1$:</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014632223-0150412.png" alt="image-20210505014632223">根据投票权重对训练数据重新赋权：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226111724416.png" alt="image-20210226111724416" style="zoom:33%;"></p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226111745326.png" alt="image-20210226111745326" style="zoom:33%;"></p>
-<p>所以$D_2$更新为：</p>
-<ul>
-<li>正确分类样本，权值更新，$D_2=\frac{D_1}{2e_1}$</li>
-<li>错误分类样本，权值更新，$D_2=\frac{D_1}{2(1-e_1)}$</li>
-</ul>
-</li>
-<li><p>然后重复2-4过程，直到分类器能正确划分样本</p>
-</li>
-<li><p>对所有m个分类器进行加权投票，得到总分类器：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014728559-0150451.png" alt="image-20210505014728559"></p>
-</li>
-</ol>
-</blockquote>
-<h1 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h1><blockquote>
-<p>GBDT 的全称是 Gradient Boosting Decision Tree，梯度提升树</p>
-<p><strong>GBDT使用的决策树是CART回归树</strong>,因为<strong>GBDT每次迭代要拟合的是梯度值</strong></p>
-<p><strong>回归树生成：</strong></p>
-<ol>
-<li><strong>遍历每个特征的每个切分点，选择切分点两侧方差和最小的切分点来选择最优切分特征，并以此来生成决策树</strong></li>
-<li><strong>用选定的特征及切分点来确定输出值：切分点两侧的平均值</strong></li>
-</ol>
-<p><strong>原理：</strong></p>
-<ol>
-<li><p>初始化常数型若学习器</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226122258899.png" alt="image-20210226122258899" style="zoom: 50%;"></p>
-</li>
-<li><p>对m=1,2,…..M有：</p>
-<ol>
-<li><p>对每个样本$i=1,2,…..N$，计算负梯度，即残差</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226122626523.png" alt="image-20210226122626523" style="zoom: 50%;"></p>
-</li>
-<li><p>将残差作为样本的新目标值，重新训练得到新的回归树$f_m(x)$其对应的叶子节点区域为$R_{jm},j=1,2,….J$,其中J为回归树t的叶子节点个数</p>
-</li>
-<li><p>对叶子区域$j=1,2,….J$,计算最佳拟合值</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123114951.png" alt="image-20210226123114951" style="zoom:50%;"></p>
-</li>
-<li><p>更新强学习器</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123046992.png" alt="image-20210226123046992" style="zoom: 50%;"></p>
-</li>
-<li><p>得到最终学习器</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123151577.png" alt="image-20210226123151577" style="zoom:50%;"></p>
-</li>
-</ol>
-</li>
-</ol>
-</blockquote>
-<h2 id="Bagging与Boosting区别"><a href="#Bagging与Boosting区别" class="headerlink" title="Bagging与Boosting区别"></a>Bagging与Boosting区别</h2><blockquote>
-<ul>
-<li>区别一:<code>数据方面</code><ul>
-<li>Bagging：对数据进行采样训练；</li>
-<li>Boosting：根据前一轮学习结果调整数据的重要性。</li>
-</ul>
-</li>
-<li>区别二:<code>投票方面</code><ul>
-<li>Bagging：所有学习器平权投票；</li>
-<li>Boosting：对学习器进行加权投票。</li>
-</ul>
-</li>
-<li>区别三:<code>学习顺序</code><ul>
-<li>Bagging的学习是并行的，每个学习器没有依赖关系；</li>
-<li>Boosting学习是串行，学习有先后顺序。</li>
-</ul>
-</li>
-<li>区别四:<code>主要作用</code><ul>
-<li>Bagging主要用于提高泛化性能（解决过拟合，也可以说降低方差）</li>
-<li>Boosting主要用于提高训练精度 （解决欠拟合，也可以说降低偏差）</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h2><h3 id="最优模型的构建方法"><a href="#最优模型的构建方法" class="headerlink" title="最优模型的构建方法"></a>最优模型的构建方法</h3><blockquote>
-<ol>
-<li><p>经验风险最小化</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195327819.png" alt="image-20210305195327819" style="zoom: 33%;"></p>
-</li>
-<li><p>结构风险最小化</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195401828.png" alt="image-20210305195401828" style="zoom:40%;"></p>
-</li>
-</ol>
-<p>应用：</p>
-<ol>
-<li>决策树的生成和剪枝分别对应了经验风险最小化和结构风险最小化，</li>
-<li>XGBoost的决策树生成是结构风险最小化的结果。</li>
-</ol>
-</blockquote>
-<h3 id="XGBoost的目标函数推导"><a href="#XGBoost的目标函数推导" class="headerlink" title="XGBoost的目标函数推导"></a>XGBoost的目标函数推导</h3><blockquote>
-<p>损失函数应加上表示模型复杂度的正则项，且XGBoost对应的模型包含了多个CART树，因此，模型的目标函数为：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195554751.png" alt="image-20210305195554751" style="zoom:50%;"></p>
-<p><strong>CART树介绍：</strong></p>
-<ol>
-<li><p>第k棵树中，将样本映射到叶子节点上，记为$f_k(x)$;</p>
-</li>
-<li><p>各个叶子节点的值，$q(x)$表示输出的叶子节点序号，$w_{q(x)}$表示对应叶子节点的序号的值</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200341241.png" alt="image-20210305200341241" style="zoom:50%;"></p>
-</li>
-</ol>
-<p><strong>树的复杂度定义：</strong></p>
-<p>每棵树的复杂度为：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200446858.png" alt="image-20210305200446858" style="zoom:50%;"></p>
-<p>其中T为叶子节点的个数，||w||为叶子节点向量的模 ，γ表示节点切分的难度，λ表示 L2 正则化系数。</p>
-<p><strong>目标函数推导：</strong></p>
-<ol>
-<li><p>进行t次迭代的学习模型的目标函数为：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200629928.png" alt="image-20210305200629928" style="zoom:33%;"></p>
-</li>
-<li><p>由前向分布算法可知，前 t-1<em>t</em>−1 棵树的结构为常数</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200658106.png" alt="image-20210305200658106" style="zoom: 33%;"></p>
-</li>
-<li><p>泰勒公式的二阶导近似表示：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200727049.png" alt="image-20210305200727049" style="zoom:50%;"></p>
-</li>
-<li><p>令$f_t(x_i)$为Δ<em>x</em> , 则（3.5）式的二阶近似展开：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200833758.png" alt="image-20210305200833758" style="zoom: 33%;"></p>
-</li>
-<li><p>忽略常数项:</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200932558.png" alt="image-20210305200932558" style="zoom: 33%;"></p>
-</li>
-<li><p>化简得：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201011517.png" alt="image-20210305201011517" style="zoom:33%;"></p>
-</li>
-<li><p>从叶子节点出发，对所有的叶子节点进行累加</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201046940.png" alt="image-20210305201046940" style="zoom:33%;"></p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201103014.png" alt="image-20210305201103014" style="zoom:33%;"></p>
-</li>
-<li><p>$G_j$表示映射为叶子节点 j的所有输入样本的一阶导之和，同理,$H_j$表示二阶导之和</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201237119.png" alt="image-20210305201237119" style="zoom:33%;"></p>
-</li>
-<li><p>求解关于w的一元二次方程，得：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201316889.png" alt="image-20210305201316889" style="zoom:33%;"></p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201328675.png" alt="image-20210305201328675" style="zoom:33%;"></p>
-</li>
-<li><p>obj也成为打分函数，它是衡量树结构好坏的标准：</p>
-<ul>
-<li>值越小，代表这样的结构越好 。</li>
-<li>我们用打分函数选择最佳切分点，从而构建CART树。</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<h3 id="XGBoost回归树构建方法"><a href="#XGBoost回归树构建方法" class="headerlink" title="XGBoost回归树构建方法"></a>XGBoost回归树构建方法</h3><blockquote>
-<p><strong>分裂原则：</strong></p>
-<p>在实际训练过程中，当建立第 t 棵树时，XGBoost采用贪心法进行树结点的分裂：</p>
-<p>从树深为0时开始：</p>
-<ul>
-<li><p>对树中的每个叶子结点尝试进行分裂；</p>
-</li>
-<li><p>每次分裂后，原来的一个叶子结点继续分裂为左右两个子叶子结点，原叶子结点中的样本集将根据该结点的判断规则分散到左右两个叶子结点中；</p>
-</li>
-<li><p>新分裂一个结点后，我们需要检测这次分裂是否会给损失函数带来增益，增益的定义如下：</p>
-<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201603499.png" alt="image-20210305201603499" style="zoom: 33%;"></p>
-</li>
-<li><p>如果增益 Gain&gt;0，即分裂为两个叶子节点后，目标函数下降了</p>
-</li>
-</ul>
-<p><strong>停止分裂判断：</strong></p>
-<ol>
-<li><p>判断Gain是否大于0，类似于决策树中信息增益，遍历所有特征所有切分点，找到最大Gain作为最佳切分点，根据这个<code>生成CART决策树</code>；</p>
-<p><code>γ值越大</code>表示对切分后 obj下降幅度要求越严，这个值可以在XGBoost中设定。</p>
-</li>
-<li><p>当树达到最大深度时，停止建树，太深容易过拟合，可用max_depth参数指定</p>
-</li>
-<li><p>当引入一次分裂后，重新计算左右两个子节点的样本权重值，如果低于阈值，则放弃分裂，防止过拟合，可用min_sample_split参数指定阈值</p>
-</li>
-</ol>
-</blockquote>
-<h3 id="XGBoost与GDBT的区别"><a href="#XGBoost与GDBT的区别" class="headerlink" title="XGBoost与GDBT的区别"></a>XGBoost与GDBT的区别</h3><blockquote>
-<ul>
-<li><strong>区别一：</strong><ul>
-<li>XGBoost生成CART树考虑了树的复杂度，</li>
-<li>GDBT未考虑，GDBT在树的剪枝步骤中考虑了树的复杂度。</li>
-</ul>
-</li>
-<li><strong>区别二：</strong><ul>
-<li>XGBoost是拟合上一轮损失函数的二阶导展开，GDBT是拟合上一轮损失函数的一阶导展开，因此，XGBoost的准确性更高，且满足相同的训练效果，需要的迭代次数更少。</li>
-</ul>
-</li>
-<li><strong>区别三：</strong><ul>
-<li>XGBoost与GDBT都是逐次迭代来提高模型性能，但是XGBoost在选取最佳切分点时可以开启多线程进行，大大提高了运行速度。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="lightBGM"><a href="#lightBGM" class="headerlink" title="lightBGM"></a>lightBGM</h2><blockquote>
-<p>lightGBM是2017年1月，微软在GItHub上开源的一个新的梯度提升框架。</p>
-<p><strong>lightGBM 主要基于以下方面优化，提升整体特特性：</strong></p>
-<ol>
-<li><p><strong>基于Histogram（直方图）的决策树算法:</strong></p>
-<p>把连续的浮点特征值离散化成k个整数，同时构造一个宽度为k的直方图。<strong>最明显就是内存消耗的降低,找到的并不是很精确的分割点，所以会对结果产生影响。</strong></p>
-</li>
-<li><p><strong>Lightgbm 的Histogram（直方图）做差加速:</strong></p>
-<p>一个叶子的直方图可以由它的父亲节点的直方图与它兄弟的直方图做差得到。</p>
-</li>
-<li><p><strong>带深度限制的Leaf-wise的叶子生长策略:</strong></p>
-<p><strong>Level-wise</strong>遍历一次数据可以同时分裂同一层的叶子，容易进行多线程优化，也好控制模型复杂度，不容易过拟合。</p>
-<p><strong>Leaf-wise</strong>则是一种更为高效的策略，每次从当前所有叶子中，找到分裂增益最大的一个叶子，然后分裂，如此循环。</p>
-</li>
-<li><p><strong>直接支持类别特征:</strong></p>
-<p>LightGBM优化了对类别特征的支持，可以直接输入类别特征，不需要额外的0/1展开。并在决策树算法上增加了类别特征的决策规则。</p>
-</li>
-<li><p><strong>直接支持高效并行:</strong></p>
-<p>LightGBM原生支持并行学习，目前支持特征并行和数据并行的两种。</p>
-<ul>
-<li>特征并行的主要思想是在不同机器在不同的特征集合上分别寻找最优的分割点，然后在机器间同步最优的分割点。</li>
-<li>数据并行则是让不同的机器先在本地构造直方图，然后进行全局的合并，最后在合并的直方图上面寻找最优分割点。</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<h1 id="解决类别不平衡数据方法介绍"><a href="#解决类别不平衡数据方法介绍" class="headerlink" title="解决类别不平衡数据方法介绍"></a>解决类别不平衡数据方法介绍</h1><h2 id="过采样方法"><a href="#过采样方法" class="headerlink" title="过采样方法"></a>过采样方法</h2><blockquote>
-<p>对训练集里的少数类进行“过采样”（oversampling），<strong>即增加一些少数类样本使得正、反例数目接近，然后再进行学习。</strong></p>
-</blockquote>
-<h3 id="随机过采样"><a href="#随机过采样" class="headerlink" title="随机过采样"></a>随机过采样</h3><blockquote>
-<p>随机过采样是在少数类中<code>随机选择一些样本</code>，然后通过<code>复制</code>所选择的样本生成样本集将它们添加到原始数据集从而得到新的少数类集合。</p>
-<p>缺点：</p>
-<ul>
-<li>对于随机过采样，由于需要对少数类样本进行复制来扩大数据集，<code>造成模型训练复杂度加大</code>。</li>
-<li>另一方面也容易造成模型的<code>过拟合</code>问题</li>
-</ul>
-</blockquote>
-<h3 id="SMOTE过采样"><a href="#SMOTE过采样" class="headerlink" title="SMOTE过采样"></a>SMOTE过采样</h3><blockquote>
-<p><code>SMOTE算法</code>是对随机过采样方法的一个改进算法，对<code>每个少数类样本</code>，从它的<code>最近邻中随机选择一个样本</code> ，然后在两个样本之间的<code>连线上随机选择一点</code>作为新合成的少数类样本。</p>
-<p>SMOTE算法摒弃了随机过采样复制样本的做法，可以防止随机过采样中容易过拟合的问题，实践证明此方法可以提高分类器的性能。</p>
-</blockquote>
-<h2 id="欠采样方法"><a href="#欠采样方法" class="headerlink" title="欠采样方法"></a>欠采样方法</h2><blockquote>
-<p>直接对训练集中多数类样本进行“欠采样”（undersampling），即去<strong>除一些多数类中的样本使得正例、反例数目接近，然后再进行学习。</strong></p>
-</blockquote>
-<h3 id="随机欠采样"><a href="#随机欠采样" class="headerlink" title="随机欠采样"></a>随机欠采样</h3><blockquote>
-<p>随机欠采样顾名思义即从多数类中随机选择一些样样本组成样本集</p>
-<p><strong>由于采样的样本集合要少于原来的样本集合，因此会造成一些信息缺失，即将多数类样本删除有可能会导致分类器丢失有关多数类的重要信息</strong></p>
-</blockquote>
-
+<h2 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -783,172 +543,15 @@
 <p>（3）在这个平方和变化过程中，会出现一个拐点也即“肘”点，<strong>下降率突然变缓时即认为是最佳的k值</strong>。</p>
 <p>在决定什么时候停止训练时，肘形判据同样有效，数据通常有更多的噪音，在<strong>增加分类无法带来更多回报时，我们停止增加类别</strong>。</p>
 </blockquote>
-<h2 id="轮廓系数法"><a href="#轮廓系数法" class="headerlink" title="轮廓系数法"></a>轮廓系数法</h2><blockquote>
-<p><strong>轮廓系数法</strong>结合了聚类的凝聚度和分离度，使内部距离最小化，外部距离最大化评估：</p>
-<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225182241779.png" alt="image-20210225182241779" style="zoom:50%;"></p>
-<p><strong>a：</strong>任一样本到同类中其他样本的平均距离，也即与同类样本的不相似度</p>
-<p><strong>b：</strong>任一样本到最近其他类样本的平均距离，也即类间不相似度</p>
-<p><strong>平均轮廓系数的取值范围为[-1,1]，系数越大，聚类效果越好。</strong></p>
-</blockquote>
-<h2 id="CH系数"><a href="#CH系数" class="headerlink" title="CH系数"></a>CH系数</h2><blockquote>
-<p>类别内部数据的协方差越小越好，类别之间的协方差越大越好</p>
-<p>这样的Calinski-Harabasz分数s会高，<code>分数s高则聚类效果越好。</code></p>
-<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183418555.png" alt="image-20210225183418555" style="zoom:33%;"></p>
-<p>tr为<strong>矩阵的迹</strong>, Bk为类别之间的协方差矩阵，Wk为类别内部数据的协方差矩阵，</p>
-<p>m为训练集样本数，k为类别数。</p>
-<p><strong>用尽量少的类别聚类尽量多的样本，同时获得较好的聚类效果。</strong></p>
-</blockquote>
-<h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><h2 id="k-means小结"><a href="#k-means小结" class="headerlink" title="k-means小结"></a>k-means小结</h2><blockquote>
-<p><strong>优点：</strong></p>
-<p> 1.原理简单（靠近中心点），实现容易</p>
-<p> 2.聚类效果中上（依赖K的选择）</p>
-<p> 3.空间复杂度o(N)，时间复杂度o(IKN)，N为样本点个数，K为中心点个数，I为迭代次数</p>
-<p><strong>缺点：</strong></p>
-<p> 1.对离群点，噪声敏感 （中心点易偏移）</p>
-<p> 2.很难发现大小差别很大的簇及进行增量计算</p>
-<p> 3.结果不一定是全局最优，只能保证局部最优（与K的个数及初值选取有关）</p>
-</blockquote>
-<h2 id="K-means-算法"><a href="#K-means-算法" class="headerlink" title="K-means++算法"></a>K-means++算法</h2><blockquote>
-<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225183835014.png" alt="image-20210225183835014" style="zoom: 33%;"></p>
-<p><strong>原理：先选择一个质心，然后计算质心到各个样本的距离D(x)，找出距离最远即P最大的点作为下一个质心</strong></p>
-<p><strong>目的：使选择的质心尽可能分散</strong></p>
-</blockquote>
-<h2 id="二分k-means"><a href="#二分k-means" class="headerlink" title="二分k-means"></a>二分k-means</h2><blockquote>
-<p>实现流程:</p>
-<ul>
-<li>所有点作为一个簇</li>
-<li>将该簇一分为二</li>
-<li>选择能最大限度降低聚类代价函数（也就是误差平方和）的簇划分为两个簇。</li>
-<li>以此进行下去，直到簇的数目等于用户给定的数目k为止。</li>
-</ul>
-<p>二分K均值算法可以加速K-means算法的执行速度，因为它的相似度计算少了并且不受初始化问题的影响，因为这里不存在随机点的选取，且每一步都保证了误差最小</p>
-</blockquote>
-<h2 id="k-medoids-k-中心聚类算法"><a href="#k-medoids-k-中心聚类算法" class="headerlink" title="k-medoids(k-中心聚类算法)"></a>k-medoids(k-中心聚类算法)</h2><blockquote>
-<p>K-medoids和K-means是有区别的，<strong>不一样的地方在于中心点的选取</strong></p>
-<p>K-medoids中，将从当前cluster 中选取到其他所有（当前cluster中的）点的距离之和最小的点作为中心点(减少异常值的影响)。</p>
-<p><strong>k-medoids对噪声鲁棒性好。</strong></p>
-<p>k-medoids只能对小样本起作用，样本大，速度就太慢了</p>
-</blockquote>
-<h2 id="优化方法总结"><a href="#优化方法总结" class="headerlink" title="优化方法总结"></a>优化方法总结</h2><blockquote>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th><strong>优化方法</strong></th>
-<th><strong>思路</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Canopy+kmeans</td>
-<td>Canopy粗聚类配合kmeans</td>
-</tr>
-<tr>
-<td>kmeans++</td>
-<td>距离越远越容易成为新的质心</td>
-</tr>
-<tr>
-<td>二分k-means</td>
-<td>拆除SSE最大的簇</td>
-</tr>
-<tr>
-<td>k-medoids</td>
-<td>和kmeans选取中心点的方式不同</td>
-</tr>
-<tr>
-<td>kernel kmeans</td>
-<td>映射到高维空间</td>
-</tr>
-<tr>
-<td>ISODATA</td>
-<td>动态聚类，可以更改K值大小</td>
-</tr>
-<tr>
-<td>Mini-batch K-Means</td>
-<td>大数据集分批聚类</td>
-</tr>
-</tbody>
-</table>
-</div>
-</blockquote>
-<h1 id="特征降维"><a href="#特征降维" class="headerlink" title="特征降维"></a>特征降维</h1><blockquote>
-<p><strong>降维</strong>是指在某些限定条件下，<strong>降低随机变量(特征)个数</strong>，得到<strong>一组“不相关”主变量</strong>的过程</p>
-<p>降维的两种方式：</p>
-<ol>
-<li>特征选择</li>
-<li>主成分分析</li>
-</ol>
-</blockquote>
-<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><blockquote>
-<p><strong>定义：</strong></p>
-<p>数据中包含<strong>冗余或无关变量（或称特征、属性、指标等）</strong>，旨在从<strong>原有特征中找出主要特征</strong>。</p>
-<p><strong>方法：</strong></p>
-<ul>
-<li>Filter(过滤式)：主要探究特征本身特点、特征与特征和目标值之间关联<ul>
-<li><strong>方差选择法：低方差特征过滤</strong></li>
-<li><strong>相关系数</strong></li>
-</ul>
-</li>
-<li>Embedded (嵌入式)：算法自动选择特征（特征与目标值之间的关联）<ul>
-<li><strong>决策树:信息熵、信息增益</strong></li>
-<li><strong>正则化：L1、L2</strong></li>
-<li><strong>深度学习：卷积等</strong></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="低方差特征过滤"><a href="#低方差特征过滤" class="headerlink" title="低方差特征过滤"></a>低方差特征过滤</h3><blockquote>
-<ul>
-<li>特征方差小：某个特征大多样本的值比较相近</li>
-<li>特征方差大：某个特征很多样本的值都有差别</li>
-</ul>
-</blockquote>
-<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><h4 id="皮尔逊相关系数"><a href="#皮尔逊相关系数" class="headerlink" title="皮尔逊相关系数"></a>皮尔逊相关系数</h4><blockquote>
-<p><strong>作用</strong>：</p>
-<p>反映变量之间相关关系密切程度的统计指标</p>
-<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225190102769.png" alt="image-20210225190102769" style="zoom: 25%;"></p>
-<p><strong>特点：</strong></p>
-<p><strong>相关系数的值介于–1与+1之间，即–1≤ r ≤+1</strong></p>
-<ul>
-<li><strong>当r&gt;0时，表示两变量正相关，r&lt;0时，两变量为负相关</strong></li>
-<li><strong>当0&lt;|r|&lt;1时，表示两变量存在一定程度的相关。且|r|越接近1，两变量间线性关系越密切；|r|越接近于0，表示两变量的线性相关越弱</strong></li>
-<li><strong>一般可按三级划分：|r|&lt;0.4为低度相关；0.4≤|r|&lt;0.7为显著性相关；0.7≤|r|&lt;1为高度线性相关</strong></li>
-</ul>
-</blockquote>
-<h4 id="斯皮尔曼相关系数"><a href="#斯皮尔曼相关系数" class="headerlink" title="斯皮尔曼相关系数"></a>斯皮尔曼相关系数</h4><blockquote>
-<p><strong>作用：</strong></p>
-<p>反映变量之间相关关系密切程度的统计指标</p>
-<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225191336292.png" alt="image-20210225191336292" style="zoom:50%;"></p>
-<p><strong>特点：</strong></p>
-<ul>
-<li>斯皮尔曼相关系数表明 X (自变量) 和 Y (因变量)的相关方向。 如果当X增加时， Y 趋向于增加, 斯皮尔曼相关系数则为正</li>
-<li>与之前的皮尔逊相关系数大小性质一样，取值 [-1, 1]之间</li>
-</ul>
-<p><strong>注意：斯皮尔曼相关系数比皮尔逊相关系数应用更加广泛</strong></p>
-</blockquote>
-<h2 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h2><blockquote>
-<ul>
-<li>定义：<strong>高维数据转化为低维数据的过程</strong>，在此过程中<strong>可能会舍弃原有数据、创造新的变量</strong></li>
-<li>作用：<strong>是数据维数压缩，尽可能降低原数据的维数（复杂度），损失少量信息。</strong></li>
-<li>应用：回归分析或者聚类分析当中</li>
-</ul>
-<p><strong>原理：</strong><br>主成分分析中，首先对给定数据进行<code>规范化</code>，使得数据每一变量的平均值为0，方差为1。<br>之后对数据进行<code>正交变换</code>，用来由线性相关表示的数据，<code>通过正交变换变成若干个线性无关</code>的新变量表示的数据。</p>
-<p>新变量是可能的正交变换中变量的方差和(信息保存)最大的，<code>方差表示在新变量上信息的大小</code>将新变量依次成为第一主成分，第二主成分等。通过主成分分析，可以利用主成分近似地表示原始数据，便是对数据降维。</p>
-</blockquote>
-<h1 id="偏差和方差"><a href="#偏差和方差" class="headerlink" title="偏差和方差"></a>偏差和方差</h1><blockquote>
-<ul>
-<li><strong>偏差（bias）：</strong>偏差衡量了模型的预测值与实际值之间的偏离关系。通常在深度学习中，我们每一次训练迭代出来的新模型，都会拿训练数据进行预测，偏差就反应在预测值与实际值匹配度上，比如通常在keras运行中看到的准确度为96%，则说明是低偏差；反之，如果准确度只有70%，则说明是高偏差。</li>
-<li><strong>方差（variance）：</strong>方差描述的是训练数据在不同迭代阶段的训练模型中，预测值的变化波动情况（或称之为离散情况）。从数学角度看，可以理解为每个预测值与预测均值差的平方和的再求平均数。通常在深度学习训练中，初始阶段模型复杂度不高，为低方差；随着训练量加大，模型逐步拟合训练数据，复杂度开始变高，此时方差会逐渐变高。</li>
-</ul>
-<p><img src="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/image-20210225192342948.png" alt="image-20210225192342948" style="zoom:50%;"></p>
-<ul>
-<li><strong>低偏差，低方差</strong>：这是训练的理想模型，此时蓝色点集基本落在靶心范围内，且数据离散程度小，基本在靶心范围内；</li>
-<li><strong>低偏差，高方差</strong>：这是深度学习面临的最大问题，过拟合了。也就是模型太贴合训练数据了，导致其泛化（或通用）能力差，若遇到测试集，则准确度下降的厉害；</li>
-<li><strong>高偏差，低方差</strong>：这往往是训练的初始阶段；</li>
-<li><strong>高偏差，高方差</strong>：这是训练最糟糕的情况，准确度差，数据的离散程度也差。</li>
-</ul>
-</blockquote>
-
+<h2 id="轮廓系数法"><a href="#轮廓系数法" class="headerlink" title="轮廓系数法"></a>轮廓系数法</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1059,88 +662,15 @@
 <p>处理缺少属性值的一种策略是赋给它结点n所对应的训练实例中该属性的最常见值；</p>
 <p>另外一种更复杂的策略是为A的每个可能值赋予一个概率。</p>
 </blockquote>
-<h2 id="基尼值和基尼指数"><a href="#基尼值和基尼指数" class="headerlink" title="基尼值和基尼指数"></a>基尼值和基尼指数</h2><blockquote>
-<p><code>CART 决策树</code>使用”基尼指数” (Gini index)来选择划分属性</p>
-<p><strong>基尼值Gini（D）：</strong>从数据集D中随机抽取两个样本，其类别标记不一致的概率。故，Gini（D）值越小，数据集D的纯度越高，取Gini指数<code>最小的属性</code>作为决策树的根节点属性</p>
-<p><strong>基尼值：</strong></p>
-<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210222093637726.png" alt="image-20210222093637726" style="zoom:50%;"></p>
-<p><strong>基尼指数：</strong></p>
-<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210222093705394.png" alt="image-20210222093705394" style="zoom:50%;"></p>
-</blockquote>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><blockquote>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>提出时间</th>
-<th>分支方式</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ID3</td>
-<td>1975</td>
-<td>信息增益</td>
-<td>ID3只能对离散属性的数据集构成决策树</td>
-</tr>
-<tr>
-<td>C4.5</td>
-<td>1993</td>
-<td>信息增益率</td>
-<td>优化后解决了ID3分支过程中总喜欢偏向选择值较多的 属性</td>
-</tr>
-<tr>
-<td>CART</td>
-<td>1984</td>
-<td>Gini系数</td>
-<td>可以进行分类和回归，可以处理离散属性，也可以处理连续属性</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>ID3算法：</strong></p>
-<ol>
-<li><strong>采用信息增益作为评价标准</strong>。信息增益的缺点是倾向于选择取值较多的属性</li>
-<li><strong>只能对描述属性为离散型属性的数据集构造决策树</strong></li>
-</ol>
-<p><strong>C4.5算法：</strong></p>
-<ol>
-<li>用信息增益率来选择属性</li>
-<li>可以处理连续数值型属性</li>
-<li>采用了一种后剪枝方法</li>
-<li>对于缺失值的处理</li>
-</ol>
-<p>优点：</p>
-<p> 产生的分类规则易于理解，准确率较高。</p>
-<p> 缺点：</p>
-<p> 在构造树的过程中，需要对数据集进行多次的顺序扫描和排序，因而导致算法的低效。</p>
-<p> 此外，C4.5只适合于能够驻留于内存的数据集，当训练集大得无法在内存容纳时程序无法运行。</p>
-<p><strong>CART算法：</strong></p>
-<p>采用了简化的二叉树模型，同时特征选择采用了近似的基尼系数来简化计算</p>
-</blockquote>
-<h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><blockquote>
-<p>剪枝 (pruning)是<strong>决策树学习算法对付”过拟合”的主要手段</strong>。</p>
-<p>决策树剪枝的基本策略有”预剪枝” (pre-pruning)和”后剪枝”(post- pruning) 。</p>
-<ul>
-<li><code>预剪枝</code>是<strong>指在决策树生成过程中，对每个结点在划分前先进行估计，若当前结点的划分不能带来决策树泛化性能提升，则停止划分并将当前结点标记为叶结点;</strong></li>
-<li><code>后剪枝</code>则是<strong>先从训练集生成一棵完整的决策树，然后自底向上地对非叶结点进行考察</strong>，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则将该子树替换为叶结点。</li>
-</ul>
-<p><strong>剪枝方法区别：</strong></p>
-<ul>
-<li>后剪枝决策树通常比预剪枝决策树保留了更多的分支。</li>
-<li>后剪枝决策树的欠拟合风险很小，泛化性能往往优于预剪枝决策树。</li>
-<li>后剪枝训练时间开销比未剪枝决策树和预剪枝决策树都要大得多。</li>
-</ul>
-</blockquote>
-<h1 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h1><blockquote>
-<p>对于连续值的处理，CART 分类树采用基尼系数的大小来度量特征的各个划分点。在回归模型中，我们使用常见的和方差度量方式，对于任意划分特征 A，对应的任意划分点 s 两边划分成的数据集$D_1和D_2$，求出使$D_1和D_2$各自集合的均方差最小，同时$D_1和D_2$的均方差之和最小所对应的特征和特征值划分点。表达式为：</p>
-<p><img src="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/image-20210223120026535.png" alt="image-20210223120026535" style="zoom:50%;"></p>
-<p>其中，$c_1为D_1$数据集的样本输出值，$c_2为D_2$数据集的样本输出值</p>
-<p>回归树输出不是类别，它采用的是用最终叶子的<code>均值或者中位数</code>来预测输出结果。</p>
-</blockquote>
-
+<h2 id="基尼值和基尼指数"><a href="#基尼值和基尼指数" class="headerlink" title="基尼值和基尼指数"></a>基尼值和基尼指数</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E5%86%B3%E7%AD%96%E6%A0%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1242,19 +772,15 @@ F_{\beta}=\frac{\left (1+\beta^{2}\right)\times P\times R} {\left (\beta ^{2}\ti
 <p>当$\beta$&lt;1时，查准率有更大影响；</p>
 <p>当$\beta$=1时，退化为标准的F1</p>
 </blockquote>
-<h2 id="ROC曲线和AUC指标"><a href="#ROC曲线和AUC指标" class="headerlink" title="ROC曲线和AUC指标"></a>ROC曲线和AUC指标</h2><blockquote>
-<p>ROC曲线纵轴真正例率和横轴假正例率定义为：</p>
-<script type="math/tex; mode=display">
-TPR=\frac{TP}{TP+FN}\\
-FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
-<p>给定m^+^个正例和m^-^个反例，根据学习器预测结果进行排序，然后把分类阈值设为最大，即把所有样例预测为反例，此时坐标(0,0),然后依次将每个样例划分为正例，设前一个标记点坐标(x,y),当前若为真正例，则对应标记点的坐标为(x,y+$\frac{1}{m^{+}}$)；当前弱势假正例，则对应标记点点的坐标是(x+$\frac{1}{m^{-}}$),然后用线段连接可得。</p>
-<p><code>AUC</code>：ROC曲线和坐标轴的面积</p>
-<ul>
-<li>AUC只能用来评价二分类</li>
-<li>AUC非常适合评价样本不平衡中的分类器性能</li>
-</ul>
-</blockquote>
-
+<h2 id="ROC曲线和AUC指标"><a href="#ROC曲线和AUC指标" class="headerlink" title="ROC曲线和AUC指标"></a>ROC曲线和AUC指标</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1364,32 +890,15 @@ FPR=\frac{FP}{TN+FP}</script><p><code>绘制</code>：</p>
 <li>如果<strong>属性间依赖对所有类别影响相同，或依赖关系的影响能相互抵消，</strong>则属性条件独立性假设在降低计算复杂度的同时不会对性能产生负面影响。</li>
 </ul>
 </blockquote>
-<h2 id="和逻辑回归的区别"><a href="#和逻辑回归的区别" class="headerlink" title="和逻辑回归的区别"></a>和逻辑回归的区别</h2><blockquote>
-<p><strong>区别一：</strong></p>
-<ul>
-<li>朴素贝叶斯是生成模型，<ul>
-<li>根据已有样本进行贝叶斯估计学习出先验概率 P(Y)和条件概率 P(X|Y)，</li>
-<li>进而求出联合分布概率 P(XY) ,</li>
-<li>最后利用贝叶斯定理求解 P(Y|X)，</li>
-</ul>
-</li>
-<li>而LR是判别模型，<ul>
-<li>根据极大化对数似然函数直接求出条件概率 P(Y|X)；</li>
-</ul>
-</li>
-</ul>
-<p><strong>区别二：</strong></p>
-<ul>
-<li>朴素贝叶斯是基于很强的条件独立假设（在已知分类 Y的条件下，各个特征变量取值是相互独立的），</li>
-<li>而LR则对此没有要求；</li>
-</ul>
-<p><strong>区别三：</strong></p>
-<ul>
-<li>朴素贝叶斯适用于数据集少的情景，</li>
-<li>而LR适用于大规模数据集。</li>
-</ul>
-</blockquote>
-
+<h2 id="和逻辑回归的区别"><a href="#和逻辑回归的区别" class="headerlink" title="和逻辑回归的区别"></a>和逻辑回归的区别</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1529,84 +1038,15 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <p><strong>理解：</strong></p>
 <p><strong>核函数为映射后高维样本的点积，而这个点积可以用原样本的坐标来表示。</strong></p>
 </blockquote>
-<h2 id="常见核函数"><a href="#常见核函数" class="headerlink" title="常见核函数"></a>常见核函数</h2><blockquote>
-<p><img src="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/image-20210303192622721.png" alt="image-20210303192622721" style="zoom: 33%;"></p>
-<ul>
-<li><strong>线性核和多项式核：</strong><ul>
-<li>这两种核的作用也是首先在属性空间中找到一些点，把这些点当做base，核函数的作用就是找与该点距离和角度满足某种关系的样本点。</li>
-<li>当样本点与该点的夹角近乎垂直时，两个样本的欧式长度必须非常长才能保证满足线性核函数大于0；而当样本点与base点的方向相同时，长度就不必很长；而当方向相反时，核函数值就是负的，被判为反类。即，它在空间上划分出一个梭形，按照梭形来进行正反类划分。</li>
-</ul>
-</li>
-<li><strong>RBF核：</strong><ul>
-<li>高斯核函数就是在属性空间中找到一些点，这些点可以是也可以不是样本点，把这些点当做base，以这些base为圆心向外扩展，扩展半径即为带宽，即可划分数据。</li>
-<li>换句话说，在属性空间中找到一些超圆，用这些超圆来判定正反类。</li>
-</ul>
-</li>
-<li><strong>Sigmoid核：</strong><ul>
-<li>同样地是定义一些base，</li>
-<li>核函数就是将线性核函数经过一个tanh函数进行处理，把值域限制在了-1到1上。</li>
-</ul>
-</li>
-</ul>
-<p><strong>使用指导：</strong></p>
-<ul>
-<li>如果Feature的数量很大，甚至和样本数量差不多时，往往线性可分，这时选用Sigmoid或者Linear线性核；</li>
-<li>如果Feature的数量很小，样本数量正常，不算多也不算少，这时选用RBF核；</li>
-<li>如果Feature的数量很小，而样本的数量很大，这时手动添加一些Feature，使得线性可分，然后选用Sigmoid或者Linear线性核；</li>
-<li>多项式核一般很少使用，效率不高，结果也不优于RBF；</li>
-<li>Linear核参数少，速度快；RBF核参数多，分类结果非常依赖于参数，需要交叉验证或网格搜索最佳参数，比较耗时；</li>
-<li>应用最广的应该就是RBF核，无论是小样本还是大样本，高维还是低维等情况，RBF核函数均适用。</li>
-</ul>
-</blockquote>
-<h2 id="SVM回归"><a href="#SVM回归" class="headerlink" title="SVM回归"></a>SVM回归</h2><blockquote>
-<p><strong>SVM回归</strong>是让尽可能多的实例位于预测线上，同时限制间隔违例（也就是不在预测线距上的实例）。</p>
-<p>线距的宽度由超参数ε控制。</p>
-</blockquote>
-<h2 id="api介绍"><a href="#api介绍" class="headerlink" title="api介绍"></a>api介绍</h2><blockquote>
-<p>使用SVM作为模型时，通常采用如下流程：</p>
-<ol>
-<li>对样本数据进行归一化</li>
-<li>应用核函数对样本进行映射<strong>（最常采用和核函数是RBF和Linear，在样本线性可分时，Linear效果要比RBF好）</strong></li>
-<li>用cross-validation和grid-search对超参数进行优选</li>
-<li>用最优参数训练得到模型</li>
-<li>测试</li>
-</ol>
-<p>sklearn中支持向量分类主要有三种方法：SVC、NuSVC、LinearSVC，扩展为三个支持向量回归方法：SVR、NuSVR、LinearSVR。</p>
-<ul>
-<li>SVC和NuSVC方法基本一致，唯一区别就是损失函数的度量方式不同<ul>
-<li>NuSVC中的nu参数和SVC中的C参数；</li>
-</ul>
-</li>
-<li>LinearSVC是实现线性核函数的支持向量分类，没有kernel参数。</li>
-</ul>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<ul>
-<li>SVM是一种二类分类模型。</li>
-<li><p>它的基本模型是在特征空间中寻找间隔最大化的分离超平面的线性分类器。</p>
-<ul>
-<li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
-<li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
-<li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
-</ul>
-</li>
-<li><p><strong>SVM的优点：</strong></p>
-<ul>
-<li>在高维空间中非常高效</li>
-<li>即使在数据维度比样本数量大的情况下仍然有效</li>
-<li>在决策函数（称为支持向量）中使用训练集的子集,因此它也是高效利用内存的</li>
-<li>通用性：不同的核函数与特定的决策函数一一对应</li>
-</ul>
-</li>
-<li><strong>SVM的缺点：</strong><ul>
-<li>如果特征数量比样本数量大得多，在选择核函数时要避免过拟合</li>
-<li>对缺失数据敏感;</li>
-<li>对于核函数的高维映射解释力不强</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-
+<h2 id="常见核函数"><a href="#常见核函数" class="headerlink" title="常见核函数"></a>常见核函数</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1692,74 +1132,15 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <h2 id="切比雪夫距离"><a href="#切比雪夫距离" class="headerlink" title="切比雪夫距离"></a>切比雪夫距离</h2><blockquote>
 <p><img src="/2021/05/05/KNN/image-20210220214136794.png" alt="image-20210220214136794"></p>
 </blockquote>
-<h2 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h2><blockquote>
-<p><img src="/2021/05/05/KNN/image-20210220214228039.png" alt="image-20210220214228039"></p>
-</blockquote>
-<h1 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h1><blockquote>
-<ol>
-<li><strong>选择较小的K值，训练误差会减小，泛化误差会增大</strong><br> <strong>K值的减小就意味着整体模型变得复杂，容易发生过拟合。</strong></li>
-<li><strong>选择较大的K值，优点是可以减少学习的泛化误差，但缺点是学习的训练误差会增大。</strong><br> <strong>K值的增大就意味着整体的模型变得简，容易欠拟合。</strong></li>
-</ol>
-</blockquote>
-<h1 id="kd树"><a href="#kd树" class="headerlink" title="kd树"></a>kd树</h1><blockquote>
-<ol>
-<li><p><code>kd树</code>就是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构.</p>
-<p>kd树更适用于<code>训练实例数远大于空间维数</code>时的k近邻搜索。</p>
-</li>
-<li><p><code>构造</code>:可以通过如下<code>递归</code>实现:在超矩形区域上选择一个<code>坐标轴</code>和此坐标轴上的一个<code>切分点</code>,确定一个超平面,该超平面将当前超矩形区域切分为两个子区域.在子区域上重复切分直到子区域内没有实例时终止.通常依次选择坐标轴和选定坐标轴上的<code>中位数</code>点为切分点,这样可以得到平衡kd树。</p>
-</li>
-</ol>
-<p><img src="/2021/05/05/KNN/image-20210220215218888.png" alt="image-20210220215218888" style="zoom:67%;"></p>
-<ol>
-<li><code>搜索</code>:从根节点出发,若目标点x当前维的坐标小于切分点的坐标则移动到左子结点,否则移动到右子结点,直到子结点为叶结点为止.以此叶结点为”当前最近点”,<code>递归</code>地向上回退,在每个结点:<ul>
-<li>如果该结点比当前最近点距离目标点更近,则以该结点为<code>当前最近点</code></li>
-<li>检查该结点的另一子结点对应的区域是否与以目标点为球心,以目标点与当前最近点间的距离为半径的超球体相交.如果相交,移动到另一个子结点,如果不相交,向上回退.持续这个过程直到回退到根结点,最后的当前最近点即为最近邻点.</li>
-</ul>
-</li>
-</ol>
-<p><img src="/2021/05/05/KNN/image-20210220215919256.png" alt="image-20210220215919256" style="zoom:67%;"></p>
-</blockquote>
-<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h2><blockquote>
-<p><strong>通过对原始数据进行变换把数据映射到(默认为[0,1])之间</strong></p>
-<p><strong>最大值与最小值非常容易受异常点影响，所以这种方法鲁棒性较差，只适合传统精确小数据场景</strong></p>
-<p><img src="/2021/05/05/KNN/image-20210220221419293.png" alt="image-20210220221419293"></p>
-</blockquote>
-<h2 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h2><blockquote>
-<p><strong>对于标准化来说:如果出现异常点，由于具有一定数据量，少量的异常点对于平均值的影响并不大,从而方差改变较小。</strong></p>
-<p><strong>在已有样本足够多的情况下比较稳定，适合现代嘈杂大数据场景。</strong></p>
-<p><img src="/2021/05/05/KNN/image-20210220221504424.png" alt="image-20210220221504424" style="zoom:50%;"></p>
-</blockquote>
-<h1 id="KNN算法总结"><a href="#KNN算法总结" class="headerlink" title="KNN算法总结"></a>KNN算法总结</h1><blockquote>
-<p><strong><code>优点:</code></strong></p>
-<ul>
-<li><strong>简单有效</strong></li>
-<li><strong>重新训练的代价低</strong></li>
-<li>适合类域交叉样本<ul>
-<li><strong>KNN方法主要靠周围有限的邻近的样本</strong>,而不是靠判别类域的方法来确定所属类别的，因此对于类域的交叉或重叠较多的待分样本集来说，KNN方法较其他方法更为适合。</li>
-</ul>
-</li>
-<li>适合大样本自动分类<ul>
-<li>该算法比较<strong>适用于样本容量比较大的类域的自动分类</strong>，而那些<strong>样本容量较小的类域采用这种算法比较容易产生误分</strong>。</li>
-</ul>
-</li>
-</ul>
-<p><strong><code>缺点:</code></strong></p>
-<ul>
-<li><strong>惰性学习</strong></li>
-<li><strong>类别评分不是规格化</strong></li>
-<li>输出可解释性不强</li>
-<li>对不均衡的样本不擅长</li>
-<li>计算量较大</li>
-</ul>
-</blockquote>
-<h1 id="交叉验证，网格搜索"><a href="#交叉验证，网格搜索" class="headerlink" title="交叉验证，网格搜索"></a>交叉验证，网格搜索</h1><h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><blockquote>
-<p><img src="/2021/05/05/KNN/image-20210220223605973.png" alt="image-20210220223605973"></p>
-</blockquote>
-<h2 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h2><blockquote>
-<p>通常情况下，<strong>有很多参数是需要手动指定的（如k-近邻算法中的K值），这种叫超参数</strong>。但是手动过程繁杂，所以需要对模型预设几种超参数组合。<strong>每组超参数都采用交叉验证来进行评估。最后选出最优参数组合建立模型。</strong></p>
-<p><img src="/2021/05/05/KNN/image-20210220223702069.png" alt="image-20210220223702069"></p>
-</blockquote>
-
+<h2 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/KNN/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1869,39 +1250,15 @@ loss=max(0,1−yi(wTxi+b))</script><p>为了方便计算我们令：$ξ=1−yi(w
 <p><strong>边缘分布列：</strong>在二维离散随机变量(X, Y)的联合分布列{P(X=xi, Y=yj)}中，对j求和所得的分布列</p>
 <p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304131925477.png" alt="image-20210304131925477" style="zoom:50%;"></p>
 </blockquote>
-<h2 id="EM算法推导"><a href="#EM算法推导" class="headerlink" title="EM算法推导"></a>EM算法推导</h2><blockquote>
-<ol>
-<li><p>根据边缘分布列的定义首先改写$L(\theta)$:</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132228769.png" alt="image-20210304132228769" style="zoom:50%;"></p>
-</li>
-<li><p>定义隐变量Z的分布Qi：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132314245.png" alt="image-20210304132314245" style="zoom:50%;"></p>
-</li>
-<li><p>我们在(1)式的 ln 里，分子分母同乘一个值，得到(2)式：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132433141.png" alt="image-20210304132433141" style="zoom:50%;"></p>
-</li>
-<li><p>套用到Jensen不等式中，即为：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132510520.png" alt="image-20210304132510520" style="zoom:50%;"></p>
-</li>
-<li><p>其中lnx为凹，公式如下：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132550128.png" alt="image-20210304132550128" style="zoom:50%;"></p>
-</li>
-<li><p>将(4)式展开，得到如下：</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132614150.png" alt="image-20210304132614150" style="zoom:50%;"></p>
-</li>
-</ol>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<ol>
-<li><p>E步骤：固定 θ ，求隐含变量zi的概率分布，Qi(zi)。</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132711903.png" alt="image-20210304132711903" style="zoom:50%;"></p>
-</li>
-<li><p>M步骤：给定Qi(zi)，用极大似然估计来计算 θ，并更新。</p>
-<p><img src="/2021/05/05/EM%E7%AE%97%E6%B3%95/image-20210304132731622.png" alt="image-20210304132731622" style="zoom:50%;"></p>
-</li>
-</ol>
-</blockquote>
-
+<h2 id="EM算法推导"><a href="#EM算法推导" class="headerlink" title="EM算法推导"></a>EM算法推导</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/EM%E7%AE%97%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1996,115 +1353,14 @@ J(\omega)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p><
 <p><strong>梯度下降公式：</strong></p>
 <script type="math/tex; mode=display">
 \theta_{j}:=\theta_{j}-\frac{\alpha}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_j^{(i)}</script></blockquote>
-<h4 id="全梯度下降算法（FG"><a href="#全梯度下降算法（FG" class="headerlink" title="全梯度下降算法（FG)"></a>全梯度下降算法（FG)</h4><blockquote>
-<p>批量梯度下降法，是梯度下降法最常用的形式，<strong>具体做法也就是在更新参数时使用所有的样本来进行更新。</strong></p>
-<p><strong>计算训练集所有样本误差</strong>，<strong>对其求和再取平均值作为目标函数</strong>。</p>
-<script type="math/tex; mode=display">
-\theta_{j}:=\theta_{j}-\alpha\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
-<h4 id="随机梯度下降算法（SG）"><a href="#随机梯度下降算法（SG）" class="headerlink" title="随机梯度下降算法（SG）"></a>随机梯度下降算法（SG）</h4><blockquote>
-<p><strong>每次只代入计算一个样本目标函数的梯度来更新权重，再取下一个样本重复此过程，直到损失函数值停止下降或损失函数值小于某个可以容忍的阈值。</strong></p>
-<script type="math/tex; mode=display">
-\theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
-<h4 id="小批量梯度下降算法（mini-batch）"><a href="#小批量梯度下降算法（mini-batch）" class="headerlink" title="小批量梯度下降算法（mini-batch）"></a>小批量梯度下降算法（mini-batch）</h4><blockquote>
-<p><strong>每次从训练样本集上随机抽取一个小样本集，在抽出来的小样本集上采用FG迭代更新权重。</strong></p>
-<script type="math/tex; mode=display">
-\theta_{j}:=\theta_{j}-\alpha\sum_{i=t}^{t+x-1}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script><p><strong>被抽出的小样本集所含样本点的个数称为batch_size，通常设置为2的幂次方，更有利于GPU加速处理。</strong></p>
-<p><strong>特别的，若batch_size=1，则变成了SG；若batch_size=n，则变成了FG.</strong></p>
-</blockquote>
-<h4 id="随机平均梯度下降算法（SAG）"><a href="#随机平均梯度下降算法（SAG）" class="headerlink" title="随机平均梯度下降算法（SAG）"></a>随机平均梯度下降算法（SAG）</h4><blockquote>
-<p><strong>在内存中为每一个样本都维护一个旧的梯度，随机选择第i个样本来更新此样本的梯度，其他样本的梯度保持不变，然后求得所有梯度的平均值，进而更新了参数。</strong></p>
-<script type="math/tex; mode=display">
-\theta_{j}:=\theta_{j}-\frac{\alpha}{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}</script></blockquote>
-<h1 id="欠拟合和过拟合"><a href="#欠拟合和过拟合" class="headerlink" title="欠拟合和过拟合"></a>欠拟合和过拟合</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<ul>
-<li>过拟合：一个假设<strong>在训练数据上能够获得比其他假设更好的拟合， 但是在测试数据集上却不能很好地拟合数据</strong>，此时认为这个假设出现了过拟合的现象。(模型过于复杂)</li>
-<li>欠拟合：一个假设<strong>在训练数据上不能获得更好的拟合，并且在测试数据集上也不能很好地拟合数据</strong>，此时认为这个假设出现了欠拟合的现象。(模型过于简单)</li>
-</ul>
-<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221114925438.png" alt="image-20210221114925438" style="zoom: 33%;"></p>
-</blockquote>
-<h2 id="原因及解决办法"><a href="#原因及解决办法" class="headerlink" title="原因及解决办法"></a>原因及解决办法</h2><blockquote>
-<ul>
-<li>欠拟合原因以及解决办法<ul>
-<li>原因：学习到数据的特征过少</li>
-<li>解决办法：<ul>
-<li><strong>添加其他特征项，</strong>有时候我们模型出现欠拟合的时候是因为特征项不够导致的，可以添加其他特征项来很好地解决。</li>
-<li><strong>添加多项式特征</strong>，这个在机器学习算法里面用的很普遍，例如将线性模型通过添加二次项或者三次项使模型泛化能力更强。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>过拟合原因以及解决办法<ul>
-<li>原因：原始特征过多，存在一些嘈杂特征， 模型过于复杂是因为模型尝试去兼顾各个测试数据点</li>
-<li>解决办法：<ul>
-<li>1）重新清洗数据，导致过拟合的一个原因也有可能是数据不纯导致的，如果出现了过拟合就需要我们重新清洗数据。</li>
-<li>2）增大数据的训练量，还有一个原因就是我们用于训练的数据量太小导致的，训练数据占总数据的比例过小。</li>
-<li><strong>3）正则化</strong></li>
-<li>4）减少特征维度，防止<strong>维灾难</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><blockquote>
-<p><strong>在学习的时候，数据提供的特征有些影响模型复杂度或者这个特征的数据点异常较多，所以算法在学习的时候尽量减少这个特征的影响（甚至删除某个特征的影响），这就是正则化</strong></p>
-<p><strong>分类:</strong></p>
-<ul>
-<li>L2正则化<ul>
-<li>作用：可以使得其中一些W的都很小，都接近于0，削弱某个特征的影响</li>
-<li>优点：越小的参数说明模型越简单，越简单的模型则越不容易产生过拟合现象</li>
-<li>Ridge回归</li>
-</ul>
-</li>
-<li>L1正则化<ul>
-<li>作用：可以使得其中一些W的值直接为0，删除这个特征的影响</li>
-<li>LASSO回归</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="Ridge-Regression（岭回归）"><a href="#Ridge-Regression（岭回归）" class="headerlink" title="Ridge Regression（岭回归）"></a>Ridge Regression（岭回归）</h3><blockquote>
-<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115445087.png" alt="image-20210221115445087" style="zoom:50%;"></p>
-<p><strong>注意：α=0，岭回归退化为线性回归</strong></p>
-</blockquote>
-<h3 id="Lasso-Regression（Lasso回归）"><a href="#Lasso-Regression（Lasso回归）" class="headerlink" title="Lasso Regression（Lasso回归）"></a>Lasso Regression（Lasso回归）</h3><blockquote>
-<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115645244.png" alt="image-20210221115645244" style="zoom:50%;"></p>
-<p><strong>Lasso Regression 有一个很重要的性质是：倾向于完全消除不重要的权重。</strong></p>
-</blockquote>
-<h3 id="Elastic-Net（弹性网络）"><a href="#Elastic-Net（弹性网络）" class="headerlink" title="Elastic Net（弹性网络）"></a>Elastic Net（弹性网络）</h3><blockquote>
-<p><code>弹性网络</code>在岭回归和Lasso回归中进行了折中，通过 <strong>混合比(mix ratio) r</strong> 进行控制：</p>
-<ul>
-<li><code>r=0</code>：弹性网络变为岭回归</li>
-<li><code>r=1</code>：弹性网络便为Lasso回归</li>
-</ul>
-<p>弹性网络的<code>代价函数</code> ：</p>
-<p><img src="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20210221115855169.png" alt="image-20210221115855169" style="zoom:50%;"></p>
-</blockquote>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
-<ul>
-<li><code>Ridge Regression 岭回归</code><ul>
-<li>就是把系数添加平方项</li>
-<li>然后限制系数值的大小</li>
-<li>α值越小，系数值越大，α越大，系数值越小</li>
-</ul>
-</li>
-<li><code>Lasso 回归</code><ul>
-<li>对系数值进行绝对值处理</li>
-<li>由于绝对值在顶点处不可导，所以进行计算的过程中产生很多0，最后得到结果为：稀疏矩阵</li>
-</ul>
-</li>
-<li><code>Elastic Net 弹性网络</code><ul>
-<li>是前两个内容的综合</li>
-<li>设置了一个r,如果r=0—岭回归；r=1—Lasso回归</li>
-</ul>
-</li>
-<li><code>Early stopping</code><ul>
-<li>通过限制错误率的阈值，进行停止</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
