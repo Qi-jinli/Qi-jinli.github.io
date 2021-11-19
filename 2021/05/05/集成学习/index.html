@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概念 集成学习通过建立几个模型来解决单一预测问题。它的工作原理是生成多个分类器&#x2F;模型，各自独立地学习和作出预测。这些预测最后结合成组合预测，因此优于任何一个单分类的做出预测。 boosting：弱弱组合变强，解决欠拟合问题，主要方法：boosting逐步增强学习 Bagging：互相遏制变壮，解决过拟合问题，主要方法：Bagging采样学习集成  Bagging和随机森林Bagging Baggi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成学习">
+<meta property="og:url" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="概念 集成学习通过建立几个模型来解决单一预测问题。它的工作原理是生成多个分类器&#x2F;模型，各自独立地学习和作出预测。这些预测最后结合成组合预测，因此优于任何一个单分类的做出预测。 boosting：弱弱组合变强，解决欠拟合问题，主要方法：boosting逐步增强学习 Bagging：互相遏制变壮，解决过拟合问题，主要方法：Bagging采样学习集成  Bagging和随机森林Bagging Baggi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014632223-0150412.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226111724416.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226111745326.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014728559-0150451.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226122258899.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226122626523.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123114951.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123046992.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123151577.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195327819.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195401828.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195554751.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200341241.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200446858.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200629928.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200658106.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200727049.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200833758.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200932558.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201011517.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201046940.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201103014.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201237119.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201316889.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201328675.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201603499.png">
+<meta property="article:published_time" content="2021-05-05T11:02:57.000Z">
+<meta property="article:modified_time" content="2021-05-05T11:02:57.000Z">
+<meta property="article:author" content="Qijinli">
+<meta property="article:tag" content="集成学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014632223-0150412.png">
+
+<link rel="canonical" href="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>集成学习 | Qijinli's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Qijinli's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          集成学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-05 19:02:57" itemprop="dateCreated datePublished" datetime="2021-05-05T19:02:57+08:00">2021-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
+<p>集成学习通过建立几个模型来解决单一预测问题。它的工作原理是<strong>生成多个分类器/模型</strong>，各自独立地学习和作出预测。<strong>这些预测最后结合成组合预测，因此优于任何一个单分类的做出预测。</strong></p>
+<p><code>boosting</code>：弱弱组合变强，解决欠拟合问题，主要方法：boosting逐步增强学习</p>
+<p><code>Bagging</code>：互相遏制变壮，解决过拟合问题，主要方法：Bagging采样学习集成</p>
+</blockquote>
+<h1 id="Bagging和随机森林"><a href="#Bagging和随机森林" class="headerlink" title="Bagging和随机森林"></a>Bagging和随机森林</h1><h2 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h2><blockquote>
+<p><code>Bagging集成原理：</code></p>
+<ol>
+<li>采样不同数据集</li>
+<li>各自训练分类器</li>
+<li>平权投票，获取最终结果</li>
+</ol>
+</blockquote>
+<h2 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h2><blockquote>
+<p><strong>随机森林是一个包含多个决策树的分类器</strong>，并且其输出的类别是由个别树输出的类别的众数而定。</p>
+<p><strong>随机森林</strong> <strong>= Bagging +</strong> <strong>决策树</strong></p>
+<p><strong>随机森林够造过程中的关键步骤</strong>(M表示特征数目)：</p>
+<p> <strong>1)一次随机选出一个样本，有放回的抽样，重复N次(有可能出现重复的样本)</strong></p>
+<p> <strong>2) 随机去选出m个特征, m &lt;&lt;M，建立决策树</strong></p>
+<p><strong>包外估计：</strong></p>
+<p>由于基分类器是构建在训练样本的自助抽样集上的，只有约 63.2％ 原样本集出现在中，而剩余的 36.8％ 的数据作为包外数据，可以用于基分类器的验证集。</p>
+<p>经验证，包外估计是对集成分类器泛化误差的<strong>无偏估计.</strong></p>
+<p><strong>包外估计的用途：</strong></p>
+<ul>
+<li>当基学习器是决策树时，可使用包外样本来辅助剪枝 ，或用于估计决策树中各结点的后验概率以辅助对零训练样本结点的处理；</li>
+<li>当基学习器是神经网络时，可使用包外样本来辅助早期停止以减小过拟合 。</li>
+</ul>
+</blockquote>
+<h1 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h1><blockquote>
+<p><strong>随着学习的积累从弱到强</strong></p>
+<p><strong>简而言之：每新加入一个弱学习器，整体能力就会得到提升</strong></p>
+<p>代表算法：Adaboost，GBDT，XGBoost，LightGBM</p>
+</blockquote>
+<h2 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h2><blockquote>
+<p>实现原理：</p>
+<ol>
+<li><p>初始化训练数据的权重值分布，$D_1=\{w_1,w_2,….w_n\},w_i=1/N$,N为样本数量</p>
+</li>
+<li><p>以分类树或回归树为基本分类器$h_1(x)$,计算在此分类器上的错误率$e_1$</p>
+</li>
+<li><p>求出此分类器的投票权重$\alpha_1$:</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014632223-0150412.png" alt="image-20210505014632223">根据投票权重对训练数据重新赋权：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226111724416.png" alt="image-20210226111724416" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226111745326.png" alt="image-20210226111745326" style="zoom:33%;"></p>
+<p>所以$D_2$更新为：</p>
+<ul>
+<li>正确分类样本，权值更新，$D_2=\frac{D_1}{2e_1}$</li>
+<li>错误分类样本，权值更新，$D_2=\frac{D_1}{2(1-e_1)}$</li>
+</ul>
+</li>
+<li><p>然后重复2-4过程，直到分类器能正确划分样本</p>
+</li>
+<li><p>对所有m个分类器进行加权投票，得到总分类器：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210505014728559-0150451.png" alt="image-20210505014728559"></p>
+</li>
+</ol>
+</blockquote>
+<h1 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h1><blockquote>
+<p>GBDT 的全称是 Gradient Boosting Decision Tree，梯度提升树</p>
+<p><strong>GBDT使用的决策树是CART回归树</strong>,因为<strong>GBDT每次迭代要拟合的是梯度值</strong></p>
+<p><strong>回归树生成：</strong></p>
+<ol>
+<li><strong>遍历每个特征的每个切分点，选择切分点两侧方差和最小的切分点来选择最优切分特征，并以此来生成决策树</strong></li>
+<li><strong>用选定的特征及切分点来确定输出值：切分点两侧的平均值</strong></li>
+</ol>
+<p><strong>原理：</strong></p>
+<ol>
+<li><p>初始化常数型若学习器</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226122258899.png" alt="image-20210226122258899" style="zoom: 50%;"></p>
+</li>
+<li><p>对m=1,2,…..M有：</p>
+<ol>
+<li><p>对每个样本$i=1,2,…..N$，计算负梯度，即残差</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226122626523.png" alt="image-20210226122626523" style="zoom: 50%;"></p>
+</li>
+<li><p>将残差作为样本的新目标值，重新训练得到新的回归树$f_m(x)$其对应的叶子节点区域为$R_{jm},j=1,2,….J$,其中J为回归树t的叶子节点个数</p>
+</li>
+<li><p>对叶子区域$j=1,2,….J$,计算最佳拟合值</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123114951.png" alt="image-20210226123114951" style="zoom:50%;"></p>
+</li>
+<li><p>更新强学习器</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123046992.png" alt="image-20210226123046992" style="zoom: 50%;"></p>
+</li>
+<li><p>得到最终学习器</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210226123151577.png" alt="image-20210226123151577" style="zoom:50%;"></p>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h2 id="Bagging与Boosting区别"><a href="#Bagging与Boosting区别" class="headerlink" title="Bagging与Boosting区别"></a>Bagging与Boosting区别</h2><blockquote>
+<ul>
+<li>区别一:<code>数据方面</code><ul>
+<li>Bagging：对数据进行采样训练；</li>
+<li>Boosting：根据前一轮学习结果调整数据的重要性。</li>
+</ul>
+</li>
+<li>区别二:<code>投票方面</code><ul>
+<li>Bagging：所有学习器平权投票；</li>
+<li>Boosting：对学习器进行加权投票。</li>
+</ul>
+</li>
+<li>区别三:<code>学习顺序</code><ul>
+<li>Bagging的学习是并行的，每个学习器没有依赖关系；</li>
+<li>Boosting学习是串行，学习有先后顺序。</li>
+</ul>
+</li>
+<li>区别四:<code>主要作用</code><ul>
+<li>Bagging主要用于提高泛化性能（解决过拟合，也可以说降低方差）</li>
+<li>Boosting主要用于提高训练精度 （解决欠拟合，也可以说降低偏差）</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h2><h3 id="最优模型的构建方法"><a href="#最优模型的构建方法" class="headerlink" title="最优模型的构建方法"></a>最优模型的构建方法</h3><blockquote>
+<ol>
+<li><p>经验风险最小化</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195327819.png" alt="image-20210305195327819" style="zoom: 33%;"></p>
+</li>
+<li><p>结构风险最小化</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195401828.png" alt="image-20210305195401828" style="zoom:40%;"></p>
+</li>
+</ol>
+<p>应用：</p>
+<ol>
+<li>决策树的生成和剪枝分别对应了经验风险最小化和结构风险最小化，</li>
+<li>XGBoost的决策树生成是结构风险最小化的结果。</li>
+</ol>
+</blockquote>
+<h3 id="XGBoost的目标函数推导"><a href="#XGBoost的目标函数推导" class="headerlink" title="XGBoost的目标函数推导"></a>XGBoost的目标函数推导</h3><blockquote>
+<p>损失函数应加上表示模型复杂度的正则项，且XGBoost对应的模型包含了多个CART树，因此，模型的目标函数为：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305195554751.png" alt="image-20210305195554751" style="zoom:50%;"></p>
+<p><strong>CART树介绍：</strong></p>
+<ol>
+<li><p>第k棵树中，将样本映射到叶子节点上，记为$f_k(x)$;</p>
+</li>
+<li><p>各个叶子节点的值，$q(x)$表示输出的叶子节点序号，$w_{q(x)}$表示对应叶子节点的序号的值</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200341241.png" alt="image-20210305200341241" style="zoom:50%;"></p>
+</li>
+</ol>
+<p><strong>树的复杂度定义：</strong></p>
+<p>每棵树的复杂度为：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200446858.png" alt="image-20210305200446858" style="zoom:50%;"></p>
+<p>其中T为叶子节点的个数，||w||为叶子节点向量的模 ，γ表示节点切分的难度，λ表示 L2 正则化系数。</p>
+<p><strong>目标函数推导：</strong></p>
+<ol>
+<li><p>进行t次迭代的学习模型的目标函数为：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200629928.png" alt="image-20210305200629928" style="zoom:33%;"></p>
+</li>
+<li><p>由前向分布算法可知，前 t-1<em>t</em>−1 棵树的结构为常数</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200658106.png" alt="image-20210305200658106" style="zoom: 33%;"></p>
+</li>
+<li><p>泰勒公式的二阶导近似表示：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200727049.png" alt="image-20210305200727049" style="zoom:50%;"></p>
+</li>
+<li><p>令$f_t(x_i)$为Δ<em>x</em> , 则（3.5）式的二阶近似展开：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200833758.png" alt="image-20210305200833758" style="zoom: 33%;"></p>
+</li>
+<li><p>忽略常数项:</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305200932558.png" alt="image-20210305200932558" style="zoom: 33%;"></p>
+</li>
+<li><p>化简得：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201011517.png" alt="image-20210305201011517" style="zoom:33%;"></p>
+</li>
+<li><p>从叶子节点出发，对所有的叶子节点进行累加</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201046940.png" alt="image-20210305201046940" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201103014.png" alt="image-20210305201103014" style="zoom:33%;"></p>
+</li>
+<li><p>$G_j$表示映射为叶子节点 j的所有输入样本的一阶导之和，同理,$H_j$表示二阶导之和</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201237119.png" alt="image-20210305201237119" style="zoom:33%;"></p>
+</li>
+<li><p>求解关于w的一元二次方程，得：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201316889.png" alt="image-20210305201316889" style="zoom:33%;"></p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201328675.png" alt="image-20210305201328675" style="zoom:33%;"></p>
+</li>
+<li><p>obj也成为打分函数，它是衡量树结构好坏的标准：</p>
+<ul>
+<li>值越小，代表这样的结构越好 。</li>
+<li>我们用打分函数选择最佳切分点，从而构建CART树。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="XGBoost回归树构建方法"><a href="#XGBoost回归树构建方法" class="headerlink" title="XGBoost回归树构建方法"></a>XGBoost回归树构建方法</h3><blockquote>
+<p><strong>分裂原则：</strong></p>
+<p>在实际训练过程中，当建立第 t 棵树时，XGBoost采用贪心法进行树结点的分裂：</p>
+<p>从树深为0时开始：</p>
+<ul>
+<li><p>对树中的每个叶子结点尝试进行分裂；</p>
+</li>
+<li><p>每次分裂后，原来的一个叶子结点继续分裂为左右两个子叶子结点，原叶子结点中的样本集将根据该结点的判断规则分散到左右两个叶子结点中；</p>
+</li>
+<li><p>新分裂一个结点后，我们需要检测这次分裂是否会给损失函数带来增益，增益的定义如下：</p>
+<p><img src="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/image-20210305201603499.png" alt="image-20210305201603499" style="zoom: 33%;"></p>
+</li>
+<li><p>如果增益 Gain&gt;0，即分裂为两个叶子节点后，目标函数下降了</p>
+</li>
+</ul>
+<p><strong>停止分裂判断：</strong></p>
+<ol>
+<li><p>判断Gain是否大于0，类似于决策树中信息增益，遍历所有特征所有切分点，找到最大Gain作为最佳切分点，根据这个<code>生成CART决策树</code>；</p>
+<p><code>γ值越大</code>表示对切分后 obj下降幅度要求越严，这个值可以在XGBoost中设定。</p>
+</li>
+<li><p>当树达到最大深度时，停止建树，太深容易过拟合，可用max_depth参数指定</p>
+</li>
+<li><p>当引入一次分裂后，重新计算左右两个子节点的样本权重值，如果低于阈值，则放弃分裂，防止过拟合，可用min_sample_split参数指定阈值</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="XGBoost与GDBT的区别"><a href="#XGBoost与GDBT的区别" class="headerlink" title="XGBoost与GDBT的区别"></a>XGBoost与GDBT的区别</h3><blockquote>
+<ul>
+<li><strong>区别一：</strong><ul>
+<li>XGBoost生成CART树考虑了树的复杂度，</li>
+<li>GDBT未考虑，GDBT在树的剪枝步骤中考虑了树的复杂度。</li>
+</ul>
+</li>
+<li><strong>区别二：</strong><ul>
+<li>XGBoost是拟合上一轮损失函数的二阶导展开，GDBT是拟合上一轮损失函数的一阶导展开，因此，XGBoost的准确性更高，且满足相同的训练效果，需要的迭代次数更少。</li>
+</ul>
+</li>
+<li><strong>区别三：</strong><ul>
+<li>XGBoost与GDBT都是逐次迭代来提高模型性能，但是XGBoost在选取最佳切分点时可以开启多线程进行，大大提高了运行速度。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="lightBGM"><a href="#lightBGM" class="headerlink" title="lightBGM"></a>lightBGM</h2><blockquote>
+<p>lightGBM是2017年1月，微软在GItHub上开源的一个新的梯度提升框架。</p>
+<p><strong>lightGBM 主要基于以下方面优化，提升整体特特性：</strong></p>
+<ol>
+<li><p><strong>基于Histogram（直方图）的决策树算法:</strong></p>
+<p>把连续的浮点特征值离散化成k个整数，同时构造一个宽度为k的直方图。<strong>最明显就是内存消耗的降低,找到的并不是很精确的分割点，所以会对结果产生影响。</strong></p>
+</li>
+<li><p><strong>Lightgbm 的Histogram（直方图）做差加速:</strong></p>
+<p>一个叶子的直方图可以由它的父亲节点的直方图与它兄弟的直方图做差得到。</p>
+</li>
+<li><p><strong>带深度限制的Leaf-wise的叶子生长策略:</strong></p>
+<p><strong>Level-wise</strong>遍历一次数据可以同时分裂同一层的叶子，容易进行多线程优化，也好控制模型复杂度，不容易过拟合。</p>
+<p><strong>Leaf-wise</strong>则是一种更为高效的策略，每次从当前所有叶子中，找到分裂增益最大的一个叶子，然后分裂，如此循环。</p>
+</li>
+<li><p><strong>直接支持类别特征:</strong></p>
+<p>LightGBM优化了对类别特征的支持，可以直接输入类别特征，不需要额外的0/1展开。并在决策树算法上增加了类别特征的决策规则。</p>
+</li>
+<li><p><strong>直接支持高效并行:</strong></p>
+<p>LightGBM原生支持并行学习，目前支持特征并行和数据并行的两种。</p>
+<ul>
+<li>特征并行的主要思想是在不同机器在不同的特征集合上分别寻找最优的分割点，然后在机器间同步最优的分割点。</li>
+<li>数据并行则是让不同的机器先在本地构造直方图，然后进行全局的合并，最后在合并的直方图上面寻找最优分割点。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h1 id="解决类别不平衡数据方法介绍"><a href="#解决类别不平衡数据方法介绍" class="headerlink" title="解决类别不平衡数据方法介绍"></a>解决类别不平衡数据方法介绍</h1><h2 id="过采样方法"><a href="#过采样方法" class="headerlink" title="过采样方法"></a>过采样方法</h2><blockquote>
+<p>对训练集里的少数类进行“过采样”（oversampling），<strong>即增加一些少数类样本使得正、反例数目接近，然后再进行学习。</strong></p>
+</blockquote>
+<h3 id="随机过采样"><a href="#随机过采样" class="headerlink" title="随机过采样"></a>随机过采样</h3><blockquote>
+<p>随机过采样是在少数类中<code>随机选择一些样本</code>，然后通过<code>复制</code>所选择的样本生成样本集将它们添加到原始数据集从而得到新的少数类集合。</p>
+<p>缺点：</p>
+<ul>
+<li>对于随机过采样，由于需要对少数类样本进行复制来扩大数据集，<code>造成模型训练复杂度加大</code>。</li>
+<li>另一方面也容易造成模型的<code>过拟合</code>问题</li>
+</ul>
+</blockquote>
+<h3 id="SMOTE过采样"><a href="#SMOTE过采样" class="headerlink" title="SMOTE过采样"></a>SMOTE过采样</h3><blockquote>
+<p><code>SMOTE算法</code>是对随机过采样方法的一个改进算法，对<code>每个少数类样本</code>，从它的<code>最近邻中随机选择一个样本</code> ，然后在两个样本之间的<code>连线上随机选择一点</code>作为新合成的少数类样本。</p>
+<p>SMOTE算法摒弃了随机过采样复制样本的做法，可以防止随机过采样中容易过拟合的问题，实践证明此方法可以提高分类器的性能。</p>
+</blockquote>
+<h2 id="欠采样方法"><a href="#欠采样方法" class="headerlink" title="欠采样方法"></a>欠采样方法</h2><blockquote>
+<p>直接对训练集中多数类样本进行“欠采样”（undersampling），即去<strong>除一些多数类中的样本使得正例、反例数目接近，然后再进行学习。</strong></p>
+</blockquote>
+<h3 id="随机欠采样"><a href="#随机欠采样" class="headerlink" title="随机欠采样"></a>随机欠采样</h3><blockquote>
+<p>随机欠采样顾名思义即从多数类中随机选择一些样样本组成样本集</p>
+<p><strong>由于采样的样本集合要少于原来的样本集合，因此会造成一些信息缺失，即将多数类样本删除有可能会导致分类器丢失有关多数类的重要信息</strong></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" rel="tag"># 集成学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/05/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" rel="prev" title="聚类算法">
+      <i class="fa fa-chevron-left"></i> 聚类算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/" rel="next" title="HMM模型">
+      HMM模型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bagging%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="nav-number">2.</span> <span class="nav-text">Bagging和随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging"><span class="nav-number">2.1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="nav-number">2.2.</span> <span class="nav-text">随机森林</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Boosting"><span class="nav-number">3.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Adaboost"><span class="nav-number">3.1.</span> <span class="nav-text">Adaboost</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT"><span class="nav-number">4.</span> <span class="nav-text">GBDT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging%E4%B8%8EBoosting%E5%8C%BA%E5%88%AB"><span class="nav-number">4.1.</span> <span class="nav-text">Bagging与Boosting区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XGBoost"><span class="nav-number">4.2.</span> <span class="nav-text">XGBoost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.1.</span> <span class="nav-text">最优模型的构建方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XGBoost%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E6%8E%A8%E5%AF%BC"><span class="nav-number">4.2.2.</span> <span class="nav-text">XGBoost的目标函数推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XGBoost%E5%9B%9E%E5%BD%92%E6%A0%91%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.3.</span> <span class="nav-text">XGBoost回归树构建方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XGBoost%E4%B8%8EGDBT%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.2.4.</span> <span class="nav-text">XGBoost与GDBT的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lightBGM"><span class="nav-number">4.3.</span> <span class="nav-text">lightBGM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E7%B1%BB%E5%88%AB%E4%B8%8D%E5%B9%B3%E8%A1%A1%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.</span> <span class="nav-text">解决类别不平衡数据方法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">过采样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E9%87%87%E6%A0%B7"><span class="nav-number">5.1.1.</span> <span class="nav-text">随机过采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE%E8%BF%87%E9%87%87%E6%A0%B7"><span class="nav-number">5.1.2.</span> <span class="nav-text">SMOTE过采样</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A0%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">欠采样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%AC%A0%E9%87%87%E6%A0%B7"><span class="nav-number">5.2.1.</span> <span class="nav-text">随机欠采样</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Qijinli</p>
+  <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

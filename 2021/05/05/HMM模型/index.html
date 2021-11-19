@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="马尔科夫链 马尔科夫链即为状态空间中从一个状态到另一个状态转换的随机过程。 该过程具备无记忆的性质: 下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。 马尔可夫链的数学表示为:   HMM 隐马尔可夫模型(Hidden Markov Model，HMM)是统计模型，它用来描述一个含有隐含未知参数的马尔可夫过程。 什么样的问题解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMM模型">
+<meta property="og:url" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="马尔科夫链 马尔科夫链即为状态空间中从一个状态到另一个状态转换的随机过程。 该过程具备无记忆的性质: 下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。 马尔可夫链的数学表示为:   HMM 隐马尔可夫模型(Hidden Markov Model，HMM)是统计模型，它用来描述一个含有隐含未知参数的马尔可夫过程。 什么样的问题解决">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304182713593.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304183145189.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304183209619.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304184918482.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304185724229.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304185920961.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190109220.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190258092.png">
+<meta property="og:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190552024.png">
+<meta property="article:published_time" content="2021-05-05T11:05:19.000Z">
+<meta property="article:modified_time" content="2021-05-05T11:05:19.000Z">
+<meta property="article:author" content="Qijinli">
+<meta property="article:tag" content="HMM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304182713593.png">
+
+<link rel="canonical" href="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HMM模型 | Qijinli's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Qijinli's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HMM模型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-05 19:05:19" itemprop="dateCreated datePublished" datetime="2021-05-05T19:05:19+08:00">2021-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="马尔科夫链"><a href="#马尔科夫链" class="headerlink" title="马尔科夫链"></a>马尔科夫链</h1><blockquote>
+<p><code>马尔科夫链</code>即为状态空间中从一个状态到另一个状态转换的随机过程。</p>
+<p>该过程具备<code>无记忆</code>的性质: 下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。</p>
+<p>马尔可夫链的数学表示为:</p>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304182713593.png" alt="image-20210304182713593" style="zoom:75%;"></p>
+</blockquote>
+<h1 id="HMM"><a href="#HMM" class="headerlink" title="HMM"></a>HMM</h1><blockquote>
+<p><code>隐马尔可夫模型(Hidden Markov Model，HMM)</code>是统计模型，它用来描述一个含有隐含未知参数的马尔可夫过程。</p>
+<p>什么样的问题解决可以用HMM模型?</p>
+<ol>
+<li>我们的问题是基于序列的，比如时间序列，或者状态序列。</li>
+<li>我们的问题中有两类数据:<ol>
+<li>一类序列数据是可以观测到的，即观测序列; </li>
+<li>而另一类数据是不能观察到的，即隐藏状态序列，简称状态序列。</li>
+</ol>
+</li>
+</ol>
+<p><strong>模型定义：</strong></p>
+<ol>
+<li><p>假设 <em>Q</em> 是所有可能的隐藏状态的集合，<em>V</em> 是所有可能的观测状态的集合，即:</p>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304183145189.png" alt="image-20210304183145189" style="zoom:50%;"></p>
+</li>
+<li><p>对于一个长度为<em>T</em> 的序列，<em>i</em> 是对应的状态序列, <em>O</em> 是对应的观察序列，即:</p>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304183209619.png" alt="image-20210304183209619" style="zoom:50%;"></p>
+</li>
+<li><p>HMM模型做了两个很重要的假设如下:</p>
+<ol>
+<li><p><code>齐次马尔科夫链假设：</code>即任意时刻的隐藏状态只依赖于它前一个隐藏状态。</p>
+<p>如果在时刻<em>t</em>的隐藏状态是$i_t=q_i$，在时刻<em>t</em>+1的隐藏状态是$i_{t+1}=q_j$ ，则从时刻<em>t</em>到时刻<em>t</em>+1的HMM状态转移概率$a_{ij}$ 可以表 示为:$a_{ij}=P(i_{i+1}=q_j|i_t=q_i)$<br>这样$a_{ij}$可以组成马尔科夫链的状态转移矩阵 <em>A</em> :</p>
+<p><em>A</em> = [$a_{ij}$]<em>N</em>×<em>N</em></p>
+</li>
+<li><p><code>观测独立性假设:</code>即任意时刻的观察状态只仅仅依赖于当前时刻的隐藏状态。</p>
+<p>如果在时刻t的隐藏状态是$i_t=q_j$, 而对应的观察状态为 $o_t=v_k$ , 则该时刻观察状态$v_k$在隐藏状态$q_j$下生成的概率为$b_j(k)$，满足:$b_j(k)=P(o_t=v_k|i_t=q_j)$<br>这样$b_j(k)$可以组成观测状态生成的概率矩阵 <em>B</em> :</p>
+<p><em>B</em> = $[b_j(k)]_{N\times M}$<br>除此之外，我们需要一组在时刻 <em>t</em> = 1 的隐藏状态概率分布 Π :</p>
+<p>Π = $[\Pi_i]_N$，其中Π<em>i</em> =$P(i_1=q_i)$</p>
+</li>
+<li><p>一个HMM模型，可以由隐藏状态初始概率分布 Π <strong>,</strong> 状态转移概率矩阵 <em>A</em> 和观测状态概率矩阵 <em>B</em> 决定。 Π ， <em>A</em> 决定状态序列，<em>B</em> 决定观测序列。<br> 因此，HMM模型可以由一个三元组 <em>λ</em> 表示如下:</p>
+<p><em>λ</em> = (<em>A</em>, <em>B</em>, Π) = (状态序列，观测序列，初始状态概率分布)</p>
+</li>
+</ol>
+</li>
+<li><p><code>模型三个基本问题：</code></p>
+<ol>
+<li><p><code>评估观察序列概率</code> —— 前向后向的概率计算：</p>
+<p>即给定模型<em>λ</em> = (<em>A</em>,<em>B</em>,Π)和观测序列<em>O</em> = {$o_1,o_2,…o_T$}，计算在模型<em>λ</em>下某一个观测序列<em>O</em>出现的概率<em>P</em>(<em>O</em>∣<em>λ</em>)，这个问题的求解需要用到前向后向算法。</p>
+</li>
+<li><p><code>预测问题，也称为解码问题</code> ——维特比(<strong>Viterbi</strong>)算法:</p>
+<p>即给定模型<em>λ</em> = (<em>A</em>,<em>B</em>,Π)和观测序列<em>O</em> = {$o_1,o_2,…o_T$}，求给定观测序列条件下，最可能出现的对应的状态序列，这个问题的求解需要用到基于动态规划的维特比算法。</p>
+</li>
+<li><p><code>模型参数学习问题</code>—— 鲍姆<strong>-</strong>韦尔奇(<strong>Baum-Welch</strong>)算法(状态未知)：</p>
+<p>即给定观测序列 <em>O</em> = {$o_1,o_2,…o_T$} ，估计模型 <em>λ</em> = (<em>A</em>, <em>B</em>, Π) 的参数，使该模型下观测序列的条件概率 <em>P</em> (<em>O</em>∣<em>λ</em>) 最大，这个问题的求解需要用到基于EM算法的鲍姆-韦尔奇算法</p>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h1 id="前向后向算法"><a href="#前向后向算法" class="headerlink" title="前向后向算法"></a>前向后向算法</h1><blockquote>
+<ol>
+<li><p>前向概率：定义时刻 <em>t</em> 时隐藏状态为$q_i$ <strong>,</strong> 观测状态的序列为$o_1,o_2,…o_T$的概率为前向概率,记为：</p>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304184918482.png" alt="image-20210304184918482" style="zoom:75%;"></p>
+</li>
+<li><p>基于时刻 <em>t</em> 时各个隐藏状态的前向概率，再乘以对应的状态转移概率，即$\alpha_t(j)a_{ji}$就是在时刻 <em>t</em> 观测到序列$o_1,o_2,…o_T$并且时刻<em>t</em>隐藏状态为$q_j$,时刻<em>t</em>+1隐藏状态为$q_i$的概率。</p>
+</li>
+<li><p>$\sum_{j=1}^{N}\alpha_t(j)a_{ji}$就是在时刻 <em>t</em> 观测到$o_1,o_2,…o_T$并且时刻t+1隐藏状态为$q_i$的概率。</p>
+</li>
+<li><p>这样我们得到了前向概率的递推关系式如下:</p>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304185724229.png" alt="image-20210304185724229" style="zoom:60%;"></p>
+</li>
+<li><p>将所有隐藏状态对应的概率相加，即$\sum_{i=1}^N\alpha_T(i)$就得到了在时刻 <em>T</em> 观测序列为 $o_1,o_2,…o_T$的概率。</p>
+</li>
+</ol>
+<p><strong>算法总结：</strong></p>
+<ol>
+<li>前向算法：</li>
+</ol>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304185920961.png" alt="image-20210304185920961" style="zoom:70%;"></p>
+<ol>
+<li>后向算法：</li>
+</ol>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190109220.png" alt="image-20210304190109220" style="zoom:70%;"></p>
+</blockquote>
+<h1 id="维特比算法"><a href="#维特比算法" class="headerlink" title="维特比算法"></a>维特比算法</h1><blockquote>
+<p><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190258092.png" alt="image-20210304190258092"></p>
+</blockquote>
+<h1 id="鲍姆-韦尔奇"><a href="#鲍姆-韦尔奇" class="headerlink" title="鲍姆-韦尔奇"></a>鲍姆-韦尔奇</h1><blockquote>
+<p>鲍姆-韦尔奇算法原理既然使用的就是EM算法的原理</p>
+<ol>
+<li>那么我们需要在 <em>E</em> 步求出联合分布$P(O,I|\lambda)$基于条件概率的$P(O,I|\hat{\lambda})$期望，其中<script type="math/tex">\hat{\lambda}</script>为当前的模型参数， 然后在 <em>M</em> 步最大化这个期望，得到更新的模型参数 <em>λ</em> 。</li>
+<li><img src="/2021/05/05/HMM%E6%A8%A1%E5%9E%8B/image-20210304190552024.png" alt="image-20210304190552024" style="zoom:75%;"></li>
+</ol>
+</blockquote>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><blockquote>
+<p><code>hmmlearn.hmm.MutinomialHMM</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>startprob_:</code>参数对应我们的隐藏状态初始分布 Π</li>
+<li><code>transmat_</code>对应我们的状态转移矩阵A</li>
+<li><code>emissionprob_</code>对应我们的观测状态概率矩阵B</li>
+</ol>
+<p><strong>Attributes:</strong></p>
+<ol>
+<li><code>predict(x):</code>X为可观测序列，返回最可能的隐藏状态序列。</li>
+<li><code>score(x):</code>X为可观测序列，返回观测序列以自然对数为底的概率值。</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HMM/" rel="tag"># HMM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/05/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" rel="prev" title="集成学习">
+      <i class="fa fa-chevron-left"></i> 集成学习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE"><span class="nav-number">1.</span> <span class="nav-text">马尔科夫链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HMM"><span class="nav-number">2.</span> <span class="nav-text">HMM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E5%90%91%E5%90%8E%E5%90%91%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">前向后向算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">维特比算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%B2%8D%E5%A7%86-%E9%9F%A6%E5%B0%94%E5%A5%87"><span class="nav-number">5.</span> <span class="nav-text">鲍姆-韦尔奇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">6.</span> <span class="nav-text">API</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Qijinli</p>
+  <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

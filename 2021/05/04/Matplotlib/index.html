@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="注意： 在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 %matplotlib inline。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 plt.show()。  简单图形绘制 需要导入 pyplot 模块，并约定简称为 plt from matplotl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matplotlib">
+<meta property="og:url" content="http://qi-jinli.github.io/2021/05/04/Matplotlib/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="注意： 在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 %matplotlib inline。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 plt.show()。  简单图形绘制 需要导入 pyplot 模块，并约定简称为 plt from matplotl">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-03T17:38:54.000Z">
+<meta property="article:modified_time" content="2021-05-03T17:38:54.000Z">
+<meta property="article:author" content="Qijinli">
+<meta property="article:tag" content="Matplotlib">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://qi-jinli.github.io/2021/05/04/Matplotlib/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Matplotlib | Qijinli's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Qijinli's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/Matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Matplotlib
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 01:38:54" itemprop="dateCreated datePublished" datetime="2021-05-04T01:38:54+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">科学计算库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p><strong>注意：</strong></p>
+<p>在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 <code>%matplotlib inline</code>。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 <code>plt.show()</code>。</p>
+</blockquote>
+<h1 id="简单图形绘制"><a href="#简单图形绘制" class="headerlink" title="简单图形绘制"></a>简单图形绘制</h1><blockquote>
+<p>需要导入 <code>pyplot</code> 模块，并约定简称为 <code>plt</code></p>
+<pre class=" language-lang-python"><code class="language-lang-python">from matplotlib import pyplot as plt
+plt.plot([2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1])
+</code></pre>
+<p><code>plt.plot()</code> 是 <code>pyplot</code> 模块下面的直线绘制（折线图）方法类。示例中包含了一个 <code>[2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]</code> 列表，Matplotlib 会默认将该列表作为 𝑦y 值，而 𝑥x 值会从 00 开始依次递增。</p>
+<p>当然，如果你需要自定义横坐标值，只需要传入两个列表即可。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matplotlib.pyplot.angle_spectrum</code></td>
+<td>绘制电子波谱图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.bar</code></td>
+<td>绘制柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.barh</code></td>
+<td>绘制直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.broken_barh</code></td>
+<td>绘制水平直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.contour</code></td>
+<td>绘制等高线图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.errorbar</code></td>
+<td>绘制误差线</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hexbin</code></td>
+<td>绘制六边形图案</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist</code></td>
+<td>绘制柱形图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist2d</code></td>
+<td>绘制水平柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.pie</code></td>
+<td>绘制饼状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.quiver</code></td>
+<td>绘制量场图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.scatter</code></td>
+<td>散点图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.specgram</code></td>
+<td>绘制光谱图</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h1 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h1><h2 id="定义图形样式"><a href="#定义图形样式" class="headerlink" title="定义图形样式"></a>定义图形样式</h2><blockquote>
+<p>线形图通过 <code>matplotlib.pyplot.plot(*args, **kwargs)</code> 方法绘出。其中，<code>args</code> 代表数据输入，而 <code>kwargs</code> 的部分就是用于设置样式参数了。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha=</code></td>
+<td>设置线型的透明度，从 0.0 到 1.0</td>
+</tr>
+<tr>
+<td><code>color=</code></td>
+<td>设置线型的颜色</td>
+</tr>
+<tr>
+<td><code>fillstyle=</code></td>
+<td>设置线型的填充样式</td>
+</tr>
+<tr>
+<td><code>linestyle=</code></td>
+<td>设置线型的样式</td>
+</tr>
+<tr>
+<td><code>linewidth=</code></td>
+<td>设置线型的宽度</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>设置标记点的样式</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>散点图也是相似的，它们的很多样式参数都是大同小异</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s=</code></td>
+<td>散点大小</td>
+</tr>
+<tr>
+<td><code>c=</code></td>
+<td>散点颜色</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>散点样式</td>
+</tr>
+<tr>
+<td><code>cmap=</code></td>
+<td>定义多类别散点的颜色</td>
+</tr>
+<tr>
+<td><code>alpha=</code></td>
+<td>点的透明度</td>
+</tr>
+<tr>
+<td><code>edgecolors=</code></td>
+<td>散点边缘颜色</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h2 id="定义图形位置"><a href="#定义图形位置" class="headerlink" title="定义图形位置"></a>定义图形位置</h2><blockquote>
+<p>在图形的绘制过程中，你可能需要调整图形的位置，或者把几张单独的图形拼接在一起。此时，我们就需要引入 <code>plt.figure</code> 图形对象了。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+x = np.linspace(0, 10, 20)  # 生成数据
+y = x * x + 2
+
+fig = plt.figure(figsize=(元组),dpi=)  # 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度
+axes = fig.add_axes([0.5, 0.5, 0.8, 0.8])  # 控制画布的左, 下, 宽度, 高度
+axes.plot(x, y, 'r')
+</code></pre>
+<p><strong>大图套小图</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig = plt.figure()  # 新建画板
+axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # 大画布
+axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])  # 小画布
+
+axes1.plot(x, y, 'r')  # 大画布
+axes2.plot(y, x, 'g')  # 小画布
+</code></pre>
+<p>Matplotlib 中，还有一种添加画布的方式，那就是 <code>plt.subplots()</code>，它和 <code>axes</code> 都等同于画布。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+axes.plot(x, y, 'r')
+</code></pre>
+<p>借助于 <code>plt.subplots()</code>，我们就可以实现子图的绘制，也就是将多张图按一定顺序拼接在一起。</p>
+<p>其中axes设置标题方法不同：</p>
+<p>​    set_xticks</p>
+<p>​    set_yticks</p>
+<p>​    set_xlabel</p>
+<p>​    set_ylabel</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots(nrows=1, ncols=2)  # 子图为 1 行，2 列
+for ax in axes:
+ ax.plot(x, y, 'r')
+</code></pre>
+<p>通过设置 <code>plt.subplots</code> 的参数，可以实现调节画布尺寸和显示精度</p>
+<p>。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots(figsize=(16, 9), dpi=50)  # 通过 figsize 调节尺寸, dpi 调节显示精度
+axes.plot(x, y, 'r')
+</code></pre>
+</blockquote>
+<h2 id="规范绘图方法"><a href="#规范绘图方法" class="headerlink" title="规范绘图方法"></a>规范绘图方法</h2><h3 id="添加图标题、图例"><a href="#添加图标题、图例" class="headerlink" title="添加图标题、图例"></a>添加图标题、图例</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+
+axes.set_xlabel('x label')  # 横轴名称
+axes.set_ylabel('y label')
+axes.set_title('title')  # 图形名称
+
+axes.plot(x, x**2) # 添加图例也可以传入label参数
+axes.plot(x, x**3)
+axes.legend(["y = x**2", "y = x**3"], loc=0)
+</code></pre>
+<p><code>loc</code> 参数标记图例位置，<code>1，2，3，4</code> 依次代表：右上角、左上角、左下角，右下角；<code>0</code> 代表自适应。</p>
+</blockquote>
+<h3 id="添加自定义刻度"><a href="#添加自定义刻度" class="headerlink" title="添加自定义刻度"></a>添加自定义刻度</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 构造x轴刻度标签
+x_ticks_label = ["11点&#123;&#125;分".format(i) for i in x]
+# 构造y轴刻度
+y_ticks = range(40)
+# 修改x,y轴坐标的刻度显示
+plt.xticks(x[::5], x_ticks_label[::5])
+plt.yticks(y_ticks[::5])
+</code></pre>
+<p>显示中文字体</p>
+<pre class=" language-lang-python"><code class="language-lang-python">from pylab import mpl
+# 设置显示中文字体
+mpl.rcParams["font.sans-serif"] = ["SimHei"]
+# 坐标轴无法正常显示中文时
+mpl.rcParams["axes.unicode_minus"] = False
+</code></pre>
+</blockquote>
+<h3 id="线型、颜色、透明度"><a href="#线型、颜色、透明度" class="headerlink" title="线型、颜色、透明度"></a>线型、颜色、透明度</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+axes.plot(x, x+1, color="red", alpha=0.5)# 颜色和透明度
+axes.plot(x, x+2, color="#1155dd")
+</code></pre>
+<p>更多线型</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, ax = plt.subplots(figsize=(12, 6))
+
+# 线宽
+ax.plot(x, x+1, color="blue", linewidth=0.25)
+ax.plot(x, x+2, color="blue", linewidth=0.50)
+ax.plot(x, x+3, color="blue", linewidth=1.00)
+ax.plot(x, x+4, color="blue", linewidth=2.00)
+
+# 虚线类型
+ax.plot(x, x+5, color="red", lw=2, linestyle='-')
+ax.plot(x, x+6, color="red", lw=2, ls='-.')
+ax.plot(x, x+7, color="red", lw=2, ls=':')
+
+# 虚线交错宽度
+line, = ax.plot(x, x+8, color="black", lw=1.50)
+line.set_dashes([5, 10, 15, 10])
+
+# 符号
+ax.plot(x, x + 9, color="green", lw=2, ls='--', marker='+')
+ax.plot(x, x+10, color="green", lw=2, ls='--', marker='o')
+ax.plot(x, x+11, color="green", lw=2, ls='--', marker='s')
+ax.plot(x, x+12, color="green", lw=2, ls='--', marker='1')
+
+# 符号大小和颜色
+ax.plot(x, x+13, color="purple", lw=1, ls='-', marker='o', markersize=2)
+ax.plot(x, x+14, color="purple", lw=1, ls='-', marker='o', markersize=4)
+ax.plot(x, x+15, color="purple", lw=1, ls='-',
+     marker='o', markersize=8, markerfacecolor="red")
+   ax.plot(x, x+16, color="purple", lw=1, ls='-', marker='s', markersize=8,
+     markerfacecolor="yellow", markeredgewidth=2, markeredgecolor="blue")
+</code></pre>
+</blockquote>
+<h3 id="画布网格、坐标轴范围"><a href="#画布网格、坐标轴范围" class="headerlink" title="画布网格、坐标轴范围"></a>画布网格、坐标轴范围</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+# 显示网格
+axes[0].plot(x, x**2, x, x**3, lw=2)
+axes[0].grid(True,linestyle="--",alpha=0.5)
+
+# 设置坐标轴范围
+axes[1].plot(x, x**2, x, x**3)
+axes[1].set_ylim([0, 60])
+axes[1].set_xlim([2, 5])
+</code></pre>
+<p><code>除了折线图，Matplotlib 还支持绘制散点图、柱状图等其他常见图形。下面，我们绘制由散点图、梯步图、条形图、面积图构成的子图。</code></p>
+<pre class=" language-lang-python"><code class="language-lang-python">n = np.array([0, 1, 2, 3, 4, 5])
+
+fig, axes = plt.subplots(1, 4, figsize=(16, 5))
+
+axes[0].scatter(x, x + 0.25*np.random.randn(len(x)))
+axes[0].set_title("scatter")
+
+axes[1].step(n, n**2, lw=2)
+axes[1].set_title("step")
+
+axes[2].bar(n, n**2, align="center", width=0.5, alpha=0.5)
+axes[2].set_title("bar")
+
+axes[3].fill_between(x, x**2, x**3, color="green", alpha=0.5)
+axes[3].set_title("fill_between")
+</code></pre>
+</blockquote>
+<h3 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h3><blockquote>
+<p>Matplotlib 中，文字标注的方法由 <code>matplotlib.pyplot.text()</code> 实现。最基本的样式为 <code>matplotlib.pyplot.text(x, y, s)</code>，其中 x, y 用于标注位置定位，s 代表标注的字符串。除此之外，你还可以通过 <code>fontsize=</code> , <code>horizontalalignment=</code> 等参数调整标注字体的大小，对齐样式等。</p>
+<pre class=" language-lang-pyhton"><code class="language-lang-pyhton">fig, axes = plt.subplots()
+
+x_bar = [10, 20, 30, 40, 50]  # 柱形图横坐标
+y_bar = [0.5, 0.6, 0.3, 0.4, 0.8]  # 柱形图纵坐标
+bars = axes.bar(x_bar, y_bar, color='blue', label=x_bar, width=2)  # 绘制柱形图
+for i, rect in enumerate(bars):
+   x_text = rect.get_x()  # 获取柱形图横坐标
+   y_text = rect.get_height() + 0.01  # 获取柱子的高度并增加 0.01
+   plt.text(x_text, y_text, '%.1f' % y_bar[i])  # 标注文字
+</code></pre>
+<p>除了文字标注之外，还可以通过 <code>matplotlib.pyplot.annotate()</code> 方法向图像中添加箭头等样式标注。接下来，我们向上面的例子中增添一行增加箭头标记的代码。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+
+bars = axes.bar(x_bar, y_bar, color='blue', label=x_bar, width=2)  # 绘制柱形图
+for i, rect in enumerate(bars):
+    x_text = rect.get_x()  # 获取柱形图横坐标
+    y_text = rect.get_height() + 0.01  # 获取柱子的高度并增加 0.01
+    plt.text(x_text, y_text, '%.1f' % y_bar[i])  # 标注文字
+
+    # 增加箭头标注
+    plt.annotate('Min', xy=(32, 0.3), xytext=(36, 0.3),
+                 arrowprops=dict(facecolor='black', width=1, headwidth=7))
+</code></pre>
+<p><code>xy=()</code> 表示标注终点坐标，<code>xytext=()</code> 表示标注起点坐标。在箭头绘制的过程中，<code>arrowprops=()</code> 用于设置箭头样式，<code>facecolor=</code> 设置颜色，<code>width=</code> 设置箭尾宽度，<code>headwidth=</code> 设置箭头宽度，可以通过 <code>arrowstyle=</code> 改变箭头的样式。</p>
+</blockquote>
+<h1 id="常见图形绘制"><a href="#常见图形绘制" class="headerlink" title="常见图形绘制"></a>常见图形绘制</h1><blockquote>
+<p><strong>折线图</strong>：以折线的上升或下降来表示统计数量的增减变化的统计图</p>
+<p><strong>特点：能够显示数据的变化趋势，反映事物的变化情况。(变化)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.plot(x, y)
+</code></pre>
+<p><strong>散点图：</strong>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量之间是否存在某种关联或总结坐标点的分布模式。</p>
+<p><strong>特点：判断变量之间是否存在数量关联趋势,展示离群点(分布规律)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.scatter(x, y)
+</code></pre>
+<p><strong>柱状图：</strong>排列在工作表的列或行中的数据可以绘制到柱状图中。</p>
+<p><strong>特点：绘制连离散的数据,能够一眼看出各个数据的大小,比较数据之间的差别。(统计/对比)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.bar(x, width, align='center', **kwargs)
+</code></pre>
+<p>Parameters:<br>    <code>x</code> : 需要传递的数据<br>    <code>width</code> : 柱状图的宽度<br>    <code>align</code> : 每个柱状图的位置对齐方式<br>         {‘center’, ‘edge’}, optional, default: ‘center’<br>    <code>`**kwargs</code> :<br>        color:选择柱状图的颜色</p>
+<p><strong>直方图：</strong>由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据范围，纵轴表示分布情况。</p>
+<p><strong>特点：绘制连续性的数据展示一组或者多组数据的分布状况(统计)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">matplotlib.pyplot.hist(x, bins=None)
+</code></pre>
+<p>Parameters:<br>    <code>x</code>: 需要传递的数据<br>    <code>bins</code> : 组距</p>
+<p><strong>饼图：</strong>用于表示不同分类的占比情况，通过弧度大小来对比各种分类。</p>
+<p><strong>特点：分类数据的占比情况(占比)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.pie(x, labels=,autopct=,colors)
+</code></pre>
+<p>Parameters:<br>    <code>x</code>:数量，自动算百分比<br>    <code>labels</code>:每部分名称<br>    <code>autopct</code>:占比显示指定%1.2f%%<br>    <code>colors</code>:每部分颜色</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Matplotlib/" rel="tag"># Matplotlib</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/04/Pandas/" rel="prev" title="Pandas">
+      <i class="fa fa-chevron-left"></i> Pandas
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/04/Seaborn/" rel="next" title="Seaborn">
+      Seaborn <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">简单图形绘制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">图形样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BD%A2%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">定义图形样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BD%A2%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.2.</span> <span class="nav-text">定义图形位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E8%8C%83%E7%BB%98%E5%9B%BE%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">规范绘图方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E9%A2%98%E3%80%81%E5%9B%BE%E4%BE%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">添加图标题、图例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%BB%E5%BA%A6"><span class="nav-number">2.3.2.</span> <span class="nav-text">添加自定义刻度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E5%9E%8B%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="nav-number">2.3.3.</span> <span class="nav-text">线型、颜色、透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%BB%E5%B8%83%E7%BD%91%E6%A0%BC%E3%80%81%E5%9D%90%E6%A0%87%E8%BD%B4%E8%8C%83%E5%9B%B4"><span class="nav-number">2.3.4.</span> <span class="nav-text">画布网格、坐标轴范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E6%A0%87%E6%B3%A8"><span class="nav-number">2.3.5.</span> <span class="nav-text">图形标注</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">常见图形绘制</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Qijinli</p>
+  <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

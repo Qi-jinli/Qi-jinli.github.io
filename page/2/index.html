@@ -1,472 +1,4613 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.jpeg"/>
-	<link rel="shortcut icon" href="/img/logo.jpeg">
-	
-			    <title>
-    Qijinli's Blog
-    </title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/css/mic_main.css" />
-    <link rel="stylesheet" href="/css/dropdownMenu.css" />
-    <meta name="keywords" content="qijinli" />
-    
-    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	 
-    <noscript>
-        <link rel="stylesheet" href="/css/noscript.css" />
-    </noscript>
-    <style type="text/css">
-        body:before {
-          content: 'portrait';
-          position: fixed;
-          top: 0;
-          background: url('/img/bg.jpg') center 0 no-repeat;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-size: cover;
-        }
-    </style>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-			    <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX", "output/HTML-CSS"],
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\(","\)"] ],
-      processEscapes: true
-    },
-    "HTML-CSS": { availableFonts: ["TeX"] }
-  });
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Qijinli&#39;s Blog">
+<meta property="og:url" content="http://qi-jinli.github.io/page/2/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Qijinli">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://qi-jinli.github.io/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
 </script>
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.scrollex.min.js"></script>
-    <script src="/js/jquery.scrolly.min.js"></script>
-    <script src="/js/skel.min.js"></script>
-    <script src="/js/util.js"></script>
-    <script src="/js/main.js"></script>
-	
-<meta name="generator" content="Hexo 5.4.0"></head>
-    <div id="music">
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66"></iframe>
+  <title>Qijinli's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Qijinli's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
-    
-		<body class="is-loading">
-    <!-- Wrapper 外包 s-->
-    <div id="wrapper" class="fade-in overlay">
-        <!-- Intro 头部显示 s -->
-                <div id="intro">
-            <h1>This is<br />
-                        My Place </h1>
-            <p> I am the man to be king of Pirates！！
-            </p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
-            </ul>
-        </div>
-        <!-- Intro 头部显示 e -->
-        <!-- Header 头部logo start -->
-        <header id="header">
-    <a href="/" class="logo">QIJINLI</a>
-</header>
-        <!-- Header 头部logo end -->
-        <!-- Nav 导航条 start -->
-        <nav id="nav" class="special" >
-            <ul class="menu links" >
-			<!-- Homepage  主页  --> 
-			<li >
-	            <a href="/" rel="nofollow">主页</a>
-	        </li>
-			<!-- categories_name  分类   --> 
-	        
-	        <li class="active">
-	            <a href="#s1">分类</a>
-	                    <ul class="submenu">
-	                        <li>
-	                        <a class="category-link" href="../categories/Linux/">Linux</a></li><li><a class="category-link" href="../categories/python/">python</a></li><li><a class="category-link" href="../categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li><a class="category-link" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li><a class="category-link" href="../categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a>
-	                    </ul>
-	        </li>
-	        
-	        <!-- archives  归档   --> 
-	        
-	        
-		        <!-- Pages 自定义   -->
-		        
-		        <li>
-		            <a href="/about/" title="简历">
-		                简历
-		            </a>
-		        </li>
-		        
-		        <li>
-		            <a href="/gallery/" title="图库">
-		                图库
-		            </a>
-		        </li>
-		        
-		        <li>
-		            <a href="/tag/" title="标签">
-		                标签
-		            </a>
-		        </li>
-		        
 
 
-            </ul>
-            <!-- icons 图标   -->
-			<ul class="icons">
-                    
-                    <li>
-                        <a title="github" href="../https:/github.com/Qi-jinli" target="_blank" rel="noopener">
-                            <i class="icon fa fa-github"></i>
-                        </a>
-                    </li>
-                    
-			</ul>
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
 </nav>
-        <!-- Nav 导航条 end -->
-        <!-- Main 主要部分 start -->
-        
-        <!-- 文章列表   s -->
-        <div id="main" style="background-color: transparent; padding:0;">
-        <section class="link_container" style="margin-top: 0; background-color: transparent; ">
-            <div class="link_row">
-                <!-- 文章sample  s-->
 
-                
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/02/20/KNN/">
-                        <div class="page_title" style="background-image: url(/images/img/KNN.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> KNN </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-02-20</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/31/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
-                        <div class="page_title" style="background-image: url(/images/img/科学计算常用方法.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 科学计算库总结 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-31</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/29/Seaborn/">
-                        <div class="page_title" style="background-image: url(/images/img/seaborn.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> Seaborn </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-29</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/27/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <div class="page_title" style="background-image: url(/images/img/数据库.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 数据库 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-27</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                        <div class="page_title" style="background-image: url(/images/img/数据结构与算法.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 数据结构与算法 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-16</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/python/">python</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/10/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">
-                        <div class="page_title" style="background-image: url(/images/img/装饰器和生成器.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 装饰器和生成器 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-10</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/python/">python</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/07/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-                        <div class="page_title" style="background-image: url(/images/img/网络编程.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 网络编程 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-07</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/python/">python</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2021/01/06/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-                        <div class="page_title" style="background-image: url(/images/img/多进程与多线程.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 多进程与多线程 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2021-01-06</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/python/">python</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2020/12/17/Matplotlib/">
-                        <div class="page_title" style="background-image: url(/images/img/matplotlib.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> Matplotlib </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2020-12-17</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="../../2020/12/17/Pandas/">
-                        <div class="page_title" style="background-image: url(/images/img/pandas.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> Pandas </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2020-12-17</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="../../categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/">科学计算库</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
-            </div>
-        </section>
-        </div>
-        <!-- 文章列表   end -->
-        <!-- Main 主要部分 end -->
-        <!-- footer  页码 start-->
-        <footer style="text-align: center; padding-top: 2em;">
-  
-    <div class="pagination" >
-        <a class="extend prev" rel="prev" href="../../">pre</a><a class="page-number" href="../../">1</a><span class="page-number current">2</span><a class="page-number" href="../3/">3</a><a class="extend next" rel="next" href="../3/">nex</a>
-    </div>  
+
+
+
+</div>
+    </header>
+
     
-</footer>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-        <!-- footer  页码 end-->
-        <!-- Copyright 版权 start -->
-                <div id="copyright">
-            <ul>
-                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
-                <li>Design: <a target="_blank" rel="noopener" href="http://www.qijinli.work " style="border-bottom: none;">Qijinli</a></li>
-            </ul>
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
             
-                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-			
-        </div>
-        <!-- Copyright 版权 end -->
-    </div>
-    <!-- Wrapper 外包 e-->
-    <!-- Scripts -->
-</body>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/sklearn/">
 
- 	
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/sklearn/" class="post-title-link" itemprop="url">Sklearn</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 23:01:41" itemprop="dateCreated datePublished" datetime="2021-05-04T23:01:41+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><h2 id="获取数据集"><a href="#获取数据集" class="headerlink" title="获取数据集"></a>获取数据集</h2><blockquote>
+<p><code>sklearn.datasets：</code>加载获取流行数据集</p>
+<ol>
+<li><code>datasets.load\_*()</code><ul>
+<li><code>获取小规模数据集</code>，数据包含在datasets里</li>
+</ul>
+</li>
+<li><code>datasets.fetch\_*(data_home=None)</code><ul>
+<li><code>获取大规模数据集</code>，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录,默认是 ~/scikit_learn_data/</li>
+<li><code>load和fetch返回的数据类型datasets.base.Bunch(字典格式)</code><ul>
+<li><code>data</code>:特征数据数组，是 [n_samples * n_features] 的二维<code>numpy.ndarray</code>数组 </li>
+<li><code>target</code>:标签数组，是 n_samples 的一维<code>numpy.ndarray</code>数组 </li>
+<li><code>DESCR</code>:数据描述 </li>
+<li><code>feature_names</code>:特征名,新闻数据，手写数字、回归数据集没有</li>
+<li><code>target_names</code>:标签名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>datasets.make_classification(n_samples=100, n_features=20, n_informative=2, n_redundant=2, n_repeated=0, n_classes=2, n_clusters_per_class=2,weights = None,random_state=None):</code><ul>
+<li><code>n_samples:</code>样本数量</li>
+<li><code>n_features：</code>特征个数= n_informative（） + n_redundant + n_repeated</li>
+<li><code>n_informative:</code>多信息特征个数</li>
+<li><code>n_redundant：</code>冗余信息，informative特征的随机线性组合</li>
+<li><code>n_repeated：</code>重复信息，随机提取n_informative和n_redundant 特征</li>
+<li><code>n_classes：</code>分类类别</li>
+<li><code>n_clusters_per_class：</code>某一个类别是由几个cluster构成的</li>
+<li><code>weights：</code>分配给每个类别的样本比例</li>
+</ul>
+</li>
+<li><code>datasets.make_blobs(n_samples=100, n_features=2,centers=None, cluster_std=1.0, random_state=None):</code><ul>
+<li><code>n_samples:</code>样本数量</li>
+<li><code>n_features:</code>样本特征数</li>
+<li><code>centers:</code>样本聚类中心，列表</li>
+<li><code>cluster_std:</code>聚类标准差</li>
+<li><code>return:</code>X：生成的样本，y：样本的聚类标签</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="数据集的划分"><a href="#数据集的划分" class="headerlink" title="数据集的划分"></a>数据集的划分</h2><blockquote>
+<ol>
+<li><code>sklearn.model_selection.train_test_split(arrays, *options)</code></li>
+</ol>
+<p><strong>Parameters：</strong></p>
+<ul>
+<li><code>x 数据集的特征值</code></li>
+<li><code>y 数据集的标签值</code></li>
+<li><code>test_size</code>测试集的大小，一般为float</li>
+<li><code>random_state</code> 随机数种子,不同的种子会造成不同的随机采样结果。相同的种子采样结果相同。</li>
+</ul>
+<p><strong>return：</strong><br><code>x_train, x_test, y_train, y_test</code></p>
+<ol>
+<li><code>sklearn.model_selection.StratifiedShuffleSplit(n_splits = 10,test_size = None,train_size = None,random_state=None)</code></li>
+</ol>
+<p><strong>Parameters：</strong></p>
+<ol>
+<li><code>n_splits:</code>重新改组和拆分迭代的次数</li>
+</ol>
+<p><strong>return:</strong></p>
+<ol>
+<li><code>train_index,test_index</code></li>
+</ol>
+</blockquote>
+<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="特征归一化标注化"><a href="#特征归一化标注化" class="headerlink" title="特征归一化标注化"></a>特征归一化标注化</h2><blockquote>
+<p><code>sklearn.preprocessing</code></p>
+<ol>
+<li><code>归一化</code><ul>
+<li><code>sklearn.preprocessing.MinMaxScaler(feature_range=(0,1)... )</code><ul>
+<li><code>MinMaxScalar.fit_transform(X)</code><ul>
+<li><code>X : numpy array格式的数据[n_samples,n_features]</code></li>
+</ul>
+</li>
+<li><code>返回值:转换后的形状相同的array</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>标准化</code><ul>
+<li><code>sklearn.preprocessing.StandardScaler( )</code><ul>
+<li>处理之后每列来说所有数据都聚集在均值0附近标准差差为1</li>
+<li><code>StandardScaler.fit_transform(X)</code><ul>
+<li><code>X : numpy array格式的数据[n_samples,n_features]</code></li>
+</ul>
+</li>
+<li><code>返回值:转换后的形状相同的array</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><h3 id="字典特征提取"><a href="#字典特征提取" class="headerlink" title="字典特征提取"></a>字典特征提取</h3><blockquote>
+<p><code>sklearn.feature_extraction.DictVectorizer(sparse=True,…)</code></p>
+<ul>
+<li><p><code>DictVectorizer.fit_transform(X)</code></p>
+<ul>
+<li>X:字典或者包含字典的迭代器返回值</li>
+<li>返回sparse矩阵</li>
+</ul>
+<p><strong>注意：X中含有类别符号，需要进行one-hot编码处理，x.to_dict(orient=”records”) 需要将数组特征转换成字典数据</strong></p>
+</li>
+<li><p><code>DictVectorizer.get_feature_names()</code>返回类别名称</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h3><blockquote>
+<p><code>sklearn.feature_extraction.text.CountVectorizer(stop_words=[])</code></p>
+<ul>
+<li>返回词频矩阵</li>
+<li><code>CountVectorizer.fit_transform(X)</code><ul>
+<li>X:文本或者包含文本字符串的可迭代对象</li>
+<li>返回值:返回sparse矩阵（注意返回格式，利用toarray()进行sparse矩阵转换array数组）</li>
+</ul>
+</li>
+<li><code>CountVectorizer.get_feature_names()</code>返回值:单词列表</li>
+</ul>
+</blockquote>
+<h3 id="中文特征提取"><a href="#中文特征提取" class="headerlink" title="中文特征提取"></a>中文特征提取</h3><blockquote>
+<p><strong>jieba分词处理：</strong></p>
+<p><code>jieba.cut()</code></p>
+<ul>
+<li>返回词语组成的生成器</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">import jieba
+def cut_word(text):
+    # 用结巴对中文字符串进行分词
+    text = " ".join(list(jieba.cut(text)))
+    return text
+</code></pre>
+<p><strong>Tf-idf文本特征提取：</strong></p>
+<p><code>sklearn.feature_extraction.text.TfidfVectorizer(stop_words=[])</code></p>
+</blockquote>
+<h2 id="特征降维"><a href="#特征降维" class="headerlink" title="特征降维"></a>特征降维</h2><h3 id="低方差特征过滤"><a href="#低方差特征过滤" class="headerlink" title="低方差特征过滤"></a>低方差特征过滤</h3><blockquote>
+<p><code>sklearn.feature_selection.VarianceThreshold(threshold=0.0):</code></p>
+<ol>
+<li>默认删除方差为0的特征</li>
+<li><code>Variance.fit_transform(X):</code>将数据进行低方差过滤</li>
+<li><code>Variance.fit(X):</code>从X学习到经验方差</li>
+</ol>
+</blockquote>
+<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><blockquote>
+<p><code>scipy.stats.pearsonr(x,y):</code></p>
+<ol>
+<li>皮尔逊相关系数</li>
+<li>返回值：<code>correlation coefficient, p-value</code></li>
+</ol>
+<p><code>scipy.stats.spearmanr(x, y):</code></p>
+<ol>
+<li>斯皮尔曼相关系数</li>
+<li>返回值：<code>correlation coefficient, p-value</code></li>
+</ol>
+</blockquote>
+<h3 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h3><blockquote>
+<p><code>sklearn.decomposition.PCA(n_components=None)</code></p>
+<ul>
+<li>将数据投影到较低维数空间</li>
+<li><code>n_components</code>:<ul>
+<li><strong>小数：表示保留百分之多少的信息</strong></li>
+<li><strong>整数：减少到多少特征</strong></li>
+</ul>
+</li>
+<li><code>PCA.fit_transform(X):</code>将X转换为指定维度的数据</li>
+<li><code>PCA.inverse_transform(newData):</code>将降维后的数据转换为原始数据</li>
+<li><code>PCA.explained_variance_ratio_:</code>查看每个特征信息占比</li>
+<li>返回值：指定维度的array</li>
+</ul>
+</blockquote>
+<h2 id="特征编码"><a href="#特征编码" class="headerlink" title="特征编码"></a>特征编码</h2><blockquote>
+<p><code>sklearn.preprocessing.LabelEncoder:</code></p>
+<ol>
+<li><p>使用0到n_classes-1之间的值对<code>目标标签</code>进行编码。</p>
+<p>该转换器应用于编码目标值，<em>即</em> <code>y</code>，而不是输入<code>X</code>。</p>
+</li>
+<li><p><code>LabelEncoder.fit_transform(y):</code>将目标值转化为数字类</p>
+</li>
+</ol>
+<p><code>sklearn.preprocessing.OneHotEncoder:</code></p>
+<ol>
+<li>将<code>特征值</code>转换为One-Hot编码</li>
+<li><code>OneHotEncoder.fit_transform(x)</code>将特征值转化为one-hot编码</li>
+<li><code>OneHotEncoder.get_feature_names()</code>返回类别名称列表</li>
+</ol>
+</blockquote>
+<h2 id="欠采样和过采样"><a href="#欠采样和过采样" class="headerlink" title="欠采样和过采样"></a>欠采样和过采样</h2><h3 id="过采样"><a href="#过采样" class="headerlink" title="过采样"></a>过采样</h3><blockquote>
+<p><code>imblearn.over_sampling.RandomOverSampler(random_state=None):</code></p>
+<ol>
+<li>将数据集少数类随机复制加到数据中</li>
+<li><code>RandomOverSampler.fit_resample(X,y):</code>转换为类别相等的数据<ol>
+<li>返回值为X_resampled, y_resampled，分别为转化后的特征值和目标值</li>
+</ol>
+</li>
+</ol>
+<p><code>imblearn.over_sampling.SMOTE:</code></p>
+<ol>
+<li>SMOTE算法，在近邻连线中随机取得样本点</li>
+<li><code>SMOTE.fit_resample(X,y):</code>转换为类别相等的数据<ol>
+<li>返回值为X_resampled, y_resampled，分别为转化后的特征值和目标值</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h3 id="欠采样"><a href="#欠采样" class="headerlink" title="欠采样"></a>欠采样</h3><blockquote>
+<p><code>imblearn.under_sampling.RandomUnderSampler:</code></p>
+<ol>
+<li>随机从多数类删除一些样本</li>
+<li><code>RandomUnderSampler.fit_resample(X,y):</code>转换为类别相等的数据<ol>
+<li>返回值为X_resampled, y_resampled，分别为转化后的特征值和目标值</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h2><blockquote>
+<p><code>sklearn.neighbors.KNeighborsClassifier(n_neighbors=5,algorithm=&#39;auto&#39;):</code></p>
+<ol>
+<li><code>n_neighbors</code>:int,可选(默认= 5)，k_neighbors查询默认使用的邻居数</li>
+<li><code>algorithm</code>:{‘auto’，‘ball_tree’，‘kd_tree’，‘brute’}<ul>
+<li>快速k近邻搜索算法，<code>默认参数为auto</code>，可以理解为算法自己决定合适的搜索算法<ul>
+<li><code>brute</code>是蛮力搜索，也就是线性扫描，当训练集很大时，计算非常耗时。</li>
+<li><code>kd_tree</code>，构造kd树存储数据以便对其进行快速检索的树形数据结构，kd树也就是数据结构中的二叉树。以中值切分构造的 树，每个结点是一个超矩形，在维数小于20时效率高。</li>
+<li><code>ball tree</code>是为了克服kd树高维失效而发明的，其构造过程是以质心C和半径r分割样本空间，每个节点是一个超球体。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="基本线性回归"><a href="#基本线性回归" class="headerlink" title="基本线性回归"></a>基本线性回归</h3><blockquote>
+<p><strong>正规方程：</strong></p>
+<p><code>sklearn.linear_model.LinearRegression(fit_intercept=True)</code></p>
+<ul>
+<li>参数<ul>
+<li><code>fit_intercept</code>：是否计算偏置</li>
+</ul>
+</li>
+<li>属性<ul>
+<li><code>LinearRegression.coef_</code>：回归系数</li>
+<li><code>LinearRegression.intercept_</code>：偏置</li>
+</ul>
+</li>
+</ul>
+<p><strong>梯度下降：</strong></p>
+<p><code>sklearn.linear_model.SGDRegressor(loss=&quot;squared_loss&quot;, fit_intercept=True, learning_rate =&#39;invscaling&#39;, eta0=0.01)</code></p>
+<ul>
+<li>支持不同的<strong>loss函数和正则化惩罚项</strong>来拟合线性回归模型。</li>
+<li>参数：<ul>
+<li><code>loss</code>:损失类型<ul>
+<li>loss=”squared_loss”: 普通最小二乘法</li>
+</ul>
+</li>
+<li><code>fit_intercept</code>：是否计算偏置</li>
+<li><code>learning_rate</code> : string, optional<ul>
+<li>学习率填充</li>
+<li><code>&#39;constant&#39;</code>: eta = eta0</li>
+<li><code>&#39;optimal&#39;</code>: eta = 1.0 / (alpha * (t + t0)) [default]</li>
+<li><code>&#39;invscaling&#39;</code>: eta = eta0 / pow(t, power_t)<ul>
+<li>power_t=0.25:存在父类当中</li>
+</ul>
+</li>
+<li><strong>对于一个常数值的学习率来说，可以使用learning_rate=’constant’ ，并使用eta0来指定学习率。</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性：<ul>
+<li><code>SGDRegressor.coef_</code>：回归系数</li>
+<li><code>SGDRegressor.intercept_</code>：偏置</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="正则-岭回归"><a href="#正则-岭回归" class="headerlink" title="正则-岭回归"></a>正则-岭回归</h3><blockquote>
+<p><code>sklearn.linear_model.Ridge(alpha=1.0, fit_intercept=True,solver=&quot;auto&quot;, normalize=False)</code></p>
+<ul>
+<li>具有L2正则化的线性回归</li>
+<li><code>alpha</code>:正则化力度，也叫 λ<ul>
+<li><strong>λ取值：0~1 1~10</strong></li>
+</ul>
+</li>
+<li><code>solver</code>:会根据数据自动选择优化方法<ul>
+<li><strong>sag:如果数据集、特征都比较大，选择该随机梯度下降优化</strong></li>
+</ul>
+</li>
+<li><code>normalize</code>:数据是否进行标准化<ul>
+<li>normalize=False:可以在fit之前调用preprocessing.StandardScaler标准化数据</li>
+</ul>
+</li>
+<li><code>Ridge.coef_</code>:回归权重</li>
+<li><code>Ridge.intercept_</code>:回归偏置</li>
+</ul>
+<p><strong>Ridge方法相当于SGDRegressor(penalty=’l2’, loss=”squared_loss”),只不过SGDRegressor实现了一个普通的随机梯度下降学习，推荐使用Ridge(实现了SAG)</strong></p>
+<p><code>sklearn.linear_model.RidgeCV(_BaseRidgeCV, RegressorMixin)</code></p>
+<ul>
+<li>具有L2正则化的线性回归，可以进行交叉验证</li>
+<li><code>coef_</code>:回归系数</li>
+</ul>
+</blockquote>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><blockquote>
+<p><code>sklearn.linear_model.LogisticRegression(solver=&#39;liblinear&#39;, penalty=‘L2’, C = 1.0)</code></p>
+<ul>
+<li><code>solver</code>可选参数:{‘liblinear’, ‘sag’, ‘saga’,’newton-cg’, ‘lbfgs’}，<ul>
+<li><code>默认: &#39;liblinear&#39;</code>；用于优化问题的算法。</li>
+<li>对于小数据集来说，“liblinear”是个不错的选择，而“sag”和’saga’对于大型数据集会更快。</li>
+<li>对于多类问题，只有’newton-cg’， ‘sag’， ‘saga’和’lbfgs’可以处理多项损失;“liblinear”仅限于“one-versus-rest”分类。</li>
+</ul>
+</li>
+<li><code>penalty</code>：正则化的种类</li>
+<li><code>C</code>：正则化力度</li>
+</ul>
+<blockquote>
+<p><strong>默认将类别数量少的当做正例</strong></p>
+</blockquote>
+<p><strong>LogisticRegression方法相当于 SGDClassifier(loss=”log”, penalty=” “),SGDClassifier实现了一个普通的随机梯度下降学习。而使用LogisticRegression(实现了SAG)</strong></p>
+</blockquote>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><h3 id="决策树算法"><a href="#决策树算法" class="headerlink" title="决策树算法"></a>决策树算法</h3><blockquote>
+<p><code>sklearn.tree.DecisionTreeClassifier(criterion=’gini’, max_depth=None,random_state=None)</code></p>
+<ul>
+<li><code>criterion</code><ul>
+<li>“gini”或者”entropy”，前者代表基尼系数，后者代表信息增益。一默认”gini”，即CART算法。</li>
+</ul>
+</li>
+<li><code>min_samples_split</code><ul>
+<li>内部节点再划分所需最小样本数</li>
+</ul>
+</li>
+<li><code>min_samples_leaf</code><ul>
+<li>叶子节点最少样本数</li>
+</ul>
+</li>
+<li><code>max_depth</code><ul>
+<li>决策树最大深度</li>
+</ul>
+</li>
+<li><code>random_state</code><ul>
+<li>随机数种子</li>
+</ul>
+</li>
+</ul>
+<p><code>sklearn.tree.DecisionTreeRegressor(criterion=&#39;mse&#39;, splitter=&#39;best&#39;, max_depth=None,random_state=None)</code></p>
+<ol>
+<li><code>criterion:</code>{‘mse’, ‘friedman_mse’, ‘mae’, ‘poisson’}<ol>
+<li>mse:标准是均方误差的“ mse”，等于方差减少作为特征选择标准，并且使用每个终端节点的均值“ friedman_mse”来最小化L2损失</li>
+<li>mae：代表平均绝对误差，它使用每个终端节点的中值使L1损失最小化</li>
+<li>poisson：使用泊松偏差的减少来寻找分裂</li>
+</ol>
+</li>
+<li><code>splitter:</code>{‘best’, ‘random’}<ol>
+<li>默认best</li>
+<li>策略是“最佳”选择最佳拆分，“随机”选择最佳随机拆分</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h3 id="决策树可视化"><a href="#决策树可视化" class="headerlink" title="决策树可视化"></a>决策树可视化</h3><blockquote>
+<p><code>sklearn.tree.export_graphviz() :</code>该函数能够导出DOT格式</p>
+<ul>
+<li><code>export_graphviz(estimator,out_file=&#39;tree.dot’,feature_names=[‘’,’’])</code></li>
+</ul>
+<p><strong>网站显示结构：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://webgraphviz.com/">http://webgraphviz.com/</a></li>
+</ul>
+</blockquote>
+<h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="Bagging-随机森林"><a href="#Bagging-随机森林" class="headerlink" title="Bagging-随机森林"></a>Bagging-随机森林</h3><blockquote>
+<p><code>sklearn.ensemble.RandomForestClassifier(n_estimators=10, criterion=’gini’, max_depth=None, bootstrap=True, random_state=None, min_samples_split=2, oob_score=False)</code></p>
+<ul>
+<li><code>n_estimators</code>：default = 10，森林里的树木数量</li>
+<li><code>Criterion</code>：default =”gini”<ul>
+<li>分割特征的测量方法</li>
+</ul>
+</li>
+<li><code>max_depth</code>：integer或None<ul>
+<li>树的最大深度 5,8,15,25,30</li>
+</ul>
+</li>
+<li><code>max_features=&quot;auto”</code>,每个决策树的最大特征数量<ul>
+<li>If  “auto”, then <code>max_features=sqrt(n_features)</code>.</li>
+<li>If  “sqrt”, then <code>max_features=sqrt(n_features)</code>(same as “auto”).</li>
+<li>If  “log2”, then <code>max_features=log2(n_features)</code>.</li>
+<li>If  None, then <code>max_features=n_features</code>.</li>
+</ul>
+</li>
+<li><code>bootstrap:</code>boolean，optional(default = True)<ul>
+<li>是否在构建树时使用放回抽样</li>
+</ul>
+</li>
+<li><code>min_samples_split:</code> 内部节点再划分所需最小样本数</li>
+<li><code>min_samples_leaf:</code> 叶子节点的最小样本数</li>
+<li><code>min_impurity_split:</code> 节点划分最小不纯度，一般不推荐改动默认值1e-7。</li>
+<li><code>oob_score</code>:是否使用袋外样本来估计泛化精度</li>
+</ul>
+<p><strong>Attribute：</strong></p>
+<ol>
+<li><code>oob_score_:</code>使用袋外估计获得的训练数据集的分数</li>
+</ol>
+<p><strong>Methods:</strong></p>
+<ol>
+<li><code>estimator.predict_proba(x):</code>预测x的类概率</li>
+</ol>
+</blockquote>
+<h3 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h3><blockquote>
+<p><code>sklearn.ensemble.AdaBoostClassifier（base_estimator = None, n_estimators = 50，learning_rate = 1.0, algorithm = &#39;SAMME.R&#39;, random_state = None:</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>best_estimator:</code>基分类器，默认<code>DecisionTreeClassifier</code>，<code>max_depth=1</code></li>
+<li><code>n_estimators:</code>终止增强的最大数量估计器</li>
+<li><code>algorithm:</code> {‘SAMME’, ‘SAMME.R’}，SAMME.R算法通常比SAMME收敛更快，从而以更少的提升迭代次数实现了更低的测试误差。</li>
+</ol>
+<p><code>sklearn.ensemble.AdaBoostRegressor（base_estimator = None, n_estimators = 50，learning_rate = 1.0, loss=&#39;linear&#39;, random_state = None:</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>loss</code> :{‘linear’，’square’，’exponential’}，默认linear，每次增强迭代后更新权重时使用的损失函数</li>
+<li><code>best_estimator:</code>基分类器，默认<code>DecisionTreeRegressor</code>，<code>max_depth=3</code></li>
+</ol>
+</blockquote>
+<h3 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h3><blockquote>
+<p><code>sklearn.ensemble.GradientBoostingClassifier(loss=&#39;deviance&#39;, learning_rate=0.1, n_estimators=100, subsample=1.0, criterion=&#39;friedman_mse&#39;, min_samples_split=2, min_samples_leaf=1):</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>loss:</code>损失函数的优化算法，{‘deviance’, ‘exponential’},’deviance’:是指对具有概率输出分类的偏离（=logistic回归），’exponential’：指数梯度提升可恢复Adaboost</li>
+<li><code>learning_rate:</code>学习率缩小了每棵树的贡献</li>
+<li><code>n_estimators:</code>要执行的提升阶段数</li>
+<li><code>subsamples:</code>用于拟合各个基学习器样本的比例，小于1时则使用随机梯度下降</li>
+</ol>
+<p><strong>Attribute：</strong></p>
+<ol>
+<li><code>feature_importances_:</code>基于杂质的特征重要性</li>
+<li><code>oob_improvement_:</code>相对于之前的迭代，袋装样本的损失的改善（ <code>oob_improvement_[0]</code>是<code>init</code>估算器第一阶段损失的改善，仅<code>subsample &lt; 1.0</code>）</li>
+<li><code>train_score_:</code>第i个得分<code>train_score_[i]</code>是模型在<code>i</code>袋内样本迭代时的偏差（=损失）。如果<code>subsample == 1</code>,是对训练数据的偏离。</li>
+</ol>
+<p><code>sklearn.ensemble.GradientBoostingRegressor(loss=&#39;LS&#39;, learning_rate=0.1, n_estimators=100, subsample=1.0, criterion=&#39;friedman_mse&#39;, min_samples_split=2, min_samples_leaf=1):</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>loss:</code>损失函数的优化算法，{‘ls’, ‘lad’, ‘huber’, ‘quantile’}<ul>
+<li><code>ls:</code>最小二乘回归</li>
+<li><code>lad:</code>最小绝对偏差，是仅基于输入变量的顺序信息的高度鲁棒的损失函数</li>
+<li><code>huber:</code>两者的结合</li>
+<li><code>quantile:</code>允许分位数回归（用alpha指定分位数）</li>
+</ul>
+</li>
+<li><code>criterion:</code>衡量分割质量的标准，{‘friedman_mse’，’mse’}<ul>
+<li><code>friedman_mse:</code>具有弗里德曼改进得分的均方误差</li>
+<li><code>mse:</code>均方误差</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h3><blockquote>
+<p><code>xgboost.XGBRegressor(objective=&#39;reg:squarederror&#39;)</code></p>
+<p><code>xgboost.XGBClassifier(objective=&#39;binary:logistic&#39;,use_label_encoder=True)</code></p>
+<ol>
+<li><p><strong>General parameters</strong> :</p>
+<ul>
+<li><code>booster</code>[默认= <code>gbtree</code>]<ul>
+<li>使用哪个助推器。可以是<code>gbtree</code>，<code>gblinear</code>或<code>dart</code>；<code>gbtree</code>和<code>dart</code>使用基于树的模型，<code>gblinear</code>使用线性函数</li>
+</ul>
+</li>
+<li><code>verbosity</code> [默认值= 1]<ul>
+<li>打印消息的详细程度。有效值为0（静默），1（警告），2（信息），3（调试）</li>
+</ul>
+</li>
+<li><code>num_pbuffer</code> [由XGBoost自动设置，无需由用户设置]<ul>
+<li>预测缓冲区的大小，通常设置为训练实例数。缓冲区用于保存上一个增强步骤的预测结果。</li>
+</ul>
+</li>
+<li><code>num_feature</code> [由XGBoost自动设置，无需由用户设置]<ul>
+<li>增强中使用的特征尺寸，设置为特征的最大尺寸</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Tree Booster parameters</strong> :</p>
+<ul>
+<li><code>eta</code>[默认= 0.3，别名：<code>learning_rate</code>]<ul>
+<li>更新中使用的步长收缩，以防止过度拟合。</li>
+</ul>
+</li>
+<li><code>gamma</code>[默认= 0，别名：<code>min_split_loss</code>]<ul>
+<li>在树的叶节点上进行进一步分区所需的最小损失减少。越大<code>gamma</code>，算法将越保守。</li>
+</ul>
+</li>
+<li><code>max_depth</code> [默认= 6]<ul>
+<li>一棵树的最大深度。增大此值将使模型更复杂，并且更可能过度拟合。仅<code>lossguided</code>当tree_method设置为<code>hist</code>或<code>gpu_hist</code>且表示对深度没有限制时，才在增长策略中接受0</li>
+</ul>
+</li>
+<li><code>min_child_weight</code> [默认值= 1]<ul>
+<li>叶节点的实例权重之和。如果树划分步骤导致叶节点的实例权重之和小于<code>min_child_weight</code>，则构建过程将放弃进一步的划分。在线性回归任务中，这仅对应于每个节点中需要的最少实例数。越大<code>min_child_weight</code>，算法将越保守</li>
+</ul>
+</li>
+<li><code>max_delta_step</code> [默认= 0]<ul>
+<li>我们允许每个叶子输出的最大增量步长。如果将该值设置为0，则表示没有约束。如果将其设置为正值，则可以帮助使更新步骤更加保守。通常不需要此参数，但是当类极度不平衡时，它可能有助于逻辑回归。将其设置为1-10的值可能有助于控制更新。</li>
+</ul>
+</li>
+<li><code>subsample</code> [默认值= 1]<ul>
+<li>训练实例的子样本比率。将其设置为0.5意味着XGBoost将在树木生长之前随机采样一半的训练数据。这样可以防止过度拟合。子采样将在每个增强迭代中进行一次。</li>
+</ul>
+</li>
+<li><code>sampling_method</code>[默认= <code>uniform</code>]<ul>
+<li>用于对训练实例进行采样的方法。</li>
+<li><code>uniform</code>：每个训练实例被选择的可能性均等。通常将<code>subsample</code>&gt; = 0.5设置 为良好的效果。</li>
+</ul>
+</li>
+<li><code>colsample_bytree</code>，<code>colsample_bylevel</code>，<code>colsample_bynode</code>[默认= 1]<ul>
+<li>这是用于列二次采样的一组参数。</li>
+<li>所有<code>colsample_by*</code>参数的范围为（0，1]，默认值为1，并指定要进行二次采样的列的分数。</li>
+<li><code>colsample_bytree</code>是构造每棵树时列的子采样率。对于每一个构造的树，二次采样都会发生一次。</li>
+<li><code>colsample_bylevel</code>是每个级别的列的子采样率。对于树中达到的每个新深度级别，都会进行一次二次采样。列是从为当前树选择的一组列中进行子采样的。</li>
+<li><code>colsample_bynode</code>是每个节点（拆分）的列的子样本比率。每次评估新的分割时，都会进行一次二次采样。列是从为当前级别选择的一组列中进行子采样的。</li>
+</ul>
+</li>
+<li><code>lambda</code>[默认= 1，别名：<code>reg_lambda</code>]<ul>
+<li>L2正则化权重项。增加此值将使模型更加保守。</li>
+</ul>
+</li>
+<li><code>alpha</code>[默认= 0，别名：<code>reg_alpha</code>]<ul>
+<li>权重的L1正则化项。增加此值将使模型更加保守。</li>
+</ul>
+</li>
+<li><code>tree_method</code>[default = <code>auto</code>]<ul>
+<li>XGBoost中使用的树构建算法</li>
+<li>XGBoost支持 <code>approx</code>，<code>hist</code>并<code>gpu_hist</code>用于分布式培训。外部存储器实验支持可用于<code>approx</code>和<code>gpu_hist</code>。</li>
+<li>选择：<code>auto</code>，<code>exact</code>，<code>approx</code>，<code>hist</code>，<code>gpu_hist</code>，这是常用的更新程序的组合。对于其他更新程序，如<code>refresh</code>，<code>updater</code>直接设置参数。<ul>
+<li><code>auto</code>：使用启发式选择最快的方法。<ul>
+<li>对于小型数据集，<code>exact</code>将使用精确贪婪（）。</li>
+<li>对于较大的数据集，<code>approx</code>将选择近似算法（）。它建议尝试<code>hist</code>，并<code>gpu_hist</code>用大量的数据可能更高的性能。（<code>gpu_hist</code>）支持。<code>external memory</code></li>
+<li>因为旧的行为总是使用单机确切的贪婪，当选择近似算法通知这个选择用户将收到一条消息。</li>
+</ul>
+</li>
+<li><code>exact</code>：精确的贪婪算法。枚举所有拆分的候选者。</li>
+<li><code>approx</code>：使用分位数草图和梯度直方图的近似贪婪算法。</li>
+<li><code>hist</code>：更快的直方图优化的近似贪婪算法。</li>
+<li><code>gpu_hist</code>：<code>hist</code>算法的GPU实现。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>scale_pos_weight</code>[缺省值=1]<ul>
+<li>在各类别样本十分不平衡时，把这个参数设定为一个正值，可以使算法更快收敛。通常可以将其设置为负</li>
+<li>样本的数目与正样本数目的比值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Linear Booster Parameters:(booster=gblinear)</strong></p>
+<ul>
+<li><code>lambda</code> [缺省值=0，别称: reg_lambda]<ul>
+<li>L2正则化惩罚系数，增加该值会使得模型更加保守。</li>
+</ul>
+</li>
+<li><code>alpha</code>[缺省值=0，别称: reg_alpha]<ul>
+<li>L1正则化惩罚系数，增加该值会使得模型更加保守。</li>
+</ul>
+</li>
+<li><code>lambda_bias</code> [缺省值=0，别称: reg_lambda_bias]<ul>
+<li>偏置上的L2正则化(没有在L1上加偏置，因为并不重要)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>task parameters:</strong></p>
+<ul>
+<li><p><code>objective</code>[缺省值=<code>binary:logistic</code>]</p>
+<ol>
+<li><code>reg:linear</code>– 线性回归</li>
+<li><code>reg:logistic</code> – 逻辑回归</li>
+<li><code>binary:logistic</code> – 二分类逻辑回归，输出为概率</li>
+<li><code>multi:softmax</code> – 使用softmax的多分类器，返回预测的类别(不是概率)。在这种情况下，你还需要多设一个参数：num_class(类别数目)</li>
+<li><code>multi:softprob</code> – 和multi:softmax参数一样，但是返回的是每个数据属于各个类别的概率。</li>
+</ol>
+</li>
+<li><p><code>eval_metric</code>[缺省值=通过目标函数选择]</p>
+<p>可供选择的如下所示：</p>
+<ol>
+<li><code>rmse</code>: 均方根误差</li>
+<li><code>mae</code>: 平均绝对值误差</li>
+<li><code>logloss</code>: 负对数似然函数值</li>
+<li><code>error</code>: 二分类错误率。<ul>
+<li>其值通过错误分类数目与全部分类数目比值得到。对于预测，预测值大于0.5被认为是正类，其它归为负类。</li>
+</ul>
+</li>
+<li><code>error@t</code>: 不同的划分阈值可以通过 ‘t’进行设置</li>
+<li><code>merror</code>: 多分类错误率，计算公式为(wrong cases)/(all cases)</li>
+<li><code>mlogloss</code>: 多分类log损失</li>
+<li><code>auc</code>: 曲线下的面积</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="lightGBM"><a href="#lightGBM" class="headerlink" title="lightGBM"></a>lightGBM</h3><blockquote>
+<p><code>lightgbm.LGBMRegressor(</code></p>
+<p><code>boosting_type=&#39;gbdt&#39;,num_leaves=31,</code>                                                        </p>
+<p><code>max_depth=-1,learning_rate=0.1,</code></p>
+<p><code>n_estimators=100,subsample_for_bin=200000,</code></p>
+<p><code>objective=None,class_weight=None,</code></p>
+<p><code>min_split_gain=0.0,min_child_weight=0.001,</code></p>
+<p><code>min_child_samples=20,subsample=1.0,</code></p>
+<p><code>subsample_freq=0,colsample_bytree=1.0,</code></p>
+<p><code>reg_alpha=0.0,reg_lambda=0.0,random_state=None,</code></p>
+<p><code>n_jobs=-1,silent=True,importance_type=&#39;split&#39;):</code></p>
+<ol>
+<li><strong>Control Parameters:</strong><ul>
+<li><code>max_depth:</code>树的最大深度</li>
+<li><code>min_child_samples:</code>叶子节点最小样本数</li>
+<li><code>feature_fraction:</code>每次迭代中随机选择百分之多少数据来建树，boosting=”rf”时使用</li>
+<li><code>bagging_fraction:</code>每次迭代时用的数据比例</li>
+<li><code>early_stopping_rounds:</code>再几回合内没有提高，停止训练</li>
+<li><code>lambda:</code>指定正则化系数，<code>`lambda_l1,lambda_l2</code></li>
+<li><code>min_gain_to_split:</code>分裂最小的收益</li>
+<li><code>min_data_per_group:</code>每个分组最少数据量</li>
+</ul>
+</li>
+<li><strong>Core Parameters：</strong><ul>
+<li><code>objective:</code><ul>
+<li><code>binary:</code>二分类对数损失（逻辑回归）</li>
+<li><code>regression:</code>回归，L2损失</li>
+<li><code>multiclass:</code>多分类，softmax目标函数</li>
+</ul>
+</li>
+<li><code>boosting_type:</code><ul>
+<li><code>gbdt:</code>传统梯度提升决策树</li>
+<li><code>rf:</code>随机森林</li>
+<li><code>dart:</code>随机DropOuts</li>
+<li><code>goss:</code>基于梯度的单边采样</li>
+</ul>
+</li>
+<li><code>n_estimators:</code>最大迭代次数</li>
+<li><code>num_leaves:</code>叶子最大数量，$2^{max_depth}$</li>
+<li><code>metric:</code><ul>
+<li><code>l1:</code>绝对平均损失，<code>mean_absolute_error</code>，<code>mae</code>，<code>regression_l1</code></li>
+<li><code>l2:</code>均方损失，<code>mean_squared_error</code>，<code>mse</code>，<code>regression_l2</code>，<code>regression</code></li>
+<li><code>rmse:</code>平方根损失，<code>root_mean_squared_error</code>，<code>l2_root</code></li>
+<li><code>binary_logloss:</code>二分类损失</li>
+<li><code>multi_logloss:</code>多分类损失</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>IO Parameters:</strong><ul>
+<li><code>max_bin:</code>将每个特征分为多少组，default=255</li>
+<li><code>save_binary:</code>设置为True时，数据集呗保存为二进制文件</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h2><blockquote>
+<p><code>sklearn.cluster.KMeans(n_clusters=8, init=&#39;k-means++&#39;, max_iter=300)</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>n_clusters:</code>开始的聚类中心数量</li>
+<li><code>init:&#123;&#39;k-means++&#39;, &#39;random&#39;&#125;:</code>初始化聚类中心算法</li>
+<li><code>max_iter:</code>最大迭代次数</li>
+</ul>
+<p><strong>Attribute：</strong></p>
+<ol>
+<li><code>cluster_centers_:</code>聚类中心的坐标</li>
+<li><code>labels:</code>每个点的标签</li>
+<li><code>n_iter_:</code>迭代次数</li>
+</ol>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><code>estimator.fit_predict(x):</code><ul>
+<li>计算聚类中心并预测每个样本属于哪个类别,相当于先调用fit(x),然后再调用predict(x)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="聚类评估方法"><a href="#聚类评估方法" class="headerlink" title="聚类评估方法"></a>聚类评估方法</h3><blockquote>
+<p><code>sklearn.metrics.calinski_harabaz_score(X, y_pre_lables):</code></p>
+<ol>
+<li><strong>CH方法：</strong>定义为组间分散度与组内分散度之比，越大越好</li>
+<li>X：特征值，y_pre_labels:被预测的<code>类别标签</code></li>
+</ol>
+<p><code>sklearn.metrics.silhouette_score(X, y_pre_lables)</code></p>
+<ul>
+<li>计算所有样本的<code>平均轮廓系数</code></li>
+<li>X：特征值，y_pre_labels:被预测的<code>类别标签</code></li>
+</ul>
+</blockquote>
+<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><blockquote>
+<p><code>sklearn.naive_bayes.MultinomialNB(alpha = 1.0)</code></p>
+<p><strong>parameters:</strong></p>
+<ul>
+<li>朴素贝叶斯分类</li>
+<li><code>alpha</code>：拉普拉斯平滑系数</li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<ol>
+<li><code>class_count_:</code>每个类别的样本数</li>
+<li><code>feature_count_:</code>对于每一类，每个特征的样本数</li>
+</ol>
+</blockquote>
+<h2 id="支持向量机（SVM"><a href="#支持向量机（SVM" class="headerlink" title="支持向量机（SVM)"></a>支持向量机（SVM)</h2><blockquote>
+<p><code>sklearn.svm.SVC(C=1.0, kernel=&#39;rbf&#39;, degree=3,coef0=0.0,random_state=None)</code></p>
+<p><strong>parameters:</strong></p>
+<ol>
+<li><code>C:</code>惩罚系数<ol>
+<li>C越大，训练集测试时准确率很高，但泛化能力弱，容易导致过拟合。</li>
+<li>C值小，<strong>对误分类的惩罚减小</strong>，容错能力增强，泛化能力较强，但也可能欠拟合。</li>
+</ol>
+</li>
+<li><code>kernel:</code>算法中采用的核函数类型<ol>
+<li>RBF, Linear, Poly, Sigmoid或者自定义一个核函数。</li>
+<li>默认的是”RBF”，即径向基核，也就是高斯核函数；</li>
+<li>而Linear指的是线性核函数，</li>
+<li>Poly指的是多项式核，</li>
+<li>Sigmoid指的是双曲正切函数tanh核.</li>
+</ol>
+</li>
+<li><code>degree:</code><ul>
+<li>当指定kernel为’poly’时，表示选择的多项式的最高次数，默认为三次多项式；</li>
+<li>若指定kernel不是’poly’，则忽略，即该参数只对’poly’有用。<ul>
+<li>多项式核函数是将低维的输入空间映射到高维的特征空间。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>coef0:</code>核函数常数值(y=kx+b中的b值)，<ul>
+<li>只有‘poly’和‘sigmoid’核函数有，默认值是0。</li>
+</ul>
+</li>
+</ol>
+<p><code>sklearn.svm.NuSVC(nu=0.5)</code></p>
+<p><strong>parameters:</strong></p>
+<ul>
+<li><strong>nu：</strong> 训练误差部分的上限和支持向量部分的下限，取值在（0，1）之间，默认是0.5</li>
+</ul>
+<p><code>sklearn.svm.LinearSVC(penalty=&#39;l2&#39;, loss=&#39;squared_hinge&#39;, dual=True, C=1.0)</code></p>
+<p><strong>parameters:</strong></p>
+<ul>
+<li><code>penalty:</code>正则化参数，<ul>
+<li>L1和L2两种参数可选，仅LinearSVC有。</li>
+</ul>
+</li>
+<li><code>loss:</code>损失函数，<ul>
+<li>有hinge和squared_hinge两种可选，前者又称L1损失，后者称为L2损失</li>
+<li>其中hinge是SVM的标准损失，squared_hinge是hinge的平方</li>
+</ul>
+</li>
+<li><code>dual:</code>是否转化为对偶问题求解，默认是True。</li>
+<li><code>C:</code>惩罚系数，<ul>
+<li>用来控制损失函数的惩罚系数，类似于线性回归中的正则化系数。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="模型的保存和加载"><a href="#模型的保存和加载" class="headerlink" title="模型的保存和加载"></a>模型的保存和加载</h2><blockquote>
+<p><code>from sklearn.externals import joblib</code></p>
+<ul>
+<li>保存：<code>joblib.dump(estimator, &#39;test.pkl&#39;)</code></li>
+<li>加载：<code>estimator = joblib.load(&#39;test.pkl&#39;)</code></li>
+</ul>
+</blockquote>
+<h2 id="交叉验证网格搜索"><a href="#交叉验证网格搜索" class="headerlink" title="交叉验证网格搜索"></a>交叉验证网格搜索</h2><blockquote>
+<p><code>sklearn.model_selection.GridSearchCV(estimator, param_grid=None,cv=None)</code></p>
+<p><code>参数：</code></p>
+<ul>
+<li><code>estimator</code>：估计器对象</li>
+<li><code>param_grid</code>：估计器参数(dict){“n_neighbors”:[1,3,5]}</li>
+<li><code>cv</code>：指定几折交叉验证</li>
+</ul>
+<p><code>返回新估计器属性</code></p>
+<ul>
+<li><code>fit(x_train, y_train)</code>：输入训练数据</li>
+<li><code>score(x_test,y_test)</code>：准确率</li>
+<li><code>predict(x_test)</code></li>
+<li><code>结果分析</code>：<ul>
+<li><code>best_score_</code>:在交叉验证中验证的最好结果</li>
+<li><code>best_estimator_</code>：最好的参数模型</li>
+<li><code>cv_results_</code>:每次交叉验证后的验证集准确率结果和训练集准确率结果</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h1 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h1><h2 id="分类评估报告"><a href="#分类评估报告" class="headerlink" title="分类评估报告"></a>分类评估报告</h2><blockquote>
+<p><code>sklearn.metrics.classification_report(y_true, y_pred, labels=[], target_names=None</code></p>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>y_true</code>：真实目标值</li>
+<li><code>y_pred</code>：估计器预测目标值</li>
+<li><code>labels</code>:指定类别对应的数字</li>
+<li><code>target_names</code>：目标类别名称</li>
+<li><code>return</code>：每个类别精确率与召回率</li>
+</ol>
+</blockquote>
+<h2 id="AUC计算"><a href="#AUC计算" class="headerlink" title="AUC计算"></a>AUC计算</h2><blockquote>
+<p><code>sklearn.metrics.roc_auc_score(y_true, y_score)</code></p>
+<ul>
+<li>计算ROC曲线面积，即<code>AUC值</code></li>
+<li><code>y_true</code>：每个样本的真实类别，必须为0(反例),1(正例)标记</li>
+<li><code>y_score</code>：预测得分，可以是正类的估计概率、置信值或者分类器方法的返回值</li>
+</ul>
+</blockquote>
+<h2 id="均方误差回归损失"><a href="#均方误差回归损失" class="headerlink" title="均方误差回归损失"></a>均方误差回归损失</h2><blockquote>
+<p><code>sklearn.metrics.mean_squared_error(y_true, y_pred)</code></p>
+<ul>
+<li><code>y_true</code>:真实值</li>
+<li><code>y_pred</code>:预测值</li>
+<li><code>return</code>:浮点数结果</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">网络编程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:39:38" itemprop="dateCreated datePublished" datetime="2021-05-04T14:39:38+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
+<p><strong>端口</strong></p>
+<p>数据传输的管道</p>
+<p><strong>知名端口号</strong></p>
+<p>0-1023 分配给了一些特定服务</p>
+<p><strong>动态端口号</strong></p>
+<p>1024-65535 程序可以使用的端口号</p>
+<p><strong>绑定端口</strong></p>
+<p>没有绑定端口号,程序退出自动释放端口号</p>
+<p>写程序可以绑定端口,没有绑定会自动分配端口</p>
+</blockquote>
+<h1 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h1><blockquote>
+<p><strong>URL</strong>:统一资源定位符</p>
+<p><strong>协议</strong>:规定数据发送和接收数据格式，</p>
+<p>​    <strong>http协议</strong>:超文本传输协议,http用在浏览器和web服务器之间的传输.</p>
+<p><strong>域名</strong>:找到服务器的ip地址，http协议默认端口80</p>
+<p><strong>资源路径</strong></p>
+<p><strong>查询参数</strong></p>
+</blockquote>
+<h1 id="Get和Post请求方式"><a href="#Get和Post请求方式" class="headerlink" title="Get和Post请求方式"></a>Get和Post请求方式</h1><blockquote>
+<p><strong>请求行</strong>：请求方式 资源路径 协议版本\r\n</p>
+<p><strong>请求头：</strong>请求信息</p>
+<p><strong>空行</strong></p>
+<p><strong>请求体</strong>：GET请求不需要请求体，POST请求体：name=张三&amp;pwd=123</p>
+</blockquote>
+<h1 id="TCP网络通信方式"><a href="#TCP网络通信方式" class="headerlink" title="TCP网络通信方式"></a>TCP网络通信方式</h1><blockquote>
+<p>TCP的英文全拼(Transmission Control Protocol)简称传输控制协议，它是一种<strong>面向连接</strong>的、<strong>可靠的</strong>、<strong>基于字节流</strong>的传输层通信协议</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>面向连接</li>
+<li>TCP采用发送应答机制 </li>
+<li>超时重传</li>
+<li>错误校验   张三  李四</li>
+<li>流量控制和阻塞管理 </li>
+<li>基于字节流</li>
+</ol>
+</blockquote>
+<h1 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h1><blockquote>
+<p><strong>将字符串转换成字节数组方便网络传输</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字符串.encode(encoding=编码方式)
+</code></pre>
+<p><strong>将字节数组转换成字符串方便操作</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">字节数组.decode(encoding=编码方式)
+</code></pre>
+<p><strong>编码和解码保持一致,不一致出现乱码</strong></p>
+</blockquote>
+<h1 id="TCP客户端请求流程"><a href="#TCP客户端请求流程" class="headerlink" title="TCP客户端请求流程"></a>TCP客户端请求流程</h1><blockquote>
+<ol>
+<li>创建TCP客户端套接字</li>
+<li>连接服务端(ip和端口 三次握手)</li>
+<li>发送数据(send发送字节数据 encode)</li>
+<li>接收数据(recv 需要通过decode反编码变成字符串)</li>
+<li>第三步和第四步可以执行多次</li>
+<li>断开连接(close 四次挥手)</li>
+</ol>
+</blockquote>
+<h1 id="TCP客户端开发代码"><a href="#TCP客户端开发代码" class="headerlink" title="TCP客户端开发代码"></a>TCP客户端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建客户端套接字对象 第一个参数：ipv4  第二个参数:tcp协议
+tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2.和服务端套接字建立连接 conect参数 元组 第一个元素：ip地址（字符串） 第二个参数：端口号
+tcp_client_socket.connect(("服务端ip地址",8888))
+# 3.发送数据
+tcp_client_socket.send("nihaome".encode(encoding="utf-8"))
+# 4.接收数据 recv阻塞等待数据的到来
+recv_data = tcp_client_socket.recv(1024)
+print(recv_data.decode())
+# 5.关闭客户端套接字
+tcp_client_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP服务端通信流程"><a href="#TCP服务端通信流程" class="headerlink" title="TCP服务端通信流程"></a>TCP服务端通信流程</h1><blockquote>
+<ol>
+<li>创建socket套接字(socket对象)</li>
+<li>通过bind方法绑定固定的ip和端口</li>
+<li>通过listen方法设置服务端监听状态</li>
+<li>通过accept方法接收客户端请求(获取到客户端连接socket)</li>
+<li>send方法发送数据</li>
+<li>通过recv接收数据(阻塞)</li>
+<li>服务端通过close断开连接</li>
+</ol>
+</blockquote>
+<h1 id="TCP服务端开发代码"><a href="#TCP服务端开发代码" class="headerlink" title="TCP服务端开发代码"></a>TCP服务端开发代码</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1.创建服务端套接字对象（客户端和服务端相同）主要作用就是监听客户端的连接
+tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 2. 绑定IP地址和端口号，如果bind中的参数第一个ip地址元素设置为"",默认为本机ip地址
+tcp_server_socket.bind(("", 8888))
+# 3.设置监听 128:代表服务端等待排队连接的最大数量
+tcp_server_socket.listen(128)
+# 4.等待接受客户端的连接请求 accept阻塞等待 返回一个用以和客户端通socket,客户端的地址
+# 这个socket才是和客户端通信socket
+conn_socket, ip_port = tcp_server_socket.accept()
+# 5.接收数据(阻塞方法  如果没有接受到数据 后续等待这不会执行)
+recv_data = conn_socket.recv(1024)
+print("接收到的数据:", recv_data.decode())
+# 6.发送数据
+conn_socket.send("客户端你的数据我收到了".encode())
+# 关闭和客户端通信的socket
+conn_socket.close()
+# 想关闭服务器,可以关闭创建的链接socket
+tcp_server_socket.close()
+</code></pre>
+</blockquote>
+<h1 id="TCP请求注意点"><a href="#TCP请求注意点" class="headerlink" title="TCP请求注意点"></a>TCP请求注意点</h1><blockquote>
+<ol>
+<li><strong>客户端连接服务端,如果服务端断开连接,客户端会受到空数据,如果客户端主动断开,服务端收到空数据</strong></li>
+<li><strong>服务端可以设置端口复用</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
+</code></pre>
+</blockquote>
+<h1 id="搭建静态web服务器"><a href="#搭建静态web服务器" class="headerlink" title="搭建静态web服务器"></a>搭建静态web服务器</h1><blockquote>
+<ol>
+<li>创建tcp服务器</li>
+<li>接收浏览器访问数据(请求报文)</li>
+<li>解析浏览器发送过来的请求 报文(资源路径  资源)</li>
+<li>根据解析的资源路径,获取对应的资源</li>
+<li>按照响应报文方式组织响应数据,传递回去(响应体)</li>
+<li>关闭和客户端的连接</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">数据结构与算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:32:12" itemprop="dateCreated datePublished" datetime="2021-05-04T14:32:12+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="线性结构存储方式"><a href="#线性结构存储方式" class="headerlink" title="线性结构存储方式"></a>线性结构存储方式</h2><blockquote>
+<p><strong>顺序表</strong></p>
+<ol>
+<li>元素存储在一段连续的内存空间</li>
+<li>可以通过索引方式访问元素</li>
+</ol>
+<p><strong>分类</strong></p>
+<ol>
+<li>一体式:信息区和数据区在一起</li>
+<li>分离式:信息区和数据区分开</li>
+</ol>
+<p><strong>元素外置</strong></p>
+<ol>
+<li>数据区中存储的是元素的内存地址,不是保存具体的元素</li>
+<li>python的列表是分离式顺序表实现的 元素外置</li>
+<li>python大部分数据元素外置</li>
+</ol>
+<p><strong>链表</strong></p>
+<p>存储在一段非连续空间,当前元素保存下一个元素的指向</p>
+</blockquote>
+<h2 id="顺序表操作时间复杂度"><a href="#顺序表操作时间复杂度" class="headerlink" title="顺序表操作时间复杂度"></a>顺序表操作时间复杂度</h2><blockquote>
+<p><strong>增加</strong></p>
+<ol>
+<li>尾部增加 O(1)</li>
+<li>特定位置非保序O(1)</li>
+<li>特定位置保序O(n)</li>
+</ol>
+<p><strong>删除</strong></p>
+<ol>
+<li>删除尾部O(1)</li>
+<li>删除特定位置非保序O(1)</li>
+<li>删除特定位置保序O(n)</li>
+</ol>
+<p><strong>查找</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+<p><strong>修改</strong></p>
+<ol>
+<li>按照角标查找O(1)</li>
+<li>查找元素最优O(1) 最坏O(n)</li>
+</ol>
+</blockquote>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><blockquote>
+<p><strong>特点</strong>:<strong>先进后出</strong></p>
+<p><strong>浏览器缓存网页,网页回退功能使用了栈</strong></p>
+<ol>
+<li><strong>顺序表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Stack(object):
+    """栈:先进后出"""
+    def __init__(self):
+        self.__items = []
+
+    def push(self, item):
+        """进栈"""
+        self.__items.append(item)
+
+    def pop(self):
+        """出栈"""
+        return self.__items.pop()
+
+    def travel(self):
+        """遍历"""
+        for i in self.__items:
+            print(i)
+</code></pre>
+<ol>
+<li><strong>链表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedStack:
+    def __init__(self):
+        # 最上面的元素
+        self.top = None
+
+    def push(self, value: int):
+        newtop = Node(value)
+        newtop.next = self.top
+        self.top = newtop
+
+    def pop(self):
+        if self.top:
+            value = self.top.data
+            self.top = self.top.next
+            return value
+        return None
+</code></pre>
+</blockquote>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><blockquote>
+<p><strong>队列特点:先进先出</strong></p>
+<p><strong>队列作用:保证任务顺序执行</strong></p>
+<ol>
+<li><strong>使用顺序表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Queue(object):
+    def __init__(self):
+        # 存储数据 线性表
+        self.__items = []
+
+    # enqueue(item)
+    # 队列尾部添加元素item
+    def enqueue(self, item):
+        self.__items.append(item)
+
+    # dequeue():
+    # 队列头部删除元素
+    def dequeue(self):
+        if not self.__items:
+            return None
+        return self.__items.pop(0)
+
+    # is_empty()
+    # 判断队列是否为空
+    def is_enpty(self):
+        return self.__items == []
+
+    # size()
+    # 返回队列的大小
+    def size(self):
+        return len(self.__items)
+</code></pre>
+<ol>
+<li><strong>使用链表实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedQueue:
+    def __init__(self):
+        self.__head = None
+        self.__tail = None
+
+    def enqueue(self, value):
+        new_node = Node(value)
+        # 尾部不为空
+        if self.__tail:
+            self.__tail.next = new_node
+            # self.__tail = new_node
+        else:
+            self.__head = new_node
+            # self.__tail = new_node
+        self.__tail = new_node
+
+    def dequeue(self):
+        # 如果头部有数据
+        if self.__head:
+            value = self.__head.data
+            self.__head = self.__head.next
+            if not self.__head:# 新的头部为空
+                self.__tail = None
+            return value
+</code></pre>
+</blockquote>
+<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><blockquote>
+<p><strong>可以同时实现队列和栈的功能,允许数据从两端进行插入和删除</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Deque(object):
+    """双端队列"""
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        """判断是否为空"""
+        return self.items == []
+
+    def size(self):
+        """返回队列大小"""
+        return len(self.items)
+
+    def add_front(self, item):
+        """头部添加数据"""
+        self.items.insert(0, item)
+
+    def add_rear(self, item):
+        """尾部添加数据"""
+        self.items.append(item)
+
+    def remove_front(self):
+        """头部删除数据"""
+        return self.items.pop(0)
+
+    def remove_rear(self):
+        """尾部删除数据"""
+        return self.items.pop()
+</code></pre>
+<ol>
+<li><p><strong>python封装的queue队列</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import queue
+queue = queue.Queue(10)
+queue.put(10)
+queue.put(20)
+queue.put(30)
+print(queue.get())
+print(queue.get())
+print(queue.get())
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h1 id="算法衡量标准"><a href="#算法衡量标准" class="headerlink" title="算法衡量标准"></a>算法衡量标准</h1><blockquote>
+<p><strong>时间复杂度</strong></p>
+<p>   最优时间复杂度</p>
+<p>   最坏时间复杂度</p>
+<p><strong>算法的稳定性</strong></p>
+<p>   在元素中有相同的元素,如果排序之后,它们的相对位置没有发生变化,是稳定排序算法</p>
+<p><strong>原地排序</strong></p>
+<p>   排序算法空间复杂度为O(1) 是原地排序</p>
+</blockquote>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
+<p><strong>从头开始依次和后面第一个元素比较,如果比后面大,进行交换</strong></p>
+<p><strong>经过一轮之后可以确定最大值,放到最后面</strong></p>
+<p><strong>经过n-1排序成功</strong></p>
+<p><strong>每一轮需要比较次数=n-当前轮数</strong></p>
+<ol>
+<li><strong>代码实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def bubble_sort(alist):
+    """冒泡排序"""
+
+    # 数列的长度
+    n = len(alist)
+    # 控制轮数
+    for j in range(n-1):
+        count = 0
+        # 每一论的比较的次数
+        # i每一次和后面比较的索引
+        for i in range(n-j-1):
+            # 如果当前元素比后面元素大，交换
+            if alist[i] > alist[i+1]:
+                alist[i], alist[i + 1] = alist[i + 1], alist[i]
+                count+=1
+        # 这一轮没有交换  说明后续的列表已经有序  可以停下来
+        if count==0:
+            break
+</code></pre>
+<p><strong>算法分析</strong>：</p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p><strong>每一轮设置目标,需要从后面和目标比较,如果后面小于目标修改最小值的角标 每一轮结束之后交换最小值和设置的最小值**</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">def select_sort(alist):
+    """选择排序"""
+    # 列表的长度
+    n = len(alist)
+    # 外层循环 0-3
+    for j in range(0, n - 1):
+        # 本轮目标j(索引)
+        # 本轮最小值下标
+        minIndex = j
+        # 控制比较次数
+        for i in range(j + 1, n):
+            # 从目标向后开始和minIndex比较
+            if alist[i]>alist[minIndex]:
+                minIndex = i
+        # 结束之后 如果目标的索引不是最小值索引 交换
+        if minIndex != j:
+            alist[j],alist[minIndex] = alist[minIndex],alist[j]
+</code></pre>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n2) 最坏O(n2)</li>
+<li>不稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p><strong>将列表分为排好序和没排序两部分，从未排序中一次取出插入到以排好序的序列当中</strong></p>
+</blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def insert_sort(alist):
+    """插入排序"""
+
+    # 列表的长度
+    n = len(alist)
+    # 轮数
+    for j in range(1,n):
+        # 找一个数据加入到已经排序号的数据中排序
+        # 从索引为1开始加入
+        for i in range(j,0,-1):# 从最后开始往前面比较
+            if alist[i] < alist[i-1]:
+                alist[i], alist[i-1] = alist[i-1], alist[i]
+            else:
+                break
+
+if __name__ == '__main__':
+    alist = [1,100,99,20,5,1000]
+    insert_sort(alist)
+    print(alist)
+</code></pre>
+<blockquote>
+<p><strong>算法分析</strong></p>
+<ol>
+<li>时间复杂度 最好O(n) 最坏O(n2)</li>
+<li>稳定排序算法</li>
+<li>原地排序</li>
+</ol>
+</blockquote>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
+<p><strong>首先设定一个分界值，通过该分界值将列表分成左右两部分</strong><br><strong>右边都比左边大,分界值在中间位置</strong><br><strong>左右再各自找一个分界值,再根据分界值分隔</strong><br><strong>直到分隔左右元素小于等于1</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">def quick_sort(alist, start, end):
+    """快速排序"""
+    # 递归的结束条件
+    if start >= end:
+        return
+    # 界限值
+    mid = alist[start]
+    # 左右游标
+    left = start
+    right = end
+
+    while left < right:
+        # 从右边开始找寻小于mid的值 归类到左边
+        while alist[right] >= mid and left < right:
+            right -= 1
+        alist[left] = alist[right]
+        # 从左边开始找寻大于mid的值 归类到右边
+        while alist[left] < mid and left < right:
+            left += 1
+        alist[right] = alist[left]
+
+    # 循环一旦结束了 证明找到了mid应该在的位置
+    alist[left] = mid
+
+    # 递归操作
+    quick_sort(alist, start, left-1)
+    quick_sort(alist, right+1, end)
+
+if __name__ == '__main__':
+    # alist = [1,2,100,50,1000,0,1,1]
+    # alist = [1,2,3,4,5,6,7,8]
+    alist = [9,8,7,6,5,4,3,2,1]
+    quick_sort(alist, 0, len(alist)-1)
+    print(alist)
+</code></pre>
+</blockquote>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
+<p><strong>注意：必须有序</strong></p>
+<ol>
+<li><strong>递归实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找"""
+    if not alist:
+        return 
+    # 数列的长度
+    n = len(alist)
+
+    # 中间值索引
+    mid = n//2
+
+    if item == alist[mid]:
+        return True
+    elif item < alist[mid]:
+         return binary_search(alist[0:mid], item)
+    elif item > alist[mid]:
+         return binary_search(alist[mid+1:], item)
+</code></pre>
+<ol>
+<li><strong>非递归实现</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    end = len(alist) - 1
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+        if item == alist[mid]:
+            return True
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+
+    # 没有找到想要找的数字
+    return False
+</code></pre>
+<ol>
+<li><strong>查找第一个索引</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找 如果找到返回索引  没有找到返回-1"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    end = len(alist) - 1
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+
+        if item == alist[mid]:
+            # 判断是否是第一个3
+            if mid==0 or alist[mid-1]!=item:
+                return mid
+            else:
+                end = mid - 1
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+    # 没有找到想要找的数字
+    return -1
+# 最好 O(1) 最坏 O(logn)
+if __name__ == '__main__':
+    alist = [1,2,3,3,3,4,5]
+    print(binary_search(alist, 3))
+</code></pre>
+<p><strong>找到元素之后,如果是角标为0或者上一个不是需要查找的元素,说明当前元素就是第一个</strong></p>
+<p><strong>如果不满足,继续把前面的数据二分查找</strong></p>
+<ol>
+<li><strong>查找最后一个索引</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def binary_search(alist, item):
+    """二分查找 如果找到返回索引  没有找到返回-1"""
+
+    # 设置起始位置 获取中间值
+    start = 0
+    maxIndex = len(alist) - 1
+    end = maxIndex
+    # 必须要=  需要比较最后的一个元素是否是需要的数据
+    while start <= end:
+        # 获取中间值
+        mid = (start + end)//2
+
+        if item == alist[mid]:
+            if mid == maxIndex or alist[mid+1]!=item:
+                return mid
+            else:
+                start = mid + 1
+        elif item < alist[mid]:
+            end = mid - 1
+        elif item > alist[mid]:
+            start = mid + 1
+
+    # 没有找到想要找的数字
+    return -1
+# 最好 O(1) 最坏 O(logn)
+if __name__ == '__main__':
+    alist = [1,2,3,3,3,4,5]
+    print(binary_search(alist, 3))
+</code></pre>
+<p><strong>找到元素之后,如果是角标为n-1或者下一个不是需要查找的元素,说明当前元素就是最后一个</strong></p>
+<p><strong>如果不满足,继续把后面的数据二分查找</strong></p>
+</blockquote>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><blockquote>
+<p><strong>树的标准</strong></p>
+<p>①每个节点有零个或多个子节点<br>②没有父节点的节点称为根节点<br>③每一个非根节点有且只有一个父节点<br>④除了根节点外，每个子节点可以分为多个不相交的子树</p>
+<p><strong>树的相关概念</strong></p>
+<ol>
+<li>节点的层次：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
+<li>树的高度或深度：树中节点的最大层次</li>
+</ol>
+<p><strong>树的使用场景</strong></p>
+<p>①xml，html等，那么编写这些东西的解析器的时候，不可避免用到树</p>
+<p>②路由协议就是使用了树的算法</p>
+<p>③mysql数据库索引</p>
+<p>④文件系统的目录结构</p>
+<p>⑤所以很多经典的AI算法其实都是树搜索，此外机器学习中的decision tree也是树结构</p>
+</blockquote>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
+<p><strong>概念</strong></p>
+<p>每个几点最多拥有两个子节点</p>
+<p><strong>分类</strong></p>
+<ol>
+<li><p>完全二叉树</p>
+<p>对于一颗二叉树，假设其深度为d(d&gt;1)。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树</p>
+</li>
+<li><p>满二叉树</p>
+<p>每一层都是满节点就是满二叉树</p>
+</li>
+<li><p>平衡二叉树</p>
+<p>当且仅当任何节点的两棵子树的高度差不大于1的二叉树</p>
+</li>
+<li><p>二叉搜索树</p>
+<p>父节点左边都比父节点小,右边都比父节点大,子树也满足这个条件</p>
+</li>
+</ol>
+<p><strong>存储</strong></p>
+<ol>
+<li>顺序表 完全二叉树可以使用顺序表存储  非完全二叉树建议使用链表方式存储</li>
+<li>链表  比较直观</li>
+</ol>
+</blockquote>
+<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
+<p><strong>性质</strong></p>
+<p>性质1: 在二叉树的第i层上至多有 2i-1 个结点（i&gt;0）</p>
+<p>性质2: 深度为k的二叉树至多有2k - 1个结点（k&gt;0）</p>
+<p>性质3: 对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1</p>
+<p>性质4: 最多有n个结点的完全二叉树的深度必为 log2(n+1)</p>
+<p>性质5: 对完全二叉树，若从上至下、从左至右编号，则编号为i 的结点，其左孩子编号必为2i，其右孩子<br>编号必为2i＋1 , 其父节点的编号必为i//2（i＝1 时为根,除外）</p>
+<p><strong>遍历方式</strong></p>
+<p>广度优先:横向遍历</p>
+<p>深度优先:纵向遍历</p>
+<ol>
+<li>先序遍历 根左右</li>
+<li>中序遍历 左根右</li>
+<li>后序遍历 左右根</li>
+</ol>
+<p><strong>添加数据及遍历</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Node(object):
+    """节点类"""
+    def  __init__(self, item):
+        self.item = item
+        self.lchild = None
+        self.rchild = None
+
+
+class BinaryTree(object):
+    """完全二叉树"""
+    def __init__(self, node=None):
+        self.root = node
+
+    def add(self, item):
+        """添加节点"""
+        if self.root == None:
+            self.root = Node(item)
+            return
+        # 队列
+        queue = []
+        # 从尾部添加数据
+        queue.append(self.root)
+        while True:
+            # 从头部取出数据
+            node = queue.pop(0)
+            # 判断左节点是否为空
+            if node.lchild == None:
+                node.lchild = Node(item)
+                return
+            else:
+                queue.append(node.lchild)
+
+            if node.rchild == None:
+                node.rchild = Node(item)
+                return
+            else:
+                queue.append(node.rchild)
+
+    def breadh_travel(self):
+        """广度优先遍历"""
+        if self.root == None:
+            return
+        # 队列
+        queue = []
+        # 添加数据
+        queue.append(self.root)
+        while len(queue)>0:
+            # 取出数据
+            node = queue.pop(0)
+            print(node.item, end="")
+            # 判断左右子节点是否为空
+            if node.lchild is not None:
+                queue.append(node.lchild)
+            if node.rchild is not None:
+                queue.append(node.rchild)
+
+    def preorder_travel(self, root):
+        """先序遍历 根 左 右"""
+        if root is not None:
+            print(root.item, end="")
+            self.preorder_travel(root.lchild)
+            self.preorder_travel(root.rchild)
+
+    def inorder_travel(self, root):
+        """中序遍历 左 根 右"""
+        if root is not None:
+            self.inorder_travel(root.lchild)
+            print(root.item, end="")
+            self.inorder_travel(root.rchild)
+
+    def postorder_travel(self, root):
+        """后序遍历 根 左 右"""
+        if root is not None:
+            self.postorder_travel(root.lchild)
+            self.postorder_travel(root.rchild)
+            print(root.item, end="")
+</code></pre>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">数据库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:32:03" itemprop="dateCreated datePublished" datetime="2021-05-04T14:32:03+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Mysql基本使用"><a href="#Mysql基本使用" class="headerlink" title="Mysql基本使用"></a>Mysql基本使用</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="数据库的分类"><a href="#数据库的分类" class="headerlink" title="数据库的分类"></a>数据库的分类</h3><blockquote>
+<p><strong>关系型数据库：</strong></p>
+<p><strong>是指采用了关系模型来组织数据的数据库，简单来说，关系模型指的就是二维表格模型</strong></p>
+<ul>
+<li>Oracle</li>
+<li>Microsoft SQL Server</li>
+<li>MySQL</li>
+<li>SQLite</li>
+</ul>
+<p><strong>非关系型数据库：</strong></p>
+<p><strong>又被称为NoSQL（Not Only SQL )，意为不仅仅是SQL，对NoSQL 最普遍的定义是“非关联型的”，强调 Key-Value 的方式存储数据。</strong></p>
+<ul>
+<li>MongoDB</li>
+<li>Redis</li>
+</ul>
+</blockquote>
+<h3 id="数据库的特点"><a href="#数据库的特点" class="headerlink" title="数据库的特点"></a>数据库的特点</h3><blockquote>
+<ol>
+<li>持久化存储</li>
+<li>读写速度极高</li>
+<li>保证数据的有效性</li>
+</ol>
+</blockquote>
+<h3 id="SQL介绍"><a href="#SQL介绍" class="headerlink" title="SQL介绍"></a>SQL介绍</h3><blockquote>
+<p><strong>SQL(Structured Query Language)是结构化查询语言，是一种用来操作RDBMS的数据库的语言</strong>。也就是说通过 SQL 可以操作 oracle,sql server,mysql,sqlite 等关系型的数据库。</p>
+<p><strong>SQL语言主要分为：</strong></p>
+<ul>
+<li><strong>DQL：数据查询语言，用于对数据进行查询，如select</strong></li>
+<li><strong>DML：数据操作语言，对数据进行增加、修改、删除，如insert、update、delete</strong></li>
+<li>TPL：事务处理语言，对事务进行处理，包括begin transaction、commit、rollback</li>
+<li>DCL：数据控制语言，进行授权与权限回收，如grant、revoke</li>
+<li>DDL：数据定义语言，进行数据库、表的管理等，如create、drop</li>
+</ul>
+</blockquote>
+<h2 id="Mysql数据库"><a href="#Mysql数据库" class="headerlink" title="Mysql数据库"></a>Mysql数据库</h2><h3 id="MySQL数据库服务端软件的安装"><a href="#MySQL数据库服务端软件的安装" class="headerlink" title="MySQL数据库服务端软件的安装:"></a><strong>MySQL数据库服务端软件的安装:</strong></h3><blockquote>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install mysql-server
+</code></pre>
+<p><strong>ps说明：</strong></p>
+<ol>
+<li>ps 查看当前系统中的进程</li>
+<li>-a 表示所有用户</li>
+<li>-u 表示显示用户名</li>
+<li>-x 表示显示所有的执行程序</li>
+</ol>
+<p><strong>查看Mysql服务状态：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql status
+</code></pre>
+<p><strong>停止MySQL服务:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql stop
+</code></pre>
+<p><strong>启动MySQL服务:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql start
+</code></pre>
+<p><strong>重启MySQL服务:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo service mysql restart
+</code></pre>
+<p><strong>MySQL配置文件的介绍:</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">配置文件路径为: /etc/mysql/mysql.conf.d/mysqld.cnf
+</code></pre>
+<p><strong>主要配置信息说明：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">port表示端口号，默认为3306
+bind-address表示服务器绑定的ip，默认为127.0.0.1
+datadir表示数据库保存路径，默认为/var/lib/mysql
+log_error表示错误日志，默认为/var/log/mysql/error.log
+</code></pre>
+</blockquote>
+<h3 id="MySQL数据库客户端软件的安装"><a href="#MySQL数据库客户端软件的安装" class="headerlink" title="MySQL数据库客户端软件的安装:"></a><strong>MySQL数据库客户端软件的安装:</strong></h3><blockquote>
+<ol>
+<li><p><strong>图形化界面客户端Navicat</strong></p>
+<p><strong>安装：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">tar zxvf navicat112_mysql_cs_x64.tar.gz
+./start_navicat
+</code></pre>
+<p><strong>试用过期后：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cd ~
+rm -r .navicat64
+</code></pre>
+</li>
+<li><p><strong>命令行客户端mysql</strong></p>
+<p><strong>安装：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install mysql-client
+</code></pre>
+<p><strong>MySQL客户端连接MySQL服务端命令：</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">mysql -uroot -p
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h2 id="数据类型与约束"><a href="#数据类型与约束" class="headerlink" title="数据类型与约束"></a>数据类型与约束</h2><blockquote>
+<ol>
+<li><strong>常见的数据类型：</strong><ul>
+<li>整数：int，bit</li>
+<li>小数：decimal</li>
+<li>字符串：varchar,char</li>
+<li>日期时间: date, time, datetime</li>
+<li>枚举类型(enum)</li>
+</ul>
+</li>
+<li><strong>数据类型说明:</strong><ul>
+<li>decimal表示浮点数，如 decimal(5, 2) 表示共存5位数，小数占 2 位.</li>
+<li>char表示固定长度的字符串，如char(3)，如果填充’ab’时会补一个空格为’ab ‘，3表示字符数</li>
+<li>varchar表示可变长度的字符串，如varchar(3)，填充’ab’时就会存储’ab’，3表示字符数</li>
+<li>对于图片、音频、视频等文件，不存储在数据库中，而是上传到某个服务器上，然后在表中存储这个文件的保存路径.</li>
+<li>字符串 text 表示存储大文本，当字符大于 4000 时推荐使用, 比如技术博客.</li>
+</ul>
+</li>
+<li><strong>常见数据约束：</strong><ul>
+<li>主键 primary key: 物理上存储的顺序. MySQL 建议所有表的主键字段都叫 id, 类型为 int unsigned.</li>
+<li>非空 not null: 此字段不允许填写空值.</li>
+<li>惟一 unique: 此字段的值不允许重复.</li>
+<li>默认 default: 当不填写字段对应的值会使用默认值，如果填写时以填写为准.</li>
+<li>外键 foreign key: 对关系字段进行约束, 当为关系字段填写值时, 会到关联的表中查询此值是否存在, 如果存在则填写成功, 如果不存在则填写失败并抛出异常.</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="命令行客户端MySQL的使用"><a href="#命令行客户端MySQL的使用" class="headerlink" title="命令行客户端MySQL的使用"></a>命令行客户端MySQL的使用</h2><h3 id="登入登出数据库"><a href="#登入登出数据库" class="headerlink" title="登入登出数据库"></a>登入登出数据库</h3><blockquote>
+<ol>
+<li><strong>登录数据库：</strong></li>
+</ol>
+<pre class=" language-lang-bash"><code class="language-lang-bash">mysql -uroot -p
+</code></pre>
+<ol>
+<li><strong>登出(退出)数据库:</strong></li>
+</ol>
+<pre class=" language-lang-bash"><code class="language-lang-bash">quit 或 exit 或 ctrl + d
+</code></pre>
+</blockquote>
+<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><blockquote>
+<ol>
+<li><p><strong>查看所有数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show databases;
+</code></pre>
+</li>
+<li><p><strong>创建数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">create database 数据库名 charset=utf8;
+</code></pre>
+</li>
+<li><p><strong>使用数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">use 数据库名;
+</code></pre>
+</li>
+<li><p><strong>查看当前使用的数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select database();
+</code></pre>
+</li>
+<li><p><strong>删除数据库：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">drop database 数据库名;
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="表结构的SQL语句"><a href="#表结构的SQL语句" class="headerlink" title="表结构的SQL语句"></a>表结构的SQL语句</h3><blockquote>
+<ol>
+<li><p><strong>查看当前数据库所有表：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show tables;
+</code></pre>
+</li>
+<li><p><strong>创建表：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">create table students(
+ id int unsigned primary key auto_increment not null,
+ name varchar(20) not null,
+ age tinyint unsigned default 0,
+ height decimal(5,2),
+ gender enum('男','女','人妖','保密')
+);
+</code></pre>
+</li>
+<li><p><strong>修改表-添加字段：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 add 列名 类型 约束;
+</code></pre>
+</li>
+<li><p><strong>修改表-修改字段类型：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 modify 列名 类型 约束;
+</code></pre>
+</li>
+<li><p><strong>修改表-修改字段名和字段类型：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 change 原名 新名 类型及约束;
+</code></pre>
+</li>
+<li><p><strong>修改表-删除字段：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 drop 列名;
+</code></pre>
+</li>
+<li><p><strong>查看创表SQL语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show create table 表名;
+</code></pre>
+</li>
+<li><p><strong>查看创库SQL语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show create database 数据库名;
+</code></pre>
+</li>
+<li><p><strong>删除表：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">drop table 表名;
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="表数据的SQL语句"><a href="#表数据的SQL语句" class="headerlink" title="表数据的SQL语句"></a>表数据的SQL语句</h3><blockquote>
+<ol>
+<li><p><strong>查询数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql"># 1. 查询所有列
+select * from 表名;
+# 2. 查询指定列
+select 列1,列2,... from 表名;
+</code></pre>
+</li>
+<li><p><strong>添加数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql"># 1. 全列插入：值的顺序与表结构字段的顺序完全一一对应
+insert into 表名 values (...)
+# 2. 部分列插入：值的顺序与给出的列顺序对应
+insert into 表名 (列1,...) values(值1,...)
+# 3. 全列多行插入
+insert into 表名 values(...),(...)...;
+# 4. 部分列多行插入
+insert into 表名(列1,...) values(值1,...),(值1,...)...;
+注意：
+1.主键列是自动增长，但是在全列插入时需要占位，通常使用空值(0或者null或者default)
+2.在全列插入时，如果字段列有默认值可以使用 default 来占位，插入后的数据就是之前设置的默认值
+</code></pre>
+</li>
+<li><p><strong>修改数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">update 表名 set 列1=值1,列2=值2... where 条件
+</code></pre>
+</li>
+<li><p><strong>删除数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">delete from 表名 where 条件  --物理删除，删除就不能恢复
+alter table students add isdelete bit default 0; --添加删除表示字段，0表示未删除 1表示删除
+update students set isdelete = 1 where id = 8;--逻辑删除数据
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="条件查询SQL语句"><a href="#条件查询SQL语句" class="headerlink" title="条件查询SQL语句"></a>条件查询SQL语句</h3><blockquote>
+<ol>
+<li><p><strong>where基本语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 where 条件;
+</code></pre>
+</li>
+<li><p><strong>比较运算符查询：</strong></p>
+<ul>
+<li>等于: =</li>
+<li>大于: &gt;</li>
+<li>大于等于: &gt;=</li>
+<li>小于: &lt;</li>
+<li>小于等于: &lt;=</li>
+<li>不等于: != 或 &lt;&gt;</li>
+</ul>
+</li>
+<li><p><strong>逻辑运算符查询：</strong></p>
+<ul>
+<li>and</li>
+<li>or</li>
+<li>not</li>
+</ul>
+</li>
+<li><p><strong>模糊查询：</strong></p>
+<ul>
+<li>like是模糊查询关键字</li>
+<li>%表示任意多个任意字符</li>
+<li>_表示一个任意字符</li>
+</ul>
+</li>
+<li><p><strong>范围查询：</strong></p>
+<ul>
+<li>between .. and .. 表示在一个连续的范围内查询</li>
+<li>in 表示在一个非连续的范围内查询</li>
+</ul>
+</li>
+<li><p><strong>空判断查询：</strong></p>
+<ul>
+<li>判断为空使用: is null</li>
+<li>判断非空使用: is not null</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="排序和分页查询"><a href="#排序和分页查询" class="headerlink" title="排序和分页查询"></a>排序和分页查询</h3><blockquote>
+<ol>
+<li><strong>排序查询语法：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 order by 列1 asc|desc [,列2 asc|desc,...]
+</code></pre>
+<p><strong>语法说明:</strong></p>
+<ol>
+<li>先按照列1进行排序，如果列1的值相同时，则按照 列2 排序，以此类推</li>
+<li>asc从小到大排列，即升序</li>
+<li>desc从大到小排序，即降序</li>
+<li><p>默认按照列值从小到大排序（即asc关键字）</p>
+</li>
+<li><p><strong>分页查询语法：</strong></p>
+</li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select * from 表名 limit start,count
+</code></pre>
+<p><strong>说明:</strong></p>
+<ol>
+<li>limit是分页查询关键字</li>
+<li>start表示开始行索引，默认是0</li>
+<li>count表示查询条数</li>
+</ol>
+</blockquote>
+<h1 id="MySQL数据库的条件查询"><a href="#MySQL数据库的条件查询" class="headerlink" title="MySQL数据库的条件查询"></a>MySQL数据库的条件查询</h1><h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><blockquote>
+<p><strong>常用的聚合函数:</strong></p>
+<ol>
+<li>count(col): 表示求指定列的总行数</li>
+<li>max(col): 表示求指定列的最大值</li>
+<li>min(col): 表示求指定列的最小值</li>
+<li>sum(col): 表示求指定列的和</li>
+<li>avg(col): 表示求指定列的平均值</li>
+</ol>
+</blockquote>
+<h2 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h2><blockquote>
+<p><strong>分组查询基本语法：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">GROUP BY 列名 [HAVING 条件表达式] [WITH ROLLUP]
+</code></pre>
+<p><strong>说明:</strong></p>
+<ul>
+<li>列名: 是指按照指定字段的值进行分组。</li>
+<li>HAVING 条件表达式: 用来过滤分组后的数据。</li>
+<li>WITH ROLLUP：在所有记录的最后加上一条记录，显示select查询时聚合函数的统计和计算结果</li>
+</ul>
+<ol>
+<li><p><strong>group by + group_concat()的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组， 查询gender字段和分组的name字段信息
+select gender,group_concat(name) from students group by gender;
+</code></pre>
+<p><strong>group_concat(字段名): 统计每个分组指定字段的信息集合，每个信息之间使用逗号进行分割</strong></p>
+</li>
+<li><p><strong>group by + 聚合函数的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 统计不同性别的人的平均年龄
+select gender,avg(age) from students group by gender;
+-- 统计不同性别的人的个数
+select gender,count(*) from students group by gender;
+</code></pre>
+</li>
+<li><p><strong>group by + having的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组，统计分组条数大于2的
+select gender,count(*) from students group by gender having count(*)>2;
+</code></pre>
+<p><strong>having作用和where类似都是过滤数据的，但having是过滤分组数据的，只能用于group by</strong></p>
+</li>
+<li><p><strong>group by + with rollup的使用:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 根据gender字段进行分组，汇总总人数
+select gender,count(*) from students group by gender with rollup;
+-- 根据gender字段进行分组，汇总所有人的年龄
+select gender,group_concat(age) from students group by gender with rollup;
+</code></pre>
+<p><strong>with rollup的作用是：在最后记录后面新增一行，显示select查询时聚合函数的统计和计算结果</strong></p>
+</li>
+</ol>
+</blockquote>
+<h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><blockquote>
+<p><strong>连接查询可以分为:</strong></p>
+<ol>
+<li>内连接查询</li>
+<li>左连接查询</li>
+<li>右连接查询</li>
+<li><p>自连接查询</p>
+</li>
+<li><p><strong>内连接查询：</strong></p>
+<p>查询两个表中符合条件的共有记录**</p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 inner join 表2 on 表1.字段1 = 表2.字段2
+</code></pre>
+<ol>
+<li><p>inner join 就是内连接查询关键字</p>
+</li>
+<li><p>on 就是连接查询条件</p>
+</li>
+</ol>
+</li>
+<li><p><strong>左连接查询：</strong></p>
+<p><strong>以左表为主根据条件查询右表数据，如果根据条件查询右表数据不存在使用null值填充</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 left join 表2 on 表1.字段1 = 表2.字段2
+</code></pre>
+<ol>
+<li>left join 就是左连接查询关键字</li>
+<li>on 就是连接查询条件</li>
+<li>表1 是左表</li>
+<li>表2 是右表</li>
+</ol>
+</li>
+<li><p><strong>有连接查询：</strong></p>
+<p><strong>以右表为主根据条件查询左表数据，如果根据条件查询左表数据不存在使用null值填充</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select 字段 from 表1 right join 表2 on 表1.字段1 = 表2.字段2
+</code></pre>
+<ol>
+<li>right join 就是右连接查询关键字</li>
+<li>on 就是连接查询条件</li>
+<li>表1 是左表</li>
+<li>表2 是右表</li>
+</ol>
+</li>
+<li><p><strong>自连接查询：</strong></p>
+<p><strong>左表和右表是同一个表，根据连接查询条件查询两个表中的数据。</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select c.id, c.title, c.pid, p.title from areas as c inner join areas as p on c.pid = p.id where p.title = '山西省';
+</code></pre>
+<p><strong>自连接查询必须对表起别名</strong></p>
+</li>
+<li><p><strong>子查询：</strong></p>
+<p>在一个 select 语句中,嵌入了另外一个 select 语句, 那么被嵌入的 select 语句称之为子查询语句，外部那个select语句则称为主查询。</p>
+<p><strong>主查询和子查询的关系:</strong></p>
+<ol>
+<li>子查询是嵌入到主查询中</li>
+<li>子查询是辅助主查询的,要么充当条件,要么充当数据源</li>
+<li>子查询是可以独立存在的语句,是一条完整的 select 语句</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h2 id="数据库设计三范式"><a href="#数据库设计三范式" class="headerlink" title="数据库设计三范式"></a>数据库设计三范式</h2><blockquote>
+<p>范式: 对设计数据库提出的一些规范，目前有迹可寻的共有8种范式，一般遵守3范式即可。</p>
+<ul>
+<li>第一范式（1NF）: 强调的是列的原子性，即列不能够再分成其他几列。</li>
+<li>第二范式（2NF）: 满足 1NF，另外包含两部分内容，一是表必须有一个主键；二是非主键字段 必须完全依赖于主键，而不能只依赖于主键的一部分。</li>
+<li>第三范式（3NF）: 满足 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</li>
+</ul>
+</blockquote>
+<h2 id="外键SQL语句的编写"><a href="#外键SQL语句的编写" class="headerlink" title="外键SQL语句的编写"></a>外键SQL语句的编写</h2><blockquote>
+<ol>
+<li><strong>外键约束的作用：</strong></li>
+</ol>
+<p>外键约束:对外键字段的值进行更新和插入时会和引用表中字段的数据进行验证，数据如果不合法则更新和插入会失败，保证数据的有效性</p>
+<ol>
+<li><strong>已经存在的字段添加外键：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 为cls_id字段添加外键约束
+alter table students add foreign key(cls_id) references classes(id);
+</code></pre>
+<ol>
+<li><strong>在创建数据表时设置外键约束:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 创建学校表
+create table school(
+    id int not null primary key auto_increment, 
+    name varchar(10)
+);
+-- 创建老师表
+create table teacher(
+    id int not null primary key auto_increment, 
+    name varchar(10), 
+    s_id int not null, 
+    foreign key(s_id) references school(id)
+);
+</code></pre>
+<ol>
+<li><strong>删除外键约束：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 需要先获取外键约束名称,该名称系统会自动生成,可以通过查看表创建语句来获取名称
+show create table teacher;
+-- 获取名称之后就可以根据名称来删除外键约束
+alter table teacher drop foreign key 外键名;
+</code></pre>
+</blockquote>
+<h2 id="SQL查询语句总结"><a href="#SQL查询语句总结" class="headerlink" title="SQL查询语句总结"></a>SQL查询语句总结</h2><blockquote>
+<p> <strong>完整语句：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">select [select选项] 字段列表[字段别名]/* from 数据源 [where 字句] [group by子句 ][having 子句][order by 子句][limit 子句];
+</code></pre>
+<ol>
+<li><p><strong>select选项：</strong></p>
+<p>Select 选项包含：ALL（所有，默认）、distinct（去重）。其中distinct针对的是查询结果的整条记录而言的。</p>
+</li>
+<li><p><strong>where 字句:</strong></p>
+<p>where是唯一一个从磁盘开始拿数据的时候就开始进行判断的条件，从磁盘取出一条记录，开始进行where判断，判断结果如果成立，那么取出结果保存到内存，否则放弃。</p>
+</li>
+<li><p><strong>group by 子句:</strong></p>
+<p>分组子句，group by子句主要的作用是分组，从而进行统计操作，而不是为了展示（展示的时候，只会展示分组记录的第一条记录），分组时，一般会结合使用count（）、max（）、min（）、avg（）、sum（）函数。</p>
+</li>
+<li><p><strong>having 子句:</strong></p>
+<p>having的作用类同where，而且having能做几乎所有where能做的事情，而where却不能做having能做的很多事情，主要是因为where只能在磁盘提取数据的时候对数据进行操作；而在内存中对数据进行group by分组之后的结果进行处理，只能通过having。</p>
+</li>
+<li><p><strong>order by 子句:</strong></p>
+<p>对数据进行排序操作，根据某个字段进行升序或者降序排序。（进行多字段排序的时候，先根据某一字段进行排序，然后在排序好的内部再按照某字段进行排序）</p>
+</li>
+<li><p><strong>limit 子句：</strong></p>
+<p>限制结果的数量。Limit 偏移量 记录条数。</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="MySQL数据库的高级使用"><a href="#MySQL数据库的高级使用" class="headerlink" title="MySQL数据库的高级使用"></a>MySQL数据库的高级使用</h1><h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><blockquote>
+<ol>
+<li><p><strong>将查询结果插入到其他表中：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">insert into 目标表名（字段） select 源字段 from 源表名 group by 源字段
+</code></pre>
+</li>
+<li><p><strong>连接更新表中某个字段数据：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">--将goods表中的分类名称更改成商品分类表中对应的分类id
+-- 查看goods表中的商品分类名称对应的商品分类id
+select * from goods inner join good_cates on goods.cate_name = good_cates.name;
+-- 把该语句中from 后的语句理解为一张虚表  
+update goods g inner join good_cates gc on g.cate_name=gc.name set g.cate_name=gc.id;创建表并给某个字段添加数据
+</code></pre>
+</li>
+<li><p><strong>创建表并给某个字段添加数据:</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">create table 表名(     
+id int unsigned primary key auto_increment,     
+name varchar(40) not null) select 字段名 as name from 表名 group by 字段名;
+</code></pre>
+</li>
+<li><p><strong>修改表结构：</strong></p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 查看表结构
+desc 表名;
+-- 通过alter table语句修改表结构
+alter table 表名 change 字段名 新字段名 数据类型 约束, change 字段名2 新字段名2 数据类型 约束;
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><blockquote>
+<p><strong>事务的四大特性</strong></p>
+<ul>
+<li>原子性(Atomicity)</li>
+<li>一致性(Consistency)</li>
+<li>隔离性(Isolation)</li>
+<li>持久性(Durability)</li>
+</ul>
+<p><strong>原子性:</strong></p>
+<p>一个事务必须被视为一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中的一部分操作，这就是事务的原子性</p>
+<p><strong>一致性:</strong></p>
+<p>数据库总是从一个一致性的状态转换到另一个一致性的状态。</p>
+<p><strong>隔离性:</strong></p>
+<p>通常来说，一个事务所做的修改操作在提交事务之前，对于其他事务来说是不可见的。</p>
+<p><strong>持久性:</strong></p>
+<p>一旦事务提交，则其所做的修改会永久保存到数据库。</p>
+<p><strong>说明:</strong></p>
+<p>事务能够保证数据的完整性和一致性，让用户的操作更加安全。</p>
+<ol>
+<li><strong>查看MySQL数据库支持的表的存储引擎:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 查看MySQL数据库支持的表的存储引擎
+show engines;
+</code></pre>
+<ol>
+<li>常用的表的存储引擎是 InnoDB 和 MyISAM</li>
+<li>InnoDB 是支持事务的</li>
+<li>MyISAM 不支持事务，优势是访问速度快，对事务没有要求或者以select、insert为主的都可以使用该存储引擎来创建表</li>
+</ol>
+<p>修改表的存储引擎使用: </p>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 engine = 引擎类型;
+</code></pre>
+<ol>
+<li><strong>开启事务：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">begin;
+或者
+start transaction;
+</code></pre>
+<p><strong>说明:</strong></p>
+<ol>
+<li><strong>开启事务后执行修改命令，变更数据会保存到MySQL服务端的缓存文件中，而不维护到物理表中</strong></li>
+<li><strong>MySQL数据库默认采用自动提交(autocommit)模式，如果没有显示的开启一个事务,那么每条sql语句都会被当作一个事务执行提交的操作</strong></li>
+<li>当set autocommit=0就是取消了自动提交事务模式，直到显示的执行commit和rollback表示该事务结束。</li>
+</ol>
+</blockquote>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><blockquote>
+<ol>
+<li><strong>查看表中已有索引:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">show index from 表名;
+</code></pre>
+<p><strong>说明:主键列会自动创建索引</strong></p>
+<ol>
+<li><strong>索引的创建:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 创建索引的语法格式
+alter table 表名 add index 索引名[可选](列名, ..)
+</code></pre>
+<p><strong>说明:索引名不指定，默认使用字段名</strong></p>
+<ol>
+<li><strong>索引的删除:</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">-- 删除索引的语法格式
+alter table 表名 drop index 索引名
+-- 如果不知道索引名，可以查看创表sql语句
+show create table 表名;
+</code></pre>
+<ol>
+<li><strong>联合索引：</strong></li>
+</ol>
+<pre class=" language-lang-sql"><code class="language-lang-sql">alter table 表名 add index (字段1，字段2);
+</code></pre>
+<p><strong>联合索引的好处:减少磁盘空间开销，因为每创建一个索引，其实就是创建了一个索引文件，那么会增加磁盘空间的开销。</strong></p>
+<ol>
+<li><strong>联合索引的最左原则：</strong></li>
+</ol>
+<blockquote>
+<p>在使用联合索引的时候，我们要遵守一个最左原则,即index(字段1，字段2)支持 字段1 、字段1 和 字段2 组合查询,而不支持单独 字段2 查询，因为没有用到创建的联合索引。</p>
+</blockquote>
+<ol>
+<li><strong>MySQL中的索引优点和原则：</strong></li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>加快数据的查询速度</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>创建索引会耗费时间和占用磁盘空间，并且随着数据量的增加所耗费的时间也会增加</li>
+</ol>
+<p>使用原则：</p>
+<ol>
+<li>通过优缺点对比，不是索引越多越好，而是需要自己合理的使用。</li>
+<li>对经常更新的表就避免对其进行过多索引的创建，对经常用于查询的字段应该创建索引，</li>
+<li>数据量小的表最好不要使用索引，因为由于数据较少，可能查询全部数据花费的时间比遍历索引的时间还要短，索引就可能不会产生优化效果。</li>
+<li>在一字段上相同值比较多不要建立索引，比如在学生表的”性别”字段上只有男，女两个不同值。相反的，在一个字段上不同值较多可是建立索引。</li>
+</ol>
+</blockquote>
+<h2 id="PyMySQL的使用"><a href="#PyMySQL的使用" class="headerlink" title="PyMySQL的使用"></a>PyMySQL的使用</h2><blockquote>
+<p><strong>安装pymysql第三方包:</strong></p>
+<pre class=" language-lang-lin"><code class="language-lang-lin">sudo pip3 install pymysql
+</code></pre>
+<p><strong>使用基本流程：</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import pymysql # 导包
+conn = pymysql.connect(host,port,user,password,database,charset) # 创建连接对象
+cursor =conn.cursor() # 获取游标对象
+row_count = cursor.execute(sql) # 执行SQL语句
+result = cursor.fetchall() # 获取查询结果集
+conn.commit() # 提交到数据库
+conn.rollback() # 回滚数据
+cursor.close() # 关闭游标
+conn.close() # 关闭连接
+</code></pre>
+<p><strong>防止SQL注入:</strong></p>
+<p>什么是SQL注入?</p>
+<p>​    用户提交带有恶意的数据与SQL语句进行字符串方式的拼接，从而影响了SQL语句的语义，最终产生数据泄露的现象。</p>
+<p>SQL语句参数化:</p>
+<ul>
+<li>SQL语言中的参数使用%s来占位，此处不是python中的字符串格式化操作</li>
+<li>将SQL语句中%s占位所需要的参数存在一个列表中，把参数列表传递给execute方法中第二个参数</li>
+</ul>
+<p><strong>说明:</strong></p>
+<ul>
+<li>execute方法中的 %s 占位不需要带引号</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">多进程与多线程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:31:36" itemprop="dateCreated datePublished" datetime="2021-05-04T14:31:36+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h1><blockquote>
+<p><strong>多任务</strong></p>
+<p>在同一时刻或同一时间段同时执行多个任务多任务</p>
+<p><strong>并发</strong></p>
+<p>任务数大于cpu核心数,cpu交替执行任务,并发（同一个时间段交替执行多个任务）</p>
+<p><strong>并行</strong></p>
+<p>同时时刻执行多个任务,并行(任务数小于cpu核心)</p>
+<p><strong>进程</strong></p>
+<p>进程是操作系统调度和分配资源的最小单位</p>
+<p>程序开启之后默认开启一个进程</p>
+<p>进程默认会有一个线程</p>
+</blockquote>
+<h1 id="多进程实现"><a href="#多进程实现" class="headerlink" title="多进程实现"></a>多进程实现</h1><blockquote>
+<ol>
+<li>导包</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">import multiprocessing
+</code></pre>
+<ol>
+<li>定义任务(函数)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">def music():
+    for i in range(3):
+        print("music...")
+        time.sleep(0.2)
+</code></pre>
+<ol>
+<li>创建进程(生产线)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_process = multiprocessing.Process(target=music) # target参数 需要跟上任务
+</code></pre>
+<ol>
+<li>开启进程</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.start()
+</code></pre>
+</blockquote>
+<h1 id="多任务面向对象实现"><a href="#多任务面向对象实现" class="headerlink" title="多任务面向对象实现"></a>多任务面向对象实现</h1><blockquote>
+<ol>
+<li>导包</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">import multiprocessing
+</code></pre>
+<ol>
+<li>继承<code>multiprocessing.Process</code></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">class MyProcess(multiprocessing.Process):
+    def __init__(self):
+        # 调用父类的初始化方法
+        super(MyProcess, self).__init__()
+</code></pre>
+<ol>
+<li>重写run方法,任务代码放到run方法中(run方法会自动调用,进程资源分配好自动调用,不需要自己调用)</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python"># Process方法 进程的任务都是在run方法执行
+    def run(self):
+        for i in range(3):
+            print("music...")
+            time.sleep(0.2)
+</code></pre>
+<ol>
+<li>创建自定义进程对象</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">pro = MyProcess()
+</code></pre>
+<ol>
+<li>开启自定义进程</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">pro.start()
+</code></pre>
+<p><strong>注意:</strong></p>
+<p><strong>函数并没有进程和线程之分,在哪个进程调用,就运行在哪个进程中</strong></p>
+</blockquote>
+<h1 id="进程传递参数"><a href="#进程传递参数" class="headerlink" title="进程传递参数"></a>进程传递参数</h1><blockquote>
+<ol>
+<li><strong>通过元组传递</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.Process(target=coding, args=(3, "传智"))
+</code></pre>
+<p><strong>注意:一个参数元组需要加,  顺序和参数顺序保持一致</strong></p>
+<ol>
+<li><strong>通过字典方式传递</strong></li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.Process(target=music, kwargs=&#123;"count": 2&#125;)
+</code></pre>
+<p><strong>注意:元素键需要和函数形参名称保持一致</strong></p>
+</blockquote>
+<h1 id="进程编号"><a href="#进程编号" class="headerlink" title="进程编号"></a>进程编号</h1><blockquote>
+<p><strong>获取进程编号</strong></p>
+<ol>
+<li>获取当前进程编号</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">os.getpid()
+</code></pre>
+<ol>
+<li>获取父进程进程编号</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">os.getppid()
+</code></pre>
+<ol>
+<li>获取当前进程名字</li>
+</ol>
+<pre class=" language-lang-python"><code class="language-lang-python">multiprocessing.current_process().name
+</code></pre>
+</blockquote>
+<h1 id="进程间不共享数据"><a href="#进程间不共享数据" class="headerlink" title="进程间不共享数据"></a>进程间不共享数据</h1><blockquote>
+<p><strong>子进程创建把主进程进行拷贝,子进程使用的全局变量和主进程全局变量不相同</strong></p>
+<p>把进程由原来的并行执行变成<strong>串行执行</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python"># join前代码
+进程对象.join() 
+# joint之后代码
+</code></pre>
+<p><strong>注意：join之后的代码需要等到进程执行完之后再执行</strong></p>
+</blockquote>
+<h1 id="主进程和子进程执行顺序"><a href="#主进程和子进程执行顺序" class="headerlink" title="主进程和子进程执行顺序"></a>主进程和子进程执行顺序</h1><blockquote>
+<p>主进程会等到子进程执行结束之后再停止</p>
+<p>如果想主进程代码执行结束结束子进程,可以通过守护进程或者手动停止进程</p>
+<p><strong>守护进程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.daemon = True
+# 需要在进程start之前设置
+</code></pre>
+<p><strong>手动停止子进程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">进程对象.terminate()
+# 在主进程代码执行结束时调用这个代码
+</code></pre>
+</blockquote>
+<h1 id="进程命令"><a href="#进程命令" class="headerlink" title="进程命令"></a>进程命令</h1><blockquote>
+<p><strong>ps</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">ps -aux|grep 进程名
+</code></pre>
+<p><strong>过滤正在运行感兴趣的进程</strong></p>
+<p><strong>kill</strong></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">kill -9 进程id
+</code></pre>
+<p><strong>强制杀死进程</strong> </p>
+</blockquote>
+<h1 id="多线程创建"><a href="#多线程创建" class="headerlink" title="多线程创建"></a>多线程创建</h1><blockquote>
+<p><strong>线程:</strong>CPU调度资源的最小单位</p>
+<ol>
+<li><p>导入threading模块</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import threading
+</code></pre>
+</li>
+<li><p>创建新线程,传递任务</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread = threading.Thread(target=coding)
+</code></pre>
+</li>
+<li><p>开启线程</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread.start()
+</code></pre>
+</li>
+</ol>
+<p><strong>注意：start 发送指令,自动创建线程,run方法会运行在子线程</strong></p>
+</blockquote>
+<h1 id="多线程传参"><a href="#多线程传参" class="headerlink" title="多线程传参"></a>多线程传参</h1><blockquote>
+<p>和多进程传递参数相同:args或者kwargs方式传递</p>
+<p><strong>args</strong></p>
+<p>以元组方式传递参数</p>
+<pre class=" language-lang-python"><code class="language-lang-python">coding_thread = threading.Thread(target=coding, args=(3,'传智'))
+</code></pre>
+<p><strong>注意：函数多个参数,数据和函数形参顺序保持一致</strong></p>
+<p><strong>kwargs</strong></p>
+<p>以字典的方式传递参数</p>
+<pre class=" language-lang-python"><code class="language-lang-python">music_thread = threading.Thread(target=music, kwargs=&#123;"count" : 1&#125;)
+</code></pre>
+<p><strong>注意：字典的每个元素key是函数形参名称</strong></p>
+</blockquote>
+<h1 id="线程执行顺序"><a href="#线程执行顺序" class="headerlink" title="线程执行顺序"></a>线程执行顺序</h1><blockquote>
+<p><strong>守护线程</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">work_thread = threading.Thread(target=work, daemon=True)
+work_thread.setDaemon(True)
+</code></pre>
+<p><strong>线程一般不能直接杀死</strong></p>
+<p><strong>停线程就是停止线程循环代码</strong></p>
+<p>可以设置<strong>终止变量</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">hasFinsh = False
+# 工作函数
+def work():
+    for i in range(10):
+        if hasFinsh:
+            return
+        print("work...")
+        time.sleep(0.2)
+</code></pre>
+</blockquote>
+<h1 id="线程间执行顺序"><a href="#线程间执行顺序" class="headerlink" title="线程间执行顺序"></a>线程间执行顺序</h1><blockquote>
+<p><strong>线程间和进程间执行都是无序</strong></p>
+<p>如果想让线程变成<strong>串行执行</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">sub_thread.join()
+</code></pre>
+<p><strong>获取线程名称</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">threading.current_thread().name
+</code></pre>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/Linux/" class="post-title-link" itemprop="url">Linux</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:15:03" itemprop="dateCreated datePublished" datetime="2021-05-04T14:15:03+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="关机（系统的关机，重启以及登出）"><a href="#关机（系统的关机，重启以及登出）" class="headerlink" title="关机（系统的关机，重启以及登出）"></a>关机（系统的关机，重启以及登出）</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">shutdown -h now 关闭系统
+shutdown -h hours:minutes & 按预定时间关闭系统 
+shutdown -c 取消按预定时间关闭系统 
+shutdown -r now 重启
+reboot 重启
+logout 注销
+</code></pre>
+<h3 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">clear 清理命令行 或Ctrl+L清屏
+cd /home 进入 '/ home' 目录' 
+cd .. 返回上一级目录 
+cd ../.. 返回上两级目录 
+cd 进入个人的主目录 
+cd ~user1 进入个人的主目录 
+cd - 返回上次所在的目录 
+pwd 显示工作路径 
+ls 查看目录中的文件 
+ls -F 查看目录中的文件 
+ls -l 显示文件和目录的详细资料 
+ls -a 显示所有的文件（隐藏文件）
+ls -lh 以列表方式显示所有的文件或目录（文件大小以K，M，G)
+ls *[0-9]* 显示包含数字的文件名和目录名 
+tree 显示文件和目录由根目录开始的树形结构
+lstree 显示文件和目录由根目录开始的树形结构
+mkdir dir1 创建一个叫做 'dir1' 的目录' 
+mkdir dir1 dir2 同时创建两个目录 
+mkdir -p /tmp/dir1/dir2 创建一个目录树 
+rm -r file1 递归删除一个叫做 'file1' 的文件夹下所有文件和文件夹 
+rm -rf dir1 强制删除一个叫做 'dir1' 的目录并递归删除其内容 
+rm -rf dir1 dir2 同时删除两个目录及它们的内容
+rmdir dir1 删除一个叫做 'dir1' 的目录' 
+mv dir1 new_dir 重命名/移动 一个目录 
+cp file1 file2 复制一个文件 
+cp -i 交互式提醒，避免拷贝覆盖原来的文件
+cp dir/* . 复制一个目录下的所有文件到当前工作目录 
+cp -a /tmp/dir1 . 复制一个目录到当前工作目录 
+cp -a dir1 dir2 复制一个目录 
+cp -r dir1 dir2 复制一个目录及子目录
+ln -s file1 lnk1 创建一个指向文件或目录的软链接 
+ln file1 lnk1 创建一个指向文件或目录的硬链接
+touch 文件名 创建文件
+touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm)
+>  重定向，覆盖追加
+>> 重定向，追加
+</code></pre>
+<h3 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">grep 字符串 文件名 查找符合标准的文件（-v：取反，-n：行数， -i:忽略大小写）
+find 文件路径 -name “文件名”  查找指定路径的文件
+find /home/user1 -name \*.bin 在目录 '/ home/user1' 中搜索带有'.bin' 结尾的文件 
+find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件 
+find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 
+find / -name \*.rpm -exec chmod 755 '&#123;&#125;' \; 搜索以 '.rpm' 结尾的文件并定义其权限 
+find / -xdev -name \*.rpm 搜索以 '.rpm' 结尾的文件，忽略光驱、捷盘等可移动设备 
+locate \*.ps 寻找以 '.ps' 结尾的文件 - 先运行 'updatedb' 命令 
+whereis halt 显示一个二进制文件、源码或man的位置 
+which halt 显示一个二进制文件或可执行文件的完整路径
+</code></pre>
+<h3 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">whoami 当前命令行在哪个用户下
+who 获取所有登录进来的用户
+su 新用户名 切换用户
+groupadd group_name 创建一个新用户组 
+groupdel group_name 删除一个用户组 
+groupmod -n new_group_name old_group_name 重命名一个用户组 
+useradd -c "Name Surname " -g admin -d /home/user1 -s /bin/bash user1 创建一个属于 "admin" 用户组的用户 
+useradd -m user1 创建一个新用户 
+userdel -r user1 删除一个用户 ( '-r' 排除主目录) 
+usermod -c "User FTP" -g system -d /ftp/user1 -s /bin/nologin user1 修改用户属性 
+passwd 修改口令 
+passwd user1 修改一个用户的口令 (只允许root执行) 
+chage -E 2005-12-31 user1 设置用户口令的失效期限 
+pwck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的用户 
+grpck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的群组 
+newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组
+</code></pre>
+<h3 id="文件的权限-使用“-”设置权限，使用“-”取消"><a href="#文件的权限-使用“-”设置权限，使用“-”取消" class="headerlink" title="文件的权限-使用“+”设置权限，使用“-”取消"></a>文件的权限-使用“+”设置权限，使用“-”取消</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">ls -lh 显示权限
+chmod 777 a.txt 数字法修改权限(r:4,w:2,x:1,-:0)
+chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限 
+chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限 
+chown user1 file1 改变一个文件的所有人属性 
+chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 
+chgrp group1 file1 改变文件的群组 
+chown user1:group1 file1 改变一个文件的所有人和群组属性 
+find / -perm -u+s 罗列一个系统中所有使用了SUID控制的文件 
+chmod u+s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限 
+chmod u-s /bin/file1 禁用一个二进制文件的 SUID位 
+chmod g+s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的 
+chmod g-s /home/public 禁用一个目录的 SGID 位 
+chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件 
+chmod o-t /home/public 禁用一个目录的 STIKY 位
+</code></pre>
+<h3 id="打包和压缩文件"><a href="#打包和压缩文件" class="headerlink" title="打包和压缩文件"></a>打包和压缩文件</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件 
+bzip2 file1 压缩一个叫做 'file1' 的文件 
+gunzip file1.gz 解压一个叫做 'file1.gz'的文件 
+gzip file1 压缩一个叫做 'file1'的文件 
+gzip -9 file1 最大程度压缩 
+rar a file1.rar test_file 创建一个叫做 'file1.rar' 的包 
+rar a file1.rar file1 file2 dir1 同时压缩 'file1', 'file2' 以及目录 'dir1' 
+rar x file1.rar 解压rar包 
+unrar x file1.rar 解压rar包 
+tar -cvf archive.tar file1 创建一个非压缩的 tar包 
+tar -cvf archive.tar file1 file2 dir1 创建一个包含了 'file1', 'file2' 以及 'dir1'的档案文件 
+tar -tf archive.tar 显示一个包中的内容 
+tar -xvf archive.tar 释放一个包 
+tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下 
+tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包 
+tar -jxvf archive.tar.bz2 解压一个bzip2格式的压缩包 
+tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包 
+tar -zxvf archive.tar.gz 解压一个gzip格式的压缩包 
+zip file1.zip file1 创建一个zip格式的压缩包 
+zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 
+unzip file1.zip 解压一个zip格式压缩包
+</code></pre>
+<h3 id="DEB-包-Debian-Ubuntu-以及类似系统"><a href="#DEB-包-Debian-Ubuntu-以及类似系统" class="headerlink" title="DEB 包 (Debian, Ubuntu 以及类似系统)"></a><strong>DEB 包 (Debian, Ubuntu 以及类似系统)</strong></h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">dpkg -i package.deb 安装/更新一个 deb 包 
+dpkg -r package_name 从系统删除一个 deb 包 
+dpkg -l 显示系统中所有已经安装的 deb 包 
+dpkg -l | grep httpd 显示所有名称中包含 "httpd" 字样的deb包 
+dpkg -s package_name 获得已经安装在系统中一个特殊包的信息 
+dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表 
+dpkg --contents package.deb 显示尚未安装的一个包所提供的文件列表 
+dpkg -S /bin/ping 确认所给的文件由哪个deb包提供
+</code></pre>
+<h3 id="APT-软件工具-Debian-Ubuntu-以及类似系统"><a href="#APT-软件工具-Debian-Ubuntu-以及类似系统" class="headerlink" title="APT 软件工具 (Debian, Ubuntu 以及类似系统)"></a>APT 软件工具 (Debian, Ubuntu 以及类似系统)</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">apt-get install package_name 安装/更新一个 deb 包 
+apt-cdrom install package_name 从光盘安装/更新一个 deb 包 
+apt-get update 升级列表中的软件包 
+apt-get upgrade 升级所有已安装的软件 
+apt-get remove package_name 从系统删除一个deb包 
+apt-get check 确认依赖的软件仓库正确 
+apt-get clean 从下载的软件包中清理缓存 
+apt-cache search searched-package 返回包含所要搜索字符串的软件包名称
+</code></pre>
+<h3 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cat file1 从第一个字节开始正向查看文件的内容
+more file1 查看一个长文件的内容
+tac file1 从最后一行开始反向查看一个文件的内容  
+less file1 类似于 'more' 命令，但是它允许在文件中和正向操作一样的反向操作 
+head -2 file1 查看一个文件的前两行 
+tail -2 file1 查看一个文件的最后两行 
+tail -f /var/log/messages 实时查看被添加到一个文件中的内容
+</code></pre>
+<h3 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cat file1 file2 ... | command <> file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT 
+cat file1 | command( sed, grep, awk, grep, etc...) > result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中 
+cat file1 | command( sed, grep, awk, grep, etc...) >> result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中 
+grep Aug /var/log/messages 在文件 '/var/log/messages'中查找关键词"Aug" 
+grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇 
+grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行 
+grep Aug -R /var/log/* 在目录 '/var/log' 及随后的目录中搜索字符串"Aug" 
+sed 's/stringa1/stringa2/g' example.txt 将example.txt文件中的 "string1" 替换成 "string2" 
+sed '/^$/d' example.txt 从example.txt文件中删除所有空白行 
+sed '/ *#/d; /^$/d' example.txt 从example.txt文件中删除所有注释和空白行 
+echo 'esempio' | tr '[:lower:]' '[:upper:]' 合并上下单元格内容 
+sed -e '1d' result.txt 从文件example.txt 中排除第一行 
+sed -n '/stringa1/p' 查看只包含词汇 "string1"的行 
+sed -e 's/ *$//' example.txt 删除每一行最后的空白字符 
+sed -e 's/stringa1//g' example.txt 从文档中只删除词汇 "string1" 并保留剩余全部 
+sed -n '1,5p;5q' example.txt 查看从第一行到第5行内容 
+sed -n '5p;5q' example.txt 查看第5行 
+sed -e 's/00*/0/g' example.txt 用单个零替换多个零 
+cat -n file1 标示文件的行数 
+cat example.txt | awk 'NR%2==1' 删除example.txt文件中的所有偶数行 
+echo a b c | awk '&#123;print $1&#125;' 查看一行第一栏 
+echo a b c | awk '&#123;print $1,$3&#125;' 查看一行的第一和第三栏 
+paste file1 file2 合并两个文件或两栏的内容 
+paste -d '+' file1 file2 合并两个文件或两栏的内容，中间用"+"区分 
+sort file1 file2 排序两个文件的内容 
+sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份) 
+sort file1 file2 | uniq -u 删除交集，留下其他的行 
+sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件) 
+comm -1 file1 file2 比较两个文件的内容只删除 'file1' 所包含的内容 
+comm -2 file1 file2 比较两个文件的内容只删除 'file2' 所包含的内容 
+comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分
+</code></pre>
+<h3 id="字符设置和文件格式转换"><a href="#字符设置和文件格式转换" class="headerlink" title="字符设置和文件格式转换"></a><strong>字符设置和文件格式转换</strong></h3><hr>
+<pre class=" language-lang-bash"><code class="language-lang-bash">dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX 
+unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS 
+recode ..HTML < page.txt > page.html 将一个文本文件转换成html 
+recode -l | more 显示所有允许的转换格式
+</code></pre>
+<h3 id="远程登录、拷贝"><a href="#远程登录、拷贝" class="headerlink" title="远程登录、拷贝"></a>远程登录、拷贝</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt install openssh-server 安装服务端
+sudo apt install openssh-client 安装客户端
+ssh 用户名@ip地址   远程连接服务端
+scp 用户名@ip地址:远程目录  本地目录   远程拷贝文件
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="post-title-link" itemprop="url">装饰器和生成器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:09:14" itemprop="dateCreated datePublished" datetime="2021-05-04T14:09:14+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p><strong>闭包定义</strong></p>
+<ol>
+<li>函数嵌套</li>
+<li>内部函数使用外部函数的参数</li>
+<li>外部函数返回了内部函数</li>
+</ol>
+<p><strong>闭包作用</strong></p>
+<p>保存外部函数的参数(局部变量,函数形参)</p>
+</blockquote>
+<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
+<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
+<pre class=" language-lang-python"><code class="language-lang-python">def func_out():
+    # 外部函数的局部变量
+    num1 = 20
+    # 内部函数
+    def func_inner(num2):
+        nonlocal num1
+        # 函数局部变量
+        num1 = num1+num2
+
+    print(num1)# 修改之前的函数形参值
+    func_inner(10)
+    print(num1)# 函数形参值
+
+func_out()
+</code></pre>
+</blockquote>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1定义一个装饰器(装饰器的本质是闭包)
+def check(fn):
+    def inner():
+        print("请先登陆")
+        fn()
+
+    return inner
+
+
+# 2使用装饰器装饰函数（增加一个登陆功能）
+# 解释器遇到@check 会立即执行 comment = check(comment)
+@check # 调用check 传递comment 返回新的函数
+def comment():
+    print("发表评论")
+comment()
+</code></pre>
+</blockquote>
+<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def check(fn): # regist
+    def inner(name,pwd):
+        print('开始验证')
+        fn(name,pwd) # regist
+        print('登陆成功')
+
+    return inner
+
+
+@check
+def regist(name,pwd):
+    print('开始注册')
+</code></pre>
+<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
+</blockquote>
+<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(a, b):
+        print('开始计算')
+        result = fn(a, b)
+        print('结束计算')
+        return result
+    return inner  # sum_num = inner
+
+# 使用装饰器装饰函数
+@logging
+def sum_num(a, b):
+    result = a + b
+    print(result)
+    return result
+
+result = sum_num(1, 2)
+print(result)
+</code></pre>
+<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
+</blockquote>
+<h1 id="装饰不定长参数函数"><a href="#装饰不定长参数函数" class="headerlink" title="装饰不定长参数函数"></a>装饰不定长参数函数</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        fn(*args, **kwargs)
+
+    return inner  # sum_num = inner
+</code></pre>
+<p>*args和<em>\</em>*kwargs可以接收任意类型的参数,通过*arg或者**kwargs把接收的数据解包传递个原来的函数进行调用</p>
+</blockquote>
+<h1 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 可以装饰带有任意参数和返回值的函数
+# 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        # 装饰之前代码
+        result = fn(*args, **kwargs)
+        # 装饰之后的代码
+        return result
+    return inner  # sum_num = inner
+</code></pre>
+</blockquote>
+<h1 id="多个装饰器"><a href="#多个装饰器" class="headerlink" title="多个装饰器"></a>多个装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">@check1
+@check2
+def comment():
+    print("发表评论")
+</code></pre>
+<p>离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰，由内到外的装饰过程</p>
+</blockquote>
+<h1 id="property修饰器"><a href="#property修饰器" class="headerlink" title="property修饰器"></a>property修饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>把方法的调用变成属性的调用</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+    def __init__(self):
+        self.__age = 0
+
+    # 获取属性
+    @property # 把age变成get属性
+    def age(self):
+        return self.__age
+
+    # 修改属性
+    @age.setter# 把age函数变成age属性的set方法
+    def age(self, new_age):
+        if new_age>0 and new_age<150:
+            self.__age = new_age
+</code></pre>
+</blockquote>
+<h1 id="类属性property"><a href="#类属性property" class="headerlink" title="类属性property"></a>类属性property</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+
+    def __init__(self):
+        self.__age = 0
+
+    def get_age(self):
+        """当获取age属性时会使用该方法"""
+        return self.__age
+
+    def set_age(self, new_age):
+        """当设置属性时会使用该方法"""
+        if new_age >= 150:
+            print("年龄错误")
+        else:
+            self.__age = new_age
+    # 类属性
+    age = property(get_age, set_age)
+</code></pre>
+<p>property第一个是get方法 第二个是set方法</p>
+</blockquote>
+<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><blockquote>
+<p><strong>with管理上下文对象</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">with 上下文管理器对象 as 变量:
+</code></pre>
+<p>as之后的变量是上下文管理器对象的__enter__方法返回的对象</p>
+<p>with执行时会调用上下文管理器的__enter__获取对象赋值给后面的变量</p>
+<p>在with语句中就可以使用这个对象</p>
+<p>with中的语句执行结束之后,会执行__exit__方法</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class File(object):
+    def __init__(self, file_name, file_model):
+        self.file_name = file_name
+        self.file_model = file_model
+
+    def __enter__(self):
+        print("这是上文")
+        self.file = open(self.file_name, self.file_model)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("这是下文")
+        self.file.close()
+</code></pre>
+<p><strong>注意：不管有没有出现异常,下文都会在with语句执行结束或者出现异常之后自动执行</strong></p>
+</blockquote>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def generater(num):
+    for i in range(num):
+        print("开始")
+        yield i
+        print("生成完成")
+
+g = generater(5)
+next(g)
+</code></pre>
+<p><strong>如果最后一条数据,next就会出现异常</strong></p>
+</blockquote>
+<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><blockquote>
+<p><strong>浅拷贝</strong>：copy.copy</p>
+<p>两个变量指向同一个空间</p>
+<p><strong>深拷贝：</strong>copy.deepcopy</p>
+<p>两个变量指向不同空间</p>
+<ol>
+<li>不可变,不用考虑深拷贝和浅拷贝</li>
+<li>如果可变类型,可变类型每一个元素都是不可变类型,可以直接浅拷贝</li>
+<li>如果可变类型中有可变类型元素,可以使用深拷贝</li>
+<li>不可变类型(不可变类型中全是不可变类型),直接赋值  可变类型或不可变类型中嵌套了可变类型直接深拷贝</li>
+</ol>
+</blockquote>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">.    匹配任意1个字符（除了\n）
+[ ]    匹配[ ]中列举的字符
+[^指定字符] 除了列举的所有字符
+\d    匹配数字，即0-9
+\D    匹配非数字，即不是数字
+\s    匹配空白，即 空格，tab键
+\S    匹配非空白
+\w    匹配非特殊字符，即a-z、A-Z、0-9、_、汉字
+\W    匹配特殊字符，即非字母、非数字、非汉字
+</code></pre>
+</blockquote>
+<h2 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">*    匹配前一个字符出现0次或者无限次，即可有可无
++    匹配前一个字符出现1次或者无限次，即至少有1次
+?    匹配前一个字符出现1次或者0次，即要么有1次，要么没有
+&#123;m&#125;    匹配前一个字符出现m次
+&#123;m,n&#125;    匹配前一个字符出现从m到n次
+例：
+# 字母开头@ 有3-10位的数字字母和_
+result = re.match("[a-zA-Z][a-zA-Z0-9_]&#123;2,9&#125;@qq\.com", "aafd12ddd@qq.com")
+</code></pre>
+</blockquote>
+<h2 id="匹配开头和结尾"><a href="#匹配开头和结尾" class="headerlink" title="匹配开头和结尾"></a>匹配开头和结尾</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">^    匹配字符串开头(放在匹配规则的最开始)
+$    匹配字符串结尾(放在匹配规则的最后一位)
+</code></pre>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">科学计算库总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 01:40:54" itemprop="dateCreated datePublished" datetime="2021-05-04T01:40:54+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">科学计算库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">numpy.array(object,dtype=None,copy=True,order=None,subok=False,ndmin=0) # 列表或元组转换
+numpy.arange(start,stop,step,dtype=None) # 在给定区间内创建一系列均匀间隔的值，指定[开始，停止),并指定步长step
+numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None) # 同arange一样
+numpy.logspace(start, stop, num) # 以10为底，生成num个等比数列
+numpy.ones(shape, dtype=None, order='C') # 生成全为1的多维数组
+numpy.ones_like(a, dtype) # 快速创建数值全部为1的多维数组
+numpy.zeros(shape, dtype=None, order='C') # 生成全为0的多维数组
+numpy.zeros_like(a, dtype) # 快速创建数值全部为0的多维数组
+numpy.eye(N, M=None, k=0, dtype=<type 'float'>)  # 用于创建一个二维数组，特点是k对角线上的值为1，其余值全部为0
+numpy.random.rand(d0, d1, ..., dn )# 方法的作用为：指定一个数组，并使用[0, 1)区间随机数据填充，这些数据均匀分布。
+numpy.random.randn(d0, d1, ..., dn) # 从标准正态分布中返回一个或多个样本值
+numpy.random.standard_normal(size) # 从标准正态分布中生成随机数
+numpy.random.randint(low, high, size, dtype) # 方法将会生成[low, high)的随机整数
+numpy.random.normal(loc，scale，size) # 从正态分布绘制随机样本。参数，均值和偏差
+numpy.random.uniform(low=0，high=1，size) # 从均匀分布中生成随机数
+</code></pre>
+</blockquote>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">ndarray.T # 用于数组的转置，与.transpose()相同。
+ndarray.dtype # 用来输出数组包含元素的数据类型。
+ndarray.real # 用来输出数组包含元素的实部。
+ndarray.imag # 用来输出数组包含元素的虚部。
+ndarray.size # 用来输出数组中的总包含元素数。
+ndarray.itemsize # 输出一个数组元素的字节数。
+ndarray.nbytes # 用来输出数组的元素总字节数。
+ndarray.ndim # 用来输出数组维度。
+ndarray.shape # 用来输出数组形状。
+ndarray.strides # 用来遍历数组时，输出每个维度中步进的字节数组。
+</code></pre>
+</blockquote>
+<h2 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">ndarray.reshape(newshape) # 可以在不改变数组数据的同时改变数组形状
+ndarray.resize(newshape) # 改变数组形状，改变数组数据，新数组比原数组大，则将会copy原数组中的值对新数组进行填充
+ndarray.ravel(order='C') # 将任意形状的按行读取，变为1维数组，浅拷贝
+ndarray.flatten() # 将任意形状的按行读取，变为1维数组，深拷贝
+numpy.moveaxis(a, source, destination) # 将数组的轴移动到新的位置
+numpy.swapaxes(a, axis1, axis2) # 用来交换数组的轴
+numpy.concatenate((a1, a2, ...), axis=0) # 可以将多个数组沿指定轴连接在一起
+numpy.unique(a) # 去重数组元素中重复的元素
+numpy.atleast_xd() # 支持输入数据直接视为x维
+</code></pre>
+</blockquote>
+<h2 id="逻辑与统计计算"><a href="#逻辑与统计计算" class="headerlink" title="逻辑与统计计算"></a>逻辑与统计计算</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">ndarray[条件] = 1 # 将满足条件的数组元素设置为1
+numpy.all(条件) # 查询是否都满足条件
+numpy.any(条件) # 查询是否有满足条件的
+numpy.where(条件，1，0) # 三目运算，符合条件的设置为1，不符合的为0
+numpy.max() # 沿指定轴计算中间值
+numpy.min() # 沿指定轴计算中间值
+numpy.median() # 沿指定轴计算中间值
+numpy.mean() # 沿指定轴计算平均数
+numpy.std() # 沿指定轴计算标准偏差
+numpy.var() # 沿指定轴计算方差
+numpy.argmax(axis=) # 最大元素对应的下标
+numpy.argmin(axis=) # 最小元素对应的下标
+numpy.dot(a, b) # 求解两个数组的点积
+numpy.matmul(a, b) # 求解两个数组的矩阵乘积
+</code></pre>
+</blockquote>
+<h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">pandas.Series(data=None,index=None) # 创建一位数组，data可以是字典，或者Numpy中的ndarray，index是索引
+pandas.DataFrame(data=None, index=None, columns=None) # 创建二维数组，data为数组、列表、字典，或者ndarray
+pandas.MultiIndex.from_arrays(arrays, names=('number', 'color')) # 创建三维数组
+</code></pre>
+</blockquote>
+<h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">Series.index # 查看一维数组中的索引
+Series.values # 查看一位数组中的值
+DataFrame.head() # 默认显示前5条
+DataFrame.tail(7) # 指定显示后7条
+DataFrame.describe()# 对数据集进行概览，会输出每一列数据的计数、最大值、最小值
+DataFrame.values # 将DataFrame转换成Numpy数组
+DataFrame.index # 查看索引
+DataFrame.columns # 查看列名
+DataFrame.shape # 查看形状
+MultiIndex.index # 查看multiIndex对象
+MultiIndex.index.names # 查看levels的名称
+MultiIndex.index.levels # 查看每个level的值
+</code></pre>
+</blockquote>
+<h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">DataFrame.iloc[[行],[列]] # 基于数字索引对数据集进行选择，支持切片(前闭后开)，列表
+DataFrame.loc[[行],[列]] # 基于索引名对数据集进行选择，支持切片(首尾包含)，列表
+DataFrame.ix[[行],[列]] # 基于下标和名称组合索引
+DataFrame[列索引值][行索引值] # 先列后行，按照索引的字符串进行索引
+DataFrame.index = 新索引值 # 修改行列索引值
+DataFrame.reset_index(drop=False) # 设置新的下标索引,默认为False，不删除原来索引
+DataFrame.set_index(keys, drop=True) # 设置以keys为列索引，默认为True，删除原来索引
+DataFrame[列名]=1 或 DataFrame.列名=1 # 将一列赋值为1
+</code></pre>
+</blockquote>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">Series.sort_values(ascending=True) # 对数据进行排序，默认升序
+Series.sort_index() # 对索引进行排序
+DataFrame.sort_values(by=, ascending=) # 按照一个键或多个进行数据排序，默认升序
+DataFrame.sort_index(axis=) # 对指定轴索引进行排序，从小到大
+</code></pre>
+</blockquote>
+<h3 id="数据删减"><a href="#数据删减" class="headerlink" title="数据删减"></a>数据删减</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">DataFrame.drop(labels=[], axis=) # 按照指定轴对指定标签参数进行删除
+DataFrame.drop_duplicates(axis=) # 指定轴数据去重
+DataFrame.dropna() # 删除缺失值行或列
+DataFrame.pop(列标签) # 删除列
+</code></pre>
+</blockquote>
+<h2 id="运算和统计"><a href="#运算和统计" class="headerlink" title="运算和统计"></a>运算和统计</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">DataFrame.add(other) # 加法运算
+DataFrame.sub(other) # 减法运算
+
+DataFrame[列名] > value # 返回逻辑结果，布尔值
+DataFrame[DataFrame[列名] > value].head() # 逻辑判断的结果可以作为筛选的依据
+DataFrame.query("列名 < value1 & 列名 > value2").head() # 进行多次逻辑判断
+DataFrame[列名].isin([]) # 可以指定值进行一个判断，从而进行筛选操作
+
+DataFrame.describe() # 综合分析: 能够直接得出很多统计结果,count, mean, std, min, max 等
+DataFrame.sum() # 计算总和
+DataFrame.mean() # 计算平均值
+DataFrame.median() # 计算中位数
+DataFrame.min() # 计算最小值
+DataFrame.max() # 计算最大值
+DataFrame.mode() # 计算众数
+DataFrame.abs() # 计算绝对值
+DataFrame.prod() # 计算连乘
+DataFrame.std() # 计算标准差
+DataFrame.var() # 计算方差
+DataFrame.idxmax() # 计算最大值索引
+DataFrame.idxmin() # 计算最小值索引
+DataFrame.cumsum() # 计算前1/2/3/…/n个数的和
+DataFrame.cumprod() # 计算前1/2/3/…/n个数的积
+</code></pre>
+</blockquote>
+<h2 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># Pandas画图
+DataFrame.plot(kind='line') # kind表示需要绘制的种类，默认line,还有bar,barh,hist,pie,scatter
+# 文件读取与存储
+pandas.read_csv(path, usecols=[], engine='python', encoding='utf8') # 读取csv文件
+DataFrame.to_csv(path, columns=None, mode='w', encoding=None) # 转换成csv文件
+pandas.read_hdf(path，key=None，** kwargs) # 根据key读取hdf文件
+DataFrame.to_hdf(path, key=, **kwargs*) # 转换成hdf文件
+pandas.read_json(path, lines=False) # 读取json文件
+DataFrame.to_json(path,lines=False) # 转换成json文件
+# 缺失值检测与填充
+DataFrame.isna()|isnull()|notna()|notnull() # 检测缺失值
+DataFrame.replace(to_replace=, value=) # to_replace替换前的值，value为替换后的值
+DataFrame.fillna(0) # 用0替换缺失值
+DataFrame.fillna(method='pad') # 使用缺失值前面的值进行填充
+DataFrame.fillna(method='bfill') # 使用缺失值前面的值进行填充
+DataFrame.interpolate(method=) # 插值算法，平滑绘图'akima'，累计分布'pchip'，数据增长速率越来越快'quadratic'
+# 数据离散化与数据合并
+pandas.qcut(data, num) # 将数据分为数量差不多的num个组，一般会与value_counts搭配使用，统计每组的个数
+Series.value_counts() # 统计分组次数
+pandas.cut(data, bins) # 自定义分组，bin为自定义列表
+pandas.get_dummies(data, prefix=分组名字) # 分组数据变成one-hot编码
+pandas.concat([data1, data2], axis=1) # 按照行或列进行合并，0为行
+pandas.merge(left, right, how='inner', on=[]) # 按照指定键指定方式进行连接
+# 交叉表与透视表
+pandas.crosstab(index,columns) # 按index进行分组并作为行索引，并统计columns值的各个频数，交叉表
+DataFrame.pivot_table(values=[], index=[],aggfunc=np.mean) # 将values按照index分组，默认使用mean()聚合函数
+# 分组与聚合
+DataFrame.groupby(key, as_index=False) # 按照keys进行分组
+DataFrame.agg(&#123;"列名"：np.聚合函数&#125;) # 聚合函数为max(),min(),mean(),std()等函数
+</code></pre>
+</blockquote>
+<h1 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h1><blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matplotlib.pyplot.plot</code></td>
+<td>绘制折线图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.bar</code></td>
+<td>绘制柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.barh</code></td>
+<td>绘制直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.broken_barh</code></td>
+<td>绘制水平直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.contour</code></td>
+<td>绘制等高线图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.errorbar</code></td>
+<td>绘制误差线</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hexbin</code></td>
+<td>绘制六边形图案</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist</code></td>
+<td>绘制柱形图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist2d</code></td>
+<td>绘制水平柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.pie</code></td>
+<td>绘制饼状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.quiver</code></td>
+<td>绘制量场图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.scatter</code></td>
+<td>散点图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.specgram</code></td>
+<td>绘制光谱图</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h2 id="简单绘制流程"><a href="#简单绘制流程" class="headerlink" title="简单绘制流程"></a>简单绘制流程</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 基础折线图
+plt.figure(figsize=(),dpi=) # 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度
+plt.plot(x, y, label=) # 绘制图像和设置图例名称
+plt.xticks(x,显示格式) # 设置x轴刻度
+plt.yticks(y,显示格式) # 设置x轴刻度
+plt.xlim() # 设置x坐标轴范围
+plt.ylim() # 设置y坐标轴范围
+plt.xlabel() # 设置x轴标题
+plt.ylabel() # 设置y轴标题
+plt.title() # 设置标题
+plt.grid(True, linestyle=, alpha=) # 设置网格线，及线类型，透明度
+plt.text(x,y,s) # 图形标注，x, y 用于标注位置定位，s 代表标注的字符串
+plt.savefig("") # 图像保存
+plt.legend(loc=) # 以对应的位置上添加图例
+plt.show() # 图像显示
+# 大图套小图
+fig = plt.figure(figsize=(),dpi=)
+axes = fig.add_axes([])  # 控制画布的左, 下, 宽度, 高度来添加画布
+axes.plot(x, y)
+# 多行多列图
+fig, axes = plt.subplots(nrows=, ncols=)  # 创建多行多列的图像对象及画布
+axes.set_xticks(x,显示格式) # 设置x轴刻度
+axes.set_yticks(y,显示格式) # 设置x轴刻度
+axes.set_xlabel() # 设置x轴标题
+axes.set_ylabel() # 设置y轴标题
+axes.set_title() # 设置标题
+</code></pre>
+</blockquote>
+<h2 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h2><blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha=</code></td>
+<td>设置线型的透明度，从 0.0 到 1.0</td>
+</tr>
+<tr>
+<td><code>color=</code></td>
+<td>设置线型的颜色</td>
+</tr>
+<tr>
+<td><code>fillstyle=</code></td>
+<td>设置线型的填充样式</td>
+</tr>
+<tr>
+<td><code>linestyle=</code></td>
+<td>设置线型的样式</td>
+</tr>
+<tr>
+<td><code>linewidth=</code></td>
+<td>设置线型的宽度</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>设置标记点的样式</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h1 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.set(context='notebook', style='darkgrid', palette='deep') # 声名样式
+# 分布图
+seaborn.distplot(a, bins=None, hist=True, kde=True, rug=False, fit=None, color=None) # 单变量直方图核密度
+seaborn.jointplot(x, y, data=None, kind='scatter') # 多变量相互关系散点图
+sns.pairplot(data) # 绘制多个成对的双变量分布
+# 类别图
+seaborn.catplot(x=None, y=None, kind="strip", data=None) # Figure-level 接口
+seaborn.stripplot(x=None, y=None, hue=None, data=None, jitter=False) # 分类散点线图，数据部分重合
+seaborn.swarmplot(x=, y=, data=) # 分类散点线图，数据不重合
+seaborn.boxplot(x=None, y=None, hue=None, data=None) # 箱体图，示出一组数据的最大值、最小值、中位数、及上下四分位数
+seaborn.violinplot(x=None, y=None, hue=None, data=None) # 提琴图，显示数据分布及其概率密度
+seaborn.barplot(x=None, y=None, hue=None, data=None) # 条形图，显示95%置信区间
+seaborn.pointplot(x=None, y=None, hue=None, data=None) # 点图，只绘制点图和置信区间
+# 关联图
+seaborn.relplot(x=, y=,hue=, style=, kind="scatter"|"line", data=) # Figure-level 接口
+# 回归图
+seaborn.regplot(x=None, y=None, data=None) # 自动完成线性回归拟合
+seaborn.lmplot(x=None, y=None, hue=None, data=None) # 引入第三维度进行对比，自动完成线性回归拟合
+# 矩阵图
+seaborn.heatmap(a,square,linewidths,annot) # 绘制热力图
+seaborn.clustermap(DataFrame) # 支持绘制层次聚类结构图
+</code></pre>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/Seaborn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/Seaborn/" class="post-title-link" itemprop="url">Seaborn</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 01:40:01" itemprop="dateCreated datePublished" datetime="2021-05-04T01:40:01+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">科学计算库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Seaborn基于 Matplotlib核心库进行了更高级的API封装，可以轻松地画出更漂亮的图形，而Seaborn的漂亮主要体现在配色更加舒服，以及图形元素的样式更加细腻。</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 安装 
+pip install seaborn==0.10.1
+# 导入
+import seaborn as sns
+</code></pre>
+<p>使用 Seaborn 完成图像快速优化的方法非常简单。只需要将 Seaborn 提供的样式声明代码 <code>sns.set()</code> 放置在绘图前即可。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.set(context='notebook', style='darkgrid', palette='deep', font='sans-serif', font_scale=1, color_codes=False, rc=None)
+</code></pre>
+<ul>
+<li><code>context=&#39;&#39;</code> 参数控制着默认的画幅大小，分别有 <code>&#123;paper, notebook, talk, poster&#125;</code> 四个值。其中，<code>poster &gt; talk &gt; notebook &gt; paper</code>。</li>
+<li><code>style=&#39;&#39;</code> 参数控制默认样式，分别有 <code>&#123;darkgrid, whitegrid, dark, white, ticks&#125;</code>，你可以自行更改查看它们之间的不同。</li>
+<li><code>palette=&#39;&#39;</code> 参数为预设的调色板。分别有 <code>&#123;deep, muted, bright, pastel, dark, colorblind&#125;</code> 等，你可以自行更改查看它们之间的不同。</li>
+<li>剩下的 <code>font=&#39;&#39;</code> 用于设置字体，<code>font_scale=</code> 设置字体大小，<code>color_codes=</code> 不使用调色板而采用先前的 <code>&#39;r&#39;</code> 等色彩缩写。</li>
+</ul>
+</blockquote>
+<h1 id="分布图"><a href="#分布图" class="headerlink" title="分布图"></a>分布图</h1><h2 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h2><blockquote>
+<p>可以采用最简单的直方图描述单变量的分布情况。 Seaborn中提供了<code>distplot()</code>函数，它默认绘制的是一个带有核密度估计曲线的直方图。</p>
+<pre class=" language-lang-Python"><code class="language-lang-Python">seaborn.distplot(a, bins=None, hist=True, kde=True, rug=False, fit=None, color=None)
+</code></pre>
+<p>上述函数中常用参数的含义如下：</p>
+<ul>
+<li><code>a</code>：表示要观察的数据，可以是 Series、一维数组或列表。</li>
+<li><code>bins</code>：用于控制条形的数量。</li>
+<li><code>hist</code>：接收布尔类型，表示<code>是否绘制(标注)直方图</code>。</li>
+<li><code>kde</code>：接收布尔类型，表示<code>是否绘制高斯核密度</code>估计曲线。</li>
+<li><code>rug</code>：接收布尔类型，表示是否在支持的轴方向上绘制rugplot。</li>
+</ul>
+<p>例：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+sns.set() # 调用set()函数获取默认绘图
+np.random.seed(0)  # 确定随机数生成器的种子,如果不使用每次生成图形不一样
+arr = np.random.randn(100)  # 生成随机数组
+ax = sns.distplot(arr, bins=10, hist=True, kde=True, rug=True)  # 绘制直方图
+</code></pre>
+</blockquote>
+<h2 id="绘制双变量分布"><a href="#绘制双变量分布" class="headerlink" title="绘制双变量分布"></a>绘制双变量分布</h2><blockquote>
+<p>两个变量的二元分布可视化也很有用。在 Seaborn中最简单的方法是使用 <code>jointplot()</code>函数，该函数可以创建一个多面板图形，比如散点图、二维直方图、核密度估计等，以显示两个变量之间的双变量关系及每个变量在单坐标轴上的单变量分布。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">seaborn.jointplot(x, y, data=None, 
+                  kind='scatter', stat_func=None, color=None, 
+                  ratio=5, space=0.2, dropna=True)
+</code></pre>
+<p>上述函数中常用参数的含义如下：</p>
+<ol>
+<li><code>kind</code>：表示绘制图形的类型。hex:直方图，kde：核函数概率，reg：拟合线</li>
+<li><code>stat_func</code>：用于计算有关关系的统计量并标注图。</li>
+<li><code>color</code>：表示绘图元素的颜色。</li>
+<li><code>size</code>：用于设置图的大小(正方形)。</li>
+<li><code>ratio</code>：表示中心图与侧边图的比例。该参数的值越大，则中心图的占比会越大。</li>
+<li><code>space</code>：用于设置中心图与侧边图的间隔大小。</li>
+</ol>
+</blockquote>
+<h2 id="绘制成对的双变量分布"><a href="#绘制成对的双变量分布" class="headerlink" title="绘制成对的双变量分布"></a>绘制成对的双变量分布</h2><blockquote>
+<p>要想在数据集中绘制多个成对的双变量分布，则可以使用<code>pairplot()</code>函数实现，该函数会创建一个坐标轴矩阵，并且显示Datafram对象中每对变量的关系。另外，<code>pairplot()</code>函数也可以绘制每个变量在对角轴上的单变量分布。</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 绘制多个成对的双变量分布
+sns.pairplot(data)
+</code></pre>
+</blockquote>
+<h1 id="类别图"><a href="#类别图" class="headerlink" title="类别图"></a>类别图</h1><blockquote>
+<p>类别图的 Figure-level 接口是 <code>catplot</code>，其为 categorical plots 的缩写。而 <code>catplot</code> 实际上是如下 Axes-level 绘图 API 的集合。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.catplot(x=None, y=None, kind="strip", data=None)
+</code></pre>
+<p><code>参数kind：</code></p>
+<ol>
+<li>分类散点图：<code>strip，swarm</code></li>
+<li>分类分布图：<code>box，violin，boxen</code></li>
+<li>分类估计图：<code>point，bar，count</code></li>
+</ol>
+<p>Seaborn针对分类数据提供了专门的可视化函数，这些函数大致可以分为如下三种:</p>
+<ul>
+<li>分类数据散点图: <code>swarmplot()</code>与 <code>stripplot()</code>。</li>
+<li>类数据的分布图: <code>boxplot()</code> 与 <code>violinplot()</code>。</li>
+<li>分类数据的统计估算图:<code>barplot()</code> 与<code>pointplot()</code>。</li>
+</ul>
+</blockquote>
+<h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">seaborn.stripplot(x=None, y=None, hue=None, data=None, order=None, hue_order=None, jitter=False)
+</code></pre>
+<p>上述函数中常用参数的含义如下</p>
+<ul>
+<li><code>x，y，hue</code>：用于绘制长格式数据的输入。</li>
+<li><code>data</code>：用于绘制的数据集。如果x和y不存在，则它将作为宽格式，否则将作为长格式。</li>
+<li><code>jitter</code>：表示抖动的程度(仅沿类別轴)。当很多数据点重叠时，可以指定抖动的数量或者设为True使用默认值。</li>
+</ul>
+<p>还可调用<code>swarmplot()</code>函数绘制散点图，该函数的好处是所有的数据点都不会重叠，可以很清晰地观察到数据的分布情况</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.swarmplot(x="day", y="total_bill", data=tips)
+</code></pre>
+</blockquote>
+<h2 id="类别内的数据分布"><a href="#类别内的数据分布" class="headerlink" title="类别内的数据分布"></a>类别内的数据分布</h2><blockquote>
+<p><strong>箱形图</strong>:</p>
+<ul>
+<li>箱形图（Box-plot）又称为盒须图、盒式图或箱线图，是一种用作显示一组数据分散情况资料的统计图。</li>
+<li><strong>它能显示出一组数据的最大值、最小值、中位数、及上下四分位数。</strong></li>
+</ul>
+<p><strong>小提琴图:</strong></p>
+<ul>
+<li>小提琴图 (Violin Plot) 用于显示数据分布及其概率密度。</li>
+<li><strong>这种图表结合了箱形图和密度图的特征，主要用来显示数据的分布形状。</strong></li>
+<li><strong>中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间（样本可能来自此区间的概率为95%），而白点则为中位数。</strong></li>
+<li><strong>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。</strong>例如使用箱形图时，我们不能了解数据分布。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</li>
+</ul>
+</blockquote>
+<h3 id="绘制箱体图"><a href="#绘制箱体图" class="headerlink" title="绘制箱体图"></a>绘制箱体图</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">seaborn.boxplot(x=None, y=None, hue=None, data=None, orient=None, color=None,  saturation=0.75, width=0.8)
+</code></pre>
+<ol>
+<li><code>palette</code>：用于设置不同级别色相的颜色变量。—— palette=[“r”,”g”,”b”,”y”]</li>
+<li><code>saturation</code>：用于设置数据显示的颜色饱和度。—— 使用小数表示</li>
+</ol>
+</blockquote>
+<h3 id="绘制提琴图"><a href="#绘制提琴图" class="headerlink" title="绘制提琴图"></a>绘制提琴图</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">seaborn.violinplot(x=None, y=None, hue=None, data=None)
+</code></pre>
+</blockquote>
+<h2 id="类别内的统计估计"><a href="#类别内的统计估计" class="headerlink" title="类别内的统计估计"></a>类别内的统计估计</h2><blockquote>
+<p>要想查看每个分类的集中趋势，则可以使用条形图和点图进行展示。 Seaborn库中用于绘制这两种图表的具体函数如下</p>
+<ul>
+<li><code>barplot()</code>函数：绘制条形图。</li>
+<li><code>pointplot()</code>函数：绘制点图。</li>
+</ul>
+</blockquote>
+<h3 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h3><blockquote>
+<p>最常用的查看集中趋势的图形就是条形图。默认情况下， barplot函数会在整个数据集上使用均值进行估计。<strong>若每个类别中有多个类别时(使用了hue参数)</strong>，则条形图可以使用引导来计算估计的<strong>置信区间(是指由样本统计量所构造的总体参数的估计区间)</strong>，并使用误差条（图中黑色的竖线）来表示出现这个均值的95%置信区间。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.barplot(x="day", y="total_bill", data=tips)
+</code></pre>
+</blockquote>
+<h3 id="绘制点图"><a href="#绘制点图" class="headerlink" title="绘制点图"></a>绘制点图</h3><blockquote>
+<p>另外一种用于估计的图形是点图，可以调用 pointplot()函数进行绘制，该函数会用高度低计值对数据进行描述，而不是显示完整的条形，<strong>它只会绘制点估计和置信区间</strong>。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.pointplot(x="day", y="total_bill", data=tips)
+</code></pre>
+</blockquote>
+<h1 id="关联图"><a href="#关联图" class="headerlink" title="关联图"></a>关联图</h1><blockquote>
+<p>当我们需要对数据进行关联性分析时，可能会用到 Seaborn 提供的以下几个 API。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关联性分析</th>
+<th style="text-align:center">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">relplot</td>
+<td style="text-align:center">绘制关系图</td>
+</tr>
+<tr>
+<td style="text-align:center">scatterplot</td>
+<td style="text-align:center">多维度分析散点图</td>
+</tr>
+<tr>
+<td style="text-align:center">lineplot</td>
+<td style="text-align:center">多维度分析线形图</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>relplot</code>是 relational plots 的缩写，其可以用于呈现数据之后的关系，主要有散点图和条形图 2 种样式。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.relplot(x=, y=,hue=, style=, kind="scatter", data=)
+</code></pre>
+<p>参数：</p>
+<ol>
+<li><code>hue：</code>加入类别特征对数据进行着色</li>
+<li><code>style：</code> 可以赋予不同类别的散点不同的形状</li>
+<li><code>kind:</code>还支持绘制线图，只需要<code>kind=&quot;line&quot;</code>线形态绘制时还会自动给出 95% 的置信区间。</li>
+</ol>
+<p><strong>API层级概念：</strong></p>
+<p>Seaborn 中的 API 分为 Figure-level 和 Axes-level 两种。<code>relplot</code> 就是一个 Figure-level 接口，而 <code>scatterplot</code> 和 <code>lineplot</code> 则是 Axes-level 接口。</p>
+</blockquote>
+<h1 id="回归图"><a href="#回归图" class="headerlink" title="回归图"></a>回归图</h1><blockquote>
+<p>回归图的绘制函数主要有：<code>lmplot</code>和<code>regplot</code></p>
+<p><code>regplot</code> 绘制回归图时，只需要指定自变量和因变量即可，<code>regplot</code> 会自动完成线性回归拟合。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.regplot(x="sepal_length", y="sepal_width", data=iris)
+</code></pre>
+<p><code>lmplot</code> 同样是用于绘制回归图，但 <code>lmplot</code> 支持引入第三维度进行对比，例如我们设置 <code>hue=&quot;species&quot;</code>。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.lmplot(x="sepal_length", y="sepal_width", hue="species", data=iris)
+</code></pre>
+</blockquote>
+<h1 id="矩阵图"><a href="#矩阵图" class="headerlink" title="矩阵图"></a>矩阵图</h1><blockquote>
+<p>矩阵图中最常用的就只有 2 个，分别是：<code>heatmap</code>和<code>clustermap</code></p>
+<p><code>heatmap</code> 主要用于绘制热力图。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">sns.heatmap(a,square,linewidths,annot)
+</code></pre>
+<p><code>clustermap</code> 支持绘制<code>层次聚类</code>结构图</p>
+<pre class=" language-lang-python"><code class="language-lang-python">iris.pop("species")
+sns.clustermap(iris)
+</code></pre>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/Matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/Matplotlib/" class="post-title-link" itemprop="url">Matplotlib</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 01:38:54" itemprop="dateCreated datePublished" datetime="2021-05-04T01:38:54+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">科学计算库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p><strong>注意：</strong></p>
+<p>在使用 Notebook 环境绘图时，需要先运行 Jupyter Notebook 的魔术命令 <code>%matplotlib inline</code>。这条命令的作用是将 Matplotlib 绘制的图形嵌入在当前页面中。而在桌面环境中绘图时，不需要添加此命令，而是在全部绘图代码之后追加 <code>plt.show()</code>。</p>
+</blockquote>
+<h1 id="简单图形绘制"><a href="#简单图形绘制" class="headerlink" title="简单图形绘制"></a>简单图形绘制</h1><blockquote>
+<p>需要导入 <code>pyplot</code> 模块，并约定简称为 <code>plt</code></p>
+<pre class=" language-lang-python"><code class="language-lang-python">from matplotlib import pyplot as plt
+plt.plot([2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1])
+</code></pre>
+<p><code>plt.plot()</code> 是 <code>pyplot</code> 模块下面的直线绘制（折线图）方法类。示例中包含了一个 <code>[2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]</code> 列表，Matplotlib 会默认将该列表作为 𝑦y 值，而 𝑥x 值会从 00 开始依次递增。</p>
+<p>当然，如果你需要自定义横坐标值，只需要传入两个列表即可。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matplotlib.pyplot.angle_spectrum</code></td>
+<td>绘制电子波谱图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.bar</code></td>
+<td>绘制柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.barh</code></td>
+<td>绘制直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.broken_barh</code></td>
+<td>绘制水平直方图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.contour</code></td>
+<td>绘制等高线图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.errorbar</code></td>
+<td>绘制误差线</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hexbin</code></td>
+<td>绘制六边形图案</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist</code></td>
+<td>绘制柱形图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.hist2d</code></td>
+<td>绘制水平柱状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.pie</code></td>
+<td>绘制饼状图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.quiver</code></td>
+<td>绘制量场图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.scatter</code></td>
+<td>散点图</td>
+</tr>
+<tr>
+<td><code>matplotlib.pyplot.specgram</code></td>
+<td>绘制光谱图</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h1 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h1><h2 id="定义图形样式"><a href="#定义图形样式" class="headerlink" title="定义图形样式"></a>定义图形样式</h2><blockquote>
+<p>线形图通过 <code>matplotlib.pyplot.plot(*args, **kwargs)</code> 方法绘出。其中，<code>args</code> 代表数据输入，而 <code>kwargs</code> 的部分就是用于设置样式参数了。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha=</code></td>
+<td>设置线型的透明度，从 0.0 到 1.0</td>
+</tr>
+<tr>
+<td><code>color=</code></td>
+<td>设置线型的颜色</td>
+</tr>
+<tr>
+<td><code>fillstyle=</code></td>
+<td>设置线型的填充样式</td>
+</tr>
+<tr>
+<td><code>linestyle=</code></td>
+<td>设置线型的样式</td>
+</tr>
+<tr>
+<td><code>linewidth=</code></td>
+<td>设置线型的宽度</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>设置标记点的样式</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>散点图也是相似的，它们的很多样式参数都是大同小异</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s=</code></td>
+<td>散点大小</td>
+</tr>
+<tr>
+<td><code>c=</code></td>
+<td>散点颜色</td>
+</tr>
+<tr>
+<td><code>marker=</code></td>
+<td>散点样式</td>
+</tr>
+<tr>
+<td><code>cmap=</code></td>
+<td>定义多类别散点的颜色</td>
+</tr>
+<tr>
+<td><code>alpha=</code></td>
+<td>点的透明度</td>
+</tr>
+<tr>
+<td><code>edgecolors=</code></td>
+<td>散点边缘颜色</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h2 id="定义图形位置"><a href="#定义图形位置" class="headerlink" title="定义图形位置"></a>定义图形位置</h2><blockquote>
+<p>在图形的绘制过程中，你可能需要调整图形的位置，或者把几张单独的图形拼接在一起。此时，我们就需要引入 <code>plt.figure</code> 图形对象了。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+x = np.linspace(0, 10, 20)  # 生成数据
+y = x * x + 2
+
+fig = plt.figure(figsize=(元组),dpi=)  # 新建图形对象,通过 figsize 调节尺寸, dpi 调节显示精度
+axes = fig.add_axes([0.5, 0.5, 0.8, 0.8])  # 控制画布的左, 下, 宽度, 高度
+axes.plot(x, y, 'r')
+</code></pre>
+<p><strong>大图套小图</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig = plt.figure()  # 新建画板
+axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # 大画布
+axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])  # 小画布
+
+axes1.plot(x, y, 'r')  # 大画布
+axes2.plot(y, x, 'g')  # 小画布
+</code></pre>
+<p>Matplotlib 中，还有一种添加画布的方式，那就是 <code>plt.subplots()</code>，它和 <code>axes</code> 都等同于画布。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+axes.plot(x, y, 'r')
+</code></pre>
+<p>借助于 <code>plt.subplots()</code>，我们就可以实现子图的绘制，也就是将多张图按一定顺序拼接在一起。</p>
+<p>其中axes设置标题方法不同：</p>
+<p>​    set_xticks</p>
+<p>​    set_yticks</p>
+<p>​    set_xlabel</p>
+<p>​    set_ylabel</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots(nrows=1, ncols=2)  # 子图为 1 行，2 列
+for ax in axes:
+ ax.plot(x, y, 'r')
+</code></pre>
+<p>通过设置 <code>plt.subplots</code> 的参数，可以实现调节画布尺寸和显示精度</p>
+<p>。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots(figsize=(16, 9), dpi=50)  # 通过 figsize 调节尺寸, dpi 调节显示精度
+axes.plot(x, y, 'r')
+</code></pre>
+</blockquote>
+<h2 id="规范绘图方法"><a href="#规范绘图方法" class="headerlink" title="规范绘图方法"></a>规范绘图方法</h2><h3 id="添加图标题、图例"><a href="#添加图标题、图例" class="headerlink" title="添加图标题、图例"></a>添加图标题、图例</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+
+axes.set_xlabel('x label')  # 横轴名称
+axes.set_ylabel('y label')
+axes.set_title('title')  # 图形名称
+
+axes.plot(x, x**2) # 添加图例也可以传入label参数
+axes.plot(x, x**3)
+axes.legend(["y = x**2", "y = x**3"], loc=0)
+</code></pre>
+<p><code>loc</code> 参数标记图例位置，<code>1，2，3，4</code> 依次代表：右上角、左上角、左下角，右下角；<code>0</code> 代表自适应。</p>
+</blockquote>
+<h3 id="添加自定义刻度"><a href="#添加自定义刻度" class="headerlink" title="添加自定义刻度"></a>添加自定义刻度</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 构造x轴刻度标签
+x_ticks_label = ["11点&#123;&#125;分".format(i) for i in x]
+# 构造y轴刻度
+y_ticks = range(40)
+# 修改x,y轴坐标的刻度显示
+plt.xticks(x[::5], x_ticks_label[::5])
+plt.yticks(y_ticks[::5])
+</code></pre>
+<p>显示中文字体</p>
+<pre class=" language-lang-python"><code class="language-lang-python">from pylab import mpl
+# 设置显示中文字体
+mpl.rcParams["font.sans-serif"] = ["SimHei"]
+# 坐标轴无法正常显示中文时
+mpl.rcParams["axes.unicode_minus"] = False
+</code></pre>
+</blockquote>
+<h3 id="线型、颜色、透明度"><a href="#线型、颜色、透明度" class="headerlink" title="线型、颜色、透明度"></a>线型、颜色、透明度</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+axes.plot(x, x+1, color="red", alpha=0.5)# 颜色和透明度
+axes.plot(x, x+2, color="#1155dd")
+</code></pre>
+<p>更多线型</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, ax = plt.subplots(figsize=(12, 6))
+
+# 线宽
+ax.plot(x, x+1, color="blue", linewidth=0.25)
+ax.plot(x, x+2, color="blue", linewidth=0.50)
+ax.plot(x, x+3, color="blue", linewidth=1.00)
+ax.plot(x, x+4, color="blue", linewidth=2.00)
+
+# 虚线类型
+ax.plot(x, x+5, color="red", lw=2, linestyle='-')
+ax.plot(x, x+6, color="red", lw=2, ls='-.')
+ax.plot(x, x+7, color="red", lw=2, ls=':')
+
+# 虚线交错宽度
+line, = ax.plot(x, x+8, color="black", lw=1.50)
+line.set_dashes([5, 10, 15, 10])
+
+# 符号
+ax.plot(x, x + 9, color="green", lw=2, ls='--', marker='+')
+ax.plot(x, x+10, color="green", lw=2, ls='--', marker='o')
+ax.plot(x, x+11, color="green", lw=2, ls='--', marker='s')
+ax.plot(x, x+12, color="green", lw=2, ls='--', marker='1')
+
+# 符号大小和颜色
+ax.plot(x, x+13, color="purple", lw=1, ls='-', marker='o', markersize=2)
+ax.plot(x, x+14, color="purple", lw=1, ls='-', marker='o', markersize=4)
+ax.plot(x, x+15, color="purple", lw=1, ls='-',
+     marker='o', markersize=8, markerfacecolor="red")
+   ax.plot(x, x+16, color="purple", lw=1, ls='-', marker='s', markersize=8,
+     markerfacecolor="yellow", markeredgewidth=2, markeredgecolor="blue")
+</code></pre>
+</blockquote>
+<h3 id="画布网格、坐标轴范围"><a href="#画布网格、坐标轴范围" class="headerlink" title="画布网格、坐标轴范围"></a>画布网格、坐标轴范围</h3><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+# 显示网格
+axes[0].plot(x, x**2, x, x**3, lw=2)
+axes[0].grid(True,linestyle="--",alpha=0.5)
+
+# 设置坐标轴范围
+axes[1].plot(x, x**2, x, x**3)
+axes[1].set_ylim([0, 60])
+axes[1].set_xlim([2, 5])
+</code></pre>
+<p><code>除了折线图，Matplotlib 还支持绘制散点图、柱状图等其他常见图形。下面，我们绘制由散点图、梯步图、条形图、面积图构成的子图。</code></p>
+<pre class=" language-lang-python"><code class="language-lang-python">n = np.array([0, 1, 2, 3, 4, 5])
+
+fig, axes = plt.subplots(1, 4, figsize=(16, 5))
+
+axes[0].scatter(x, x + 0.25*np.random.randn(len(x)))
+axes[0].set_title("scatter")
+
+axes[1].step(n, n**2, lw=2)
+axes[1].set_title("step")
+
+axes[2].bar(n, n**2, align="center", width=0.5, alpha=0.5)
+axes[2].set_title("bar")
+
+axes[3].fill_between(x, x**2, x**3, color="green", alpha=0.5)
+axes[3].set_title("fill_between")
+</code></pre>
+</blockquote>
+<h3 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h3><blockquote>
+<p>Matplotlib 中，文字标注的方法由 <code>matplotlib.pyplot.text()</code> 实现。最基本的样式为 <code>matplotlib.pyplot.text(x, y, s)</code>，其中 x, y 用于标注位置定位，s 代表标注的字符串。除此之外，你还可以通过 <code>fontsize=</code> , <code>horizontalalignment=</code> 等参数调整标注字体的大小，对齐样式等。</p>
+<pre class=" language-lang-pyhton"><code class="language-lang-pyhton">fig, axes = plt.subplots()
+
+x_bar = [10, 20, 30, 40, 50]  # 柱形图横坐标
+y_bar = [0.5, 0.6, 0.3, 0.4, 0.8]  # 柱形图纵坐标
+bars = axes.bar(x_bar, y_bar, color='blue', label=x_bar, width=2)  # 绘制柱形图
+for i, rect in enumerate(bars):
+   x_text = rect.get_x()  # 获取柱形图横坐标
+   y_text = rect.get_height() + 0.01  # 获取柱子的高度并增加 0.01
+   plt.text(x_text, y_text, '%.1f' % y_bar[i])  # 标注文字
+</code></pre>
+<p>除了文字标注之外，还可以通过 <code>matplotlib.pyplot.annotate()</code> 方法向图像中添加箭头等样式标注。接下来，我们向上面的例子中增添一行增加箭头标记的代码。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">fig, axes = plt.subplots()
+
+bars = axes.bar(x_bar, y_bar, color='blue', label=x_bar, width=2)  # 绘制柱形图
+for i, rect in enumerate(bars):
+    x_text = rect.get_x()  # 获取柱形图横坐标
+    y_text = rect.get_height() + 0.01  # 获取柱子的高度并增加 0.01
+    plt.text(x_text, y_text, '%.1f' % y_bar[i])  # 标注文字
+
+    # 增加箭头标注
+    plt.annotate('Min', xy=(32, 0.3), xytext=(36, 0.3),
+                 arrowprops=dict(facecolor='black', width=1, headwidth=7))
+</code></pre>
+<p><code>xy=()</code> 表示标注终点坐标，<code>xytext=()</code> 表示标注起点坐标。在箭头绘制的过程中，<code>arrowprops=()</code> 用于设置箭头样式，<code>facecolor=</code> 设置颜色，<code>width=</code> 设置箭尾宽度，<code>headwidth=</code> 设置箭头宽度，可以通过 <code>arrowstyle=</code> 改变箭头的样式。</p>
+</blockquote>
+<h1 id="常见图形绘制"><a href="#常见图形绘制" class="headerlink" title="常见图形绘制"></a>常见图形绘制</h1><blockquote>
+<p><strong>折线图</strong>：以折线的上升或下降来表示统计数量的增减变化的统计图</p>
+<p><strong>特点：能够显示数据的变化趋势，反映事物的变化情况。(变化)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.plot(x, y)
+</code></pre>
+<p><strong>散点图：</strong>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量之间是否存在某种关联或总结坐标点的分布模式。</p>
+<p><strong>特点：判断变量之间是否存在数量关联趋势,展示离群点(分布规律)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.scatter(x, y)
+</code></pre>
+<p><strong>柱状图：</strong>排列在工作表的列或行中的数据可以绘制到柱状图中。</p>
+<p><strong>特点：绘制连离散的数据,能够一眼看出各个数据的大小,比较数据之间的差别。(统计/对比)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.bar(x, width, align='center', **kwargs)
+</code></pre>
+<p>Parameters:<br>    <code>x</code> : 需要传递的数据<br>    <code>width</code> : 柱状图的宽度<br>    <code>align</code> : 每个柱状图的位置对齐方式<br>         {‘center’, ‘edge’}, optional, default: ‘center’<br>    <code>`**kwargs</code> :<br>        color:选择柱状图的颜色</p>
+<p><strong>直方图：</strong>由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据范围，纵轴表示分布情况。</p>
+<p><strong>特点：绘制连续性的数据展示一组或者多组数据的分布状况(统计)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">matplotlib.pyplot.hist(x, bins=None)
+</code></pre>
+<p>Parameters:<br>    <code>x</code>: 需要传递的数据<br>    <code>bins</code> : 组距</p>
+<p><strong>饼图：</strong>用于表示不同分类的占比情况，通过弧度大小来对比各种分类。</p>
+<p><strong>特点：分类数据的占比情况(占比)</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">plt.pie(x, labels=,autopct=,colors)
+</code></pre>
+<p>Parameters:<br>    <code>x</code>:数量，自动算百分比<br>    <code>labels</code>:每部分名称<br>    <code>autopct</code>:占比显示指定%1.2f%%<br>    <code>colors</code>:每部分颜色</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Qijinli</p>
+  <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>

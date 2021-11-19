@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qi-jinli.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="闭包 闭包定义  函数嵌套 内部函数使用外部函数的参数 外部函数返回了内部函数  闭包作用 保存外部函数的参数(局部变量,函数形参)  内部函数修改外部函数的变量 nonlocal:可以修改外部函数的函数形参或局部变量 def func_out():     # 外部函数的局部变量     num1 &#x3D; 20     # 内部函数     def func_inner(num2):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="装饰器和生成器">
+<meta property="og:url" content="http://qi-jinli.github.io/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/index.html">
+<meta property="og:site_name" content="Qijinli&#39;s Blog">
+<meta property="og:description" content="闭包 闭包定义  函数嵌套 内部函数使用外部函数的参数 外部函数返回了内部函数  闭包作用 保存外部函数的参数(局部变量,函数形参)  内部函数修改外部函数的变量 nonlocal:可以修改外部函数的函数形参或局部变量 def func_out():     # 外部函数的局部变量     num1 &#x3D; 20     # 内部函数     def func_inner(num2):">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-04T06:09:14.000Z">
+<meta property="article:modified_time" content="2021-05-04T06:09:14.000Z">
+<meta property="article:author" content="Qijinli">
+<meta property="article:tag" content="装饰器">
+<meta property="article:tag" content="生成器">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://qi-jinli.github.io/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>装饰器和生成器 | Qijinli's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Qijinli's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qi-jinli.github.io/2021/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qijinli">
+      <meta itemprop="description" content="毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qijinli's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          装饰器和生成器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 14:09:14" itemprop="dateCreated datePublished" datetime="2021-05-04T14:09:14+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p><strong>闭包定义</strong></p>
+<ol>
+<li>函数嵌套</li>
+<li>内部函数使用外部函数的参数</li>
+<li>外部函数返回了内部函数</li>
+</ol>
+<p><strong>闭包作用</strong></p>
+<p>保存外部函数的参数(局部变量,函数形参)</p>
+</blockquote>
+<h1 id="内部函数修改外部函数的变量"><a href="#内部函数修改外部函数的变量" class="headerlink" title="内部函数修改外部函数的变量"></a>内部函数修改外部函数的变量</h1><blockquote>
+<p><strong>nonlocal:</strong>可以修改外部函数的函数形参或局部变量</p>
+<pre class=" language-lang-python"><code class="language-lang-python">def func_out():
+    # 外部函数的局部变量
+    num1 = 20
+    # 内部函数
+    def func_inner(num2):
+        nonlocal num1
+        # 函数局部变量
+        num1 = num1+num2
+
+    print(num1)# 修改之前的函数形参值
+    func_inner(10)
+    print(num1)# 函数形参值
+
+func_out()
+</code></pre>
+</blockquote>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>不改变原来代码的情况下,给函数增加新的功能,通过<strong>闭包</strong>实现</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 1定义一个装饰器(装饰器的本质是闭包)
+def check(fn):
+    def inner():
+        print("请先登陆")
+        fn()
+
+    return inner
+
+
+# 2使用装饰器装饰函数（增加一个登陆功能）
+# 解释器遇到@check 会立即执行 comment = check(comment)
+@check # 调用check 传递comment 返回新的函数
+def comment():
+    print("发表评论")
+comment()
+</code></pre>
+</blockquote>
+<h1 id="有参装饰器"><a href="#有参装饰器" class="headerlink" title="有参装饰器"></a>有参装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def check(fn): # regist
+    def inner(name,pwd):
+        print('开始验证')
+        fn(name,pwd) # regist
+        print('登陆成功')
+
+    return inner
+
+
+@check
+def regist(name,pwd):
+    print('开始注册')
+</code></pre>
+<p><strong>内部函数需要接收和被装饰的函数参数相同的参数</strong>，<strong>在内部函数调用外部函数参数 传入参数</strong></p>
+</blockquote>
+<h1 id="装饰带有返回值函数的装饰器"><a href="#装饰带有返回值函数的装饰器" class="headerlink" title="装饰带有返回值函数的装饰器"></a>装饰带有返回值函数的装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(a, b):
+        print('开始计算')
+        result = fn(a, b)
+        print('结束计算')
+        return result
+    return inner  # sum_num = inner
+
+# 使用装饰器装饰函数
+@logging
+def sum_num(a, b):
+    result = a + b
+    print(result)
+    return result
+
+result = sum_num(1, 2)
+print(result)
+</code></pre>
+<p><strong>如果被装饰的函数有返回值,需要在内部函数返回调用原来函数的结果</strong></p>
+</blockquote>
+<h1 id="装饰不定长参数函数"><a href="#装饰不定长参数函数" class="headerlink" title="装饰不定长参数函数"></a>装饰不定长参数函数</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        fn(*args, **kwargs)
+
+    return inner  # sum_num = inner
+</code></pre>
+<p>*args和<em>\</em>*kwargs可以接收任意类型的参数,通过*arg或者**kwargs把接收的数据解包传递个原来的函数进行调用</p>
+</blockquote>
+<h1 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># 可以装饰带有任意参数和返回值的函数
+# 定义装饰器
+def logging(fn):  # fn = sum_num
+    def inner(*args, **kwargs):
+        # 装饰之前代码
+        result = fn(*args, **kwargs)
+        # 装饰之后的代码
+        return result
+    return inner  # sum_num = inner
+</code></pre>
+</blockquote>
+<h1 id="多个装饰器"><a href="#多个装饰器" class="headerlink" title="多个装饰器"></a>多个装饰器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">@check1
+@check2
+def comment():
+    print("发表评论")
+</code></pre>
+<p>离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰，由内到外的装饰过程</p>
+</blockquote>
+<h1 id="property修饰器"><a href="#property修饰器" class="headerlink" title="property修饰器"></a>property修饰器</h1><blockquote>
+<p><strong>作用</strong></p>
+<p>把方法的调用变成属性的调用</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+    def __init__(self):
+        self.__age = 0
+
+    # 获取属性
+    @property # 把age变成get属性
+    def age(self):
+        return self.__age
+
+    # 修改属性
+    @age.setter# 把age函数变成age属性的set方法
+    def age(self, new_age):
+        if new_age>0 and new_age<150:
+            self.__age = new_age
+</code></pre>
+</blockquote>
+<h1 id="类属性property"><a href="#类属性property" class="headerlink" title="类属性property"></a>类属性property</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person(object):
+
+    def __init__(self):
+        self.__age = 0
+
+    def get_age(self):
+        """当获取age属性时会使用该方法"""
+        return self.__age
+
+    def set_age(self, new_age):
+        """当设置属性时会使用该方法"""
+        if new_age >= 150:
+            print("年龄错误")
+        else:
+            self.__age = new_age
+    # 类属性
+    age = property(get_age, set_age)
+</code></pre>
+<p>property第一个是get方法 第二个是set方法</p>
+</blockquote>
+<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><blockquote>
+<p><strong>with管理上下文对象</strong></p>
+<pre class=" language-lang-python"><code class="language-lang-python">with 上下文管理器对象 as 变量:
+</code></pre>
+<p>as之后的变量是上下文管理器对象的__enter__方法返回的对象</p>
+<p>with执行时会调用上下文管理器的__enter__获取对象赋值给后面的变量</p>
+<p>在with语句中就可以使用这个对象</p>
+<p>with中的语句执行结束之后,会执行__exit__方法</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class File(object):
+    def __init__(self, file_name, file_model):
+        self.file_name = file_name
+        self.file_model = file_model
+
+    def __enter__(self):
+        print("这是上文")
+        self.file = open(self.file_name, self.file_model)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("这是下文")
+        self.file.close()
+</code></pre>
+<p><strong>注意：不管有没有出现异常,下文都会在with语句执行结束或者出现异常之后自动执行</strong></p>
+</blockquote>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">def generater(num):
+    for i in range(num):
+        print("开始")
+        yield i
+        print("生成完成")
+
+g = generater(5)
+next(g)
+</code></pre>
+<p><strong>如果最后一条数据,next就会出现异常</strong></p>
+</blockquote>
+<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><blockquote>
+<p><strong>浅拷贝</strong>：copy.copy</p>
+<p>两个变量指向同一个空间</p>
+<p><strong>深拷贝：</strong>copy.deepcopy</p>
+<p>两个变量指向不同空间</p>
+<ol>
+<li>不可变,不用考虑深拷贝和浅拷贝</li>
+<li>如果可变类型,可变类型每一个元素都是不可变类型,可以直接浅拷贝</li>
+<li>如果可变类型中有可变类型元素,可以使用深拷贝</li>
+<li>不可变类型(不可变类型中全是不可变类型),直接赋值  可变类型或不可变类型中嵌套了可变类型直接深拷贝</li>
+</ol>
+</blockquote>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">.    匹配任意1个字符（除了\n）
+[ ]    匹配[ ]中列举的字符
+[^指定字符] 除了列举的所有字符
+\d    匹配数字，即0-9
+\D    匹配非数字，即不是数字
+\s    匹配空白，即 空格，tab键
+\S    匹配非空白
+\w    匹配非特殊字符，即a-z、A-Z、0-9、_、汉字
+\W    匹配特殊字符，即非字母、非数字、非汉字
+</code></pre>
+</blockquote>
+<h2 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">*    匹配前一个字符出现0次或者无限次，即可有可无
++    匹配前一个字符出现1次或者无限次，即至少有1次
+?    匹配前一个字符出现1次或者0次，即要么有1次，要么没有
+&#123;m&#125;    匹配前一个字符出现m次
+&#123;m,n&#125;    匹配前一个字符出现从m到n次
+例：
+# 字母开头@ 有3-10位的数字字母和_
+result = re.match("[a-zA-Z][a-zA-Z0-9_]&#123;2,9&#125;@qq\.com", "aafd12ddd@qq.com")
+</code></pre>
+</blockquote>
+<h2 id="匹配开头和结尾"><a href="#匹配开头和结尾" class="headerlink" title="匹配开头和结尾"></a>匹配开头和结尾</h2><blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python">^    匹配字符串开头(放在匹配规则的最开始)
+$    匹配字符串结尾(放在匹配规则的最后一位)
+</code></pre>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/" rel="tag"># 装饰器</a>
+              <a href="/tags/%E7%94%9F%E6%88%90%E5%99%A8/" rel="tag"># 生成器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/04/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" rel="prev" title="科学计算库总结">
+      <i class="fa fa-chevron-left"></i> 科学计算库总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/04/Linux/" rel="next" title="Linux">
+      Linux <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E5%87%BD%E6%95%B0%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">内部函数修改外部函数的变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E5%8F%82%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">有参装饰器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%B8%A6%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">装饰带有返回值函数的装饰器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E4%B8%8D%E5%AE%9A%E9%95%BF%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">装饰不定长参数函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">通用装饰器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">多个装饰器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#property%E4%BF%AE%E9%A5%B0%E5%99%A8"><span class="nav-number">9.</span> <span class="nav-text">property修饰器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%B1%9E%E6%80%A7property"><span class="nav-number">10.</span> <span class="nav-text">类属性property</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">11.</span> <span class="nav-text">上下文管理器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-number">12.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-number">13.</span> <span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">14.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="nav-number">14.1.</span> <span class="nav-text">匹配单个字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="nav-number">14.2.</span> <span class="nav-text">匹配多个字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%BC%80%E5%A4%B4%E5%92%8C%E7%BB%93%E5%B0%BE"><span class="nav-number">14.3.</span> <span class="nav-text">匹配开头和结尾</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Qijinli</p>
+  <div class="site-description" itemprop="description">毕业于大连理工大学机械系，现从事人工智能开发，主要从事机器学习，计算机视觉，自然语言处理等多项领域。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qijinli</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
